@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE dialogue [
+    <!ELEMENT dialogue ANY>
+    <!ELEMENT node ANY>
+    <!ATTLIST node id ID #IMPLIED>
+]>
+
+<dialogue>
+	<intro>
+		<text>This is a bald, tall man. His pants are torn and covered in mud.</text>
+		<next_node id="1"></next_node>
+	</intro>
+	
+	<topic id="1">
+		<response>
+			<text>{response1}</text>
+		</response>
+	</topic>
+	<topic id="2">
+		<response>
+			<text>Well, it's rough, but there's no law, no cops, nothing but freedom!</text>
+		</response>
+	</topic>
+	<topic id="0">
+		<title>Rumors</title>
+		<next_node id="5"></next_node>
+	</topic>
+	
+	
+	<node id="1">
+		<response>
+			<logic type="Or">
+				<logic type="And">
+					<condition name="duringgreeting"></condition>
+					<condition name="isawake"></condition>
+				</logic>
+				<logic type="And">
+					<condition name="duringgreeting2"></condition>
+					<condition name="isawake2"></condition>
+				</logic>
+			</logic>
+			<text>What do you want?</text>
+		</response>
+		<response>
+			<text>OK. What do you want to know?</text>
+		</response>
+		<option>
+			<title>Tomatoes</title>
+			<text>Are these tomatoes? They look pretty bad.</text>
+			<next_node id="2"></next_node>
+		</option>
+	</node>
+	<node id="2">
+		<response>
+			<text>Yea, they look horrible. I planted them with bad seeds from a few years ago. My hairloom seeds were eaten by birds. I don't know if I'm going to have any tomatoes this year.</text>
+		</response>
+		<option>
+			<title>Birds</title>
+			<text>There are birds here?</text>
+			<next_node id="7"></next_node>
+		</option>
+		<option>
+			<condition name="hastomatoseeds" story="hastomatoseeds" compare="1" op="1"></condition>
+			<title>Tomato seeds</title>
+			<text>Here I have some tomato seeds. Maybe they'll help you.</text>
+			<next_node id="3"></next_node>
+		</option>
+		<option>
+			<condition name="hastomatoseeds" story="hastomatoseeds" compare="0" op="0"></condition>
+			<title>Tomato seeds</title>
+			<text>Maybe I can help you look for some tomato seeds.</text>
+			<next_node id="4"></next_node>
+		</option>
+	</node>
+	<node id="3">
+		<response>
+			<text>Really? Oh God, thank you so much!</text>
+			<event name="removetomatoseed"></event>
+		</response>
+	</node>
+	<node id="4">
+		<response>
+			<text>You don't look like a farmer. Do you even know what tomato seeds look like?</text>
+		</response>
+	</node>
+	<node id="5">
+		<response>
+			<text>I heard that there would be a supply drop soon.</text>
+		</response>
+		<option>
+			<title>Supply drop</title>
+			<text>Where will they drop?</text>
+			<next_node id="6"></next_node>
+		</option>
+	</node>
+	<node id="6">
+		<response>
+			<text>I have no idea. You have to be lucky to catch one near you.</text>
+		</response>
+	</node>
+	<node id="7">
+		<response>
+			<text>Not just any birds. These are mutated birds that shit atomic bombs. And they like tomatoes.</text>
+		</response>
+		<option>
+			<title>Tomatoes</title>
+			<text>Let's talk about these tomatoes.</text>
+			<next_node id="2"></next_node>
+		</option>
+	</node>
+	
+</dialogue>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

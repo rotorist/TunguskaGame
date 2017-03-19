@@ -1,0 +1,37 @@
+Buildings Bundle 1
+
+----------------------
+
+Version History:
+
+	Version 1.0	November 2015	Initial Release
+
+----------------------
+
+Contents:
+
+	10 residential houses with textured interiors and exteriors / 1 brick house, 3 stone houses, 3 wood houses, 3 plaster houses /  10 .fbx models / 62 .png textures
+
+	Each model is broken down into child objects which vary but may include: base, front door, back door, second floor, roof, awning, and steps
+
+	Doors are either left-handed or right handed with their object origins set to their hinge locations to make animating in Unity easier
+
+	62 1024x1024 PNG textures: 2 glass textures, 16 planks textures, 15 plaster textures, 3 shingles textures, 1 slate texture, 5 flat stone textures, 2 round stone textures, 8 thatch/thatch-end textures, 1 tile roof texture, and 9 window/door textures
+
+	All materials work well using Unity's Standard Shader / glass materials work well with Rendering Mode switched from Opaque to Transparent
+	
+	All models scaled for Unity 5
+
+	Model composition varies greatly but rough per-model averages are: verts- 2284, faces- 1758, tris- 3574. 
+
+----------------------
+
+//NOTE// Models in this bundle do not include colliders, animations, sounds, or scripts.
+//NOTE// Models in this bundle are intended to have their interiors traversable within a game.
+//NOTE// Models in this bundle may be sunken into the terrian and have their "steps" part removed to increase variety / reduce polygons.
+
+---------------------
+
+Contact Information:
+
+	support@colbrostudios.com

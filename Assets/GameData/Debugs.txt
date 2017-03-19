@@ -1,0 +1,4 @@
+LogTarget=Console
+GUI=Default
+AI=Default
+Character=Error

@@ -1,0 +1,271 @@
+﻿using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+
+
+public class GameManager : MonoBehaviour 
+{
+
+	#region Singleton
+	
+	public static GameManager Inst;
+
+
+	#endregion
+
+	#region Public Fields
+
+
+	public Curves Curves;
+	public SoundManager SoundManager;
+	public EventManager EventManager;
+	public FXManager FXManager;
+	public NPCManager NPCManager;
+	public DBManager DBManager;
+	public UIManager UIManager;
+	public CursorManager CursorManager;
+	public ItemManager ItemManager;
+	public QuestManager QuestManager;
+	public WorldManager WorldManager;
+	public MaterialManager MaterialManager;
+
+	public CameraController CameraController;
+	public CameraShaker CameraShaker;
+	public PlayerControl PlayerControl;
+
+	public AIScheduler AIScheduler;
+
+	public string AppDataPath;
+
+	public bool GodMode;
+
+	#endregion
+
+	void Start()
+	{
+		
+		UnityEngine.Debug.Log("Game Manager Started");
+		AppDataPath = Application.dataPath;
+		Initialize();
+
+	}
+
+	void Update()
+	{
+		
+		EventManager.ManagerPerFrameUpdate();
+		PlayerControl.PerFrameUpdate();
+		AIScheduler.UpdatePerFrame();
+		CursorManager.PerFrameUpdate();
+		UIManager.PerFrameUpdate();
+		SoundManager.PerFrameUpdate();
+		NPCManager.PerFrameUpdate();
+	}
+
+	void LateUpdate()
+	{
+		
+	}
+
+	void FixedUpdate()
+	{
+		MaterialManager.FixedUpdate();
+	}
+
+	#region Private Methods
+
+	private void Initialize()
+	{
+		
+
+		Inst = this;
+
+		Curves = GetComponent<Curves>();
+	
+
+		//Initializing CsDebug
+		CsDebug debug = GetComponent<CsDebug>();
+		debug.Initialize();
+
+		//Initializing DBManager
+		DBManager = new DBManager();
+		DBManager.Initialize();
+
+		//Initializing Material Manager
+		MaterialManager = new MaterialManager();
+		MaterialManager.Initialize();
+
+		//Initializing sound manager
+		SoundManager = new SoundManager();
+		SoundManager.Initialize();
+
+		//Initializing world manager
+		WorldManager = new WorldManager();
+		WorldManager.Initialize();
+
+		//Initializing Event Manager
+		EventManager = new EventManager();
+		EventManager.Initialize();
+
+		ItemManager = new ItemManager();
+		ItemManager.Initialize();
+
+		//Initializing NPC Manager
+		NPCManager = new NPCManager();
+		NPCManager.Initialize();
+
+
+
+		PlayerControl = new PlayerControl();
+		PlayerControl.Initialize();
+
+
+
+
+		UIManager = new UIManager();
+		UIManager.Initialize();
+
+		QuestManager = new QuestManager();
+		QuestManager.Initialize();
+
+		/*
+		MutantCharacter mutant1 = GameObject.Find("MutantCharacter").GetComponent<MutantCharacter>();
+		mutant1.Initialize();
+		mutant1.MyStatus.MaxHealth = 200;
+		mutant1.MyStatus.Health = 200;
+		mutant1.MyAI.BlackBoard.PatrolLoc = new Vector3(60, 0, -33);
+		mutant1.MyAI.BlackBoard.PatrolRange = new Vector3(5, 5, 5);
+		mutant1.MyAI.BlackBoard.CombatRange = new Vector3(40, 20, 20);
+		mutant1.MyAI.BlackBoard.HasPatrolInfo = true;
+
+
+		MutantCharacter mutant2 = GameObject.Find("MutantCharacter2").GetComponent<MutantCharacter>();
+		mutant2.Initialize();
+		mutant2.MyStatus.MaxHealth = 100;
+		mutant2.MyStatus.Health = 100;
+		mutant2.MyAI.BlackBoard.PatrolLoc = new Vector3(60, 0, -33);
+		mutant2.MyAI.BlackBoard.PatrolRange = new Vector3(5, 5, 5);
+		mutant2.MyAI.BlackBoard.CombatRange = new Vector3(40, 20, 20);
+		mutant2.MyAI.BlackBoard.HasPatrolInfo = true;
+
+		mutant2 = GameObject.Find("MutantCharacter3").GetComponent<MutantCharacter>();
+		mutant2.Initialize();
+		mutant2.MyStatus.MaxHealth = 100;
+		mutant2.MyStatus.Health = 100;
+		mutant2.MyAI.BlackBoard.PatrolLoc = new Vector3(60, 0, -33);
+		mutant2.MyAI.BlackBoard.PatrolRange = new Vector3(5, 5, 5);
+		mutant2.MyAI.BlackBoard.CombatRange = new Vector3(40, 20, 20);
+		mutant2.MyAI.BlackBoard.HasPatrolInfo = true;
+
+		mutant2 = GameObject.Find("MutantCharacter4").GetComponent<MutantCharacter>();
+		mutant2.Initialize();
+		mutant2.MyStatus.MaxHealth = 100;
+		mutant2.MyStatus.Health = 100;
+		mutant2.MyAI.BlackBoard.PatrolLoc = new Vector3(60, 0, -33);
+		mutant2.MyAI.BlackBoard.PatrolRange = new Vector3(5, 5, 5);
+		mutant2.MyAI.BlackBoard.CombatRange = new Vector3(40, 20, 20);
+		mutant2.MyAI.BlackBoard.HasPatrolInfo = true;
+
+		mutant2 = GameObject.Find("MutantCharacter5").GetComponent<MutantCharacter>();
+		mutant2.Initialize();
+		mutant2.MyStatus.MaxHealth = 100;
+		mutant2.MyStatus.Health = 100;
+		mutant2.MyAI.BlackBoard.PatrolLoc = new Vector3(60, 0, -33);
+		mutant2.MyAI.BlackBoard.PatrolRange = new Vector3(5, 5, 5);
+		mutant2.MyAI.BlackBoard.CombatRange = new Vector3(40, 20, 20);
+		mutant2.MyAI.BlackBoard.HasPatrolInfo = true;
+
+		mutant2 = GameObject.Find("MutantCharacter6").GetComponent<MutantCharacter>();
+		mutant2.Initialize();
+		mutant2.MyStatus.MaxHealth = 100;
+		mutant2.MyStatus.Health = 100;
+		mutant2.MyAI.BlackBoard.PatrolLoc = new Vector3(60, 0, -33);
+		mutant2.MyAI.BlackBoard.PatrolRange = new Vector3(5, 5, 5);
+		mutant2.MyAI.BlackBoard.CombatRange = new Vector3(40, 20, 20);
+		mutant2.MyAI.BlackBoard.HasPatrolInfo = true;
+		*/
+		//HumanCharacter enemy1 = GameObject.Find("HumanCharacter2").GetComponent<HumanCharacter>();
+		//HumanCharacter enemy2 = GameObject.Find("HumanCharacter4").GetComponent<HumanCharacter>();
+		//HumanCharacter enemy3 = GameObject.Find("HumanCharacter5").GetComponent<HumanCharacter>();
+		//HumanCharacter enemy4 = GameObject.Find("HumanCharacter6").GetComponent<HumanCharacter>();
+
+
+
+
+
+
+		CameraController = GameObject.Find("CameraController").GetComponent<CameraController>();
+		CameraController.Initialize();
+
+		CameraShaker = CameraController.GetComponent<CameraShaker>();
+		CameraShaker.Initialize();
+
+		FXManager = new FXManager();
+		FXManager.Initialize(50);
+
+		AIScheduler = new AIScheduler();
+		AIScheduler.Initialize();
+
+
+
+		CursorManager = new CursorManager();
+		CursorManager.Initialize();
+
+		StartCoroutine(DoPerSecond());
+		StartCoroutine(DoPerHalfSecond());
+
+		//serialize test
+		//SerializeTest sTest = new SerializeTest();
+		//sTest.Test.SetNewAddress("2008 Cedar St");
+		//sTest.Test.SetNewName("Helen");
+		//sTest.Save();
+		//sTest.Load();
+	}
+
+
+
+	private void PerSecondUpdate()
+	{
+		TimerEventHandler.Instance.TriggerOneSecondTimer();
+		NPCManager.PerSecondUpdate();
+		QuestManager.PerSecondUpdate();
+		WorldManager.PerSecondUpdate();
+	}
+
+	private void PerHalfSecondUpdate()
+	{
+		TimerEventHandler.Instance.TriggerHalfSecondTimer();
+	}
+
+
+
+
+
+	#endregion
+
+	#region Coroutines
+	IEnumerator DoPerSecond()
+	{
+		for(;;)
+		{
+			PerSecondUpdate();
+			yield return new WaitForSeconds(1);
+		}
+
+	}
+
+	IEnumerator DoPerHalfSecond()
+	{
+		for(;;)
+		{
+			PerHalfSecondUpdate();
+			yield return new WaitForSeconds(0.5f);
+		}
+
+	}
+
+
+	#endregion
+}
+
