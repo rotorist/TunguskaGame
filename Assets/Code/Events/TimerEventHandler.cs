@@ -16,6 +16,14 @@ public class TimerEventHandler
 			return _instance;
 		}
 	}
+
+	public void OnUnloadScene()
+	{
+		OnHalfSecondTimer = null;
+		OnOneSecondTimer = null;
+		OnFiveSecondTimer = null;
+	}
+
 	#endregion
 
 	#region Constructor

@@ -1,9 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class WorldManager 
 {
-	public string CurrentLevelName;
+	public string CurrentLevelName { get {return CurrentLevel.Name;}}
+	public Level CurrentLevel;
+	public List<Level> AllLevels;
 	public TerrainHandler CurrentTerrain;
 	public Environment CurrentEnvironment;
 
@@ -12,9 +15,15 @@ public class WorldManager
 
 	public void Initialize()
 	{
+		AllLevels = new List<Level>();
+		CurrentLevel = new Level();
+		CurrentLevel.Name = "Initial";
+		AllLevels.Add(CurrentLevel);
+
 
 		CurrentTerrain = GameObject.Find("Terrain").GetComponent<TerrainHandler>();
 		CurrentTerrain.Initialize();
+
 
 		CurrentEnvironment = new Environment();
 		CurrentEnvironment.LoadEnvironment();

@@ -1,52 +1,54 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[System.Serializable]
+
 public class CharacterStatus : MonoBehaviour
 {
 	public Character ParentCharacter;
 
-	public float WalkSpeed;
-	public float StrafeSpeed;
-	public float RunSpeed;
-	public float SprintSpeed;
+	public CharacterStatusData Data;
 
-	public float WalkSpeedModifier; //0.6 to 1.5
-	public float RunSpeedModifier; //0.9 to 1.2
-	public float SprintSpeedModifier; //0.9 to 1.1
-	public float StrafeSpeedModifier; //0.8 to 1.2
+	public float WalkSpeed { get { return Data.WalkSpeed; } set { Data.WalkSpeed = value; } }
+	public float StrafeSpeed { get { return Data.StrafeSpeed; } set { Data.StrafeSpeed = value; } }
+	public float RunSpeed { get { return Data.RunSpeed; } set { Data.RunSpeed = value; } }
+	public float SprintSpeed { get { return Data.SprintSpeed; } set { Data.SprintSpeed = value; } }
 
-	public float MaxCarryWeight;
-	public float CarryWeight;
+	public float WalkSpeedModifier { get { return Data.WalkSpeedModifier; } set { Data.WalkSpeedModifier = value; } } //0.6 to 1.5
+	public float RunSpeedModifier { get { return Data.RunSpeedModifier; } set { Data.RunSpeedModifier = value; } } //0.9 to 1.2
+	public float SprintSpeedModifier { get { return Data.SprintSpeedModifier; } set { Data.SprintSpeedModifier = value; } } //0.9 to 1.1
+	public float StrafeSpeedModifier { get { return Data.StrafeSpeedModifier; } set { Data.StrafeSpeedModifier = value; } } //0.8 to 1.2
 
-	public float MaxArmFatigue;
-	public float ArmFatigue;
+	public float MaxCarryWeight { get { return Data.MaxCarryWeight; } set { Data.MaxCarryWeight = value; } }
+	public float CarryWeight { get { return Data.CarryWeight; } set { Data.CarryWeight = value; } }
 
-	public float BleedingSpeed;
-	public float BleedingDuration;
+	public float MaxArmFatigue { get { return Data.MaxArmFatigue; } set { Data.MaxArmFatigue = value; } }
+	public float ArmFatigue { get { return Data.ArmFatigue; } set { Data.ArmFatigue = value; } }
+
+	public float BleedingSpeed { get { return Data.BleedingSpeed; } set { Data.BleedingSpeed = value; } }
+	public float BleedingDuration { get { return Data.BleedingDuration; } set { Data.BleedingDuration = value; } }
 
 
 
-	public float MaxHealth;
-	public float Health;
+	public float MaxHealth { get { return Data.MaxHealth; } set { Data.MaxHealth = value; } }
+	public float Health { get { return Data.Health; } set { Data.Health = value; } }
 
-	public float MaxStamina;
-	public float Stamina;
-	public float StaminaRestoreSpeed;
-	public float StaminaReduceMult;
-	public bool IsResting;
+	public float MaxStamina { get { return Data.MaxStamina; } set { Data.MaxStamina = value; } }
+	public float Stamina { get { return Data.Stamina; } set { Data.Stamina = value; } }
+	public float StaminaRestoreSpeed { get { return Data.StaminaRestoreSpeed; } set { Data.StaminaRestoreSpeed = value; } }
+	public float StaminaReduceMult { get { return Data.StaminaReduceMult; } set { Data.StaminaReduceMult = value; } }
+	public bool IsResting { get { return Data.IsResting; } set { Data.IsResting = value; } }
 
-	public float MaxEnergy;
-	public float Energy;
+	public float MaxEnergy { get { return Data.MaxEnergy; } set { Data.MaxEnergy = value; } }
+	public float Energy { get { return Data.Energy; } set { Data.Energy = value; } }
 
-	public float Infection;
-	public float Radiation;//how much player has been irradiated
-	public float RadiationDefense;
+	public float Infection { get { return Data.Infection; } set { Data.Infection = value; } }
+	public float Radiation { get { return Data.Radiation; } set { Data.Radiation = value; } } //how much player has been irradiated
+	public float RadiationDefense { get { return Data.RadiationDefense; } set { Data.RadiationDefense = value; } }
 
-	public float EyeSight;
+	public float EyeSight { get { return Data.EyeSight; } set { Data.EyeSight = value; } }
 
-	public int Intelligence; //0, 1, 2
-	public float MutantMovementBlend;
+	public int Intelligence { get { return Data.Intelligence; } set { Data.Intelligence = value; } } //0, 1, 2
+	public float MutantMovementBlend { get { return Data.MutantMovementBlend; } set { Data.MutantMovementBlend = value; } }
 
 
 
@@ -56,6 +58,8 @@ public class CharacterStatus : MonoBehaviour
 
 	public void Initialize()
 	{
+		Data = new CharacterStatusData();
+		
 		WalkSpeed = 1f;
 		StrafeSpeed = 1.75f;
 		RunSpeed = 4f;

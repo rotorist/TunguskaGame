@@ -3,6 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 
 [System.Serializable]
+public class TraderData
+{
+	public string CharacterID;
+	public int Cash;
+	public List<GridItemData> TraderInventory;
+	public float SupplyRenewTimer;
+}
+
 public class Trader : MonoBehaviour 
 {
 	public int Cash;
@@ -10,7 +18,9 @@ public class Trader : MonoBehaviour
 	public ItemType [] DemandTypes;
 	public List<GridItemData> TraderInventory;
 
-	[SerializeField]private float _supplyRenewTimer;
+	public float SupplyRenewTimer { get { return _supplyRenewTimer; } set { _supplyRenewTimer = value; }}
+
+	private float _supplyRenewTimer;
 
 
 	public void Initialize()

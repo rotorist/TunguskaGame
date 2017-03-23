@@ -237,6 +237,7 @@ public class HumanCharacter : Character
 		o.transform.localEulerAngles = Vector3.zero;
 
 		this.MyAnimator = o.transform.GetComponent<Animator>();
+		Debug.Log("MyAnimator " + this.MyAnimator.name);
 		this.MyReference = o.transform.GetComponent<CharacterReference>();
 		this.MyAnimEventHandler = o.transform.GetComponent<AnimationEventHandler>();
 

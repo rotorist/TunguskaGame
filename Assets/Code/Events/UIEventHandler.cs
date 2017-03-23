@@ -15,6 +15,19 @@ public class UIEventHandler
 			return _instance;
 		}
 	}
+
+	public void OnUnloadScene()
+	{
+		OnOpenWindow = null;
+		OnCloseWindow = null;
+		OnToggleInventory = null;
+		OnLootBody = null;
+		OnLootChest = null;
+		OnStartDialogue = null;
+		OnStartTrading = null;
+		OnOpenRestPanel = null;
+	}
+
 	#endregion
 
 	#region Constructor

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ public class GameManager : MonoBehaviour
 	#region Singleton
 	
 	public static GameManager Inst;
-
+	public static string SaveName;
 
 	#endregion
 
@@ -29,6 +30,7 @@ public class GameManager : MonoBehaviour
 	public QuestManager QuestManager;
 	public WorldManager WorldManager;
 	public MaterialManager MaterialManager;
+	public SaveGameManager SaveGameManager;
 
 	public CameraController CameraController;
 	public CameraShaker CameraShaker;
@@ -72,6 +74,21 @@ public class GameManager : MonoBehaviour
 	{
 		MaterialManager.FixedUpdate();
 	}
+
+
+
+	public void LoadGame()
+	{
+		InputEventHandler.Instance.OnUnloadScene();
+		TimerEventHandler.Instance.OnUnloadScene();
+		UIEventHandler.Instance.OnUnloadScene();
+
+		string levelName = SaveGameManager.LoadLevelName("TestSave");
+		SaveName = "TestSave";
+		SceneManager.LoadScene("Initial");
+	}
+
+
 
 	#region Private Methods
 
@@ -128,6 +145,8 @@ public class GameManager : MonoBehaviour
 
 		QuestManager = new QuestManager();
 		QuestManager.Initialize();
+
+		SaveGameManager = new SaveGameManager();
 
 		/*
 		MutantCharacter mutant1 = GameObject.Find("MutantCharacter").GetComponent<MutantCharacter>();
@@ -211,6 +230,15 @@ public class GameManager : MonoBehaviour
 
 		CursorManager = new CursorManager();
 		CursorManager.Initialize();
+
+		//if save name is empty then it's a new game
+		//if save name is not empty then load save game
+		if(!string.IsNullOrEmpty(SaveName))
+		{
+			Debug.Log("Loading save " + SaveName);
+			SaveGameManager.Load(SaveName);
+		}
+
 
 		StartCoroutine(DoPerSecond());
 		StartCoroutine(DoPerHalfSecond());

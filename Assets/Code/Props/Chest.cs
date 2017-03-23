@@ -5,7 +5,6 @@ using System.Collections.Generic;
 [System.Serializable]
 public class ChestData
 {
-	public string LevelName;
 	public string ChestID;
 	public List<GridItemData> Items;
 	public int ColSize;

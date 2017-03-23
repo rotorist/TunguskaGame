@@ -84,7 +84,10 @@ public class CursorManager
 
 	public void HideToolTip()
 	{
-		NGUITools.SetActive(ToolTip.gameObject, false);
+		if(ToolTip != null)
+		{
+			NGUITools.SetActive(ToolTip.gameObject, false);
+		}
 		_isShowingToolTip = false;
 		_toolTipTimer = 0;
 	}

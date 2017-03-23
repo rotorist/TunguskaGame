@@ -88,6 +88,7 @@ public class Item
 
 	public void BuildIndex()
 	{
+		AttributeIndex.Clear();
 		for(int i=0; i<Attributes.Count; i++)
 		{
 			if(Attributes[i] != null)

@@ -4,8 +4,7 @@ using System.Collections.Generic;
 
 public class ItemManager
 {
-	public List<PickupItemData> PickupItemDatas;
-	public List<ChestData> ChestDatas;
+	
 
 
 	public void Initialize()
@@ -28,8 +27,7 @@ public class ItemManager
 			o.GetComponent<Chest>().GenerateContent();
 		}
 
-		PickupItemDatas = new List<PickupItemData>();
-		ChestDatas = new List<ChestData>();
+
 
 		objects = GameObject.FindGameObjectsWithTag("PickupItem");
 

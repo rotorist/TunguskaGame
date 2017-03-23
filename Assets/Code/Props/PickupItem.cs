@@ -6,9 +6,8 @@ public class PickupItemData
 {
 	public string ItemID;
 	public int Quantity;
-	public string LevelName;
-	public Vector3 Pos;
-	public Vector3 EulerAngles;
+	public SerVector3 Pos;
+	public SerVector3 EulerAngles;
 }
 
 public class PickupItem : MonoBehaviour 

@@ -8,30 +8,31 @@ using System.Runtime.Serialization.Formatters.Binary;
 public class SaveGameManager
 {
 	public SaveGame CurrentSave;
-	public string SaveGameName;
 
-	public void Save(bool isLoadingLevel)
+	public void Save(string saveGameName, string newLevelName)
 	{
 		CurrentSave = new SaveGame();
 
 		//save player status
-		CurrentSave.PlayerStatus = GameManager.Inst.PlayerControl.SelectedPC.MyStatus;
+		CurrentSave.PlayerStatus = GameManager.Inst.PlayerControl.SelectedPC.MyStatus.Data;
 		//save player inventory
 		CurrentSave.PlayerInventory = GameManager.Inst.PlayerControl.SelectedPC.Inventory;
 		//save player boosts
 		CurrentSave.PlayerBoosts = GameManager.Inst.PlayerControl.Survival.GetStatBoosts();
 
+
+		//create new level data after removing existing one
+		if(GameManager.Inst.WorldManager.AllLevels.Contains(GameManager.Inst.WorldManager.CurrentLevel))
+		{
+			GameManager.Inst.WorldManager.AllLevels.Remove(GameManager.Inst.WorldManager.CurrentLevel);
+		}
+
+		Level currentLevel = new Level();
+		currentLevel.Name = GameManager.Inst.WorldManager.CurrentLevel.Name;
+
 		//save pickup items in the scene
 		//first remove all pickup items from list from current level
-		List<PickupItemData> pickupDataList = GameManager.Inst.ItemManager.PickupItemDatas;
-		List<PickupItemData> pickupDataListCopy = new List<PickupItemData>(pickupDataList);
-		foreach(PickupItemData data in pickupDataListCopy)
-		{
-			if(data.LevelName == GameManager.Inst.WorldManager.CurrentLevelName)
-			{
-				pickupDataList.Remove(data);
-			}
-		}
+		List<PickupItemData> pickupDataList = new List<PickupItemData>();
 
 		//now go through all pickup items in the scene and create pickup data list
 		GameObject [] objects = GameObject.FindGameObjectsWithTag("PickupItem");
@@ -41,36 +42,38 @@ public class SaveGameManager
 			PickupItemData data = new PickupItemData();
 			data.ItemID = pickup.Item.ID;
 			data.Quantity = data.Quantity;
-			data.LevelName = GameManager.Inst.WorldManager.CurrentLevelName;
-			data.Pos = pickup.transform.position;
-			data.EulerAngles = pickup.transform.localEulerAngles;
+			data.Pos = new SerVector3(pickup.transform.position);
+			data.EulerAngles = new SerVector3(pickup.transform.localEulerAngles);
 
 			pickupDataList.Add(data);
 		}
 
-		//save traders
-		CurrentSave.Traders = new List<KeyValuePair<string, Trader>>();
+		currentLevel.PickupItemDatas = pickupDataList;
+
+
+		//save traders for current level
+		List<TraderData> traders = new List<TraderData>();
 		foreach(HumanCharacter character in GameManager.Inst.NPCManager.HumansInScene)
 		{
 			Trader trader = character.GetComponent<Trader>();
+
 			if(trader != null)
 			{
-				KeyValuePair<string, Trader> traderKV = new KeyValuePair<string, Trader>(character.CharacterID, trader);
-				CurrentSave.Traders.Add(traderKV);
+				TraderData traderData = new TraderData();
+				traderData.CharacterID = character.CharacterID;
+				traderData.Cash = trader.Cash;
+				traderData.TraderInventory = trader.TraderInventory;
+				traderData.SupplyRenewTimer = trader.SupplyRenewTimer;
+				traders.Add(traderData);
 			}
 		}
 
+		currentLevel.Traders = traders;
+
 		//save chests
 		//first remove all chests from list from current level
-		List<ChestData> chestDataList = GameManager.Inst.ItemManager.ChestDatas;
-		List<ChestData> chestDataListCopy = new List<ChestData>(chestDataList);
-		foreach(ChestData data in chestDataListCopy)
-		{
-			if(data.LevelName == GameManager.Inst.WorldManager.CurrentLevelName)
-			{
-				chestDataList.Remove(data);
-			}
-		}
+		List<ChestData> chestDataList = new List<ChestData>();
+
 
 		//now go through all chests in the scene and create pickup data list
 		GameObject [] chests = GameObject.FindGameObjectsWithTag("Chest");
@@ -78,7 +81,6 @@ public class SaveGameManager
 		{
 			Chest chest = o.GetComponent<Chest>();
 			ChestData data = new ChestData();
-			data.LevelName = GameManager.Inst.WorldManager.CurrentLevelName;
 			data.ChestID = chest.ChestID;
 			data.ColSize = chest.ColSize;
 			data.RowSize = chest.RowSize;
@@ -86,6 +88,11 @@ public class SaveGameManager
 
 			chestDataList.Add(data);
 		}
+
+		currentLevel.ChestDatas = chestDataList;
+
+		GameManager.Inst.WorldManager.AllLevels.Add(currentLevel);
+		CurrentSave.Levels = GameManager.Inst.WorldManager.AllLevels;
 
 
 		//save factions
@@ -97,12 +104,17 @@ public class SaveGameManager
 
 
 		//build the save file
-		if(isLoadingLevel)
+		if(!String.IsNullOrEmpty(newLevelName))
 		{
-			SaveGameName = "Autosave - " + GameManager.Inst.WorldManager.CurrentLevelName;
+			CurrentSave.LevelToLoad = newLevelName;
+			saveGameName = "Autosave - " + newLevelName;
+		}
+		else
+		{
+			CurrentSave.LevelToLoad = GameManager.Inst.WorldManager.CurrentLevelName;
 		}
 
-		string fullPath = Application.persistentDataPath + "/" + SaveGameName + ".dat";
+		string fullPath = Application.persistentDataPath + "/" + saveGameName + ".dat";
 
 		BinaryFormatter bf = new BinaryFormatter();
 		FileStream file;
@@ -116,11 +128,139 @@ public class SaveGameManager
 		}
 
 		bf.Serialize(file, CurrentSave);
+
+		Debug.Log(saveGameName + " has been saved");
 	}
 
-	public void Load()
+	public string LoadLevelName(string saveGameName)
 	{
+		string fullPath = Application.persistentDataPath + "/" + saveGameName + ".dat";
+		BinaryFormatter bf = new BinaryFormatter();
+		FileStream file;
+		if(File.Exists(fullPath))
+		{
+			file = File.Open(fullPath, FileMode.Open);
+		}
+		else
+		{
+			return "";
+		}
 
+		SaveGame temp = (SaveGame)bf.Deserialize(file);
+
+		return temp.LevelToLoad;
+	}
+
+
+	public bool Load(string saveGameName)
+	{
+		string fullPath = Application.persistentDataPath + "/" + saveGameName + ".dat";
+		BinaryFormatter bf = new BinaryFormatter();
+		FileStream file;
+		if(File.Exists(fullPath))
+		{
+			file = File.Open(fullPath, FileMode.Open);
+		}
+		else
+		{
+			return false;
+		}
+
+		CurrentSave = (SaveGame)bf.Deserialize(file);
+
+		//load level
+		GameManager.Inst.WorldManager.AllLevels = CurrentSave.Levels;
+		foreach(Level level in GameManager.Inst.WorldManager.AllLevels)
+		{
+			if(level.Name == CurrentSave.LevelToLoad)
+			{
+				GameManager.Inst.WorldManager.CurrentLevel = level;
+				break;
+			}
+		}
+
+		//load player status
+		GameManager.Inst.PlayerControl.SelectedPC.MyStatus.Data = CurrentSave.PlayerStatus;
+		//load player boosts
+		GameManager.Inst.PlayerControl.Survival.SetStatBoosts(CurrentSave.PlayerBoosts);
+		//load player inventory
+		GameManager.Inst.PlayerControl.SelectedPC.Inventory = CurrentSave.PlayerInventory;
+		GameManager.Inst.PlayerControl.SelectedPC.Inventory.PostLoad();
+
+
+
+		//load pickup items
+		Level currentLevel = GameManager.Inst.WorldManager.CurrentLevel;
+		//remove all existing pickup items
+		GameObject [] objects = GameObject.FindGameObjectsWithTag("PickupItem");
+
+		foreach(GameObject o in objects)
+		{
+			GameObject.Destroy(o);
+		}
+		//create new ones
+		foreach(PickupItemData pickupItemData in currentLevel.PickupItemDatas)
+		{
+			//create an Item from ItemID
+			Item item = GameManager.Inst.ItemManager.LoadItem(pickupItemData.ItemID);
+			var resource = Resources.Load(item.PrefabName + "Pickup");
+			if(resource != null)
+			{
+				GameObject pickup = GameObject.Instantiate(resource) as GameObject;
+				pickup.transform.position = pickupItemData.Pos.ConvertToVector3();
+				pickup.transform.localEulerAngles = pickupItemData.EulerAngles.ConvertToVector3();
+				Transform parent = GameManager.Inst.ItemManager.FindPickupItemParent(pickup.transform);
+				if(parent != null)
+				{
+					pickup.transform.parent = parent;
+				}
+				pickup.GetComponent<PickupItem>().Item = item;
+				pickup.GetComponent<PickupItem>().Quantity = pickupItemData.Quantity;
+			}
+		}
+
+		//load Chests 
+		//clear all existing chests in this level and then add new content
+		objects = GameObject.FindGameObjectsWithTag("Chest");
+
+		foreach(GameObject o in objects)
+		{
+			Chest chest = o.GetComponent<Chest>();
+			chest.Items.Clear();
+			foreach(ChestData chestData in currentLevel.ChestDatas)
+			{
+				if(chest.ChestID == chestData.ChestID)
+				{
+					chest.Items = chestData.Items;
+					chest.PostLoad();
+				}
+			}
+		}
+
+		//load traders
+		foreach(HumanCharacter character in GameManager.Inst.NPCManager.HumansInScene)
+		{
+			Trader trader = character.GetComponent<Trader>();
+			if(trader != null)
+			{
+				foreach(TraderData traderData in currentLevel.Traders)
+				{
+					if(traderData.CharacterID == character.CharacterID)
+					{
+						trader.Cash = traderData.Cash;
+						trader.TraderInventory = traderData.TraderInventory;
+						trader.SupplyRenewTimer = traderData.SupplyRenewTimer;
+						trader.PostLoad();
+					}
+				}
+
+			}
+		}
+
+
+
+
+		return true;
 	}
 
 }

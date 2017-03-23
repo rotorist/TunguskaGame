@@ -43,6 +43,11 @@ public class PlayerSurvival
 		return _statBoosts;
 	}
 
+	public void SetStatBoosts(List<PlayerStatBoost> boosts)
+	{
+		_statBoosts = boosts;
+	}
+
 	public void ResetEatenCalories()
 	{
 		_eatenCalories = 0;

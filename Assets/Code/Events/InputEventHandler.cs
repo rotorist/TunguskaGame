@@ -16,6 +16,69 @@ public class InputEventHandler
 			return _instance;
 		}
 	}
+
+	public void OnUnloadScene()
+	{
+		OnPlayerMove = null;
+		OnPlayerStopMove = null;
+		OnWeaponPullTrigger = null;
+		OnWeaponReleaseTrigger = null;
+		OnRMBDown = null;
+		OnRMBUp = null;
+		OnKick = null;
+		OnMMBDown = null;
+		OnCameraSwitchMode = null;
+		OnCameraRotateLeft = null;
+		OnCameraRotateRight = null;
+		OnCameraStopRotate = null;
+		OnCameraZoomIn = null;
+		OnCameraZoomOut = null;
+		OnCameraPanLeft = null;
+		OnCameraPanRight = null;
+		OnCameraPanUp = null;
+		OnCameraPanDown = null;
+		OnCameraLookAhead = null;
+		OnCameraStopLookAhead = null;
+		OnPlayerMoveLeft = null;
+		OnPlayerMoveRight = null;
+		OnPlayerMoveUp = null;
+		OnPlayerMoveDown = null;
+		OnPlayerStopMoveLeft = null;
+		OnPlayerStopMoveRight = null;
+		OnPlayerStopMoveUp = null;
+		OnPlayerStopMoveDown = null;
+
+		OnPlayerToggleSneak = null;
+
+		OnPlayerStartSprint = null;
+		OnPlayerStopSprint = null;
+
+
+		OnPlayerSwitchWeapon2 = null;
+		OnPlayerSwitchWeapon1 = null;
+		OnPlayerSwitchThrown = null;
+		OnPlayerSwitchTool = null;
+
+		OnPlayerReload = null;
+		OnToggleFlashlight = null;
+		OnPlayerThrow = null;
+
+		OnGameTogglePause = null;
+		OnSelectMember1 = null;
+		OnSelectMember2 = null;
+		OnSelectMember3 = null;
+		OnSelectMember4 = null;
+		OnIssueTaskLMB = null;
+		OnIssueTaskRMB = null;
+		OnMouseSelect = null;
+		OnClearTask = null;
+
+		OnIssueTaskComplete = null;
+		OnGamePause = null;
+		OnGameUnpause = null;
+		OnSelectActiveMember = null;
+		OnPopupMouseWheel = null;
+	}
 	#endregion
 	
 	#region Constructor

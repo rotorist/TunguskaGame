@@ -143,6 +143,21 @@ public class HUDPanel : PanelBase
 				NGUITools.SetActive(HelpText.gameObject, true);
 			}
 		}
+
+		if(UIButton.current.name == "LongButtonInventory")
+		{
+			UIEventHandler.Instance.TriggerToggleInventory();
+		}
+
+		if(UIButton.current.name == "LongButtonSave")
+		{
+			GameManager.Inst.SaveGameManager.Save("TestSave", "");
+		}
+
+		if(UIButton.current.name == "LongButtonLoad")
+		{
+			GameManager.Inst.LoadGame();
+		}
 	}
 		
 
