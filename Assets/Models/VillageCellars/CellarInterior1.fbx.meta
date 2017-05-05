@@ -1,0 +1,142 @@
+fileFormatVersion: 2
+guid: f12e96b5839e2f44bb3a1383bece19c1
+timeCreated: 1490454857
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: FlorescentLight1
+    100004: FlorescentLight1Bulb
+    100006: FlorescentLight2
+    100008: FlorescentLight2Bulb
+    100010: FuseBox1
+    100012: FuseBoxAttachment1
+    100014: LightSwitch
+    100016: MetalDoor
+    100018: MetalDoor2
+    100020: MetalDoorFrame
+    100022: MetalDoorFrame2
+    100024: VillageCellar1InteriorFloors
+    100026: VillageCellar1InteriorWalls
+    400000: //RootNode
+    400002: FlorescentLight1
+    400004: FlorescentLight1Bulb
+    400006: FlorescentLight2
+    400008: FlorescentLight2Bulb
+    400010: FuseBox1
+    400012: FuseBoxAttachment1
+    400014: LightSwitch
+    400016: MetalDoor
+    400018: MetalDoor2
+    400020: MetalDoorFrame
+    400022: MetalDoorFrame2
+    400024: VillageCellar1InteriorFloors
+    400026: VillageCellar1InteriorWalls
+    2300000: FlorescentLight1
+    2300002: FlorescentLight1Bulb
+    2300004: FlorescentLight2
+    2300006: FlorescentLight2Bulb
+    2300008: FuseBox1
+    2300010: FuseBoxAttachment1
+    2300012: LightSwitch
+    2300014: MetalDoor
+    2300016: MetalDoor2
+    2300018: MetalDoorFrame
+    2300020: MetalDoorFrame2
+    2300022: VillageCellar1InteriorFloors
+    2300024: VillageCellar1InteriorWalls
+    3300000: FlorescentLight1
+    3300002: FlorescentLight1Bulb
+    3300004: FlorescentLight2
+    3300006: FlorescentLight2Bulb
+    3300008: FuseBox1
+    3300010: FuseBoxAttachment1
+    3300012: LightSwitch
+    3300014: MetalDoor
+    3300016: MetalDoor2
+    3300018: MetalDoorFrame
+    3300020: MetalDoorFrame2
+    3300022: VillageCellar1InteriorFloors
+    3300024: VillageCellar1InteriorWalls
+    4300000: FlorescentLight2Bulb
+    4300002: FlorescentLight1Bulb
+    4300004: FlorescentLight2
+    4300006: FuseBoxAttachment1
+    4300008: LightSwitch
+    4300010: MetalDoorFrame2
+    4300012: MetalDoor2
+    4300014: MetalDoorFrame
+    4300016: MetalDoor
+    4300018: FlorescentLight1
+    4300020: FuseBox1
+    4300022: VillageCellar1InteriorFloors
+    4300024: VillageCellar1InteriorWalls
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

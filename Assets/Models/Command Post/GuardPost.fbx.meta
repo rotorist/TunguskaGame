@@ -1,0 +1,152 @@
+fileFormatVersion: 2
+guid: 5a1240d9d73b7914898c32b06676d1a5
+timeCreated: 1493569322
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: BarbedWireFence
+    100004: BarbedWirePole1
+    100006: BarbedWirePole2
+    100008: BarbedWirePole3
+    100010: Bench
+    100012: ConcreteWall
+    100014: ConcreteWallDirty1
+    100016: ConcreteWallDirty2
+    100018: ConcreteWallDirty3
+    100020: DoorMotor1
+    100022: DoorMotor1Lever
+    100024: GatePole
+    100026: GreenMetalGate
+    100028: GuardPost1Roof
+    100030: GuardPost1Wall
+    400000: //RootNode
+    400002: BarbedWireFence
+    400004: BarbedWirePole1
+    400006: BarbedWirePole2
+    400008: BarbedWirePole3
+    400010: Bench
+    400012: ConcreteWall
+    400014: ConcreteWallDirty1
+    400016: ConcreteWallDirty2
+    400018: ConcreteWallDirty3
+    400020: DoorMotor1
+    400022: DoorMotor1Lever
+    400024: GatePole
+    400026: GreenMetalGate
+    400028: GuardPost1Roof
+    400030: GuardPost1Wall
+    2300000: BarbedWireFence
+    2300002: BarbedWirePole1
+    2300004: BarbedWirePole2
+    2300006: BarbedWirePole3
+    2300008: Bench
+    2300010: ConcreteWall
+    2300012: ConcreteWallDirty1
+    2300014: ConcreteWallDirty2
+    2300016: ConcreteWallDirty3
+    2300018: DoorMotor1
+    2300020: DoorMotor1Lever
+    2300022: GatePole
+    2300024: GreenMetalGate
+    2300026: GuardPost1Roof
+    2300028: GuardPost1Wall
+    3300000: BarbedWireFence
+    3300002: BarbedWirePole1
+    3300004: BarbedWirePole2
+    3300006: BarbedWirePole3
+    3300008: Bench
+    3300010: ConcreteWall
+    3300012: ConcreteWallDirty1
+    3300014: ConcreteWallDirty2
+    3300016: ConcreteWallDirty3
+    3300018: DoorMotor1
+    3300020: DoorMotor1Lever
+    3300022: GatePole
+    3300024: GreenMetalGate
+    3300026: GuardPost1Roof
+    3300028: GuardPost1Wall
+    4300000: DoorMotor1Lever
+    4300002: GreenMetalGate
+    4300004: GuardPost1Roof
+    4300006: BarbedWirePole3
+    4300008: BarbedWirePole2
+    4300010: BarbedWirePole1
+    4300012: DoorMotor1
+    4300014: GatePole
+    4300016: BarbedWireFence
+    4300018: ConcreteWallDirty3
+    4300020: ConcreteWallDirty2
+    4300022: ConcreteWallDirty1
+    4300024: ConcreteWall
+    4300026: Bench
+    4300028: GuardPost1Wall
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,162 @@
+fileFormatVersion: 2
+guid: 0c3494b2d2ef0894f80922f752deff33
+timeCreated: 1490710426
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: CappedFence1
+    100002: CappedFence2
+    100004: CappedFence3
+    100006: CappedFence4
+    100008: FenceHorizontalPole
+    100010: FencePanelTemplate
+    100012: FencePlank
+    100014: FencePoleConcrete
+    100016: FencePoleWood
+    100018: UncappedFence1-1
+    100020: UncappedFence1-2
+    100022: UncappedFence1-3
+    100024: UncappedFence1-4
+    100026: UncappedFence2-1
+    100028: UncappedFence2-2
+    100030: UncappedFence2-3
+    100032: UncappedFence2-4
+    100034: //RootNode
+    400000: CappedFence1
+    400002: CappedFence2
+    400004: CappedFence3
+    400006: CappedFence4
+    400008: FenceHorizontalPole
+    400010: FencePanelTemplate
+    400012: FencePlank
+    400014: FencePoleConcrete
+    400016: FencePoleWood
+    400018: UncappedFence1-1
+    400020: UncappedFence1-2
+    400022: UncappedFence1-3
+    400024: UncappedFence1-4
+    400026: UncappedFence2-1
+    400028: UncappedFence2-2
+    400030: UncappedFence2-3
+    400032: UncappedFence2-4
+    400034: //RootNode
+    2300000: CappedFence1
+    2300002: CappedFence2
+    2300004: CappedFence3
+    2300006: CappedFence4
+    2300008: FenceHorizontalPole
+    2300010: FencePanelTemplate
+    2300012: FencePlank
+    2300014: FencePoleConcrete
+    2300016: FencePoleWood
+    2300018: UncappedFence1-1
+    2300020: UncappedFence1-2
+    2300022: UncappedFence1-3
+    2300024: UncappedFence1-4
+    2300026: UncappedFence2-1
+    2300028: UncappedFence2-2
+    2300030: UncappedFence2-3
+    2300032: UncappedFence2-4
+    3300000: CappedFence1
+    3300002: CappedFence2
+    3300004: CappedFence3
+    3300006: CappedFence4
+    3300008: FenceHorizontalPole
+    3300010: FencePanelTemplate
+    3300012: FencePlank
+    3300014: FencePoleConcrete
+    3300016: FencePoleWood
+    3300018: UncappedFence1-1
+    3300020: UncappedFence1-2
+    3300022: UncappedFence1-3
+    3300024: UncappedFence1-4
+    3300026: UncappedFence2-1
+    3300028: UncappedFence2-2
+    3300030: UncappedFence2-3
+    3300032: UncappedFence2-4
+    4300000: FencePoleConcrete
+    4300002: FencePoleWood
+    4300004: UncappedFence2-4
+    4300006: UncappedFence2-3
+    4300008: UncappedFence2-2
+    4300010: UncappedFence2-1
+    4300012: UncappedFence1-3
+    4300014: UncappedFence1-2
+    4300016: UncappedFence1-1
+    4300018: CappedFence3
+    4300020: CappedFence2
+    4300022: CappedFence1
+    4300024: UncappedFence1-4
+    4300026: CappedFence4
+    4300028: FencePlank
+    4300030: FenceHorizontalPole
+    4300032: FencePanelTemplate
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

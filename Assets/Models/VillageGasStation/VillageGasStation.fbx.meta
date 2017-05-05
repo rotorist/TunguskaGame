@@ -1,0 +1,197 @@
+fileFormatVersion: 2
+guid: 3fa396244baf050448d6d5bdb9617e27
+timeCreated: 1492842641
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: BrickFenceLong
+    100002: BrickFenceMedium
+    100004: BrickFencePole
+    100006: BrickFenceShort
+    100008: CarRail1
+    100010: GarageDoors1
+    100012: GarageDoors2
+    100014: GarageEngineCraneHook
+    100016: GarageFloors
+    100018: GaragePitCarRails
+    100020: GarageRoof
+    100022: GarageWalls
+    100024: GasStationMain
+    100026: GasStationMainFoundation
+    100028: GasStationPumpStation
+    100030: GasStationRoof
+    100032: ShopDoubleDoor1
+    100034: ShopDoubleDoor2
+    100036: ShopDoubleDoorFrame
+    100038: ShopWindow1
+    100040: StoreCounter
+    100042: StoreShelf
+    100044: TankBase
+    100046: TankBody
+    100048: //RootNode
+    400000: BrickFenceLong
+    400002: BrickFenceMedium
+    400004: BrickFencePole
+    400006: BrickFenceShort
+    400008: CarRail1
+    400010: GarageDoors1
+    400012: GarageDoors2
+    400014: GarageEngineCraneHook
+    400016: GarageFloors
+    400018: GaragePitCarRails
+    400020: GarageRoof
+    400022: GarageWalls
+    400024: GasStationMain
+    400026: GasStationMainFoundation
+    400028: GasStationPumpStation
+    400030: GasStationRoof
+    400032: ShopDoubleDoor1
+    400034: ShopDoubleDoor2
+    400036: ShopDoubleDoorFrame
+    400038: ShopWindow1
+    400040: StoreCounter
+    400042: StoreShelf
+    400044: TankBase
+    400046: TankBody
+    400048: //RootNode
+    2300000: BrickFenceLong
+    2300002: BrickFenceMedium
+    2300004: BrickFencePole
+    2300006: BrickFenceShort
+    2300008: CarRail1
+    2300010: GarageDoors1
+    2300012: GarageDoors2
+    2300014: GarageEngineCraneHook
+    2300016: GarageFloors
+    2300018: GaragePitCarRails
+    2300020: GarageRoof
+    2300022: GarageWalls
+    2300024: GasStationMain
+    2300026: GasStationMainFoundation
+    2300028: GasStationPumpStation
+    2300030: GasStationRoof
+    2300032: ShopDoubleDoor1
+    2300034: ShopDoubleDoor2
+    2300036: ShopDoubleDoorFrame
+    2300038: ShopWindow1
+    2300040: StoreCounter
+    2300042: StoreShelf
+    2300044: TankBase
+    2300046: TankBody
+    3300000: BrickFenceLong
+    3300002: BrickFenceMedium
+    3300004: BrickFencePole
+    3300006: BrickFenceShort
+    3300008: CarRail1
+    3300010: GarageDoors1
+    3300012: GarageDoors2
+    3300014: GarageEngineCraneHook
+    3300016: GarageFloors
+    3300018: GaragePitCarRails
+    3300020: GarageRoof
+    3300022: GarageWalls
+    3300024: GasStationMain
+    3300026: GasStationMainFoundation
+    3300028: GasStationPumpStation
+    3300030: GasStationRoof
+    3300032: ShopDoubleDoor1
+    3300034: ShopDoubleDoor2
+    3300036: ShopDoubleDoorFrame
+    3300038: ShopWindow1
+    3300040: StoreCounter
+    3300042: StoreShelf
+    3300044: TankBase
+    3300046: TankBody
+    4300000: BrickFencePole
+    4300002: BrickFenceMedium
+    4300004: BrickFenceShort
+    4300006: TankBody
+    4300008: GarageEngineCraneHook
+    4300010: GaragePitCarRails
+    4300012: GarageDoors2
+    4300014: GarageDoors1
+    4300016: ShopDoubleDoor1
+    4300018: ShopDoubleDoorFrame
+    4300020: ShopWindow1
+    4300022: GasStationPumpStation
+    4300024: BrickFenceLong
+    4300026: TankBase
+    4300028: GarageWalls
+    4300030: CarRail1
+    4300032: GarageFloors
+    4300034: GarageRoof
+    4300036: StoreShelf
+    4300038: StoreCounter
+    4300040: GasStationMainFoundation
+    4300042: ShopDoubleDoor2
+    4300044: GasStationRoof
+    4300046: GasStationMain
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

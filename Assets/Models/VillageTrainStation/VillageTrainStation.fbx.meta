@@ -1,0 +1,169 @@
+fileFormatVersion: 2
+guid: c6c1aa0c75d7dfd49b530d058d371128
+timeCreated: 1493387903
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Crossties
+    100002: Rail1
+    100004: Rail2
+    100006: SoilRetainer
+    100008: Stove
+    100010: StoveChimney
+    100012: Sun
+    100014: TrainStationDoor
+    100016: TrainStationFoundationFloor
+    100018: TrainStationPlatform
+    100020: TrainStationRoof
+    100022: TrainStationWalls
+    100024: TrainStationWindow
+    100026: //RootNode
+    100028: WireFence1
+    100030: WireFence1Net
+    100032: WireFence2
+    100034: WireFence2Net
+    100036: ZernaskayaSign
+    100038: ZernaskayaSignLegs
+    400000: Crossties
+    400002: Rail1
+    400004: Rail2
+    400006: SoilRetainer
+    400008: Stove
+    400010: StoveChimney
+    400012: Sun
+    400014: TrainStationDoor
+    400016: TrainStationFoundationFloor
+    400018: TrainStationPlatform
+    400020: TrainStationRoof
+    400022: TrainStationWalls
+    400024: TrainStationWindow
+    400026: //RootNode
+    400028: WireFence1
+    400030: WireFence1Net
+    400032: WireFence2
+    400034: WireFence2Net
+    400036: ZernaskayaSign
+    400038: ZernaskayaSignLegs
+    2300000: Crossties
+    2300002: Rail1
+    2300004: Rail2
+    2300006: SoilRetainer
+    2300008: Stove
+    2300010: StoveChimney
+    2300012: TrainStationDoor
+    2300014: TrainStationFoundationFloor
+    2300016: TrainStationPlatform
+    2300018: TrainStationRoof
+    2300020: TrainStationWalls
+    2300022: TrainStationWindow
+    2300024: WireFence1
+    2300026: WireFence1Net
+    2300028: WireFence2
+    2300030: WireFence2Net
+    2300032: ZernaskayaSign
+    2300034: ZernaskayaSignLegs
+    3300000: Crossties
+    3300002: Rail1
+    3300004: Rail2
+    3300006: SoilRetainer
+    3300008: Stove
+    3300010: StoveChimney
+    3300012: TrainStationDoor
+    3300014: TrainStationFoundationFloor
+    3300016: TrainStationPlatform
+    3300018: TrainStationRoof
+    3300020: TrainStationWalls
+    3300022: TrainStationWindow
+    3300024: WireFence1
+    3300026: WireFence1Net
+    3300028: WireFence2
+    3300030: WireFence2Net
+    3300032: ZernaskayaSign
+    3300034: ZernaskayaSignLegs
+    4300000: TrainStationWindow
+    4300002: StoveChimney
+    4300004: WireFence2Net
+    4300006: WireFence1Net
+    4300008: WireFence2
+    4300010: ZernaskayaSignLegs
+    4300012: Rail2
+    4300014: Crossties
+    4300016: Rail1
+    4300018: SoilRetainer
+    4300020: ZernaskayaSign
+    4300022: TrainStationPlatform
+    4300024: WireFence1
+    4300026: Stove
+    4300028: TrainStationDoor
+    4300030: TrainStationFoundationFloor
+    4300032: TrainStationRoof
+    4300034: TrainStationWalls
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

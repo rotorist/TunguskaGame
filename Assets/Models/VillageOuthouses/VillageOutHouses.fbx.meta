@@ -1,0 +1,149 @@
+fileFormatVersion: 2
+guid: 726ee4249cce0b849afe6a2a6c49ad09
+timeCreated: 1489991458
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: OutHouse1
+    100002: OutHouse1Roof
+    100004: Outhouse2
+    100006: Outhouse2Roof
+    100008: Outhouse3
+    100010: Outhouse3Roof
+    100012: OuthouseDoor
+    100014: OuthouseDoor2
+    100016: OuthouseDoorFrame
+    100018: OuthouseDoorFrame2
+    100020: OuthouseShelf
+    100022: OuthouseShelf2
+    100024: OuthouseToilet
+    100026: OuthouseToilet2
+    100028: Sun
+    100030: //RootNode
+    400000: OutHouse1
+    400002: OutHouse1Roof
+    400004: Outhouse2
+    400006: Outhouse2Roof
+    400008: Outhouse3
+    400010: Outhouse3Roof
+    400012: OuthouseDoor
+    400014: OuthouseDoor2
+    400016: OuthouseDoorFrame
+    400018: OuthouseDoorFrame2
+    400020: OuthouseShelf
+    400022: OuthouseShelf2
+    400024: OuthouseToilet
+    400026: OuthouseToilet2
+    400028: Sun
+    400030: //RootNode
+    2300000: OutHouse1
+    2300002: OutHouse1Roof
+    2300004: Outhouse2
+    2300006: Outhouse2Roof
+    2300008: Outhouse3
+    2300010: Outhouse3Roof
+    2300012: OuthouseDoor
+    2300014: OuthouseDoor2
+    2300016: OuthouseDoorFrame
+    2300018: OuthouseDoorFrame2
+    2300020: OuthouseShelf
+    2300022: OuthouseShelf2
+    2300024: OuthouseToilet
+    2300026: OuthouseToilet2
+    3300000: OutHouse1
+    3300002: OutHouse1Roof
+    3300004: Outhouse2
+    3300006: Outhouse2Roof
+    3300008: Outhouse3
+    3300010: Outhouse3Roof
+    3300012: OuthouseDoor
+    3300014: OuthouseDoor2
+    3300016: OuthouseDoorFrame
+    3300018: OuthouseDoorFrame2
+    3300020: OuthouseShelf
+    3300022: OuthouseShelf2
+    3300024: OuthouseToilet
+    3300026: OuthouseToilet2
+    4300000: Outhouse3Roof
+    4300002: OuthouseDoor2
+    4300004: OuthouseShelf2
+    4300006: OuthouseDoorFrame2
+    4300008: OuthouseToilet2
+    4300010: OutHouse1Roof
+    4300012: Outhouse2Roof
+    4300014: OuthouseDoor
+    4300016: OuthouseToilet
+    4300018: OuthouseShelf
+    4300020: OuthouseDoorFrame
+    4300022: Outhouse3
+    4300024: Outhouse2
+    4300026: OutHouse1
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
