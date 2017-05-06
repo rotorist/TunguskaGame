@@ -21,6 +21,7 @@ ModelImporter:
     100026: WindowPane2
     100028: StairPillars.001
     100030: Garden
+    100032: SecondFloorBalcony
     400000: Door
     400002: DoorFrame
     400004: FirstFloorWalls
@@ -37,6 +38,7 @@ ModelImporter:
     400026: WindowPane2
     400028: StairPillars.001
     400030: Garden
+    400032: SecondFloorBalcony
     2300000: Door
     2300002: DoorFrame
     2300004: FirstFloorWalls
@@ -52,6 +54,7 @@ ModelImporter:
     2300024: WindowPane2
     2300026: StairPillars.001
     2300028: Garden
+    2300030: SecondFloorBalcony
     3300000: Door
     3300002: DoorFrame
     3300004: FirstFloorWalls
@@ -67,6 +70,7 @@ ModelImporter:
     3300024: WindowPane2
     3300026: StairPillars.001
     3300028: Garden
+    3300030: SecondFloorBalcony
     4300000: SecondFloorFloor
     4300002: WindowFrame
     4300004: WindowPane2
@@ -82,6 +86,7 @@ ModelImporter:
     4300024: FirstFloorWalls
     4300026: StairPillars.001
     4300028: Garden
+    4300030: SecondFloorBalcony
   materials:
     importMaterials: 1
     materialName: 0

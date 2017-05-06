@@ -30,6 +30,7 @@ ModelImporter:
     100044: TankBase
     100046: TankBody
     100048: //RootNode
+    100050: Sun
     400000: BrickFenceLong
     400002: BrickFenceMedium
     400004: BrickFencePole
@@ -55,6 +56,7 @@ ModelImporter:
     400044: TankBase
     400046: TankBody
     400048: //RootNode
+    400050: Sun
     2300000: BrickFenceLong
     2300002: BrickFenceMedium
     2300004: BrickFencePole
