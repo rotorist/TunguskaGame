@@ -54,13 +54,13 @@ TextureImporter:
     maxTextureSize: 2048
     textureFormat: -1
     textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
+    compressionQuality: 100
+    crunchedCompression: 1
     allowsAlphaSplitting: 0
     overridden: 0
   - buildTarget: Standalone
-    maxTextureSize: 4096
-    textureFormat: 12
+    maxTextureSize: 2048
+    textureFormat: 29
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
