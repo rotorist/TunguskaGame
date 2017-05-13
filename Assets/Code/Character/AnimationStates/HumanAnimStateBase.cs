@@ -7,5 +7,8 @@ public abstract class HumanAnimStateBase
 
 	public abstract void SendCommand(CharacterCommands command);
 	public abstract void Update();
+	public abstract void FixedUpdate();
 	public abstract bool IsRotatingBody();
+
+
 }

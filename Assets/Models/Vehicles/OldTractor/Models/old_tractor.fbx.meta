@@ -1,0 +1,140 @@
+fileFormatVersion: 2
+guid: 5f4518a6cdc604439961144cdcac7935
+timeCreated: 1474558031
+licenseType: Store
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: steering_wheel
+    100004: tractor
+    100006: wheel_FL
+    100008: wheel_FL_holder
+    100010: wheel_FR
+    100012: wheel_FR_holder
+    100014: wheel_RL
+    100016: wheel_RR
+    100018: brake
+    100020: break
+    100022: gas
+    100024: gearstick
+    100026: handbrake
+    400000: //RootNode
+    400002: steering_wheel
+    400004: tractor
+    400006: wheel_FL
+    400008: wheel_FL_holder
+    400010: wheel_FR
+    400012: wheel_FR_holder
+    400014: wheel_RL
+    400016: wheel_RR
+    400018: brake
+    400020: break
+    400022: gas
+    400024: gearstick
+    400026: handbrake
+    2300000: //RootNode
+    2300002: steering_wheel
+    2300004: tractor
+    2300006: wheel_FL
+    2300008: wheel_FL_holder
+    2300010: wheel_FR
+    2300012: wheel_FR_holder
+    2300014: wheel_RL
+    2300016: wheel_RR
+    2300018: brake
+    2300020: break
+    2300022: gas
+    2300024: gearstick
+    2300026: handbrake
+    3300000: //RootNode
+    3300002: steering_wheel
+    3300004: tractor
+    3300006: wheel_FL
+    3300008: wheel_FL_holder
+    3300010: wheel_FR
+    3300012: wheel_FR_holder
+    3300014: wheel_RL
+    3300016: wheel_RR
+    3300018: brake
+    3300020: break
+    3300022: gas
+    3300024: gearstick
+    3300026: handbrake
+    4300000: wheel_FL
+    4300002: wheel_FL_holder
+    4300004: wheel_FR_holder
+    4300006: steering_wheel
+    4300008: wheel_RL
+    4300010: wheel_FR
+    4300012: wheel_RR
+    4300014: tractor
+    4300016: gearstick
+    4300018: gas
+    4300020: break
+    4300022: brake
+    4300024: handbrake
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

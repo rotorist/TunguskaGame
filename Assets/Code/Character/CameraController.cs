@@ -449,6 +449,7 @@ public class CameraController : MonoBehaviour
 
 	private bool IsViewInBoundary(Transform camera, out Vector3 lookAheadPos, out float overDistance)
 	{
+		
 		Vector3 los = camera.forward;
 		Vector3 flatCamPos = new Vector3(camera.position.x, 0, camera.position.z);
 		Vector2 flatLoS = new Vector3(los.x, los.z).normalized;

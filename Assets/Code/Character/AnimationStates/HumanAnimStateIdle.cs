@@ -64,10 +64,14 @@ public class HumanAnimStateIdle : HumanAnimStateBase
 		{	
 			_ccVelocity = _ccVelocity - _ccVelocity * Time.deltaTime * 8;
 			_ccVelocity = _ccVelocity + Vector3.down * 20f * Time.deltaTime;
+
 			ParentCharacter.MyCC.SimpleMove(_ccVelocity);
+
+			//Debug.Log(ParentCharacter.MyCC.isGrounded);
 
 			if(!ParentCharacter.MyCC.isGrounded)
 			{
+				
 				UpdateState(HumanBodyStates.WalkForward);
 			}
 			else
@@ -164,6 +168,11 @@ public class HumanAnimStateIdle : HumanAnimStateBase
 			this.ParentCharacter.MyAnimator.SetBool("IsResting", false);
 			this.ParentCharacter.MyHeadIK.InstantEnable();
 		}
+	}
+
+	public override void FixedUpdate ()
+	{
+		
 	}
 
 	public override bool IsRotatingBody ()

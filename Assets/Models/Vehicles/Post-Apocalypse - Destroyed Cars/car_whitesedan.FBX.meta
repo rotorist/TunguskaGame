@@ -1,0 +1,106 @@
+fileFormatVersion: 2
+guid: 0e9a4ab4b1bad98409e58a726af730d3
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Bone01
+    100002: Bone02
+    100004: Bone03
+    100006: Bone04
+    100008: Bone05
+    100010: Bone06
+    100012: Bone07
+    100014: Bone08
+    100016: Bone09
+    100018: Bone10
+    100020: //RootNode
+    100022: skeletalcorolla
+    100024: car_whitesedan
+    100026: Cinema4D_Editor
+    400000: Bone01
+    400002: Bone02
+    400004: Bone03
+    400006: Bone04
+    400008: Bone05
+    400010: Bone06
+    400012: Bone07
+    400014: Bone08
+    400016: Bone09
+    400018: Bone10
+    400020: //RootNode
+    400022: skeletalcorolla
+    400024: car_whitesedan
+    400026: Cinema4D_Editor
+    4300000: skeletalcorolla
+    4300002: car_whitesedan
+    9500000: //RootNode
+    13700000: skeletalcorolla
+    13700002: car_whitesedan
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.01
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

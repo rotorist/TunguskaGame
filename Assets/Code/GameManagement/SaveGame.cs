@@ -5,6 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class SaveGame
 {
+	public float [] PlayerLocation;
 	public CharacterStatusData PlayerStatus;
 	public CharacterInventory PlayerInventory;
 	public List<PlayerStatBoost> PlayerBoosts;//to be inserted into player survival

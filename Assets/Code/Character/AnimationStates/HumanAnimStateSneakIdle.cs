@@ -150,6 +150,11 @@ public class HumanAnimStateSneakIdle : HumanAnimStateBase
 
 	}
 
+	public override void FixedUpdate ()
+	{
+		
+	}
+
 	public override bool IsRotatingBody ()
 	{
 		return _isRotatingBody;

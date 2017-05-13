@@ -84,7 +84,10 @@ public class PlayerParty
 
 	public void Initialize()
 	{
-		SelectedMember = GameObject.Find("PlayerCharacter").GetComponent<HumanCharacter>();
+		GameObject playerObj = GameManager.Instantiate(Resources.Load("PlayerCharacter")) as GameObject;
+		SelectedMember = playerObj.GetComponent<HumanCharacter>();
+		//SelectedMember = GameObject.Find("PlayerCharacter").GetComponent<HumanCharacter>();
+
 		SelectedMember.Initialize();
 		//SelectedMember.MyNavAgent.enabled = true;
 		RefreshMarkerForMember(SelectedMember);

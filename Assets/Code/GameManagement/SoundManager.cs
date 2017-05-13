@@ -95,8 +95,11 @@ public class SoundManager
 
 	public void Initialize()
 	{
+		GameObject listenerObj = GameObject.Instantiate(Resources.Load("AudioListener")) as GameObject;
+
+
 		_audioClipPool = new Dictionary<string, AudioClip>();
-		Listener = GameObject.Find("AudioListener").transform;
+		Listener = listenerObj.transform;
 		Detector = GameObject.Find("AudioSourceDetector").GetComponent<AudioSource>();
 		UI = GameObject.Find("AudioSourceUI").GetComponent<AudioSource>();
 		Ambient1 = GameObject.Find("AudioSourceAmbient1").GetComponent<AudioSource>();

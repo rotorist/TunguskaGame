@@ -13,6 +13,11 @@ public class SaveGameManager
 	{
 		CurrentSave = new SaveGame();
 
+		//save player location
+		CurrentSave.PlayerLocation = new float[3];
+		CurrentSave.PlayerLocation[0] = GameManager.Inst.PlayerControl.SelectedPC.transform.position.x;
+		CurrentSave.PlayerLocation[1] = GameManager.Inst.PlayerControl.SelectedPC.transform.position.y;
+		CurrentSave.PlayerLocation[2] = GameManager.Inst.PlayerControl.SelectedPC.transform.position.z;
 		//save player status
 		CurrentSave.PlayerStatus = GameManager.Inst.PlayerControl.SelectedPC.MyStatus.Data;
 		//save player inventory
@@ -172,6 +177,7 @@ public class SaveGameManager
 		GameManager.Inst.WorldManager.AllLevels = CurrentSave.Levels;
 		foreach(Level level in GameManager.Inst.WorldManager.AllLevels)
 		{
+			Debug.Log("Loading levels " + level.Name);
 			if(level.Name == CurrentSave.LevelToLoad)
 			{
 				GameManager.Inst.WorldManager.CurrentLevel = level;
@@ -186,7 +192,8 @@ public class SaveGameManager
 		//load player inventory
 		GameManager.Inst.PlayerControl.SelectedPC.Inventory = CurrentSave.PlayerInventory;
 		GameManager.Inst.PlayerControl.SelectedPC.Inventory.PostLoad();
-
+		//place player in last saved location
+		GameManager.Inst.PlayerControl.SelectedPC.transform.position = new Vector3(CurrentSave.PlayerLocation[0], CurrentSave.PlayerLocation[1], CurrentSave.PlayerLocation[2]);
 
 
 		//load pickup items

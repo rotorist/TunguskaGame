@@ -38,6 +38,11 @@ public class HumanAnimStateDeath : HumanAnimStateBase
 
 	}
 
+	public override void FixedUpdate ()
+	{
+		
+	}
+
 	public override bool IsRotatingBody ()
 	{
 		return false;

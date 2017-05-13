@@ -91,6 +91,7 @@ public class ItemManager
 		inventory1.Backpack.Add(new GridItemData(LoadItem("rubles"), 8, 9, GridItemOrient.Landscape, 110));
 		inventory1.Backpack.Add(new GridItemData(LoadItem("bread1"), 8, 7, GridItemOrient.Landscape, 1));
 		inventory1.Backpack.Add(new GridItemData(LoadItem("sausage"), 9, 8, GridItemOrient.Landscape, 1));
+		inventory1.Backpack.Add(new GridItemData(LoadItem("gasoline"), 5, 6, GridItemOrient.Landscape, 1));
 
 		inventory1.RifleSlot = LoadItem("ak47");
 		inventory1.ThrowSlot = LoadItem("pipegrenade");
@@ -779,6 +780,21 @@ public class ItemManager
 		item22.BasePrice = 600;
 		item22.BuildIndex();
 
+		Item item23 = new Item();
+		item23.Name = "Gasoline";
+		item23.Description = "A precious commodity in the zone. Used in gasoline engines and power generators.";
+		item23.PrefabName = "Gasoline";
+		item23.SpriteName = "gasoline";
+		item23.Weight = 0.1f;
+		item23.ID = "gasoline";
+		item23.Type = ItemType.Fuel;
+		item23.GridCols = 2;
+		item23.GridRows = 2;
+		item23.MaxStackSize = 40;
+		item23.Tier = 0;
+		item23.BasePrice = 200;
+		item23.BuildIndex();
+
 		switch(itemID)
 		{
 		case "ak47":
@@ -846,6 +862,9 @@ public class ItemManager
 			break;
 		case "sleepingbag":
 			return item22;
+			break;
+		case "gasoline":
+			return item23;
 			break;
 		}
 

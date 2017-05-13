@@ -17,7 +17,7 @@ public class WorldManager
 	{
 		AllLevels = new List<Level>();
 		CurrentLevel = new Level();
-		CurrentLevel.Name = "Initial";
+		CurrentLevel.Name = "Zernaskaya";
 		AllLevels.Add(CurrentLevel);
 
 

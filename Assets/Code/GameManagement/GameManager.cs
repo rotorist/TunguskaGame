@@ -85,7 +85,7 @@ public class GameManager : MonoBehaviour
 
 		string levelName = SaveGameManager.LoadLevelName("TestSave");
 		SaveName = "TestSave";
-		SceneManager.LoadScene("Initial");
+		SceneManager.LoadScene("Zernaskaya");
 	}
 
 

@@ -23,7 +23,10 @@ public class UIManager
 	public void Initialize()
 	{
 		_panels = new List<PanelBase>();
-		Root = GameObject.Find("UI Root").GetComponent<UIRoot>();
+
+		GameObject uiRootObj = GameObject.Instantiate(Resources.Load("UI Root")) as GameObject;
+
+		Root = uiRootObj.GetComponent<UIRoot>();
 
 		Root.manualHeight = Screen.height;
 		Root.manualWidth = Screen.width;

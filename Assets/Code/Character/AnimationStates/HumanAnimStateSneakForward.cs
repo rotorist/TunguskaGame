@@ -77,12 +77,17 @@ public class HumanAnimStateSneakForward : HumanAnimStateBase
 		{
 			HandleNavAgentMovement();
 		}
-		else if(ParentCharacter.MyCC != null)
+
+
+		HandleTurnMovement();
+	}
+
+	public override void FixedUpdate ()
+	{
+		if(ParentCharacter.MyCC != null)
 		{
 			HandleCharacterController();
 		}
-
-		HandleTurnMovement();
 	}
 	
 	public override bool IsRotatingBody ()
@@ -124,7 +129,7 @@ public class HumanAnimStateSneakForward : HumanAnimStateBase
 				if(this.ParentCharacter.UpperBodyState == HumanUpperBodyStates.Aim && !this.ParentCharacter.IsHipAiming)
 				{
 					targetVelocity = 1.3f;
-					_ccAcceleration = 6;
+					_ccAcceleration = 10;
 				}
 				else
 				{
@@ -145,16 +150,19 @@ public class HumanAnimStateSneakForward : HumanAnimStateBase
 
 		Vector3 dist = ParentCharacter.Destination.Value - ParentCharacter.transform.position;
 		//handle falling
+
+
+
 		if(!ParentCharacter.MyCC.isGrounded)
 		{
 			//ParentCharacter.MyCC.Move(Vector3.zero);
-			_ccAirVelocity = _ccAirVelocity + Vector3.down * 19f * Time.deltaTime;
-			_ccVelocity = _ccVelocity - _ccVelocity * Time.deltaTime * 3;
+			_ccAirVelocity = _ccAirVelocity + Vector3.down * 19f * Time.fixedDeltaTime;
+			_ccVelocity = _ccVelocity - _ccVelocity * Time.fixedDeltaTime * 3;
 			if(_ccVelocity.magnitude < 0.1f)
 			{
 				_ccVelocity = Vector3.zero;
 			}
-			ParentCharacter.MyCC.Move((_ccAirVelocity + _ccVelocity) * Time.deltaTime);
+			ParentCharacter.MyCC.Move((_ccAirVelocity + _ccVelocity) * Time.fixedDeltaTime);
 			if(ParentCharacter.MyCC.velocity.magnitude > _highestAirV)
 			{
 				_highestAirV = ParentCharacter.MyCC.velocity.magnitude;
@@ -164,8 +172,9 @@ public class HumanAnimStateSneakForward : HumanAnimStateBase
 		{
 			//handle non falling
 			_ccTargetVelocity = targetVelocity * dist.normalized;
-			_ccVelocity = Vector3.Lerp(_ccVelocity, _ccTargetVelocity, Time.deltaTime * _ccAcceleration * 0.35f);
+			_ccVelocity = Vector3.Lerp(_ccVelocity, _ccTargetVelocity, Time.fixedDeltaTime * _ccAcceleration * 0.35f);
 			ParentCharacter.MyCC.SimpleMove(_ccVelocity);
+			Debug.Log("moving character " + _ccVelocity);
 		}
 
 		//handle falling animation
@@ -231,7 +240,7 @@ public class HumanAnimStateSneakForward : HumanAnimStateBase
 				this.ParentCharacter.SendCommand(CharacterCommands.Pickup);
 			}
 		}
-		else if(dist.magnitude < 0.2f || ParentCharacter.MyCC.velocity.magnitude <= 0.1f)
+		else if(dist.magnitude < 0.2f || ParentCharacter.MyCC.velocity.magnitude <= 0.02f)
 		{
 			UpdateState(HumanBodyStates.CrouchIdle);
 		}

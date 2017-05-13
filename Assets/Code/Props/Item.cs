@@ -118,4 +118,5 @@ public enum ItemType
 	Medicine,
 	Money,
 	SleepingBag,
+	Fuel,
 }

@@ -99,6 +99,7 @@ public class HumanAnimStateGoForward : HumanAnimStateBase
 
 			
 		_vSpeed = Mathf.Lerp(_vSpeed, targetVSpeed, 8 * Time.deltaTime);
+
 		//Debug.Log("VSpeed " + _vSpeed + " target speed " + targetVSpeed);
 		this.ParentCharacter.MyAnimator.SetFloat("VSpeed", _vSpeed);
 
@@ -106,7 +107,12 @@ public class HumanAnimStateGoForward : HumanAnimStateBase
 		{
 			HandleNavAgentMovement();
 		}
-		else if(ParentCharacter.MyCC != null)
+
+	}
+
+	public override void FixedUpdate ()
+	{
+		if(ParentCharacter.MyCC != null)
 		{
 			HandleCharacterController();
 		}
@@ -212,7 +218,7 @@ public class HumanAnimStateGoForward : HumanAnimStateBase
 				else
 				{
 					targetVelocity = this.ParentCharacter.MyStatus.WalkSpeed;
-					_ccAcceleration = 6;
+					_ccAcceleration = 10;
 				}
 			}
 
@@ -232,16 +238,17 @@ public class HumanAnimStateGoForward : HumanAnimStateBase
 		Vector3 dist = ParentCharacter.Destination.Value - ParentCharacter.transform.position;
 
 		//handle falling
+
 		if(!ParentCharacter.MyCC.isGrounded)
 		{
 			//ParentCharacter.MyCC.Move(Vector3.zero);
-			_ccAirVelocity = _ccAirVelocity + Vector3.down * 19f * Time.deltaTime;
-			_ccVelocity = _ccVelocity - _ccVelocity * Time.deltaTime * 3;
+			_ccAirVelocity = _ccAirVelocity + Vector3.down * 19f * Time.fixedDeltaTime;
+			_ccVelocity = _ccVelocity - _ccVelocity * Time.fixedDeltaTime * 3;
 			if(_ccVelocity.magnitude < 0.1f)
 			{
 				_ccVelocity = Vector3.zero;
 			}
-			ParentCharacter.MyCC.Move((_ccAirVelocity + _ccVelocity) * Time.deltaTime);
+			ParentCharacter.MyCC.Move((_ccAirVelocity + _ccVelocity) * Time.fixedDeltaTime);
 			if(ParentCharacter.MyCC.velocity.magnitude > _highestAirV)
 			{
 				_highestAirV = ParentCharacter.MyCC.velocity.magnitude;
@@ -251,7 +258,7 @@ public class HumanAnimStateGoForward : HumanAnimStateBase
 		{
 			//handle non falling
 			_ccTargetVelocity = targetVelocity * dist.normalized;
-			_ccVelocity = Vector3.Lerp(_ccVelocity, _ccTargetVelocity, Time.deltaTime * _ccAcceleration * 0.35f);
+			_ccVelocity = Vector3.Lerp(_ccVelocity, _ccTargetVelocity, Time.fixedDeltaTime * _ccAcceleration * 0.35f);
 			ParentCharacter.MyCC.SimpleMove(_ccVelocity);
 		}
 
@@ -318,7 +325,7 @@ public class HumanAnimStateGoForward : HumanAnimStateBase
 				this.ParentCharacter.SendCommand(CharacterCommands.Pickup);
 			}
 		}
-		else if(ParentCharacter.MyCC.isGrounded && (dist.magnitude < 0.2f || ParentCharacter.MyCC.velocity.magnitude <= 0.1f))
+		else if(ParentCharacter.MyCC.isGrounded && (dist.magnitude < 0.2f || ParentCharacter.MyCC.velocity.magnitude <= 0.075f))
 		{
 			UpdateState(HumanBodyStates.StandIdle);
 		}

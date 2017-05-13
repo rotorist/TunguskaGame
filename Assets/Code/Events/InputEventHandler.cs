@@ -268,7 +268,7 @@ public class InputEventHandler
 
 		#region Camera Controls
 
-		float wheelInput = Input.GetAxis("Mouse ScrollWheel");
+		float wheelInput = Input.GetAxis("Mouse ScrollWheel") * 0.5f;
 		if(wheelInput > 0)
 		{
 			if(Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl))

@@ -150,8 +150,13 @@ public class HumanCharacter : Character
 
 		}
 
+		
 
+	}
 
+	void FixedUpdate()
+	{
+		CurrentAnimState.FixedUpdate();
 	}
 
 
@@ -1046,7 +1051,7 @@ public class HumanCharacter : Character
 							AudioSource audio = gun.GetComponent<AudioSource>();
 							if(audio != null)
 							{
-								audio.PlayOneShot(GameManager.Inst.SoundManager.GetClip(gun.WeaponItem.ID + "_reload"), 0.2f);
+								audio.PlayOneShot(GameManager.Inst.SoundManager.GetClip(gun.WeaponItem.ID + "_reload"), 0.1f);
 							}
 						}
 
