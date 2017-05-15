@@ -16,6 +16,7 @@ public class HumanAnimStateGoForward : HumanAnimStateBase
 	private float _ccAcceleration;
 
 	private float _highestAirV;
+	private float _airborneTimer;
 
 	// This constructor will create new state taking values from old state
 	public HumanAnimStateGoForward(HumanAnimStateBase state)     
@@ -259,7 +260,8 @@ public class HumanAnimStateGoForward : HumanAnimStateBase
 			//handle non falling
 			_ccTargetVelocity = targetVelocity * dist.normalized;
 			_ccVelocity = Vector3.Lerp(_ccVelocity, _ccTargetVelocity, Time.fixedDeltaTime * _ccAcceleration * 0.35f);
-			ParentCharacter.MyCC.SimpleMove(_ccVelocity);
+			_ccVelocity += Vector3.down * 19f * Time.fixedDeltaTime;
+			ParentCharacter.MyCC.Move(_ccVelocity * Time.fixedDeltaTime);
 		}
 
 		//handle falling animation
@@ -269,10 +271,18 @@ public class HumanAnimStateGoForward : HumanAnimStateBase
 			
 			if(!isAlreadyFalling && GameManager.Inst.PlayerControl.GroundDistance > 0.5f)
 			{
-				ParentCharacter.MyAnimator.SetBool("IsAirborne", true);
-				_ccAirVelocity = Vector3.zero;
-				_ccVelocity = new Vector3(_ccVelocity.x, 0, _ccVelocity.z);
-				_highestAirV = 0;
+				if(_airborneTimer < 0.1f)
+				{
+					_airborneTimer += Time.fixedDeltaTime;
+				}
+				else
+				{
+					_airborneTimer = 0;
+					ParentCharacter.MyAnimator.SetBool("IsAirborne", true);
+					_ccAirVelocity = Vector3.zero;
+					_ccVelocity = new Vector3(_ccVelocity.x, 0, _ccVelocity.z);
+					_highestAirV = 0;
+				}
 			}
 		}
 		else
@@ -323,6 +333,16 @@ public class HumanAnimStateGoForward : HumanAnimStateBase
 				UpdateState(HumanBodyStates.StandIdle);
 				this.ParentCharacter.MyAI.BlackBoard.PendingCommand = CharacterCommands.Idle;
 				this.ParentCharacter.SendCommand(CharacterCommands.Pickup);
+			}
+		}
+		else if(this.ParentCharacter.MyAI.BlackBoard.PendingCommand == CharacterCommands.Interact)
+		{
+			
+			if(dist.magnitude <= 1.5f)
+			{
+				UpdateState(HumanBodyStates.StandIdle);
+				this.ParentCharacter.MyAI.BlackBoard.PendingCommand = CharacterCommands.Idle;
+				this.ParentCharacter.SendCommand(CharacterCommands.Interact);
 			}
 		}
 		else if(ParentCharacter.MyCC.isGrounded && (dist.magnitude < 0.2f || ParentCharacter.MyCC.velocity.magnitude <= 0.075f))

@@ -229,6 +229,10 @@ public class CursorManager
 				{
 					SetCursorState(CursorState.Hand);
 				}
+				else if(aimedObject.tag == "Interactive" || aimedObject.tag == "Door")
+				{
+					SetCursorState(CursorState.Hand);
+				}
 				else
 				{
 					//Debug.Log("setting cursor to default");

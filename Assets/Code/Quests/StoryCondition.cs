@@ -4,7 +4,7 @@ using System.Collections;
 public abstract class StoryCondition
 {
 	public string ID;
-	public bool IsTrigger;
+
 
 	protected int _value;
 

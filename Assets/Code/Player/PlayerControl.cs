@@ -141,7 +141,7 @@ public class PlayerControl
 			if(Physics.Raycast(SelectedPC.transform.position, Vector3.down, out buildingHit, 200, (1 << 9 | 1 << 8 | 1 << 10)))
 			{
 				BuildingComponent component = buildingHit.collider.GetComponent<BuildingComponent>();
-				if(component != null)
+				if(component != null && component.Level < component.Building.TopLevel)
 				{
 					component.Building.NotifyHidingComponent(component, SelectedPC.transform.position.y);
 					GameManager.Inst.CameraController.CameraBaseAngle = 60;
@@ -240,6 +240,14 @@ public class PlayerControl
 			else if(_aimedObject.GetComponent<Chest>() != null)
 			{
 				AimedObjectType = AimedObjectType.Chest;
+			}
+			else if(_aimedObject.tag == "Interactive")
+			{
+				AimedObjectType = AimedObjectType.Interactive;
+			}
+			else if(_aimedObject.tag == "Door")
+			{
+				AimedObjectType = AimedObjectType.Door;
 			}
 			else
 			{
@@ -488,7 +496,7 @@ public class PlayerControl
 			{
 				SelectedPC.MyAI.BlackBoard.PickupTarget = _aimedObject.GetComponent<PickupItem>();
 				SelectedPC.MyAI.BlackBoard.PendingCommand = CharacterCommands.Pickup;
-				c.Destination = c.AimPoint;
+				c.Destination = _aimedObject.transform.position;
 				SelectedPC.GetComponent<HumanCharacter>().SendCommand(CharacterCommands.GoToPosition);
 			}
 			else if(AimedObjectType == AimedObjectType.Chest)
@@ -496,6 +504,13 @@ public class PlayerControl
 				SelectedPC.MyAI.BlackBoard.UseTarget = _aimedObject;
 				SelectedPC.MyAI.BlackBoard.PendingCommand = CharacterCommands.Loot;
 				c.Destination = c.AimPoint;
+				SelectedPC.GetComponent<HumanCharacter>().SendCommand(CharacterCommands.GoToPosition);
+			}
+			else if(AimedObjectType == AimedObjectType.Door)
+			{
+				SelectedPC.MyAI.BlackBoard.UseTarget = _aimedObject;
+				SelectedPC.MyAI.BlackBoard.PendingCommand = CharacterCommands.Interact;
+				c.Destination = _aimedObject.transform.position;
 				SelectedPC.GetComponent<HumanCharacter>().SendCommand(CharacterCommands.GoToPosition);
 			}
 			else
@@ -1265,9 +1280,16 @@ public class PlayerControl
 			}
 			else
 			{
-				lookPosition = new Vector3(c.AimTarget.position.x, c.transform.position.y + 1.5f, c.AimTarget.position.z);
+				if(AimedObjectType == AimedObjectType.Door || AimedObjectType == AimedObjectType.Interactive)
+				{
+					lookPosition = new Vector3(_aimedObject.transform.position.x, c.transform.position.y + 1.5f, _aimedObject.transform.position.z);
+				}
+				else
+				{
+					lookPosition = new Vector3(c.AimTarget.position.x, c.transform.position.y + 1.5f, c.AimTarget.position.z);
+				}
 			}
-
+			//GameObject.Find("Sphere").transform.position = lookPosition;
 			c.LookTarget.position = Vector3.Lerp(c.LookTarget.position, lookPosition, 10 * Time.deltaTime);
 
 

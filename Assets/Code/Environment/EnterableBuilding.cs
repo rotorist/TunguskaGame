@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class EnterableBuilding : MonoBehaviour 
 {
+	public int TopLevel;
 	public List<BuildingComponent> Components;
 
 	private bool _revealAll;

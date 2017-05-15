@@ -17,6 +17,7 @@ public class HumanCharacter : Character
 	public HumanUpperBodyStates UpperBodyState;
 	public string CurrentGoal;
 	public string CurrentAction;
+	public Door CurrentDoor;
 
 	public Trader Trader;
 
@@ -1309,6 +1310,37 @@ public class HumanCharacter : Character
 				}
 			}
 
+		}
+
+		if(command == CharacterCommands.Interact)
+		{
+			if(ActionState != HumanActionStates.None)
+			{
+				return;
+			}
+			GameObject useTarget = MyAI.BlackBoard.UseTarget;
+
+			Vector3 lookDir = useTarget.transform.position - transform.position;
+			lookDir = new Vector3(lookDir.x, 0, lookDir.z);
+			transform.rotation = Quaternion.LookRotation(lookDir);
+
+			if(useTarget.tag == "Door")
+			{
+				Door door = useTarget.GetComponent<Door>();
+				if(door != null)
+				{
+					if(door.IsOpen)
+					{
+						door.Close();
+					}
+					else
+					{
+						door.Open(transform);
+					}
+				}
+
+				MyAnimator.SetTrigger("TakeObject");
+			}
 		}
 
 		if(command == CharacterCommands.Talk)

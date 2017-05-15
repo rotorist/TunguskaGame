@@ -21,6 +21,8 @@ public class QuestManager
 		cond1.ID = "hastomatoseeds";
 		cond1.ItemID = "mutantheart";
 		StoryConditions.Add(cond1.ID, cond1);
+
+
 	}
 
 	public void PerSecondUpdate()

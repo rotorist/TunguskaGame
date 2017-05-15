@@ -17,6 +17,7 @@ public class HumanAnimStateSneakForward : HumanAnimStateBase
 	private float _ccAcceleration;
 
 	private float _highestAirV;
+	private float _airborneTimer;
 	
 	// This constructor will create new state taking values from old state
 	public HumanAnimStateSneakForward(HumanAnimStateBase state)     
@@ -61,11 +62,11 @@ public class HumanAnimStateSneakForward : HumanAnimStateBase
 
 		if(velocity > 0 && velocity <= 1.5f)//(this.ParentCharacter.CurrentStance == HumanStances.Crouch)
 		{
-			targetVSpeed = 1.0f;
+			targetVSpeed = 0.9f;
 		}
 		else if(velocity > 1.5f)//(this.ParentCharacter.CurrentStance == HumanStances.CrouchRun)
 		{
-			targetVSpeed = 1.6f;
+			targetVSpeed = 1.3f;
 		}
 		
 		_vSpeed = Mathf.Lerp(_vSpeed, targetVSpeed, 6 * Time.deltaTime);
@@ -173,8 +174,9 @@ public class HumanAnimStateSneakForward : HumanAnimStateBase
 			//handle non falling
 			_ccTargetVelocity = targetVelocity * dist.normalized;
 			_ccVelocity = Vector3.Lerp(_ccVelocity, _ccTargetVelocity, Time.fixedDeltaTime * _ccAcceleration * 0.35f);
+			_ccVelocity += Vector3.down * 19f * Time.fixedDeltaTime;
 			ParentCharacter.MyCC.SimpleMove(_ccVelocity);
-			Debug.Log("moving character " + _ccVelocity);
+			//Debug.Log("moving character " + _ccVelocity);
 		}
 
 		//handle falling animation
@@ -184,10 +186,18 @@ public class HumanAnimStateSneakForward : HumanAnimStateBase
 
 			if(!isAlreadyFalling && GameManager.Inst.PlayerControl.GroundDistance > 0.5f)
 			{
-				ParentCharacter.MyAnimator.SetBool("IsAirborne", true);
-				_ccAirVelocity = Vector3.zero;
-				_ccVelocity = new Vector3(_ccVelocity.x, 0, _ccVelocity.z);
-				_highestAirV = 0;
+				if(_airborneTimer < 0.1f)
+				{
+					_airborneTimer += Time.fixedDeltaTime;
+				}
+				else
+				{
+					_airborneTimer = 0;
+					ParentCharacter.MyAnimator.SetBool("IsAirborne", true);
+					_ccAirVelocity = Vector3.zero;
+					_ccVelocity = new Vector3(_ccVelocity.x, 0, _ccVelocity.z);
+					_highestAirV = 0;
+				}
 			}
 		}
 		else
@@ -238,6 +248,16 @@ public class HumanAnimStateSneakForward : HumanAnimStateBase
 				UpdateState(HumanBodyStates.CrouchIdle);
 				this.ParentCharacter.MyAI.BlackBoard.PendingCommand = CharacterCommands.Idle;
 				this.ParentCharacter.SendCommand(CharacterCommands.Pickup);
+			}
+		}
+		else if(this.ParentCharacter.MyAI.BlackBoard.PendingCommand == CharacterCommands.Interact)
+		{
+
+			if(dist.magnitude <= 1.5f)
+			{
+				UpdateState(HumanBodyStates.StandIdle);
+				this.ParentCharacter.MyAI.BlackBoard.PendingCommand = CharacterCommands.Idle;
+				this.ParentCharacter.SendCommand(CharacterCommands.Interact);
 			}
 		}
 		else if(dist.magnitude < 0.2f || ParentCharacter.MyCC.velocity.magnitude <= 0.02f)

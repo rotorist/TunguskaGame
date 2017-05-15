@@ -93,6 +93,7 @@ public enum CharacterCommands
 	Talk,
 	Pickup,
 	Loot,
+	Interact,
 	SetAlert,
 	IdleAction,
 	LeftAttack,
@@ -295,11 +296,19 @@ public enum AimedObjectType
 	PickupItem,
 	Body,
 	Chest,
+	Interactive,
 }
 
 public enum LogicOperator
 {
 	And,
 	Or,
+
+}
+
+public enum DoorType
+{
+	Rotating,
+	Sliding,
 
 }
