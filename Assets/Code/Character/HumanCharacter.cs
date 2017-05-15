@@ -1337,9 +1337,20 @@ public class HumanCharacter : Character
 					{
 						door.Open(transform);
 					}
+
+					//MyAnimator.SetTrigger("TakeObject");
 				}
 
-				MyAnimator.SetTrigger("TakeObject");
+
+			}
+			else if(useTarget.tag == "Interactive")
+			{
+				StoryObject so = useTarget.GetComponent<StoryObject>();
+				if(so != null)
+				{
+					so.Interact();
+					MyAnimator.SetTrigger("TakeObject");
+				}
 			}
 		}
 

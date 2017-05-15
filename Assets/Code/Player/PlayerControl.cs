@@ -249,6 +249,10 @@ public class PlayerControl
 			{
 				AimedObjectType = AimedObjectType.Door;
 			}
+			else if(_aimedObject.tag == "Interactive")
+			{
+				AimedObjectType = AimedObjectType.Interactive;
+			}
 			else
 			{
 				AimedObjectType = AimedObjectType.None;
@@ -506,7 +510,7 @@ public class PlayerControl
 				c.Destination = c.AimPoint;
 				SelectedPC.GetComponent<HumanCharacter>().SendCommand(CharacterCommands.GoToPosition);
 			}
-			else if(AimedObjectType == AimedObjectType.Door)
+			else if(AimedObjectType == AimedObjectType.Door || AimedObjectType == AimedObjectType.Interactive)
 			{
 				SelectedPC.MyAI.BlackBoard.UseTarget = _aimedObject;
 				SelectedPC.MyAI.BlackBoard.PendingCommand = CharacterCommands.Interact;

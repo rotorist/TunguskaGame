@@ -7,9 +7,7 @@ public class Door : MonoBehaviour
 	public DoorType Type;
 	public bool IsOpen;
 	public Transform DoorPanel;
-	public Vector3 ClosedPos;
 	public Transform ClosedTarget;
-	public Vector3 OpenPos;
 	public Transform OpenTarget1;
 	public Transform OpenTarget2;
 	public float OperationSpeed;
@@ -32,7 +30,11 @@ public class Door : MonoBehaviour
 		{
 			if(Type == DoorType.Rotating)
 			{
-				DoorPanel.transform.rotation = Quaternion.Slerp(DoorPanel.transform.rotation, ClosedTarget.rotation, Time.deltaTime * OperationSpeed);
+				DoorPanel.transform.localRotation = Quaternion.Slerp(DoorPanel.transform.localRotation, ClosedTarget.localRotation, Time.deltaTime * OperationSpeed);
+			}
+			else if(Type == DoorType.Sliding)
+			{
+				DoorPanel.transform.localPosition = Vector3.MoveTowards(DoorPanel.transform.localPosition, ClosedTarget.localPosition, Time.deltaTime * OperationSpeed);
 			}
 		}
 		else
@@ -40,6 +42,10 @@ public class Door : MonoBehaviour
 			if(Type == DoorType.Rotating)
 			{
 				DoorPanel.transform.localRotation = Quaternion.Slerp(DoorPanel.transform.localRotation, _rotateTarget.localRotation, Time.deltaTime * OperationSpeed);
+			}
+			else if(Type == DoorType.Sliding)
+			{
+				DoorPanel.transform.localPosition = Vector3.MoveTowards(DoorPanel.transform.localPosition, OpenTarget1.localPosition, Time.deltaTime * OperationSpeed);
 			}
 		}
 
