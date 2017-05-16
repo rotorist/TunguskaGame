@@ -785,12 +785,12 @@ public class ItemManager
 		item23.Description = "A precious commodity in the zone. Used in gasoline engines and power generators.";
 		item23.PrefabName = "Gasoline";
 		item23.SpriteName = "gasoline";
-		item23.Weight = 0.1f;
+		item23.Weight = 0.4f;
 		item23.ID = "gasoline";
 		item23.Type = ItemType.Fuel;
 		item23.GridCols = 2;
 		item23.GridRows = 2;
-		item23.MaxStackSize = 40;
+		item23.MaxStackSize = 20;
 		item23.Tier = 0;
 		item23.BasePrice = 200;
 		item23.BuildIndex();

@@ -17,7 +17,7 @@ public class StoryObject : MonoBehaviour
 	public string OnEvent;
 	public string OffEvent;
 	public string RequireItemID;
-	public string RequireItemQuantity;
+	public int RequireItemQuantity;
 	public bool IsConsumingItem;
 
 	private float _delayTimer;
@@ -32,7 +32,7 @@ public class StoryObject : MonoBehaviour
 		if(!_delayDone && _isTriggered)
 		{
 			_delayTimer += Time.deltaTime;
-			if(_delayTimer >= 0.6f)
+			if(_delayTimer >= 0.5f)
 			{
 				_delayDone = true;
 				_isTriggered = false;
@@ -40,14 +40,31 @@ public class StoryObject : MonoBehaviour
 				if(!IsOn || IsTrigger)
 				{
 					//turn it on
-					GameManager.Inst.QuestManager.StoryEvents[OnEvent].Trigger();
+					if(OnEvent.Length > 0)
+					{
+						GameManager.Inst.QuestManager.StoryEvents[OnEvent].Trigger();
+					}
+
 					IsOn = true;
+					if(NextObject != null)
+					{
+						NextObject.IsReady = true;
+					}
 				}
 				else
 				{
 					//turn it off
-					GameManager.Inst.QuestManager.StoryEvents[OffEvent].Trigger();
+					if(OffEvent.Length > 0)
+					{
+						GameManager.Inst.QuestManager.StoryEvents[OffEvent].Trigger();
+					
+					}
+
 					IsOn = false;
+					if(NextObject != null)
+					{
+						NextObject.IsReady = false;
+					}
 				}
 
 			}
@@ -55,11 +72,8 @@ public class StoryObject : MonoBehaviour
 			return;
 		}
 
-		if(IsTrigger)
-		{
 
-		}
-		else 
+		if(MovingPart != null)
 		{
 			if(IsOn)
 			{
@@ -80,6 +94,22 @@ public class StoryObject : MonoBehaviour
 		{
 
 			return;
+		}
+		//check if player has required items
+		if(RequireItemID.Length > 0)
+		{
+			CharacterInventory playerInventory = GameManager.Inst.PlayerControl.SelectedPC.Inventory;
+			int itemCount = playerInventory.CountItemsInBackpack(RequireItemID);
+			if(itemCount >= RequireItemQuantity)
+			{
+				//remove item from player
+				playerInventory.RemoveItemsFromBackpack(RequireItemID, RequireItemQuantity);
+			}
+			else
+			{
+				//display message and return
+				return;
+			}
 		}
 
 		_isTriggered = true;

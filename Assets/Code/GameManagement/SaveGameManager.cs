@@ -46,7 +46,7 @@ public class SaveGameManager
 			PickupItem pickup = o.GetComponent<PickupItem>();
 			PickupItemData data = new PickupItemData();
 			data.ItemID = pickup.Item.ID;
-			data.Quantity = data.Quantity;
+			data.Quantity = pickup.Quantity;
 			data.Pos = new SerVector3(pickup.transform.position);
 			data.EulerAngles = new SerVector3(pickup.transform.localEulerAngles);
 
