@@ -14,6 +14,7 @@ public class UIManager
 	public WindowPanel WindowPanel;
 	public DialoguePanel DialoguePanel;
 	public RestingPanel RestingPanel;
+	public ConfirmPanel ConfirmPanel;
 
 
 	public bool IsInHUDRegion;
@@ -49,6 +50,9 @@ public class UIManager
 		RestingPanel = UICamera.transform.Find("RestingPanel").GetComponent<RestingPanel>();
 		RestingPanel.Initialize();
 
+		ConfirmPanel = UICamera.transform.Find("ConfirmPanel").GetComponent<ConfirmPanel>();
+		ConfirmPanel.Initialize();
+
 		FadingPanel = UICamera.transform.Find("FadingPanel").GetComponent<FadingPanel>();
 		FadingPanel.Initialize();
 		FadingPanel.Show();
@@ -56,6 +60,7 @@ public class UIManager
 
 		_panels.Add(DialoguePanel);
 		_panels.Add(RestingPanel);
+		_panels.Add(ConfirmPanel);
 		_panels.Add(WindowPanel);
 		_panels.Add(HUDPanel);
 		_panels.Add(BarkPanel);

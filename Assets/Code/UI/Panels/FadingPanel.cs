@@ -13,6 +13,11 @@ public class FadingPanel : PanelBase
 	private float _interDuration;
 	private int _direction; //-1 = fade out, 0 = stay, 1 = fade in
 
+	public delegate void FadeCallBack();
+
+	private FadeCallBack _onFadeOutDone;
+	private bool _callBackRequested;
+
 	public override void Initialize ()
 	{
 
@@ -44,6 +49,11 @@ public class FadingPanel : PanelBase
 					_fadeOutDuration = 0;
 					_timer = 0;
 					_direction = 0;
+					if(_callBackRequested && _onFadeOutDone != null)
+					{
+						_onFadeOutDone();
+						_callBackRequested = false;
+					}
 				}
 				else
 				{
@@ -142,6 +152,19 @@ public class FadingPanel : PanelBase
 		_timer = 0;
 		_direction = -1;
 		Background.alpha = 0;
+	}
+
+	public void FadeOutAndInCallBack(float fadeInDuration, float interDuration, float fadeOutDuration, FadeCallBack callBack)
+	{
+		_fadeOutDuration = fadeOutDuration;
+		_fadeInDuration = fadeInDuration;
+		_interDuration = interDuration;
+		_timer = 0;
+		_direction = -1;
+		Background.alpha = 0;
+
+		_onFadeOutDone = callBack;
+		_callBackRequested = true;
 	}
 
 	public void FadeIn(float fadeInDuration)

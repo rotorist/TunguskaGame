@@ -75,7 +75,7 @@ public class HumanAnimStateSneakIdle : HumanAnimStateBase
 
 			if(!ParentCharacter.MyCC.isGrounded)
 			{
-				UpdateState(HumanBodyStates.WalkForward);
+				//UpdateState(HumanBodyStates.WalkForward);
 			}
 			else
 			{

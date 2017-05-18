@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class StoryObject : MonoBehaviour 
 {
+	public string Name;
 	public Transform OnTarget;
 	public Transform OffTarget;
 
@@ -13,6 +14,7 @@ public class StoryObject : MonoBehaviour
 	public bool IsTrigger;
 	public bool IsReady;//when IsReady is true, player can trigger it
 	public string NotReadyMessage;//When IsReady is false and player tries to trigger, display this message
+	public string ConfirmMessage;//for story objects that will consume player's item
 	public StoryObject NextObject;
 	public string OnEvent;
 	public string OffEvent;
@@ -92,7 +94,7 @@ public class StoryObject : MonoBehaviour
 	{
 		if(!IsReady)
 		{
-
+			GameManager.Inst.UIManager.SetConsoleText(NotReadyMessage);
 			return;
 		}
 		//check if player has required items
@@ -108,10 +110,29 @@ public class StoryObject : MonoBehaviour
 			else
 			{
 				//display message and return
+				GameManager.Inst.UIManager.SetConsoleText(NotReadyMessage);
 				return;
 			}
 		}
 
+		//if there is confirm message, display it
+		if(ConfirmMessage.Length > 0)
+		{
+			UIEventHandler.Instance.TriggerConfirm();
+			GameManager.Inst.UIManager.ConfirmPanel.SetupPanel(ConfirmMessage, InteractConfirmed);
+		}
+		else
+		{
+			InteractConfirmed();
+		}
+
+
+	}
+
+
+
+	public void InteractConfirmed()
+	{
 		_isTriggered = true;
 
 

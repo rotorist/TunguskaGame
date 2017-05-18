@@ -54,6 +54,8 @@ public class UIStateNormal : UIStateBase
 		UIEventHandler.OnStartTrading += OnStartTrading;
 		UIEventHandler.OnOpenRestPanel -= OnOpenRestPanel;
 		UIEventHandler.OnOpenRestPanel += OnOpenRestPanel;
+		UIEventHandler.OnOpenConfirmPanel -= OnOpenConfirmPanel;
+		UIEventHandler.OnOpenConfirmPanel += OnOpenConfirmPanel;
 	}
 
 	public override void EndState ()
@@ -65,6 +67,7 @@ public class UIStateNormal : UIStateBase
 		UIEventHandler.OnStartDialogue -= OnStartDialogue;
 		UIEventHandler.OnStartTrading -= OnStartTrading;
 		UIEventHandler.OnOpenRestPanel -= OnOpenRestPanel;
+		UIEventHandler.OnOpenConfirmPanel -= OnOpenConfirmPanel;
 	}
 
 
@@ -103,6 +106,12 @@ public class UIStateNormal : UIStateBase
 	{
 		EndState();
 		SM.State = new UIStateResting(SM);
+	}
+
+	public void OnOpenConfirmPanel()
+	{
+		EndState();
+		SM.State = new UIStateConfirm(SM);
 	}
 
 }
@@ -280,6 +289,39 @@ public class UIStateResting : UIStateBase
 		SM.UIManager.HideAllPanels();
 		SM.UIManager.HUDPanel.Show();
 		SM.UIManager.RestingPanel.Show();
+
+
+		//subscribe events
+		UIEventHandler.OnCloseWindow -= OnCloseWindow;
+		UIEventHandler.OnCloseWindow += OnCloseWindow;
+	}
+
+	public override void EndState ()
+	{
+		UIEventHandler.OnCloseWindow -= OnCloseWindow;
+	}
+
+	public void OnCloseWindow()
+	{
+		EndState();
+		SM.State = new UIStateNormal(SM);
+	}
+}
+
+public class UIStateConfirm : UIStateBase
+{
+	public UIStateConfirm(UIStateMachine sm)
+	{
+		SM = sm;
+		BeginState();
+	}
+
+	public override void BeginState ()
+	{
+		//setup panels
+		SM.UIManager.HideAllPanels();
+		SM.UIManager.HUDPanel.Show();
+		SM.UIManager.ConfirmPanel.Show();
 
 
 		//subscribe events

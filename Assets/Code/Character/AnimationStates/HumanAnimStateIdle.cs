@@ -72,7 +72,7 @@ public class HumanAnimStateIdle : HumanAnimStateBase
 			if(!ParentCharacter.MyCC.isGrounded)
 			{
 				
-				UpdateState(HumanBodyStates.WalkForward);
+				//UpdateState(HumanBodyStates.WalkForward);
 			}
 			else
 			{
@@ -157,7 +157,7 @@ public class HumanAnimStateIdle : HumanAnimStateBase
 		{
 			this.ParentCharacter.MyAnimator.SetBool("IsRotating", _isRotatingBody);
 		}
-
+		/*
 		if(this.ParentCharacter.MyStatus.IsResting)
 		{
 			this.ParentCharacter.MyAnimator.SetBool("IsResting", true);
@@ -168,6 +168,7 @@ public class HumanAnimStateIdle : HumanAnimStateBase
 			this.ParentCharacter.MyAnimator.SetBool("IsResting", false);
 			this.ParentCharacter.MyHeadIK.InstantEnable();
 		}
+		*/
 	}
 
 	public override void FixedUpdate ()
@@ -184,7 +185,7 @@ public class HumanAnimStateIdle : HumanAnimStateBase
 
 	private void Initialize()
 	{
-		//Debug.Log("Initializing Stand Idle");
+		Debug.Log("Initializing Stand Idle");
 		_vSpeed = this.ParentCharacter.MyAnimator.GetFloat("VSpeed");
 		this.ParentCharacter.CurrentStance = HumanStances.Run;
 		this.ParentCharacter.MyAnimator.SetFloat("Blend", UnityEngine.Random.value);

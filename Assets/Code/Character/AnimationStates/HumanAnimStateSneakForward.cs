@@ -225,7 +225,8 @@ public class HumanAnimStateSneakForward : HumanAnimStateBase
 
 		if(this.ParentCharacter.MyAI.BlackBoard.PendingCommand == CharacterCommands.Talk)
 		{
-			if(dist.magnitude <= 0.8f)
+			Vector3 targetDist = this.ParentCharacter.MyAI.BlackBoard.InteractTarget.transform.position - this.ParentCharacter.transform.position;
+			if(targetDist.magnitude <= 0.8f)
 			{
 				UpdateState(HumanBodyStates.CrouchIdle);
 				this.ParentCharacter.MyAI.BlackBoard.PendingCommand = CharacterCommands.Idle;
@@ -234,30 +235,42 @@ public class HumanAnimStateSneakForward : HumanAnimStateBase
 		}
 		else if(this.ParentCharacter.MyAI.BlackBoard.PendingCommand == CharacterCommands.Loot)
 		{
-			if(dist.magnitude <= 1)
+			Vector3 targetDist = this.ParentCharacter.MyAI.BlackBoard.InteractTarget.transform.position - this.ParentCharacter.transform.position;
+			if(targetDist.magnitude <= 1)
 			{
 				UpdateState(HumanBodyStates.CrouchIdle);
 				this.ParentCharacter.MyAI.BlackBoard.PendingCommand = CharacterCommands.Idle;
 				this.ParentCharacter.SendCommand(CharacterCommands.Loot);
 			}
 		}
+		else if(this.ParentCharacter.MyAI.BlackBoard.PendingCommand == CharacterCommands.LootChest)
+		{
+			Vector3 targetDist = this.ParentCharacter.MyAI.BlackBoard.UseTarget.transform.position - this.ParentCharacter.transform.position;
+			if(targetDist.magnitude <= 1)
+			{
+				UpdateState(HumanBodyStates.CrouchIdle);
+				this.ParentCharacter.MyAI.BlackBoard.PendingCommand = CharacterCommands.Idle;
+				this.ParentCharacter.SendCommand(CharacterCommands.LootChest);
+			}
+		}
 		else if(this.ParentCharacter.MyAI.BlackBoard.PendingCommand == CharacterCommands.Pickup)
 		{
-			if(dist.magnitude <= 1)
+			Vector3 targetDist = this.ParentCharacter.MyAI.BlackBoard.PickupTarget.transform.position - this.ParentCharacter.transform.position;
+			if(targetDist.magnitude <= 1)
 			{
 				UpdateState(HumanBodyStates.CrouchIdle);
 				this.ParentCharacter.MyAI.BlackBoard.PendingCommand = CharacterCommands.Idle;
 				this.ParentCharacter.SendCommand(CharacterCommands.Pickup);
 			}
 		}
-		else if(this.ParentCharacter.MyAI.BlackBoard.PendingCommand == CharacterCommands.Interact)
+		else if(this.ParentCharacter.MyAI.BlackBoard.PendingCommand == CharacterCommands.Use)
 		{
-
-			if(dist.magnitude <= 1.5f)
+			Vector3 targetDist = this.ParentCharacter.MyAI.BlackBoard.UseTarget.transform.position - this.ParentCharacter.transform.position;
+			if(targetDist.magnitude <= 1.5f)
 			{
 				UpdateState(HumanBodyStates.StandIdle);
 				this.ParentCharacter.MyAI.BlackBoard.PendingCommand = CharacterCommands.Idle;
-				this.ParentCharacter.SendCommand(CharacterCommands.Interact);
+				this.ParentCharacter.SendCommand(CharacterCommands.Use);
 			}
 		}
 		else if(dist.magnitude < 0.2f || ParentCharacter.MyCC.velocity.magnitude <= 0.02f)

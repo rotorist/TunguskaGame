@@ -7,6 +7,7 @@ public class WorldManager
 	public string CurrentLevelName { get {return CurrentLevel.Name;}}
 	public Level CurrentLevel;
 	public List<Level> AllLevels;
+	public Dictionary<string, Environment> AllEnvironments;
 	public TerrainHandler CurrentTerrain;
 	public Environment CurrentEnvironment;
 
@@ -15,6 +16,8 @@ public class WorldManager
 
 	public void Initialize()
 	{
+		AllEnvironments = new Dictionary<string, Environment>();
+
 		AllLevels = new List<Level>();
 		CurrentLevel = new Level();
 		CurrentLevel.Name = "Zernaskaya";
@@ -25,8 +28,24 @@ public class WorldManager
 		CurrentTerrain.Initialize();
 
 
-		CurrentEnvironment = new Environment();
+
+		Environment dayWild = new Environment("DayWilderness");
+		dayWild.AmbientLightColor = new Color(0.424f, 0.430f, 0.444f);
+		dayWild.SunMoonColor = new Color(1, 0.984f, 0.918f, 1f);
+		dayWild.SunMoonIntensity = 0.7f;
+		dayWild.ShadowIntensity = 1;
+		AllEnvironments.Add(dayWild.Name, dayWild);
+
+		CurrentEnvironment = dayWild;
 		CurrentEnvironment.LoadEnvironment();
+
+		Environment cellar = new Environment("Cellar");
+		cellar.AmbientLightColor = new Color(0.1f, 0.1f, 0.1f);
+		cellar.SunMoonColor = new Color(0, 0, 0, 0);
+		cellar.SunMoonIntensity = 0;
+		cellar.ShadowIntensity = 1;
+		AllEnvironments.Add(cellar.Name, cellar);
+
 		_nextAmbientTime = UnityEngine.Random.Range(3, 6);
 		_ambientPlayCounter = 0;
 	}
@@ -59,6 +78,10 @@ public class WorldManager
 
 	}
 
+	public void ChangeEnvironment(string name)
+	{
+		AllEnvironments[name].LoadEnvironment();
+	}
 
 
 }

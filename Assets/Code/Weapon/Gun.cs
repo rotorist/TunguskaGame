@@ -34,7 +34,7 @@ public class Gun : Weapon
 	private Light _light;
 	private Vector3 _foreGripPos;
 
-	private WeaponCallBack OnSuccessfulShot;
+	private WeaponCallBack _onSuccessfulShot;
 
 	private bool _isEquipped;
 	private bool _pumpStarted;
@@ -158,7 +158,7 @@ public class Gun : Weapon
 
 		_isCooledDown = true;
 
-		OnSuccessfulShot = callBack;
+		_onSuccessfulShot = callBack;
 
 		_sparks = MuzzleFlash.FindChild("Sparks").GetComponent<ParticleSystem>();
 		_flame = MuzzleFlash.GetComponent<ParticleSystem>();
@@ -281,7 +281,7 @@ public class Gun : Weapon
 				BrassEject.Emit(1);
 			}
 
-			OnSuccessfulShot();
+			_onSuccessfulShot();
 
 			return true;
 		}

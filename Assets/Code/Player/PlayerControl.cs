@@ -245,7 +245,7 @@ public class PlayerControl
 			{
 				AimedObjectType = AimedObjectType.Interactive;
 			}
-			else if(_aimedObject.tag == "Door")
+			else if(_aimedObject.tag == "Door" || _aimedObject.tag == "Portal")
 			{
 				AimedObjectType = AimedObjectType.Door;
 			}
@@ -470,7 +470,22 @@ public class PlayerControl
 				c.Destination = hit.point;
 			}
 			*/
-			Debug.Log(AimedObjectType);
+
+			_isMoveKeyDown = false;
+		
+
+			if(_aimedObject == null || AimedObjectType == AimedObjectType.None)
+			{
+
+				//c.Destination = c.AimPoint;
+				SelectedPC.MyAI.BlackBoard.PendingCommand = CharacterCommands.Idle;
+				SelectedPC.MyAI.BlackBoard.PickupTarget = null;
+				SelectedPC.MyAI.BlackBoard.UseTarget = null;
+				SelectedPC.MyAI.BlackBoard.InteractTarget = null;
+				return;
+			}
+
+			//Debug.Log(AimedObjectType);
 			DeathCollider deathCollider = _aimedObject.GetComponent<DeathCollider>();
 			if(AimedObjectType == AimedObjectType.Friendly)
 			{
@@ -482,54 +497,49 @@ public class PlayerControl
 
 					SelectedPC.MyAI.BlackBoard.PendingCommand = CharacterCommands.Talk;
 
-					c.Destination = _aimedObject.transform.position;
+
 					//Debug.Log("destination " + c.Destination.Value);
 				}
 
-				SelectedPC.GetComponent<HumanCharacter>().SendCommand(CharacterCommands.GoToPosition);
+
 			}
 			else if(deathCollider != null)
 			{
 				Character aimedCharacter = deathCollider.ParentCharacter;
 				SelectedPC.MyAI.BlackBoard.InteractTarget = aimedCharacter;
 				SelectedPC.MyAI.BlackBoard.PendingCommand = CharacterCommands.Loot;
-				c.Destination = _aimedObject.transform.position;
-				SelectedPC.GetComponent<HumanCharacter>().SendCommand(CharacterCommands.GoToPosition);
+
+
 			}
 			else if(AimedObjectType == AimedObjectType.PickupItem)
 			{
 				SelectedPC.MyAI.BlackBoard.PickupTarget = _aimedObject.GetComponent<PickupItem>();
 				SelectedPC.MyAI.BlackBoard.PendingCommand = CharacterCommands.Pickup;
-				c.Destination = _aimedObject.transform.position;
-				SelectedPC.GetComponent<HumanCharacter>().SendCommand(CharacterCommands.GoToPosition);
+
+
 			}
 			else if(AimedObjectType == AimedObjectType.Chest)
 			{
 				SelectedPC.MyAI.BlackBoard.UseTarget = _aimedObject;
-				SelectedPC.MyAI.BlackBoard.PendingCommand = CharacterCommands.Loot;
-				c.Destination = c.AimPoint;
-				SelectedPC.GetComponent<HumanCharacter>().SendCommand(CharacterCommands.GoToPosition);
+				SelectedPC.MyAI.BlackBoard.PendingCommand = CharacterCommands.LootChest;
+
+
 			}
 			else if(AimedObjectType == AimedObjectType.Door || AimedObjectType == AimedObjectType.Interactive)
 			{
 				SelectedPC.MyAI.BlackBoard.UseTarget = _aimedObject;
-				SelectedPC.MyAI.BlackBoard.PendingCommand = CharacterCommands.Interact;
+				SelectedPC.MyAI.BlackBoard.PendingCommand = CharacterCommands.Use;
+
+
+			}
+
+			if(_moveDirection == PlayerMoveDirEnum.Stop && _moveDirection2 == PlayerMoveDirEnum.Stop)
+			{
 				c.Destination = _aimedObject.transform.position;
 				SelectedPC.GetComponent<HumanCharacter>().SendCommand(CharacterCommands.GoToPosition);
 			}
-			else
-			{
-				
-				c.Destination = c.AimPoint;
-				SelectedPC.MyAI.BlackBoard.PendingCommand = CharacterCommands.Idle;
-				SelectedPC.MyAI.BlackBoard.PickupTarget = null;
-				SelectedPC.MyAI.BlackBoard.UseTarget = null;
-				SelectedPC.MyAI.BlackBoard.InteractTarget = null;
-
-			}
 
 
-			_isMoveKeyDown = false;
 		}
 
 	}
@@ -1075,18 +1085,24 @@ public class PlayerControl
 	{
 		if(SelectedPC.MyReference.Flashlight != null)
 		{
-			SelectedPC.MyReference.Flashlight.Toggle(!SelectedPC.MyReference.Flashlight.IsOn);
+			SelectedPC.MyReference.Flashlight.TogglePlayerLight(!SelectedPC.MyReference.Flashlight.IsOn);
 			if(SelectedPC.MyReference.Flashlight.IsOn)
 			{
 				_playerLight.intensity = 0.6f;
 				_playerLight.range = 5;
-				SelectedPC.MyReference.Flashlight.Light.spotAngle = 90;
-				SelectedPC.MyReference.Flashlight.Light.range = 20;
-				SelectedPC.MyReference.Flashlight.Light.intensity = 2;
+				SelectedPC.MyReference.Flashlight.Light.spotAngle = 40;
+				SelectedPC.MyReference.Flashlight.SecondaryLight.spotAngle = 90;
+				SelectedPC.MyReference.Flashlight.Light.range = 25;
+				SelectedPC.MyReference.Flashlight.Light.intensity = 1.5f;
+				SelectedPC.MyReference.Flashlight.Light.shadows = LightShadows.Soft;
+				SelectedPC.MyReference.Flashlight.Light.shadowNearPlane = 0;
+				SelectedPC.MyReference.Flashlight.SecondaryLight.range = 15;
+				SelectedPC.MyReference.Flashlight.SecondaryLight.intensity = 1.5f;
+				SelectedPC.MyReference.Flashlight.SecondaryLight.shadowNearPlane = 0;
 			}
 			else
 			{
-				_playerLight.range = 15;
+				_playerLight.range = 5;
 				_playerLight.intensity = 0.2f;
 			}
 		}
@@ -1278,11 +1294,12 @@ public class PlayerControl
 			}
 
 			Vector3 lookPosition;
+			/*
 			if(SelectedPC.MyReference.Flashlight.IsOn)
 			{
 				lookPosition = c.AimTarget.position;
 			}
-			else
+			else */
 			{
 				if(AimedObjectType == AimedObjectType.Door || AimedObjectType == AimedObjectType.Interactive)
 				{

@@ -223,12 +223,12 @@ public class CameraController : MonoBehaviour
 			//test if the camera tester is outside boundary, if so, assign main character to prev pos and angle
 			Vector3 restrictedPos;
 			float overDistance;
-			if(IsViewInBoundary(_cameraTester, out restrictedPos, out overDistance))
+			//if(IsViewInBoundary(_cameraTester, out restrictedPos, out overDistance))
 			{
 				transform.position = newPos;
 				MainCamera.transform.localEulerAngles = newAngle;
 
-			}
+			} /*
 			else
 			{
 				transform.position = Vector3.Lerp(transform.position, restrictedPos, 2 * Time.unscaledDeltaTime);
@@ -236,7 +236,7 @@ public class CameraController : MonoBehaviour
 				float restrictedAngle = Mathf.Clamp(newAngle.x, angleLowerBound, 90);
 				//MainCamera.transform.localEulerAngles = new Vector3(restrictedAngle, 0, 0);
 				MainCamera.transform.localEulerAngles = Vector3.Lerp(MainCamera.transform.localEulerAngles, new Vector3(restrictedAngle, 0, 0), 1 * rotationLerpSpeed * Time.unscaledDeltaTime);
-			}
+			}*/
 				
 
 			MainCamera.fieldOfView = Mathf.Lerp(MainCamera.fieldOfView, cameraFov, rotationLerpSpeed * Time.unscaledDeltaTime);
@@ -289,12 +289,7 @@ public class CameraController : MonoBehaviour
 		InputEventHandler.OnCameraZoomIn += ZoomIn;
 		InputEventHandler.OnCameraZoomOut += ZoomOut;
 
-		Transform pc = GameManager.Inst.PlayerControl.SelectedPC.transform;
-		Vector3 cameraFacing = Camera.main.transform.forward;
-		
-		Vector3 cameraPos = pc.position - cameraFacing * 10;
-		Vector3 targetPosition = cameraPos + pc.transform.forward * 10;
-		transform.position = targetPosition;
+		ResetCamera();
 
 		_maxFov = HighFov;
 
@@ -308,6 +303,16 @@ public class CameraController : MonoBehaviour
 			_boundaryPoints[i] = new Vector2(marker.transform.position.x, marker.transform.position.z);
 		}
 
+	}
+
+	public void ResetCamera()
+	{
+		Transform pc = GameManager.Inst.PlayerControl.SelectedPC.transform;
+		Vector3 cameraFacing = Camera.main.transform.forward;
+
+		Vector3 cameraPos = pc.position - cameraFacing * 10;
+		Vector3 targetPosition = cameraPos + pc.transform.forward * 10;
+		transform.position = targetPosition;
 	}
 
 	public void SetCameraMode(CameraModeEnum mode)

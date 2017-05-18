@@ -2,14 +2,27 @@
 using System.Collections;
 using System.Collections.Generic;
 
+[System.Serializable]
 public class Environment
 {
+	public string Name;
+
 	public string [] AmbientSoundSet;
 	public int [] AmbientChoices;
 	public string [] PrimarySoundSet;
 	public int [] PrimaryChoices;
 
+	public Color AmbientLightColor;
+	public Color SunMoonColor;
+	public float SunMoonIntensity;
+	public float ShadowIntensity;
+
 	private Queue<string> _lastThreeSounds;
+
+	public Environment(string name)
+	{
+		Name = name;
+	}
 
 	public void LoadEnvironment()
 	{
@@ -18,6 +31,12 @@ public class Environment
 		PrimarySoundSet = new string[]{"wind", "blown_leaf", "crow"};
 		PrimaryChoices = new int[]    {4,       5,            4    };
 		_lastThreeSounds = new Queue<string>(3);
+
+		Light sunMoon = GameObject.Find("SunMoon").GetComponent<Light>();
+		sunMoon.color = SunMoonColor;
+		sunMoon.intensity = SunMoonIntensity;
+		RenderSettings.ambientLight = AmbientLightColor;
+
 	}
 
 	public string GetNextAmbientSound()

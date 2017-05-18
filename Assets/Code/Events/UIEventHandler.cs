@@ -26,6 +26,7 @@ public class UIEventHandler
 		OnStartDialogue = null;
 		OnStartTrading = null;
 		OnOpenRestPanel = null;
+		OnOpenConfirmPanel = null;
 	}
 
 	#endregion
@@ -48,6 +49,7 @@ public class UIEventHandler
 	public static event GeneralUIEventDelegate OnStartDialogue;
 	public static event GeneralUIEventDelegate OnStartTrading;
 	public static event GeneralUIEventDelegate OnOpenRestPanel;
+	public static event GeneralUIEventDelegate OnOpenConfirmPanel;
 
 
 	public void TriggerOpenWindow()
@@ -129,6 +131,14 @@ public class UIEventHandler
 		if(OnOpenRestPanel != null)
 		{
 			OnOpenRestPanel();
+		}
+	}
+
+	public void TriggerConfirm()
+	{
+		if(OnOpenConfirmPanel != null)
+		{
+			OnOpenConfirmPanel();
 		}
 	}
 }

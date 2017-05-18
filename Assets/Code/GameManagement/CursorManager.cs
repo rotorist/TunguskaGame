@@ -10,10 +10,12 @@ public class CursorManager
 	public GameObject CursorAim;
 	public GameObject CursorHand;
 	public GameObject CursorTalk;
+	public GameObject CursorPortal;
 
 	public Texture2D Default;
 	public Texture2D Hand;
 	public Texture2D Talk;
+	public Texture2D Portal;
 
 	public UILabel ToolTip;
 	public float ToolTipDelay;
@@ -30,14 +32,17 @@ public class CursorManager
 		CursorAim = GameObject.Find("CursorAim");
 		CursorHand = GameObject.Find("CursorHand");
 		CursorTalk = GameObject.Find("CursorTalk");
+		CursorPortal = GameObject.Find("CursorPortal");
 
 		NGUITools.SetActive(CursorDefault.gameObject, false);
 		NGUITools.SetActive(CursorHand.gameObject, false);
 		NGUITools.SetActive(CursorTalk.gameObject, false);
+		NGUITools.SetActive(CursorPortal.gameObject, false);
 
 		Default = Resources.Load("HWCursorDefault") as Texture2D;
 		Hand = Resources.Load("HWCursorHand") as Texture2D;
 		Talk = Resources.Load("HWCursorTalk") as Texture2D;
+		Portal = Resources.Load("HWCursorPortal") as Texture2D;
 
 		CurrentState = CursorState.Default;
 		RefreshCursor();
@@ -197,6 +202,11 @@ public class CursorManager
 				ShowToolTip(aimedObject.GetComponent<PickupItem>().Item.Name);
 				SetCursorState(CursorState.Hand);
 			}
+			else if(aimedObject != null && aimedObject.GetComponent<StoryObject>() != null)
+			{
+				ShowToolTip(aimedObject.GetComponent<StoryObject>().Name);
+				SetCursorState(CursorState.Hand);
+			}
 			else if(aimedObject != null)
 			{
 				DeathCollider deathCollider = aimedObject.GetComponent<DeathCollider>();
@@ -229,9 +239,14 @@ public class CursorManager
 				{
 					SetCursorState(CursorState.Hand);
 				}
-				else if(aimedObject.tag == "Interactive" || aimedObject.tag == "Door")
+				else if(aimedObject.tag == "Door")
 				{
 					SetCursorState(CursorState.Hand);
+				}
+				else if(aimedObject.tag == "Portal")
+				{
+
+					SetCursorState(CursorState.Portal);
 				}
 				else
 				{
@@ -276,6 +291,7 @@ public class CursorManager
 			//NGUITools.SetActive(CursorTalk.gameObject, false);
 			//NGUITools.SetActive(CursorDefault.gameObject, true);
 			Cursor.SetCursor(Default, Vector2.zero, CursorMode.Auto);
+			NGUITools.SetActive(CursorPortal.gameObject, false);
 			ActiveCursor = CursorDefault;
 			Cursor.visible = true;
 			break;
@@ -286,6 +302,7 @@ public class CursorManager
 			//NGUITools.SetActive(CursorHand.gameObject, false);
 			//NGUITools.SetActive(CursorTalk.gameObject, false);
 			NGUITools.SetActive(CursorAim.gameObject, true);
+			NGUITools.SetActive(CursorPortal.gameObject, false);
 			Cursor.visible = false;
 			ActiveCursor = CursorAim;
 			break;
@@ -297,6 +314,7 @@ public class CursorManager
 			//NGUITools.SetActive(CursorTalk.gameObject, false);
 			//NGUITools.SetActive(CursorHand.gameObject, true);
 			Cursor.SetCursor(Hand, Vector2.zero, CursorMode.Auto);
+			NGUITools.SetActive(CursorPortal.gameObject, false);
 			ActiveCursor = CursorHand;
 			Cursor.visible = true;
 			break;
@@ -307,9 +325,18 @@ public class CursorManager
 			NGUITools.SetActive(CursorAim.gameObject, false);
 			//NGUITools.SetActive(CursorHand.gameObject, false);
 			//NGUITools.SetActive(CursorTalk.gameObject, true);
+			NGUITools.SetActive(CursorPortal.gameObject, false);
 			Cursor.SetCursor(Talk, Vector2.zero, CursorMode.Auto);
 			Cursor.visible = true;
 			ActiveCursor = CursorTalk;
+			break;
+		case CursorState.Portal:
+			CursorAim.transform.position = new Vector3(0, 1000, 0);;
+			NGUITools.SetActive(CursorAim.gameObject, false);
+			Vector2 hotspot = new Vector2(25, 25);
+			Cursor.SetCursor(Portal, hotspot, CursorMode.Auto);
+			Cursor.visible = true;
+			ActiveCursor = CursorPortal;
 			break;
 		}
 
@@ -325,4 +352,5 @@ public enum CursorState
 	Observe,
 	Hand,
 	Talk,
+	Portal,
 }

@@ -548,7 +548,7 @@ public class HumanCharacter : Character
 				MyAI.WeaponSystem.StopFiringRangedWeapon();
 				UpperBodyState = HumanUpperBodyStates.Idle;
 				MyAimIK.solver.SmoothDisable(6);
-				MyHeadIK.SmoothEnable();
+				MyHeadIK.SmoothEnable(6);
 				MyAnimator.SetBool("IsAiming", false);
 				MyReference.Flashlight.transform.localEulerAngles = new Vector3(27, 0, 0);
 
@@ -1287,7 +1287,7 @@ public class HumanCharacter : Character
 			{
 				return;
 			}
-			GameObject useTarget = MyAI.BlackBoard.UseTarget;
+
 			Character target = MyAI.BlackBoard.InteractTarget;
 
 			if(target != null && target.MyStatus.Health <= 0)
@@ -1298,13 +1298,25 @@ public class HumanCharacter : Character
 
 				}
 			}
-			else if(useTarget != null)
+
+
+		}
+
+		if(command == CharacterCommands.LootChest)
+		{
+			if(ActionState != HumanActionStates.None)
+			{
+				return;
+			}
+			GameObject useTarget = MyAI.BlackBoard.UseTarget;
+
+			if(useTarget != null)
 			{
 				//open chest
 				Chest chest = useTarget.GetComponent<Chest>();
 				if(chest != null)
 				{
-					
+
 					//open UI 
 					UIEventHandler.Instance.TriggerLootChest();
 				}
@@ -1312,7 +1324,8 @@ public class HumanCharacter : Character
 
 		}
 
-		if(command == CharacterCommands.Interact)
+
+		if(command == CharacterCommands.Use)
 		{
 			if(ActionState != HumanActionStates.None)
 			{
@@ -1342,6 +1355,11 @@ public class HumanCharacter : Character
 				}
 
 
+			}
+			else if(useTarget.tag == "Portal")
+			{
+				Portal portal = useTarget.GetComponent<Portal>();
+				portal.Enter(this);
 			}
 			else if(useTarget.tag == "Interactive")
 			{
