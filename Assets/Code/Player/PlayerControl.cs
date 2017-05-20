@@ -253,6 +253,10 @@ public class PlayerControl
 			{
 				AimedObjectType = AimedObjectType.Interactive;
 			}
+			else if(_aimedObject.tag == "LightSwitch")
+			{
+				AimedObjectType = AimedObjectType.LightSwitch;
+			}
 			else
 			{
 				AimedObjectType = AimedObjectType.None;
@@ -525,7 +529,7 @@ public class PlayerControl
 
 
 			}
-			else if(AimedObjectType == AimedObjectType.Door || AimedObjectType == AimedObjectType.Interactive)
+			else if(AimedObjectType == AimedObjectType.Door || AimedObjectType == AimedObjectType.Interactive || AimedObjectType == AimedObjectType.LightSwitch)
 			{
 				SelectedPC.MyAI.BlackBoard.UseTarget = _aimedObject;
 				SelectedPC.MyAI.BlackBoard.PendingCommand = CharacterCommands.Use;

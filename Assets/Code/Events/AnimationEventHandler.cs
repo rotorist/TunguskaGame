@@ -22,6 +22,7 @@ public class AnimationEventHandler : MonoBehaviour
 	public event AnimationEventDelegate OnHitReover;
 	public event AnimationEventDelegate OnSwitchWeapon;
 	public event AnimationEventDelegate OnFinishTakeObject;
+	public event AnimationEventDelegate OnFinishInteract;
 	public event AnimationEventDelegate OnMeleeStrikeHalfWay;
 	public event AnimationEventDelegate OnMeleeComboStageOne;
 	public event AnimationEventDelegate OnMeleeComboStageTwo;
@@ -168,6 +169,14 @@ public class AnimationEventHandler : MonoBehaviour
 		if(OnFinishTakeObject != null)
 		{
 			OnFinishTakeObject();
+		}
+	}
+
+	public void TriggerOnFinishInteract()
+	{
+		if(OnFinishInteract != null)
+		{
+			OnFinishInteract();
 		}
 	}
 

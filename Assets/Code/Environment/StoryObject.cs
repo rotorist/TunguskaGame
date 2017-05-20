@@ -14,6 +14,7 @@ public class StoryObject : MonoBehaviour
 	public bool IsTrigger;
 	public bool IsReady;//when IsReady is true, player can trigger it
 	public string NotReadyMessage;//When IsReady is false and player tries to trigger, display this message
+	public string NoMoreUseMessage;
 	public string ConfirmMessage;//for story objects that will consume player's item
 	public StoryObject NextObject;
 	public string OnEvent;
@@ -22,59 +23,11 @@ public class StoryObject : MonoBehaviour
 	public int RequireItemQuantity;
 	public bool IsConsumingItem;
 
-	private float _delayTimer;
-	private bool _delayDone;
-	private bool _isTriggered;
+	private bool _isNoMoreUse;
 	
 	// Update is called once per frame
 	void Update () 
 	{
-		
-
-		if(!_delayDone && _isTriggered)
-		{
-			_delayTimer += Time.deltaTime;
-			if(_delayTimer >= 0.5f)
-			{
-				_delayDone = true;
-				_isTriggered = false;
-
-				if(!IsOn || IsTrigger)
-				{
-					//turn it on
-					if(OnEvent.Length > 0)
-					{
-						GameManager.Inst.QuestManager.StoryEvents[OnEvent].Trigger();
-					}
-
-					IsOn = true;
-					if(NextObject != null)
-					{
-						NextObject.IsReady = true;
-					}
-				}
-				else
-				{
-					//turn it off
-					if(OffEvent.Length > 0)
-					{
-						GameManager.Inst.QuestManager.StoryEvents[OffEvent].Trigger();
-					
-					}
-
-					IsOn = false;
-					if(NextObject != null)
-					{
-						NextObject.IsReady = false;
-					}
-				}
-
-			}
-
-			return;
-		}
-
-
 		if(MovingPart != null)
 		{
 			if(IsOn)
@@ -97,17 +50,19 @@ public class StoryObject : MonoBehaviour
 			GameManager.Inst.UIManager.SetConsoleText(NotReadyMessage);
 			return;
 		}
+
+		if(_isNoMoreUse)
+		{
+			GameManager.Inst.UIManager.SetConsoleText(NoMoreUseMessage);
+			return;
+		}
+
 		//check if player has required items
 		if(RequireItemID.Length > 0)
 		{
 			CharacterInventory playerInventory = GameManager.Inst.PlayerControl.SelectedPC.Inventory;
 			int itemCount = playerInventory.CountItemsInBackpack(RequireItemID);
-			if(itemCount >= RequireItemQuantity)
-			{
-				//remove item from player
-				playerInventory.RemoveItemsFromBackpack(RequireItemID, RequireItemQuantity);
-			}
-			else
+			if(itemCount < RequireItemQuantity)
 			{
 				//display message and return
 				GameManager.Inst.UIManager.SetConsoleText(NotReadyMessage);
@@ -133,10 +88,53 @@ public class StoryObject : MonoBehaviour
 
 	public void InteractConfirmed()
 	{
-		_isTriggered = true;
+		if(RequireItemID.Length > 0)
+		{
+			CharacterInventory playerInventory = GameManager.Inst.PlayerControl.SelectedPC.Inventory;
+			int itemCount = playerInventory.CountItemsInBackpack(RequireItemID);
+			if(itemCount >= RequireItemQuantity)
+			{
+				//remove item from player
+				playerInventory.RemoveItemsFromBackpack(RequireItemID, RequireItemQuantity);
+				_isNoMoreUse = true;
+			}
+			else
+			{
+				//display message and return
+				GameManager.Inst.UIManager.SetConsoleText(NotReadyMessage);
+				return;
+			}
+		}
 
+		if(!IsOn || IsTrigger)
+		{
+			//turn it on
+			if(OnEvent.Length > 0)
+			{
+				GameManager.Inst.QuestManager.StoryEvents[OnEvent].Trigger();
+			}
 
-		_delayTimer = 0;
-		_delayDone = false;
+			IsOn = true;
+			if(NextObject != null)
+			{
+				NextObject.IsReady = true;
+			}
+		}
+		else
+		{
+			//turn it off
+			if(OffEvent.Length > 0)
+			{
+				GameManager.Inst.QuestManager.StoryEvents[OffEvent].Trigger();
+
+			}
+
+			IsOn = false;
+			if(NextObject != null)
+			{
+				NextObject.IsReady = false;
+			}
+		}
+
 	}
 }

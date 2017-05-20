@@ -10,23 +10,28 @@ ModelImporter:
     100004: IncandLamp
     100006: VillageCellar2InteriorFloor
     100008: VillageCellar2InteriorWalls
+    100010: IncandLampBulb
     400000: //RootNode
     400002: FuseBox
     400004: IncandLamp
     400006: VillageCellar2InteriorFloor
     400008: VillageCellar2InteriorWalls
+    400010: IncandLampBulb
     2300000: FuseBox
     2300002: IncandLamp
     2300004: VillageCellar2InteriorFloor
     2300006: VillageCellar2InteriorWalls
+    2300008: IncandLampBulb
     3300000: FuseBox
     3300002: IncandLamp
     3300004: VillageCellar2InteriorFloor
     3300006: VillageCellar2InteriorWalls
+    3300008: IncandLampBulb
     4300000: IncandLamp
     4300002: FuseBox
     4300004: VillageCellar2InteriorFloor
     4300006: VillageCellar2InteriorWalls
+    4300008: IncandLampBulb
   materials:
     importMaterials: 1
     materialName: 0

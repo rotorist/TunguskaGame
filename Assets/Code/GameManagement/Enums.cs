@@ -298,6 +298,7 @@ public enum AimedObjectType
 	Body,
 	Chest,
 	Interactive,
+	LightSwitch,
 }
 
 public enum LogicOperator

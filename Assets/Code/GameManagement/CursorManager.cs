@@ -239,7 +239,7 @@ public class CursorManager
 				{
 					SetCursorState(CursorState.Hand);
 				}
-				else if(aimedObject.tag == "Door")
+				else if(aimedObject.tag == "Door" || aimedObject.tag == "LightSwitch")
 				{
 					SetCursorState(CursorState.Hand);
 				}

@@ -336,6 +336,8 @@ public class HumanCharacter : Character
 
 		this.MyAnimEventHandler.OnFinishTakeObject -= OnTakeObjectFinish;
 		this.MyAnimEventHandler.OnFinishTakeObject += OnTakeObjectFinish;
+		this.MyAnimEventHandler.OnFinishInteract -= OnFinishInteract;
+		this.MyAnimEventHandler.OnFinishInteract += OnFinishInteract;
 
 		this.MyAnimEventHandler.OnMeleeStrikeHalfWay -= OnMeleeStrikeHalfWay;
 		this.MyAnimEventHandler.OnMeleeStrikeHalfWay += OnMeleeStrikeHalfWay;
@@ -398,7 +400,7 @@ public class HumanCharacter : Character
 		this.MyAnimEventHandler.OnSwitchWeapon -= OnSwitchWeapon;
 
 		this.MyAnimEventHandler.OnFinishTakeObject -= OnTakeObjectFinish;
-
+		this.MyAnimEventHandler.OnFinishInteract -= OnFinishInteract;
 		this.MyAnimEventHandler.OnMeleeStrikeHalfWay -= OnMeleeStrikeHalfWay;
 		this.MyAnimEventHandler.OnMeleeComboStageOne -= OnMeleeComboStageOne;
 		this.MyAnimEventHandler.OnMeleeComboStageTwo -= OnMeleeComboStageTwo;
@@ -1331,45 +1333,17 @@ public class HumanCharacter : Character
 			{
 				return;
 			}
+				
 			GameObject useTarget = MyAI.BlackBoard.UseTarget;
 
 			Vector3 lookDir = useTarget.transform.position - transform.position;
 			lookDir = new Vector3(lookDir.x, 0, lookDir.z);
 			transform.rotation = Quaternion.LookRotation(lookDir);
 
-			if(useTarget.tag == "Door")
-			{
-				Door door = useTarget.GetComponent<Door>();
-				if(door != null)
-				{
-					if(door.IsOpen)
-					{
-						door.Close();
-					}
-					else
-					{
-						door.Open(transform);
-					}
-
-					//MyAnimator.SetTrigger("TakeObject");
-				}
+			MyAnimator.SetTrigger("Interact");
 
 
-			}
-			else if(useTarget.tag == "Portal")
-			{
-				Portal portal = useTarget.GetComponent<Portal>();
-				portal.Enter(this);
-			}
-			else if(useTarget.tag == "Interactive")
-			{
-				StoryObject so = useTarget.GetComponent<StoryObject>();
-				if(so != null)
-				{
-					so.Interact();
-					MyAnimator.SetTrigger("TakeObject");
-				}
-			}
+
 		}
 
 		if(command == CharacterCommands.Talk)
@@ -1994,6 +1968,51 @@ public class HumanCharacter : Character
 			myWeapon.transform.localEulerAngles = myWeapon.InHandAngles;
 			*/
 			MyLeftHandIK.SmoothEnable(6);
+		}
+	}
+
+	public void OnFinishInteract()
+	{
+		GameObject useTarget = MyAI.BlackBoard.UseTarget;
+		if(useTarget.tag == "Door")
+		{
+			Door door = useTarget.GetComponent<Door>();
+			if(door != null)
+			{
+				if(door.IsOpen)
+				{
+					door.Close();
+				}
+				else
+				{
+					door.Open(transform);
+				}
+
+
+			}
+
+
+		}
+		else if(useTarget.tag == "Portal")
+		{
+			Portal portal = useTarget.GetComponent<Portal>();
+			portal.Enter(this);
+		}
+		else if(useTarget.tag == "Interactive")
+		{
+			StoryObject so = useTarget.GetComponent<StoryObject>();
+			if(so != null)
+			{
+				so.Interact();
+			}
+		}
+		else if(useTarget.tag == "LightSwitch")
+		{
+			LightSwitch lightSwitch = useTarget.GetComponent<LightSwitch>();
+			if(lightSwitch != null)
+			{
+				lightSwitch.Toggle();
+			}
 		}
 	}
 
