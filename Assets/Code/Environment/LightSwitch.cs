@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class LightSwitch : MonoBehaviour 
 {
-	public Lamp MyLamp;
+	public Lamp [] MyLamps;
 
 	public void Toggle()
 	{
-		MyLamp.Toggle();
+		foreach(Lamp lamp in MyLamps)
+		{
+			lamp.Toggle();
+		}
 	}
 
 }

@@ -46,6 +46,14 @@ public class WorldManager
 		cellar.ShadowIntensity = 1;
 		AllEnvironments.Add(cellar.Name, cellar);
 
+		Environment buildingInterior = new Environment("BuildingInterior");
+		buildingInterior.AmbientLightColor = new Color(0.2f, 0.2f, 0.2f);
+		buildingInterior.SunMoonColor = new Color(0, 0, 0, 0);
+		buildingInterior.SunMoonIntensity = 0;
+		buildingInterior.ShadowIntensity = 1;
+		AllEnvironments.Add(buildingInterior.Name, buildingInterior);
+
+
 		_nextAmbientTime = UnityEngine.Random.Range(3, 6);
 		_ambientPlayCounter = 0;
 	}

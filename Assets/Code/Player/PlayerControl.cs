@@ -112,7 +112,7 @@ public class PlayerControl
 
 		SelectedPC.CurrentStance = HumanStances.Run;
 		_playerLight = GameObject.Find("PlayerLight").GetComponent<Light>();
-		_playerLight.intensity = 0.1f;
+		_playerLight.intensity = 0f;
 
 		GameManager.Inst.SoundManager.PlayerAudio = SelectedPC.GetComponent<AudioSource>();
 	}
@@ -138,8 +138,9 @@ public class PlayerControl
 		{
 			//downward raycast to detect ceiling and notify building to hide building components
 			RaycastHit buildingHit;
-			if(Physics.Raycast(SelectedPC.transform.position, Vector3.down, out buildingHit, 200, (1 << 9 | 1 << 8 | 1 << 10)))
+			if(Physics.Raycast(SelectedPC.transform.position + new Vector3(0, 0.01f, 0), Vector3.down, out buildingHit, 200, (1 << 9 | 1 << 8 | 1 << 10)))
 			{
+				//Debug.Log(buildingHit.collider.name);
 				BuildingComponent component = buildingHit.collider.GetComponent<BuildingComponent>();
 				if(component != null && component.Level < component.Building.TopLevel)
 				{
@@ -163,6 +164,7 @@ public class PlayerControl
 			if(Physics.Raycast(SelectedPC.transform.position + new Vector3(0, 1.2f, 0), Vector3.down, out downHit, 200, ~(1 << 12)))
 			{
 				PhysicMaterial material = downHit.collider.sharedMaterial;
+	
 				_groundDistance = Vector3.Distance(downHit.point, SelectedPC.transform.position);
 				if(material == null)
 				{
@@ -1092,7 +1094,7 @@ public class PlayerControl
 			SelectedPC.MyReference.Flashlight.TogglePlayerLight(!SelectedPC.MyReference.Flashlight.IsOn);
 			if(SelectedPC.MyReference.Flashlight.IsOn)
 			{
-				_playerLight.intensity = 0.6f;
+				_playerLight.intensity = 0f;
 				_playerLight.range = 5;
 				SelectedPC.MyReference.Flashlight.Light.spotAngle = 40;
 				SelectedPC.MyReference.Flashlight.SecondaryLight.spotAngle = 90;
@@ -1107,7 +1109,7 @@ public class PlayerControl
 			else
 			{
 				_playerLight.range = 5;
-				_playerLight.intensity = 0.2f;
+				_playerLight.intensity = 0f;
 			}
 		}
 	}

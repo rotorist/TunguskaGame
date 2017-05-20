@@ -7,18 +7,39 @@ public class Lamp : MonoBehaviour
 	public Light LightSource;
 	public MeshRenderer BulbOn;
 	public MeshRenderer BulbOff;
-	public bool IsOn { get { return _isOn; } }
-	private bool _isOn;
+	public bool IsOn;
 
-	public void Toggle()
+	void Start()
 	{
-		if(_isOn)
+		if(IsOn)
+		{
+			//turn on
+			LightSource.enabled = true;
+			BulbOn.enabled = true;
+			BulbOff.enabled = false;
+			IsOn = true;
+
+		}
+		else
 		{
 			//turn off
 			LightSource.enabled = false;
 			BulbOn.enabled = false;
 			BulbOff.enabled = true;
-			_isOn = false;
+			IsOn = false;
+		}
+	}
+
+
+	public void Toggle()
+	{
+		if(IsOn)
+		{
+			//turn off
+			LightSource.enabled = false;
+			BulbOn.enabled = false;
+			BulbOff.enabled = true;
+			IsOn = false;
 		}
 		else
 		{
@@ -26,7 +47,7 @@ public class Lamp : MonoBehaviour
 			LightSource.enabled = true;
 			BulbOn.enabled = true;
 			BulbOff.enabled = false;
-			_isOn = true;
+			IsOn = true;
 		}
 	}
 
