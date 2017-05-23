@@ -31,6 +31,7 @@ public class WorldManager
 
 		Environment dayWild = new Environment("DayWilderness");
 		dayWild.AmbientLightColor = new Color(0.424f, 0.430f, 0.444f);
+		dayWild.AmbientIntensity = 0.7f;
 		dayWild.SunMoonColor = new Color(1, 0.984f, 0.918f, 1f);
 		dayWild.SunMoonIntensity = 0.7f;
 		dayWild.ShadowIntensity = 1;
@@ -41,6 +42,7 @@ public class WorldManager
 
 		Environment cellar = new Environment("Cellar");
 		cellar.AmbientLightColor = new Color(0.1f, 0.1f, 0.1f);
+		cellar.AmbientIntensity = 0.1f;
 		cellar.SunMoonColor = new Color(0, 0, 0, 0);
 		cellar.SunMoonIntensity = 0;
 		cellar.ShadowIntensity = 1;
@@ -48,6 +50,7 @@ public class WorldManager
 
 		Environment buildingInterior = new Environment("BuildingInterior");
 		buildingInterior.AmbientLightColor = new Color(0.2f, 0.2f, 0.2f);
+		buildingInterior.AmbientIntensity = 0.2f;
 		buildingInterior.SunMoonColor = new Color(0, 0, 0, 0);
 		buildingInterior.SunMoonIntensity = 0;
 		buildingInterior.ShadowIntensity = 1;

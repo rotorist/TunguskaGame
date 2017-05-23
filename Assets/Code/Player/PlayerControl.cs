@@ -39,6 +39,8 @@ public class PlayerControl
 	private int _vignetteFlashDir;
 
 	private Light _playerLight;
+	private Transform _playerLightOnPos;
+	private Transform _playerLightOffPos;
 
 	private int _upDownRaycastSwitch;
 	private float _groundDistance;
@@ -112,8 +114,18 @@ public class PlayerControl
 
 		SelectedPC.CurrentStance = HumanStances.Run;
 		_playerLight = GameObject.Find("PlayerLight").GetComponent<Light>();
-		_playerLight.intensity = 0f;
-
+		_playerLight.range = 5;
+		if(RenderSettings.ambientIntensity <0.4f)
+		{
+			_playerLight.intensity = 0.6f;
+		}
+		else
+		{
+			_playerLight.intensity = 0f;
+		}
+		_playerLightOnPos = GameObject.Find("PlayerLightOnPos").transform;
+		_playerLightOffPos = GameObject.Find("PlayerLightOffPos").transform;
+		_playerLight.transform.transform.localPosition = _playerLightOffPos.localPosition;
 		GameManager.Inst.SoundManager.PlayerAudio = SelectedPC.GetComponent<AudioSource>();
 	}
 	
@@ -1094,8 +1106,16 @@ public class PlayerControl
 			SelectedPC.MyReference.Flashlight.TogglePlayerLight(!SelectedPC.MyReference.Flashlight.IsOn);
 			if(SelectedPC.MyReference.Flashlight.IsOn)
 			{
-				_playerLight.intensity = 0f;
+				if(RenderSettings.ambientIntensity <0.4f)
+				{
+					_playerLight.intensity = 1.2f;
+				}
+				else
+				{
+					_playerLight.intensity = 0f;
+				}
 				_playerLight.range = 5;
+				_playerLight.transform.localPosition = _playerLightOnPos.localPosition;
 				SelectedPC.MyReference.Flashlight.Light.spotAngle = 40;
 				SelectedPC.MyReference.Flashlight.SecondaryLight.spotAngle = 90;
 				SelectedPC.MyReference.Flashlight.Light.range = 25;
@@ -1108,8 +1128,16 @@ public class PlayerControl
 			}
 			else
 			{
+				if(RenderSettings.ambientIntensity <0.4f)
+				{
+					_playerLight.intensity = 0.6f;
+				}
+				else
+				{
+					_playerLight.intensity = 0f;
+				}
 				_playerLight.range = 5;
-				_playerLight.intensity = 0f;
+				_playerLight.transform.localPosition = _playerLightOffPos.localPosition;
 			}
 		}
 	}

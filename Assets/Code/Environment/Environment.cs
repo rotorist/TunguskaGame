@@ -13,6 +13,7 @@ public class Environment
 	public int [] PrimaryChoices;
 
 	public Color AmbientLightColor;
+	public float AmbientIntensity;
 	public Color SunMoonColor;
 	public float SunMoonIntensity;
 	public float ShadowIntensity;
@@ -36,7 +37,7 @@ public class Environment
 		sunMoon.color = SunMoonColor;
 		sunMoon.intensity = SunMoonIntensity;
 		RenderSettings.ambientLight = AmbientLightColor;
-
+		RenderSettings.ambientIntensity = AmbientIntensity;
 	}
 
 	public string GetNextAmbientSound()
