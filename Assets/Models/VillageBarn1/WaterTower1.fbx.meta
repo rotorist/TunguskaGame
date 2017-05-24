@@ -8,14 +8,24 @@ ModelImporter:
     100000: Sun
     100002: //RootNode
     100004: WaterTower1
+    100006: ValveBase
+    100008: ValveWheel
     400000: Sun
     400002: //RootNode
     400004: WaterTower1
+    400006: ValveBase
+    400008: ValveWheel
     2300000: WaterTower1
     2300002: //RootNode
+    2300004: ValveBase
+    2300006: ValveWheel
     3300000: WaterTower1
     3300002: //RootNode
+    3300004: ValveBase
+    3300006: ValveWheel
     4300000: WaterTower1
+    4300002: ValveBase
+    4300004: ValveWheel
   materials:
     importMaterials: 1
     materialName: 0
