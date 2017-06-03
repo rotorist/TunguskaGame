@@ -215,6 +215,11 @@ public class InventoryPanel : PanelBase
 			ItemDescription.text = item.Item.Description;
 		}
 
+		if(item.Item.Type == ItemType.PrimaryWeapon || item.Item.Type == ItemType.SideArm || item.Item.Type == ItemType.Helmet || item.Item.Type == ItemType.Armor)
+		{
+			ItemDescription.text = ItemDescription.text + "\n\n" + "Durability: " + Mathf.RoundToInt(item.Item.Durability) + " / " + Mathf.RoundToInt(item.Item.MaxDurability);
+		}
+
 		//generate item attribute list
 		string attributeNames = "";
 		string attributeValues = "";

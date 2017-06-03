@@ -19,6 +19,8 @@ public class Item
 	public bool IsUsable;
 	public int Tier; //1, 2, 3; 3 is best; 0 is any tier
 	public float BasePrice;
+	public float MaxDurability;
+	public float Durability;
 
 	public List<ItemAttribute> Attributes;
 

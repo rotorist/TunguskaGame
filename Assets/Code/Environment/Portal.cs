@@ -8,6 +8,15 @@ public class Portal : MonoBehaviour
 	public Portal OtherPortal;
 	public bool IsInterior;
 	public string Environment;
+	public AudioSource DoorSound;
+
+
+	void Start()
+	{
+		DoorSound = GetComponent<AudioSource>();
+
+	}
+
 
 
 	public void Enter(HumanCharacter character)
@@ -25,6 +34,8 @@ public class Portal : MonoBehaviour
 			character.Destination = character.transform.position;
 			character.SendCommand(CharacterCommands.Idle);
 		}
+
+		DoorSound.Play();
 	}
 
 	public void FadeOutCallBack()

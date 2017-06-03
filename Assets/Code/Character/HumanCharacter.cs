@@ -625,12 +625,12 @@ public class HumanCharacter : Character
 
 			Vector3 lookDir = LookTarget.position - transform.position;
 			lookDir = new Vector3(lookDir.x, 0, lookDir.z);
-
-			Vector3 destDir = GetCharacterVelocity().normalized; 
+			Vector3 velocity = GetCharacterVelocity();
+			Vector3 destDir = velocity.normalized; 
 			destDir = new Vector3(destDir.x, 0, destDir.z);
 			float lookDestAngle = Vector3.Angle(lookDir, destDir);
 
-			if(GetCharacterVelocity().magnitude > 0f && lookDestAngle < 70)
+			if(velocity.magnitude > 0.05f && lookDestAngle < 70)
 			{
 				//MyAnimator.SetTrigger("ComboAttack");
 				MyAI.BlackBoard.AnimationAction = AnimationActions.ComboAttack;
@@ -1031,7 +1031,7 @@ public class HumanCharacter : Character
 				if(magazine != null && magazine.AmmoLeft < magazine.MaxCapacity)
 				{
 					GridItemData ammo = this.Inventory.FindItemInBackpack(magazine.LoadedAmmoID);
-					if(ammo != null || MyAI.ControlType == AIControlType.NPC)
+					//if(ammo != null || MyAI.ControlType == AIControlType.NPC)
 					{
 						if(GetCurrentAnimWeapon() == WeaponAnimType.Longgun || GetCurrentAnimWeapon() == WeaponAnimType.Pistol)
 						{
@@ -1427,7 +1427,10 @@ public class HumanCharacter : Character
 		}
 
 		OnInjury(hitNormal, damage.IsCritical);
-		MyAI.Sensor.OnTakingDamage(attacker);
+		if(attacker != null)
+		{
+			MyAI.Sensor.OnTakingDamage(attacker);
+		}
 
 		float finalDamage = 0;
 		if(damage.Type == DamageType.Bullet)
@@ -1447,6 +1450,38 @@ public class HumanCharacter : Character
 				float armorRating = (float)this.Inventory.HeadSlot.GetAttributeByName("Armor").Value;
 				float coverage = (float)this.Inventory.HeadSlot.GetAttributeByName("Coverage").Value;
 				float chance = UnityEngine.Random.value;
+
+				if(damage.Type == DamageType.Bullet)
+				{
+					if(chance < coverage)
+					{
+						//covered, calculate armor rating vs penetration
+						if(damage.Penetration >= armorRating)
+						{
+							//penetrated the armor
+							finalDamage = finalDamage * Mathf.Clamp01((damage.Penetration - armorRating) / armorRating);
+						}
+						else
+						{
+							//not penetrated
+							return true;
+						}
+					}
+				}
+				else if(damage.Type == DamageType.Explosive)
+				{
+					finalDamage *= 1 - coverage;
+				}
+			}
+
+		}
+		else if(this.Inventory.ArmorSlot != null)
+		{
+			float armorRating = (float)this.Inventory.ArmorSlot.GetAttributeByName("Armor").Value;
+			float coverage = (float)this.Inventory.ArmorSlot.GetAttributeByName("Coverage").Value;
+			float chance = UnityEngine.Random.value;
+			if(damage.Type == DamageType.Bullet)
+			{
 				if(chance < coverage)
 				{
 					//covered, calculate armor rating vs penetration
@@ -1461,33 +1496,15 @@ public class HumanCharacter : Character
 						return true;
 					}
 				}
-
-
-			}
-		}
-		else if(this.Inventory.ArmorSlot != null)
-		{
-			float armorRating = (float)this.Inventory.ArmorSlot.GetAttributeByName("Armor").Value;
-			float coverage = (float)this.Inventory.ArmorSlot.GetAttributeByName("Coverage").Value;
-			float chance = UnityEngine.Random.value;
-			if(chance < coverage)
-			{
-				//covered, calculate armor rating vs penetration
-				if(damage.Penetration >= armorRating)
-				{
-					//penetrated the armor
-					finalDamage = finalDamage * Mathf.Clamp01((damage.Penetration - armorRating) / armorRating);
-				}
 				else
 				{
-					//not penetrated
-					return true;
+					//uncovered area are less vulnerable. this does NOT apply to critical (head) hits.
+					finalDamage *= 0.5f;
 				}
 			}
-			else
+			else if(damage.Type == DamageType.Explosive)
 			{
-				//uncovered area are less vulnerable. this does NOT apply to critical (head) hits.
-				finalDamage *= 0.5f;
+				finalDamage *= 1 - coverage;
 			}
 
 		}
@@ -1683,7 +1700,6 @@ public class HumanCharacter : Character
 		if(MyAI.ControlType == AIControlType.Player)
 		{
 			GameManager.Inst.CameraShaker.TriggerScreenShake(0.08f, 0.02f);
-			GameManager.Inst.UIManager.HUDPanel.OnUpdateMagAmmo();
 		}
 	}
 

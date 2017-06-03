@@ -6,6 +6,7 @@ using System.Collections.Generic;
 public class Environment
 {
 	public string Name;
+	public bool IsInterior;
 
 	public string [] AmbientSoundSet;
 	public int [] AmbientChoices;
@@ -27,10 +28,7 @@ public class Environment
 
 	public void LoadEnvironment()
 	{
-		AmbientSoundSet = new string[]{"animal", "chirp", "horror", "gun", "growl", "drone"};
-		AmbientChoices = new int[]    {4,         8,       2,        8,    7,        6      };
-		PrimarySoundSet = new string[]{"wind", "blown_leaf", "crow"};
-		PrimaryChoices = new int[]    {4,       5,            4    };
+		
 		_lastThreeSounds = new Queue<string>(3);
 
 		Light sunMoon = GameObject.Find("SunMoon").GetComponent<Light>();

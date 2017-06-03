@@ -79,9 +79,9 @@ public class ItemManager
 		//inventory1.Backpack.Add(new GridItemData(LoadItem("flakjacket"), 5, 3, GridItemOrient.Landscape, 1));
 		inventory1.Backpack.Add(new GridItemData(LoadItem("pipegrenade"), 0, 7, GridItemOrient.Landscape, 1));
 		//inventory1.Backpack.Add(new GridItemData(LoadItem("kevlarhelmet"), 0, 6, GridItemOrient.Landscape, 1));
-		inventory1.Backpack.Add(new GridItemData(LoadItem("ammo762_39"), 0, 9, GridItemOrient.Landscape, 80));
-		inventory1.Backpack.Add(new GridItemData(LoadItem("ammo762_54r"), 2, 9, GridItemOrient.Landscape, 40));
-		inventory1.Backpack.Add(new GridItemData(LoadItem("ammo12shot"), 4, 9, GridItemOrient.Landscape, 20));
+		//inventory1.Backpack.Add(new GridItemData(LoadItem("ammo762_39"), 0, 9, GridItemOrient.Landscape, 80));
+		//inventory1.Backpack.Add(new GridItemData(LoadItem("ammo762_54r"), 2, 9, GridItemOrient.Landscape, 40));
+		//inventory1.Backpack.Add(new GridItemData(LoadItem("ammo12shot"), 4, 9, GridItemOrient.Landscape, 20));
 		inventory1.Backpack.Add(new GridItemData(LoadItem("ammo44magnum"), 1, 8, GridItemOrient.Landscape, 32));
 		inventory1.Backpack.Add(new GridItemData(LoadItem("huntingshotgun"), 0, 0, GridItemOrient.Landscape, 1));
 		inventory1.Backpack.Add(new GridItemData(LoadItem("svd"), 0, 3, GridItemOrient.Landscape, 1));
@@ -338,7 +338,7 @@ public class ItemManager
 	{
 		Item item1 = new Item();
 		item1.Name = "AK 47";
-		item1.Description = "Standard service rifle of the rebel army, high damage and low accuracy.";
+		item1.Description = "Standard service rifle of the army, high damage and low accuracy.";
 		item1.PrefabName = "AK47";
 		item1.SpriteName = "ak47";
 		item1.Weight = 6;
@@ -349,6 +349,8 @@ public class ItemManager
 		item1.MaxStackSize = 1;
 		item1.Tier = 2;
 		item1.BasePrice = 200;
+		item1.MaxDurability = 120;
+		item1.Durability = 80;
 		item1.Attributes.Add(new ItemAttribute("_Muzzle Velocity", 110f));
 		item1.Attributes.Add(new ItemAttribute("Impact", 10f));
 		item1.Attributes.Add(new ItemAttribute("Accuracy", 0.7f));
@@ -362,6 +364,7 @@ public class ItemManager
 		item1.Attributes.Add(new ItemAttribute("_LoadedAmmoID", "ammo762_39"));
 		item1.Attributes.Add(new ItemAttribute("_LoadedAmmos", 30));
 		item1.Attributes.Add(new ItemAttribute("_IsRanged", true));
+		item1.Attributes.Add(new ItemAttribute("_ReloadToUnjam", true));
 		item1.BuildIndex();
 
 		Item item2 = new Item();
@@ -377,6 +380,8 @@ public class ItemManager
 		item2.MaxStackSize = 1;
 		item2.Tier = 1;
 		item2.BasePrice = 125;
+		item2.MaxDurability = 80;
+		item2.Durability = 60;
 		item2.Attributes.Add(new ItemAttribute("_Muzzle Velocity", 100f));
 		item2.Attributes.Add(new ItemAttribute("Impact", 5f));
 		item2.Attributes.Add(new ItemAttribute("Accuracy", 0.5f));
@@ -390,7 +395,7 @@ public class ItemManager
 		item2.Attributes.Add(new ItemAttribute("_LoadedAmmoID", "ammo44magnum"));
 		item2.Attributes.Add(new ItemAttribute("_LoadedAmmos", 6));
 		item2.Attributes.Add(new ItemAttribute("_IsRanged", true));
-		item2.Attributes.Add(new ItemAttribute("_FireDelay", 0.1f));
+		item2.Attributes.Add(new ItemAttribute("_ReloadToUnjam", false));
 		item2.BuildIndex();
 
 		Item item3 = new Item();
@@ -406,6 +411,8 @@ public class ItemManager
 		item3.MaxStackSize = 1;
 		item3.Tier = 1;
 		item3.BasePrice = 350;
+		item3.MaxDurability = 70;
+		item3.Durability = 30;
 		item3.Attributes.Add(new ItemAttribute("Armor", 30f)); 
 		item3.Attributes.Add(new ItemAttribute("Padding", 10f));
 		item3.Attributes.Add(new ItemAttribute("Coverage", 0.6f));
@@ -428,6 +435,8 @@ public class ItemManager
 		item4.MaxStackSize = 1;
 		item4.Tier = 2;
 		item4.BasePrice = 250;
+		item4.MaxDurability = 50;
+		item4.Durability = 40;
 		item4.Attributes.Add(new ItemAttribute("Armor", 50f));
 		item4.Attributes.Add(new ItemAttribute("Coverage", 0.5f));
 		item4.Attributes.Add(new ItemAttribute("_hideHats", true));
@@ -463,6 +472,8 @@ public class ItemManager
 		item6.MaxStackSize = 1;
 		item6.Tier = 2;
 		item6.BasePrice = 560;
+		item6.MaxDurability = 50;
+		item6.Durability = 40;
 		item6.Attributes.Add(new ItemAttribute("Armor", 50f)); 
 		item6.Attributes.Add(new ItemAttribute("Padding", 20f));
 		item6.Attributes.Add(new ItemAttribute("Coverage", 0.4f));
@@ -484,6 +495,8 @@ public class ItemManager
 		item7.MaxStackSize = 1;
 		item7.Tier = 3;
 		item7.BasePrice = 500;
+		item7.MaxDurability = 50;
+		item7.Durability = 40;
 		item7.Attributes.Add(new ItemAttribute("Armor", 40f));
 		item7.Attributes.Add(new ItemAttribute("Coverage", 0.5f));
 		item7.Attributes.Add(new ItemAttribute("_hideHats", true));
@@ -542,6 +555,8 @@ public class ItemManager
 		item10.MaxStackSize = 1;
 		item10.Tier = 1;
 		item10.BasePrice = 175;
+		item10.MaxDurability = 150;
+		item10.Durability = 140;
 		item10.Attributes.Add(new ItemAttribute("_Muzzle Velocity", 100f));
 		item10.Attributes.Add(new ItemAttribute("Impact", 5f));
 		item10.Attributes.Add(new ItemAttribute("Accuracy", 0.4f));
@@ -555,6 +570,7 @@ public class ItemManager
 		item10.Attributes.Add(new ItemAttribute("_LoadedAmmoID", "ammo12shot"));
 		item10.Attributes.Add(new ItemAttribute("_LoadedAmmos", 5));
 		item10.Attributes.Add(new ItemAttribute("_IsRanged", true));
+		item10.Attributes.Add(new ItemAttribute("_ReloadToUnjam", false));
 		item10.BuildIndex();
 
 		Item item11 = new Item();
@@ -570,6 +586,8 @@ public class ItemManager
 		item11.MaxStackSize = 1;
 		item11.Tier = 2;
 		item11.BasePrice = 720;
+		item11.MaxDurability = 60;
+		item11.Durability = 30;
 		item11.Attributes.Add(new ItemAttribute("_Muzzle Velocity", 150f));
 		item11.Attributes.Add(new ItemAttribute("Impact", 15f));
 		item11.Attributes.Add(new ItemAttribute("Accuracy", 1f));
@@ -583,6 +601,7 @@ public class ItemManager
 		item11.Attributes.Add(new ItemAttribute("_LoadedAmmoID", "ammo762_54r"));
 		item11.Attributes.Add(new ItemAttribute("_LoadedAmmos", 10));
 		item11.Attributes.Add(new ItemAttribute("_IsRanged", true));
+		item11.Attributes.Add(new ItemAttribute("_ReloadToUnjam", true));
 		item11.BuildIndex();
 
 		Item item12 = new Item();
@@ -618,6 +637,8 @@ public class ItemManager
 		item13.MaxStackSize = 1;
 		item13.Tier = 1;
 		item13.BasePrice = 80;
+		item13.MaxDurability = 80;
+		item13.Durability = 60;
 		item13.Attributes.Add(new ItemAttribute("Sharp Damage", 30f));
 		item13.Attributes.Add(new ItemAttribute("Blunt Damage", 5f));
 		item13.Attributes.Add(new ItemAttribute("_Bleeding", 0.4f));

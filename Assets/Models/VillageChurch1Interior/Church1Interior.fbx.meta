@@ -18,6 +18,7 @@ ModelImporter:
     100020: PewSide2
     100022: ChurchFloorSewerCover
     100024: Sun
+    100026: ChurchLampBulb
     400000: //RootNode
     400002: ChurchFloor
     400004: ChurchInteriorWindow
@@ -31,6 +32,7 @@ ModelImporter:
     400020: PewSide2
     400022: ChurchFloorSewerCover
     400024: Sun
+    400026: ChurchLampBulb
     2300000: ChurchFloor
     2300002: ChurchInteriorWindow
     2300004: ChurchLamp
@@ -42,6 +44,7 @@ ModelImporter:
     2300016: PewSide1
     2300018: PewSide2
     2300020: ChurchFloorSewerCover
+    2300022: ChurchLampBulb
     3300000: ChurchFloor
     3300002: ChurchInteriorWindow
     3300004: ChurchLamp
@@ -53,6 +56,7 @@ ModelImporter:
     3300016: PewSide1
     3300018: PewSide2
     3300020: ChurchFloorSewerCover
+    3300022: ChurchLampBulb
     4300000: PewBodyBroken1
     4300002: PewBodyGood
     4300004: PewSide2
@@ -64,6 +68,7 @@ ModelImporter:
     4300016: ChurchFloor
     4300018: ChurchWalls
     4300020: ChurchFloorSewerCover
+    4300022: ChurchLampBulb
   materials:
     importMaterials: 1
     materialName: 0

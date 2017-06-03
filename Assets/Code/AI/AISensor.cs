@@ -467,8 +467,10 @@ public class AISensor
 			}
 
 			float distance = Vector3.Distance(c.transform.position, _parentCharacter.transform.position);
+
 			if(c.Stealth.NoiseLevel > distance)
 			{
+				
 				//first check if the memory fact exists already
 				WorkingMemoryFact fact = _workingMemory.FindExistingFact(FactType.Disturbance, c);
 				if(fact == null)

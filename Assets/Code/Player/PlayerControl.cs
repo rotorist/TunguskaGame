@@ -154,10 +154,10 @@ public class PlayerControl
 			{
 				//Debug.Log(buildingHit.collider.name);
 				BuildingComponent component = buildingHit.collider.GetComponent<BuildingComponent>();
-				if(component != null && component.Level < component.Building.TopLevel)
+				if((component != null && component.Level < component.Building.TopLevel))
 				{
 					component.Building.NotifyHidingComponent(component, SelectedPC.transform.position.y);
-					GameManager.Inst.CameraController.CameraBaseAngle = 60;
+					GameManager.Inst.CameraController.CameraBaseAngle = 55;
 				}
 				else
 				{
@@ -167,6 +167,11 @@ public class PlayerControl
 			else
 			{
 				GameManager.Inst.CameraController.CameraBaseAngle = 45;
+			}
+
+			if(GameManager.Inst.WorldManager.CurrentEnvironment.IsInterior)
+			{
+				GameManager.Inst.CameraController.CameraBaseAngle = 55;
 			}
 		}
 		else
@@ -224,6 +229,8 @@ public class PlayerControl
 			_aimedObject = null;
 		}
 
+		AimedObjectType = AimedObjectType.None;
+
 		if(_aimedObject != null && SelectedPC.UpperBodyState != HumanUpperBodyStates.Aim)
 		{
 			Character c = _aimedObject.GetComponent<Character>();
@@ -235,7 +242,7 @@ public class PlayerControl
 				}
 				else if(c.MyAI.IsCharacterEnemy(SelectedPC))
 				{
-					AimedObjectType = AimedObjectType.Enemy;
+					
 				}
 				else
 				{
@@ -276,10 +283,7 @@ public class PlayerControl
 				AimedObjectType = AimedObjectType.None;
 			}
 		}
-		else
-		{
-			AimedObjectType = AimedObjectType.None;
-		}
+
 			
 
 		//snap auto-aim to closest enemy

@@ -11,6 +11,7 @@ public class WorldManager
 	public TerrainHandler CurrentTerrain;
 	public Environment CurrentEnvironment;
 
+
 	private int _ambientPlayCounter;
 	private int _nextAmbientTime;
 
@@ -30,6 +31,11 @@ public class WorldManager
 
 
 		Environment dayWild = new Environment("DayWilderness");
+		dayWild.IsInterior = false;
+		dayWild.AmbientSoundSet = new string[]{"animal", "chirp", "horror", "gun", "growl", "drone"};
+		dayWild.AmbientChoices = new int[]    {4,         8,       2,        8,    7,        6      };
+		dayWild.PrimarySoundSet = new string[]{"wind", "blown_leaf", "crow"};
+		dayWild.PrimaryChoices = new int[]    {4,       5,            4    };
 		dayWild.AmbientLightColor = new Color(0.424f, 0.430f, 0.444f);
 		dayWild.AmbientIntensity = 0.7f;
 		dayWild.SunMoonColor = new Color(1, 0.984f, 0.918f, 1f);
@@ -41,6 +47,11 @@ public class WorldManager
 		CurrentEnvironment.LoadEnvironment();
 
 		Environment cellar = new Environment("Cellar");
+		cellar.IsInterior = true;
+		cellar.AmbientSoundSet = new string[]{"dripping", "horror"};
+		cellar.AmbientChoices = new int[]    {6,         	2};
+		cellar.PrimarySoundSet = new string[]{"dripping", "horror"};
+		cellar.PrimaryChoices = new int[]    {6,         	2};
 		cellar.AmbientLightColor = new Color(0.1f, 0.1f, 0.1f);
 		cellar.AmbientIntensity = 0.1f;
 		cellar.SunMoonColor = new Color(0, 0, 0, 0);
@@ -49,8 +60,13 @@ public class WorldManager
 		AllEnvironments.Add(cellar.Name, cellar);
 
 		Environment buildingInterior = new Environment("BuildingInterior");
-		buildingInterior.AmbientLightColor = new Color(0.2f, 0.2f, 0.2f);
-		buildingInterior.AmbientIntensity = 0.2f;
+		buildingInterior.IsInterior = true;
+		buildingInterior.AmbientSoundSet = new string[]{"wood_creak", "interior_horror"};
+		buildingInterior.AmbientChoices = new int[]    {4,         	1};
+		buildingInterior.PrimarySoundSet = new string[]{"wood_creak", "interior_horror"};
+		buildingInterior.PrimaryChoices = new int[]    {4,         	1};
+		buildingInterior.AmbientLightColor = new Color(0.3f, 0.3f, 0.3f);
+		buildingInterior.AmbientIntensity = 0.3f;
 		buildingInterior.SunMoonColor = new Color(0, 0, 0, 0);
 		buildingInterior.SunMoonIntensity = 0;
 		buildingInterior.ShadowIntensity = 1;
@@ -75,7 +91,7 @@ public class WorldManager
 				GameManager.Inst.SoundManager.Ambient2.panStereo = UnityEngine.Random.Range(-1f, 1f);
 				selectedSource = GameManager.Inst.SoundManager.Ambient2;
 			}
-			float volume = UnityEngine.Random.Range(0.02f, 0.06f);
+			float volume = UnityEngine.Random.Range(0.04f, 0.09f);
 			string nextAmbientSound = CurrentEnvironment.GetNextAmbientSound();
 			//Debug.Log("Now playing " + nextAmbientSound);
 			selectedSource.PlayOneShot(GameManager.Inst.SoundManager.GetClip(nextAmbientSound), volume);
@@ -92,6 +108,7 @@ public class WorldManager
 	public void ChangeEnvironment(string name)
 	{
 		AllEnvironments[name].LoadEnvironment();
+		CurrentEnvironment = AllEnvironments[name];
 	}
 
 

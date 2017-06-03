@@ -230,7 +230,7 @@ public class AIWeapon
 			&& _parentCharacter.MyReference.CurrentWeapon.GetComponent<Weapon>().IsRanged)
 		{
 			Gun gun = _parentCharacter.MyReference.CurrentWeapon.GetComponent<Gun>();
-			if(gun.Magazine.AmmoLeft <= 0)
+			if(gun.Magazine.AmmoLeft <= 0 || gun.IsJammed)
 			{
 				AudioSource audio = gun.GetComponent<AudioSource>();
 				if(audio != null)
@@ -241,6 +241,9 @@ public class AIWeapon
 
 				}
 			}
+
+
+
 		}
 
 

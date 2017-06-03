@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class Door : MonoBehaviour 
 {
 	public DoorType Type;
+	public bool IsMetal;
 	public bool IsOpen;
 	public Transform DoorPanel;
 	public Transform ClosedTarget;
@@ -12,9 +14,15 @@ public class Door : MonoBehaviour
 	public Transform OpenTarget2;
 	public float OperationSpeed;
 	public List<HumanCharacter> HumansInTrigger;
-
+	public AudioSource DoorSound;
 	private Transform _rotateTarget;
-	
+
+	void Start()
+	{
+		DoorSound = GetComponent<AudioSource>();
+
+	}
+
 	// Update is called once per frame
 	void Update () 
 	{
@@ -35,6 +43,10 @@ public class Door : MonoBehaviour
 			else if(Type == DoorType.Sliding)
 			{
 				DoorPanel.transform.localPosition = Vector3.MoveTowards(DoorPanel.transform.localPosition, ClosedTarget.localPosition, Time.deltaTime * OperationSpeed);
+				if(DoorSound != null && Vector3.Distance(DoorPanel.transform.localPosition, ClosedTarget.localPosition) < 0.01f)
+				{
+					DoorSound.Stop();
+				}
 			}
 		}
 		else
@@ -46,6 +58,10 @@ public class Door : MonoBehaviour
 			else if(Type == DoorType.Sliding)
 			{
 				DoorPanel.transform.localPosition = Vector3.MoveTowards(DoorPanel.transform.localPosition, OpenTarget1.localPosition, Time.deltaTime * OperationSpeed);
+				if(DoorSound != null && Vector3.Distance(DoorPanel.transform.localPosition, OpenTarget1.localPosition) < 0.01f)
+				{
+					DoorSound.Stop();
+				}
 			}
 		}
 
@@ -72,6 +88,27 @@ public class Door : MonoBehaviour
 	public void Open(Transform opener)
 	{
 		IsOpen = true;
+		if(DoorSound != null)
+		{
+			if(Type == DoorType.Sliding)
+			{
+				DoorSound.Play();
+			}
+			else if(Type == DoorType.Rotating)
+			{
+				if(!IsMetal)
+				{
+					AudioClip clip = GameManager.Inst.SoundManager.GetClip("WoodDoorOpen");
+					DoorSound.PlayOneShot(clip, 0.8f);
+				}
+				else 
+				{
+					AudioClip clip = GameManager.Inst.SoundManager.GetClip("MetalDoorOpen");
+					DoorSound.PlayOneShot(clip, 0.6f);
+				}
+			}
+		}
+
 		if(Type == DoorType.Rotating)
 		{
 			//calculate the angle between opener-door and door-up
@@ -91,5 +128,25 @@ public class Door : MonoBehaviour
 	public void Close()
 	{
 		IsOpen = false;
+		if(DoorSound != null)
+		{
+			if(Type == DoorType.Sliding)
+			{
+				DoorSound.Play();
+			}
+			else if(Type == DoorType.Rotating)
+			{
+				if(!IsMetal)
+				{
+					AudioClip clip = GameManager.Inst.SoundManager.GetClip("WoodDoorClose");
+					DoorSound.PlayOneShot(clip, 0.8f);
+				}
+				else 
+				{
+					AudioClip clip = GameManager.Inst.SoundManager.GetClip("MetalDoorClose");
+					DoorSound.PlayOneShot(clip, 0.6f);
+				}
+			}
+		}
 	}
 }

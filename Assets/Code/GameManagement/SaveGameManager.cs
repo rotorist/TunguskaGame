@@ -98,7 +98,7 @@ public class SaveGameManager
 
 		GameManager.Inst.WorldManager.AllLevels.Add(currentLevel);
 		CurrentSave.Levels = GameManager.Inst.WorldManager.AllLevels;
-
+		CurrentSave.CurrentEnvironmentName = GameManager.Inst.WorldManager.CurrentEnvironment.Name;
 
 		//save factions
 		CurrentSave.Factions = new List<KeyValuePair<Faction, FactionData>>();
@@ -184,6 +184,8 @@ public class SaveGameManager
 				break;
 			}
 		}
+
+		GameManager.Inst.WorldManager.ChangeEnvironment(CurrentSave.CurrentEnvironmentName);
 
 		//load player status
 		GameManager.Inst.PlayerControl.SelectedPC.MyStatus.Data = CurrentSave.PlayerStatus;

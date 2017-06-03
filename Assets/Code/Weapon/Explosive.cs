@@ -45,7 +45,11 @@ public class Explosive : MonoBehaviour
 							Damage deliveredDamage = new Damage();
 							deliveredDamage.Type = DamageType.Explosive;
 							deliveredDamage.BlastDamage = BlastDamage * modifer; 
-							c.SendDamage(deliveredDamage, checkHit.normal, Attacker, null);
+							if(dist < Range * 0.5f)
+							{
+								deliveredDamage.IsCritical = true;
+							}
+							c.SendDamage(deliveredDamage, checkHit.normal * -1, Attacker, null);
 
 							if(c.MyAI.ControlType == AIControlType.Player)
 							{

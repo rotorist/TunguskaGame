@@ -757,7 +757,7 @@ public class InputEventHandler
 
 			if(Input.GetKeyDown(KeyCode.X))
 			{
-				UIEventHandler.Instance.TriggerDialogue();
+				//UIEventHandler.Instance.TriggerDialogue();
 			}
 
 

@@ -16,9 +16,11 @@ public class StoryObject : MonoBehaviour
 	public string NotReadyMessage;//When IsReady is false and player tries to trigger, display this message
 	public string NoMoreUseMessage;
 	public string ConfirmMessage;//for story objects that will consume player's item
+	public string TriggerMessage;
 	public StoryObject NextObject;
 	public string OnEvent;
 	public string OffEvent;
+	public MachineAudioSource OnSound;
 	public string RequireItemID;
 	public int RequireItemQuantity;
 	public bool IsConsumingItem;
@@ -57,6 +59,7 @@ public class StoryObject : MonoBehaviour
 			return;
 		}
 
+
 		//check if player has required items
 		if(RequireItemID.Length > 0)
 		{
@@ -88,6 +91,8 @@ public class StoryObject : MonoBehaviour
 
 	public void InteractConfirmed()
 	{
+		
+		
 		if(RequireItemID.Length > 0)
 		{
 			CharacterInventory playerInventory = GameManager.Inst.PlayerControl.SelectedPC.Inventory;
@@ -114,11 +119,24 @@ public class StoryObject : MonoBehaviour
 				GameManager.Inst.QuestManager.StoryEvents[OnEvent].Trigger();
 			}
 
+			if(IsTrigger)
+			{
+				_isNoMoreUse = true;
+
+			}
+
 			IsOn = true;
 			if(NextObject != null)
 			{
 				NextObject.IsReady = true;
 			}
+
+			if(OnSound != null)
+			{
+				OnSound.TurnOn();
+			}
+
+			GameManager.Inst.UIManager.SetConsoleText(TriggerMessage);
 		}
 		else
 		{
@@ -133,6 +151,11 @@ public class StoryObject : MonoBehaviour
 			if(NextObject != null)
 			{
 				NextObject.IsReady = false;
+			}
+
+			if(OnSound != null)
+			{
+				OnSound.TurnOff();
 			}
 		}
 

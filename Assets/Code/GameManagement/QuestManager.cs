@@ -35,6 +35,13 @@ public class QuestManager
 		event2.TargetDoorName = "Level1RoadBlockGate";
 		StoryEvents.Add(event2.ID, event2);
 
+		StoryEventToggleComponent event3 = new StoryEventToggleComponent();
+		event3.ID = "Level1TurnOnIrrigator";
+		event3.IsOn = false;
+		event3.TargetName = "FarmIrrigator";
+		event3.Initialize();
+		StoryEvents.Add(event3.ID, event3);
+
 	}
 
 	public void PerSecondUpdate()

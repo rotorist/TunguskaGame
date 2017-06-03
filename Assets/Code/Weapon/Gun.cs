@@ -20,6 +20,7 @@ public class Gun : Weapon
 	public LineRenderer Laser;
 
 	public GunFireModes CurrentFireMode;
+	public bool IsJammed {get {return _isJammed;}}
 
 
 	private float _coolDownTimer;
@@ -34,10 +35,15 @@ public class Gun : Weapon
 	private Light _light;
 	private Vector3 _foreGripPos;
 
+	private bool _reloadToUnjam;
+	private float _jamRate;
+	private bool _isJammed;
+
 	private WeaponCallBack _onSuccessfulShot;
 
 	private bool _isEquipped;
 	private bool _pumpStarted;
+
 
 	void Update()
 	{
@@ -168,6 +174,7 @@ public class Gun : Weapon
 		_foreGripPos = this.ForeGrip.localPosition;
 		_isEquipped = true;
 
+
 		Barrel.Accuracy = (float)weaponItem.GetAttributeByName("Accuracy").Value;
 		Barrel.Impact = (float)weaponItem.GetAttributeByName("Impact").Value;
 		Barrel.MuzzleVelocity = (float)weaponItem.GetAttributeByName("_Muzzle Velocity").Value;
@@ -177,15 +184,8 @@ public class Gun : Weapon
 		Magazine.MaxCapacity = (int)weaponItem.GetAttributeByName("Magazine Size").Value;
 
 		Receiver.Recoil = (float)weaponItem.GetAttributeByName("Recoil").Value;
-		ItemAttribute fireDelayAttr = weaponItem.GetAttributeByName("_FireDelay");
-		if(fireDelayAttr != null)
-		{
-			Receiver.FireDelay = (float)fireDelayAttr.Value;
-		}
-		else
-		{
-			Receiver.FireDelay = 0;
-		}
+
+		_reloadToUnjam = (bool)weaponItem.GetAttributeByName("_ReloadToUnjam").Value;
 
 		switch(Receiver.FireModes[0])
 		{
@@ -218,6 +218,8 @@ public class Gun : Weapon
 		Item ammo = GameManager.Inst.ItemManager.LoadItem(Magazine.LoadedAmmoID);
 		_ammoItem = ammo;
 		_projectilesPerShot = (int)ammo.GetAttributeByName("_numberOfProjectiles").Value;
+
+		_isJammed = false;
 	}
 
 	public override float GetTotalLessMoveSpeed()
@@ -253,7 +255,45 @@ public class Gun : Weapon
 
 	public bool TriggerPull()
 	{
+		
 		//Debug.Log("trigger pull iscooled down " + _isCooledDown + " ammo left " + Magazine.AmmoLeft);
+		//only jam gun for player
+		if(Attacker.MyAI.ControlType == AIControlType.Player && Magazine.AmmoLeft > 0 && _isCooledDown)
+		{
+			if(_reloadToUnjam && _isJammed)
+			{
+				return false;
+			}
+
+			//roll dice for gun jam
+			if(UnityEngine.Random.value < _jamRate)
+			{
+				Magazine.AmmoLeft --;
+				WeaponItem.SetAttribute("_LoadedAmmos", Magazine.AmmoLeft);
+				GameManager.Inst.UIManager.HUDPanel.OnUpdateMagAmmo();
+
+				if(_reloadToUnjam)
+				{
+					_isJammed = true;
+					_isCooledDown = false;
+
+
+				}
+				_isCooledDown = false;
+
+				
+				AudioSource audio = GetComponent<AudioSource>();
+				if(audio != null)
+				{
+					string clipName = "dry_fire" + UnityEngine.Random.Range(1, 3).ToString();
+					AudioClip clip = GameManager.Inst.SoundManager.GetClip(clipName);
+					audio.PlayOneShot(clip, 0.2f);
+
+				}
+				return false;
+			}
+		}
+
 		if(_isCooledDown && Magazine.AmmoLeft > 0)
 		{
 
@@ -281,8 +321,25 @@ public class Gun : Weapon
 				BrassEject.Emit(1);
 			}
 
-			_onSuccessfulShot();
+			//handle drain of durability
+			WeaponItem.Durability -= GameManager.Inst.Constants.DurabilityDrainRate;
+			if(WeaponItem.Durability < 0)
+			{
+				WeaponItem.Durability = 0;
+			}
 
+			float accuMultiplier = GameManager.Inst.Constants.GunAccuVsDurability.Evaluate(WeaponItem.Durability / WeaponItem.MaxDurability);
+			float damageMultiplier = GameManager.Inst.Constants.GunDamageVsDurability.Evaluate(WeaponItem.Durability / WeaponItem.MaxDurability);
+			_jamRate = GameManager.Inst.Constants.GunJamVsDurability.Evaluate(WeaponItem.Durability / WeaponItem.MaxDurability);
+			Barrel.Accuracy = (float)WeaponItem.GetAttributeByName("Accuracy").Value * accuMultiplier;
+			Barrel.Impact = (float)WeaponItem.GetAttributeByName("Impact").Value * damageMultiplier;
+
+			_onSuccessfulShot();
+			if(Attacker.MyAI.ControlType == AIControlType.Player)
+			{
+				GameManager.Inst.UIManager.HUDPanel.OnUpdateMagAmmo();
+
+			}
 			return true;
 		}
 

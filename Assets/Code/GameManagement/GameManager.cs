@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
 	#region Public Fields
 
 
-	public Curves Curves;
+	public Constants Constants;
 	public SoundManager SoundManager;
 	public EventManager EventManager;
 	public FXManager FXManager;
@@ -98,7 +98,7 @@ public class GameManager : MonoBehaviour
 
 		Inst = this;
 
-		Curves = GetComponent<Curves>();
+		Constants = GetComponent<Constants>();
 	
 
 		//Initializing CsDebug
@@ -148,12 +148,18 @@ public class GameManager : MonoBehaviour
 
 		SaveGameManager = new SaveGameManager();
 
+
+		MutantCharacter mutant1 = NPCManager.SpawnRandomMutantCharacter("Mutant3", 2, new Vector3(-207.591f, 0, 58.15f));
+		mutant1.MyAI.BlackBoard.PatrolLoc = mutant1.transform.position;
+		mutant1.MyAI.BlackBoard.PatrolRange = new Vector3(2, 2, 2);
+		mutant1.MyAI.BlackBoard.CombatRange = new Vector3(40, 20, 20);
+		mutant1.MyAI.BlackBoard.HasPatrolInfo = true;
 		/*
 		MutantCharacter mutant1 = GameObject.Find("MutantCharacter").GetComponent<MutantCharacter>();
 		mutant1.Initialize();
 		mutant1.MyStatus.MaxHealth = 200;
 		mutant1.MyStatus.Health = 200;
-		mutant1.MyAI.BlackBoard.PatrolLoc = new Vector3(60, 0, -33);
+		mutant1.MyAI.BlackBoard.PatrolLoc = mutant1.transform.position;
 		mutant1.MyAI.BlackBoard.PatrolRange = new Vector3(5, 5, 5);
 		mutant1.MyAI.BlackBoard.CombatRange = new Vector3(40, 20, 20);
 		mutant1.MyAI.BlackBoard.HasPatrolInfo = true;

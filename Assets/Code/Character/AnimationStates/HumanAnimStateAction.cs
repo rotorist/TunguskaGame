@@ -68,7 +68,7 @@ public class HumanAnimStateAction : HumanAnimStateBase
 
 	private void Initialize()
 	{
-		//Debug.Log("Initializing Action");
+		Debug.Log("Initializing Action " + this.ParentCharacter.MyAI.BlackBoard.AnimationAction);
 		_vSpeed = this.ParentCharacter.MyAnimator.GetFloat("VSpeed");
 		this.ParentCharacter.Destination = this.ParentCharacter.transform.position;
 		if(this.ParentCharacter.MyNavAgent != null)
@@ -100,6 +100,7 @@ public class HumanAnimStateAction : HumanAnimStateBase
 		else if(this.ParentCharacter.MyAI.BlackBoard.AnimationAction == AnimationActions.ComboAttack)
 		{
 			//make character face look target
+
 			Vector3 lookDir = this.ParentCharacter.LookTarget.position - this.ParentCharacter.transform.position;
 			lookDir = new Vector3(lookDir.x, 0, lookDir.z);
 			Quaternion rotation = Quaternion.LookRotation(lookDir);
