@@ -7,12 +7,13 @@ public class QuestManager
 	public QuestBase CurrentQuest;
 
 	public Dictionary<string, StoryCondition> StoryConditions;
-	public Dictionary<string, StoryEvent> StoryEvents;
+	public Dictionary<string, StoryEventScript> Scripts;
 
 	public void Initialize()
 	{
+		Scripts = new Dictionary<string, StoryEventScript>();
 		StoryConditions = new Dictionary<string, StoryCondition>();
-		StoryEvents = new Dictionary<string, StoryEvent>();
+
 		//CurrentQuest = new WaveDefenseQuest();
 		//CurrentQuest.StartQuest();
 
@@ -22,30 +23,31 @@ public class QuestManager
 		cond1.ID = "hastomatoseeds";
 		cond1.ItemID = "mutantheart";
 		StoryConditions.Add(cond1.ID, cond1);
+	
 
-		StoryEventDoor event1 = new StoryEventDoor();
-		event1.ID = "Level1RoadBlockGateOpen";
-		event1.IsOpen = true;
-		event1.TargetDoorName = "Level1RoadBlockGate";
-		StoryEvents.Add(event1.ID, event1);
+		StoryEventScript script1 = new StoryEventScript();
+		script1.Script.Add("door Level1RoadBlockGate toggle");
+		Scripts.Add("zsk_roadblockgate_toggle", script1);
 
-		StoryEventDoor event2 = new StoryEventDoor();
-		event2.ID = "Level1RoadBlockGateClose";
-		event2.IsOpen = false;
-		event2.TargetDoorName = "Level1RoadBlockGate";
-		StoryEvents.Add(event2.ID, event2);
-
-		StoryEventToggleComponent event3 = new StoryEventToggleComponent();
-		event3.ID = "Level1TurnOnIrrigator";
-		event3.IsOn = false;
-		event3.TargetName = "FarmIrrigator";
-		event3.Initialize();
-		StoryEvents.Add(event3.ID, event3);
-
+		StoryEventScript script2 = new StoryEventScript();
+		script2.Script.Add("object FarmIrrigatorHandle on");
+		Scripts.Add("zsk_irrigator_on", script2);
 	}
 
 	public void PerSecondUpdate()
 	{
 		//CurrentQuest.PerSecondUpdate();
 	}
+
+
 }
+
+/*
+ * 
+ * 
+bool - zsk_village_gate_open
+bool - zsk_sid_intro_done //whether sidorovich finished explaining
+ * 
+ * 
+ * 
+ */
