@@ -1,0 +1,122 @@
+fileFormatVersion: 2
+guid: 05b72f6fd6e38ce46919b5692f9c6678
+timeCreated: 1496844753
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: SheetFence1
+    100002: SheetFence2
+    100004: SheetFence3
+    100006: SheetFence4
+    100008: SheetFenceDoor
+    100010: SheetFenceFixer1
+    100012: SheetFenceFixer2
+    100014: SheetFenceFixer3
+    100016: SheetFencePole
+    100018: //RootNode
+    400000: SheetFence1
+    400002: SheetFence2
+    400004: SheetFence3
+    400006: SheetFence4
+    400008: SheetFenceDoor
+    400010: SheetFenceFixer1
+    400012: SheetFenceFixer2
+    400014: SheetFenceFixer3
+    400016: SheetFencePole
+    400018: //RootNode
+    2300000: SheetFence1
+    2300002: SheetFence2
+    2300004: SheetFence3
+    2300006: SheetFence4
+    2300008: SheetFenceDoor
+    2300010: SheetFenceFixer1
+    2300012: SheetFenceFixer2
+    2300014: SheetFenceFixer3
+    2300016: SheetFencePole
+    3300000: SheetFence1
+    3300002: SheetFence2
+    3300004: SheetFence3
+    3300006: SheetFence4
+    3300008: SheetFenceDoor
+    3300010: SheetFenceFixer1
+    3300012: SheetFenceFixer2
+    3300014: SheetFenceFixer3
+    3300016: SheetFencePole
+    4300000: SheetFenceFixer2
+    4300002: SheetFenceFixer3
+    4300004: SheetFenceFixer1
+    4300006: SheetFence3
+    4300008: SheetFence2
+    4300010: SheetFencePole
+    4300012: SheetFenceDoor
+    4300014: SheetFence1
+    4300016: SheetFence4
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

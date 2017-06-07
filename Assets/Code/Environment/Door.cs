@@ -8,6 +8,8 @@ public class Door : MonoBehaviour
 	public DoorType Type;
 	public bool IsMetal;
 	public bool IsOpen;
+	public bool IsLocked;
+	public string KeyID;
 	public Transform DoorPanel;
 	public Transform ClosedTarget;
 	public Transform OpenTarget1;
@@ -87,6 +89,23 @@ public class Door : MonoBehaviour
 
 	public void Open(Transform opener)
 	{
+		//check if it's locked
+		if(IsLocked)
+		{
+			//here check if player has key
+			//
+
+			//play locked door sound
+			if(!IsMetal)
+			{
+
+			}
+			else
+			{
+
+			}
+		}
+
 		IsOpen = true;
 		if(DoorSound != null)
 		{
