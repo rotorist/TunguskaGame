@@ -552,7 +552,10 @@ public class HumanCharacter : Character
 				MyAimIK.solver.SmoothDisable(6);
 				MyHeadIK.SmoothEnable(6);
 				MyAnimator.SetBool("IsAiming", false);
-				MyReference.Flashlight.transform.localEulerAngles = new Vector3(27, 0, 0);
+				if(MyReference.Flashlight != null)
+				{
+					MyReference.Flashlight.transform.localEulerAngles = new Vector3(27, 0, 0);
+				}
 
 				if(GetCurrentAnimWeapon() == WeaponAnimType.Pistol || GetCurrentAnimWeapon() == WeaponAnimType.Grenade)
 				{
@@ -770,7 +773,10 @@ public class HumanCharacter : Character
 					MyAnimator.SetBool("IsAiming", true);
 					if(MyAI.ControlType != AIControlType.Player)
 						Debug.LogError("Animation parameter IsAiming has been set");
-					MyReference.Flashlight.transform.localEulerAngles = new Vector3(0, 0, 0);
+					if(MyReference.Flashlight != null)
+					{
+						MyReference.Flashlight.transform.localEulerAngles = new Vector3(0, 0, 0);
+					}
 				}
 					
 				/*
@@ -799,7 +805,10 @@ public class HumanCharacter : Character
 					MyAnimator.SetBool("IsAiming", true);
 					//if(MyAI.ControlType != AIControlType.Player)
 					//	Debug.LogError("Animation parameter IsAiming has been set");
-					MyReference.Flashlight.transform.localEulerAngles = new Vector3(0, 0, 0);
+					if(MyReference.Flashlight != null)
+					{
+						MyReference.Flashlight.transform.localEulerAngles = new Vector3(0, 0, 0);
+					}
 				}
 				else
 				{
@@ -1445,6 +1454,7 @@ public class HumanCharacter : Character
 		if(damage.IsCritical)
 		{
 			finalDamage *= 1.5f;
+			Debug.Log("Is character inventory headslot null? " + this.Inventory.HeadSlot == null);
 			if(this.Inventory.HeadSlot != null)
 			{
 				float armorRating = (float)this.Inventory.HeadSlot.GetAttributeByName("Armor").Value;
@@ -1477,6 +1487,7 @@ public class HumanCharacter : Character
 		}
 		else if(this.Inventory.ArmorSlot != null)
 		{
+			Debug.Log("Is character inventory armor null? " + this.Inventory.ArmorSlot == null);
 			float armorRating = (float)this.Inventory.ArmorSlot.GetAttributeByName("Armor").Value;
 			float coverage = (float)this.Inventory.ArmorSlot.GetAttributeByName("Coverage").Value;
 			float chance = UnityEngine.Random.value;
@@ -2250,7 +2261,10 @@ public class HumanCharacter : Character
 		{
 			MyNavAgent.enabled = false;
 		}
-		MyReference.Flashlight.Toggle(false);
+		if(MyReference.Flashlight != null)
+		{
+			MyReference.Flashlight.Toggle(false);
+		}
 		MyReference.LiveCollider.enabled = false;
 		MyReference.DeathCollider.enabled = true;
 
@@ -2280,7 +2294,10 @@ public class HumanCharacter : Character
 		MyLeftHandIK.SmoothDisable(12);
 		MyHeadIK.SmoothDisable(9);
 		MyNavAgent.enabled = false;
-		MyReference.Flashlight.Toggle(false);
+		if(MyReference.Flashlight != null)
+		{
+			MyReference.Flashlight.Toggle(false);
+		}
 
 		CapsuleCollider collider = GetComponent<CapsuleCollider>();
 		collider.height = 0.5f;

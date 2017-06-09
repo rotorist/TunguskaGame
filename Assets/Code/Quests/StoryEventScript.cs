@@ -83,5 +83,13 @@ public class StoryEventScript
 				door.Open(GameManager.Inst.PlayerControl.SelectedPC.transform);
 			}
 		}
+		else if(tokens[2] == "lock")
+		{
+			door.IsLocked = true;
+		}
+		else if(tokens[2] == "unlock")
+		{
+			door.IsLocked = false;
+		}
 	}
 }

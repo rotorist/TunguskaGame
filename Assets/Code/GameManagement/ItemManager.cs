@@ -96,7 +96,7 @@ public class ItemManager
 		inventory1.RifleSlot = LoadItem("ak47");
 		inventory1.ThrowSlot = LoadItem("pipegrenade");
 		inventory1.ArmorSlot = LoadItem("flakjacket");
-		inventory1.SideArmSlot = LoadItem("44magnum");
+		inventory1.SideArmSlot = LoadItem("machete");
 		inventory1.HeadSlot = LoadItem("kevlarhelmet");
 		inventory1.ToolSlot = LoadItem("geigercounter");
 

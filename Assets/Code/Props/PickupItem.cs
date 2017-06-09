@@ -53,8 +53,17 @@ public class PickupItem : MonoBehaviour
 				//check each player party member to see if his flashlight is shining on me
 				foreach(HumanCharacter character in GameManager.Inst.PlayerControl.Party.Members)
 				{
-					Vector3 distance = character.MyReference.Flashlight.transform.position - transform.position;
-					if(character.MyReference.Flashlight.IsOn && 
+					Vector3 distance = Vector3.zero;
+					if(character.MyReference.Flashlight != null)
+					{
+						distance = character.MyReference.Flashlight.transform.position - transform.position;
+					}
+					else
+					{
+						distance = character.MyReference.Eyes.transform.position - transform.position;
+					}
+
+					if(character.MyReference.Flashlight != null && character.MyReference.Flashlight.IsOn && 
 						distance.magnitude < character.MyReference.Flashlight.Light.range &&
 						Vector3.Angle(distance, character.MyReference.Flashlight.transform.forward * -1) < character.MyReference.Flashlight.Light.spotAngle/2f)
 					{

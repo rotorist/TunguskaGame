@@ -32,6 +32,10 @@ public class QuestManager
 		StoryEventScript script2 = new StoryEventScript();
 		script2.Script.Add("object FarmIrrigatorHandle on");
 		Scripts.Add("zsk_irrigator_on", script2);
+
+		StoryEventScript script3 = new StoryEventScript();
+		script3.Script.Add("door ZernaskayaSheetFenceDoor unlock");
+		Scripts.Add("zsk_village_exit_unlock", script3);
 	}
 
 	public void PerSecondUpdate()

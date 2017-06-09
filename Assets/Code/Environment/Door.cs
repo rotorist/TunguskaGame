@@ -98,12 +98,16 @@ public class Door : MonoBehaviour
 			//play locked door sound
 			if(!IsMetal)
 			{
-
+				AudioClip clip = GameManager.Inst.SoundManager.GetClip("WoodDoorLocked");
+				DoorSound.PlayOneShot(clip, 0.6f);
 			}
 			else
 			{
-
+				AudioClip clip = GameManager.Inst.SoundManager.GetClip("MetalDoorLocked");
+				DoorSound.PlayOneShot(clip, 0.6f);
 			}
+
+			return;
 		}
 
 		IsOpen = true;
