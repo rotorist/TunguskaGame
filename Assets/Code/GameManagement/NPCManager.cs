@@ -38,7 +38,9 @@ public class NPCManager
 	private Dictionary<Faction, FactionData> _allFactions;
 	private Dictionary<Character, int> _deadBodies;
 	private Dictionary<Character, float> _fadeTimers;
+	private Dictionary<string, AISquad> _allSquads;
 	private int _characterIndex;
+
 
 	public void Initialize()
 	{
@@ -76,6 +78,10 @@ public class NPCManager
 		newFaction5.Name = "Civilian";
 		newFaction5.FactionID = Faction.Civilian;
 
+		FactionData newFaction6 = new FactionData();
+		newFaction6.Name = "Shiners";
+		newFaction6.FactionID = Faction.Shiners;
+
 		newFaction2.AddRelationshipEntry(Faction.Player, 0);
 		newFaction2.AddRelationshipEntry(Faction.Mutants, 0);
 
@@ -88,12 +94,16 @@ public class NPCManager
 
 		newFaction5.AddRelationshipEntry(Faction.Player, 0.5f);
 
+		newFaction6.AddRelationshipEntry(Faction.Player, 0.75f);
+
 		_allFactions.Add(newFaction1.FactionID, newFaction1);
 		_allFactions.Add(newFaction2.FactionID, newFaction2);
 		_allFactions.Add(newFaction3.FactionID, newFaction3);
 		_allFactions.Add(newFaction4.FactionID, newFaction4);
 		_allFactions.Add(newFaction5.FactionID, newFaction5);
 
+		_allSquads = new Dictionary<string, AISquad>();
+		LoadAISquads();
 
 		//initialize preset characters
 		GameObject [] characters = GameObject.FindGameObjectsWithTag("NPC");
@@ -103,8 +113,15 @@ public class NPCManager
 			if(c != null)
 			{
 				c.Initialize();
+				if(!string.IsNullOrEmpty(c.SquadID))
+				{
+					Debug.Log(c.SquadID);
+					_allSquads[c.SquadID].AddMember(c);
+				}
 			}
 		}
+
+
 	}
 
 	public void PerSecondUpdate()
@@ -266,6 +283,7 @@ public class NPCManager
 		character.MyNavAgent.enabled = false;
 
 		character.GoapID = 0;
+		character.SquadID = squad.ID;
 		character.Faction = squad.Faction;
 		GameManager.Inst.ItemManager.LoadNPCInventory(character.Inventory, squad.Faction);
 		character.MyAI.WeaponSystem.LoadWeaponsFromInventory(false);
@@ -549,5 +567,14 @@ public class NPCManager
 		{
 			_fadeTimers[character] = 0;
 		}
+	}
+
+	private void LoadAISquads()
+	{
+		AISquad squad1 = new AISquad();
+		squad1.ID = "zsk_sidorovich";
+		squad1.Faction = Faction.Shiners;
+		squad1.Household = GameObject.Find("HouseHoldSidorovich").GetComponent<Household>();
+		_allSquads.Add(squad1.ID, squad1);
 	}
 }

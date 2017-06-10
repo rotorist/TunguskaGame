@@ -9,4 +9,5 @@ public class Household : MonoBehaviour
 	public List<Vector3> GuardLocs;
 	public List<Vector3> GuardDirs;
 	public List<Vector3> PatrolNodes;
+	public List<IdleDest> IdleDests;
 }

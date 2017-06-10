@@ -29,7 +29,10 @@ public class HumanAnimStateAction : HumanAnimStateBase
 		if(command == CharacterCommands.AnimationActionDone)
 		{
 			UpdateState(HumanBodyStates.StandIdle);
-
+			if(ParentCharacter.MyAI.BlackBoard.AnimationAction == AnimationActions.ChairSit)
+			{
+				ParentCharacter.MyAnimator.SetBool("IsChairSitting", false);
+			}
 		}
 
 	}
@@ -122,6 +125,11 @@ public class HumanAnimStateAction : HumanAnimStateBase
 		else if(this.ParentCharacter.MyAI.BlackBoard.AnimationAction == AnimationActions.HardLanding)
 		{
 			this.ParentCharacter.MyAnimator.SetTrigger("HardLand");
+		}
+		else if(this.ParentCharacter.MyAI.BlackBoard.AnimationAction == AnimationActions.ChairSit)
+		{
+			this.ParentCharacter.MyAnimator.SetFloat("Blend", UnityEngine.Random.value);
+			this.ParentCharacter.MyAnimator.SetBool("IsChairSitting", true);
 		}
 	}
 

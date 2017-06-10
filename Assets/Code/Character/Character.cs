@@ -14,8 +14,8 @@ public abstract class Character : MonoBehaviour
 
 	public Animator MyAnimator;
 
+	public string SquadID;
 	public Faction Faction;
-	public int LonerSquadID;
 
 
 	public CharacterReference MyReference;

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 //each party member has an instance of this class
 [System.Serializable]
-public class CharacterInventory 
+public class CharacterInventory : ScriptableObject
 {
 	public int BackpackCols;
 	public int BackpackRows;
@@ -21,6 +21,12 @@ public class CharacterInventory
 		Backpack = new List<GridItemData>();
 		BackpackCols = 10;
 		BackpackRows = 10;
+		HeadSlot = null;
+		ArmorSlot = null;
+		RifleSlot = null;
+		SideArmSlot = null;
+		ToolSlot = null;
+		ThrowSlot = null;
 	}
 
 	public void PostLoad()

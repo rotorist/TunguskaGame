@@ -104,7 +104,11 @@ public class ItemManager
 
 	public void LoadNPCInventory(CharacterInventory inventory, Faction faction)
 	{
-		if(faction == Faction.Legionnaires)
+		if(faction == Faction.Civilian)
+		{
+
+		}
+		else if(faction == Faction.Legionnaires)
 		{
 			float rand1 = UnityEngine.Random.value;
 			float rand2 = UnityEngine.Random.value;

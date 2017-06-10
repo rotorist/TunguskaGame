@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: ebfc096af2c7f2c4fbdf7dd1891940f0
-timeCreated: 1496932773
+guid: d97d35e37393a0246b746d4de9368b7e
+timeCreated: 1497115684
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -109,7 +109,7 @@ ModelImporter:
     400098: mixamorig:Spine
     400100: mixamorig:Spine1
     400102: mixamorig:Spine2
-    7400000: ChairSitFidgety
+    7400000: ChairSitForward
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -123,7 +123,7 @@ ModelImporter:
     motionNodeName: 
     animationImportErrors: 
     animationImportWarnings: "Copied Avatar Rig Configuration mis-match. Bone length
-      in copied configuration does not match position in animation file\nChairSitFidgety\nClip
+      in copied configuration does not match position in animation file\nChairSitForward\nClip
       'mixamo.com' has import animation warnings that might lower retargeting quality:\nNote:
       Activate translation DOF on avatar to improve retargeting quality.\n\t'mixamorig:Spine2'
       is inbetween humanoid transforms and has rotation animation that will be discarded.\n"
@@ -137,10 +137,10 @@ ModelImporter:
     extraExposedTransformPaths: []
     clipAnimations:
     - serializedVersion: 16
-      name: ChairSitFidgety
+      name: ChairSitForward
       takeName: mixamo.com
       firstFrame: 0
-      lastFrame: 42
+      lastFrame: 129
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -154,7 +154,7 @@ ModelImporter:
       loopBlendPositionXZ: 1
       keepOriginalOrientation: 1
       keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 1
+      keepOriginalPositionXZ: 0
       heightFromFeet: 0
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000

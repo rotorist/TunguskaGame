@@ -1454,7 +1454,7 @@ public class HumanCharacter : Character
 		if(damage.IsCritical)
 		{
 			finalDamage *= 1.5f;
-			Debug.Log("Is character inventory headslot null? " + this.Inventory.HeadSlot == null);
+			Debug.Log("Is character inventory headslot null? " + (this.Inventory.HeadSlot == null));
 			if(this.Inventory.HeadSlot != null)
 			{
 				float armorRating = (float)this.Inventory.HeadSlot.GetAttributeByName("Armor").Value;
@@ -1487,7 +1487,7 @@ public class HumanCharacter : Character
 		}
 		else if(this.Inventory.ArmorSlot != null)
 		{
-			Debug.Log("Is character inventory armor null? " + this.Inventory.ArmorSlot == null);
+			Debug.Log("Is character inventory armor null? " + (this.Inventory.ArmorSlot.Name));
 			float armorRating = (float)this.Inventory.ArmorSlot.GetAttributeByName("Armor").Value;
 			float coverage = (float)this.Inventory.ArmorSlot.GetAttributeByName("Coverage").Value;
 			float chance = UnityEngine.Random.value;

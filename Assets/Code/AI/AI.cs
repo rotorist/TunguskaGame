@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data;
+using System;
 
 public class AI : MonoBehaviour 
 {
@@ -132,13 +134,13 @@ public class AI : MonoBehaviour
 			}
 			else
 			{
-				if(_parentCharacter.LonerSquadID == c.LonerSquadID)
+				if(_parentCharacter.SquadID == c.SquadID)
 				{
 					return false;
 				}
 				else
 				{
-					return (_parentCharacter.LonerSquadID + c.LonerSquadID > 30); //loner relationships are random
+					return (Convert.ToInt32(c.SquadID) + Convert.ToInt32(_parentCharacter.SquadID)) > 30; //loner relationships are random
 				}
 			}
 		}
@@ -172,7 +174,7 @@ public class AI : MonoBehaviour
 			}
 			else
 			{
-				if(_parentCharacter.LonerSquadID == c.LonerSquadID)
+				if(_parentCharacter.SquadID == c.SquadID)
 				{
 					return true;
 				}
@@ -590,6 +592,11 @@ public class AI : MonoBehaviour
 			SetCurrentWorldState(state, false);
 			return false;
 		}
+		else if(state.Name == "AlwaysFalse")
+		{
+			SetCurrentWorldState(state, false);
+			return false;
+		}
 
 		return null;
 	}
@@ -759,7 +766,7 @@ public class AI : MonoBehaviour
 		{
 			object value = EvaluateWorldState(state);
 			CsDebug.Inst.CharLog(_parentCharacter, "Evaluating Goal; current value " + value + " target value " + state.Value);
-			if(!Object.Equals(value, state.Value))
+			if(!UnityEngine.Object.Equals(value, state.Value))
 			{
 				CsDebug.Inst.CharLog(_parentCharacter, "Evaluating goal result: values don't match");
 				//this goal isn't met!

@@ -185,7 +185,7 @@ public class HumanAnimStateIdle : HumanAnimStateBase
 
 	private void Initialize()
 	{
-		Debug.Log("Initializing Stand Idle");
+		//Debug.Log("Initializing Stand Idle " + ParentCharacter.name);
 		_vSpeed = this.ParentCharacter.MyAnimator.GetFloat("VSpeed");
 		this.ParentCharacter.CurrentStance = HumanStances.Run;
 		this.ParentCharacter.MyAnimator.SetFloat("Blend", UnityEngine.Random.value);

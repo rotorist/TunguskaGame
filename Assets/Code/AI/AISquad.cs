@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class AISquad
 {
+	public string ID;
 	public List<Character> Members;
 	public Household Household;
 	public Faction Faction;
