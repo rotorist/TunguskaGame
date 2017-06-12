@@ -16,7 +16,7 @@ public class InputEventHandler
 			return _instance;
 		}
 	}
-
+	#endregion
 	public void OnUnloadScene()
 	{
 		OnPlayerMove = null;
@@ -79,7 +79,7 @@ public class InputEventHandler
 		OnSelectActiveMember = null;
 		OnPopupMouseWheel = null;
 	}
-	#endregion
+
 	
 	#region Constructor
 	public InputEventHandler()

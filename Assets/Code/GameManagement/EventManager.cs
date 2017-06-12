@@ -22,7 +22,7 @@ public class EventManager
 	{
 
 		InputEventHandler.Instance.PerFrameUpdate();
-
+		StoryEventHandler.Instance.PerFrameUpdate();
 	}
 	#endregion
 	
