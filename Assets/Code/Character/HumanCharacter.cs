@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using RootMotion.FinalIK;
 
 public class HumanCharacter : Character
@@ -201,7 +202,7 @@ public class HumanCharacter : Character
 		this.Stealth = new CharacterStealth(this);
 
 		this.Inventory = new CharacterInventory();
-
+		this.MyJobs = new List<NPCJobs>();
 		this.CharacterAudio = GetComponent<AudioSource>();
 		_voiceStyle = UnityEngine.Random.Range(1, 3);
 		//_voiceStyle = 1;
@@ -225,7 +226,12 @@ public class HumanCharacter : Character
 		Trader = GetComponent<Trader>();
 		if(Trader != null)
 		{
+			MyJobs.Add(NPCJobs.Trader);
 			Trader.Initialize();
+		}
+		else
+		{
+			MyJobs.Add(NPCJobs.None);
 		}
 	}
 

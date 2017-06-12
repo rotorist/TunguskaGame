@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE dialogue[<!ATTLIST node id ID #IMPLIED>]>
+<dialogue>
+    <intro>
+        <text></text>
+        <next_node id="1" />
+    </intro>
+    <topic id="zsk_blockade">
+        <title>Blockade</title>
+        <next_node id="2" />
+    </topic>
+    <node id="2">
+        <response>
+            <condition name="zsk_village_gate_open" story="zsk_village_gate_open" compare="1" op="0" />
+            <text>Blockade has been lifted for you, good luck!</text>
+        </response>
+        <response>
+            <logic type="And">
+                <condition name="zsk_village_gate_open" story="zsk_village_gate_open" compare="0" op="0" />
+                <condition name="zsk_sid_intro_done" story="zsk_sid_intro_done" compare="0" op="0" />
+            </logic>
+            <text>Well yes, we have decided to temporarily close the gate for new comers. But that's only because we need help. </text>
+        </response>
+        <option>
+            <logic type="And">
+                <condition name="zsk_village_gate_open" story="zsk_village_gate_open" compare="0" op="0" />
+                <condition name="zsk_sid_intro_done" story="zsk_sid_intro_done" compare="0" op="0" />
+            </logic>
+            <title>Help</title>
+            <text>What can I do to help?</text>
+            <next_node id="3" />
+        </option>
+    </node>
+    <node id="3">
+        <response>
+            <text>Let's make a deal. I got three jobs that needs to be done, and nobody around here has the balls to do any of them. I can't send Razor because he's the chief of my guards; and let's just be direct - these jobs can get you killed, and I can't afford to lose Razor. But if you get these jobs done for me - and I don't care how you do it - I will not only let you through my guards, but also guide you deeper into the zone. What do you think?</text>
+        </response>
+        <option>
+            <title>Yes</title>
+            <text>Alright, let's hear it.</text>
+            <next_node id="4" />
+        </option>
+        <option>
+            <title>Not yet</title>
+            <text>I'll think about it.</text>
+            <next_node id="5" />
+        </option>
+    </node>
+    <node id="4">
+        <response>
+            <text>OK. Here's the first job: right outside the village, up north, there is a barn which we have been using to grow potatoes. We hate eating potatoes but we use them to produce alcohol.</text>
+        </response>
+        <option>
+            <title>Continue</title>
+            <text>Go on.</text>
+            <next_node id="6" />
+        </option>
+    </node>
+    <node id="6">
+        <response>
+            <text>You see, the alcohol is our main trade - the eggheads among the mutant hunters pay a lot of dough for it, and that's how we've been surviving. But recently a bunch of assholes who call themselves "Legionaires" raided our farm and took it for themselves, along with all the distillers. And that puts us in some deep shit. </text>
+        </response>
+        <option>
+            <title>Continue</title>
+            <text>I see. So you need me to take it back for you, right?</text>
+            <next_node id="7" />
+        </option>
+    </node>
+    <node id="7">
+        <response>
+            <text>Exactly. Get rid of the Legionaires; and if you can, check on the potatoes for us, they probably haven't been watered for a long time. I'll go head and tell Razor to let you through the gate.</text>
+            <event name="zsk_village_exit_unlock" />
+        </response>
+        <option>
+            <title>Guns</title>
+            <text>Do you have some guns for me?</text>
+            <next_node id="8" />
+        </option>
+    </node>
+    <node id="8">
+        <response>
+            <text>No, I don't. What the hell are you doing in the zone without a gun?</text>
+        </response>
+    </node>
+    <node id="5">
+        <response>
+            <text>Alright, take your time.</text>
+        </response>
+    </node>
+    <topic id="your_story">
+        <title>Story</title>
+        <next_node id="9" />
+    </topic>
+    <node id="9">
+        <response>
+            <text>I'm a business man. As such, I hate adventures. Now, adventure and risk are totally different things. I take risks, which is why I'm here in this God forsaken place. My son, on the other hand, is completely the opposite.</text>
+        </response>
+        <option>
+            <title>Your Son</title>
+            <text>Where is your son?</text>
+            <next_node id="10" />
+        </option>
+    </node>
+    <node id="10">
+        <response>
+            <text>He lives in Kiev. He wanted to come here with me, but I didn't let him. He's a man of hot-headed adventures and he'll get himself killed here. </text>
+        </response>
+    </node>
+    <node id="1">
+        <response>
+            <text>Hey there, what can I do you for?</text>
+        </response>
+    </node>
+</dialogue>

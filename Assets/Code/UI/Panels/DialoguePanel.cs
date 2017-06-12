@@ -79,7 +79,15 @@ public class DialoguePanel : PanelBase
 
 		InputEventHandler.Instance.State = UserInputState.Dialogue;
 
-		DialogueHandle handle = GameManager.Inst.DBManager.DBHandlerDialogue.LoadNPCDialogue(null);
+		HumanCharacter npc = (HumanCharacter)GameManager.Inst.PlayerControl.SelectedPC.MyAI.BlackBoard.InteractTarget;
+		DialogueHandle handle = GameManager.Inst.DBManager.DBHandlerDialogue.LoadNPCDialogue(npc);
+		if(handle == null)
+		{
+			Hide();
+			return;
+		}
+
+
 		ClearDialogue();
 		ClearTopics();
 		LoadIntro(handle.IntroText);
@@ -270,6 +278,20 @@ public class DialoguePanel : PanelBase
 					DialogueEntry entry = CreateDialogueEntry("Jonathan Perpy", ParseDialogueText(response.Text), false);
 
 					_entries.Push(entry);
+
+					//check if response has an event
+					if(response.Events != null && response.Events.Count > 0)
+					{
+						foreach(string e in response.Events)
+						{
+							if(GameManager.Inst.QuestManager.Scripts.ContainsKey(e))
+							{
+								StoryEventScript script = GameManager.Inst.QuestManager.Scripts[e];
+								script.Trigger();
+							}
+						}
+					}
+
 				}
 			}
 
@@ -439,6 +461,7 @@ public class DialoguePanel : PanelBase
 
 	private bool EvaluateTopicConditions(Stack<ConditionToken> conditions)
 	{
+		
 		bool finalResult = false;
 
 		if(conditions.Count <= 0)
@@ -448,6 +471,7 @@ public class DialoguePanel : PanelBase
 
 		//TODO evaluate RPN
 		Stack<bool> values = new Stack<bool>();
+
 		while(conditions.Count > 0)
 		{
 			ConditionToken token = conditions.Pop();
@@ -526,16 +550,7 @@ public class DialoguePanel : PanelBase
 			return GameManager.Inst.QuestManager.StoryConditions[condition.StoryTriggerID].Evaluate(condition.StoryTriggerCompare, condition.StoryTriggerCompareOp);
 		}
 
-		/*
-		else if(condition.ID == "hastomatoseeds")
-		{
-			return true;
-		}
-		else if(condition.ID == "hasnotomatoseeds")
-		{
-			return false;
-		}
-		*/
+
 		return true;
 	}
 

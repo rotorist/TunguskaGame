@@ -23,6 +23,16 @@ public class QuestManager
 		cond1.ID = "hastomatoseeds";
 		cond1.ItemID = "mutantheart";
 		StoryConditions.Add(cond1.ID, cond1);
+
+		StoryConditionTrigger cond2 = new StoryConditionTrigger();
+		cond2.ID = "zsk_village_gate_open";
+		cond2.SetValue(0);
+		StoryConditions.Add(cond2.ID, cond2);
+
+		StoryConditionTrigger cond3 = new StoryConditionTrigger();
+		cond3.ID = "zsk_sid_intro_done";
+		cond3.SetValue(0);
+		StoryConditions.Add(cond3.ID, cond3);
 	
 
 		StoryEventScript script1 = new StoryEventScript();
@@ -36,6 +46,8 @@ public class QuestManager
 		StoryEventScript script3 = new StoryEventScript();
 		script3.Script.Add("door ZernaskayaSheetFenceDoor unlock");
 		Scripts.Add("zsk_village_exit_unlock", script3);
+
+
 	}
 
 	public void PerSecondUpdate()

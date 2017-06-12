@@ -317,3 +317,11 @@ public enum DoorType
 	Sliding,
 
 }
+
+public enum NPCJobs
+{
+	None,
+	Trader,
+	Mechanic,
+
+}

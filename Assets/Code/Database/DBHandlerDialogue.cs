@@ -119,10 +119,22 @@ public class DBHandlerDialogue
 
 	public DialogueHandle LoadNPCDialogue(HumanCharacter npc)
 	{
+		if(npc == null)
+		{
+			return null;
+		}
+
 		XmlDocument xmlDoc = new XmlDocument();
 		string path = Application.dataPath + "/GameData/Dialogue/";
-		string file = File.ReadAllText(path + "BaldMan.xml");
-		xmlDoc.LoadXml(file);
+		string file = File.ReadAllText(path + npc.CharacterID + ".xml");
+		try
+		{
+			xmlDoc.LoadXml(file);
+		}
+		catch (XmlException)
+		{
+			return null;
+		}
 
 		CurrentDialogXML = xmlDoc;
 
@@ -291,6 +303,7 @@ public class DBHandlerDialogue
 		Stack<ConditionToken> tokensReverse = new Stack<ConditionToken>();
 
 		GetTokens(nodeItem, tokensReverse);
+		Debug.Log("toeknsreverse count " + tokensReverse.Count);
 
 		return tokensReverse;
 	}
@@ -299,7 +312,9 @@ public class DBHandlerDialogue
 	{
 		if(nodeItem.Name == "condition")
 		{
+			
 			XmlAttributeCollection attributes = nodeItem.Attributes;
+			Debug.Log("found condition " + attributes["story"].Value);
 			DialogueCondition condition = new DialogueCondition();
 
 			condition.ID = attributes["name"].Value;
@@ -338,6 +353,7 @@ public class DBHandlerDialogue
 			{
 				foreach(XmlNode child in nodeContent)
 				{
+					Debug.Log("Found logic child");
 					GetTokens(child, theStack);
 				}
 			}

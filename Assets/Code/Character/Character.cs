@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using RootMotion.FinalIK;
 
 public abstract class Character : MonoBehaviour
@@ -44,7 +45,7 @@ public abstract class Character : MonoBehaviour
 	public CharacterStealth Stealth;
 
 	public CharacterInventory Inventory;
-
+	public List<NPCJobs> MyJobs;
 	public DamageType DeathReason;
 	public bool IsLooted;
 

@@ -31,6 +31,7 @@ public class FactionData
 
 	public float GetRelationshipByID(Faction id)
 	{
+		//Debug.Log("get relationship of " + id + " " + Relationships.Count);
 		if(Relationships.ContainsKey(id))
 		{
 			return Relationships[id];

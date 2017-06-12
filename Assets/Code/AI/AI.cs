@@ -607,6 +607,7 @@ public class AI : MonoBehaviour
 	//AI Events
 	public void OnImportantEvent(float priority) //priority ranges from 0 to 1. 1 is highest priority
 	{
+		Debug.Log("On important event");
 		StartCoroutine(WaitAndCheckImportantEvent(0.1f, priority));
 
 	}

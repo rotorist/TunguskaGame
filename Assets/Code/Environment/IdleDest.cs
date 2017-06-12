@@ -10,9 +10,10 @@ public class IdleDest : MonoBehaviour
 
 public enum IdleDestType
 {
+	Stand,
 	ChairSit,
 	GroundSit,
-	Stand,
+	Trade,
 	Smoke,
 	Sleep,
 

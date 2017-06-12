@@ -94,13 +94,14 @@ public class NPCManager
 
 		newFaction5.AddRelationshipEntry(Faction.Player, 0.5f);
 
-		newFaction6.AddRelationshipEntry(Faction.Player, 0.75f);
+		newFaction6.AddRelationshipEntry(Faction.Player, 0.5f);
 
 		_allFactions.Add(newFaction1.FactionID, newFaction1);
 		_allFactions.Add(newFaction2.FactionID, newFaction2);
 		_allFactions.Add(newFaction3.FactionID, newFaction3);
 		_allFactions.Add(newFaction4.FactionID, newFaction4);
 		_allFactions.Add(newFaction5.FactionID, newFaction5);
+		_allFactions.Add(newFaction6.FactionID, newFaction6);
 
 		_allSquads = new Dictionary<string, AISquad>();
 		LoadAISquads();

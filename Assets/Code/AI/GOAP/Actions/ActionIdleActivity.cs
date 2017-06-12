@@ -10,7 +10,7 @@ public class ActionIdleActivity : GoapAction
 	private int _switchActivityTime;
 	private int _idleTimer;
 	private IdleDest _currentIdleDest;
-
+	private IdleDest _traderIdleDest;
 
 
 	public ActionIdleActivity(string name, string description, float cost)
@@ -27,7 +27,9 @@ public class ActionIdleActivity : GoapAction
 		Debug.Log("Start executing idle activity" + ParentCharacter.name);
 		_executionStopped = false;
 
+		_currentIdleDest = null;
 		_hasReachedDest = false;
+		_hasIdleDests = false;
 		_idleTimer = 0;
 		_switchActivityTime = 1;
 		if(ParentCharacter.MyAI.Squad.Household.IdleDests.Count <= 0)
@@ -37,6 +39,14 @@ public class ActionIdleActivity : GoapAction
 		else
 		{
 			_hasIdleDests = true;
+		}
+
+		foreach(IdleDest dest in ParentCharacter.MyAI.Squad.Household.IdleDests)
+		{
+			if(dest.Type == IdleDestType.Trade)
+			{
+				_traderIdleDest = dest;
+			}
 		}
 
 		UpdateAction();
@@ -116,8 +126,35 @@ public class ActionIdleActivity : GoapAction
 
 
 
+
 		if(_hasIdleDests)
 		{
+			//if is trader, look if player is nearby
+			if(ParentCharacter.MyJobs.Contains(NPCJobs.Trader) && _traderIdleDest != null && _currentIdleDest != _traderIdleDest)
+			{
+				Vector3 playerDist = _traderIdleDest.transform.position - GameManager.Inst.PlayerControl.SelectedPC.transform.position;
+				Vector3 playerDistXZ = new Vector3(playerDist.x, 0, playerDist.z);
+				if(playerDistXZ.magnitude < 2 && playerDist.y < 1)
+				{
+					//reset animation and walk to the new dest
+					if(_currentIdleDest != null)
+					{	
+						_currentIdleDest.IsOccupied = false;
+					}
+					_currentIdleDest = _traderIdleDest;
+					_currentIdleDest.IsOccupied = true;
+					ResetAnimation();
+					ParentCharacter.CurrentStance = HumanStances.Walk;
+					ParentCharacter.MyAI.TargetingSystem.SetTargetingMode(AITargetingModes.LookAhead, Vector3.zero);
+					ParentCharacter.Destination = _currentIdleDest.transform.position;
+					ParentCharacter.SendCommand(CharacterCommands.GoToPosition);
+					_idleTimer = 0;
+					_switchActivityTime = 30;
+
+					_hasReachedDest = false;
+				}
+			}
+
 			if(_currentIdleDest == null || _idleTimer >= _switchActivityTime)
 			{
 				//find next idle activity
@@ -125,24 +162,28 @@ public class ActionIdleActivity : GoapAction
 				List<IdleDest> dests = ParentCharacter.MyAI.Squad.Household.IdleDests;
 
 				int rnd = UnityEngine.Random.Range(0, dests.Count);
-				if(dests[rnd] == _currentIdleDest)
+				if(dests[rnd] == _currentIdleDest || dests[rnd].IsOccupied || 
+					(_currentIdleDest != null && _currentIdleDest.Type == dests[rnd].Type))
 				{
-					//no change, just reset the timers
-					//_switchActivityTime = UnityEngine.Random.Range(5, 20);
-					//_idleTimer = 0;
+					//no change, try again next update
 				}
 				else
 				{
 					//reset animation and walk to the new dest
+					if(_currentIdleDest != null)
+					{	
+						_currentIdleDest.IsOccupied = false;
+					}
 					_currentIdleDest = dests[rnd];
+					_currentIdleDest.IsOccupied = true;
 					ResetAnimation();
 					ParentCharacter.CurrentStance = HumanStances.Walk;
 					ParentCharacter.MyAI.TargetingSystem.SetTargetingMode(AITargetingModes.LookAhead, Vector3.zero);
 					ParentCharacter.Destination = _currentIdleDest.transform.position;
 					ParentCharacter.SendCommand(CharacterCommands.GoToPosition);
 					_idleTimer = 0;
-					_switchActivityTime = UnityEngine.Random.Range(5, 10);
-					_currentIdleDest.IsOccupied = false;
+					_switchActivityTime = UnityEngine.Random.Range(15, 30);
+
 					_hasReachedDest = false;
 				}
 			}
@@ -151,12 +192,13 @@ public class ActionIdleActivity : GoapAction
 				//check if near dest
 				if(ParentCharacter.MyNavAgent.remainingDistance <= ParentCharacter.MyNavAgent.stoppingDistance && !_hasReachedDest)
 				{
-					ParentCharacter.transform.position = _currentIdleDest.transform.position;
-					Vector3 lookDir = _currentIdleDest.transform.forward;
-					lookDir = new Vector3(lookDir.x, 0, lookDir.z);
-					ParentCharacter.transform.rotation = Quaternion.LookRotation(lookDir);
+					
 					if(_currentIdleDest.Type == IdleDestType.ChairSit)
 					{
+						ParentCharacter.transform.position = _currentIdleDest.transform.position;
+						Vector3 lookDir = _currentIdleDest.transform.forward;
+						lookDir = new Vector3(lookDir.x, 0, lookDir.z);
+						ParentCharacter.transform.rotation = Quaternion.LookRotation(lookDir);
 						ParentCharacter.MyAI.BlackBoard.AnimationAction = AnimationActions.ChairSit;
 						ParentCharacter.SendCommand(CharacterCommands.PlayAnimationAction);
 						_currentIdleDest.IsOccupied = true;

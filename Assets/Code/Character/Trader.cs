@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 [System.Serializable]
-public class TraderData
+public class TraderData : ScriptableObject
 {
 	public string CharacterID;
 	public int Cash;
