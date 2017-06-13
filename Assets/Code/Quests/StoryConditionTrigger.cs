@@ -23,7 +23,7 @@ public class StoryConditionTrigger : StoryCondition
 	public override bool Evaluate (int compareValue, int op)
 	{
 		int value = GetValue();
-
+		//Debug.Log("eval condition current value " + _value + " against " + compareValue);
 		return StaticUtility.CompareIntWithOp(value, compareValue, op);
 	}
 }

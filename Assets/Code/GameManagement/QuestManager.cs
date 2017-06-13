@@ -45,6 +45,8 @@ public class QuestManager
 
 		StoryEventScript script3 = new StoryEventScript();
 		script3.Script.Add("door ZernaskayaSheetFenceDoor unlock");
+		script3.Script.Add("condition zsk_village_gate_open true");
+		script3.Script.Add("condition zsk_sid_intro_done true");
 		Scripts.Add("zsk_village_exit_unlock", script3);
 
 

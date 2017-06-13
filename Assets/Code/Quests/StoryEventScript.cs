@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class StoryEventScript
 {
@@ -25,6 +26,9 @@ public class StoryEventScript
 				break;
 			case "door":
 				ExecuteDoorScript(tokens);
+				break;
+			case "condition":
+				ExecuteConditionScript(tokens);
 				break;
 			}
 		}
@@ -90,6 +94,33 @@ public class StoryEventScript
 		else if(tokens[2] == "unlock")
 		{
 			door.IsLocked = false;
+		}
+	}
+
+	private void ExecuteConditionScript(string [] tokens)
+	{
+		if(GameManager.Inst.QuestManager.StoryConditions.ContainsKey(tokens[1]))
+		{
+			StoryCondition condition = GameManager.Inst.QuestManager.StoryConditions[tokens[1]];
+			if(tokens[2] == "true")
+			{
+				condition.SetValue(Convert.ToInt32(1));
+			}
+			else if(tokens[2] == "false")
+			{
+				condition.SetValue(Convert.ToInt32(0));
+			}
+			else if(tokens[2] == "toggle")
+			{
+				if(condition.GetValue() == 1)
+				{
+					condition.SetValue(0);
+				}
+				else
+				{
+					condition.SetValue(1);
+				}
+			}
 		}
 	}
 }

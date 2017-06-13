@@ -27,6 +27,14 @@ public class StoryEventHandler
 
 	public Queue<StoryEvent> StoryEventQueue;
 
+	public delegate void StoryEventDelegate(object caller, object [] parameters);
+
+	public event StoryEventDelegate OnCharacterDeath;
+	public event StoryEventDelegate OnApproachingLoc;
+	public event StoryEventDelegate OnPlayerTakeItem;
+	public event StoryEventDelegate OnPlayerDropItem;
+	public event StoryEventDelegate OnPlayerSellItem;
+
 
 	public StoryEventHandler()
 	{
@@ -41,7 +49,11 @@ public class StoryEventHandler
 
 	public void EnqueueEvent(StoryEventType type, object caller, object [] parameters)
 	{
-
+		StoryEvent e = new StoryEvent();
+		e.Type = type;
+		e.Caller = caller;
+		e.Parameters = parameters;
+		StoryEventQueue.Enqueue(e);
 	}
 
 }
@@ -57,5 +69,6 @@ public enum StoryEventType
 
 	OnPlayerTakeItem,
 	OnPlayerDropItem,
+	OnPlayerSellItem,
 
 }

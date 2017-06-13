@@ -33,7 +33,7 @@
     </node>
     <node id="3">
         <response>
-            <text>Let's make a deal. I got three jobs that needs to be done, and nobody around here has the balls to do any of them. I can't send Razor because he's the chief of my guards; and let's just be direct - these jobs can get you killed, and I can't afford to lose Razor. But if you get these jobs done for me - and I don't care how you do it - I will not only let you through my guards, but also guide you deeper into the zone. What do you think?</text>
+            <text>Let's make a deal. I got three jobs that needs to be done, and nobody around here has the balls to do any of them. I can't send Razor because he's the chief of my guards; and let's just be direct - these jobs can get you killed, and I can't afford to lose Razor. But if you get these jobs done for me - and I don't care how you do it - not only will I let you through my gate, but I'll also guide you deeper into the zone. What do you think?</text>
         </response>
         <option>
             <title>Yes</title>
@@ -48,7 +48,7 @@
     </node>
     <node id="4">
         <response>
-            <text>OK. Here's the first job: right outside the village, up north, there is a barn which we have been using to grow potatoes. We hate eating potatoes but we use them to produce alcohol.</text>
+            <text>Good! Here's the first job: right outside the village, up north, there is a barn which we have been using to grow potatoes. We hate eating potatoes but we use them to produce alcohol.</text>
         </response>
         <option>
             <title>Continue</title>
