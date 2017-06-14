@@ -200,7 +200,7 @@ public enum Faction
 	FactionA,
 	FactionB,
 	Player,
-	Shiners,
+	Bootleggers,
 	Loner,
 	Military,
 	Legionnaires,

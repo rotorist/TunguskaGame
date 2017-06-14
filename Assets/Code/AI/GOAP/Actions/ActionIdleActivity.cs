@@ -162,8 +162,8 @@ public class ActionIdleActivity : GoapAction
 				List<IdleDest> dests = ParentCharacter.MyAI.Squad.Household.IdleDests;
 
 				int rnd = UnityEngine.Random.Range(0, dests.Count);
-				if(dests[rnd] == _currentIdleDest || dests[rnd].IsOccupied || 
-					(_currentIdleDest != null && _currentIdleDest.Type == dests[rnd].Type))
+				if(dests[rnd] == _currentIdleDest || dests[rnd].IsOccupied)
+					// || (_currentIdleDest != null && _currentIdleDest.Type == dests[rnd].Type))
 				{
 					//no change, try again next update
 				}

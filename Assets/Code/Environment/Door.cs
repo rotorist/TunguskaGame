@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 [RequireComponent(typeof(AudioSource))]
 public class Door : MonoBehaviour 
@@ -145,6 +146,10 @@ public class Door : MonoBehaviour
 			{
 				_rotateTarget = OpenTarget2;
 			}
+
+			//also set navmesh obstacle to carve
+			NavMeshObstacle obstacle = DoorPanel.GetComponent<NavMeshObstacle>();
+			obstacle.carving = true;
 		}
 	}
 
@@ -169,6 +174,10 @@ public class Door : MonoBehaviour
 					AudioClip clip = GameManager.Inst.SoundManager.GetClip("MetalDoorClose");
 					DoorSound.PlayOneShot(clip, 0.6f);
 				}
+
+				//also set navmesh obstacle to non-carve
+				NavMeshObstacle obstacle = DoorPanel.GetComponent<NavMeshObstacle>();
+				obstacle.carving = false;
 			}
 		}
 	}

@@ -79,8 +79,8 @@ public class NPCManager
 		newFaction5.FactionID = Faction.Civilian;
 
 		FactionData newFaction6 = new FactionData();
-		newFaction6.Name = "Shiners";
-		newFaction6.FactionID = Faction.Shiners;
+		newFaction6.Name = "Bootleggers";
+		newFaction6.FactionID = Faction.Bootleggers;
 
 		newFaction2.AddRelationshipEntry(Faction.Player, 0);
 		newFaction2.AddRelationshipEntry(Faction.Mutants, 0);
@@ -574,8 +574,14 @@ public class NPCManager
 	{
 		AISquad squad1 = new AISquad();
 		squad1.ID = "zsk_sidorovich";
-		squad1.Faction = Faction.Shiners;
+		squad1.Faction = Faction.Bootleggers;
 		squad1.Household = GameObject.Find("HouseHoldSidorovich").GetComponent<Household>();
 		_allSquads.Add(squad1.ID, squad1);
+
+		AISquad squad2 = new AISquad();
+		squad2.ID = "zsk_hans";
+		squad2.Faction = Faction.Bootleggers;
+		squad2.Household = GameObject.Find("HouseHoldHans").GetComponent<Household>();
+		_allSquads.Add(squad2.ID, squad2);
 	}
 }
