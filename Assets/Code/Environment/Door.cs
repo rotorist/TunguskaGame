@@ -72,10 +72,12 @@ public class Door : MonoBehaviour
 
 	void OnTriggerEnter(Collider other)
 	{
+		//Debug.Log("collision! " + other.name);
 		HumanCharacter human = other.GetComponent<HumanCharacter>();
 		if(human != null)
 		{
 			human.CurrentDoor = this;
+			//Debug.Log("assigning current door for " + human.name);
 		}
 	}
 

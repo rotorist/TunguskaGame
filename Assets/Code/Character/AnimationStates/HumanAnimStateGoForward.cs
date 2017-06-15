@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.AI;
 
 public class HumanAnimStateGoForward : HumanAnimStateBase
 {
@@ -17,6 +18,8 @@ public class HumanAnimStateGoForward : HumanAnimStateBase
 
 	private float _highestAirV;
 	private float _airborneTimer;
+
+	private float _stuckTimer;
 
 	// This constructor will create new state taking values from old state
 	public HumanAnimStateGoForward(HumanAnimStateBase state)     
@@ -484,7 +487,35 @@ public class HumanAnimStateGoForward : HumanAnimStateBase
 				UpdateState(HumanBodyStates.StandIdle);
 
 			}
+
+
 		}
+
+
+		if(this.ParentCharacter.MyNavAgent.remainingDistance > this.ParentCharacter.MyNavAgent.stoppingDistance)
+		{
+			if(ParentCharacter.name == "HumanCharacterHans")
+			{
+				//Debug.Log("I'm not moving? " + ParentCharacter.MyNavAgent.velocity.magnitude + " " + ParentCharacter.MyNavAgent.remainingDistance + " / " + ParentCharacter.MyNavAgent.stoppingDistance);
+			}
+			if(this.ParentCharacter.MyNavAgent.velocity.magnitude < 0.1f)
+			{
+				if(_stuckTimer < 0.1f)
+				{
+					_stuckTimer += Time.fixedDeltaTime;
+				}
+				else
+				{
+					if(this.ParentCharacter.CurrentDoor != null)
+					{
+						this.ParentCharacter.CurrentDoor.Open(this.ParentCharacter.transform);
+					}
+					_stuckTimer = 0;
+				}
+			}
+		}
+
+
 
 		if(!_isFirstUpdateDone)
 		{
