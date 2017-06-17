@@ -6,8 +6,7 @@ public class Household : MonoBehaviour
 {
 	public Vector3 PatrolRange;
 	public Vector3 CombatRange;
-	public List<Vector3> GuardLocs;
-	public List<Vector3> GuardDirs;
-	public List<Vector3> PatrolNodes;
+	public List<Transform> GuardLocs;
+	public List<Transform> PatrolNodes;
 	public List<IdleDest> IdleDests;
 }

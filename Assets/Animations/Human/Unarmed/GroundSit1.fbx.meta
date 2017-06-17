@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: d0b63a1f541628a48ba3077258d84ef9
-timeCreated: 1497193463
+guid: c9485e25d994bac4b83b6ebae06c1d82
+timeCreated: 1497706819
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -109,7 +109,7 @@ ModelImporter:
     400098: mixamorig:Spine
     400100: mixamorig:Spine1
     400102: mixamorig:Spine2
-    7400000: ChairSitDown
+    7400000: GroundSit1
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -122,11 +122,10 @@ ModelImporter:
     optimizeGameObjects: 0
     motionNodeName: 
     animationImportErrors: 
-    animationImportWarnings: "Copied Avatar Rig Configuration mis-match. Bone length
-      in copied configuration does not match position in animation file\nChairSitDown\nClip
-      'mixamo.com' has import animation warnings that might lower retargeting quality:\nNote:
-      Activate translation DOF on avatar to improve retargeting quality.\n\t'mixamorig:Spine2'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n"
+    animationImportWarnings: 'Copied Avatar Rig Configuration mis-match. Bone length
+      in copied configuration does not match position in animation file
+
+      Male_Sitting_Pose'
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     animationCompression: 3
@@ -137,10 +136,10 @@ ModelImporter:
     extraExposedTransformPaths: []
     clipAnimations:
     - serializedVersion: 16
-      name: ChairSitDown
+      name: GroundSit1
       takeName: mixamo.com
       firstFrame: 0
-      lastFrame: 95
+      lastFrame: 1
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -151,7 +150,7 @@ ModelImporter:
       loopBlend: 0
       loopBlendOrientation: 1
       loopBlendPositionY: 1
-      loopBlendPositionXZ: 0
+      loopBlendPositionXZ: 1
       keepOriginalOrientation: 1
       keepOriginalPositionY: 0
       keepOriginalPositionXZ: 0

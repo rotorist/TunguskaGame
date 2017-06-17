@@ -213,7 +213,7 @@ public class ActionPatrolArea : GoapAction
 
 				if(!ParentCharacter.MyAI.Squad.IsPatrolNodeTaken(i))
 				{
-					result = ParentCharacter.MyAI.Squad.Household.PatrolNodes[i];
+					result = ParentCharacter.MyAI.Squad.Household.PatrolNodes[i].position;
 					ParentCharacter.MyAI.BlackBoard.PatrolNodeIndex = i;
 					return true;
 				}

@@ -131,6 +131,37 @@ public class HumanAnimStateAction : HumanAnimStateBase
 			this.ParentCharacter.MyAnimator.SetFloat("Blend", UnityEngine.Random.value);
 			this.ParentCharacter.MyAnimator.SetBool("IsChairSitting", true);
 		}
+		else if(this.ParentCharacter.MyAI.BlackBoard.AnimationAction == AnimationActions.ChairStand)
+		{
+			this.ParentCharacter.MyAnimator.SetFloat("Blend", UnityEngine.Random.value);
+			this.ParentCharacter.MyAnimator.SetBool("IsChairSitting", false);
+		}
+		else if(this.ParentCharacter.MyAI.BlackBoard.AnimationAction == AnimationActions.GroundSit)
+		{
+			this.ParentCharacter.MyAnimator.SetFloat("Blend", UnityEngine.Random.value);
+			this.ParentCharacter.MyAnimator.SetBool("IsGroundSitting", true);
+		}
+		else if(this.ParentCharacter.MyAI.BlackBoard.AnimationAction == AnimationActions.GroundStand)
+		{
+			this.ParentCharacter.MyAnimator.SetBool("IsGroundSitting", false);
+		}
+		else if(this.ParentCharacter.MyAI.BlackBoard.AnimationAction == AnimationActions.Sleep)
+		{
+			if(UnityEngine.Random.value > 0.5f)
+			{
+				this.ParentCharacter.MyAnimator.SetBool("IsJackingOff", true);
+			}
+			else
+			{
+				this.ParentCharacter.MyAnimator.SetBool("IsSleeping", true);
+			}
+		}
+		else if(this.ParentCharacter.MyAI.BlackBoard.AnimationAction == AnimationActions.SleepStand)
+		{
+			this.ParentCharacter.MyAnimator.SetBool("IsSleeping", false);
+			this.ParentCharacter.MyAnimator.SetBool("IsJackingOff", false);
+		}
+
 	}
 
 	private void MoveCharacter(Vector3 dest, float speed, float acceleration)

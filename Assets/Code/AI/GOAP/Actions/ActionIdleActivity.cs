@@ -144,10 +144,7 @@ public class ActionIdleActivity : GoapAction
 					_currentIdleDest = _traderIdleDest;
 					_currentIdleDest.IsOccupied = true;
 					ResetAnimation();
-					ParentCharacter.CurrentStance = HumanStances.Walk;
-					ParentCharacter.MyAI.TargetingSystem.SetTargetingMode(AITargetingModes.LookAhead, Vector3.zero);
-					ParentCharacter.Destination = _currentIdleDest.transform.position;
-					ParentCharacter.SendCommand(CharacterCommands.GoToPosition);
+
 					_idleTimer = 0;
 					_switchActivityTime = 30;
 
@@ -177,10 +174,7 @@ public class ActionIdleActivity : GoapAction
 					_currentIdleDest = dests[rnd];
 					_currentIdleDest.IsOccupied = true;
 					ResetAnimation();
-					ParentCharacter.CurrentStance = HumanStances.Walk;
-					ParentCharacter.MyAI.TargetingSystem.SetTargetingMode(AITargetingModes.LookAhead, Vector3.zero);
-					ParentCharacter.Destination = _currentIdleDest.transform.position;
-					ParentCharacter.SendCommand(CharacterCommands.GoToPosition);
+
 					_idleTimer = 0;
 					_switchActivityTime = UnityEngine.Random.Range(15, 30);
 
@@ -190,10 +184,10 @@ public class ActionIdleActivity : GoapAction
 			else if(_currentIdleDest != null)
 			{
 				//check if near dest
-				if(ParentCharacter.MyNavAgent.remainingDistance <= ParentCharacter.MyNavAgent.stoppingDistance && !_hasReachedDest)
+				if(ParentCharacter.MyNavAgent.remainingDistance <= ParentCharacter.MyNavAgent.stoppingDistance && _hasReachedDest)
 				{
 					
-					if(_currentIdleDest.Type == IdleDestType.ChairSit)
+					if(_currentIdleDest.Type == IdleDestType.ChairSit && !ParentCharacter.MyAnimator.GetBool("IsChairSitting"))
 					{
 						ParentCharacter.transform.position = _currentIdleDest.transform.position;
 						Vector3 lookDir = _currentIdleDest.transform.forward;
@@ -203,8 +197,38 @@ public class ActionIdleActivity : GoapAction
 						ParentCharacter.SendCommand(CharacterCommands.PlayAnimationAction);
 						_currentIdleDest.IsOccupied = true;
 					}
+					else if(_currentIdleDest.Type == IdleDestType.GroundSit && !ParentCharacter.MyAnimator.GetBool("IsGroundSitting"))
+					{
+						ParentCharacter.transform.position = _currentIdleDest.transform.position;
+						Vector3 lookDir = _currentIdleDest.transform.forward;
+						lookDir = new Vector3(lookDir.x, 0, lookDir.z);
+						ParentCharacter.transform.rotation = Quaternion.LookRotation(lookDir);
+						ParentCharacter.MyAI.BlackBoard.AnimationAction = AnimationActions.GroundSit;
+						ParentCharacter.SendCommand(CharacterCommands.PlayAnimationAction);
+						_currentIdleDest.IsOccupied = true;
+					}
+					else if(_currentIdleDest.Type == IdleDestType.Sleep && !ParentCharacter.MyAnimator.GetBool("IsSleeping") && !ParentCharacter.MyAnimator.GetBool("IsJackingOff"))
+					{
+						ParentCharacter.transform.position = _currentIdleDest.transform.position;
+						Vector3 lookDir = _currentIdleDest.transform.forward;
+						lookDir = new Vector3(lookDir.x, 0, lookDir.z);
+						ParentCharacter.transform.rotation = Quaternion.LookRotation(lookDir);
+						ParentCharacter.MyAI.BlackBoard.AnimationAction = AnimationActions.Sleep;
+						ParentCharacter.SendCommand(CharacterCommands.PlayAnimationAction);
+						_currentIdleDest.IsOccupied = true;
+					}
 
-					_hasReachedDest = true;
+				}
+				else if(!_hasReachedDest)
+				{
+					ParentCharacter.CurrentStance = HumanStances.Walk;
+					ParentCharacter.MyAI.TargetingSystem.SetTargetingMode(AITargetingModes.LookAhead, Vector3.zero);
+					ParentCharacter.Destination = _currentIdleDest.transform.position;
+					ParentCharacter.SendCommand(CharacterCommands.GoToPosition);
+					if(Vector3.Distance(ParentCharacter.transform.position, _currentIdleDest.transform.position) < ParentCharacter.MyNavAgent.stoppingDistance * 1.5f)
+					{
+						_hasReachedDest = true;
+					}
 				}
 			}
 		}
@@ -213,7 +237,10 @@ public class ActionIdleActivity : GoapAction
 			//simply find a location around household to stand or sit
 		}
 
-		_idleTimer ++;
+		if(_hasReachedDest)
+		{
+			_idleTimer ++;
+		}
 
 		/*
 		//check if need to pull out weapon
@@ -259,6 +286,24 @@ public class ActionIdleActivity : GoapAction
 
 	private void ResetAnimation()
 	{
-		ParentCharacter.SendCommand(CharacterCommands.AnimationActionDone);
+		if(ParentCharacter.MyAnimator.GetBool("IsChairSitting"))
+		{
+			ParentCharacter.MyAI.BlackBoard.AnimationAction = AnimationActions.ChairStand;
+			ParentCharacter.SendCommand(CharacterCommands.PlayAnimationAction);
+		}
+		else if(ParentCharacter.MyAnimator.GetBool("IsGroundSitting"))
+		{
+			ParentCharacter.MyAI.BlackBoard.AnimationAction = AnimationActions.GroundStand;
+			ParentCharacter.SendCommand(CharacterCommands.PlayAnimationAction);
+		}
+		else if(ParentCharacter.MyAnimator.GetBool("IsSleeping") || ParentCharacter.MyAnimator.GetBool("IsJackingOff"))
+		{
+			ParentCharacter.MyAI.BlackBoard.AnimationAction = AnimationActions.SleepStand;
+			ParentCharacter.SendCommand(CharacterCommands.PlayAnimationAction);
+		}
+		else
+		{
+			ParentCharacter.SendCommand(CharacterCommands.AnimationActionDone);
+		}
 	}
 }

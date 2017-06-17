@@ -881,13 +881,23 @@ public class AI : MonoBehaviour
 
 	public static bool IsPositionInArea(Vector3 position, Vector3 targetLoc, Vector3 targetRange)
 	{
-		if(position.x <= targetLoc.x + targetRange.x && position.x >= targetLoc.x - targetRange.x
-			&& position.y <= targetLoc.y + targetRange.y && position.y >= targetLoc.y - targetRange.y
-			&& position.z <= targetLoc.z + targetRange.z && position.z >= targetLoc.z - targetRange.z)
+		if(targetRange.x == targetRange.z)
 		{
-			return true;
+			//circular area
+			if(Vector3.Distance(position, targetLoc) < targetRange.x)
+			{
+				return true;
+			}
 		}
-
+		else
+		{
+			if(position.x <= targetLoc.x + targetRange.x && position.x >= targetLoc.x - targetRange.x
+				&& position.y <= targetLoc.y + targetRange.y && position.y >= targetLoc.y - targetRange.y
+				&& position.z <= targetLoc.z + targetRange.z && position.z >= targetLoc.z - targetRange.z)
+			{
+				return true;
+			}
+		}
 		return false;
 	}
 
