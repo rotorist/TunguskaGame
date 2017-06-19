@@ -155,6 +155,19 @@ public class AISquad
 		return talkers;
 	}
 
+	public bool IsThereCommander()
+	{
+		foreach(Character member in Members)
+		{
+			if(member.IsCommander)
+			{
+				return true;
+			}
+		}
+
+		return false;
+	}
+
 	public bool ShouldIBeQuiet()
 	{
 		if(Members.Count <= 1)

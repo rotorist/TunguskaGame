@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 public class NPCManager
 {
@@ -35,12 +36,13 @@ public class NPCManager
 	private List<HumanCharacter> _humansInScene;
 	private List<MutantCharacter> _mutantsInScene;
 	private List<Character> _allCharacters;
+	private Dictionary<string, Household> _allHouseHolds;
 	private Dictionary<Faction, FactionData> _allFactions;
 	private Dictionary<Character, int> _deadBodies;
 	private Dictionary<Character, float> _fadeTimers;
 	private Dictionary<string, AISquad> _allSquads;
 	private int _characterIndex;
-
+	private int _houseHoldIndex;
 
 	public void Initialize()
 	{
@@ -60,26 +62,32 @@ public class NPCManager
 
 		FactionData newFaction1 = new FactionData();
 		newFaction1.Name = "Player";
+		newFaction1.MemberModelIDs = new string[]{"Bandit"};
 		newFaction1.FactionID = Faction.Player;
 
 		FactionData newFaction2 = new FactionData();
 		newFaction2.Name = "The Legionnaires";
+		newFaction2.MemberModelIDs = new string[]{"Bandit"};
 		newFaction2.FactionID = Faction.Legionnaires;
 
 		FactionData newFaction3 = new FactionData();
 		newFaction3.Name = "Millitary";
+		newFaction3.MemberModelIDs = new string[]{"Bandit"};
 		newFaction3.FactionID = Faction.Military;
 
 		FactionData newFaction4 = new FactionData();
 		newFaction4.Name = "Mutants";
+		newFaction4.MemberModelIDs = new string[]{"Mutant1"};
 		newFaction4.FactionID = Faction.Mutants;
 
 		FactionData newFaction5 = new FactionData();
 		newFaction5.Name = "Civilian";
+		newFaction5.MemberModelIDs = new string[]{"Bandit"};
 		newFaction5.FactionID = Faction.Civilian;
 
 		FactionData newFaction6 = new FactionData();
 		newFaction6.Name = "Bootleggers";
+		newFaction6.MemberModelIDs = new string[]{"Bootlegger1", "Bootlegger2", "Bootlegger3", "Bootlegger4"};
 		newFaction6.FactionID = Faction.Bootleggers;
 
 		newFaction2.AddRelationshipEntry(Faction.Player, 0);
@@ -103,8 +111,17 @@ public class NPCManager
 		_allFactions.Add(newFaction5.FactionID, newFaction5);
 		_allFactions.Add(newFaction6.FactionID, newFaction6);
 
+		_allHouseHolds = new Dictionary<string, Household>();
+		Household [] households = GameObject.FindObjectsOfType<Household>();
+		foreach(Household h in households)
+		{
+			_allHouseHolds.Add(h.name, h);
+		}
+
 		_allSquads = new Dictionary<string, AISquad>();
 		LoadAISquads();
+
+
 
 		//initialize preset characters
 		GameObject [] characters = GameObject.FindGameObjectsWithTag("NPC");
@@ -122,7 +139,10 @@ public class NPCManager
 			}
 		}
 
-
+		foreach(Household h in _allHouseHolds.Values)
+		{
+			h.Initialize();
+		}
 	}
 
 	public void PerSecondUpdate()
@@ -160,7 +180,17 @@ public class NPCManager
 			}
 		}
 
-
+		//update one household at a time
+		if(_houseHoldIndex < _allHouseHolds.Count)
+		{
+			string key = _allHouseHolds.Keys.ElementAt(_houseHoldIndex);
+			_allHouseHolds[key].UpdateHouseHold();
+			_houseHoldIndex ++;
+		}
+		else
+		{
+			_houseHoldIndex = 0;
+		}
 
 	}
 
@@ -300,7 +330,7 @@ public class NPCManager
 		character.gameObject.name = character.gameObject.name + _counter.ToString();
 		_counter ++;
 
-		//AddHumanCharacter(character);
+
 
 		return character;
 	}
@@ -328,7 +358,7 @@ public class NPCManager
 		character.gameObject.name = character.gameObject.name + _counter.ToString();
 		_counter ++;
 
-		//AddMutantCharacter(character);
+
 
 		return character;
 	}
@@ -575,13 +605,23 @@ public class NPCManager
 		AISquad squad1 = new AISquad();
 		squad1.ID = "zsk_sidorovich";
 		squad1.Faction = Faction.Bootleggers;
-		squad1.Household = GameObject.Find("HouseHoldSidorovich").GetComponent<Household>();
+		squad1.Household = _allHouseHolds["HouseHoldSidorovich"];
+		squad1.Household.CurrentSquad = squad1;
 		_allSquads.Add(squad1.ID, squad1);
 
 		AISquad squad2 = new AISquad();
 		squad2.ID = "zsk_hans";
 		squad2.Faction = Faction.Bootleggers;
-		squad2.Household = GameObject.Find("HouseHoldHans").GetComponent<Household>();
+		squad2.Household = _allHouseHolds["HouseHoldHans"];
+		squad2.Household.CurrentSquad = squad2;
 		_allSquads.Add(squad2.ID, squad2);
+
+		AISquad squad3 = new AISquad();
+		squad3.ID = "zsk_village_bootleggers";
+		squad3.Faction = Faction.Bootleggers;
+		squad3.Household = _allHouseHolds["HouseHoldVillageBootleggers"];
+		squad3.Household.CurrentSquad = squad3;
+		_allSquads.Add(squad3.ID, squad3);
+
 	}
 }

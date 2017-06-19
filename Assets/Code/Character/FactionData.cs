@@ -9,7 +9,7 @@ public class FactionData
 	public Faction FactionID;
 	public string Name;
 	public Dictionary<Faction, float> Relationships;
-
+	public string [] MemberModelIDs;
 	[SerializeField] private List<KeyValuePair<Faction, float>> _serRelationships;
 
 	public FactionData()

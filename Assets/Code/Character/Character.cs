@@ -9,6 +9,9 @@ public abstract class Character : MonoBehaviour
 	public string CharacterID;
 	public GameObject Model;
 
+	public string Name;
+	public string Title;
+
 	public bool IsHuman;
 	public Vector3? Destination;
 	public Vector3 AimPoint;
@@ -17,7 +20,7 @@ public abstract class Character : MonoBehaviour
 
 	public string SquadID;
 	public Faction Faction;
-
+	public bool IsCommander;
 
 	public CharacterReference MyReference;
 	public CharacterEventHandler MyEventHandler;

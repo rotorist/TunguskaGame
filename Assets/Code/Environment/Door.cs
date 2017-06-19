@@ -92,6 +92,11 @@ public class Door : MonoBehaviour
 
 	public void Open(Transform opener)
 	{
+		if(IsOpen)
+		{
+			return;
+		}
+
 		//check if it's locked
 		if(IsLocked)
 		{
@@ -157,6 +162,11 @@ public class Door : MonoBehaviour
 
 	public void Close()
 	{
+		if(!IsOpen)
+		{
+			return;
+		}
+
 		IsOpen = false;
 		if(DoorSound != null)
 		{

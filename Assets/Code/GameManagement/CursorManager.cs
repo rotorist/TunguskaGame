@@ -207,6 +207,30 @@ public class CursorManager
 				ShowToolTip(aimedObject.GetComponent<StoryObject>().Name);
 				SetCursorState(CursorState.Hand);
 			}
+			else if(aimedObject != null && aimedObject.GetComponent<Character>() != null)
+			{
+				Character aimedCharacter = aimedObject.GetComponent<Character>();
+				if(aimedCharacter != null && aimedCharacter.MyStatus.Health > 0 && !aimedCharacter.MyAI.IsCharacterEnemy((Character)GameManager.Inst.PlayerControl.SelectedPC)
+					&& aimedCharacter.MyAI.ControlType != AIControlType.Player)
+				{
+					SetCursorState(CursorState.Talk);
+				}
+				else
+				{
+					SetCursorState(CursorState.Default);
+				}
+
+				string name = aimedCharacter.Name;
+				if(!string.IsNullOrEmpty(aimedCharacter.Title))
+				{
+					name = aimedCharacter.Title + " " + name;
+				}
+
+				if(!string.IsNullOrEmpty(name))
+				{
+					ShowToolTip(name);
+				}
+			}
 			else if(aimedObject != null)
 			{
 				DeathCollider deathCollider = aimedObject.GetComponent<DeathCollider>();
@@ -216,19 +240,6 @@ public class CursorManager
 					if(aimedCharacter != null && aimedCharacter.MyStatus.Health <= 0)
 					{
 						SetCursorState(CursorState.Hand);
-					}
-					else
-					{
-						SetCursorState(CursorState.Default);
-					}
-				}
-				else if(aimedObject.GetComponent<Character>() != null)
-				{
-					Character aimedCharacter = aimedObject.GetComponent<Character>();
-					if(aimedCharacter != null && aimedCharacter.MyStatus.Health > 0 && !aimedCharacter.MyAI.IsCharacterEnemy((Character)GameManager.Inst.PlayerControl.SelectedPC)
-						&& aimedCharacter.MyAI.ControlType != AIControlType.Player)
-					{
-						SetCursorState(CursorState.Talk);
 					}
 					else
 					{
@@ -326,14 +337,15 @@ public class CursorManager
 			//NGUITools.SetActive(CursorHand.gameObject, false);
 			//NGUITools.SetActive(CursorTalk.gameObject, true);
 			NGUITools.SetActive(CursorPortal.gameObject, false);
-			Cursor.SetCursor(Talk, Vector2.zero, CursorMode.Auto);
+			Vector2 hotspot = new Vector2(20, 15);
+			Cursor.SetCursor(Talk, hotspot, CursorMode.Auto);
 			Cursor.visible = true;
 			ActiveCursor = CursorTalk;
 			break;
 		case CursorState.Portal:
 			CursorAim.transform.position = new Vector3(0, 1000, 0);;
 			NGUITools.SetActive(CursorAim.gameObject, false);
-			Vector2 hotspot = new Vector2(25, 25);
+			hotspot = new Vector2(25, 25);
 			Cursor.SetCursor(Portal, hotspot, CursorMode.Auto);
 			Cursor.visible = true;
 			ActiveCursor = CursorPortal;

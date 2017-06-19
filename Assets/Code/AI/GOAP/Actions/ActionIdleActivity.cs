@@ -11,7 +11,8 @@ public class ActionIdleActivity : GoapAction
 	private int _idleTimer;
 	private IdleDest _currentIdleDest;
 	private IdleDest _traderIdleDest;
-
+	private int _actionTimer;
+	private int _nextActionTime;
 
 	public ActionIdleActivity(string name, string description, float cost)
 	{
@@ -155,30 +156,48 @@ public class ActionIdleActivity : GoapAction
 			if(_currentIdleDest == null || _idleTimer >= _switchActivityTime)
 			{
 				//find next idle activity
-
-				List<IdleDest> dests = ParentCharacter.MyAI.Squad.Household.IdleDests;
-
-				int rnd = UnityEngine.Random.Range(0, dests.Count);
-				if(dests[rnd] == _currentIdleDest || dests[rnd].IsOccupied)
-					// || (_currentIdleDest != null && _currentIdleDest.Type == dests[rnd].Type))
+				if(ParentCharacter.IsCommander)
 				{
-					//no change, try again next update
+					_currentIdleDest = ParentCharacter.MyAI.Squad.Household.CommanderIdleDest;
+					if(_currentIdleDest != null)
+					{
+						_currentIdleDest.IsOccupied = true;
+						ResetAnimation();
+
+						_idleTimer = 0;
+
+						_switchActivityTime = _currentIdleDest.GetStayTimeout();
+
+						_hasReachedDest = false;
+					}
 				}
 				else
 				{
-					//reset animation and walk to the new dest
-					if(_currentIdleDest != null)
-					{	
-						_currentIdleDest.IsOccupied = false;
+					List<IdleDest> dests = ParentCharacter.MyAI.Squad.Household.IdleDests;
+
+					int rnd = UnityEngine.Random.Range(0, dests.Count);
+					if(dests[rnd] == _currentIdleDest || dests[rnd].IsOccupied || (!ParentCharacter.IsCommander && dests[rnd].Type == IdleDestType.CommanderStand))
+						// || (_currentIdleDest != null && _currentIdleDest.Type == dests[rnd].Type))
+					{
+						//no change, try again next update
 					}
-					_currentIdleDest = dests[rnd];
-					_currentIdleDest.IsOccupied = true;
-					ResetAnimation();
+					else
+					{
+						//reset animation and walk to the new dest
+						if(_currentIdleDest != null)
+						{	
+							_currentIdleDest.IsOccupied = false;
+						}
+						_currentIdleDest = dests[rnd];
 
-					_idleTimer = 0;
-					_switchActivityTime = UnityEngine.Random.Range(15, 30);
+						_currentIdleDest.IsOccupied = true;
+						ResetAnimation();
 
-					_hasReachedDest = false;
+						_idleTimer = 0;
+						_switchActivityTime = _currentIdleDest.GetStayTimeout();
+
+						_hasReachedDest = false;
+					}
 				}
 			}
 			else if(_currentIdleDest != null)
@@ -217,6 +236,17 @@ public class ActionIdleActivity : GoapAction
 						ParentCharacter.SendCommand(CharacterCommands.PlayAnimationAction);
 						_currentIdleDest.IsOccupied = true;
 					}
+					else if(_currentIdleDest.Type == IdleDestType.CommanderStand && !ParentCharacter.MyAnimator.GetBool("IsCommanderStand"))
+					{
+						Vector3 lookDir = _currentIdleDest.transform.forward;
+						lookDir = new Vector3(lookDir.x, 0, lookDir.z);
+						ParentCharacter.transform.rotation = Quaternion.LookRotation(lookDir);
+						ParentCharacter.MyAI.BlackBoard.AnimationAction = AnimationActions.CommanderStand;
+						ParentCharacter.SendCommand(CharacterCommands.PlayAnimationAction);
+						_currentIdleDest.IsOccupied = true;
+					}
+
+
 
 				}
 				else if(!_hasReachedDest)
@@ -228,6 +258,8 @@ public class ActionIdleActivity : GoapAction
 					if(Vector3.Distance(ParentCharacter.transform.position, _currentIdleDest.transform.position) < ParentCharacter.MyNavAgent.stoppingDistance * 1.5f)
 					{
 						_hasReachedDest = true;
+						_actionTimer = 0;
+						_nextActionTime = UnityEngine.Random.Range(5, 20);
 					}
 				}
 			}
@@ -240,6 +272,28 @@ public class ActionIdleActivity : GoapAction
 		if(_hasReachedDest)
 		{
 			_idleTimer ++;
+			_actionTimer ++;
+
+			//do random small actions 
+			if(_actionTimer >= _nextActionTime)
+			{
+				_actionTimer = 0;
+				_nextActionTime = UnityEngine.Random.Range(30, 60);
+
+				if(_currentIdleDest.Type == IdleDestType.ChairSit || _currentIdleDest.Type == IdleDestType.GroundSit)
+				{
+					ParentCharacter.MyAnimator.SetTrigger("Cancel");
+					if(UnityEngine.Random.value > 0.5f)
+					{
+						ParentCharacter.MyAnimator.SetTrigger("Smoke");
+					}
+					else
+					{
+						ParentCharacter.MyAnimator.SetTrigger("Guitar");
+					}
+
+				}
+			}
 		}
 
 		/*
@@ -301,9 +355,16 @@ public class ActionIdleActivity : GoapAction
 			ParentCharacter.MyAI.BlackBoard.AnimationAction = AnimationActions.SleepStand;
 			ParentCharacter.SendCommand(CharacterCommands.PlayAnimationAction);
 		}
+		else if(ParentCharacter.MyAnimator.GetBool("IsCommanderStand"))
+		{
+			ParentCharacter.MyAnimator.SetBool("IsCommanderStand", false);
+			ParentCharacter.SendCommand(CharacterCommands.AnimationActionDone);
+		}
 		else
 		{
 			ParentCharacter.SendCommand(CharacterCommands.AnimationActionDone);
 		}
+
+		ParentCharacter.MyAnimator.SetTrigger("Cancel");
 	}
 }

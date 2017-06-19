@@ -161,6 +161,11 @@ public class HumanAnimStateAction : HumanAnimStateBase
 			this.ParentCharacter.MyAnimator.SetBool("IsSleeping", false);
 			this.ParentCharacter.MyAnimator.SetBool("IsJackingOff", false);
 		}
+		else if(this.ParentCharacter.MyAI.BlackBoard.AnimationAction == AnimationActions.CommanderStand)
+		{
+			this.ParentCharacter.MyAnimator.SetFloat("Blend", UnityEngine.Random.value);
+			this.ParentCharacter.MyAnimator.SetBool("IsCommanderStand", true);
+		}
 
 	}
 

@@ -229,6 +229,7 @@ public enum AnimationActions
 	ApplyBandages,
 	Landing,
 	HardLanding,
+	CommanderStand,
 }
 
 public enum CharStateType
