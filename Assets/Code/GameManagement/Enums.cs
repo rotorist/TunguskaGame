@@ -327,5 +327,7 @@ public enum NPCJobs
 	None,
 	Trader,
 	Mechanic,
-
+	Commander,
+	Guard,
+	Patrol,
 }

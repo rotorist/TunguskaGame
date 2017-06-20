@@ -148,7 +148,7 @@ public class ActionGuardPosition: GoapAction
 
 	private bool CheckAvailability()
 	{
-		if(ParentCharacter.IsBodyLocked || GameManager.Inst.PlayerControl.IsGamePaused)
+		if(ParentCharacter.IsBodyLocked)
 		{
 			return false;
 		}

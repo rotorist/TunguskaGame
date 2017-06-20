@@ -13,7 +13,7 @@ public class AISquad
 	{
 		Members = new List<Character>();
 
-		Household = GameObject.Find("Household1").GetComponent<Household>();
+		//Household = GameObject.Find("Household1").GetComponent<Household>();
 	}
 
 	public void AddMember(Character newMember)
@@ -22,6 +22,15 @@ public class AISquad
 		{
 			Members.Add(newMember);
 			newMember.MyAI.Squad = this;
+
+			if(Household != null)
+			{
+				newMember.MyAI.BlackBoard.PatrolLoc = Household.transform.position;
+				newMember.MyAI.BlackBoard.PatrolRange = Household.PatrolRange;
+				newMember.MyAI.BlackBoard.CombatRange = Household.CombatRange;
+				newMember.MyAI.BlackBoard.HasPatrolInfo = true;
+				newMember.MyAI.BlackBoard.PatrolNodeIndex = -1;
+			}
 		}
 	}
 
@@ -153,6 +162,34 @@ public class AISquad
 		}
 
 		return talkers;
+	}
+
+	public int GetNumberOfGuards()
+	{
+		int guards = 0;
+		foreach(Character member in Members)
+		{
+			if(member.MyJobs.Contains(NPCJobs.Guard))
+			{
+				guards ++;
+			}
+		}
+
+		return guards;
+	}
+
+	public int GetNumberOfPatrols()
+	{
+		int patrols = 0;
+		foreach(Character member in Members)
+		{
+			if(member.MyJobs.Contains(NPCJobs.Patrol))
+			{
+				patrols ++;
+			}
+		}
+
+		return patrols;
 	}
 
 	public bool IsThereCommander()

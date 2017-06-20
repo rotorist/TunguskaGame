@@ -229,6 +229,10 @@ public class HumanCharacter : Character
 			MyJobs.Add(NPCJobs.Trader);
 			Trader.Initialize();
 		}
+		else if(IsCommander)
+		{
+			MyJobs.Add(NPCJobs.Commander);
+		}
 		else
 		{
 			MyJobs.Add(NPCJobs.None);

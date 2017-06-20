@@ -67,7 +67,7 @@ public class NPCManager
 
 		FactionData newFaction2 = new FactionData();
 		newFaction2.Name = "The Legionnaires";
-		newFaction2.MemberModelIDs = new string[]{"Bandit"};
+		newFaction2.MemberModelIDs = new string[]{"Legionnaire1", "Legionnaire2", "Legionnaire3"};
 		newFaction2.FactionID = Faction.Legionnaires;
 
 		FactionData newFaction3 = new FactionData();
