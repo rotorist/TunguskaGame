@@ -192,6 +192,8 @@ public class AISquad
 		return patrols;
 	}
 
+
+
 	public bool IsThereCommander()
 	{
 		foreach(Character member in Members)

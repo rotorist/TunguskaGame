@@ -98,6 +98,34 @@ public class Household : MonoBehaviour
 
 			}
 		}
+
+		if(PatrolNodes.Count > 0)
+		{
+			int patrolsCount = CurrentSquad.GetNumberOfPatrols();
+			int i = 0;
+			while(GuardLocs.Count > patrolsCount)
+			{
+				if(CurrentSquad.Members[i].MyJobs.Contains(NPCJobs.None))
+				{
+
+					//assign a new guard
+					CurrentSquad.Members[i].MyJobs.Clear();
+					CurrentSquad.Members[i].MyJobs.Add(NPCJobs.Patrol);
+					CurrentSquad.Members[i].MyAI.ClearDynamicGoal(5);
+					CurrentSquad.Members[i].MyAI.BlackBoard.PatrolLoc = transform.position;
+					CurrentSquad.Members[i].MyAI.BlackBoard.PatrolRange = PatrolRange;
+					CurrentSquad.Members[i].MyAI.BlackBoard.CombatRange = CombatRange;
+					CurrentSquad.Members[i].MyAI.BlackBoard.HasPatrolInfo = true;
+					CurrentSquad.Members[i].MyAI.BlackBoard.PatrolNodeIndex = UnityEngine.Random.Range(0, PatrolNodes.Count);
+					CurrentSquad.Members[i].MyAI.SetDynamicyGoal(GameManager.Inst.NPCManager.DynamicGoalPatrol, 5);
+					patrolsCount++;
+
+				}
+
+				i++;
+
+			}
+		}
 	}
 
 	private string GetRandomCharacterModelID(Faction faction)

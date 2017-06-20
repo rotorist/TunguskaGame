@@ -42,6 +42,8 @@ public class GameManager : MonoBehaviour
 
 	public bool GodMode;
 
+	public float AIUpdateRadius;
+
 	#endregion
 
 	void Start()

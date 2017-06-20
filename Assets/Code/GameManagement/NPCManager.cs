@@ -623,5 +623,12 @@ public class NPCManager
 		squad3.Household.CurrentSquad = squad3;
 		_allSquads.Add(squad3.ID, squad3);
 
+		AISquad squad4 = new AISquad();
+		squad4.ID = "zsk_barn";
+		squad4.Faction = Faction.Legionnaires;
+		squad4.Household = _allHouseHolds["HouseHoldBarn"];
+		squad4.Household.CurrentSquad = squad4;
+		_allSquads.Add(squad4.ID, squad4);
+
 	}
 }

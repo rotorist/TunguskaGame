@@ -75,13 +75,13 @@ public class ItemManager
 
 
 
-		//inventory1.Backpack.Add(new GridItemData(LoadItem("44magnum"), 2, 3, GridItemOrient.Portrait, 1));
-		//inventory1.Backpack.Add(new GridItemData(LoadItem("flakjacket"), 5, 3, GridItemOrient.Landscape, 1));
+		inventory1.Backpack.Add(new GridItemData(LoadItem("44magnum"), 2, 3, GridItemOrient.Portrait, 1));
+		inventory1.Backpack.Add(new GridItemData(LoadItem("flakjacket"), 5, 3, GridItemOrient.Landscape, 1));
 		inventory1.Backpack.Add(new GridItemData(LoadItem("pipegrenade"), 0, 7, GridItemOrient.Landscape, 1));
 		//inventory1.Backpack.Add(new GridItemData(LoadItem("kevlarhelmet"), 0, 6, GridItemOrient.Landscape, 1));
-		//inventory1.Backpack.Add(new GridItemData(LoadItem("ammo762_39"), 0, 9, GridItemOrient.Landscape, 80));
-		//inventory1.Backpack.Add(new GridItemData(LoadItem("ammo762_54r"), 2, 9, GridItemOrient.Landscape, 40));
-		//inventory1.Backpack.Add(new GridItemData(LoadItem("ammo12shot"), 4, 9, GridItemOrient.Landscape, 20));
+		inventory1.Backpack.Add(new GridItemData(LoadItem("ammo762_39"), 0, 9, GridItemOrient.Landscape, 80));
+		inventory1.Backpack.Add(new GridItemData(LoadItem("ammo762_54r"), 2, 9, GridItemOrient.Landscape, 40));
+		inventory1.Backpack.Add(new GridItemData(LoadItem("ammo12shot"), 4, 9, GridItemOrient.Landscape, 20));
 		inventory1.Backpack.Add(new GridItemData(LoadItem("ammo44magnum"), 1, 8, GridItemOrient.Landscape, 32));
 		inventory1.Backpack.Add(new GridItemData(LoadItem("huntingshotgun"), 0, 0, GridItemOrient.Landscape, 1));
 		//inventory1.Backpack.Add(new GridItemData(LoadItem("svd"), 0, 3, GridItemOrient.Landscape, 1));
@@ -91,7 +91,7 @@ public class ItemManager
 		inventory1.Backpack.Add(new GridItemData(LoadItem("rubles"), 8, 9, GridItemOrient.Landscape, 110));
 		inventory1.Backpack.Add(new GridItemData(LoadItem("bread1"), 8, 7, GridItemOrient.Landscape, 1));
 		inventory1.Backpack.Add(new GridItemData(LoadItem("sausage"), 9, 8, GridItemOrient.Landscape, 1));
-		inventory1.Backpack.Add(new GridItemData(LoadItem("gasoline"), 5, 6, GridItemOrient.Landscape, 10));
+		//inventory1.Backpack.Add(new GridItemData(LoadItem("gasoline"), 5, 6, GridItemOrient.Landscape, 10));
 
 		inventory1.RifleSlot = LoadItem("ak47");
 		inventory1.ThrowSlot = LoadItem("pipegrenade");
@@ -108,12 +108,12 @@ public class ItemManager
 		{
 
 		}
-		else if(faction == Faction.Legionnaires)
+		else if(faction == Faction.Bootleggers || faction == Faction.Legionnaires)
 		{
 			float rand1 = UnityEngine.Random.value;
 			float rand2 = UnityEngine.Random.value;
 
-			if(rand1 > 0.4f && rand1 < 0.8f)
+			if(rand1 > 0.5f && rand1 < 0.9f)
 			{
 				inventory.RifleSlot = LoadItem("huntingshotgun");
 				if(rand2 > 0.5f)
@@ -121,7 +121,7 @@ public class ItemManager
 					inventory.SideArmSlot = LoadItem("44magnum");
 				}
 			}
-			else if(rand1 > 0.8f)
+			else if(rand1 > 0.9f)
 			{
 				inventory.RifleSlot = LoadItem("ak47");
 				if(rand2 > 0.5f)
@@ -354,7 +354,7 @@ public class ItemManager
 		item1.Tier = 2;
 		item1.BasePrice = 200;
 		item1.MaxDurability = 120;
-		item1.Durability = 80;
+		item1.Durability = 120;
 		item1.Attributes.Add(new ItemAttribute("_Muzzle Velocity", 110f));
 		item1.Attributes.Add(new ItemAttribute("Impact", 10f));
 		item1.Attributes.Add(new ItemAttribute("Accuracy", 0.7f));
@@ -385,7 +385,7 @@ public class ItemManager
 		item2.Tier = 1;
 		item2.BasePrice = 125;
 		item2.MaxDurability = 80;
-		item2.Durability = 60;
+		item2.Durability = 80;
 		item2.Attributes.Add(new ItemAttribute("_Muzzle Velocity", 100f));
 		item2.Attributes.Add(new ItemAttribute("Impact", 5f));
 		item2.Attributes.Add(new ItemAttribute("Accuracy", 0.5f));
@@ -560,7 +560,7 @@ public class ItemManager
 		item10.Tier = 1;
 		item10.BasePrice = 175;
 		item10.MaxDurability = 150;
-		item10.Durability = 140;
+		item10.Durability = 150;
 		item10.Attributes.Add(new ItemAttribute("_Muzzle Velocity", 100f));
 		item10.Attributes.Add(new ItemAttribute("Impact", 5f));
 		item10.Attributes.Add(new ItemAttribute("Accuracy", 0.4f));
