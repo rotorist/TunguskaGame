@@ -35,10 +35,22 @@ public class AIScheduler
 		List<Character> characters = GameManager.Inst.NPCManager.AllCharacters;
 		if(characters.Count > _charIndex && characters[_charIndex] != null && characters[_charIndex].MyAI.ControlType != AIControlType.Player)
 		{
-			if(Vector3.Distance(GameManager.Inst.PlayerControl.SelectedPC.transform.position, characters[_charIndex].transform.position) < GameManager.Inst.AIUpdateRadius)
+			while(Vector3.Distance(GameManager.Inst.PlayerControl.SelectedPC.transform.position, characters[_charIndex].transform.position) >= GameManager.Inst.AIUpdateRadius)
+			{
+				_charIndex ++;
+				if(_charIndex >= characters.Count)
+				{
+					_charIndex = -1000;
+					break;
+				}
+			}
+
+			if(_charIndex >= 0)
 			{
 				characters[_charIndex].MyEventHandler.TriggerOnPerFrameTimer();
 			}
+
+			_charIndex ++;
 
 		}
 
@@ -51,36 +63,51 @@ public class AIScheduler
 
 		if(_oneSecIndex >= 0 && characters.Count > _oneSecIndex && characters[_oneSecIndex] != null && characters[_oneSecIndex].MyAI.ControlType != AIControlType.Player)
 		{
-			if(Vector3.Distance(GameManager.Inst.PlayerControl.SelectedPC.transform.position, characters[_charIndex].transform.position) < GameManager.Inst.AIUpdateRadius)
+			while(Vector3.Distance(GameManager.Inst.PlayerControl.SelectedPC.transform.position, characters[_oneSecIndex].transform.position) >= GameManager.Inst.AIUpdateRadius)
+			{
+				_oneSecIndex ++;
+				if(_oneSecIndex >= characters.Count)
+				{
+					_oneSecIndex = -1000;
+					break;
+				}
+			}
+
+			if(_oneSecIndex >= 0)
 			{
 				characters[_oneSecIndex].MyEventHandler.TriggerOnOneSecondTimer();
 
 				characters[_oneSecIndex].MyEventHandler.TriggerOnActionUpdateTimer();
 			}
 
-		}
-		_oneSecIndex ++;
-		if(_oneSecIndex >= characters.Count)
-		{
-			_oneSecIndex = -1000;
+			_oneSecIndex ++;
+
 		}
 
 
 
-		//Debug.LogError("Triggering half second timer for index " + _halfSecHumanIndex);
+
+		//Debug.LogError(Time.time + " Triggering half second timer for index " + _halfSecIndex);
 		if(_halfSecIndex >= 0 && characters.Count > _halfSecIndex && characters[_halfSecIndex] != null && characters[_halfSecIndex].MyAI.ControlType != AIControlType.Player)
 		{
-			if(Vector3.Distance(GameManager.Inst.PlayerControl.SelectedPC.transform.position, characters[_charIndex].transform.position) < GameManager.Inst.AIUpdateRadius)
+			while(Vector3.Distance(GameManager.Inst.PlayerControl.SelectedPC.transform.position, characters[_halfSecIndex].transform.position) >= GameManager.Inst.AIUpdateRadius)
+			{
+				_halfSecIndex ++;
+				if(_halfSecIndex >= characters.Count)
+				{
+					_halfSecIndex = -1000;
+					break;
+				}
+			}
+			if(_halfSecIndex >= 0)
 			{
 				characters[_halfSecIndex].MyEventHandler.TriggerOnHalfSecondTimer();
+
 			}
 
+			_halfSecIndex ++;
 		}
-		_halfSecIndex ++;
-		if(_halfSecIndex >= characters.Count)
-		{
-			_halfSecIndex = -1000;
-		}
+
 
 	}
 }

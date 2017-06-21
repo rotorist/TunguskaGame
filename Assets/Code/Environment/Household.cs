@@ -67,7 +67,7 @@ public class Household : MonoBehaviour
 		{
 			int guardsCount = CurrentSquad.GetNumberOfGuards();
 			int i = 0;
-			while(GuardLocs.Count > guardsCount)
+			while(GuardLocs.Count > guardsCount && i < CurrentSquad.Members.Count)
 			{
 				if(CurrentSquad.Members[i].MyJobs.Contains(NPCJobs.None))
 				{
@@ -103,7 +103,7 @@ public class Household : MonoBehaviour
 		{
 			int patrolsCount = CurrentSquad.GetNumberOfPatrols();
 			int i = 0;
-			while(GuardLocs.Count > patrolsCount)
+			while(GuardLocs.Count > patrolsCount && i < CurrentSquad.Members.Count)
 			{
 				if(CurrentSquad.Members[i].MyJobs.Contains(NPCJobs.None))
 				{
