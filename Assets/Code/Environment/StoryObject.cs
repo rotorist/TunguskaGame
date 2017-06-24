@@ -116,7 +116,7 @@ public class StoryObject : MonoBehaviour
 			//turn it on
 			if(OnEvent.Length > 0)
 			{
-				GameManager.Inst.QuestManager.Scripts[OnEvent].Trigger();
+				GameManager.Inst.QuestManager.Scripts[OnEvent].Trigger(new object[]{});
 			}
 
 			if(IsTrigger)
@@ -143,7 +143,7 @@ public class StoryObject : MonoBehaviour
 			//turn it off
 			if(OffEvent.Length > 0)
 			{
-				GameManager.Inst.QuestManager.Scripts[OffEvent].Trigger();
+				GameManager.Inst.QuestManager.Scripts[OffEvent].Trigger(new object[]{});
 
 			}
 

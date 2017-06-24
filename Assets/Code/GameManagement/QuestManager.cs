@@ -33,21 +33,34 @@ public class QuestManager
 		cond3.ID = "zsk_sid_intro_done";
 		cond3.SetValue(0);
 		StoryConditions.Add(cond3.ID, cond3);
+
+		StoryConditionTrigger cond4 = new StoryConditionTrigger();
+		cond4.ID = "zsk_barn_cleared";
+		cond4.SetValue(0);
+		StoryConditions.Add(cond4.ID, cond4);
 	
 
 		StoryEventScript script1 = new StoryEventScript();
-		script1.Script.Add("door Level1RoadBlockGate toggle");
+		script1.Script.Add("door/Level1RoadBlockGate/toggle");
 		Scripts.Add("zsk_roadblockgate_toggle", script1);
 
 		StoryEventScript script2 = new StoryEventScript();
-		script2.Script.Add("object FarmIrrigatorHandle on");
+		script2.Script.Add("object/FarmIrrigatorHandle/on");
 		Scripts.Add("zsk_irrigator_on", script2);
 
 		StoryEventScript script3 = new StoryEventScript();
-		script3.Script.Add("door ZernaskayaSheetFenceDoor unlock");
-		script3.Script.Add("condition zsk_village_gate_open true");
-		script3.Script.Add("condition zsk_sid_intro_done true");
+		script3.Script.Add("door/ZernaskayaSheetFenceDoor/unlock");
+		script3.Script.Add("condition/zsk_village_gate_open/true");
+		script3.Script.Add("condition/zsk_sid_intro_done/true");
+		script3.Script.Add("hook/zsk_barn_clear_done/OnSquadDeath");
 		Scripts.Add("zsk_village_exit_unlock", script3);
+
+		StoryEventScript script4 = new StoryEventScript();
+		script4.Script.Add("if/param/0/is/zsk_barn_legionnaires");
+		script4.Script.Add("condition/zsk_barn_cleared/true");
+		script4.Script.Add("message/Barn has been cleared!");
+		Scripts.Add("zsk_barn_clear_done", script4);
+
 
 
 	}

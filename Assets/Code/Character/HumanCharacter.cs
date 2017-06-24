@@ -2731,7 +2731,7 @@ public class HumanCharacter : Character
 		if(this.MyReference.CurrentWeapon != null)
 		{
 			float recoil = this.MyReference.CurrentWeapon.GetComponent<Gun>().GetRecoil();
-
+			/*
 			if(MyAI.ControlType == AIControlType.Player)
 			{
 				MyStatus.ChangeStamina(Mathf.Clamp(recoil, 0, 0.8f) * 5 * -1);
@@ -2740,7 +2740,7 @@ public class HumanCharacter : Character
 					recoil *= 1.5f;
 				}
 			}
-
+			*/
 			if(AimTarget.localPosition.y < 0.1f)
 			{
 				float climb = Mathf.Clamp(recoil * (this.MyStatus.ArmFatigue / this.MyStatus.MaxArmFatigue), 0, 5);

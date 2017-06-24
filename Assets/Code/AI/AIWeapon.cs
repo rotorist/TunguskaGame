@@ -329,6 +329,12 @@ public class AIWeapon
 		float climb = _parentCharacter.AimTarget.localPosition.y;
 		bool aimReady = _parentCharacter.MyAI.ControlType == AIControlType.Player ? true : (aimAngle < aimAngleThreshold);
 		//Debug.Log("Trigger pull aim ready? " + aimReady + " " + _parentCharacter.name);
+		float maxClimb = 0.2f;
+		if(_parentCharacter.MyAI.ControlType == AIControlType.Player)
+		{
+			maxClimb = 0.5f;
+		}
+
 		if(climb >= 0.05f && _triggerState == AIWeaponTriggerState.WaitForRecoil)
 		{
 
@@ -350,7 +356,7 @@ public class AIWeapon
 				_triggerState = AIWeaponTriggerState.Released;
 			}
 		}
-		else if(climb >= 0.2f && _triggerState == AIWeaponTriggerState.Pulled)
+		else if(climb >= maxClimb && _triggerState == AIWeaponTriggerState.Pulled)
 		{
 			_parentCharacter.MyReference.CurrentWeapon.GetComponent<Gun>().TriggerRelease();
 			_triggerState = AIWeaponTriggerState.WaitForRecoil;

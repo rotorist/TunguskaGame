@@ -72,7 +72,7 @@ public class CursorManager
 	public void OnHitMarkerShow()
 	{
 		string clipName = "BulletHitMark";
-		GameManager.Inst.SoundManager.UI.PlayOneShot(GameManager.Inst.SoundManager.GetClip(clipName), 0.2f);
+		GameManager.Inst.SoundManager.UI.PlayOneShot(GameManager.Inst.SoundManager.GetClip(clipName), 0.1f);
 		CursorAim.GetComponent<AimCursor>().SetCenterCursorAlpha(1);
 	}
 

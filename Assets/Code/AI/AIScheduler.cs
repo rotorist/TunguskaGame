@@ -33,7 +33,7 @@ public class AIScheduler
 	{
 		//call each AI's per frame udpate
 		List<Character> characters = GameManager.Inst.NPCManager.AllCharacters;
-		if(characters.Count > _charIndex && characters[_charIndex] != null && characters[_charIndex].MyAI.ControlType != AIControlType.Player)
+		if(_charIndex >= 0 && characters[_charIndex] != null && characters[_charIndex].MyAI.ControlType != AIControlType.Player)
 		{
 			while(Vector3.Distance(GameManager.Inst.PlayerControl.SelectedPC.transform.position, characters[_charIndex].transform.position) >= GameManager.Inst.AIUpdateRadius)
 			{
@@ -54,11 +54,7 @@ public class AIScheduler
 
 		}
 
-		_charIndex ++;
-		if(_charIndex >= characters.Count)
-		{
-			_charIndex = 0;
-		}
+
 
 
 		if(_oneSecIndex >= 0 && characters.Count > _oneSecIndex && characters[_oneSecIndex] != null && characters[_oneSecIndex].MyAI.ControlType != AIControlType.Player)

@@ -170,7 +170,7 @@ public class CameraController : MonoBehaviour
 						//if using sniper, then don't change camera angle
 						if(!weapon.IsScoped || pc.UpperBodyState != HumanUpperBodyStates.Aim)
 						{
-							_cameraAngle1 = CameraBaseAngle - CameraAngleCurve.Evaluate(mouseAngle / 180) * 16 * PanDistCurve.Evaluate(Mathf.Abs(mousePos.y / (Screen.height/2)));//PanDistCurve.Evaluate(panDist / MaxPanDist);
+							_cameraAngle1 = CameraBaseAngle - CameraAngleCurve.Evaluate(mouseAngle / 180) * 12 * PanDistCurve.Evaluate(Mathf.Abs(mousePos.y / (Screen.height/2)));//PanDistCurve.Evaluate(panDist / MaxPanDist);
 						}
 						else
 						{

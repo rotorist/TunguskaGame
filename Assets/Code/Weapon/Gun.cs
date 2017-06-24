@@ -95,7 +95,7 @@ public class Gun : Weapon
 								AudioSource audio = GetComponent<AudioSource>();
 								if(audio != null)
 								{
-									audio.PlayOneShot(GameManager.Inst.SoundManager.GetClip(WeaponItem.ID + "_pump"), 0.2f);
+									audio.PlayOneShot(GameManager.Inst.SoundManager.GetClip(WeaponItem.ID + "_pump"), 0.15f);
 								}
 
 								//emit brass
@@ -312,7 +312,7 @@ public class Gun : Weapon
 			{
 				string clipName = WeaponItem.ID + "_shot" + UnityEngine.Random.Range(1, 5).ToString();
 				AudioClip clip = GameManager.Inst.SoundManager.GetClip(clipName);
-				audio.PlayOneShot(clip, 0.2f);
+				audio.PlayOneShot(clip, 0.13f);
 
 			}
 			//emit brass

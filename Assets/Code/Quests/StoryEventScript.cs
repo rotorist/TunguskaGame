@@ -13,11 +13,13 @@ public class StoryEventScript
 		Script = new List<string>();
 	}
 
-	public void Trigger()
+	//returns true if script is over and won't be called again
+	//otherwise returns false
+	public bool Trigger(object [] parameters)
 	{
 		foreach(string line in Script)
 		{
-			string [] tokens = line.Split(new char[]{' '}, System.StringSplitOptions.None);
+			string [] tokens = line.Split(new char[]{'/'}, System.StringSplitOptions.None);
 
 			switch(tokens[0])
 			{
@@ -30,15 +32,52 @@ public class StoryEventScript
 			case "condition":
 				ExecuteConditionScript(tokens);
 				break;
+			case "if":
+				if(!CheckPrerequisite(tokens, parameters))
+				{
+					//script won't run based on parameters
+					return false;
+				}
+				break;
+			case "hook":
+				ExecuteHookEventScript(tokens);
+				break;
+			case "message":
+				ExecuteMessageScript(tokens);
+				break;
 			}
 		}
 
-
+		return true;
 
 
 	}
 
 
+
+	private bool CheckPrerequisite(string [] tokens, object [] parameters)
+	{
+		if(tokens[1] == "params")
+		{
+			int paramNumber = Convert.ToInt32(tokens[2]);
+			string operation = tokens[3];
+			string compValue = tokens[4];
+			if(operation == "is")
+			{
+				//string comparison
+				if(compValue == (string)parameters[paramNumber])
+				{
+					return true;
+				}
+			}
+		}
+		else
+		{
+			
+		}
+
+		return false;
+	}
 
 	private void ExecuteObjectScript(string [] tokens)
 	{
@@ -122,5 +161,19 @@ public class StoryEventScript
 				}
 			}
 		}
+	}
+
+	private void ExecuteHookEventScript(string [] tokens)
+	{
+		if(GameManager.Inst.QuestManager.Scripts.ContainsKey(tokens[1]))
+		{
+			StoryEventType eventType = (StoryEventType)Enum.Parse(typeof(StoryEventType), tokens[2]);
+			StoryEventHandler.Instance.AddScriptListener(tokens[1], eventType);
+		}
+	}
+
+	private void ExecuteMessageScript(string [] tokens)
+	{
+		GameManager.Inst.UIManager.SetConsoleText(tokens[1]);
 	}
 }

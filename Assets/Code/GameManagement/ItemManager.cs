@@ -102,6 +102,11 @@ public class ItemManager
 
 	}
 
+	public void LoadPresetNPCInventory(Character character)
+	{
+
+	}
+
 	public void LoadNPCInventory(CharacterInventory inventory, Faction faction)
 	{
 		if(faction == Faction.Civilian)
@@ -113,7 +118,7 @@ public class ItemManager
 			float rand1 = UnityEngine.Random.value;
 			float rand2 = UnityEngine.Random.value;
 
-			if(rand1 > 0.5f && rand1 < 0.9f)
+			if(rand1 > 0.5f && rand1 < 0.95f)
 			{
 				inventory.RifleSlot = LoadItem("huntingshotgun");
 				if(rand2 > 0.5f)
@@ -121,7 +126,7 @@ public class ItemManager
 					inventory.SideArmSlot = LoadItem("44magnum");
 				}
 			}
-			else if(rand1 > 0.9f)
+			else if(rand1 > 0.95f)
 			{
 				inventory.RifleSlot = LoadItem("ak47");
 				if(rand2 > 0.5f)

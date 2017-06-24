@@ -41,7 +41,14 @@ public class AISquad
 			Members.Remove(member);
 			member.MyAI.Squad = null;
 		}
+
+		if(Members.Count <= 0)
+		{
+			//raise the squad death event
+			StoryEventHandler.Instance.EnqueueStoryEvent(StoryEventType.OnSquadDeath, this, new object[]{ID});
+		}
 	}
+
 
 	public void IssueSquadCommand()
 	{

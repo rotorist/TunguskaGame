@@ -287,7 +287,7 @@ public class DialoguePanel : PanelBase
 							if(GameManager.Inst.QuestManager.Scripts.ContainsKey(e))
 							{
 								StoryEventScript script = GameManager.Inst.QuestManager.Scripts[e];
-								script.Trigger();
+								script.Trigger(new object[]{});
 							}
 						}
 					}
