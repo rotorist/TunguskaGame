@@ -248,6 +248,8 @@ public class GameManager : MonoBehaviour
 		}
 
 
+
+
 		StartCoroutine(DoPerSecond());
 		StartCoroutine(DoPerHalfSecond());
 

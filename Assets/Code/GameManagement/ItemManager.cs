@@ -76,7 +76,6 @@ public class ItemManager
 
 
 		inventory1.Backpack.Add(new GridItemData(LoadItem("44magnum"), 2, 3, GridItemOrient.Portrait, 1));
-		inventory1.Backpack.Add(new GridItemData(LoadItem("flakjacket"), 5, 3, GridItemOrient.Landscape, 1));
 		inventory1.Backpack.Add(new GridItemData(LoadItem("pipegrenade"), 0, 7, GridItemOrient.Landscape, 1));
 		//inventory1.Backpack.Add(new GridItemData(LoadItem("kevlarhelmet"), 0, 6, GridItemOrient.Landscape, 1));
 		inventory1.Backpack.Add(new GridItemData(LoadItem("ammo762_39"), 0, 9, GridItemOrient.Landscape, 80));
@@ -91,7 +90,7 @@ public class ItemManager
 		inventory1.Backpack.Add(new GridItemData(LoadItem("rubles"), 8, 9, GridItemOrient.Landscape, 110));
 		inventory1.Backpack.Add(new GridItemData(LoadItem("bread1"), 8, 7, GridItemOrient.Landscape, 1));
 		inventory1.Backpack.Add(new GridItemData(LoadItem("sausage"), 9, 8, GridItemOrient.Landscape, 1));
-		//inventory1.Backpack.Add(new GridItemData(LoadItem("gasoline"), 5, 6, GridItemOrient.Landscape, 10));
+		inventory1.Backpack.Add(new GridItemData(LoadItem("gasoline"), 5, 6, GridItemOrient.Landscape, 5));
 
 		inventory1.RifleSlot = LoadItem("ak47");
 		inventory1.ThrowSlot = LoadItem("pipegrenade");

@@ -41,7 +41,7 @@ public class AISquad
 			Members.Remove(member);
 			member.MyAI.Squad = null;
 		}
-
+		Debug.Log("Removing member from squad " + ID + " remaining: " + Members.Count);
 		if(Members.Count <= 0)
 		{
 			//raise the squad death event

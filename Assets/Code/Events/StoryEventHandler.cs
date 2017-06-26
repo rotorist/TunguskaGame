@@ -53,7 +53,7 @@ public class StoryEventHandler
 
 	private bool _isCurrentEventDone;
 	private LinkedList<StoryEventListener> [] _allListenerLists;
-	private int _listnerListIndex;
+	private int _listenerListIndex;
 
 
 	public StoryEventHandler()
@@ -81,7 +81,7 @@ public class StoryEventHandler
 
 	public void PerFrameUpdate()
 	{
-		if(StoryEventQueue.Count <= 0)
+		if(StoryEventQueue.Count <= 0 && _currentStoryEvent == null)
 		{
 			return;
 		}
@@ -94,15 +94,23 @@ public class StoryEventHandler
 			}
 			catch
 			{
+				_currentStoryEvent = null;
 				return;
 			}
+
+			_listenerListIndex = 0;
+			_currentListenerNode = null;
+			_isCurrentEventDone = false;
+
 		}
 
 		if(_currentStoryEvent == null)
 		{
 			return;
 		}
-			
+
+
+
 		//for each frame, execute one listener
 		if(_currentListenerNode != null)
 		{
@@ -115,9 +123,10 @@ public class StoryEventHandler
 			}
 			else if(_currentListenerNode.Value.Type == StoryEventListenerType.Script)
 			{
+				Debug.Log("checking script " + _currentListenerNode.Value.ScriptName);
 				if(GameManager.Inst.QuestManager.Scripts.ContainsKey(_currentListenerNode.Value.ScriptName))
 				{
-					GameManager.Inst.QuestManager.Scripts[_currentListenerNode.Value.ScriptName].Trigger(_currentStoryEvent.Parameters);
+					isDone = GameManager.Inst.QuestManager.Scripts[_currentListenerNode.Value.ScriptName].Trigger(_currentStoryEvent.Parameters);
 				}
 			}
 
@@ -128,10 +137,11 @@ public class StoryEventHandler
 			{
 				//go to next list
 				_currentListenerNode = null;
-				_listnerListIndex ++;
-				if(_listnerListIndex >= _allListenerLists.Length)
+				_listenerListIndex ++;
+				if(_listenerListIndex >= _allListenerLists.Length)
 				{
-					_listnerListIndex = 0;
+					_listenerListIndex = 0;
+					_isCurrentEventDone = true;
 				}
 			}
 			else
@@ -141,20 +151,26 @@ public class StoryEventHandler
 
 			if(isDone)
 			{
-				_currentListenerNode.List.Remove(currentNode);
+				currentNode.List.Remove(currentNode);
+				_isCurrentEventDone = true;
 			}
 		}
 		else
 		{
 			//check if there's any listener
-			if(_allListenerLists[_listnerListIndex].First != null)
+			if(_allListenerLists[_listenerListIndex].First != null)
 			{
-				_currentListenerNode = _allListenerLists[_listnerListIndex].First;
-
+				_currentListenerNode = _allListenerLists[_listenerListIndex].First;
+				Debug.Log("Found listener");
 			}
 			else
 			{
-				_listnerListIndex ++;
+				_listenerListIndex ++;
+				if(_listenerListIndex >= _allListenerLists.Length)
+				{
+					_listenerListIndex = 0;
+					_isCurrentEventDone = true;
+				}
 			}
 
 		}
@@ -165,6 +181,8 @@ public class StoryEventHandler
 		StoryEvent storyEvent = new StoryEvent();
 		storyEvent.Type = type;
 		storyEvent.Parameters = parameters;
+		StoryEventQueue.Enqueue(storyEvent);
+		Debug.Log("enqueued story event " + type);
 	}
 
 	public void AddScriptListener(string scriptName, StoryEventType eventType)
@@ -173,6 +191,8 @@ public class StoryEventHandler
 		listener.Type = StoryEventListenerType.Script;
 		listener.ScriptName = scriptName;
 		AddListenerToList(listener, eventType);
+
+		Debug.Log("Added script listener " + scriptName);
 	}
 
 	public void AddDelegateListener(StoryEventDelegate callBack, StoryEventType eventType)

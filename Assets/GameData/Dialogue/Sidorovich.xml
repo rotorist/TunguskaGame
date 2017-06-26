@@ -11,20 +11,20 @@
     </topic>
     <node id="2">
         <response>
-            <condition name="zsk_village_gate_open" story="zsk_village_gate_open" compare="1" op="0" />
+            <condition name="zsk_sid_quest" story="zsk_sid_quest" compare="1" op="0" />
             <text>Blockade has been lifted for you, good luck!</text>
         </response>
         <response>
             <logic type="And">
                 <condition name="zsk_village_gate_open" story="zsk_village_gate_open" compare="0" op="0" />
-                <condition name="zsk_sid_intro_done" story="zsk_sid_intro_done" compare="0" op="0" />
+                <condition name="zsk_sid_quest" story="zsk_sid_quest" compare="0" op="0" />
             </logic>
             <text>Well yes, we have decided to temporarily close the gate for new comers. But that's only because we need help. </text>
         </response>
         <option>
             <logic type="And">
                 <condition name="zsk_village_gate_open" story="zsk_village_gate_open" compare="0" op="0" />
-                <condition name="zsk_sid_intro_done" story="zsk_sid_intro_done" compare="0" op="0" />
+                <condition name="zsk_sid_quest" story="zsk_sid_quest" compare="0" op="0" />
             </logic>
             <title>Help</title>
             <text>What can I do to help?</text>
@@ -68,7 +68,7 @@
     </node>
     <node id="7">
         <response>
-            <text>Exactly. Get rid of the Legionaires; and if you can, check on the potatoes for us, they probably haven't been watered for a long time. I'll go head and tell Razor to let you through the gate.</text>
+            <text>Exactly. Get rid of the Legionaires; and if you can, check on the potatoes for us, they probably haven't been watered for a long time. The farm is directly north from the village, on the other side of the hill. I'll go head and tell Razor to let you through the gate. Now grab your gun and get to it!</text>
             <event name="zsk_village_exit_unlock" />
         </response>
         <option>
@@ -106,9 +106,79 @@
             <text>He lives in Kiev. He wanted to come here with me, but I didn't let him. He's a man of hot-headed adventures and he'll get himself killed here. </text>
         </response>
     </node>
+    <topic id="zsk_farm_clear">
+        <title>Farm</title>
+        <next_node id="12" />
+    </topic>
+    <node id="12">
+        <response>
+            <text>Did you get our brewery back?</text>
+        </response>
+        <option>
+            <logic type="And">
+                <condition name="zsk_barn_cleared" story="zsk_barn_cleared" compare="1" op="0" />
+                <condition name="zsk_barn_water_on" story="zsk_barn_water_on" compare="0" op="0" />
+            </logic>
+            <title>Farm</title>
+            <text>I cleared the farm for you.</text>
+            <next_node id="11" />
+        </option>
+        <option>
+            <logic type="And">
+                <condition name="zsk_barn_cleared" story="zsk_barn_cleared" compare="1" op="0" />
+                <condition name="zsk_barn_water_on" story="zsk_barn_water_on" compare="1" op="0" />
+            </logic>
+            <title>Farm</title>
+            <text>The farm is clear, and I turned on the irrigators too.</text>
+            <next_node id="11" />
+        </option>
+    </node>
+    <node id="11">
+        <response>
+            <condition name="zsk_barn_water_on" story="zsk_barn_water_on" compare="0" op="0" />
+            <text>Great! I'll send our boys to take over the farm. Are you ready for the next task?</text>
+            <event name="zsk_barn_quest_done1" />
+        </response>
+        <response>
+            <condition name="zsk_barn_water_on" story="zsk_barn_water_on" compare="1" op="0" />
+            <text>Well done! You save us a lot of work. I'll send our boys to take over the farm. Here, they would want you to have this. Now, are you ready for the next task?</text>
+            <event name="zsk_barn_quest_done2" />
+        </response>
+        <option>
+            <title>Yes</title>
+            <text>I'm ready.</text>
+            <next_node id="13" />
+        </option>
+        <option>
+            <title>No</title>
+            <text>I need some time.</text>
+            <next_node id="5" />
+        </option>
+    </node>
+    <node id="13">
+        <response>
+            <text>Now that we got our brewery back, we need to deliver goods to our customers. No, that's not your job - you don't know the way around and our customers don't trust you.</text>
+        </response>
+        <option>
+            <title>OK</title>
+            <text>OK.</text>
+            <next_node id="14" />
+        </option>
+    </node>
+    <node id="14">
+        <response>
+            <text>For the past several months, the Legionnaires held the train station, so the only way out of Zernaskaya is through the sewers under the church. Since we haven't been there for a while, the whole area got overrun with gouls. </text>
+        </response>
+    </node>
     <node id="1">
         <response>
             <text>Hey there, what can I do you for?</text>
         </response>
+        <option>
+            <condition name="zsk_sid_quest" story="zsk_sid_quest" compare="2" op="0" />
+            <title>Next Job</title>
+            <text>What's my next job?</text>
+            <next_node id="13" />
+        </option>
     </node>
 </dialogue>

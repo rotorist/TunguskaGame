@@ -45,6 +45,9 @@ public class StoryEventScript
 			case "message":
 				ExecuteMessageScript(tokens);
 				break;
+			case "item":
+				ExecuteItemScript(tokens);
+				break;
 			}
 		}
 
@@ -57,11 +60,15 @@ public class StoryEventScript
 
 	private bool CheckPrerequisite(string [] tokens, object [] parameters)
 	{
-		if(tokens[1] == "params")
+		if(tokens[1] == "param")
 		{
+			
 			int paramNumber = Convert.ToInt32(tokens[2]);
 			string operation = tokens[3];
 			string compValue = tokens[4];
+
+			Debug.Log("Check prerequisite, compValue " + tokens[4] + " param " + parameters[paramNumber]);
+				
 			if(operation == "is")
 			{
 				//string comparison
@@ -143,11 +150,11 @@ public class StoryEventScript
 			StoryCondition condition = GameManager.Inst.QuestManager.StoryConditions[tokens[1]];
 			if(tokens[2] == "true")
 			{
-				condition.SetValue(Convert.ToInt32(1));
+				condition.SetValue(1);
 			}
 			else if(tokens[2] == "false")
 			{
-				condition.SetValue(Convert.ToInt32(0));
+				condition.SetValue(0);
 			}
 			else if(tokens[2] == "toggle")
 			{
@@ -159,6 +166,10 @@ public class StoryEventScript
 				{
 					condition.SetValue(1);
 				}
+			}
+			else
+			{
+				condition.SetValue(Convert.ToInt32(tokens[2]));
 			}
 		}
 	}
@@ -174,6 +185,56 @@ public class StoryEventScript
 
 	private void ExecuteMessageScript(string [] tokens)
 	{
+		
 		GameManager.Inst.UIManager.SetConsoleText(tokens[1]);
+	}
+
+	private void ExecuteItemScript(string [] tokens)
+	{
+		if(tokens[1] == "receive")
+		{
+			string itemID = tokens[2];
+			int quantity = Convert.ToInt32(tokens[3]);
+
+			int colPos;
+			int rowPos;
+			GridItemOrient orientation;
+			Item item = GameManager.Inst.ItemManager.LoadItem(itemID);
+			HumanCharacter player = GameManager.Inst.PlayerControl.SelectedPC;
+			if(player.Inventory.FitItemInBackpack(item, out colPos, out rowPos, out orientation))
+			{
+				Debug.Log("Found backpack fit " + colPos + ", " + rowPos + " orientation " + orientation);
+
+				GridItemData itemData = new GridItemData(item, colPos, rowPos, orientation, quantity);
+				player.Inventory.Backpack.Add(itemData);
+
+				GameManager.Inst.PlayerControl.Party.RefreshAllMemberWeight();
+
+			}
+			else
+			{
+				var resource = Resources.Load(item.PrefabName + "Pickup");
+				if(resource != null)
+				{
+					GameObject pickup = GameObject.Instantiate(resource) as GameObject;
+					pickup.transform.position = player.transform.position + new Vector3(UnityEngine.Random.Range(-0.2f, 0.2f), 1f, UnityEngine.Random.Range(-0.2f, 0.2f));
+					Transform parent = GameManager.Inst.ItemManager.FindPickupItemParent(pickup.transform);
+					if(parent != null)
+					{
+						pickup.transform.parent = parent;
+					}
+					pickup.GetComponent<PickupItem>().Item = item;
+					pickup.GetComponent<PickupItem>().Quantity = quantity;
+				}
+
+			}
+
+			GameManager.Inst.UIManager.SetConsoleText("Received item: " + item.Name + " x " + quantity);
+
+		}
+		else if(tokens[1] == "lose")
+		{
+
+		}
 	}
 }
