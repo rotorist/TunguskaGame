@@ -11,14 +11,14 @@ public class QuestManager
 
 	public void Initialize()
 	{
-		Scripts = new Dictionary<string, StoryEventScript>();
-		StoryConditions = new Dictionary<string, StoryCondition>();
+		Scripts = GameManager.Inst.DBManager.DBHandlerStoryEvent.LoadScripts();
+		StoryConditions = GameManager.Inst.DBManager.DBHandlerStoryEvent.LoadStoryConditions();
 
 		//CurrentQuest = new WaveDefenseQuest();
 		//CurrentQuest.StartQuest();
 
 		//populate story conditions manually for now
-		 
+		/*
 		StoryConditionItem cond1 = new StoryConditionItem();
 		cond1.ID = "hastomatoseeds";
 		cond1.ItemID = "mutantheart";
@@ -43,8 +43,10 @@ public class QuestManager
 		cond5.ID = "zsk_barn_water_on";
 		cond5.SetValue(0);
 		StoryConditions.Add(cond5.ID, cond5);
-	
+		*/
 
+
+		/*
 		StoryEventScript script1 = new StoryEventScript();
 		script1.Script.Add("door/Level1RoadBlockGate/toggle");
 		Scripts.Add("zsk_roadblockgate_toggle", script1);
@@ -76,10 +78,10 @@ public class QuestManager
 		script6.Script.Add("item/receive/huntingshotgun/1");
 		script6.Script.Add("item/receive/ammo12shot/10");
 		Scripts.Add("zsk_barn_quest_done2", script6);
-
+		*/
 
 		//run initial testing scsripts
-		script3.Trigger(new object[]{});
+		Scripts["zsk_village_exit_unlock"].Trigger(new object[]{});
 	}
 
 	public void PerSecondUpdate()

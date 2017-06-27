@@ -53,7 +53,7 @@ public class StoryEventHandler
 
 	private bool _isCurrentEventDone;
 	private LinkedList<StoryEventListener> [] _allListenerLists;
-	private int _listenerListIndex;
+
 
 
 	public StoryEventHandler()
@@ -97,8 +97,7 @@ public class StoryEventHandler
 				_currentStoryEvent = null;
 				return;
 			}
-
-			_listenerListIndex = 0;
+				
 			_currentListenerNode = null;
 			_isCurrentEventDone = false;
 
@@ -135,14 +134,9 @@ public class StoryEventHandler
 			LinkedListNode<StoryEventListener> nextNode = _currentListenerNode.Next;
 			if(nextNode == null)
 			{
-				//go to next list
+				//we are done here
 				_currentListenerNode = null;
-				_listenerListIndex ++;
-				if(_listenerListIndex >= _allListenerLists.Length)
-				{
-					_listenerListIndex = 0;
-					_isCurrentEventDone = true;
-				}
+				_isCurrentEventDone = true;
 			}
 			else
 			{
@@ -157,20 +151,19 @@ public class StoryEventHandler
 		}
 		else
 		{
-			//check if there's any listener
-			if(_allListenerLists[_listenerListIndex].First != null)
+			//check if there's any listener for this type of event
+			LinkedList<StoryEventListener> listenerList = GetListnerListFromEventType(_currentStoryEvent.Type);
+			if(listenerList != null && listenerList.First != null)
 			{
-				_currentListenerNode = _allListenerLists[_listenerListIndex].First;
+				_currentListenerNode = listenerList.First;
 				Debug.Log("Found listener");
 			}
 			else
 			{
-				_listenerListIndex ++;
-				if(_listenerListIndex >= _allListenerLists.Length)
-				{
-					_listenerListIndex = 0;
-					_isCurrentEventDone = true;
-				}
+				//done with this event
+				_currentListenerNode = null;
+				_isCurrentEventDone = true;
+
 			}
 
 		}
@@ -233,6 +226,33 @@ public class StoryEventHandler
 
 	}
 
+	private LinkedList<StoryEventListener> GetListnerListFromEventType(StoryEventType eventType)
+	{
+		switch(eventType)
+		{
+		case StoryEventType.OnApproachingLoc:
+			return ApproachLocListeners;
+			break;
+		case StoryEventType.OnCharacterDeath:
+			return CharacterDeathListeners;
+			break;
+		case StoryEventType.OnSquadDeath:
+			return SquadDeathListeners;
+			break;
+		case StoryEventType.OnPlayerDropItem:
+			return PlayerDropItemListeners;
+			break;
+		case StoryEventType.OnPlayerSellItem:
+			return PlayerSellItemListeners;
+			break;
+		case StoryEventType.OnPlayerTakeItem:
+			return PlayerTakeItemListeners;
+			break;
+
+		}
+
+		return null;
+	}
 
 
 }
