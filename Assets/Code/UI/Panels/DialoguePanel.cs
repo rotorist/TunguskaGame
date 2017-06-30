@@ -367,6 +367,7 @@ public class DialoguePanel : PanelBase
 			i++;
 		}
 		//now re-add collider to fix collider size
+
 		NGUITools.AddWidgetCollider(DialogueScroll.gameObject);
 
 

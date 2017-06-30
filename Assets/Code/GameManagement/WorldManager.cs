@@ -10,7 +10,7 @@ public class WorldManager
 	public Dictionary<string, Environment> AllEnvironments;
 	public TerrainHandler CurrentTerrain;
 	public Environment CurrentEnvironment;
-
+	public int CurrentDay;
 
 	private int _ambientPlayCounter;
 	private int _nextAmbientTime;

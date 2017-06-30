@@ -12,6 +12,7 @@ public class WindowPanel : PanelBase
 	public SplitItemPanel SplitItemPanel;
 	public TraderItemPanel TraderItemPanel;
 	public TradingPanel TradingPanel;
+	public JournalPanel JournalPanel;
 
 	public UIPanel SelectedItemPanel;
 
@@ -34,6 +35,7 @@ public class WindowPanel : PanelBase
 		SplitItemPanel.Initialize();
 		TradingPanel.Initialize();
 		TraderItemPanel.Initialize();
+		JournalPanel.Initialize();
 
 
 		_panels.Add(BodySlotPanel);
@@ -43,6 +45,7 @@ public class WindowPanel : PanelBase
 		_panels.Add(InventoryPanel);
 		_panels.Add(TradingPanel);
 		_panels.Add(TraderItemPanel);
+		_panels.Add(JournalPanel);
 
 		Hide();
 

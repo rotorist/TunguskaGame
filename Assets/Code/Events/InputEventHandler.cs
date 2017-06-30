@@ -238,6 +238,7 @@ public class InputEventHandler
 			UIEventHandler.Instance.TriggerToggleInventory();
 		}
 
+
 		if(Input.GetKeyDown(KeyCode.Escape))
 		{
 
@@ -753,6 +754,12 @@ public class InputEventHandler
 			if(Input.GetKeyDown(KeyCode.I))
 			{
 				UIEventHandler.Instance.TriggerToggleInventory();
+			}
+
+
+			if(Input.GetKeyDown(KeyCode.J))
+			{
+				UIEventHandler.Instance.TriggerJournal();
 			}
 
 			if(Input.GetKeyDown(KeyCode.X))

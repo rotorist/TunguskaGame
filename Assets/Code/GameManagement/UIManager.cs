@@ -15,7 +15,7 @@ public class UIManager
 	public DialoguePanel DialoguePanel;
 	public RestingPanel RestingPanel;
 	public ConfirmPanel ConfirmPanel;
-
+	public JournalPanel JournalPanel;
 
 	public bool IsInHUDRegion;
 

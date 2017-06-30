@@ -56,6 +56,8 @@ public class UIStateNormal : UIStateBase
 		UIEventHandler.OnOpenRestPanel += OnOpenRestPanel;
 		UIEventHandler.OnOpenConfirmPanel -= OnOpenConfirmPanel;
 		UIEventHandler.OnOpenConfirmPanel += OnOpenConfirmPanel;
+		UIEventHandler.OnOpenJournalPanel -= OnOpenJournalPanel;
+		UIEventHandler.OnOpenJournalPanel += OnOpenJournalPanel;
 	}
 
 	public override void EndState ()
@@ -68,6 +70,7 @@ public class UIStateNormal : UIStateBase
 		UIEventHandler.OnStartTrading -= OnStartTrading;
 		UIEventHandler.OnOpenRestPanel -= OnOpenRestPanel;
 		UIEventHandler.OnOpenConfirmPanel -= OnOpenConfirmPanel;
+		UIEventHandler.OnOpenJournalPanel -= OnOpenJournalPanel;
 	}
 
 
@@ -112,6 +115,12 @@ public class UIStateNormal : UIStateBase
 	{
 		EndState();
 		SM.State = new UIStateConfirm(SM);
+	}
+
+	public void OnOpenJournalPanel()
+	{
+		EndState();
+		SM.State = new UIStateJournal(SM);
 	}
 
 }
@@ -362,6 +371,41 @@ public class UIStateTrading : UIStateBase
 		SM.UIManager.WindowPanel.TradingPanel.Show();
 
 		SM.UIManager.WindowPanel.SetBackground(true);
+
+		//subscribe events
+		UIEventHandler.OnCloseWindow -= OnCloseWindow;
+		UIEventHandler.OnCloseWindow += OnCloseWindow;
+	}
+
+	public override void EndState ()
+	{
+		UIEventHandler.OnCloseWindow -= OnCloseWindow;
+	}
+
+	public void OnCloseWindow()
+	{
+		EndState();
+		SM.State = new UIStateNormal(SM);
+	}
+}
+
+public class UIStateJournal : UIStateBase
+{
+	public UIStateJournal(UIStateMachine sm)
+	{
+		SM = sm;
+		BeginState();
+	}
+
+	public override void BeginState ()
+	{
+		//setup panels
+		SM.UIManager.HideAllPanels();
+		SM.UIManager.HUDPanel.Show();
+		SM.UIManager.WindowPanel.Show();
+		SM.UIManager.WindowPanel.JournalPanel.Show();
+
+		SM.UIManager.WindowPanel.SetBackground(false);
 
 		//subscribe events
 		UIEventHandler.OnCloseWindow -= OnCloseWindow;

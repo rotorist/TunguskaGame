@@ -50,6 +50,7 @@ public class UIEventHandler
 	public static event GeneralUIEventDelegate OnStartTrading;
 	public static event GeneralUIEventDelegate OnOpenRestPanel;
 	public static event GeneralUIEventDelegate OnOpenConfirmPanel;
+	public static event GeneralUIEventDelegate OnOpenJournalPanel;
 
 
 	public void TriggerOpenWindow()
@@ -139,6 +140,14 @@ public class UIEventHandler
 		if(OnOpenConfirmPanel != null)
 		{
 			OnOpenConfirmPanel();
+		}
+	}
+
+	public void TriggerJournal()
+	{
+		if(OnOpenJournalPanel != null)
+		{
+			OnOpenJournalPanel();
 		}
 	}
 }

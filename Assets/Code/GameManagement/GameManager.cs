@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
 	public CameraController CameraController;
 	public CameraShaker CameraShaker;
 	public PlayerControl PlayerControl;
+	public PlayerProgress PlayerProgress;
 
 	public AIScheduler AIScheduler;
 
@@ -140,6 +141,7 @@ public class GameManager : MonoBehaviour
 		PlayerControl.Initialize();
 
 
+		PlayerProgress = new PlayerProgress();
 
 
 		UIManager = new UIManager();
@@ -147,6 +149,8 @@ public class GameManager : MonoBehaviour
 
 		QuestManager = new QuestManager();
 		QuestManager.Initialize();
+
+
 
 		SaveGameManager = new SaveGameManager();
 
