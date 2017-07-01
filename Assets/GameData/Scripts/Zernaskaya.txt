@@ -1,6 +1,9 @@
 ./zsk_roadblockgate_toggle
 door/Level1RoadBlockGate/toggle
 
+./zsk_know_blockade
+topic/discover/zsk_blockade
+
 ./zsk_irrigator_on
 object/FarmIrrigatorHandle/on
 condition/zsk_barn_water_on/true
@@ -10,6 +13,7 @@ door/ZernaskayaSheetFenceDoor/unlock
 condition/zsk_village_gate_open/true
 condition/zsk_sid_quest/1
 hook/zsk_barn_clear_done/OnSquadDeath
+journal/{2}
 
 ./zsk_barn_clear_done
 if/param/0/is/zsk_barn_legionnaires
@@ -18,11 +22,12 @@ message/Barn has been cleared!
 
 ./zsk_barn_quest_done1
 condition/zsk_sid_quest/2
+topic/forget/zsk_blockade
 
 ./zsk_barn_quest_done2
 condition/zsk_sid_quest/2
 item/receive/huntingshotgun/1
 item/receive/ammo12shot/10
-
+topic/forget/zsk_blockade
 
 

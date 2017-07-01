@@ -1,6 +1,11 @@
-﻿using System.Collections;
+﻿using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
+using Mono.Data.SqliteClient;
+using System.Data;
+using System.Text;
+using System.Xml;
+using System.IO;
 using System;
 
 public class StoryEventScript
@@ -47,6 +52,12 @@ public class StoryEventScript
 				break;
 			case "item":
 				ExecuteItemScript(tokens);
+				break;
+			case "journal":
+				ExecuteJournalScript(tokens);
+				break;
+			case "topic":
+				ExecuteTopicScript(tokens);
 				break;
 			}
 		}
@@ -235,6 +246,35 @@ public class StoryEventScript
 		else if(tokens[1] == "lose")
 		{
 
+		}
+	}
+
+	private void ExecuteJournalScript(string [] tokens)
+	{
+		string entry = tokens[1];
+
+		//check if journal entry is text or tag
+		if(entry[0] == '{')
+		{
+			string journalID = entry.Split('{','}')[1];
+			string text = GameManager.Inst.DBManager.DBHandlerStoryEvent.LoadJournalEntry(Convert.ToInt32(journalID));
+			GameManager.Inst.PlayerProgress.AddJournalEntry(text);
+		}
+		else
+		{
+			GameManager.Inst.PlayerProgress.AddJournalEntry(entry);
+		}
+	}
+
+	private void ExecuteTopicScript(string [] tokens)
+	{
+		if(tokens[1] == "discover")
+		{
+			GameManager.Inst.PlayerProgress.AddDiscoveredTopic(tokens[2]);
+		}
+		else if(tokens[1] == "forget")
+		{
+			GameManager.Inst.PlayerProgress.RemoveDiscoveredTopics(tokens[2]);
 		}
 	}
 }

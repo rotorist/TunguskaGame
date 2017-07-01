@@ -410,11 +410,15 @@ public class UIStateJournal : UIStateBase
 		//subscribe events
 		UIEventHandler.OnCloseWindow -= OnCloseWindow;
 		UIEventHandler.OnCloseWindow += OnCloseWindow;
+
+		GameManager.Inst.SoundManager.UI.PlayOneShot(GameManager.Inst.SoundManager.GetClip("JournalOpen"), 0.2f);
 	}
 
 	public override void EndState ()
 	{
 		UIEventHandler.OnCloseWindow -= OnCloseWindow;
+
+		GameManager.Inst.SoundManager.UI.PlayOneShot(GameManager.Inst.SoundManager.GetClip("JournalClose"), 0.3f);
 	}
 
 	public void OnCloseWindow()

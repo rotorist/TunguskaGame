@@ -326,6 +326,14 @@ public class DialoguePanel : PanelBase
 				continue;
 			}
 
+			//if topic is not known to player, don't show it
+
+			if(topic.Type == TopicType.Info && !GameManager.Inst.PlayerProgress.IsTopicDiscovered(topic.ID))
+			{
+				continue;
+			}
+
+
 			TopicEntry entry = new TopicEntry();
 
 			GameObject o = GameObject.Instantiate(Resources.Load("TopicEntry")) as GameObject;

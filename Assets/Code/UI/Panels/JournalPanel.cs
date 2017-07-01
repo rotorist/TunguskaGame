@@ -8,18 +8,29 @@ using System;
 public class JournalPanel : PanelBase
 {
 	public UILabel TestLabel;
-	public int JournalFontSize;
 	public int JournalEntrySpacing;
 	public int JournalPageHeight;
 	public GameObject LeftPageAnchor;
 	public GameObject RightPageAnchor;
-
-
+	public UIButton ArrowLeft;
+	public UIButton ArrowRight;
+	public UILabel PageNumberLeft;
+	public UILabel PageNumberRight;
 	public List<List<string>> ProcessedJournal;
+
+	private int _currentLeftPage;
 
 	public override void Initialize ()
 	{
-
+		LoadJournal();
+		if(ProcessedJournal.Count % 2 == 0)
+		{
+			_currentLeftPage = ProcessedJournal.Count - 2;
+		}
+		else
+		{
+			_currentLeftPage = ProcessedJournal.Count - 1;
+		}
 		Hide();
 	}
 
@@ -36,7 +47,7 @@ public class JournalPanel : PanelBase
 
 
 
-		InputEventHandler.Instance.State = UserInputState.Dialogue;
+		InputEventHandler.Instance.State = UserInputState.WindowsOpen;
 
 
 
@@ -45,8 +56,16 @@ public class JournalPanel : PanelBase
 
 
 		LoadJournal();
-		DisplayJournalPage(2);
-		DisplayJournalPage(3);
+		if(_currentLeftPage < ProcessedJournal.Count)
+		{
+			DisplayJournalPage(_currentLeftPage);
+
+		}
+
+		if(_currentLeftPage + 1 < ProcessedJournal.Count)
+		{
+			DisplayJournalPage(_currentLeftPage + 1);
+		}
 
 	}
 
@@ -76,6 +95,25 @@ public class JournalPanel : PanelBase
 	}
 
 
+	public void OnLeftArrowClick()
+	{
+		if(_currentLeftPage >= 2)
+		{
+			DisplayJournalPage(_currentLeftPage - 2);
+			DisplayJournalPage(_currentLeftPage + 1);
+		}
+	}
+
+	public void OnRightArrowClick()
+	{
+		if(_currentLeftPage < ProcessedJournal.Count - 1)
+		{
+			DisplayJournalPage(_currentLeftPage + 2);
+			DisplayJournalPage(_currentLeftPage + 1);
+		}
+	}
+
+
 	private void LoadJournal()
 	{
 		//first figure out how many pages will current day's entries take
@@ -90,7 +128,7 @@ public class JournalPanel : PanelBase
 			List<string> page = new List<string>();
 			ProcessedJournal.Add(page);
 			page.Add("Day " + dayNumber);
-			yPos = JournalFontSize + JournalEntrySpacing;
+			yPos = TestLabel.height + JournalEntrySpacing;
 
 
 			//loop through each day's entry and if its longer than one page, overflow to next page
@@ -123,7 +161,7 @@ public class JournalPanel : PanelBase
 	private void DisplayJournalPage(int pageNumber)
 	{
 		GameObject anchor;
-
+		bool isLeft = true;
 		if(pageNumber % 2 == 0)
 		{
 			//use left page
@@ -133,6 +171,7 @@ public class JournalPanel : PanelBase
 		{
 			//use right page
 			anchor = RightPageAnchor;
+			isLeft = false;
 		}
 
 		//first remove all current entry labels
@@ -141,7 +180,7 @@ public class JournalPanel : PanelBase
 			GameObject.Destroy(child.gameObject);
 		}
 
-		if(ProcessedJournal.Count <= pageNumber)
+		if(ProcessedJournal.Count <= pageNumber || pageNumber < 0)
 		{
 			return;
 		}
@@ -160,5 +199,39 @@ public class JournalPanel : PanelBase
 			entryLabel.text = entry;
 			yPos -= entryLabel.height + JournalEntrySpacing;
 		}
+
+
+
+		int rightPageNumber;
+
+		if(isLeft)
+		{
+			_currentLeftPage = pageNumber;
+			rightPageNumber = _currentLeftPage + 1;
+		}
+		else
+		{
+			_currentLeftPage = pageNumber - 1;
+			rightPageNumber = pageNumber;
+		}
+
+		PageNumberLeft.text = (_currentLeftPage + 1).ToString();
+		PageNumberRight.text = (rightPageNumber + 1).ToString();
+
+		NGUITools.SetActive(ArrowRight.gameObject, true);
+		NGUITools.SetActive(ArrowLeft.gameObject, true);
+
+		if(rightPageNumber >= ProcessedJournal.Count - 1)
+		{
+			NGUITools.SetActive(ArrowRight.gameObject, false);
+		}
+
+		if(_currentLeftPage <= 0)
+		{
+			NGUITools.SetActive(ArrowLeft.gameObject, false);
+		}
+
+			
+
 	}
 }

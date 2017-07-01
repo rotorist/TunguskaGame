@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE dialogue[<!ATTLIST node id ID #IMPLIED>]>
+<dialogue>
+    <intro>
+        <text>The man seems annoyed by the presence of new rookies like you.</text>
+        <next_node id="3" />
+    </intro>
+    <node id="3">
+        <response>
+            <text>What do you want?</text>
+        </response>
+        <option>
+            <condition name="zsk_village_gate_open" story="zsk_village_gate_open" compare="0" op="0" />
+            <title>Gate</title>
+            <text>Could you open the gate for me?</text>
+            <next_node id="1" />
+        </option>
+    </node>
+    <node id="1">
+        <response>
+            <condition name="zsk_village_gate_open" story="zsk_village_gate_open" compare="1" op="0" />
+            <text>Go on. The door is unlocked.</text>
+        </response>
+        <response>
+            <condition name="zsk_village_gate_open" story="zsk_village_gate_open" compare="0" op="0" />
+            <text>You can't go through yet. Go talk to Dr. Sidorovich, he's in the two storey house over there.</text>
+            <event name="zsk_know_blockade" />
+        </response>
+        <option>
+            <title>Why</title>
+            <text>Why is the road blocked?</text>
+            <next_node id="2" />
+        </option>
+    </node>
+    <node id="2">
+        <response>
+            <text>You see, we are in a bit of trouble here. We are forced to take advantage of rookies like you. Either you pay your way through or do some work for us.</text>
+        </response>
+    </node>
+</dialogue>

@@ -81,7 +81,7 @@ public class QuestManager
 		*/
 
 		//run initial testing scsripts
-		Scripts["zsk_village_exit_unlock"].Trigger(new object[]{});
+		//Scripts["zsk_village_exit_unlock"].Trigger(new object[]{});
 	}
 
 	public void PerSecondUpdate()

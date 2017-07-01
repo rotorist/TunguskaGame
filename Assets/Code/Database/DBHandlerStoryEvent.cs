@@ -89,4 +89,65 @@ public class DBHandlerStoryEvent
 
 		return scripts;
 	}
+
+	public List<List<string>> LoadJournal()
+	{
+		string [] rawFile;
+
+		try
+		{
+			rawFile = File.ReadAllLines(Application.dataPath + "/GameData/Journal/Journal.txt");
+		}
+		catch(Exception e)
+		{
+			UnityEngine.Debug.LogError(e.Message);
+			return null;
+		}
+
+		List<List<string>> journal = new List<List<string>>();
+		List<string> dayEntry = new List<string>();
+		int currentDay = 0;
+		foreach(string line in rawFile)
+		{
+			if(line.Length < 3)
+			{
+				continue;
+			}
+			if(line[0] == '.')
+			{
+				string [] splitString = line.Split('/');
+				int entryDate = Convert.ToInt32(splitString[1]);
+
+				if(entryDate > currentDay)
+				{
+					dayEntry = new List<string>();
+					journal.Add(dayEntry);
+					currentDay = entryDate;
+				}
+			}
+			else
+			{
+				if(dayEntry != null)
+				{
+					dayEntry.Add(line);
+				}
+			}
+		}
+
+
+		return journal;
+	}
+
+	public string LoadJournalEntry(int id)
+	{
+		IDataReader journalReader = GameManager.Inst.DBManager.RunQuery(
+			"SELECT entry from journal_entries where id = '" + id + "'");
+
+		while(journalReader.Read())
+		{
+			return journalReader.GetString(0);
+		}
+
+		return "";
+	}
 }
