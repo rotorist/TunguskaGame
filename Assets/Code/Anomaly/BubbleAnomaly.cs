@@ -1,0 +1,79 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class BubbleAnomaly : MonoBehaviour 
+{
+	public float RadiusLow;
+	public float RadiusHigh;
+	public float ExpandSpeed;
+
+	private float _currentRadiusTarget;
+
+	private float _reEnableRendererTimer;
+	private Renderer _myRenderer;
+	
+	// Update is called once per frame
+	void Update () 
+	{
+		if(transform.localScale.x < _currentRadiusTarget - 0.1f)
+		{
+			transform.localScale = Vector3.Lerp(transform.localScale, new Vector3(_currentRadiusTarget, _currentRadiusTarget, _currentRadiusTarget), Time.deltaTime * ExpandSpeed);
+		}
+		else
+		{
+			//set new target and shrink back to low (pop the bubble)
+			transform.localScale = new Vector3(RadiusLow, RadiusLow, RadiusLow);
+			_currentRadiusTarget = UnityEngine.Random.Range(RadiusLow, RadiusHigh);
+
+		}
+
+		if(_reEnableRendererTimer < 3)
+		{
+			_reEnableRendererTimer += Time.deltaTime;
+		}
+		else
+		{
+			if(_myRenderer != null)
+			{
+				_myRenderer.enabled = true;
+			}
+		}
+	}
+
+	void OnTriggerEnter(Collider other)
+	{
+		
+
+		Character character = other.GetComponent<Character>();
+
+		if(character != null && character.MyStatus.Health > 0)
+		{
+			Damage damage = new Damage();
+			damage.Type = DamageType.Explosive;
+			damage.BlastDamage = 40;
+			damage.IsCritical = true;
+			character.SendDamage(damage, (other.transform.position - transform.position).normalized, null, null);
+			Explode();
+		}
+		else
+		{
+			//destroy the object if it contains rigidbody
+			if(other.GetComponent<Rigidbody>() != null)
+			{
+				Explode();
+				GameObject.Destroy(other.gameObject);
+			}
+		}
+	}
+
+	private void Explode()
+	{
+		transform.localScale = new Vector3(RadiusLow, RadiusLow, RadiusLow);
+		_myRenderer = GetComponent<Renderer>();
+		_myRenderer.enabled = false;
+		_reEnableRendererTimer = 0;
+		GameObject explosion = GameObject.Instantiate(Resources.Load("BubbleAnomalyExplosion")) as GameObject;
+		explosion.transform.position = transform.position;
+	}
+}

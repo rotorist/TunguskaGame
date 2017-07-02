@@ -534,6 +534,13 @@ public class HumanCharacter : Character
 			{
 				MyLeftHandIK.SmoothEnable(10);
 			}
+
+			if(MyCC != null)
+			{
+				MyCC.Move(Vector3.zero);
+
+			}
+
 			IsBodyLocked = false;
 			IsMoveLocked = false;
 
@@ -2223,7 +2230,7 @@ public class HumanCharacter : Character
 				{
 					lookDir = normal * -1;
 					MyAI.BlackBoard.AnimationAction = AnimationActions.KnockBack;
-					MyAI.BlackBoard.ActionMovementDest = transform.position + normal.normalized * 1; //transform.position - transform.forward * 1;
+					MyAI.BlackBoard.ActionMovementDest = transform.position + normal.normalized * 1f; //transform.position - transform.forward * 1;
 					MyAI.BlackBoard.ActionMovementSpeed = 1.5f;
 				}
 				else

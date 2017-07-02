@@ -101,7 +101,11 @@ public class JournalPanel : PanelBase
 		{
 			DisplayJournalPage(_currentLeftPage - 2);
 			DisplayJournalPage(_currentLeftPage + 1);
+
+			PlayFlipPageSound();
 		}
+
+
 	}
 
 	public void OnRightArrowClick()
@@ -110,6 +114,8 @@ public class JournalPanel : PanelBase
 		{
 			DisplayJournalPage(_currentLeftPage + 2);
 			DisplayJournalPage(_currentLeftPage + 1);
+
+			PlayFlipPageSound();
 		}
 	}
 
@@ -233,5 +239,11 @@ public class JournalPanel : PanelBase
 
 			
 
+	}
+
+	private void PlayFlipPageSound()
+	{
+		int choice = UnityEngine.Random.Range(1, 4);
+		GameManager.Inst.SoundManager.UI.PlayOneShot(GameManager.Inst.SoundManager.GetClip("PageFlip" + choice.ToString()), 0.2f);
 	}
 }
