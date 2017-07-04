@@ -49,6 +49,12 @@ public class CameraController : MonoBehaviour
 
 	void Update()
 	{
+		HumanCharacter pc = GameManager.Inst.PlayerControl.SelectedPC;
+		if(pc == null)
+		{
+			return;
+		}
+
 		if(_rotation < 0)
 		{
 			transform.RotateAround(GameManager.Inst.PlayerControl.SelectedPC.transform.position, Vector3.up, _rotation);
@@ -62,7 +68,7 @@ public class CameraController : MonoBehaviour
 		_rotation = Mathf.Lerp(_rotation, 0, 5 * Time.unscaledDeltaTime);
 
 
-		HumanCharacter pc = GameManager.Inst.PlayerControl.SelectedPC;
+
 		Vector3 cameraFacing = Camera.main.transform.forward;
 
 		float cameraHeight = 18;

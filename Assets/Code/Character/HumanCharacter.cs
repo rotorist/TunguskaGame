@@ -547,7 +547,7 @@ public class HumanCharacter : Character
 		}
 
 
-		if(MyAI.ControlType == AIControlType.Player)
+		if(!IsBodyLocked && !IsMoveLocked && MyAI.ControlType == AIControlType.Player)
 		{
 			CurrentAnimState.SendCommand(command);
 		}

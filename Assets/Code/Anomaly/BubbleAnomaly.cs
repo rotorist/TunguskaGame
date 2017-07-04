@@ -7,6 +7,7 @@ public class BubbleAnomaly : MonoBehaviour
 	public float RadiusLow;
 	public float RadiusHigh;
 	public float ExpandSpeed;
+	public AudioSource Audio;
 
 	private float _currentRadiusTarget;
 
@@ -16,7 +17,7 @@ public class BubbleAnomaly : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		if(transform.localScale.x < _currentRadiusTarget - 0.1f)
+		if(transform.localScale.x < _currentRadiusTarget - 0.1f && _reEnableRendererTimer > 2)
 		{
 			transform.localScale = Vector3.Lerp(transform.localScale, new Vector3(_currentRadiusTarget, _currentRadiusTarget, _currentRadiusTarget), Time.deltaTime * ExpandSpeed);
 		}
@@ -28,7 +29,7 @@ public class BubbleAnomaly : MonoBehaviour
 
 		}
 
-		if(_reEnableRendererTimer < 3)
+		if(_reEnableRendererTimer < 2)
 		{
 			_reEnableRendererTimer += Time.deltaTime;
 		}
@@ -54,6 +55,10 @@ public class BubbleAnomaly : MonoBehaviour
 			damage.BlastDamage = 40;
 			damage.IsCritical = true;
 			character.SendDamage(damage, (other.transform.position - transform.position).normalized, null, null);
+			if(character.MyAI.ControlType == AIControlType.Player)
+			{
+				GameManager.Inst.CameraShaker.TriggerScreenShake(0.2f, 0.8f);
+			}
 			Explode();
 		}
 		else
@@ -75,5 +80,8 @@ public class BubbleAnomaly : MonoBehaviour
 		_reEnableRendererTimer = 0;
 		GameObject explosion = GameObject.Instantiate(Resources.Load("BubbleAnomalyExplosion")) as GameObject;
 		explosion.transform.position = transform.position;
+		Audio.PlayOneShot(GameManager.Inst.SoundManager.GetClip("airburst2"), 0.55f);
+
+
 	}
 }

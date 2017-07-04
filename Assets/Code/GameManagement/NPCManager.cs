@@ -373,6 +373,11 @@ public class NPCManager
 		return null;
 	}
 
+	public void HideCharacterPublic(Character character)
+	{
+		HideCharacter(character);
+	}
+
 
 	private CharacterStatus GetMutantStatus(MutantCharacter character)
 	{

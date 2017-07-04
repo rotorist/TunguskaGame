@@ -166,6 +166,10 @@ public class HumanAnimStateAction : HumanAnimStateBase
 			this.ParentCharacter.MyAnimator.SetFloat("Blend", UnityEngine.Random.value);
 			this.ParentCharacter.MyAnimator.SetBool("IsCommanderStand", true);
 		}
+		else if(this.ParentCharacter.MyAI.BlackBoard.AnimationAction == AnimationActions.LostBalance)
+		{
+			this.ParentCharacter.MyAnimator.SetBool("LostBalance", true);
+		}
 
 	}
 
