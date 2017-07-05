@@ -544,6 +544,11 @@ public class HumanCharacter : Character
 			IsBodyLocked = false;
 			IsMoveLocked = false;
 
+			CapsuleCollider collider = GetComponent<CapsuleCollider>();
+			collider.height = 1.7f;
+			collider.center = new Vector3(0, 1, 0);
+			collider.direction = 1;
+
 		}
 
 

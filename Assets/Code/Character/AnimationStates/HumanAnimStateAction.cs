@@ -135,15 +135,18 @@ public class HumanAnimStateAction : HumanAnimStateBase
 		{
 			this.ParentCharacter.MyAnimator.SetFloat("Blend", UnityEngine.Random.value);
 			this.ParentCharacter.MyAnimator.SetBool("IsChairSitting", false);
+			SetCollider(1.3f, 0.4f, 1);
 		}
 		else if(this.ParentCharacter.MyAI.BlackBoard.AnimationAction == AnimationActions.GroundSit)
 		{
 			this.ParentCharacter.MyAnimator.SetFloat("Blend", UnityEngine.Random.value);
 			this.ParentCharacter.MyAnimator.SetBool("IsGroundSitting", true);
+			SetCollider(1f, 0.5f, 1);
 		}
 		else if(this.ParentCharacter.MyAI.BlackBoard.AnimationAction == AnimationActions.GroundStand)
 		{
 			this.ParentCharacter.MyAnimator.SetBool("IsGroundSitting", false);
+			SetCollider(1.7f, 1f, 1);
 		}
 		else if(this.ParentCharacter.MyAI.BlackBoard.AnimationAction == AnimationActions.Sleep)
 		{
@@ -155,11 +158,13 @@ public class HumanAnimStateAction : HumanAnimStateBase
 			{
 				this.ParentCharacter.MyAnimator.SetBool("IsSleeping", true);
 			}
+			SetCollider(1.7f, 0.1f, 2);
 		}
 		else if(this.ParentCharacter.MyAI.BlackBoard.AnimationAction == AnimationActions.SleepStand)
 		{
 			this.ParentCharacter.MyAnimator.SetBool("IsSleeping", false);
 			this.ParentCharacter.MyAnimator.SetBool("IsJackingOff", false);
+			SetCollider(1.7f, 1f, 1);
 		}
 		else if(this.ParentCharacter.MyAI.BlackBoard.AnimationAction == AnimationActions.CommanderStand)
 		{
@@ -204,5 +209,13 @@ public class HumanAnimStateAction : HumanAnimStateBase
 			break;
 		}
 
+	}
+
+	private void SetCollider(float height, float center, int direction)
+	{
+		CapsuleCollider collider = ParentCharacter.GetComponent<CapsuleCollider>();
+		collider.height = height;
+		collider.center = new Vector3(0, center, 0);
+		collider.direction = direction;
 	}
 }
