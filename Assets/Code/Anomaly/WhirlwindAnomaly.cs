@@ -12,10 +12,8 @@ public class WhirlwindAnomaly : MonoBehaviour
 
 	private Character _target;
 	private float _spinTimer;
-	private float _showLeafTimer;
-	private float _showStateTime = 10;
-	private bool _isShowingLeaf;
-
+	private float _particleChangeRate;
+	private float _emissionRate;
 	void Update () 
 	{
 		transform.RotateAround(transform.position, transform.up, 60 * Time.deltaTime);
@@ -34,6 +32,9 @@ public class WhirlwindAnomaly : MonoBehaviour
 					damage.SharpDamage = 10000;
 					_target.SendMeleeDamage(damage, Vector3.zero, _target, 0);
 					Audio.PlayOneShot(GameManager.Inst.SoundManager.GetClip("WhirlwindSpin"), 0.5f);
+					GameObject dust = GameManager.Inst.FXManager.LoadFX("WhirlwindInwardSmoke", 2, FXType.Explosion);
+					dust.transform.position = transform.position + new Vector3(0, 0.5f, 0);
+
 				}
 
 				_target.transform.RotateAround(_target.transform.position, _target.transform.up, 600 * Time.deltaTime);
@@ -46,6 +47,32 @@ public class WhirlwindAnomaly : MonoBehaviour
 
 
 			}
+		}
+
+		//adjust leaf rate
+		ParticleSystem.EmissionModule emission1 = Leaves1.emission;
+		ParticleSystem.EmissionModule emission2 = Leaves2.emission;
+
+		_emissionRate += _particleChangeRate;
+
+		if(_emissionRate < 2)
+		{
+			emission1.rateOverTime = new ParticleSystem.MinMaxCurve(2);
+			emission2.rateOverTime = new ParticleSystem.MinMaxCurve(2);
+		}
+		else
+		{
+			emission1.rateOverTime = new ParticleSystem.MinMaxCurve(_emissionRate);
+			emission2.rateOverTime = new ParticleSystem.MinMaxCurve(_emissionRate);
+		}
+		if(_emissionRate > 3)
+		{
+			_particleChangeRate = UnityEngine.Random.Range(-0.01f, -0.002f);
+
+		}
+		else if(_emissionRate <= 0)
+		{
+			_particleChangeRate = UnityEngine.Random.Range(0.002f, 0.01f);
 		}
 
 
