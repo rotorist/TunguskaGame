@@ -2,6 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum SmallActionType
+{
+	None,
+	Guitar,
+	Smoke,
+	Drink,
+}
+
 public class ActionIdleActivity : GoapAction
 {
 	private bool _hasIdleDests;
@@ -13,6 +21,10 @@ public class ActionIdleActivity : GoapAction
 	private IdleDest _traderIdleDest;
 	private int _actionTimer;
 	private int _nextActionTime;
+
+	private GameObject _guitar;
+
+	public SmallActionType SmallAction;
 
 	public ActionIdleActivity(string name, string description, float cost)
 	{
@@ -280,16 +292,46 @@ public class ActionIdleActivity : GoapAction
 				_actionTimer = 0;
 				_nextActionTime = UnityEngine.Random.Range(30, 60);
 
-				if(_currentIdleDest.Type == IdleDestType.ChairSit || _currentIdleDest.Type == IdleDestType.GroundSit)
+				if(_guitar != null)
+				{
+					GameObject.Destroy(_guitar.gameObject);
+				}
+
+				if(_currentIdleDest.Type == IdleDestType.GroundSit)
 				{
 					ParentCharacter.MyAnimator.SetTrigger("Cancel");
-					if(UnityEngine.Random.value > 0.5f)
+					if(UnityEngine.Random.value < 0.3f)
 					{
 						ParentCharacter.MyAnimator.SetTrigger("Smoke");
+						SmallAction = SmallActionType.Smoke;
 					}
-					else
+					else if(UnityEngine.Random.value < 0.6f)
 					{
+						ParentCharacter.MyAnimator.SetTrigger("Drink");
+						SmallAction = SmallActionType.Drink;
+					}
+					else if(!ParentCharacter.MyAI.Squad.IsAnyOnePlayingGuitar())
+					{
+						//Debug.Log("Start playing guitar, " + ParentCharacter.name);
+						//start playing guitar
+						//first load guitar prefab
+
+						_guitar = GameObject.Instantiate(Resources.Load("Guitar")) as GameObject;
+						_guitar.transform.parent = ParentCharacter.MyReference.TorsoWeaponMount.transform;
+						_guitar.transform.localPosition = new Vector3(0.362f, -0.149f, 0.217f);
+						_guitar.transform.localEulerAngles = new Vector3(-11.898f, -90, 102.761f);
+
 						ParentCharacter.MyAnimator.SetTrigger("Guitar");
+						SmallAction = SmallActionType.Guitar;
+
+						//start playing clip
+						AudioClip clip = GameManager.Inst.SoundManager.GetClip("guitar1");
+						_nextActionTime = Mathf.CeilToInt(clip.length) + 2;
+						ParentCharacter.CharacterAudio.PlayOneShot(clip, 0.5f);
+					}
+					else 
+					{
+						SmallAction = SmallActionType.None;
 					}
 
 				}
@@ -365,6 +407,13 @@ public class ActionIdleActivity : GoapAction
 			ParentCharacter.SendCommand(CharacterCommands.AnimationActionDone);
 		}
 
+
 		ParentCharacter.MyAnimator.SetTrigger("Cancel");
+		if(_guitar != null)
+		{
+			ParentCharacter.CharacterAudio.Stop();
+			GameObject.Destroy(_guitar);
+		}
+		SmallAction = SmallActionType.None;
 	}
 }

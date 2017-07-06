@@ -138,6 +138,27 @@ public class AISquad
 		return false;
 	}
 
+	public bool IsAnyOnePlayingGuitar()
+	{
+		foreach(Character member in Members)
+		{
+			GoapAction currentAction = member.MyAI.GetCurrentAction();
+			if(currentAction != null && currentAction.Name == "ActionIdleActivity")
+			{
+				
+				ActionIdleActivity action = (ActionIdleActivity)currentAction;
+				if(action.SmallAction == SmallActionType.Guitar)
+				{
+					//Debug.Log("member  " + member + " is playing guitar");
+					return true;
+				}
+			}
+
+		}
+
+		return false;
+	}
+
 	public bool IsAnyOneIntimidating(Character target)
 	{
 

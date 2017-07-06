@@ -231,6 +231,7 @@ public enum AnimationActions
 	HardLanding,
 	CommanderStand,
 	LostBalance,
+
 }
 
 public enum CharStateType
