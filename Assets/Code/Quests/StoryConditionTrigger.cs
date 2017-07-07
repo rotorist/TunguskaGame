@@ -8,10 +8,6 @@ public class StoryConditionTrigger : StoryCondition
 	public override void SetValue (int value)
 	{
 		_value = value;
-		if(_value != 0)
-		{
-			_value = 1;
-		}
 	}
 
 	public override int GetValue ()

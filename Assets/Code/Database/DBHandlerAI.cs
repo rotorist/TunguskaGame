@@ -96,7 +96,7 @@ public class DBHandlerAI
 			int id = actionReader.GetInt32(0);
 			string className = actionReader.GetString(1);
 			string description = actionReader.GetString(2);
-			Debug.Log("get action " + className + description);
+			//Debug.Log("get action " + className + description);
 			float cost = actionReader.GetFloat(3);
 
 			GoapAction action = (GoapAction)System.Activator.CreateInstance(System.Type.GetType(className), className, description, cost);

@@ -133,15 +133,16 @@ public class DialoguePanel : PanelBase
 		Topic selectedTopic = selectedButton.GetComponent<TopicReference>().Topic;
 		Debug.Log("clicked " + selectedButton.GetComponent<TopicReference>().Topic.Type);
 
+		string playerName = GameManager.Inst.PlayerProgress.PlayerFirstName;
 
 		if(selectedTopic.Type == TopicType.Info && selectedTopic.Response != null && selectedTopic.Response != "")
 		{
 			//we have an immediate response. 
-			DialogueEntry request = CreateDialogueEntry("Gabriel Chang", selectedTopic.Title, true);
+			DialogueEntry request = CreateDialogueEntry(playerName, selectedTopic.Title, true);
 			_entries.Push(request);
 
 			string parsedResponse = ParseDialogueText(selectedTopic.Response);
-			DialogueEntry entry = CreateDialogueEntry("Jonathan Perpy", parsedResponse, false);
+			DialogueEntry entry = CreateDialogueEntry(GetSpeakerName(), parsedResponse, false);
 			_entries.Push(entry);
 			ClearTopics();
 			RefreshDialogue(_currentNodeID, false);
@@ -152,12 +153,12 @@ public class DialoguePanel : PanelBase
 			//check if there's request text
 			if(selectedTopic.Request != null && selectedTopic.Request != "")
 			{
-				DialogueEntry entry = CreateDialogueEntry("Gabriel Chang", selectedTopic.Request, true);
+				DialogueEntry entry = CreateDialogueEntry(playerName, selectedTopic.Request, true);
 				_entries.Push(entry);
 			}
 			else
 			{
-				DialogueEntry entry = CreateDialogueEntry("Gabriel Chang", selectedTopic.Title, true);
+				DialogueEntry entry = CreateDialogueEntry(playerName, selectedTopic.Title, true);
 				_entries.Push(entry);
 			}
 
@@ -169,7 +170,7 @@ public class DialoguePanel : PanelBase
 		{
 			//back to root node
 
-			DialogueEntry entry = CreateDialogueEntry("Gabriel Chang", "Let's talk about something else.", true);
+			DialogueEntry entry = CreateDialogueEntry(playerName, "Let's talk about something else.", true);
 			_entries.Push(entry);
 
 			ClearTopics();
@@ -264,6 +265,7 @@ public class DialoguePanel : PanelBase
 	{
 		//if loading a new node, first create a dialogue entry for it and push into 
 		//the stack. 
+
 		if(newNodeID != "")
 		{
 			//create dialogue entry
@@ -275,7 +277,7 @@ public class DialoguePanel : PanelBase
 				DialogueResponse response = EvaluateResponse(node.Responses);
 				if(response != null)
 				{
-					DialogueEntry entry = CreateDialogueEntry("Jonathan Perpy", ParseDialogueText(response.Text), false);
+					DialogueEntry entry = CreateDialogueEntry(GetSpeakerName(), ParseDialogueText(response.Text), false);
 
 					_entries.Push(entry);
 
@@ -596,5 +598,19 @@ public class DialoguePanel : PanelBase
 		}
 
 		return output;
+	}
+
+	private string GetSpeakerName()
+	{
+		HumanCharacter speaker = (HumanCharacter)GameManager.Inst.PlayerControl.SelectedPC.MyAI.BlackBoard.InteractTarget;
+		if(speaker == null)
+		{
+			return "";
+		}
+		else
+		{
+			return speaker.Name;
+
+		}
 	}
 }

@@ -81,7 +81,7 @@ public class QuestManager
 		*/
 
 		//run initial testing scsripts
-		//Scripts["zsk_village_exit_unlock"].Trigger(new object[]{});
+		SetSidQuestStage(2);
 	}
 
 	public void PerSecondUpdate()
@@ -89,15 +89,28 @@ public class QuestManager
 		//CurrentQuest.PerSecondUpdate();
 	}
 
+	private void SetSidQuestStage(int stage)
+	{
+		if(stage > 0)
+		{
+			SetSidQuestStage(stage - 1);
+		}
+
+		if(stage == 1)
+		{
+			Scripts["zsk_village_exit_unlock"].Trigger(new object[]{});
+		}
+		else if(stage == 2)
+		{
+			Scripts["zsk_barn_quest_done1"].Trigger(new object[]{});
+		}
+		else if(stage == 3)
+		{
+			Scripts["zsk_sid_church_begin"].Trigger(new object[]{});
+		}
+
+
+	}
 
 }
 
-/*
- * 
- * 
-bool - zsk_village_gate_open
-bool - zsk_sid_intro_done //whether sidorovich finished explaining
- * 
- * 
- * 
- */

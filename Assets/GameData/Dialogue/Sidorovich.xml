@@ -167,7 +167,18 @@
     </node>
     <node id="14">
         <response>
-            <text>For the past several months, the Legionnaires held the train station, so the only way out of Zernaskaya is through the sewers under the church. Since we haven't been there for a while, the whole area got overrun with gouls. </text>
+            <text>For the past several months, the Legionnaires held the train station, so the only way out of Zernaskaya is through the sewers under the church. Since we haven't been there for a while, the whole area got overrun with ghouls. </text>
+        </response>
+        <option>
+            <title>Ghouls</title>
+            <text>What are these Ghouls?</text>
+            <next_node id="15" />
+        </option>
+    </node>
+    <node id="15">
+        <response>
+            <text>They are humans at the first stage of mutation after contracting the Tungus Complex. They aren't too dangerous individually, but if many of them gang up on you in a tight space, it's certain death. I need you to clear the Ghouls so we can use the underground sewer to transport goods out. Before you go, see if you can find Hans somewhere in the village. I heard he needed some help.</text>
+            <event name="zsk_sid_church_begin" />
         </response>
     </node>
     <node id="1">

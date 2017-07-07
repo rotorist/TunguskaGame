@@ -181,6 +181,7 @@ public class StoryEventScript
 			else
 			{
 				condition.SetValue(Convert.ToInt32(tokens[2]));
+				//Debug.Log("setting condition " + condition.ID + " to " + condition.GetValue());
 			}
 		}
 	}

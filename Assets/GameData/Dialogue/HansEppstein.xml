@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE dialogue[<!ATTLIST node id ID #IMPLIED>]>
+<dialogue>
+    <intro>
+        <text>A pleasant aura surrounds this man. He seems eager to speak to you.</text>
+        <next_node id="1" />
+    </intro>
+    <node id="1">
+        <response>
+            <text>Good day! What brings you here?</text>
+        </response>
+        <option>
+            <condition name="zsk_hans_quest" story="zsk_hans_quest" compare="0" op="0" />
+            <title>Help</title>
+            <text>Sidorovich said you needed some help.</text>
+            <next_node id="2" />
+        </option>
+    </node>
+    <node id="2">
+        <response>
+            <text>Ah, yes! I appreciate your offer. I'm working on a device, a detector that can warn you before you step into an anomaly. And my intention is simple - I just want to make some money selling it, to be honest.</text>
+        </response>
+        <option>
+            <title>Continue</title>
+            <text>Interesting.</text>
+            <next_node id="3" />
+        </option>
+    </node>
+    <node id="3">
+        <response>
+            <text>Building this device is not easy, though. First I needed money to buy components. I got help from folks in Zernaskaya - they each gave me some money and in return I'll give them the device for free. I call it "crowd funding", you see?</text>
+        </response>
+        <option>
+            <title>Money</title>
+            <text>So you need money from me?</text>
+            <next_node id="4" />
+        </option>
+    </node>
+    <node id="4">
+        <response>
+            <text>No, not money - that has been taken care of. I need data. Each anomaly is different and the detector must posess a set of parameters for each type of anomaly to detect it. There used to be a man whom they called "The Priest", I heard that he did some research on the anomalies.</text>
+        </response>
+        <option>
+            <title>The Priest</title>
+            <text>Who's The Priest?</text>
+            <next_node id="5" />
+        </option>
+    </node>
+    <node id="5">
+        <response>
+            <text>He was a legend, and there are a lot of stories about him. You can ask around the camp and people will tell you all about him. But he hasn't been seen or heard from since last year.</text>
+            <event name="zsk_learn_priest" />
+        </response>
+        <option>
+            <title>Continue</title>
+            <text>I see.</text>
+            <next_node id="6" />
+        </option>
+    </node>
+    <node id="6">
+        <response>
+            <text>I don't know why they call him "The Priest", but I guess it's because he lived in the church. I believe he has some documents there of his study. If you could retrieve the documents for me, that will really help with my progress.</text>
+        </response>
+        <option>
+            <title>Sure</title>
+            <text>Sure, I can do that for you.</text>
+            <next_node id="8" />
+        </option>
+        <option>
+            <title>Not right now</title>
+            <text>Not at this time, I'm busy with something else.</text>
+            <next_node id="7" />
+        </option>
+    </node>
+    <node id="8">
+        <response>
+            <text>Terrific! The church is northwest of the village, near the barn house. Be careful though, that area is infested with Ghouls.</text>
+            <event name="zsk_hans_find_doc_begin" />
+        </response>
+    </node>
+    <node id="7">
+        <response>
+            <text>No problem! Let me know if you change your mind.</text>
+        </response>
+    </node>
+</dialogue>

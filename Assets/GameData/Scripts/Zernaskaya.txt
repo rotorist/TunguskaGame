@@ -30,4 +30,25 @@ item/receive/huntingshotgun/1
 item/receive/ammo12shot/10
 topic/forget/zsk_blockade
 
+./zsk_learn_priest
+topic/discover/priest
+
+./zsk_hans_find_doc_begin
+condition/zsk_hans_quest/1
+
+./zsk_sid_church_begin
+topic/discover/tungus_complex
+condition/zsk_sid_quest/3
+hook/zsk_church_clear_done/OnSquadDeath
+
+./zsk_church_clear_done
+if/param/0/is/zsk_church_ghouls
+if/param/0/is/zsk_sewer_ghouls
+condition/zsk_church_cleared/true
+message/Church has been cleared!
+
+
+
+
+
 

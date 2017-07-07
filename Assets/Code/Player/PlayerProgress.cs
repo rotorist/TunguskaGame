@@ -5,11 +5,15 @@ using UnityEngine;
 
 public class PlayerProgress
 {
+	public string PlayerFirstName;
+	public string PlayerLastName;
 	public List<string> DiscoveredTopics;//contains topic ID, not topic title
 	public List<List<string>> JournalEntries; //journal entries apprended directly to it. Each day at the end of the day, a new day entry is added
 
 	public PlayerProgress()
 	{
+		PlayerFirstName = "Borov";
+		PlayerLastName = "Kravshenko";
 		DiscoveredTopics = new List<string>();
 		DiscoveredTopics.Add("your_story");
 
