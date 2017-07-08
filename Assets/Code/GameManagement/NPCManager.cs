@@ -77,7 +77,7 @@ public class NPCManager
 
 		FactionData newFaction4 = new FactionData();
 		newFaction4.Name = "Mutants";
-		newFaction4.MemberModelIDs = new string[]{"Mutant1"};
+		newFaction4.MemberModelIDs = new string[]{"Mutant3", "Mutant4"};
 		newFaction4.FactionID = Faction.Mutants;
 
 		FactionData newFaction5 = new FactionData();
@@ -313,7 +313,7 @@ public class NPCManager
 		character.Initialize();
 		character.MyNavAgent.enabled = false;
 
-		character.GoapID = 0;
+
 		character.SquadID = squad.ID;
 		character.Faction = squad.Faction;
 		GameManager.Inst.ItemManager.LoadNPCInventory(character.Inventory, squad.Faction);
@@ -335,7 +335,7 @@ public class NPCManager
 		return character;
 	}
 
-	public MutantCharacter SpawnRandomMutantCharacter(string name, int goapID, Vector3 loc)
+	public MutantCharacter SpawnRandomMutantCharacter(string name, AISquad squad, Vector3 loc)
 	{
 		MutantCharacter character = GameObject.Instantiate(Resources.Load("MutantCharacter") as GameObject).GetComponent<MutantCharacter>();
 
@@ -344,8 +344,9 @@ public class NPCManager
 		character.Initialize();
 
 		character.MyNavAgent.enabled = false;
-		character.GoapID = goapID;
 		character.Faction = Faction.Mutants;
+		character.SquadID = squad.ID;
+
 		GameManager.Inst.ItemManager.LoadNPCInventory(character.Inventory, Faction.Mutants);
 		character.MyAI.WeaponSystem.LoadWeaponsFromInventory(false);
 
@@ -635,5 +636,11 @@ public class NPCManager
 		squad4.Household.CurrentSquad = squad4;
 		_allSquads.Add(squad4.ID, squad4);
 
+		AISquad squad5 = new AISquad();
+		squad5.ID = "zsk_church_ghouls";
+		squad5.Faction = Faction.Mutants;
+		squad5.Household = _allHouseHolds["HouseHoldChurch"];
+		squad5.Household.CurrentSquad = squad5;
+		_allSquads.Add(squad5.ID, squad5);
 	}
 }

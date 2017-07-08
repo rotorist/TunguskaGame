@@ -184,7 +184,7 @@ public class WaveDefenseQuest : QuestBase
 					}
 				}
 
-				MutantCharacter mutant = GameManager.Inst.NPCManager.SpawnRandomMutantCharacter(mutantName, goapID, spawnPoints[point].transform.position 
+				MutantCharacter mutant = GameManager.Inst.NPCManager.SpawnRandomMutantCharacter(mutantName, enemySquad, spawnPoints[point].transform.position 
 					+ new Vector3(UnityEngine.Random.value * 3, 0, UnityEngine.Random.value * 3));
 
 

@@ -14,6 +14,7 @@ public class MutantCharacter : Character
 	public MutantUpperBodyStates UpperBodyState;
 	public bool IsRangedCapable;
 
+	public string CurrentAction;
 
 
 	public override bool IsAlive 
@@ -89,6 +90,16 @@ public class MutantCharacter : Character
 				OnInjuryRecover();
 			}
 		}
+
+		GoapAction action = MyAI.GetCurrentAction();
+		if(action != null)
+		{
+			CurrentAction = action.Name;
+		}
+		else
+		{
+			CurrentAction = "NONE";
+		}
 	}
 
 	public override void Initialize()
@@ -132,6 +143,7 @@ public class MutantCharacter : Character
 		CurrentAnimState = new MutantAnimStateIdle(this);
 		//SendCommand(CharacterCommands.Unarm);
 
+		this.GoapID = this.MyReference.GoapID;
 		MyAI = GetComponent<AI>();
 		MyAI.Initialize(this);
 

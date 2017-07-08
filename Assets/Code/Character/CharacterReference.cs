@@ -30,4 +30,5 @@ public class CharacterReference : MonoBehaviour
 	public VocalSet VocalSet;
 	public bool IsHeavy;
 	public Renderer [] FadingRenderers;
+	public int GoapID;
 }

@@ -213,6 +213,7 @@ public class HumanCharacter : Character
 		CurrentAnimState = new HumanAnimStateIdle(this);
 		//SendCommand(CharacterCommands.Unarm);
 
+		this.GoapID = this.MyReference.GoapID;
 		MyAI = GetComponent<AI>();
 		MyAI.Initialize(this);
 

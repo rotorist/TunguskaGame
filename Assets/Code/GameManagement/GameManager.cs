@@ -154,13 +154,13 @@ public class GameManager : MonoBehaviour
 
 		SaveGameManager = new SaveGameManager();
 
-
+		/*
 		MutantCharacter mutant1 = NPCManager.SpawnRandomMutantCharacter("Mutant3", 2, new Vector3(-207.591f, 0, 58.15f));
 		mutant1.MyAI.BlackBoard.PatrolLoc = mutant1.transform.position;
 		mutant1.MyAI.BlackBoard.PatrolRange = new Vector3(2, 2, 2);
 		mutant1.MyAI.BlackBoard.CombatRange = new Vector3(40, 20, 20);
 		mutant1.MyAI.BlackBoard.HasPatrolInfo = true;
-		/*
+
 		MutantCharacter mutant1 = GameObject.Find("MutantCharacter").GetComponent<MutantCharacter>();
 		mutant1.Initialize();
 		mutant1.MyStatus.MaxHealth = 200;
