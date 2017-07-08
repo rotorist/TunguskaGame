@@ -68,18 +68,27 @@ public class MeleeWeapon : Weapon
 			}
 
 			Damage damage = new Damage();
-			float durabilityMultiplier = GameManager.Inst.Constants.MeleeDamageVsDurability.Evaluate(WeaponItem.Durability / WeaponItem.MaxDurability);
+
+
+			float durabilityMultiplier = 1; 
+
+			if(WeaponItem != null)
+			{
+				//handle weapon durability
+				GameManager.Inst.Constants.MeleeDamageVsDurability.Evaluate(WeaponItem.Durability / WeaponItem.MaxDurability);
+				WeaponItem.Durability -= GameManager.Inst.Constants.DurabilityDrainRate;
+				if(WeaponItem.Durability < 0)
+				{
+					WeaponItem.Durability = 0;
+				}
+			}
+
 			damage.SharpDamage = SharpDamage * multiplier * durabilityMultiplier;
 			damage.BluntDamage = BluntDamage * multiplier * durabilityMultiplier;
 			damage.Bleeding = Bleeding * multiplier * durabilityMultiplier;
 			damage.Type = DamageType.Melee;
 
-			//handle weapon durability
-			WeaponItem.Durability -= GameManager.Inst.Constants.DurabilityDrainRate;
-			if(WeaponItem.Durability < 0)
-			{
-				WeaponItem.Durability = 0;
-			}
+
 
 			bool isBlocked = hitCharacter.SendMeleeDamage(damage, fakeNormal, Attacker, 1f);
 

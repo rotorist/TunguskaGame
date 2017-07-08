@@ -33,6 +33,10 @@ public class AIScheduler
 	{
 		//call each AI's per frame udpate
 		List<Character> characters = GameManager.Inst.NPCManager.AllCharacters;
+		if(_charIndex >= characters.Count)
+		{
+			_charIndex = 0;
+		}
 		if(_charIndex >= 0 && characters[_charIndex] != null && characters[_charIndex].MyAI.ControlType != AIControlType.Player)
 		{
 			while(Vector3.Distance(GameManager.Inst.PlayerControl.SelectedPC.transform.position, characters[_charIndex].transform.position) >= GameManager.Inst.AIUpdateRadius)
@@ -45,7 +49,7 @@ public class AIScheduler
 				}
 			}
 
-			if(_charIndex >= 0)
+			if(_charIndex >= 0 && _charIndex < characters.Count)
 			{
 				characters[_charIndex].MyEventHandler.TriggerOnPerFrameTimer();
 			}
@@ -56,7 +60,10 @@ public class AIScheduler
 
 
 
-
+		if(_oneSecIndex >= characters.Count)
+		{
+			_oneSecIndex = 0;
+		}
 		if(_oneSecIndex >= 0 && characters.Count > _oneSecIndex && characters[_oneSecIndex] != null && characters[_oneSecIndex].MyAI.ControlType != AIControlType.Player)
 		{
 			while(Vector3.Distance(GameManager.Inst.PlayerControl.SelectedPC.transform.position, characters[_oneSecIndex].transform.position) >= GameManager.Inst.AIUpdateRadius)
@@ -84,6 +91,10 @@ public class AIScheduler
 
 
 		//Debug.LogError(Time.time + " Triggering half second timer for index " + _halfSecIndex);
+		if(_halfSecIndex >= characters.Count)
+		{
+			_halfSecIndex = 0;
+		}
 		if(_halfSecIndex >= 0 && characters.Count > _halfSecIndex && characters[_halfSecIndex] != null && characters[_halfSecIndex].MyAI.ControlType != AIControlType.Player)
 		{
 			while(Vector3.Distance(GameManager.Inst.PlayerControl.SelectedPC.transform.position, characters[_halfSecIndex].transform.position) >= GameManager.Inst.AIUpdateRadius)

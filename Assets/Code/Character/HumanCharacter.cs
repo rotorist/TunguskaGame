@@ -243,6 +243,7 @@ public class HumanCharacter : Character
 
 	public override void LoadCharacterModel(string prefabName)
 	{
+		Debug.Log("loading char " + prefabName);
 		if(this.Model != null)
 		{
 			GameObject.Destroy(this.Model);

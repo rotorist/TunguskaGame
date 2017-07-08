@@ -1,3 +1,7 @@
+./new_game_setup
+hook/zsk_barn_clear_done/OnSquadDeath
+hook/zsk_church_clear_done/OnSquadDeath
+
 ./zsk_roadblockgate_toggle
 door/Level1RoadBlockGate/toggle
 
@@ -12,7 +16,6 @@ condition/zsk_barn_water_on/true
 door/ZernaskayaSheetFenceDoor/unlock
 condition/zsk_village_gate_open/true
 condition/zsk_sid_quest/1
-hook/zsk_barn_clear_done/OnSquadDeath
 journal/{2}
 
 ./zsk_barn_clear_done
@@ -39,7 +42,7 @@ condition/zsk_hans_quest/1
 ./zsk_sid_church_begin
 topic/discover/tungus_complex
 condition/zsk_sid_quest/3
-hook/zsk_church_clear_done/OnSquadDeath
+
 
 ./zsk_church_clear_done
 if/param/0/is/zsk_church_ghouls

@@ -47,6 +47,9 @@ public class StoryEventScript
 			case "hook":
 				ExecuteHookEventScript(tokens);
 				break;
+			case "run":
+				ExecuteRunScript(tokens);
+				break;
 			case "message":
 				ExecuteMessageScript(tokens);
 				break;
@@ -192,6 +195,14 @@ public class StoryEventScript
 		{
 			StoryEventType eventType = (StoryEventType)Enum.Parse(typeof(StoryEventType), tokens[2]);
 			StoryEventHandler.Instance.AddScriptListener(tokens[1], eventType);
+		}
+	}
+
+	private void ExecuteRunScript(string [] tokens)
+	{
+		if(GameManager.Inst.QuestManager.Scripts.ContainsKey(tokens[1]))
+		{
+			GameManager.Inst.QuestManager.Scripts[tokens[1]].Trigger(new object[]{});
 		}
 	}
 

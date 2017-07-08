@@ -9,6 +9,7 @@ public class DBManager
 	public DBHandlerAI DBHandlerAI;
 	public DBHandlerDialogue DBHandlerDialogue;
 	public DBHandlerStoryEvent DBHandlerStoryEvent;
+	public DBHandlerCharacter DBHandlerCharacter;
 
 	private IDbConnection _mainDBConn;
 	private IDbConnection _aiDBConn;
@@ -18,6 +19,7 @@ public class DBManager
 		DBHandlerAI = new DBHandlerAI();
 		DBHandlerDialogue = new DBHandlerDialogue();
 		DBHandlerStoryEvent = new DBHandlerStoryEvent();
+		DBHandlerCharacter = new DBHandlerCharacter();
 
 		//open main db
 		string conn = "URI=file:" + Application.dataPath + "/GameData/Database/Main.s3db"; //Path to database.

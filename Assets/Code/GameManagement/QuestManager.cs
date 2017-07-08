@@ -81,7 +81,14 @@ public class QuestManager
 		*/
 
 		//run initial testing scsripts
-		SetSidQuestStage(2);
+		SetSidQuestStage(1);
+
+		//run initial setup script
+		//ONLY to be run when creating a new game
+		if(Scripts.ContainsKey("new_game_setup"))
+		{
+			Scripts["new_game_setup"].Trigger(new object[]{});
+		}
 	}
 
 	public void PerSecondUpdate()

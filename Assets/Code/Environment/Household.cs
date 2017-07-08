@@ -35,7 +35,7 @@ public class Household : MonoBehaviour
 			return;
 		}
 
-		if(CurrentSquad.Faction == Faction.Mutants)
+		if(!GameManager.Inst.NPCManager.GetFactionData(CurrentSquad.Faction).IsHuman)
 		{
 			int numberToSpawn = MaxOccupants - CurrentSquad.Members.Count;
 			for(int i = 0; i < numberToSpawn; i++)
@@ -81,7 +81,7 @@ public class Household : MonoBehaviour
 			return;
 		}
 
-		if(CurrentSquad.Faction == Faction.Animals || CurrentSquad.Faction == Faction.Mutants)
+		if(!GameManager.Inst.NPCManager.GetFactionData(CurrentSquad.Faction).IsHuman)
 		{
 			foreach(Character mutant in CurrentSquad.Members)
 			{

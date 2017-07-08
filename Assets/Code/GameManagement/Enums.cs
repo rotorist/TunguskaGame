@@ -196,16 +196,15 @@ public enum AIControlType
 
 public enum Faction
 {
-	Civilian,
-	FactionA,
-	FactionB,
-	Player,
-	Bootleggers,
-	Loner,
-	Military,
-	Legionnaires,
-	Mutants,
-	Animals,
+	Player = 0,
+	Civilian = 1,
+	Bootleggers = 2,
+	Loner = 3,
+	Military = 4,
+	Legionnaires = 5,
+	Animals = 6,
+	Mutants = 7,
+	Scythes = 8,
 }
 
 public enum ParseStates

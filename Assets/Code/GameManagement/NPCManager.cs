@@ -60,6 +60,9 @@ public class NPCManager
 		DynamicGoalPatrol = GameManager.Inst.DBManager.DBHandlerAI.GetGoalByID(2);
 		DynamicGoalPatrol.Priority = 5;
 
+
+		_allFactions = GameManager.Inst.DBManager.DBHandlerCharacter.LoadFactionData();
+		/*
 		FactionData newFaction1 = new FactionData();
 		newFaction1.Name = "Player";
 		newFaction1.MemberModelIDs = new string[]{"Bandit"};
@@ -110,6 +113,8 @@ public class NPCManager
 		_allFactions.Add(newFaction4.FactionID, newFaction4);
 		_allFactions.Add(newFaction5.FactionID, newFaction5);
 		_allFactions.Add(newFaction6.FactionID, newFaction6);
+		*/
+
 
 		_allHouseHolds = new Dictionary<string, Household>();
 		Household [] households = GameObject.FindObjectsOfType<Household>();
@@ -149,6 +154,7 @@ public class NPCManager
 	{
 		//build a dead body list
 		//remove dead bodies that have been dead for some time
+		/*
 		List<Character> allCharactersCopy = new List<Character>(_allCharacters);
 		foreach(Character c in allCharactersCopy)
 		{
@@ -179,7 +185,7 @@ public class NPCManager
 
 			}
 		}
-
+		*/
 		//update one household at a time
 		if(_houseHoldIndex < _allHouseHolds.Count)
 		{
@@ -642,5 +648,12 @@ public class NPCManager
 		squad5.Household = _allHouseHolds["HouseHoldChurch"];
 		squad5.Household.CurrentSquad = squad5;
 		_allSquads.Add(squad5.ID, squad5);
+
+		AISquad squad6 = new AISquad();
+		squad6.ID = "zsk_sewer_ghouls";
+		squad6.Faction = Faction.Scythes;
+		squad6.Household = _allHouseHolds["HouseHoldSewer"];
+		squad6.Household.CurrentSquad = squad6;
+		_allSquads.Add(squad6.ID, squad6);
 	}
 }
