@@ -181,6 +181,14 @@ public class StoryEventScript
 					condition.SetValue(1);
 				}
 			}
+			else if(tokens[2] == "activate")
+			{
+				condition.IsActive = true;
+			}
+			else if(tokens[2] == "deactivate")
+			{
+				condition.IsActive = false;
+			}
 			else
 			{
 				condition.SetValue(Convert.ToInt32(tokens[2]));

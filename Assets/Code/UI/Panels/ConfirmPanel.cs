@@ -28,7 +28,7 @@ public class ConfirmPanel : PanelBase
 
 	public override void Show ()
 	{
-		//Camera.main.GetComponent<BlurOptimized>().enabled = true;
+		Camera.main.GetComponent<BlurOptimized>().enabled = true;
 
 		Time.timeScale = 0;
 
@@ -44,7 +44,7 @@ public class ConfirmPanel : PanelBase
 	public override void Hide ()
 	{
 		UIEventHandler.Instance.TriggerCloseWindow();
-		//Camera.main.GetComponent<BlurOptimized>().enabled = false;
+		Camera.main.GetComponent<BlurOptimized>().enabled = false;
 		Time.timeScale = 1;
 
 		NGUITools.SetActive(this.gameObject, false);

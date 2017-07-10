@@ -16,6 +16,8 @@ condition/zsk_barn_water_on/true
 door/ZernaskayaSheetFenceDoor/unlock
 condition/zsk_village_gate_open/true
 condition/zsk_sid_quest/1
+condition/zsk_barn_cleared/activate
+topic/discover/zsk_farm_clear
 journal/{2}
 
 ./zsk_barn_clear_done
@@ -41,7 +43,9 @@ condition/zsk_hans_quest/1
 
 ./zsk_sid_church_begin
 topic/discover/tungus_complex
+topic/forget/zsk_farm_clear
 condition/zsk_sid_quest/3
+condition/zsk_church_cleared/activate
 
 
 ./zsk_church_clear_done

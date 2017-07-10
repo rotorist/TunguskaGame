@@ -15,7 +15,7 @@ public class UIManager
 	public DialoguePanel DialoguePanel;
 	public RestingPanel RestingPanel;
 	public ConfirmPanel ConfirmPanel;
-	public JournalPanel JournalPanel;
+	public QuestDebugPanel QuestDebugPanel;
 
 	public bool IsInHUDRegion;
 
@@ -58,6 +58,10 @@ public class UIManager
 		FadingPanel.Show();
 		FadingPanel.FadeIn(2);
 
+		QuestDebugPanel = UICamera.transform.Find("QuestDebugPanel").GetComponent<QuestDebugPanel>();
+		QuestDebugPanel.Initialize();
+
+		_panels.Add(QuestDebugPanel);
 		_panels.Add(DialoguePanel);
 		_panels.Add(RestingPanel);
 		_panels.Add(ConfirmPanel);
@@ -95,6 +99,11 @@ public class UIManager
 		if(RestingPanel.IsActive)
 		{
 			RestingPanel.PerFrameUpdate();
+		}
+
+		if(QuestDebugPanel.IsActive)
+		{
+			QuestDebugPanel.PerFrameUpdate();
 		}
 	}
 

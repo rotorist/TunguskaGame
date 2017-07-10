@@ -80,8 +80,7 @@ public class QuestManager
 		Scripts.Add("zsk_barn_quest_done2", script6);
 		*/
 
-		//run initial testing scsripts
-		SetSidQuestStage(1);
+
 
 		//run initial setup script
 		//ONLY to be run when creating a new game
@@ -89,6 +88,9 @@ public class QuestManager
 		{
 			Scripts["new_game_setup"].Trigger(new object[]{});
 		}
+
+		//run initial testing scsripts
+		//SetSidQuestStage(0);
 	}
 
 	public void PerSecondUpdate()

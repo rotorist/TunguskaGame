@@ -27,6 +27,8 @@ public class UIEventHandler
 		OnStartTrading = null;
 		OnOpenRestPanel = null;
 		OnOpenConfirmPanel = null;
+		OnOpenJournalPanel = null;
+		OnOpenQuestDebugPanel = null;
 	}
 
 	#endregion
@@ -51,6 +53,7 @@ public class UIEventHandler
 	public static event GeneralUIEventDelegate OnOpenRestPanel;
 	public static event GeneralUIEventDelegate OnOpenConfirmPanel;
 	public static event GeneralUIEventDelegate OnOpenJournalPanel;
+	public static event GeneralUIEventDelegate OnOpenQuestDebugPanel;
 
 
 	public void TriggerOpenWindow()
@@ -148,6 +151,14 @@ public class UIEventHandler
 		if(OnOpenJournalPanel != null)
 		{
 			OnOpenJournalPanel();
+		}
+	}
+
+	public void TriggerQuestDebug()
+	{
+		if(OnOpenQuestDebugPanel != null)
+		{
+			OnOpenQuestDebugPanel();
 		}
 	}
 }

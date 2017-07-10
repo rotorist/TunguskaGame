@@ -58,6 +58,8 @@ public class UIStateNormal : UIStateBase
 		UIEventHandler.OnOpenConfirmPanel += OnOpenConfirmPanel;
 		UIEventHandler.OnOpenJournalPanel -= OnOpenJournalPanel;
 		UIEventHandler.OnOpenJournalPanel += OnOpenJournalPanel;
+		UIEventHandler.OnOpenQuestDebugPanel -= OnOpenQuestDebugPanel;
+		UIEventHandler.OnOpenQuestDebugPanel += OnOpenQuestDebugPanel;
 	}
 
 	public override void EndState ()
@@ -71,6 +73,7 @@ public class UIStateNormal : UIStateBase
 		UIEventHandler.OnOpenRestPanel -= OnOpenRestPanel;
 		UIEventHandler.OnOpenConfirmPanel -= OnOpenConfirmPanel;
 		UIEventHandler.OnOpenJournalPanel -= OnOpenJournalPanel;
+		UIEventHandler.OnOpenQuestDebugPanel -= OnOpenQuestDebugPanel;
 	}
 
 
@@ -121,6 +124,12 @@ public class UIStateNormal : UIStateBase
 	{
 		EndState();
 		SM.State = new UIStateJournal(SM);
+	}
+
+	public void OnOpenQuestDebugPanel()
+	{
+		EndState();
+		SM.State = new UIStateQuestDebug(SM);
 	}
 
 }
@@ -419,6 +428,40 @@ public class UIStateJournal : UIStateBase
 		UIEventHandler.OnCloseWindow -= OnCloseWindow;
 
 		GameManager.Inst.SoundManager.UI.PlayOneShot(GameManager.Inst.SoundManager.GetClip("JournalClose"), 0.3f);
+	}
+
+	public void OnCloseWindow()
+	{
+		EndState();
+		SM.State = new UIStateNormal(SM);
+	}
+}
+
+public class UIStateQuestDebug : UIStateBase
+{
+	public UIStateQuestDebug(UIStateMachine sm)
+	{
+		SM = sm;
+		BeginState();
+	}
+
+	public override void BeginState ()
+	{
+		//setup panels
+		SM.UIManager.HideAllPanels();
+		SM.UIManager.HUDPanel.Show();
+		SM.UIManager.QuestDebugPanel.Show();
+
+		//subscribe events
+		UIEventHandler.OnCloseWindow -= OnCloseWindow;
+		UIEventHandler.OnCloseWindow += OnCloseWindow;
+
+	}
+
+	public override void EndState ()
+	{
+		UIEventHandler.OnCloseWindow -= OnCloseWindow;
+
 	}
 
 	public void OnCloseWindow()

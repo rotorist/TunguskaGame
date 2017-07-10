@@ -28,6 +28,7 @@ public class DBHandlerStoryEvent
 			StoryConditionItem condItem = new StoryConditionItem();
 			condItem.ID = condID;
 			condItem.ItemID = condItemID;
+			condItem.IsActive = condItemReader.GetBoolean(2);
 			conditions.Add(condID, condItem);
 		}
 
@@ -38,6 +39,7 @@ public class DBHandlerStoryEvent
 			StoryConditionTrigger condTrigger = new StoryConditionTrigger();
 			condTrigger.ID = condID;
 			condTrigger.SetValue(initValue);
+			condTrigger.IsActive = condTriggerReader.GetBoolean(2);
 			conditions.Add(condID, condTrigger);
 		}
 

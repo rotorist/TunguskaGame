@@ -762,6 +762,11 @@ public class InputEventHandler
 				UIEventHandler.Instance.TriggerJournal();
 			}
 
+			if(Input.GetKeyDown(KeyCode.BackQuote))
+			{
+				UIEventHandler.Instance.TriggerQuestDebug();
+			}
+
 			if(Input.GetKeyDown(KeyCode.X))
 			{
 				//UIEventHandler.Instance.TriggerDialogue();

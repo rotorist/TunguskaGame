@@ -20,6 +20,11 @@ public class StoryConditionItem : StoryCondition
 
 	public override bool Evaluate (int compareValue, int op)
 	{
+		if(!IsActive)
+		{
+			return false;
+		}
+
 		int value = GetValue();
 
 		return StaticUtility.CompareIntWithOp(value, compareValue, op);
