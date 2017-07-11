@@ -845,6 +845,22 @@ public class ItemManager
 		item23.BasePrice = 200;
 		item23.BuildIndex();
 
+		Item item24 = new Item();
+		item24.Name = "Ivan's Note";
+		item24.Description = "A piece of blood-stained paper found on a body.";
+		item24.PrefabName = "IvanNote";
+		item24.SpriteName = "ivannote";
+		item24.Weight = 0.1f;
+		item24.ID = "ivannote";
+		item24.Type = ItemType.Misc;
+		item24.GridCols = 1;
+		item24.GridRows = 1;
+		item24.MaxStackSize = 1;
+		item24.Tier = 0;
+		item24.BasePrice = 0;
+		item24.Attributes.Add(new ItemAttribute("_NoteID", "zsk_ivan"));
+		item24.BuildIndex();
+
 		switch(itemID)
 		{
 		case "ak47":
