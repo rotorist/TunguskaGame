@@ -86,11 +86,9 @@ public class ChestLootPanel : PanelBase
 		}
 
 		//fill inventory grid with loot from backpack
-		List<GridItemData> datas = chest.Items;
-		foreach(GridItemData data in datas)
-		{
-			ChestGrid.AddGridItem(data.Item, data.ColumnPos, data.RowPos, data.Orientation, data.Quantity);
-		}
+		List<GridItemData> chestItems = chest.Items;
+		//now, time to arrange them
+		ChestGrid.ArrangeGridItems(chestItems);
 
 
 	}

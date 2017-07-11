@@ -18,9 +18,19 @@ public class Chest : MonoBehaviour
 	public int ColSize;
 	public int RowSize;
 
+	public string [] PresetItemIDs;
+	public int [] PresetItemQuantity;
+
 	public void GenerateContent()
 	{
-		Items = GameManager.Inst.ItemManager.GenerateRandomInventory(null, ColSize, RowSize);
+		if(PresetItemIDs.Length > 0 && PresetItemIDs.Length == PresetItemQuantity.Length)
+		{
+			Items = GameManager.Inst.ItemManager.GeneratePresetChest(PresetItemIDs, PresetItemQuantity, ColSize, RowSize);
+		}
+		else
+		{
+			Items = GameManager.Inst.ItemManager.GenerateRandomChestInventory(null, ColSize, RowSize);
+		}
 	}
 
 	public void PostLoad()

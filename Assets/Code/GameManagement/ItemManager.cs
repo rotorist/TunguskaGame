@@ -24,7 +24,10 @@ public class ItemManager
 
 		foreach(GameObject o in objects)
 		{
-			o.GetComponent<Chest>().GenerateContent();
+			Chest chest = o.GetComponent<Chest>();
+
+			chest.GenerateContent();
+
 		}
 
 
@@ -41,7 +44,7 @@ public class ItemManager
 	}
 
 
-	public List<GridItemData> GenerateRandomInventory(List<ItemType> Types, int ColSize, int RowSize)
+	public List<GridItemData> GenerateRandomChestInventory(List<ItemType> Types, int ColSize, int RowSize)
 	{
 		List<GridItemData> items = new List<GridItemData>();
 
@@ -60,6 +63,24 @@ public class ItemManager
 
 
 		return items;
+	}
+
+	public List<GridItemData> GeneratePresetChest(string [] itemIDs, int [] itemQuantity, int ColSize, int RowSize)
+	{
+		if(itemIDs.Length != itemQuantity.Length)
+		{
+			return null;
+		}
+
+		List<GridItemData> gridItems = new List<GridItemData>();
+
+		for(int i=0; i < itemIDs.Length; i ++)
+		{
+			Item item = LoadItem(itemIDs[i]);
+			gridItems.Add(new GridItemData(item, 0, 0, GridItemOrient.Landscape, itemQuantity[i]));
+		}
+
+		return gridItems;
 	}
 
 
