@@ -10,7 +10,7 @@ public class Door : MonoBehaviour
 	public bool IsMetal;
 	public bool IsOpen;
 	public bool IsLocked;
-	public string KeyID;
+	public string KeyItemID;
 	public Transform DoorPanel;
 	public Transform ClosedTarget;
 	public Transform OpenTarget1;
@@ -101,21 +101,28 @@ public class Door : MonoBehaviour
 		if(IsLocked)
 		{
 			//here check if player has key
-			//
-
-			//play locked door sound
-			if(!IsMetal)
+			int keyCount = GameManager.Inst.PlayerControl.SelectedPC.Inventory.CountItemsInBackpack(KeyItemID);
+			if(keyCount > 0)
 			{
-				AudioClip clip = GameManager.Inst.SoundManager.GetClip("WoodDoorLocked");
-				DoorSound.PlayOneShot(clip, 0.6f);
+				//play unlock key sound
+
 			}
 			else
 			{
-				AudioClip clip = GameManager.Inst.SoundManager.GetClip("MetalDoorLocked");
-				DoorSound.PlayOneShot(clip, 0.6f);
-			}
+				//play locked door sound
+				if(!IsMetal)
+				{
+					AudioClip clip = GameManager.Inst.SoundManager.GetClip("WoodDoorLocked");
+					DoorSound.PlayOneShot(clip, 0.6f);
+				}
+				else
+				{
+					AudioClip clip = GameManager.Inst.SoundManager.GetClip("MetalDoorLocked");
+					DoorSound.PlayOneShot(clip, 0.6f);
+				}
 
-			return;
+				return;
+			}
 		}
 
 		IsOpen = true;

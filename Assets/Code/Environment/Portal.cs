@@ -9,7 +9,9 @@ public class Portal : MonoBehaviour
 	public bool IsInterior;
 	public string Environment;
 	public AudioSource DoorSound;
-
+	public bool IsMetal;
+	public bool IsLocked;
+	public string KeyItemID;
 
 	void Start()
 	{
@@ -21,6 +23,33 @@ public class Portal : MonoBehaviour
 
 	public void Enter(HumanCharacter character)
 	{
+		if(IsLocked)
+		{
+			//here check if player has key
+			int keyCount = GameManager.Inst.PlayerControl.SelectedPC.Inventory.CountItemsInBackpack(KeyItemID);
+			if(keyCount > 0)
+			{
+				//play unlock key sound
+
+			}
+			else
+			{
+				//play locked door sound
+				if(!IsMetal)
+				{
+					AudioClip clip = GameManager.Inst.SoundManager.GetClip("WoodDoorLocked");
+					DoorSound.PlayOneShot(clip, 0.6f);
+				}
+				else
+				{
+					AudioClip clip = GameManager.Inst.SoundManager.GetClip("MetalDoorLocked");
+					DoorSound.PlayOneShot(clip, 0.6f);
+				}
+
+				return;
+			}
+		}
+
 		//adjust environment for player
 		if(character.MyAI.ControlType == AIControlType.Player)
 		{
