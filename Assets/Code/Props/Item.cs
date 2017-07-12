@@ -122,4 +122,5 @@ public enum ItemType
 	SleepingBag,
 	Fuel,
 	Misc,
+	Key,
 }

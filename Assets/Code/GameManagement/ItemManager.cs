@@ -850,7 +850,7 @@ public class ItemManager
 		item24.Description = "A piece of blood-stained paper found on a body.";
 		item24.PrefabName = "IvanNote";
 		item24.SpriteName = "ivannote";
-		item24.Weight = 0.1f;
+		item24.Weight = 0.0f;
 		item24.ID = "ivannote";
 		item24.Type = ItemType.Misc;
 		item24.GridCols = 1;
@@ -860,6 +860,21 @@ public class ItemManager
 		item24.BasePrice = 0;
 		item24.Attributes.Add(new ItemAttribute("_NoteID", "zsk_ivan"));
 		item24.BuildIndex();
+
+		Item item25 = new Item();
+		item25.Name = "Sewer Key";
+		item25.Description = "Small copper-plated key, designed for padlocks.";
+		item25.PrefabName = "ZSKSewerKey";
+		item25.SpriteName = "zsksewerkey";
+		item25.Weight = 0.0f;
+		item25.ID = "zsksewerkey";
+		item25.Type = ItemType.Key;
+		item25.GridCols = 1;
+		item25.GridRows = 1;
+		item25.MaxStackSize = 1;
+		item25.Tier = 0;
+		item25.BasePrice = 0;
+		item25.BuildIndex();
 
 		switch(itemID)
 		{
@@ -931,6 +946,12 @@ public class ItemManager
 			break;
 		case "gasoline":
 			return item23;
+			break;
+		case "ivannote":
+			return item24;
+			break;
+		case "zsksewerkey":
+			return item25;
 			break;
 		}
 
