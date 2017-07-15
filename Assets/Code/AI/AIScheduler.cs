@@ -60,10 +60,7 @@ public class AIScheduler
 
 
 
-		if(_oneSecIndex >= characters.Count)
-		{
-			_oneSecIndex = 0;
-		}
+
 		if(_oneSecIndex >= 0 && characters.Count > _oneSecIndex && characters[_oneSecIndex] != null && characters[_oneSecIndex].MyAI.ControlType != AIControlType.Player)
 		{
 			while(Vector3.Distance(GameManager.Inst.PlayerControl.SelectedPC.transform.position, characters[_oneSecIndex].transform.position) >= GameManager.Inst.AIUpdateRadius)
@@ -91,10 +88,7 @@ public class AIScheduler
 
 
 		//Debug.LogError(Time.time + " Triggering half second timer for index " + _halfSecIndex);
-		if(_halfSecIndex >= characters.Count)
-		{
-			_halfSecIndex = 0;
-		}
+
 		if(_halfSecIndex >= 0 && characters.Count > _halfSecIndex && characters[_halfSecIndex] != null && characters[_halfSecIndex].MyAI.ControlType != AIControlType.Player)
 		{
 			while(Vector3.Distance(GameManager.Inst.PlayerControl.SelectedPC.transform.position, characters[_halfSecIndex].transform.position) >= GameManager.Inst.AIUpdateRadius)

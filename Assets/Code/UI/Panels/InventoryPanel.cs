@@ -562,6 +562,12 @@ public class InventoryPanel : PanelBase
 
 	}
 
+	public void OnOpenNotePaper(GridItem item)
+	{
+		_windowPanel.NotePaperPanel.NoteID = item.Item.GetAttributeByName("_NoteID").Value.ToString();
+		_windowPanel.NotePaperPanel.Show();
+	}
+
 
 	public void AddItemToTempSlot(GridItem item, TempSlot slot)
 	{

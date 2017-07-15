@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE dialogue[<!ATTLIST node id ID #IMPLIED>]>
+<dialogue>
+    <intro>
+        <text>It seems odd that the man is wearing sun glasses in the dark basement.</text>
+        <next_node id="5" />
+    </intro>
+    <topic id="your_story">
+        <title>Your Story</title>
+        <next_node id="1" />
+    </topic>
+    <node id="1">
+        <response>
+            <text>The name's Romanoff. You might have heard people referring to me as "The Priest". They are damn right I'm a priest! Honor graduate from Leningrad Theological Academy in 1954 and I've been a priest until 1978.</text>
+        </response>
+        <option>
+            <title>1978</title>
+            <text>What happened in 1978?</text>
+            <next_node id="2" />
+        </option>
+    </node>
+    <node id="2">
+        <response>
+            <text>Well, I was naiive. Even at the age of 56. When I learned about the Visitations, the ghouls and the serums, I thought the End was coming. I wanted to come here and get a glimpse of the Revelation. But I was wrong - it was just another chapter of humanity, of greed and bloodthirst.</text>
+        </response>
+        <option>
+            <title>Basement</title>
+            <text>So what are you doing here in the basement?</text>
+            <next_node id="3" />
+        </option>
+    </node>
+    <node id="3">
+        <response>
+            <text>In the past few years I've been working on serum recipes, hoping to find something that can help the sick - that's the least I can do. I used myself as guinea pig. Last year I made a mistake and poisoned myself. My eyes slowly gave in, and I set up this safe house before I was completely blind.</text>
+        </response>
+        <option>
+            <title>Blind</title>
+            <text>How did you manage to live here while blinded?</text>
+            <next_node id="4" />
+        </option>
+    </node>
+    <node id="4">
+        <response>
+            <text>I have a friend who's been helping me, trading supplies for my serum. But he hasn't showed up for two weeks and my supply is low. So perhaps... you could help me out?</text>
+        </response>
+    </node>
+    <node id="5">
+        <response>
+            <text>Thank you for dealing with the wolves outside! They've been bothering me for a while.</text>
+        </response>
+        <option>
+            <logic type="And">
+                <condition name="zsk_got_garage_key" story="zsk_got_garage_key" compare="0" op="0" />
+                <condition name="zsk_sid_quest" story="zsk_sid_quest" compare="5" op="0" />
+            </logic>
+            <title>Garage Door</title>
+            <text>Do you have the key to the garage? I was sent here to investigate the Mad Mechanic anomaly.</text>
+            <next_node id="6" />
+        </option>
+    </node>
+    <node id="6">
+        <response>
+            <text>Did Sidorovich send you here? I knew it! That greedy bastard. Be careful when you work for him - he only cares about his money and wouldn't blink an eye while watching you get torn up by anomalies. What does he want exactly?</text>
+        </response>
+        <option>
+            <title>Restore</title>
+            <text>He gave me a rifle to restore its condition.</text>
+            <next_node id="7" />
+        </option>
+    </node>
+    <node id="7">
+        <response>
+            <text>I see. Here's the key. The Mad Mechanic is not very forgiving. One wrong move and your rifle is gone. Experiment with it a bit with some pistols and try to figure out the pattern.</text>
+            <event name="zsk_priest_give_key" />
+        </response>
+    </node>
+</dialogue>

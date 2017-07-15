@@ -105,7 +105,7 @@ public class Door : MonoBehaviour
 			if(keyCount > 0)
 			{
 				//play unlock key sound
-
+				IsLocked = false;
 			}
 			else
 			{

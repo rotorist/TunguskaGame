@@ -40,7 +40,7 @@ public class StoryEventHandler
 	public LinkedList<StoryEventListener> PlayerTakeItemListeners;
 	public LinkedList<StoryEventListener> PlayerDropItemListeners;
 	public LinkedList<StoryEventListener> PlayerSellItemListeners;
-
+	public LinkedList<StoryEventListener> PlayerReadNoteListeners;
 
 
 	public Queue<StoryEvent> StoryEventQueue;
@@ -64,6 +64,7 @@ public class StoryEventHandler
 		PlayerTakeItemListeners = new LinkedList<StoryEventListener>();
 		PlayerDropItemListeners = new LinkedList<StoryEventListener>();
 		PlayerSellItemListeners = new LinkedList<StoryEventListener>();
+		PlayerReadNoteListeners = new LinkedList<StoryEventListener>();
 
 		_allListenerLists = new LinkedList<StoryEventListener>[]{
 			CharacterDeathListeners,
@@ -72,6 +73,7 @@ public class StoryEventHandler
 			PlayerTakeItemListeners,
 			PlayerDropItemListeners,
 			PlayerSellItemListeners,
+			PlayerReadNoteListeners,
 		};
 
 		StoryEventQueue = new Queue<StoryEvent>();
@@ -221,7 +223,9 @@ public class StoryEventHandler
 		case StoryEventType.OnPlayerTakeItem:
 			PlayerTakeItemListeners.AddLast(listener);
 			break;
-			
+		case StoryEventType.OnPlayerReadNote:
+			PlayerReadNoteListeners.AddLast(listener);
+			break;
 		}
 
 	}
@@ -248,7 +252,9 @@ public class StoryEventHandler
 		case StoryEventType.OnPlayerTakeItem:
 			return PlayerTakeItemListeners;
 			break;
-
+		case StoryEventType.OnPlayerReadNote:
+			return PlayerReadNoteListeners;
+			break;
 		}
 
 		return null;
@@ -268,7 +274,7 @@ public enum StoryEventType
 	OnPlayerTakeItem,
 	OnPlayerDropItem,
 	OnPlayerSellItem,
-
+	OnPlayerReadNote,
 }
 
 public enum StoryEventListenerType 

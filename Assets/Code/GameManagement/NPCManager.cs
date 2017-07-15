@@ -655,5 +655,12 @@ public class NPCManager
 		squad6.Household = _allHouseHolds["HouseHoldSewer"];
 		squad6.Household.CurrentSquad = squad6;
 		_allSquads.Add(squad6.ID, squad6);
+
+		AISquad squad7 = new AISquad();
+		squad7.ID = "zsk_priest";
+		squad7.Faction = Faction.Civilian;
+		squad7.Household = _allHouseHolds["HouseHoldPriest"];
+		squad7.Household.CurrentSquad = squad7;
+		_allSquads.Add(squad7.ID, squad7);
 	}
 }

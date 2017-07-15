@@ -25,7 +25,6 @@ public class ItemManager
 		foreach(GameObject o in objects)
 		{
 			Chest chest = o.GetComponent<Chest>();
-
 			chest.GenerateContent();
 
 		}
@@ -350,17 +349,10 @@ public class ItemManager
 
 	public string GetItemNameFromID(string itemID)
 	{
-		if(itemID == "ammo762_39")
-		{
-			return "7.62x39mm SD";
-		}
+		Item item = LoadItem(itemID);
 
-		if(itemID == "ammo44magnum")
-		{
-			return ".44 Magnum";
-		}
 
-		return "";
+		return item.Name;
 	}
 
 	public Item LoadItem(string itemID)
@@ -848,11 +840,11 @@ public class ItemManager
 		Item item24 = new Item();
 		item24.Name = "Ivan's Note";
 		item24.Description = "A piece of blood-stained paper found on a body.";
-		item24.PrefabName = "IvanNote";
-		item24.SpriteName = "ivannote";
+		item24.PrefabName = "FoldedNote";
+		item24.SpriteName = "foldednote";
 		item24.Weight = 0.0f;
 		item24.ID = "ivannote";
-		item24.Type = ItemType.Misc;
+		item24.Type = ItemType.Note;
 		item24.GridCols = 1;
 		item24.GridRows = 1;
 		item24.MaxStackSize = 1;
@@ -864,8 +856,8 @@ public class ItemManager
 		Item item25 = new Item();
 		item25.Name = "Sewer Key";
 		item25.Description = "Small copper-plated key, designed for padlocks.";
-		item25.PrefabName = "ZSKSewerKey";
-		item25.SpriteName = "zsksewerkey";
+		item25.PrefabName = "Key3";
+		item25.SpriteName = "key3";
 		item25.Weight = 0.0f;
 		item25.ID = "zsksewerkey";
 		item25.Type = ItemType.Key;

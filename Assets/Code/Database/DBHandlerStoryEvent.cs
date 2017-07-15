@@ -152,4 +152,17 @@ public class DBHandlerStoryEvent
 
 		return "";
 	}
+
+	public string LoadNotePaper(string id)
+	{
+		IDataReader noteReader = GameManager.Inst.DBManager.RunQuery(
+			"SELECT text from note_papers where id = '" + id + "'");
+
+		while(noteReader.Read())
+		{
+			return noteReader.GetString(0);
+		}
+
+		return "";
+	}
 }

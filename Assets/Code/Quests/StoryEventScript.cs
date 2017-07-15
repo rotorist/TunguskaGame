@@ -265,7 +265,12 @@ public class StoryEventScript
 		}
 		else if(tokens[1] == "lose")
 		{
+			string itemID = tokens[2];
+			int quantity = Convert.ToInt32(tokens[3]);
+			HumanCharacter player = GameManager.Inst.PlayerControl.SelectedPC;
 
+			player.Inventory.RemoveItemsFromBackpack(itemID, quantity);
+			GameManager.Inst.UIManager.SetConsoleText("Lost item: " + GameManager.Inst.ItemManager.GetItemNameFromID(itemID) + " x " + quantity);
 		}
 	}
 

@@ -1,6 +1,7 @@
 ./new_game_setup
 hook/zsk_barn_clear_done/OnSquadDeath
 hook/zsk_church_clear_done/OnSquadDeath
+hook/zsk_read_ivan_note/OnPlayerReadNote
 
 ./zsk_roadblockgate_toggle
 door/Level1RoadBlockGate/toggle
@@ -53,6 +54,28 @@ if/param/0/is/zsk_church_ghouls
 if/param/0/is/zsk_sewer_ghouls
 condition/zsk_church_cleared/true
 message/Church has been cleared!
+
+./zsk_read_ivan_note
+if/param/0/is/zsk_ivan
+condition/zsk_read_ivan_note/true
+topic/discover/zsk_ivan_igor
+
+./zsk_lose_ivan_money
+topic/forget/zsk_ivan_igor
+condition/zsk_read_ivan_note/false
+condition/zsk_read_ivan_note/deactivate
+item/lose/rubles/190
+
+./zsk_forget_ivan
+topic/forget/zsk_ivan_igor
+condition/zsk_read_ivan_note/false
+condition/zsk_read_ivan_note/deactivate
+
+./zsk_priest_give_key
+item/receive/zsk_garage_key/1
+condition/zsk_got_garage_key/true
+
+
 
 
 

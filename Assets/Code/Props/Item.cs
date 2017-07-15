@@ -121,6 +121,7 @@ public enum ItemType
 	Money,
 	SleepingBag,
 	Fuel,
-	Misc,
+	Note,
 	Key,
+	Misc,
 }

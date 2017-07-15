@@ -5,10 +5,9 @@ using UnityStandardAssets.ImageEffects;
 
 public class NotePaperPanel : PanelBase
 {
-	public string Message;
+	public string NoteID;
 
 	public UILabel MessageLabel;
-	public UIButton Close;
 
 
 
@@ -28,11 +27,13 @@ public class NotePaperPanel : PanelBase
 		NGUITools.SetActive(this.gameObject, true);
 		this.IsActive = true;
 
-		MessageLabel.text = Message;
+		MessageLabel.text = GameManager.Inst.DBManager.DBHandlerStoryEvent.LoadNotePaper(NoteID);
 
 		InputEventHandler.Instance.State = UserInputState.PopupOpen;
 
 		GameManager.Inst.SoundManager.UI.PlayOneShot(GameManager.Inst.SoundManager.GetClip("OpenSplitMenu"), 0.5f);
+
+		StoryEventHandler.Instance.EnqueueStoryEvent(StoryEventType.OnPlayerReadNote, null, new object[]{"zsk_ivan"});
 	}
 
 	public override void Hide ()

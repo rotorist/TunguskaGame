@@ -79,7 +79,7 @@
     </node>
     <node id="8">
         <response>
-            <text>No, I don't. What the hell are you doing in the zone without a gun?</text>
+            <text>No, I don't. What the hell are you doing in the zone without a shooter?</text>
         </response>
     </node>
     <node id="5">
@@ -179,6 +179,54 @@
         <response>
             <text>They are humans at the first stage of mutation after contracting the Tungus Complex. They aren't too dangerous individually, but if many of them gang up on you in a tight space, it's certain death. I need you to clear the Ghouls so we can use the underground sewer to transport goods out. Before you go, see if you can find Hans somewhere in the village. I heard he needed some help.</text>
             <event name="zsk_sid_church_begin" />
+        </response>
+    </node>
+    <topic id="zsk_ivan_igor">
+        <title>Ivan And Igor</title>
+        <next_node id="16" />
+    </topic>
+    <node id="16">
+        <response>
+            <text>Yes, they are my transporters. Three weeks ago I sent them on a delivery but didn't hear from them since. </text>
+        </response>
+        <option>
+            <condition name="zsk_read_ivan_note" story="zsk_read_ivan_note" compare="1" op="0" />
+            <title>Death</title>
+            <text>I found their dead bodies. They were killed by ghouls.</text>
+            <next_node id="17" />
+        </option>
+    </node>
+    <node id="17">
+        <response>
+            <text>Oh! What a shame. At least they didn't run away with my money, right? Were they carrying anything?</text>
+        </response>
+        <option>
+            <title>Yes</title>
+            <text>Yes, I found 190 rubles. Ivan asked to return them to you and send their savings to his mother.</text>
+            <next_node id="18" />
+        </option>
+        <option>
+            <title>No</title>
+            <text>No, didn't find anything on them.</text>
+            <next_node id="19" />
+        </option>
+    </node>
+    <node id="18">
+        <response>
+            <condition name="zsk_has_ivan_money" story="zsk_has_ivan_money" compare="190" op="1" />
+            <text>Hmm... Well seems like they are loyal boys after all. I'll send their savings out. And thank you for bringing the money back.</text>
+            <event name="zsk_lose_ivan_money" />
+        </response>
+        <response>
+            <condition name="zsk_has_ivan_money" story="zsk_has_ivan_money" compare="190" op="-2" />
+            <text>You don't have the money. I'll just take whatever you have and use their savings to cover the rest.</text>
+            <event name="zsk_lose_ivan_money" />
+        </response>
+    </node>
+    <node id="19">
+        <response>
+            <text>Them bastards! I knew I couldn't trust them! Guess I'll just keep their savings to cover my loss.</text>
+            <event name="zsk_forget_ivan" />
         </response>
     </node>
     <node id="1">

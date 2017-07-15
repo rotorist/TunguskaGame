@@ -91,6 +91,14 @@ public class GridItem : MonoBehaviour
 						}
 					}
 				}
+				else if(Item.Type == ItemType.Note)
+				{
+					if(GameManager.Inst.UIManager.WindowPanel.BodySlotPanel.IsActive)
+					{
+						//open note panel
+						GameManager.Inst.UIManager.WindowPanel.InventoryPanel.OnOpenNotePaper(this);
+					}
+				}
 				else
 				{
 					//only split/use if in inventory grid

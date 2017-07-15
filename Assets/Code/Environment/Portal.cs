@@ -30,7 +30,7 @@ public class Portal : MonoBehaviour
 			if(keyCount > 0)
 			{
 				//play unlock key sound
-
+				IsLocked = false;
 			}
 			else
 			{
