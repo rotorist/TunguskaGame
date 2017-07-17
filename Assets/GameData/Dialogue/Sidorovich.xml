@@ -229,6 +229,93 @@
             <event name="zsk_forget_ivan" />
         </response>
     </node>
+    <topic id="zsk_church_clear">
+        <title>Sewer</title>
+        <next_node id="20" />
+    </topic>
+    <node id="20">
+        <response>
+            <text>Is the task completed?</text>
+        </response>
+        <option>
+            <logic type="And">
+                <condition name="zsk_church_cleared" story="zsk_church_cleared" compare="1" op="0" />
+                <condition name="zsk_sewer_cleared" story="zsk_sewer_cleared" compare="1" op="0" />
+            </logic>
+            <title>Yes</title>
+            <text>Both church grounds and the sewer are cleared.</text>
+            <next_node id="21" />
+        </option>
+    </node>
+    <node id="21">
+        <response>
+            <text>Impressive! You are really getting the hang of it. I just have one more task for you and then I'll introduce you to a Ghoul hunter, and you'll get rich in no time! Are you ready?</text>
+            <event name="zsk_sid_church_quest_done" />
+        </response>
+        <option>
+            <title>No</title>
+            <text>I have other business to take care of.</text>
+            <next_node id="22" />
+        </option>
+        <option>
+            <title>Yes</title>
+            <text>Sure, I'm ready.</text>
+            <next_node id="23" />
+        </option>
+    </node>
+    <node id="22">
+        <response>
+            <text>Suit yourself.</text>
+        </response>
+    </node>
+    <node id="23">
+        <response>
+            <text>Alright. You'll be facing some anomalies this time, so listen carefully. Go up north and then turn east at the fork. You'll find a path leading to the old gas station. The path is littered with anomalies, so throw some rocks with each step so you don't get ripped into pieces. </text>
+        </response>
+        <option>
+            <title>Anomalies</title>
+            <text>What exactly are these anomalies?</text>
+            <next_node id="24" />
+        </option>
+    </node>
+    <node id="24">
+        <response>
+            <text>Consider them as traps laid by the Zone. Each time there's a Visitation the anomalies are rearranged, so there's no way to map their locations. But if you are careful with your steps you can avoid them. When you get to the gas station, look for the "Mad Mechanic" anomaly.</text>
+        </response>
+        <option>
+            <title>Mad Mechanic</title>
+            <text>What's a Mad Mechanic?</text>
+            <next_node id="25" />
+        </option>
+    </node>
+    <node id="25">
+        <response>
+            <text>Well, I haven't seen it myself, but I heard it can repair your weapon automatically - if you do it right. I don't know how it works exactly so I need you to investigate. Here, take some worn pistols and experiment with them. And this old AK too - I need you to bring it back to me in perfect conditions. You can't fool me, though. A gun with perfect conditions is very hard to come by in the Zone. Good luck.</text>
+            <event name="zsk_sid_gas_station_begin" />
+        </response>
+    </node>
+    <topic id="zsk_mad_mechanic">
+        <title>Mad Mechanic</title>
+        <next_node id="26" />
+    </topic>
+    <node id="26">
+        <response>
+            <text>You break it, you bought it.</text>
+        </response>
+        <option>
+            <condition name="zsk_has_sid_ak" story="zsk_has_sid_ak" compare="100" op="0" />
+            <title>AK47</title>
+            <text>I fixed the AK, it's good as new.</text>
+            <next_node id="27" />
+        </option>
+    </node>
+    <node id="27">
+        <response>
+            <condition name="zsk_has_sid_ak" story="zsk_has_sid_ak" compare="100" op="0" />
+            <text>Let me take a look. Ha! No gun smiths in the Zone can do a better job than this. You know what this is? Business, opportunity, money! Well, as a man of his words, I will point you to the right direction.</text>
+            <event name="zsk_sid_gas_station_done" />
+        </response>
+    </node>
     <node id="1">
         <response>
             <text>Hey there, what can I do you for?</text>
@@ -238,6 +325,12 @@
             <title>Next Job</title>
             <text>What's my next job?</text>
             <next_node id="13" />
+        </option>
+        <option>
+            <condition name="zsk_sid_quest" story="zsk_sid_quest" compare="4" op="0" />
+            <title>Next Job</title>
+            <text>What's my next job?</text>
+            <next_node id="23" />
         </option>
     </node>
 </dialogue>

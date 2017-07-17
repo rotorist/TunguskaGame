@@ -1,6 +1,7 @@
 ./new_game_setup
 hook/zsk_barn_clear_done/OnSquadDeath
 hook/zsk_church_clear_done/OnSquadDeath
+hook/zsk_sewer_clear_done/OnSquadDeath
 hook/zsk_read_ivan_note/OnPlayerReadNote
 
 ./zsk_roadblockgate_toggle
@@ -32,7 +33,7 @@ topic/forget/zsk_blockade
 
 ./zsk_barn_quest_done2
 condition/zsk_sid_quest/2
-item/receive/huntingshotgun/1
+item/receive/huntingshotgun/1/0.8
 item/receive/ammo12shot/10
 topic/forget/zsk_blockade
 
@@ -42,18 +43,31 @@ topic/discover/priest
 ./zsk_hans_find_doc_begin
 condition/zsk_hans_quest/1
 
+./zsk_hans_find_doc_done
+condition/zsk_hans_quest/2
+
 ./zsk_sid_church_begin
+topic/discover/zsk_church_clear
 topic/discover/tungus_complex
 topic/forget/zsk_farm_clear
 condition/zsk_sid_quest/3
 condition/zsk_church_cleared/activate
+condition/zsk_sewer_cleared/activate
 
 
 ./zsk_church_clear_done
 if/param/0/is/zsk_church_ghouls
-if/param/0/is/zsk_sewer_ghouls
 condition/zsk_church_cleared/true
 message/Church has been cleared!
+
+./zsk_sewer_clear_done
+if/param/0/is/zsk_sewer_ghouls
+condition/zsk_sewer_cleared/true
+message/Sewer has been cleared!
+
+./zsk_sid_church_quest_done
+condition/zsk_sid_quest/4
+topic/forget/zsk_church_clear
 
 ./zsk_read_ivan_note
 if/param/0/is/zsk_ivan
@@ -74,6 +88,23 @@ condition/zsk_read_ivan_note/deactivate
 ./zsk_priest_give_key
 item/receive/zsk_garage_key/1
 condition/zsk_got_garage_key/true
+
+./zsk_sid_gas_station_begin
+topic/discover/zsk_mad_mechanic
+condition/zsk_sid_quest/5
+condition/zsk_church_cleared/deactivate
+condition/zsk_sewer_cleared/deactivate
+item/receive/44magnum/1/0.2
+item/receive/44magnum/1/0.3
+item/receive/44magnum/1/0.1
+item/receive/ak47/1/0.9
+
+./zsk_sid_gas_station_done
+topic/forget/zsk_mad_mechanic
+condition/zsk_sid_quest/6
+item/lose/ak47/1/100
+
+
 
 
 

@@ -91,6 +91,13 @@ public class StoryEventScript
 					return true;
 				}
 			}
+			else if(operation == "equals")
+			{
+				if(Convert.ToInt32(compValue) == Convert.ToInt32(parameters[paramNumber]))
+				{
+					return true;
+				}
+			}
 		}
 		else
 		{
@@ -227,10 +234,18 @@ public class StoryEventScript
 			string itemID = tokens[2];
 			int quantity = Convert.ToInt32(tokens[3]);
 
+
 			int colPos;
 			int rowPos;
 			GridItemOrient orientation;
 			Item item = GameManager.Inst.ItemManager.LoadItem(itemID);
+			float durability = item.MaxDurability;
+			if(tokens.Length >= 5)
+			{
+				durability = item.MaxDurability * Convert.ToSingle(tokens[4]);
+			}
+			item.Durability = durability;
+
 			HumanCharacter player = GameManager.Inst.PlayerControl.SelectedPC;
 			if(player.Inventory.FitItemInBackpack(item, out colPos, out rowPos, out orientation))
 			{
@@ -269,8 +284,25 @@ public class StoryEventScript
 			int quantity = Convert.ToInt32(tokens[3]);
 			HumanCharacter player = GameManager.Inst.PlayerControl.SelectedPC;
 
-			player.Inventory.RemoveItemsFromBackpack(itemID, quantity);
-			GameManager.Inst.UIManager.SetConsoleText("Lost item: " + GameManager.Inst.ItemManager.GetItemNameFromID(itemID) + " x " + quantity);
+			if(tokens.Length >= 5)
+			{
+				float desiredDurabilityPercent = Convert.ToSingle(tokens[4]) / 100f;
+				//look for an item with durablity greater than desired
+				List<GridItemData> items = player.Inventory.FindItemsInBackpack(itemID);
+				foreach(GridItemData item in items)
+				{
+					float durability = item.Item.Durability / item.Item.MaxDurability;
+					if(durability >= desiredDurabilityPercent)
+					{
+						player.Inventory.RemoveItemFromBackpack(item);
+					}
+				}
+			}
+			else
+			{
+				player.Inventory.RemoveItemsFromBackpack(itemID, quantity);
+				GameManager.Inst.UIManager.SetConsoleText("Lost item: " + GameManager.Inst.ItemManager.GetItemNameFromID(itemID) + " x " + quantity);
+			}
 		}
 	}
 

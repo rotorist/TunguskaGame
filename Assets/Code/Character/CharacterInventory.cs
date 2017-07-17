@@ -88,6 +88,14 @@ public class CharacterInventory : ScriptableObject
 		}
 	}
 
+	public void RemoveItemFromBackpack(GridItemData item)
+	{
+		if(Backpack.Contains(item))
+		{
+			Backpack.Remove(item);
+		}
+	}
+
 
 	//returns the actual number of items removed
 	public int RemoveItemsFromBackpack(string id, int quantity)

@@ -110,7 +110,7 @@ public class ItemManager
 		inventory1.Backpack.Add(new GridItemData(LoadItem("rubles"), 8, 9, GridItemOrient.Landscape, 110));
 		inventory1.Backpack.Add(new GridItemData(LoadItem("bread1"), 8, 7, GridItemOrient.Landscape, 1));
 		inventory1.Backpack.Add(new GridItemData(LoadItem("sausage"), 9, 8, GridItemOrient.Landscape, 1));
-		inventory1.Backpack.Add(new GridItemData(LoadItem("gasoline"), 5, 6, GridItemOrient.Landscape, 5));
+		inventory1.Backpack.Add(new GridItemData(LoadItem("gasoline"), 5, 6, GridItemOrient.Landscape, 1));
 
 		inventory1.RifleSlot = LoadItem("ak47");
 		inventory1.ThrowSlot = LoadItem("pipegrenade");
@@ -868,6 +868,21 @@ public class ItemManager
 		item25.BasePrice = 0;
 		item25.BuildIndex();
 
+		Item item26 = new Item();
+		item26.Name = "Priest's Journal";
+		item26.Description = "A dated but well protected notebook. It seems to be a journal written by a priest.";
+		item26.PrefabName = "PriestBook";
+		item26.SpriteName = "priestbook";
+		item26.Weight = 0.0f;
+		item26.ID = "priestbook";
+		item26.Type = ItemType.Misc;
+		item26.GridCols = 2;
+		item26.GridRows = 2;
+		item26.MaxStackSize = 1;
+		item26.Tier = 0;
+		item26.BasePrice = 0;
+		item26.BuildIndex();
+
 		switch(itemID)
 		{
 		case "ak47":
@@ -944,6 +959,9 @@ public class ItemManager
 			break;
 		case "zsksewerkey":
 			return item25;
+			break;
+		case "priestbook":
+			return item26;
 			break;
 		}
 

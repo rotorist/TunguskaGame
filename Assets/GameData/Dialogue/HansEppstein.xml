@@ -15,6 +15,15 @@
             <text>Sidorovich said you needed some help.</text>
             <next_node id="2" />
         </option>
+        <option>
+            <logic type="And">
+                <condition name="zsk_has_priest_book" story="zsk_has_priest_book" compare="1" op="0" />
+                <condition name="zsk_hans_quest" story="zsk_hans_quest" compare="1" op="0" />
+            </logic>
+            <title>Document</title>
+            <text>I found this journal in the church.</text>
+            <next_node id="9" />
+        </option>
     </node>
     <node id="2">
         <response>
@@ -81,6 +90,32 @@
     <node id="7">
         <response>
             <text>No problem! Let me know if you change your mind.</text>
+        </response>
+    </node>
+    <node id="9">
+        <response>
+            <text>Let me see! Hmm, a lot of text about his spirituality struggles. He did run into several anomalies, here and there, and lived to tell the tale. Good, I'll study the journal more, and I'll let you know when I make further progress with my detector. So thank you! By the way, was there anything anomalous inside the church?</text>
+            <event name="zsk_hans_find_doc_done" />
+        </response>
+        <option>
+            <title>Nothing</title>
+            <text>I didn't see anything abnormal.</text>
+            <next_node id="11" />
+        </option>
+        <option>
+            <title>Anomaly</title>
+            <text>I saw a floating orb that shoots out eletric bolts to metal objects.</text>
+            <next_node id="10" />
+        </option>
+    </node>
+    <node id="11">
+        <response>
+            <text>That would be odd. The church door was sealed, so there must be something dangerous inside!</text>
+        </response>
+    </node>
+    <node id="10">
+        <response>
+            <text>Interesting. Alright, I will add a sensor that can detect ionized air particles.</text>
         </response>
     </node>
 </dialogue>

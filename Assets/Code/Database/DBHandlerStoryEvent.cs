@@ -29,6 +29,7 @@ public class DBHandlerStoryEvent
 			condItem.ID = condID;
 			condItem.ItemID = condItemID;
 			condItem.IsActive = condItemReader.GetBoolean(2);
+			condItem.IsForDurability = condItemReader.GetBoolean(3);
 			conditions.Add(condID, condItem);
 		}
 

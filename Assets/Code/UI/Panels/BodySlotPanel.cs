@@ -163,7 +163,7 @@ public class BodySlotPanel : PanelBase
 		{
 			if(slot.Items.Count > 0)
 			{
-				Debug.Log("clearing body slot " + slot.name);
+				//Debug.Log("clearing body slot " + slot.name);
 				GridItem temp = slot.Items[0];
 				GameObject.Destroy(temp.Boundary.gameObject);
 				GameObject.Destroy(temp.Quantity.gameObject);

@@ -90,7 +90,7 @@ public class QuestManager
 		}
 
 		//run initial testing scsripts
-		//SetSidQuestStage(0);
+		SetSidQuestStage(4);
 	}
 
 	public void PerSecondUpdate()
@@ -116,6 +116,14 @@ public class QuestManager
 		else if(stage == 3)
 		{
 			Scripts["zsk_sid_church_begin"].Trigger(new object[]{});
+		}
+		else if(stage == 4)
+		{
+			Scripts["zsk_sid_church_quest_done"].Trigger(new object[]{});
+		}
+		else if(stage == 5)
+		{
+			Scripts["zsk_sid_gas_station_begin"].Trigger(new object[]{});
 		}
 
 

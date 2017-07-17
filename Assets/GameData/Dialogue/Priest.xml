@@ -43,6 +43,16 @@
         <response>
             <text>I have a friend who's been helping me, trading supplies for my serum. But he hasn't showed up for two weeks and my supply is low. So perhaps... you could help me out?</text>
         </response>
+        <option>
+            <title>Help</title>
+            <text>How can I help you?</text>
+            <next_node id="8" />
+        </option>
+    </node>
+    <node id="8">
+        <response>
+            <text>The blind man needs some supplies. To the east of the gas station there's the Zernaskaya train station. It's being held by Legionnaires. Sometimes they get air drop supplies. I don't know when, but if you keep an eye on rumors you'll hear of it. Please bring me a parcel of supplies and I'll give you one of my serum recipes for your trouble.</text>
+        </response>
     </node>
     <node id="5">
         <response>
@@ -60,7 +70,7 @@
     </node>
     <node id="6">
         <response>
-            <text>Did Sidorovich send you here? I knew it! That greedy bastard. Be careful when you work for him - he only cares about his money and wouldn't blink an eye while watching you get torn up by anomalies. What does he want exactly?</text>
+            <text>Did Sidorovich send you here? I knew it! That greedy bastard. Be careful when you work for him - he only cares about his money and wouldn't blink an eye to have you torn up by anomalies. What does he want exactly?</text>
         </response>
         <option>
             <title>Restore</title>
@@ -70,7 +80,7 @@
     </node>
     <node id="7">
         <response>
-            <text>I see. Here's the key. The Mad Mechanic is not very forgiving. One wrong move and your rifle is gone. Experiment with it a bit with some pistols and try to figure out the pattern.</text>
+            <text>I see. Here's the key. The Mad Mechanic is not very forgiving. One wrong move and your rifle is gone for good. You need to figure out its pattern.</text>
             <event name="zsk_priest_give_key" />
         </response>
     </node>
