@@ -872,8 +872,8 @@ public class ItemManager
 		item26.Name = "Priest's Journal";
 		item26.Description = "A dated but well protected notebook. It seems to be a journal written by a priest.";
 		item26.PrefabName = "PriestBook";
-		item26.SpriteName = "priestbook";
-		item26.Weight = 0.0f;
+		item26.SpriteName = "book1";
+		item26.Weight = 0.2f;
 		item26.ID = "priestbook";
 		item26.Type = ItemType.Misc;
 		item26.GridCols = 2;
@@ -882,6 +882,52 @@ public class ItemManager
 		item26.Tier = 0;
 		item26.BasePrice = 0;
 		item26.BuildIndex();
+
+		Item item27 = new Item();
+		item27.Name = "Letter To Roman Dotsenko";
+		item27.Description = "A sealed letter from Sidorovich as a recommendation for me to join Dotsenko's hunters.";
+		item27.PrefabName = "LetterToRoman";
+		item27.SpriteName = "envelope";
+		item27.Weight = 0.0f;
+		item27.ID = "lettertoroman";
+		item27.Type = ItemType.Misc;
+		item27.GridCols = 2;
+		item27.GridRows = 1;
+		item27.MaxStackSize = 1;
+		item27.Tier = 0;
+		item27.BasePrice = 0;
+		item27.BuildIndex();
+
+		Item item28 = new Item();
+		item28.Name = "Silver Garage Key";
+		item28.Description = "The key to the garage with Mad Mechanic anomaly.";
+		item28.PrefabName = "ZSKGarageKey";
+		item28.SpriteName = "key6";
+		item28.Weight = 0.0f;
+		item28.ID = "zskgaragekey";
+		item28.Type = ItemType.Key;
+		item28.GridCols = 1;
+		item28.GridRows = 1;
+		item28.MaxStackSize = 1;
+		item28.Tier = 0;
+		item28.BasePrice = 0;
+		item28.BuildIndex();
+
+		Item item29 = new Item();
+		item29.Name = "Legionnaire Supply Pack";
+		item29.Description = "A backpack full of supplies.";
+		item29.PrefabName = "ZSKLegionnaireBag";
+		item29.SpriteName = "supplypack1";
+		item29.Weight = 12.3f;
+		item29.ID = "zsklegionnairebag";
+		item29.Type = ItemType.SupplyPack;
+		item29.GridCols = 3;
+		item29.GridRows = 4;
+		item29.MaxStackSize = 1;
+		item29.Tier = 0;
+		item29.BasePrice = 900;
+		item29.BuildIndex();
+
 
 		switch(itemID)
 		{
@@ -962,6 +1008,15 @@ public class ItemManager
 			break;
 		case "priestbook":
 			return item26;
+			break;
+		case "lettertoroman":
+			return item27;
+			break;
+		case "zskgaragekey":
+			return item28;
+			break;
+		case "zsklegionnairebag":
+			return item29;
 			break;
 		}
 

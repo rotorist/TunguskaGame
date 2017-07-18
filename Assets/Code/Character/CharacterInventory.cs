@@ -50,6 +50,20 @@ public class CharacterInventory : ScriptableObject
 		return null;
 	}
 
+	//returns the first items of type type that it finds
+	public GridItemData FindItemInBackpack(ItemType type)
+	{
+		foreach(GridItemData item in Backpack)
+		{
+			if(item.Item.Type == type)
+			{
+				return item;
+			}
+		}
+
+		return null;
+	}
+
 	public List<GridItemData> FindItemsInBackpack(string id)
 	{
 		List<GridItemData> items = new List<GridItemData>();

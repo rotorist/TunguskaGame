@@ -58,6 +58,7 @@ public class HumanCharacter : Character
 	private int _voiceStyle;
 	private float _footStepTimer;
 	private float _footStepTimeout;
+	private GameObject _backpackProp;
 
 	#region Utilities
 
@@ -1991,6 +1992,9 @@ public class HumanCharacter : Character
 				{
 					GameManager.Inst.PlayerControl.Party.RefreshAllMemberWeight();
 				}
+
+				//add a backpack prefab to the back of character
+				RefreshBackpackProp();
 			}
 			else
 			{
@@ -2631,6 +2635,28 @@ public class HumanCharacter : Character
 
 	#endregion
 
+	#region Public functions
+
+	public void RefreshBackpackProp()
+	{
+		//if there's already a backpack, destroy it first
+		if(_backpackProp != null)
+		{
+			GameObject.Destroy(_backpackProp);
+		}
+		//check if inventory has backpack items. if so, take the first one and generate a prop
+		GridItemData item = this.Inventory.FindItemInBackpack(ItemType.SupplyPack);
+		if(item != null)
+		{
+			GameObject pack = GameObject.Instantiate(Resources.Load(item.Item.SpriteName)) as GameObject;
+			pack.transform.parent = MyReference.SlingWeaponMount.transform;
+			pack.transform.localPosition = new Vector3(0, 0.03f, -0.301f);
+			pack.transform.localEulerAngles = new Vector3(-8.37f, 0, 0);
+			_backpackProp = pack;
+		}
+	}
+
+	#endregion
 
 	#region Private functions
 

@@ -124,4 +124,5 @@ public enum ItemType
 	Note,
 	Key,
 	Misc,
+	SupplyPack,
 }

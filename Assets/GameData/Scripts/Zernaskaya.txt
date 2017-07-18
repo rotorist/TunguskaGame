@@ -44,6 +44,7 @@ topic/discover/priest
 condition/zsk_hans_quest/1
 
 ./zsk_hans_find_doc_done
+item/lose/priestbook/1
 condition/zsk_hans_quest/2
 
 ./zsk_sid_church_begin
@@ -103,6 +104,11 @@ item/receive/ak47/1/0.9
 topic/forget/zsk_mad_mechanic
 condition/zsk_sid_quest/6
 item/lose/ak47/1/100
+
+./zsk_sid_letter_given
+condition/zsk_sid_letter_given/true
+item/receive/lettertoroman/1
+
 
 
 
