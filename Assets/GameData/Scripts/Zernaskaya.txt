@@ -108,6 +108,13 @@ item/lose/ak47/1/100
 ./zsk_sid_letter_given
 condition/zsk_sid_letter_given/true
 item/receive/lettertoroman/1
+condition/zsk_has_supply_bag/activate
+
+./zsk_give_sid_supply
+item/lose/zsklegionnairebag/1
+item/receive/rubles/1000
+condition/zsk_sid_quest/7
+
 
 
 

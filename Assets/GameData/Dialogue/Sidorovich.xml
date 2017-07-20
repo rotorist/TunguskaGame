@@ -312,8 +312,50 @@
     <node id="27">
         <response>
             <condition name="zsk_has_sid_ak" story="zsk_has_sid_ak" compare="100" op="0" />
-            <text>Let me take a look. Ha! No gun smiths in the Zone can do a better job than this. You know what this is? Business, opportunity, money! Well, as a man of his words, I will point you to the right direction.</text>
+            <text>Let me take a look. Ha! No gun smiths in the Zone could do a better job than this. You know what this is? Business, opportunity, money! Well, as a man of his words, I will point you to the right direction. </text>
             <event name="zsk_sid_gas_station_done" />
+        </response>
+        <option>
+            <title>Right direction</title>
+            <text>What have you got for me?</text>
+            <next_node id="28" />
+        </option>
+    </node>
+    <node id="28">
+        <response>
+            <text>Roman Dotsenko, hardened ghoul hunter, one of my best business partners. Last time we talked, he was looking for a good recruit to join his band of hunters. Here's a recommendation letter. </text>
+            <event name="zsk_sid_letter_given" />
+        </response>
+        <option>
+            <condition name="zsk_sid_quest" story="zsk_sid_quest" compare="6" op="0" />
+            <title>Roman</title>
+            <text>Where can I find Mr. Dotsenko?</text>
+            <next_node id="29" />
+        </option>
+    </node>
+    <node id="29">
+        <response>
+            <text>Roman Dotsenko has a base of operation near Station 11. To get there, follow the road to the east until you reach Zernaskaya train station. Then follow the south-bound railroad. I have marked it on your map. Go find him and bring him the letter.</text>
+        </response>
+        <option>
+            <title>Continue</title>
+            <text>Please go on.</text>
+            <next_node id="30" />
+        </option>
+    </node>
+    <node id="30">
+        <response>
+            <text>The train station was taken by the Legionnaires. These are not your everyday bandits you encountered at the potato farm. They are much better equipped so you may want to sneak through the station at night, instead of going in guns blazing. Your pea shooter stands no chance against them. By the way, if you want to make a good load of cash, I have a job for you.</text>
+        </response>
+        <option>
+            <title>Job</title>
+            <text>What do you have in mind?</text>
+            <next_node id="31" />
+        </option>
+    </node>
+    <node id="31">
+        <response>
+            <text>I heard rumor that the Legionnaires just got some supplies from airdrop. Canned food and ammo usually. I could use some of that, my boys are pretty tired of eating potatoes every day. See if you can find a supply parcel from the train station, and I'll pay you good money for it. </text>
         </response>
     </node>
     <node id="1">
@@ -332,5 +374,23 @@
             <text>What's my next job?</text>
             <next_node id="23" />
         </option>
+        <option>
+            <condition name="zsk_has_supply_bag" story="zsk_has_supply_bag" compare="1" op="0" />
+            <title>Supply</title>
+            <text>I found the bag of supplies from Zernaskaya train station.</text>
+            <next_node id="32" />
+        </option>
+        <option>
+            <condition name="zsk_sid_quest" story="zsk_sid_quest" compare="6" op="0" />
+            <title>Roman</title>
+            <text>Where can I find Mr. Dotsenko?</text>
+            <next_node id="29" />
+        </option>
+    </node>
+    <node id="32">
+        <response>
+            <text>Excellent! As promised, here's some cash for your work.</text>
+            <event name="zsk_give_sid_supply" />
+        </response>
     </node>
 </dialogue>

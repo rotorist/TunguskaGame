@@ -90,7 +90,7 @@ public class QuestManager
 		}
 
 		//run initial testing scsripts
-		SetSidQuestStage(4);
+		SetSidQuestStage(5);
 	}
 
 	public void PerSecondUpdate()
