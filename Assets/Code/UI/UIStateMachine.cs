@@ -271,6 +271,7 @@ public class UIStateDialogue : UIStateBase
 	public override void BeginState ()
 	{
 		//setup panels
+
 		SM.UIManager.HideAllPanels();
 		SM.UIManager.HUDPanel.Show();
 		SM.UIManager.DialoguePanel.Show();

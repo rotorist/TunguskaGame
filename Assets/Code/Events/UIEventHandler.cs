@@ -116,8 +116,10 @@ public class UIEventHandler
 
 	public void TriggerDialogue()
 	{
+		
 		if(OnStartDialogue != null)
 		{
+			
 			OnStartDialogue();
 		}
 	}

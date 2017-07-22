@@ -145,6 +145,7 @@ public class ActionIdleActivity : GoapAction
 			//if is trader, look if player is nearby
 			if(ParentCharacter.MyJobs.Contains(NPCJobs.Trader) && _traderIdleDest != null && _currentIdleDest != _traderIdleDest)
 			{
+				
 				Vector3 playerDist = _traderIdleDest.transform.position - GameManager.Inst.PlayerControl.SelectedPC.transform.position;
 				Vector3 playerDistXZ = new Vector3(playerDist.x, 0, playerDist.z);
 				if(playerDistXZ.magnitude < 2 && playerDist.y < 1)

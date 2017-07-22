@@ -83,7 +83,7 @@ public class DialoguePanel : PanelBase
 		DialogueHandle handle = GameManager.Inst.DBManager.DBHandlerDialogue.LoadNPCDialogue(npc);
 		if(handle == null)
 		{
-			Hide();
+			
 			return;
 		}
 
@@ -584,7 +584,7 @@ public class DialoguePanel : PanelBase
 			else if(chars[i] == '}' && state == ParseStates.Response)
 			{
 				state = ParseStates.Normal;
-				string response = GameManager.Inst.DBManager.DBHandlerDialogue.GetGlobalResponse(temp);
+				string response = GameManager.Inst.DBManager.DBHandlerDialogue.GetGlobalResponse(temp, GetSpeakerName());
 				output = output + response;
 			}
 			else if(state == ParseStates.Response)

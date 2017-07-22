@@ -41,19 +41,72 @@
     </node>
     <node id="4">
         <response>
-            <text>I have a friend who's been helping me, trading supplies for my serum. But he hasn't showed up for two weeks and my supply is low. So perhaps... you could help me out?</text>
+            <text>Well, I don't want to live under Sidorovich's gang. He will eventually blackmail me into giving him all my recipes - which is why I'm here hiding. I have a friend who's been helping me, bringing me supplies and I gave him serum in return. But he hasn't showed up for two weeks and my supply is low. So perhaps... you could help me out?</text>
         </response>
         <option>
             <title>Help</title>
             <text>How can I help you?</text>
-            <next_node id="8" />
+            <next_node id="11" />
+        </option>
+        <option>
+            <title>Friend</title>
+            <text>Who's this friend that's been helping you?</text>
+            <next_node id="12" />
         </option>
     </node>
-    <node id="8">
+    <node id="11">
         <response>
-            <text>The blind man needs some supplies. To the east of the gas station there's the Zernaskaya train station. It's being held by Legionnaires. Sometimes they get air drop supplies. I don't know when, but if you keep an eye on rumors you'll hear of it. Please bring me a parcel of supplies and I'll give you one of my serum recipes for your trouble.</text>
+            <text>I'm in dire need for some supplies. To the east of the gas station there's the Zernaskaya train station. It's being held by Legionnaires. Sometimes they get air drop supplies. I don't know when, but if you keep an eye on rumors you'll hear about it. Please bring me a parcel of supplies and I'll give you one of my serum recipes for your trouble.</text>
+            <event name="zsk_priest_asked_help" />
         </response>
     </node>
+    <node id="12">
+        <response>
+            <text>His name is Ivan. He and his brother work for Sidorovich. Very kind boys, always cared for others. But I don't know what happened to them. I really can use some help, if you don't mind.</text>
+        </response>
+        <option>
+            <title>Help</title>
+            <text>How can I help you?</text>
+            <next_node id="11" />
+        </option>
+    </node>
+    <topic id="priest_supply">
+        <title>Supply</title>
+        <next_node id="8" />
+    </topic>
+    <node id="8">
+        <response>
+            <text>Do you happen to have the supplies?</text>
+        </response>
+        <option>
+            <condition name="zsk_has_supply_bag" story="zsk_has_supply_bag" compare="1" op="0" />
+            <title>Yes</title>
+            <text>Yes - I brought you a bag of supplies.</text>
+            <next_node id="9" />
+        </option>
+    </node>
+    <node id="9">
+        <response>
+            <text>Thank you, thank you! I know Sidorovich would want it too, I appreciate that you brought it to me instead. Let me write you the recipe.</text>
+            <event name="zsk_priest_give_recipe" />
+        </response>
+        <option>
+            <title>Recipe</title>
+            <text>What can you tell me about this recipe?</text>
+            <next_node id="10" />
+        </option>
+    </node>
+    <node id="10">
+        <response>
+            <text>This recipe is for serum H-12. When injected, it heals minor wounds in a short period of time. Like, if you get hurt in a gun fight it can get you back on your feet in no time. Feel free to use my chem lab!</text>
+        </response>
+    </node>
+    <topic id="serum">
+        <title>Serum</title>
+        <response>
+            <text>They are substances extracted from ghouls' body parts. If you combine different body parts along with some exotic artifacts around the Zone, you can create serums with different effects. Some good, some really bad, so you need the right recipes. You either figure out recipes on your own, or pry them out of people's mouths. And you need alcohol - lots of them, to help with the extraction. This is why the Scumbag Sidorovich is making so much money.</text>
+        </response>
+    </topic>
     <node id="5">
         <response>
             <text>Thank you for dealing with the wolves outside! They've been bothering me for a while.</text>

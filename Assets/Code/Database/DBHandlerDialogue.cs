@@ -126,7 +126,23 @@ public class DBHandlerDialogue
 
 		XmlDocument xmlDoc = new XmlDocument();
 		string path = Application.dataPath + "/GameData/Dialogue/";
-		string file = File.ReadAllText(path + npc.CharacterID + ".xml");
+		string dialogueID = npc.CharacterID;
+		if(!File.Exists(path + dialogueID + ".xml"))
+		{
+			dialogueID = npc.SquadID;
+			if(!File.Exists(path + dialogueID + ".xml"))
+			{
+				dialogueID = npc.Faction.ToString();
+				if(!File.Exists(path + dialogueID + ".xml"))
+				{
+					dialogueID = "Default";
+				}
+			}
+		}
+
+		GetNameHash(dialogueID);
+
+		string file = File.ReadAllText(path + dialogueID + ".xml");
 		try
 		{
 			xmlDoc.LoadXml(file);
@@ -246,19 +262,23 @@ public class DBHandlerDialogue
 		return response;
 	}
 
-	public string GetGlobalResponse(string id)
+	public string GetGlobalResponse(string id, string characterName)
 	{
 		IDataReader reader = GameManager.Inst.DBManager.RunQuery(
 			"SELECT response FROM global_dialogue_response WHERE id = '" + id + "'");
 
-		string output = "";
+		List<string> output = new List<string>();
 
 		while(reader.Read())
 		{
-			output = reader.GetString(0);
+			output.Add(reader.GetString(0));
 		}
 
-		return output;
+
+
+
+
+		return "";
 	}
 
 
@@ -358,5 +378,20 @@ public class DBHandlerDialogue
 				}
 			}
 		}
+	}
+
+	private int GetNameHash(string characterName)
+	{
+		//create a hash from characterName
+		int hash = 0;
+		foreach(char c in characterName)
+		{
+			int i = (int)c % 32;
+			hash += i;
+		}
+
+		Debug.Log("Name hash: " + hash);
+
+		return hash;
 	}
 }

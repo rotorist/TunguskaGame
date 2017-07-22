@@ -1386,13 +1386,15 @@ public class HumanCharacter : Character
 			{
 				return;
 			}
-			Debug.Log("opening dialog");
+
 			Character target = MyAI.BlackBoard.InteractTarget;
 
 			if(target != null && target.MyStatus.Health > 0)
 			{
+				
 				if(this.MyAI.ControlType == AIControlType.Player)
 				{
+					
 					UIEventHandler.Instance.TriggerDialogue();
 
 				}

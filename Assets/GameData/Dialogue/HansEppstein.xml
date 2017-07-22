@@ -5,6 +5,47 @@
         <text>A pleasant aura surrounds this man. He seems eager to speak to you.</text>
         <next_node id="1" />
     </intro>
+    <topic id="serum">
+        <title>Serum</title>
+        <next_node id="12" />
+    </topic>
+    <node id="12">
+        <response>
+            <text>I haven't made a lot of progress on them. But they sound interesting! Save lives, make money, win-win right? I really want to look into it, but you see, I'm no ghoul hunter, just some clumsy egghead, so I have no test subjects. It would be nice if we had some ghouls in captivity...</text>
+        </response>
+        <option>
+            <condition name="zsk_know_artyom" story="zsk_know_artyom" compare="1" op="0" />
+            <title>Artyom</title>
+            <text>There is an infected man called Artyom locked up in the cellar. He's about to turning into a ghoul.</text>
+            <next_node id="13" />
+        </option>
+    </node>
+    <node id="13">
+        <response>
+            <text>Ah, yes! I forgot about him. He makes a great test subject because his brain is in-between human and ghoul state, which is very useful for finding out how the transition works. So, the brain...</text>
+        </response>
+        <option>
+            <title>Brain</title>
+            <text>What about his brain?</text>
+            <next_node id="14" />
+        </option>
+    </node>
+    <node id="14">
+        <response>
+            <text>I need you to get it for me. Go put him out of his misery and bring me the brain. Be careful - the brain must be intact for my research. Don't ruin it. </text>
+            <event name="zsk_hans_asked_for_brain" />
+        </response>
+        <option>
+            <title>Research</title>
+            <text>What research are you doing with his brain?</text>
+            <next_node id="15" />
+        </option>
+    </node>
+    <node id="15">
+        <response>
+            <text>I'm making a serum that can temporarily protect you from the Visitation. </text>
+        </response>
+    </node>
     <node id="1">
         <response>
             <text>Good day! What brings you here?</text>

@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE dialogue[<!ATTLIST node id ID #IMPLIED>]>
+<dialogue>
+    <intro>
+        <text>You are startled by the appearance of this man. He has blue ruptured skin and a pair of glowing eyes.</text>
+        <next_node id="5" />
+    </intro>
+    <topic id="your_story">
+        <title>Your Story</title>
+        <next_node id="1" />
+    </topic>
+    <node id="1">
+        <response>
+            <text>I'm Artyom. You probably should stay away from me, because I'm infected. You should leave this ugly, deformed, dying man alone for his end.</text>
+        </response>
+        <option>
+            <title>Dying</title>
+            <text>Why are you dying? </text>
+            <next_node id="2" />
+        </option>
+        <option>
+            <title>Appearance</title>
+            <text>What made you look like this?</text>
+            <next_node id="2" />
+        </option>
+    </node>
+    <node id="2">
+        <response>
+            <text>A month ago, I was caught in the middle of a Visitation. I was working at the farm when it came. It was so fast and I didn't have time to find an underground shelter. So I ducked under the broken roof of the barn house. </text>
+        </response>
+        <option>
+            <title>Visitation</title>
+            <text>What's this "Visitation"?</text>
+            <next_node id="3" />
+        </option>
+    </node>
+    <node id="3">
+        <response>
+            <text>It's like a storm of some sort. Sometimes there's weird lightening - you know, in a thunderstorm you see lightening and hear the thunder, right? But you won't hear any thunder in a Visitation. And it shakes everything like baby's rattle. When it comes, you need to hide right away.</text>
+        </response>
+        <option>
+            <title>Hide</title>
+            <text>Where should I hide when a Visitation comes?</text>
+            <next_node id="4" />
+        </option>
+    </node>
+    <node id="4">
+        <response>
+            <text>The safest place is underground. If you can't find it, you can try hiding inside houses, but it'll still hurt you. If you are stuck in the wide-open, you'll end up like me. I'm slowly turning into a ghoul. </text>
+        </response>
+    </node>
+    <node id="5">
+        <response>
+            <text>Are you here to see me? Could you please spare me some food?</text>
+            <event name="zsk_talk_artyom" />
+        </response>
+        <option>
+            <title>Food</title>
+            <text>Why are you locked up? They are not giving you any food?</text>
+            <next_node id="6" />
+        </option>
+    </node>
+    <node id="6">
+        <response>
+            <text>I'm infected and dying. They locked me up for quarantine. But that stingy old man Sidorovich only gave me a pile of potatoes! I don't have much longer to live, I really want to taste some real food before I die. If you have any, I can trade you with money.</text>
+        </response>
+    </node>
+</dialogue>

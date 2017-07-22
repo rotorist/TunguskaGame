@@ -358,6 +358,32 @@
             <text>I heard rumor that the Legionnaires just got some supplies from airdrop. Canned food and ammo usually. I could use some of that, my boys are pretty tired of eating potatoes every day. See if you can find a supply parcel from the train station, and I'll pay you good money for it. </text>
         </response>
     </node>
+    <topic id="artyom">
+        <title>Artyom</title>
+        <response>
+            <text>The fellow from Moscow? I don't know why he's even here. He had a lucrative job back home, a civil engineer, designed half of the Moscow's metro system by himself, I heard. Why bother coming to this God forsake place? Well, now he learned his lesson, but too late!</text>
+        </response>
+    </topic>
+    <topic id="priest">
+        <title>The Priest</title>
+        <next_node id="33" />
+    </topic>
+    <node id="33">
+        <response>
+            <text>A traitor. That's what he is. We had an agreement - I gave him free shelter and alcohol, he gave me serums. But you know what he did? Sold the alcohol I gave him at a lower price than mine! All I got in return was some horseshit serum and bad business. If you see him, knock his brains out for me.</text>
+        </response>
+        <option>
+            <title>Serum</title>
+            <text>What's this "serum" you are talking about?</text>
+            <next_node id="34" />
+        </option>
+    </node>
+    <node id="34">
+        <response>
+            <text>It's what everyone here in the Zone wants! Some kind of super-medicine, sold for thousands of rubles each shot! Go talk to Hans, he might know something about it.</text>
+            <event name="zsk_sid_talked_serum" />
+        </response>
+    </node>
     <node id="1">
         <response>
             <text>Hey there, what can I do you for?</text>

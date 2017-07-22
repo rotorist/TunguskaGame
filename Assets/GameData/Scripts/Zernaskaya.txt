@@ -47,6 +47,9 @@ condition/zsk_hans_quest/1
 item/lose/priestbook/1
 condition/zsk_hans_quest/2
 
+./zsk_hans_asked_for_brain
+condition/zsk_has_artyom_brain/activate
+
 ./zsk_sid_church_begin
 topic/discover/zsk_church_clear
 topic/discover/tungus_complex
@@ -87,8 +90,17 @@ condition/zsk_read_ivan_note/false
 condition/zsk_read_ivan_note/deactivate
 
 ./zsk_priest_give_key
-item/receive/zsk_garage_key/1
+item/receive/zskgaragekey/1
 condition/zsk_got_garage_key/true
+
+./zsk_priest_asked_help
+topic/discover/priest_supply
+condition/zsk_has_supply_bag/activate
+topic/discover/serum
+
+./zsk_priest_give_recipe
+topic/forget/priest_supply
+
 
 ./zsk_sid_gas_station_begin
 topic/discover/zsk_mad_mechanic
@@ -114,6 +126,15 @@ condition/zsk_has_supply_bag/activate
 item/lose/zsklegionnairebag/1
 item/receive/rubles/1000
 condition/zsk_sid_quest/7
+
+./zsk_talk_artyom
+topic/discover/artyom
+condition/zsk_know_artyom/true
+
+./zsk_sid_talked_serum
+topic/discover/serum
+
+
 
 
 
