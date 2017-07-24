@@ -11,6 +11,8 @@ using System;
 public class DBHandlerDialogue 
 {
 	public XmlDocument CurrentDialogXML;
+	public List<string> FirstNames;
+	public List<string> LastNames;
 
 	public List<Topic> GetPlayerTopics()
 	{
@@ -140,7 +142,7 @@ public class DBHandlerDialogue
 			}
 		}
 
-		GetNameHash(dialogueID);
+
 
 		string file = File.ReadAllText(path + dialogueID + ".xml");
 		try
@@ -274,11 +276,11 @@ public class DBHandlerDialogue
 			output.Add(reader.GetString(0));
 		}
 
+		int hash = GetNameHash(characterName);
 
 
 
-
-		return "";
+		return output[hash % output.Count];
 	}
 
 
@@ -313,6 +315,19 @@ public class DBHandlerDialogue
 		}
 
 		return true;
+	}
+
+	public string GetRandomName()
+	{
+		if(FirstNames == null || FirstNames.Count <= 0)
+		{
+			LoadNames();
+		}
+
+		int rand1 = UnityEngine.Random.Range(0, FirstNames.Count);
+		int rand2 = UnityEngine.Random.Range(0, LastNames.Count);
+
+		return FirstNames[rand1] + " " + LastNames[rand2];
 	}
 
 
@@ -390,8 +405,51 @@ public class DBHandlerDialogue
 			hash += i;
 		}
 
-		Debug.Log("Name hash: " + hash);
 
 		return hash;
+	}
+
+	private void LoadNames()
+	{
+		string [] rawFileFirstNames;
+
+		try
+		{
+			rawFileFirstNames = File.ReadAllLines(Application.dataPath + "/GameData/Names/FirstNames.txt");
+		}
+		catch(Exception e)
+		{
+			UnityEngine.Debug.LogError(e.Message);
+			return;
+		}
+
+		FirstNames = new List<string>();
+
+		foreach(string line in rawFileFirstNames)
+		{
+			FirstNames.Add(line);
+		}
+
+		string [] rawFileLastNames;
+
+		try
+		{
+			rawFileLastNames = File.ReadAllLines(Application.dataPath + "/GameData/Names/LastNames.txt");
+		}
+		catch(Exception e)
+		{
+			UnityEngine.Debug.LogError(e.Message);
+			return;
+		}
+
+		LastNames = new List<string>();
+
+		foreach(string line in rawFileLastNames)
+		{
+			LastNames.Add(line);
+		}
+
+
+
 	}
 }

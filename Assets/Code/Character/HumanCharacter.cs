@@ -203,6 +203,8 @@ public class HumanCharacter : Character
 		this.Stealth = new CharacterStealth(this);
 
 		this.Inventory = new CharacterInventory();
+		this.PresetInventory = transform.GetComponent<PresetInventory>();
+
 		this.MyJobs = new List<NPCJobs>();
 		this.CharacterAudio = GetComponent<AudioSource>();
 		_voiceStyle = UnityEngine.Random.Range(1, 3);

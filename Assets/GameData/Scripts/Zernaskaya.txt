@@ -50,6 +50,11 @@ condition/zsk_hans_quest/2
 ./zsk_hans_asked_for_brain
 condition/zsk_has_artyom_brain/activate
 
+./zsk_hans_got_brain
+item/lose/artyombrain/1
+condition/zsk_hans_has_brain/true
+
+
 ./zsk_sid_church_begin
 topic/discover/zsk_church_clear
 topic/discover/tungus_complex

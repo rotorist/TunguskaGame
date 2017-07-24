@@ -1,0 +1,145 @@
+fileFormatVersion: 2
+guid: a9fb9f68694c53f4db0256de02a32f82
+timeCreated: 1486741287
+licenseType: Store
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: FantasyWolf
+    100004: FantasyWolf_
+    100006: FantasyWolf_ Head
+    100008: FantasyWolf_ L Calf
+    100010: FantasyWolf_ L Clavicle
+    100012: FantasyWolf_ L Finger0
+    100014: FantasyWolf_ L Foot
+    100016: FantasyWolf_ L Forearm
+    100018: FantasyWolf_ L Hand
+    100020: FantasyWolf_ L HorseLink
+    100022: FantasyWolf_ L Thigh
+    100024: FantasyWolf_ L UpperArm
+    100026: FantasyWolf_ Neck
+    100028: FantasyWolf_ Neck1
+    100030: FantasyWolf_ Neck2
+    100032: FantasyWolf_ Pelvis
+    100034: FantasyWolf_ Ponytail1
+    100036: FantasyWolf_ R Calf
+    100038: FantasyWolf_ R Clavicle
+    100040: FantasyWolf_ R Finger0
+    100042: FantasyWolf_ R Foot
+    100044: FantasyWolf_ R Forearm
+    100046: FantasyWolf_ R Hand
+    100048: FantasyWolf_ R HorseLink
+    100050: FantasyWolf_ R Thigh
+    100052: FantasyWolf_ R UpperArm
+    100054: FantasyWolf_ Spine
+    100056: FantasyWolf_ Spine1
+    100058: FantasyWolf_ Tail
+    100060: FantasyWolf_ Tail1
+    100062: FantasyWolf_ Tail2
+    100064: FantasyWolf_ Tail3
+    100066: FantasyWolf_ Tail4
+    100068: FantasyWolf_ Tail5
+    100070: ROOT_
+    400000: //RootNode
+    400002: FantasyWolf
+    400004: FantasyWolf_
+    400006: FantasyWolf_ Head
+    400008: FantasyWolf_ L Calf
+    400010: FantasyWolf_ L Clavicle
+    400012: FantasyWolf_ L Finger0
+    400014: FantasyWolf_ L Foot
+    400016: FantasyWolf_ L Forearm
+    400018: FantasyWolf_ L Hand
+    400020: FantasyWolf_ L HorseLink
+    400022: FantasyWolf_ L Thigh
+    400024: FantasyWolf_ L UpperArm
+    400026: FantasyWolf_ Neck
+    400028: FantasyWolf_ Neck1
+    400030: FantasyWolf_ Neck2
+    400032: FantasyWolf_ Pelvis
+    400034: FantasyWolf_ Ponytail1
+    400036: FantasyWolf_ R Calf
+    400038: FantasyWolf_ R Clavicle
+    400040: FantasyWolf_ R Finger0
+    400042: FantasyWolf_ R Foot
+    400044: FantasyWolf_ R Forearm
+    400046: FantasyWolf_ R Hand
+    400048: FantasyWolf_ R HorseLink
+    400050: FantasyWolf_ R Thigh
+    400052: FantasyWolf_ R UpperArm
+    400054: FantasyWolf_ Spine
+    400056: FantasyWolf_ Spine1
+    400058: FantasyWolf_ Tail
+    400060: FantasyWolf_ Tail1
+    400062: FantasyWolf_ Tail2
+    400064: FantasyWolf_ Tail3
+    400066: FantasyWolf_ Tail4
+    400068: FantasyWolf_ Tail5
+    400070: ROOT_
+    4300000: FantasyWolf
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: FantasyWolf
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 0
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: ROOT_
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

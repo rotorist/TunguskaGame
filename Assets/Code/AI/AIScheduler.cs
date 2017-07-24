@@ -33,25 +33,30 @@ public class AIScheduler
 	{
 		//call each AI's per frame udpate
 		List<Character> characters = GameManager.Inst.NPCManager.AllCharacters;
+		//Debug.Log(_charIndex  + ", " + _oneSecIndex + " total " + characters.Count);
 		if(_charIndex >= characters.Count)
 		{
 			_charIndex = 0;
 		}
-		if(_charIndex >= 0 && characters[_charIndex] != null && characters[_charIndex].MyAI.ControlType != AIControlType.Player)
+		if(_charIndex >= 0 && characters[_charIndex] != null)
 		{
+
 			while(Vector3.Distance(GameManager.Inst.PlayerControl.SelectedPC.transform.position, characters[_charIndex].transform.position) >= GameManager.Inst.AIUpdateRadius)
 			{
 				_charIndex ++;
 				if(_charIndex >= characters.Count)
 				{
-					_charIndex = -1000;
+					//Debug.Log("out of bound " + _charIndex);
+					_charIndex = 0;
 					break;
 				}
 			}
 
 			if(_charIndex >= 0 && _charIndex < characters.Count)
 			{
+				//Debug.Log("perframe Update for " + _charIndex + characters[_charIndex].name);
 				characters[_charIndex].MyEventHandler.TriggerOnPerFrameTimer();
+
 			}
 
 			_charIndex ++;
@@ -61,7 +66,8 @@ public class AIScheduler
 
 
 
-		if(_oneSecIndex >= 0 && characters.Count > _oneSecIndex && characters[_oneSecIndex] != null && characters[_oneSecIndex].MyAI.ControlType != AIControlType.Player)
+
+		if(_oneSecIndex >= 0 && characters.Count > _oneSecIndex && characters[_oneSecIndex] != null)
 		{
 			while(Vector3.Distance(GameManager.Inst.PlayerControl.SelectedPC.transform.position, characters[_oneSecIndex].transform.position) >= GameManager.Inst.AIUpdateRadius)
 			{
@@ -87,9 +93,11 @@ public class AIScheduler
 
 
 
+
+
 		//Debug.LogError(Time.time + " Triggering half second timer for index " + _halfSecIndex);
 
-		if(_halfSecIndex >= 0 && characters.Count > _halfSecIndex && characters[_halfSecIndex] != null && characters[_halfSecIndex].MyAI.ControlType != AIControlType.Player)
+		if(_halfSecIndex >= 0 && characters.Count > _halfSecIndex && characters[_halfSecIndex] != null)
 		{
 			while(Vector3.Distance(GameManager.Inst.PlayerControl.SelectedPC.transform.position, characters[_halfSecIndex].transform.position) >= GameManager.Inst.AIUpdateRadius)
 			{
@@ -108,6 +116,7 @@ public class AIScheduler
 
 			_halfSecIndex ++;
 		}
+
 
 
 	}

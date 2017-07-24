@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 
 public class ItemManager
 {
@@ -223,10 +224,52 @@ public class ItemManager
 	
 	}
 
+	public void LoadNPCInventory(CharacterInventory inventory, PresetInventory presetInventory)
+	{
+		if(inventory == null || presetInventory == null)
+		{
+			return;
+		}
+
+		int count = 1;
+
+		if(presetInventory.HeadSlotData.Length > 0)
+		{
+			inventory.HeadSlot = ParsePresetItem(presetInventory.HeadSlotData, out count);
+		}
+
+		if(presetInventory.ArmorSlotData.Length > 0)
+		{
+			inventory.ArmorSlot = ParsePresetItem(presetInventory.ArmorSlotData, out count);
+		}
+
+		if(presetInventory.RifleSlotData.Length > 0)
+		{
+			inventory.RifleSlot = ParsePresetItem(presetInventory.RifleSlotData, out count);
+		}
+
+		if(presetInventory.SideSlotData.Length > 0)
+		{
+			inventory.SideArmSlot = ParsePresetItem(presetInventory.SideSlotData, out count);
+		}
+
+		foreach(string data in presetInventory.BackpackData)
+		{
+			Item item = ParsePresetItem(data, out count);
+			inventory.Backpack.Add(new GridItemData(item, 0, 0, GridItemOrient.Landscape, count));
+		}
+	}
+
 	public List<GridItemData> GetNPCLoot(Character character)
 	{
 		List<GridItemData> items = new List<GridItemData>();
 		CharacterInventory inventory = character.Inventory;
+
+		//first add whatever is already in the backpack
+		foreach(GridItemData item in inventory.Backpack)
+		{
+			items.Add(item);
+		}
 
 		if(character.IsHuman)
 		{
@@ -928,6 +971,21 @@ public class ItemManager
 		item29.BasePrice = 900;
 		item29.BuildIndex();
 
+		Item item30 = new Item();
+		item30.Name = "Artyom's Brain";
+		item30.Description = "Partially mutated brain extracted from Artyom's skull.";
+		item30.PrefabName = "ArtyomBrain";
+		item30.SpriteName = "brain";
+		item30.Weight = 0.5f;
+		item30.ID = "artyombrain";
+		item30.Type = ItemType.Misc;
+		item30.GridCols = 1;
+		item30.GridRows = 1;
+		item30.MaxStackSize = 1;
+		item30.Tier = 0;
+		item30.BasePrice = 0;
+		item30.BuildIndex();
+
 
 		switch(itemID)
 		{
@@ -1018,8 +1076,41 @@ public class ItemManager
 		case "zsklegionnairebag":
 			return item29;
 			break;
+		case "artyombrain":
+			return item30;
+			break;
 		}
 
 		return null;
+	}
+
+
+	private Item ParsePresetItem(string data, out int count)
+	{
+		string [] tokens = data.Split('/');
+		count = 1;
+		if(data.Length <= 0 || tokens.Length <= 0)
+		{
+			return null;
+		}
+
+		Item item = LoadItem(tokens[0]);
+
+		if(item == null)
+		{
+			return null;
+		}
+
+		if(tokens.Length == 2)
+		{
+			item.Durability = item.MaxDurability * Convert.ToSingle(tokens[1]);
+		}
+
+		if(tokens.Length == 3)
+		{
+			count = Convert.ToInt32(tokens[2]);
+		}
+
+		return item;
 	}
 }

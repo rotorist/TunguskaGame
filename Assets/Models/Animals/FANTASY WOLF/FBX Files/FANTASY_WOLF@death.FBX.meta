@@ -1,0 +1,142 @@
+fileFormatVersion: 2
+guid: 3954a33bdba451d42a8fc47418ae870d
+timeCreated: 1486741284
+licenseType: Store
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: FantasyWolf_
+    100004: FantasyWolf_ Head
+    100006: FantasyWolf_ L Calf
+    100008: FantasyWolf_ L Clavicle
+    100010: FantasyWolf_ L Finger0
+    100012: FantasyWolf_ L Foot
+    100014: FantasyWolf_ L Forearm
+    100016: FantasyWolf_ L Hand
+    100018: FantasyWolf_ L HorseLink
+    100020: FantasyWolf_ L Thigh
+    100022: FantasyWolf_ L UpperArm
+    100024: FantasyWolf_ Neck
+    100026: FantasyWolf_ Neck1
+    100028: FantasyWolf_ Neck2
+    100030: FantasyWolf_ Pelvis
+    100032: FantasyWolf_ Ponytail1
+    100034: FantasyWolf_ R Calf
+    100036: FantasyWolf_ R Clavicle
+    100038: FantasyWolf_ R Finger0
+    100040: FantasyWolf_ R Foot
+    100042: FantasyWolf_ R Forearm
+    100044: FantasyWolf_ R Hand
+    100046: FantasyWolf_ R HorseLink
+    100048: FantasyWolf_ R Thigh
+    100050: FantasyWolf_ R UpperArm
+    100052: FantasyWolf_ Spine
+    100054: FantasyWolf_ Spine1
+    100056: FantasyWolf_ Tail
+    100058: FantasyWolf_ Tail1
+    100060: FantasyWolf_ Tail2
+    100062: FantasyWolf_ Tail3
+    100064: FantasyWolf_ Tail4
+    100066: FantasyWolf_ Tail5
+    100068: ROOT_
+    400000: //RootNode
+    400002: FantasyWolf_
+    400004: FantasyWolf_ Head
+    400006: FantasyWolf_ L Calf
+    400008: FantasyWolf_ L Clavicle
+    400010: FantasyWolf_ L Finger0
+    400012: FantasyWolf_ L Foot
+    400014: FantasyWolf_ L Forearm
+    400016: FantasyWolf_ L Hand
+    400018: FantasyWolf_ L HorseLink
+    400020: FantasyWolf_ L Thigh
+    400022: FantasyWolf_ L UpperArm
+    400024: FantasyWolf_ Neck
+    400026: FantasyWolf_ Neck1
+    400028: FantasyWolf_ Neck2
+    400030: FantasyWolf_ Pelvis
+    400032: FantasyWolf_ Ponytail1
+    400034: FantasyWolf_ R Calf
+    400036: FantasyWolf_ R Clavicle
+    400038: FantasyWolf_ R Finger0
+    400040: FantasyWolf_ R Foot
+    400042: FantasyWolf_ R Forearm
+    400044: FantasyWolf_ R Hand
+    400046: FantasyWolf_ R HorseLink
+    400048: FantasyWolf_ R Thigh
+    400050: FantasyWolf_ R UpperArm
+    400052: FantasyWolf_ Spine
+    400054: FantasyWolf_ Spine1
+    400056: FantasyWolf_ Tail
+    400058: FantasyWolf_ Tail1
+    400060: FantasyWolf_ Tail2
+    400062: FantasyWolf_ Tail3
+    400064: FantasyWolf_ Tail4
+    400066: FantasyWolf_ Tail5
+    400068: ROOT_
+    7400000: Take 001
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 0
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 1
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: ROOT_
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: a9fb9f68694c53f4db0256de02a32f82,
+    type: 3}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

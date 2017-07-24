@@ -48,6 +48,7 @@ public abstract class Character : MonoBehaviour
 	public CharacterStealth Stealth;
 
 	public CharacterInventory Inventory;
+	public PresetInventory PresetInventory;
 	public List<NPCJobs> MyJobs;
 	public DamageType DeathReason;
 	public bool IsLooted;

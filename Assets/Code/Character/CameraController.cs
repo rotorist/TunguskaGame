@@ -155,6 +155,7 @@ public class CameraController : MonoBehaviour
 
 
 		float rotationLerpSpeed = 3;
+		float panLerpSpeed = 2;
 
 		if(_cameraMode == CameraModeEnum.Leader)
 		{
@@ -222,7 +223,14 @@ public class CameraController : MonoBehaviour
 		else if(!isCameraLocked)
 		{
 			//Debug.Log("INSIDE " + transform.position);
-			Vector3 newPos = Vector3.Lerp(transform.position, lookAheadPos, 2 * Time.unscaledDeltaTime);
+
+			if(GameManager.Inst.PlayerControl.AimedObjectType != AimedObjectType.None)
+			{
+				panLerpSpeed = 0.5f;
+				rotationLerpSpeed = 0.5f;
+			}
+
+			Vector3 newPos = Vector3.Lerp(transform.position, lookAheadPos, panLerpSpeed * Time.unscaledDeltaTime);
 			Vector3 newAngle = Vector3.Lerp(MainCamera.transform.localEulerAngles, new Vector3(_cameraAngle1, 0, 0), rotationLerpSpeed * Time.unscaledDeltaTime);
 			_cameraTester.position = lookAheadPos;
 			_cameraTester.localEulerAngles = new Vector3(_cameraAngle1, transform.localEulerAngles.y, 0);
@@ -230,6 +238,7 @@ public class CameraController : MonoBehaviour
 			Vector3 restrictedPos;
 			float overDistance;
 			//if(IsViewInBoundary(_cameraTester, out restrictedPos, out overDistance))
+
 			{
 				transform.position = newPos;
 				MainCamera.transform.localEulerAngles = newAngle;
@@ -245,7 +254,8 @@ public class CameraController : MonoBehaviour
 			}*/
 				
 
-			MainCamera.fieldOfView = Mathf.Lerp(MainCamera.fieldOfView, cameraFov, rotationLerpSpeed * Time.unscaledDeltaTime);
+				MainCamera.fieldOfView = Mathf.Lerp(MainCamera.fieldOfView, cameraFov, rotationLerpSpeed * Time.unscaledDeltaTime);
+
 		}
 		
 

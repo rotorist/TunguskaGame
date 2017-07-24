@@ -11,10 +11,18 @@
     </topic>
     <node id="12">
         <response>
+            <condition name="zsk_hans_has_brain" story="zsk_hans_has_brain" compare="0" op="0" />
             <text>I haven't made a lot of progress on them. But they sound interesting! Save lives, make money, win-win right? I really want to look into it, but you see, I'm no ghoul hunter, just some clumsy egghead, so I have no test subjects. It would be nice if we had some ghouls in captivity...</text>
         </response>
+        <response>
+            <condition name="zsk_hans_has_brain" story="zsk_hans_has_brain" compare="1" op="0" />
+            <text>I have some serum for sale, if you want.</text>
+        </response>
         <option>
-            <condition name="zsk_know_artyom" story="zsk_know_artyom" compare="1" op="0" />
+            <logic type="And">
+                <condition name="zsk_know_artyom" story="zsk_know_artyom" compare="1" op="0" />
+                <condition name="zsk_hans_has_brain" story="zsk_hans_has_brain" compare="0" op="0" />
+            </logic>
             <title>Artyom</title>
             <text>There is an infected man called Artyom locked up in the cellar. He's about to turning into a ghoul.</text>
             <next_node id="13" />
@@ -64,6 +72,12 @@
             <title>Document</title>
             <text>I found this journal in the church.</text>
             <next_node id="9" />
+        </option>
+        <option>
+            <condition name="zsk_has_artyom_brain" story="zsk_has_artyom_brain" compare="1" op="0" />
+            <title>Artyom's Brain</title>
+            <text>I got you Artyom's brain.</text>
+            <next_node id="16" />
         </option>
     </node>
     <node id="2">
@@ -157,6 +171,12 @@
     <node id="10">
         <response>
             <text>Interesting. Alright, I will add a sensor that can detect ionized air particles.</text>
+        </response>
+    </node>
+    <node id="16">
+        <response>
+            <text>Let me have a look... Aha! This is the missing link to my serum! Well thanks to you, now we have a better chance to live through future Visitations. Artyom's sacrifice was not in vain. Here, you can have a sample of the serum, and you can buy more from me if you need it.</text>
+            <event name="zsk_hans_got_brain" />
         </response>
     </node>
 </dialogue>

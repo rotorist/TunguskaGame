@@ -142,6 +142,12 @@ public class NPCManager
 					_allSquads[c.SquadID].AddMember(c);
 				}
 			}
+
+			//load preset inventory
+			if(c.PresetInventory != null)
+			{
+				GameManager.Inst.ItemManager.LoadNPCInventory(c.Inventory, c.PresetInventory);
+			}
 		}
 
 		foreach(Household h in _allHouseHolds.Values)
@@ -332,6 +338,8 @@ public class NPCManager
 		//character.transform.position = new Vector3(70.76f, 3.296f, -23.003f);
 
 		character.MyNavAgent.enabled = true;
+
+		character.Name = GameManager.Inst.DBManager.DBHandlerDialogue.GetRandomName();
 
 		character.gameObject.name = character.gameObject.name + _counter.ToString();
 		_counter ++;

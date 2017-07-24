@@ -209,6 +209,7 @@ public class ActionMeleeAttack : GoapAction
 	{
 		if(ParentCharacter.MyAI.BlackBoard.TargetEnemy != null)
 		{
+			
 			//check if is in range
 			float dist = Vector3.Distance(ParentCharacter.transform.position, ParentCharacter.MyAI.BlackBoard.TargetEnemy.transform.position);
 			Vector3 targetVelocity = ParentCharacter.MyAI.BlackBoard.TargetEnemy.GetCharacterVelocity();
@@ -218,6 +219,7 @@ public class ActionMeleeAttack : GoapAction
 				if(dist > _weaponReach * 0.75f)
 				{
 					//go to target enemy
+
 					ParentCharacter.MyAI.BlackBoard.NavTarget = ParentCharacter.MyAI.BlackBoard.TargetEnemy.transform.position + targetVelocity * 0.1f;
 					ParentCharacter.Destination = ParentCharacter.MyAI.BlackBoard.NavTarget;
 					ParentCharacter.CurrentStance = HumanStances.Run;
