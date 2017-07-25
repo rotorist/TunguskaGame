@@ -147,6 +147,7 @@ public class NPCManager
 			if(c.PresetInventory != null)
 			{
 				GameManager.Inst.ItemManager.LoadNPCInventory(c.Inventory, c.PresetInventory);
+				c.MyAI.WeaponSystem.LoadWeaponsFromInventory(false);
 			}
 		}
 
@@ -677,5 +678,12 @@ public class NPCManager
 		squad8.Household = _allHouseHolds["HouseHoldArtyom"];
 		squad8.Household.CurrentSquad = squad8;
 		_allSquads.Add(squad8.ID, squad8);
+
+		AISquad squad9 = new AISquad();
+		squad9.ID = "wolves";
+		squad9.Faction = Faction.Animals;
+		squad9.Household = _allHouseHolds["HouseHoldWolf"];
+		squad9.Household.CurrentSquad = squad9;
+		_allSquads.Add(squad9.ID, squad9);
 	}
 }

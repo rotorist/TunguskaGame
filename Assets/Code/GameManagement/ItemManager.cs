@@ -121,11 +121,7 @@ public class ItemManager
 		inventory1.ToolSlot = LoadItem("geigercounter");
 
 	}
-
-	public void LoadPresetNPCInventory(Character character)
-	{
-
-	}
+		
 
 	public void LoadNPCInventory(CharacterInventory inventory, Faction faction)
 	{
@@ -1087,7 +1083,7 @@ public class ItemManager
 
 	private Item ParsePresetItem(string data, out int count)
 	{
-		string [] tokens = data.Split('/');
+		string [] tokens = data.Split('/'); //format: itemID/durability0-1/count
 		count = 1;
 		if(data.Length <= 0 || tokens.Length <= 0)
 		{

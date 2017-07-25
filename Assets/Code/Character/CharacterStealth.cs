@@ -98,7 +98,7 @@ public class CharacterStealth
 
 	private void UpdateBaseVisibility()
 	{
-
+		
 		
 		Vector3 litPos = _parentCharacter.MyReference.TorsoWeaponMount.transform.position;
 
