@@ -121,7 +121,23 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.35609755
+        functionName: TriggerOnStrikeHalfWay
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: e29b1cf06baaa2544adc78bd2c1e66d0,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.7637131
+        functionName: TriggerOnStrikeLeftFinish
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: e29b1cf06baaa2544adc78bd2c1e66d0,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask:
       - path: 
         weight: 1

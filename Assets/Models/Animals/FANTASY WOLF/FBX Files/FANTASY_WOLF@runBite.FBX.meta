@@ -3,7 +3,7 @@ guid: 5def785d5b783db49ba7751072ca1626
 timeCreated: 1486741285
 licenseType: Store
 ModelImporter:
-  serializedVersion: 18
+  serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
     100002: FantasyWolf_
@@ -75,7 +75,7 @@ ModelImporter:
     400064: FantasyWolf_ Tail4
     400066: FantasyWolf_ Tail5
     400068: ROOT_
-    7400000: Take 001
+    7400000: runBite
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -84,6 +84,7 @@ ModelImporter:
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
+    resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
     animationImportErrors: 
@@ -91,12 +92,160 @@ ModelImporter:
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     animationCompression: 0
-    animationRotationError: .5
-    animationPositionError: .5
-    animationScaleError: .5
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: runBite
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 16
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: 0.25738394
+        functionName: TriggerOnStrikeHalfWay
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: e29b1cf06baaa2544adc78bd2c1e66d0,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.65822786
+        functionName: TriggerOnStrikeRightFinish
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: e29b1cf06baaa2544adc78bd2c1e66d0,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      transformMask:
+      - path: 
+        weight: 1
+      - path: ROOT_
+        weight: 1
+      - path: ROOT_/FantasyWolf_
+        weight: 1
+      - path: ROOT_/FantasyWolf_/FantasyWolf_ Pelvis
+        weight: 1
+      - path: ROOT_/FantasyWolf_/FantasyWolf_ Pelvis/FantasyWolf_ L Thigh
+        weight: 1
+      - path: ROOT_/FantasyWolf_/FantasyWolf_ Pelvis/FantasyWolf_ L Thigh/FantasyWolf_
+          L Calf
+        weight: 1
+      - path: ROOT_/FantasyWolf_/FantasyWolf_ Pelvis/FantasyWolf_ L Thigh/FantasyWolf_
+          L Calf/FantasyWolf_ L HorseLink
+        weight: 1
+      - path: ROOT_/FantasyWolf_/FantasyWolf_ Pelvis/FantasyWolf_ L Thigh/FantasyWolf_
+          L Calf/FantasyWolf_ L HorseLink/FantasyWolf_ L Foot
+        weight: 1
+      - path: ROOT_/FantasyWolf_/FantasyWolf_ Pelvis/FantasyWolf_ R Thigh
+        weight: 1
+      - path: ROOT_/FantasyWolf_/FantasyWolf_ Pelvis/FantasyWolf_ R Thigh/FantasyWolf_
+          R Calf
+        weight: 1
+      - path: ROOT_/FantasyWolf_/FantasyWolf_ Pelvis/FantasyWolf_ R Thigh/FantasyWolf_
+          R Calf/FantasyWolf_ R HorseLink
+        weight: 1
+      - path: ROOT_/FantasyWolf_/FantasyWolf_ Pelvis/FantasyWolf_ R Thigh/FantasyWolf_
+          R Calf/FantasyWolf_ R HorseLink/FantasyWolf_ R Foot
+        weight: 1
+      - path: ROOT_/FantasyWolf_/FantasyWolf_ Pelvis/FantasyWolf_ Spine
+        weight: 1
+      - path: ROOT_/FantasyWolf_/FantasyWolf_ Pelvis/FantasyWolf_ Spine/FantasyWolf_
+          Spine1
+        weight: 1
+      - path: ROOT_/FantasyWolf_/FantasyWolf_ Pelvis/FantasyWolf_ Spine/FantasyWolf_
+          Spine1/FantasyWolf_ L Clavicle
+        weight: 1
+      - path: ROOT_/FantasyWolf_/FantasyWolf_ Pelvis/FantasyWolf_ Spine/FantasyWolf_
+          Spine1/FantasyWolf_ L Clavicle/FantasyWolf_ L UpperArm
+        weight: 1
+      - path: ROOT_/FantasyWolf_/FantasyWolf_ Pelvis/FantasyWolf_ Spine/FantasyWolf_
+          Spine1/FantasyWolf_ L Clavicle/FantasyWolf_ L UpperArm/FantasyWolf_ L Forearm
+        weight: 1
+      - path: ROOT_/FantasyWolf_/FantasyWolf_ Pelvis/FantasyWolf_ Spine/FantasyWolf_
+          Spine1/FantasyWolf_ L Clavicle/FantasyWolf_ L UpperArm/FantasyWolf_ L Forearm/FantasyWolf_
+          L Hand
+        weight: 1
+      - path: ROOT_/FantasyWolf_/FantasyWolf_ Pelvis/FantasyWolf_ Spine/FantasyWolf_
+          Spine1/FantasyWolf_ L Clavicle/FantasyWolf_ L UpperArm/FantasyWolf_ L Forearm/FantasyWolf_
+          L Hand/FantasyWolf_ L Finger0
+        weight: 1
+      - path: ROOT_/FantasyWolf_/FantasyWolf_ Pelvis/FantasyWolf_ Spine/FantasyWolf_
+          Spine1/FantasyWolf_ Neck
+        weight: 1
+      - path: ROOT_/FantasyWolf_/FantasyWolf_ Pelvis/FantasyWolf_ Spine/FantasyWolf_
+          Spine1/FantasyWolf_ Neck/FantasyWolf_ Neck1
+        weight: 1
+      - path: ROOT_/FantasyWolf_/FantasyWolf_ Pelvis/FantasyWolf_ Spine/FantasyWolf_
+          Spine1/FantasyWolf_ Neck/FantasyWolf_ Neck1/FantasyWolf_ Neck2
+        weight: 1
+      - path: ROOT_/FantasyWolf_/FantasyWolf_ Pelvis/FantasyWolf_ Spine/FantasyWolf_
+          Spine1/FantasyWolf_ Neck/FantasyWolf_ Neck1/FantasyWolf_ Neck2/FantasyWolf_
+          Head
+        weight: 1
+      - path: ROOT_/FantasyWolf_/FantasyWolf_ Pelvis/FantasyWolf_ Spine/FantasyWolf_
+          Spine1/FantasyWolf_ Neck/FantasyWolf_ Neck1/FantasyWolf_ Neck2/FantasyWolf_
+          Head/FantasyWolf_ Ponytail1
+        weight: 1
+      - path: ROOT_/FantasyWolf_/FantasyWolf_ Pelvis/FantasyWolf_ Spine/FantasyWolf_
+          Spine1/FantasyWolf_ R Clavicle
+        weight: 1
+      - path: ROOT_/FantasyWolf_/FantasyWolf_ Pelvis/FantasyWolf_ Spine/FantasyWolf_
+          Spine1/FantasyWolf_ R Clavicle/FantasyWolf_ R UpperArm
+        weight: 1
+      - path: ROOT_/FantasyWolf_/FantasyWolf_ Pelvis/FantasyWolf_ Spine/FantasyWolf_
+          Spine1/FantasyWolf_ R Clavicle/FantasyWolf_ R UpperArm/FantasyWolf_ R Forearm
+        weight: 1
+      - path: ROOT_/FantasyWolf_/FantasyWolf_ Pelvis/FantasyWolf_ Spine/FantasyWolf_
+          Spine1/FantasyWolf_ R Clavicle/FantasyWolf_ R UpperArm/FantasyWolf_ R Forearm/FantasyWolf_
+          R Hand
+        weight: 1
+      - path: ROOT_/FantasyWolf_/FantasyWolf_ Pelvis/FantasyWolf_ Spine/FantasyWolf_
+          Spine1/FantasyWolf_ R Clavicle/FantasyWolf_ R UpperArm/FantasyWolf_ R Forearm/FantasyWolf_
+          R Hand/FantasyWolf_ R Finger0
+        weight: 1
+      - path: ROOT_/FantasyWolf_/FantasyWolf_ Pelvis/FantasyWolf_ Tail
+        weight: 1
+      - path: ROOT_/FantasyWolf_/FantasyWolf_ Pelvis/FantasyWolf_ Tail/FantasyWolf_
+          Tail1
+        weight: 1
+      - path: ROOT_/FantasyWolf_/FantasyWolf_ Pelvis/FantasyWolf_ Tail/FantasyWolf_
+          Tail1/FantasyWolf_ Tail2
+        weight: 1
+      - path: ROOT_/FantasyWolf_/FantasyWolf_ Pelvis/FantasyWolf_ Tail/FantasyWolf_
+          Tail1/FantasyWolf_ Tail2/FantasyWolf_ Tail3
+        weight: 1
+      - path: ROOT_/FantasyWolf_/FantasyWolf_ Pelvis/FantasyWolf_ Tail/FantasyWolf_
+          Tail1/FantasyWolf_ Tail2/FantasyWolf_ Tail3/FantasyWolf_ Tail4
+        weight: 1
+      - path: ROOT_/FantasyWolf_/FantasyWolf_ Pelvis/FantasyWolf_ Tail/FantasyWolf_
+          Tail1/FantasyWolf_ Tail2/FantasyWolf_ Tail3/FantasyWolf_ Tail4/FantasyWolf_
+          Tail5
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []
@@ -117,25 +266,30 @@ ModelImporter:
     useFileScale: 1
   tangentSpace:
     normalSmoothAngle: 60
-    splitTangentsAcrossUV: 1
     normalImportMode: 0
-    tangentImportMode: 1
+    tangentImportMode: 4
   importAnimation: 1
   copyAvatar: 1
   humanDescription:
+    serializedVersion: 2
     human: []
     skeleton: []
-    armTwist: .5
-    foreArmTwist: .5
-    upperLegTwist: .5
-    legTwist: .5
-    armStretch: .0500000007
-    legStretch: .0500000007
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
     feetSpacing: 0
     rootMotionBoneName: ROOT_
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 0
   lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: a9fb9f68694c53f4db0256de02a32f82,
     type: 3}
   animationType: 2
+  humanoidOversampling: 1
   additionalBone: 0
   userData: 
   assetBundleName: 

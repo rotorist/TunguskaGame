@@ -1658,6 +1658,7 @@ public class HumanCharacter : Character
 
 			if(finalDamage <= 0)
 			{
+				Debug.Log("no damage");
 				return true;
 			}
 		}
