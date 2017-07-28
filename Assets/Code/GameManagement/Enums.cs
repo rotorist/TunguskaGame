@@ -194,6 +194,13 @@ public enum AIControlType
 	NPC,
 }
 
+public enum CharacterType
+{
+	Human,
+	Mutant,
+	Animal,
+}
+
 public enum Faction
 {
 	Player = 0,

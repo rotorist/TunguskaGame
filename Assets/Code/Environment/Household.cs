@@ -35,7 +35,7 @@ public class Household : MonoBehaviour
 			return;
 		}
 
-		if(!GameManager.Inst.NPCManager.GetFactionData(CurrentSquad.Faction).IsHuman)
+		if(GameManager.Inst.NPCManager.GetFactionData(CurrentSquad.Faction).CharacterType == CharacterType.Mutant)
 		{
 			int numberToSpawn = MaxOccupants - CurrentSquad.Members.Count;
 			for(int i = 0; i < numberToSpawn; i++)
@@ -45,6 +45,18 @@ public class Household : MonoBehaviour
 				MutantCharacter character = GameManager.Inst.NPCManager.SpawnRandomMutantCharacter(modelID, CurrentSquad, spawnLoc);
 				CurrentSquad.AddMember(character);
 			}
+		}
+		else if(GameManager.Inst.NPCManager.GetFactionData(CurrentSquad.Faction).CharacterType == CharacterType.Animal)
+		{
+			int numberToSpawn = MaxOccupants - CurrentSquad.Members.Count;
+			for(int i = 0; i < numberToSpawn; i++)
+			{
+				Vector3 spawnLoc = FindSpawnLocation();
+				string modelID = GetRandomCharacterModelID(CurrentSquad.Faction);
+				MutantCharacter character = GameManager.Inst.NPCManager.SpawnRandomAnimalCharacter(modelID, CurrentSquad, spawnLoc);
+				CurrentSquad.AddMember(character);
+			}
+
 		}
 		else
 		{
@@ -81,7 +93,7 @@ public class Household : MonoBehaviour
 			return;
 		}
 
-		if(!GameManager.Inst.NPCManager.GetFactionData(CurrentSquad.Faction).IsHuman)
+		if(GameManager.Inst.NPCManager.GetFactionData(CurrentSquad.Faction).CharacterType != CharacterType.Human)
 		{
 			foreach(Character mutant in CurrentSquad.Members)
 			{

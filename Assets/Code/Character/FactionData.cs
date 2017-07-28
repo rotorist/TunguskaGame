@@ -10,7 +10,7 @@ public class FactionData
 	public string Name;
 	public Dictionary<Faction, float> Relationships;
 	public string [] MemberModelIDs;
-	public bool IsHuman;
+	public CharacterType CharacterType;
 	[SerializeField] private List<KeyValuePair<Faction, float>> _serRelationships;
 
 	public FactionData()

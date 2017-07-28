@@ -23,7 +23,7 @@ public class DBHandlerCharacter
 			int factionID = factionReader.GetInt32(0);
 			faction.FactionID = (Faction)Enum.Parse(typeof(Faction), factionID.ToString());
 			faction.Name = factionReader.GetString(1);
-			faction.IsHuman = factionReader.GetBoolean(3);
+			faction.CharacterType = (CharacterType)Enum.Parse(typeof(CharacterType), factionReader.GetInt32(3).ToString());
 			string rawModelList = factionReader.GetString(2);
 			faction.MemberModelIDs = rawModelList.Split('/');
 

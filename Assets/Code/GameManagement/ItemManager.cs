@@ -267,7 +267,7 @@ public class ItemManager
 			items.Add(item);
 		}
 
-		if(character.IsHuman)
+		if(character.CharacterType == CharacterType.Human)
 		{
 			//add primary and secondary weapons
 			if(inventory.RifleSlot != null)

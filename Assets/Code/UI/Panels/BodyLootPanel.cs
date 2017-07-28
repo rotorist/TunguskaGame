@@ -93,7 +93,7 @@ public class BodyLootPanel : PanelBase
 
 		}
 
-		if(lootTarget.IsHuman)
+		if(lootTarget.CharacterType == CharacterType.Human)
 		{
 			GameManager.Inst.SoundManager.UI.PlayOneShot(GameManager.Inst.SoundManager.GetClip("OpenLootBody"), 0.1f);
 		}

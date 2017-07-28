@@ -39,7 +39,7 @@ public class AITargeting
 		Character currentTarget = _parentCharacter.MyAI.BlackBoard.TargetEnemy;
 
 		//update looking and aiming position
-		if(_parentCharacter.IsHuman && currentTarget != null && ((HumanCharacter)_parentCharacter).UpperBodyState == HumanUpperBodyStates.Aim 
+		if(_parentCharacter.CharacterType == CharacterType.Human && currentTarget != null && ((HumanCharacter)_parentCharacter).UpperBodyState == HumanUpperBodyStates.Aim 
 			&& _parentCharacter.MyReference.CurrentWeapon != null)
 		{
 			//is aiming
@@ -313,8 +313,19 @@ public class AITargeting
 	{
 		Vector3 relativeVelocity = target.GetCharacterVelocity() - _parentCharacter.GetCharacterVelocity();
 
-		float colliderHeight = target.GetComponent<CapsuleCollider>().height;
-		return target.transform.position + Vector3.up * colliderHeight * 0.8f + relativeVelocity / 3;
+		CapsuleCollider collider = target.GetComponent<CapsuleCollider>();
+
+		float colliderHeight = collider.height;
+		int colliderDir = collider.direction;
+		Vector3 colliderOffset = collider.center;
+		if(colliderDir == 2)
+		{
+			return target.transform.position + colliderOffset * 0.8f + relativeVelocity / 3;
+		}
+		else
+		{
+			return target.transform.position + Vector3.up * colliderHeight * 0.8f + relativeVelocity / 3;
+		}
 	}
 
 	public void SetTargetingMode(AITargetingModes mode, Vector3 direction)

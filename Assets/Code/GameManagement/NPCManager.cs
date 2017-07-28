@@ -379,6 +379,33 @@ public class NPCManager
 		return character;
 	}
 
+	public MutantCharacter SpawnRandomAnimalCharacter(string name, AISquad squad, Vector3 loc)
+	{
+		MutantCharacter character = GameObject.Instantiate(Resources.Load("MutantAnimal") as GameObject).GetComponent<MutantCharacter>();
+
+		character.CharacterID = name;
+
+		character.Initialize();
+
+		character.MyNavAgent.enabled = false;
+		character.Faction = Faction.Mutants;
+		character.SquadID = squad.ID;
+
+		GameManager.Inst.ItemManager.LoadNPCInventory(character.Inventory, Faction.Mutants);
+		character.MyAI.WeaponSystem.LoadWeaponsFromInventory(false);
+
+		character.transform.position = loc;
+
+		character.MyNavAgent.enabled = true;
+
+		character.gameObject.name = character.gameObject.name + _counter.ToString();
+		_counter ++;
+
+
+
+		return character;
+	}
+
 	public FactionData GetFactionData(Faction id)
 	{
 		if(_allFactions.ContainsKey(id))

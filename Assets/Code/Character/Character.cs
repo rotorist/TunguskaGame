@@ -12,7 +12,7 @@ public abstract class Character : MonoBehaviour
 	public string Name;
 	public string Title;
 
-	public bool IsHuman;
+	public CharacterType CharacterType;
 	public Vector3? Destination;
 	public Vector3 AimPoint;
 
