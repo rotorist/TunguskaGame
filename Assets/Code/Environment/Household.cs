@@ -63,7 +63,7 @@ public class Household : MonoBehaviour
 			if(CurrentSquad.Members.Count < MaxOccupants)
 			{
 				//first create a commander if there isn't one
-				if(!CurrentSquad.IsThereCommander())
+				if(!CurrentSquad.IsThereCommander() && CommanderIdleDest != null)
 				{
 					string modelID = GetRandomCharacterModelID(CurrentSquad.Faction);
 					HumanCharacter commander = GameManager.Inst.NPCManager.SpawnRandomHumanCharacter(modelID, CurrentSquad, CommanderIdleDest.transform.position);

@@ -712,5 +712,12 @@ public class NPCManager
 		squad9.Household = _allHouseHolds["HouseHoldWolf"];
 		squad9.Household.CurrentSquad = squad9;
 		_allSquads.Add(squad9.ID, squad9);
+
+		AISquad squad10 = new AISquad();
+		squad10.ID = "zsk_army";
+		squad10.Faction = Faction.Military;
+		squad10.Household = _allHouseHolds["HouseHoldRoadBlock"];
+		squad10.Household.CurrentSquad = squad10;
+		_allSquads.Add(squad10.ID, squad10);
 	}
 }
