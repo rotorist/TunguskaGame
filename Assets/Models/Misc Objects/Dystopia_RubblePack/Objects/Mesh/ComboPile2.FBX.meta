@@ -1,0 +1,200 @@
+fileFormatVersion: 2
+guid: ea26a7c64ffa289468d167da4a82003a
+timeCreated: 1466224959
+licenseType: Store
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Box01
+    100002: Box01 1
+    100004: Box01 2
+    100006: Box01 3
+    100008: Box01 4
+    100010: Box02
+    100012: //RootNode
+    100014: Plane01
+    100016: Plane01 1
+    100018: Plane01 2
+    100020: Plane01 3
+    100022: BrokenPillar
+    100024: ConcreteChunk
+    100026: ConcreteChunk 1
+    100028: ConcreteChunk 2
+    100030: GroundPlane1
+    100032: GroundPlane2
+    100034: GroundPlane3
+    100036: Rebar
+    100038: Rebar001
+    100040: RoadChunk
+    100042: ConcreteChunk1
+    100044: ConcreteChunk2
+    100046: ConcreteChunk3
+    400000: Box01
+    400002: Box01 1
+    400004: Box01 2
+    400006: Box01 3
+    400008: Box01 4
+    400010: Box02
+    400012: //RootNode
+    400014: Plane01
+    400016: Plane01 1
+    400018: Plane01 2
+    400020: Plane01 3
+    400022: BrokenPillar
+    400024: ConcreteChunk
+    400026: ConcreteChunk 1
+    400028: ConcreteChunk 2
+    400030: GroundPlane1
+    400032: GroundPlane2
+    400034: GroundPlane3
+    400036: Rebar
+    400038: Rebar001
+    400040: RoadChunk
+    400042: ConcreteChunk1
+    400044: ConcreteChunk2
+    400046: ConcreteChunk3
+    2300000: Box01
+    2300002: Box01 1
+    2300004: Box01 2
+    2300006: Box01 3
+    2300008: Box01 4
+    2300010: Box02
+    2300012: Plane01
+    2300014: Plane01 1
+    2300016: Plane01 2
+    2300018: Plane01 3
+    2300020: BrokenPillar
+    2300022: ConcreteChunk
+    2300024: ConcreteChunk 1
+    2300026: ConcreteChunk 2
+    2300028: GroundPlane1
+    2300030: GroundPlane2
+    2300032: GroundPlane3
+    2300034: Rebar
+    2300036: Rebar001
+    2300038: RoadChunk
+    2300040: ConcreteChunk1
+    2300042: ConcreteChunk2
+    2300044: ConcreteChunk3
+    3300000: Box01
+    3300002: Box01 1
+    3300004: Box01 2
+    3300006: Box01 3
+    3300008: Box01 4
+    3300010: Box02
+    3300012: Plane01
+    3300014: Plane01 1
+    3300016: Plane01 2
+    3300018: Plane01 3
+    3300020: BrokenPillar
+    3300022: ConcreteChunk
+    3300024: ConcreteChunk 1
+    3300026: ConcreteChunk 2
+    3300028: GroundPlane1
+    3300030: GroundPlane2
+    3300032: GroundPlane3
+    3300034: Rebar
+    3300036: Rebar001
+    3300038: RoadChunk
+    3300040: ConcreteChunk1
+    3300042: ConcreteChunk2
+    3300044: ConcreteChunk3
+    4300000: Box01
+    4300002: Box01
+    4300004: Box01
+    4300006: Box01
+    4300008: Box01
+    4300010: Box02
+    4300012: Plane01
+    4300014: Plane01
+    4300016: Plane01
+    4300018: Plane01
+    4300020: BrokenPillar
+    4300022: ConcreteChunk
+    4300024: ConcreteChunk
+    4300026: RoadChunk
+    4300028: ConcreteChunk
+    4300030: GroundPlane2
+    4300032: GroundPlane1
+    4300034: GroundPlane3
+    4300036: Rebar
+    4300038: Rebar001
+    4300040: ConcreteChunk1
+    4300042: ConcreteChunk2
+    4300044: ConcreteChunk3
+    6400000: BrokenPillar
+    6400002: ConcreteChunk1
+    6400004: ConcreteChunk2
+    6400006: ConcreteChunk3
+    6400008: GroundPlane1
+    6400010: GroundPlane2
+    6400012: GroundPlane3
+    6400014: Rebar
+    6400016: Rebar001
+    6400018: RoadChunk
+    7400000: Take 001
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 2
+    addColliders: 1
+    importBlendShapes: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 0
+  importAnimation: 0
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

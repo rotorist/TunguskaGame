@@ -1,0 +1,447 @@
+fileFormatVersion: 2
+guid: 784193c06b20bad4ba7e39bfa918f273
+timeCreated: 1466225820
+licenseType: Store
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Box01
+    100002: Box01 1
+    100004: Box01 2
+    100006: Box01 3
+    100008: Box01 4
+    100010: Box01 5
+    100012: Box01 6
+    100014: Box02
+    100016: Box03
+    100018: Box10
+    100020: Box11
+    100022: Box12
+    100024: Box13
+    100026: Box14
+    100028: Box15
+    100030: Box16
+    100032: Box17
+    100034: Box18
+    100036: Box19
+    100038: //RootNode
+    100040: Cylinder01
+    100042: Cylinder01 1
+    100044: Cylinder06
+    100046: Cylinder10
+    100048: Cylinder11
+    100050: Cylinder13
+    100052: Cylinder13 1
+    100054: Cylinder14
+    100056: Cylinder15
+    100058: Cylinder16
+    100060: Cylinder17
+    100062: Object03
+    100064: Plane01
+    100066: pole1
+    100068: tire02
+    100070: tire03
+    100072: tire04
+    100074: tire06
+    100076: tire07
+    100078: tire08
+    100080: tire1
+    100082: tire1 1
+    100084: tire11
+    100086: tire12
+    100088: BarbedWire
+    100090: Board
+    100092: Board 1
+    100094: Board 2
+    100096: Board 3
+    100098: Brick
+    100100: ConcreteSlab
+    100102: Ground
+    100104: Hesco
+    100106: hescoSide
+    100108: IBeam
+    100110: Metal
+    100112: Metal 1
+    100114: Pillar
+    100116: Pillar 1
+    100118: Pillar 2
+    100120: Pipe
+    100122: Rebar
+    100124: SheetMetal
+    400000: Box01
+    400002: Box01 1
+    400004: Box01 2
+    400006: Box01 3
+    400008: Box01 4
+    400010: Box01 5
+    400012: Box01 6
+    400014: Box02
+    400016: Box03
+    400018: Box10
+    400020: Box11
+    400022: Box12
+    400024: Box13
+    400026: Box14
+    400028: Box15
+    400030: Box16
+    400032: Box17
+    400034: Box18
+    400036: Box19
+    400038: //RootNode
+    400040: Cylinder01
+    400042: Cylinder01 1
+    400044: Cylinder06
+    400046: Cylinder10
+    400048: Cylinder11
+    400050: Cylinder13
+    400052: Cylinder13 1
+    400054: Cylinder14
+    400056: Cylinder15
+    400058: Cylinder16
+    400060: Cylinder17
+    400062: Object03
+    400064: Plane01
+    400066: pole1
+    400068: tire02
+    400070: tire03
+    400072: tire04
+    400074: tire06
+    400076: tire07
+    400078: tire08
+    400080: tire1
+    400082: tire1 1
+    400084: tire11
+    400086: tire12
+    400088: BarbedWire
+    400090: Board
+    400092: Board 1
+    400094: Board 2
+    400096: Board 3
+    400098: Brick
+    400100: ConcreteSlab
+    400102: Ground
+    400104: Hesco
+    400106: hescoSide
+    400108: IBeam
+    400110: Metal
+    400112: Metal 1
+    400114: Pillar
+    400116: Pillar 1
+    400118: Pillar 2
+    400120: Pipe
+    400122: Rebar
+    400124: SheetMetal
+    2300000: Box01
+    2300002: Box01 1
+    2300004: Box01 2
+    2300006: Box01 3
+    2300008: Box01 4
+    2300010: Box01 5
+    2300012: Box01 6
+    2300014: Box02
+    2300016: Box03
+    2300018: Box10
+    2300020: Box11
+    2300022: Box12
+    2300024: Box13
+    2300026: Box14
+    2300028: Box15
+    2300030: Box16
+    2300032: Box17
+    2300034: Box18
+    2300036: Box19
+    2300038: Cylinder01
+    2300040: Cylinder01 1
+    2300042: Cylinder06
+    2300044: Cylinder10
+    2300046: Cylinder11
+    2300048: Cylinder13
+    2300050: Cylinder13 1
+    2300052: Cylinder14
+    2300054: Cylinder15
+    2300056: Cylinder16
+    2300058: Cylinder17
+    2300060: Object03
+    2300062: Plane01
+    2300064: pole1
+    2300066: tire02
+    2300068: tire03
+    2300070: tire04
+    2300072: tire06
+    2300074: tire07
+    2300076: tire08
+    2300078: tire1
+    2300080: tire1 1
+    2300082: tire11
+    2300084: tire12
+    2300086: BarbedWire
+    2300088: Board
+    2300090: Board 1
+    2300092: Board 2
+    2300094: Board 3
+    2300096: Brick
+    2300098: ConcreteSlab
+    2300100: Ground
+    2300102: Hesco
+    2300104: hescoSide
+    2300106: IBeam
+    2300108: Metal
+    2300110: Metal 1
+    2300112: Pillar
+    2300114: Pillar 1
+    2300116: Pillar 2
+    2300118: Pipe
+    2300120: Rebar
+    2300122: SheetMetal
+    3300000: Box01
+    3300002: Box01 1
+    3300004: Box01 2
+    3300006: Box01 3
+    3300008: Box01 4
+    3300010: Box01 5
+    3300012: Box01 6
+    3300014: Box02
+    3300016: Box03
+    3300018: Box10
+    3300020: Box11
+    3300022: Box12
+    3300024: Box13
+    3300026: Box14
+    3300028: Box15
+    3300030: Box16
+    3300032: Box17
+    3300034: Box18
+    3300036: Box19
+    3300038: Cylinder01
+    3300040: Cylinder01 1
+    3300042: Cylinder06
+    3300044: Cylinder10
+    3300046: Cylinder11
+    3300048: Cylinder13
+    3300050: Cylinder13 1
+    3300052: Cylinder14
+    3300054: Cylinder15
+    3300056: Cylinder16
+    3300058: Cylinder17
+    3300060: Object03
+    3300062: Plane01
+    3300064: pole1
+    3300066: tire02
+    3300068: tire03
+    3300070: tire04
+    3300072: tire06
+    3300074: tire07
+    3300076: tire08
+    3300078: tire1
+    3300080: tire1 1
+    3300082: tire11
+    3300084: tire12
+    3300086: BarbedWire
+    3300088: Board
+    3300090: Board 1
+    3300092: Board 2
+    3300094: Board 3
+    3300096: Brick
+    3300098: ConcreteSlab
+    3300100: Ground
+    3300102: Hesco
+    3300104: hescoSide
+    3300106: IBeam
+    3300108: Metal
+    3300110: Metal 1
+    3300112: Pillar
+    3300114: Pillar 1
+    3300116: Pillar 2
+    3300118: Pipe
+    3300120: Rebar
+    3300122: SheetMetal
+    4300000: tire12
+    4300002: tire11
+    4300004: tire08
+    4300006: tire07
+    4300008: tire06
+    4300010: tire04
+    4300012: tire03
+    4300014: tire1
+    4300016: tire02
+    4300018: tire1
+    4300020: Box01
+    4300022: Cylinder17
+    4300024: Cylinder16
+    4300026: Cylinder01
+    4300028: Box01
+    4300030: Box01
+    4300032: Box01
+    4300034: pole1
+    4300036: Box19
+    4300038: Box18
+    4300040: Box01
+    4300042: Cylinder01
+    4300044: Cylinder15
+    4300046: Cylinder14
+    4300048: Cylinder13
+    4300050: Cylinder10
+    4300052: Cylinder06
+    4300054: Box17
+    4300056: Box16
+    4300058: Box15
+    4300060: Box14
+    4300062: Box13
+    4300064: Box01
+    4300066: Cylinder11
+    4300068: Cylinder13
+    4300070: Box12
+    4300072: Object03
+    4300074: Box11
+    4300076: Box10
+    4300078: Box03
+    4300080: Box02
+    4300082: Box01
+    4300084: Plane01
+    4300086: ConcreteSlab
+    4300088: Rebar
+    4300090: Pipe
+    4300092: IBeam
+    4300094: Brick
+    4300096: Hesco
+    4300098: Metal
+    4300100: Board
+    4300102: Board
+    4300104: Board
+    4300106: Board
+    4300108: hescoSide
+    4300110: SheetMetal
+    4300112: Metal
+    4300114: Pillar
+    4300116: Pillar
+    4300118: Pillar
+    4300120: Ground
+    4300122: BarbedWire
+    6400000: Box01
+    6400002: Box01 1
+    6400004: Box01 2
+    6400006: Box01 3
+    6400008: Box01 4
+    6400010: Box01 5
+    6400012: Box01 6
+    6400014: Box02
+    6400016: Box03
+    6400018: Box10
+    6400020: Box11
+    6400022: Box12
+    6400024: Box13
+    6400026: Box14
+    6400028: Box15
+    6400030: Box16
+    6400032: Box17
+    6400034: Box18
+    6400036: Box19
+    6400038: Cylinder01
+    6400040: Cylinder01 1
+    6400042: Cylinder06
+    6400044: Cylinder10
+    6400046: Cylinder11
+    6400048: Cylinder13
+    6400050: Cylinder13 1
+    6400052: Cylinder14
+    6400054: Cylinder15
+    6400056: Cylinder16
+    6400058: Cylinder17
+    6400060: Object03
+    6400062: Plane01
+    6400064: pole1
+    6400066: tire02
+    6400068: tire03
+    6400070: tire04
+    6400072: tire06
+    6400074: tire07
+    6400076: tire08
+    6400078: tire1
+    6400080: tire1 1
+    6400082: tire11
+    6400084: tire12
+    6400086: BarbedWire
+    6400088: Board
+    6400090: Board 1
+    6400092: Board 2
+    6400094: Board 3
+    6400096: Brick
+    6400098: ConcreteSlab
+    6400100: Ground
+    6400102: Hesco
+    6400104: hescoSide
+    6400106: IBeam
+    6400108: Metal
+    6400110: Metal 1
+    6400112: Pillar
+    6400114: Pillar 1
+    6400116: Pillar 2
+    6400118: Pipe
+    6400120: Rebar
+    6400122: SheetMetal
+    7400000: Take 001
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 2
+    addColliders: 1
+    importBlendShapes: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 1
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 0
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

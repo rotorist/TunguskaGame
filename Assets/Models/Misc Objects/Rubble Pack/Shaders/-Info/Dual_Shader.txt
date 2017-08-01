@@ -1,0 +1,43 @@
+Dual_Shader Info
+
+A_Dif			Top Texture
+A_Dif_Color		Recolor Top Texture
+B_Dif			Bottom Texture
+B_Dif_Color		Recolor Bottom Texture
+A_B_Amound		Opacity Top Texture
+A_Flood			Flooding of Top Texture
+FallOffStrength		FallOff by Dark/Light areas amound
+FallOff			FallOff by Dark/Light areas	
+FallOff_Invert		Inverting FallOff by Dark/Light areas (can be switched on or off with the value 0 and 1)
+A_Spec_Color		Recolor the Specular Top Texture
+A_Spec_Amound		Specular Strength
+B_Spec_Color		Recolor the Specular Bottom Texture
+B_Spec_Amound		Specular Strength
+Add__SpecTo_A		Flood Specular Of Bottom Texture to Top Texture
+Gloss			Gloss Amound
+A_Normal		NormalMap Top Texture
+A_Normal_Detail		Extra Detail to Normal Map Top Texture
+B_Normal		NormalMap Bottom Texture
+B_Normal_Detail		Extra Detail to NormalMap Bottom Texture
+Add_Normal_B_to_A	Flood The NormalMap of Bottom Texture to Top Texture (can be switched on or off with the value 0 and 1)
+FallOffNormal_B_on_A	FallOff by Dark/Light Areas (can be switched with the value 0 , 0.5 and 1)
+A_Em_Amound		Add Emissive properties to Top Texture
+A_Em_Color 		Emissive Color
+B_Em_Amound		Add Emissive properties to Bottom Texture
+B_Em_Color		Emissive Color
+
+
+
+
+Please Enjoy This Dual shader and apply it on you objects. 
+right mouse Click on the shader to create a new material, simply add textures and apply to a object
+then play with the value's and sliders to reach your desired result.
+for contact and questions please visit http://www.crowsfield.com
+
+
+
+
+
+
+This DualShader is copyrighted To Crowsfield
+

@@ -1,0 +1,42 @@
+Dubble Texture Info
+
+
+MASK			A Mask tot saperate texture 1 and 2
+DIF_01			Texture 1
+Tile_DIF_01		Tile Texture 1
+SPC_01			Specular properties of Texture 1
+Color_SPC_01		Recolor Specular
+DIF_02			Texture 2
+Tile_DIF_02		Tile Texture 2
+SPC_02			Specular properties of Texture 2
+Color_SPC_02		Recolor Specular
+Gloss			Gloss amound
+NRM_01			Normalmap for Texture 1
+NRM_02			Normalmap for Texture 1	
+NRM_03			Normalmap for Detail Texture
+Tile_NRM_03		Tile Detail Texture NormalMap
+EM_1			Emissive Properties for Texture 1
+Color_EM_01		Recolor Emissive 
+Em_2			Emissive Properties for Texture 2
+Color_EM_02		Recolor Emissive
+Detail_Map		3th Texture for extra detaile
+Detail_On/Off		turning 3th texture on and of filing in 0 or 1
+Detail_Tile		Tile 3th
+Detail_Power		Blending 3th Texture
+Detail_Brightness	Brightness properties for 3th texture
+Detail_Desaturate	saturate or desaturate 3th texture
+
+
+
+Please Enjoy This Dubble shader and apply it on you objects. 
+right mouse Click on the shader to create a new material, simply add textures and apply to a object
+then play with the value's and sliders to reach your desired result.
+for contact and questions please visit http://www.crowsfield.com
+
+
+
+
+
+
+This Dubble Shader is copyrighted To Crowsfield
+

@@ -1,0 +1,59 @@
+Mask Shader/Mask Shader 2Sided
+
+MASK			Mask to AlphaClip the texture
+DIF			Texture
+NRM			Normal for Texture
+Tile_Dif/NRM		Tile the Texture and NormalMap simultaneusly
+NRM_Detail		Detail NormalMap
+Tile_NRM_DEtail		Tile Detail NormalMap
+Gloss			Gloss properties for Specular
+SPC			Specular
+Color_SPC		Spacular Color
+SAL on/off		Turn Specular Ambiend Light on and off filling in the value 0 or 1
+SAL_CubeMAp		CubeMap neded for Specular Ambiend Light
+EM			Emissive
+Color_EM		Recolor Emissive
+Detail_Map		3th Texture for extra detaile
+Detail_On/Off		turning 3th texture on and off filling in the value 0 or 1
+Detail_Tile		Tile 3th texture
+Detail_Power		Blending 3th Texture
+Detail_Brightness	Brightness properties for 3th texture
+Detail_Desaturate	saturate or desaturate 3th texture
+
+Mask Shader DX11
+
+MASK			Mask to AlphaClip the texture
+DIF			Texture
+NRM			Normal for Texture
+Tile_Dif/NRM		Tile the Texture and NormalMap simultaneusly
+NRM_Detail		Detail NormalMap
+Tile_NRM_DEtail		Tile Detail NormalMap
+Gloss			Gloss properties for Specular
+SPC			Specular
+Color_SPC		Spacular Color
+SAL on/off		Turn Specular Ambiend Light on and off filling in the value 0 or 1 
+SAL_CubeMAp		CubeMap neded for Specular Ambiend Light
+EM			Emissive
+Color_EM		Recolor Emissive
+TES			Texture to Tesselate With (best if is Hi-contrast Black and White)
+TES_Amound		The amound Of Subdevisions used for the tesselation
+TES_Hight		The Hight in normal direction of the tesselation 
+Detail_Map		3th Texture for extra detaile
+Detail_On/Off		turning 3th texture on and off filling in the value 0 or 1
+Detail_Tile		Tile 3th texture
+Detail_Power		Blending 3th Texture
+Detail_Brightness	Brightness properties for 3th texture
+Detail_Desaturate	saturate or desaturate 3th texture
+
+Please Enjoy This Mask shader and apply it on you objects. 
+right mouse Click on the shader to create a new material, simply add textures and apply to a object
+then play with the value's and sliders to reach your desired result.
+for contact and questions please visit http://www.crowsfield.com
+
+
+
+
+
+
+This Mask Shader is copyrighted To Crowsfield
+
