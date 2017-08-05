@@ -93,7 +93,7 @@ public class CharacterStatus : MonoBehaviour
 	public void ResetSpeedModifier()
 	{
 		WalkSpeedModifier = 1f;
-		RunSpeedModifier = 0.9f;
+		RunSpeedModifier = 1f;
 		SprintSpeedModifier = 1.1f;
 		StrafeSpeedModifier = 1.2f;
 

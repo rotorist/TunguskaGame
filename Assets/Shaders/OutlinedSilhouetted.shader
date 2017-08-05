@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 Shader "Outlined/Silhouetted Diffuse" {
     Properties {
         _Color ("Main Color", Color) = (1,1,1,0.5)
@@ -21,7 +23,7 @@ struct v2f {
 uniform float4 _OutlineColor;
 v2f vert(appdata v) {
     v2f o;
-    o.pos = mul(UNITY_MATRIX_MVP, v.vertex);
+    o.pos = UnityObjectToClipPos(v.vertex);
     o.color = _OutlineColor;
     return o;
 }

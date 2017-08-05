@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 Shader "Particles/Distortion"
 {
     Properties{
@@ -71,7 +73,7 @@ Shader "Particles/Distortion"
 #else
         float scale = 1.0;
 #endif
-        o.vertex = mul(UNITY_MATRIX_MVP, v.vertex);
+        o.vertex = UnityObjectToClipPos(v.vertex);
 #ifdef SOFTPARTICLES_ON
         o.projPos = ComputeScreenPos(o.vertex);
         COMPUTE_EYEDEPTH(o.projPos.z);

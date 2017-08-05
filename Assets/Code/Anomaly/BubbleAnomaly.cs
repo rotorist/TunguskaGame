@@ -44,7 +44,10 @@ public class BubbleAnomaly : MonoBehaviour
 
 	void OnTriggerEnter(Collider other)
 	{
-		
+		if(other.tag == "Projectile")
+		{
+			return;
+		}
 
 		Character character = other.GetComponent<Character>();
 
@@ -59,27 +62,27 @@ public class BubbleAnomaly : MonoBehaviour
 			{
 				GameManager.Inst.CameraShaker.TriggerScreenShake(0.2f, 0.8f);
 			}
-			Explode();
+			Explode(other.transform.position);
 		}
 		else
 		{
 			//destroy the object if it contains rigidbody
 			if(other.GetComponent<Rigidbody>() != null)
 			{
-				Explode();
+				Explode(other.transform.position);
 				GameObject.Destroy(other.gameObject);
 			}
 		}
 	}
 
-	private void Explode()
+	private void Explode(Vector3 loc)
 	{
 		transform.localScale = new Vector3(RadiusLow, RadiusLow, RadiusLow);
 		_myRenderer = GetComponent<Renderer>();
 		_myRenderer.enabled = false;
 		_reEnableRendererTimer = 0;
 		GameObject explosion = GameObject.Instantiate(Resources.Load("BubbleAnomalyExplosion")) as GameObject;
-		explosion.transform.position = transform.position;
+		explosion.transform.position = loc;
 		Audio.PlayOneShot(GameManager.Inst.SoundManager.GetClip("airburst2"), 0.55f);
 
 

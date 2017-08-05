@@ -311,8 +311,11 @@ public class DialoguePanel : PanelBase
 					reference.Topic = option;
 					UIButton button = o.GetComponent<UIButton>();
 					button.onClick.Add(new EventDelegate(this, "OnSelectTopic"));
+
 					_options.Add(optionEntry);
+
 				}
+
 			}
 
 		}
@@ -345,6 +348,8 @@ public class DialoguePanel : PanelBase
 			reference.Topic = topic;
 			UIButton button = o.GetComponent<UIButton>();
 			button.onClick.Add(new EventDelegate(this, "OnSelectTopic"));
+			BoxCollider2D collider = o.GetComponent<BoxCollider2D>();
+			collider.size = new Vector2(collider.size.x, 27);
 
 			_topics.Add(entry);
 		}
@@ -415,6 +420,9 @@ public class DialoguePanel : PanelBase
 			entry.Text.MakePixelPerfect();
 			entry.Text.width = entry.Text.text.Length * 15;
 			entry.Text.transform.localPosition = new Vector3(currentX, 78, 0);
+
+			BoxCollider2D collider = entry.Text.GetComponent<BoxCollider2D>();
+			collider.size = new Vector2(collider.size.x, 27);
 
 			currentX = currentX + entry.Text.width;
 		}

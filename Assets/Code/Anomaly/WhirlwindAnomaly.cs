@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class WhirlwindAnomaly : MonoBehaviour
 {
+	public float KillRadius;
 	public AudioSource Audio;
 
 
@@ -22,8 +23,9 @@ public class WhirlwindAnomaly : MonoBehaviour
 			transform.RotateAround(transform.position, transform.up, 60 * Time.deltaTime);
 			Vector3 dist = _target.transform.position - transform.position;
 			float y = dist.y;
-			dist = new Vector3(dist.x, 0, dist.z);
-			if(y < 0.5f && dist.magnitude < 0.5f)
+
+			Debug.Log(dist.magnitude);
+			if(y < 0.5f && dist.magnitude < KillRadius)
 			{
 				if(_spinTimer <= 0)
 				{
@@ -88,7 +90,7 @@ public class WhirlwindAnomaly : MonoBehaviour
 		{
 			Damage damage = new Damage();
 			damage.Type = DamageType.Explosive;
-			damage.BlastDamage = 1;
+			damage.BlastDamage = 30;
 			damage.IsCritical = true;
 			character.SendDamage(damage, (transform.position - other.transform.position).normalized, null, null);
 
@@ -106,6 +108,14 @@ public class WhirlwindAnomaly : MonoBehaviour
 				dist += new Vector3(0, 1, 0);
 				rb.AddForce(dist * 8, ForceMode.Impulse);
 			}
+		}
+	}
+
+	void OnTriggerExit(Collider other)
+	{
+		if(other.gameObject == _target.gameObject)
+		{
+			_target = null;
 		}
 	}
 
