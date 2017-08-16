@@ -51,6 +51,7 @@ public abstract class Character : MonoBehaviour
 	public PresetInventory PresetInventory;
 	public List<NPCJobs> MyJobs;
 	public DamageType DeathReason;
+	public Character Killer;
 	public bool IsLooted;
 
 	public AudioSource CharacterAudio;

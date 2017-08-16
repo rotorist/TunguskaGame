@@ -67,6 +67,12 @@ public class ActionIntimidateTarget : GoapAction
 			return true;
 		}
 
+		float dist = Vector3.Distance(ParentCharacter.MyAI.BlackBoard.DefensePoint, ParentCharacter.MyAI.BlackBoard.TargetEnemy.transform.position);
+		if(dist > ParentCharacter.MyAI.BlackBoard.DefenseRadius * 1.5f)
+		{
+			return true;
+		}
+
 		foreach(GoapWorldState state in Effects)
 		{
 
@@ -88,16 +94,23 @@ public class ActionIntimidateTarget : GoapAction
 		//the target is low/medium threat
 		//Debug.Log("Checking precondition for intimidate, target enemy threat is " + ParentCharacter.MyAI.BlackBoard.TargetEnemyThreat + " guard level " +
 		//	ParentCharacter.MyAI.BlackBoard.GuardLevel + " I am " + ParentCharacter.name);
-		if(ParentCharacter.MyAI.BlackBoard.TargetEnemyThreat >= 0.66f || ParentCharacter.MyAI.BlackBoard.GuardLevel > 1)
+
+		if(ParentCharacter.MyAI.BlackBoard.TargetEnemyThreat >= 0.66f)
 		{
 			return false;
 		}
 
-		//check if enemy target is within range
-		if(ParentCharacter.MyAI.BlackBoard.TargetEnemy != null &&
-			!AI.IsPositionInArea(ParentCharacter.MyAI.BlackBoard.TargetEnemy.transform.position, 
-			ParentCharacter.MyAI.BlackBoard.PatrolLoc,
-			ParentCharacter.MyAI.BlackBoard.PatrolRange))
+		//check if enemy target is within defend radius
+
+		if(ParentCharacter.MyAI.BlackBoard.TargetEnemy != null)
+		{
+			float dist = Vector3.Distance(ParentCharacter.MyAI.BlackBoard.DefensePoint, ParentCharacter.MyAI.BlackBoard.TargetEnemy.transform.position);
+			if(dist < ParentCharacter.MyAI.BlackBoard.DefenseRadius)
+			{
+				return false;
+			}
+		}
+		else
 		{
 			return false;
 		}
@@ -120,9 +133,8 @@ public class ActionIntimidateTarget : GoapAction
 		if(ParentCharacter.MyAI.BlackBoard.TargetEnemy!= null && 
 			Vector3.Distance(ParentCharacter.transform.position, ParentCharacter.MyAI.BlackBoard.TargetEnemy.transform.position) > 8 &&
 			ParentCharacter.MyAI.BlackBoard.TargetEnemyThreat >= 0.33f && 
-			AI.IsPositionInArea(ParentCharacter.MyAI.BlackBoard.TargetEnemy.transform.position, 
-				ParentCharacter.MyAI.BlackBoard.PatrolLoc,
-				ParentCharacter.MyAI.BlackBoard.PatrolRange))
+			!ParentCharacter.MyJobs.Contains(NPCJobs.Guard) &&
+			Vector3.Distance(ParentCharacter.MyAI.BlackBoard.DefensePoint, ParentCharacter.MyAI.BlackBoard.TargetEnemy.transform.position) < ParentCharacter.MyAI.BlackBoard.DefenseRadius * 1.5f)
 		{
 			ParentCharacter.Destination = ParentCharacter.MyAI.BlackBoard.TargetEnemy.transform.position;
 			ParentCharacter.SendCommand(CharacterCommands.StopAim);

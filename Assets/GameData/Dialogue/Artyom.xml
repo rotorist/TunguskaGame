@@ -37,6 +37,7 @@
     <node id="3">
         <response>
             <text>It's like a storm of some sort. Sometimes there's weird lightening - you know, in a thunderstorm you see lightening and hear the thunder, right? But you won't hear any thunder in a Visitation. And it shakes everything like baby's rattle. When it comes, you need to hide right away.</text>
+            <event name="zsk_know_visitation" />
         </response>
         <option>
             <title>Hide</title>

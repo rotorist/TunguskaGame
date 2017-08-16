@@ -9,6 +9,7 @@ door/Level1RoadBlockGate/toggle
 
 ./zsk_know_blockade
 topic/discover/zsk_blockade
+journal/{4}
 
 ./zsk_irrigator_on
 object/FarmIrrigatorHandle/on
@@ -39,16 +40,20 @@ topic/forget/zsk_blockade
 
 ./zsk_learn_priest
 topic/discover/priest
+journal/{3}
 
 ./zsk_hans_find_doc_begin
 condition/zsk_hans_quest/1
+journal/{5}
 
 ./zsk_hans_find_doc_done
 item/lose/priestbook/1
 condition/zsk_hans_quest/2
+journal/{6}
 
 ./zsk_hans_asked_for_brain
 condition/zsk_has_artyom_brain/activate
+journal/{7}
 
 ./zsk_hans_got_brain
 item/lose/artyombrain/1
@@ -62,6 +67,7 @@ topic/forget/zsk_farm_clear
 condition/zsk_sid_quest/3
 condition/zsk_church_cleared/activate
 condition/zsk_sewer_cleared/activate
+journal/{8}
 
 
 ./zsk_church_clear_done
@@ -82,6 +88,7 @@ topic/forget/zsk_church_clear
 if/param/0/is/zsk_ivan
 condition/zsk_read_ivan_note/true
 topic/discover/zsk_ivan_igor
+journal/{9}
 
 ./zsk_lose_ivan_money
 topic/forget/zsk_ivan_igor
@@ -97,11 +104,13 @@ condition/zsk_read_ivan_note/deactivate
 ./zsk_priest_give_key
 item/receive/zskgaragekey/1
 condition/zsk_got_garage_key/true
+journal/{11}
 
 ./zsk_priest_asked_help
 topic/discover/priest_supply
 condition/zsk_has_supply_bag/activate
 topic/discover/serum
+journal/{12}
 
 ./zsk_priest_give_recipe
 topic/forget/priest_supply
@@ -116,6 +125,7 @@ item/receive/44magnum/1/0.2
 item/receive/44magnum/1/0.3
 item/receive/44magnum/1/0.1
 item/receive/ak47/1/0.9
+journal/{10}
 
 ./zsk_sid_gas_station_done
 topic/forget/zsk_mad_mechanic
@@ -126,6 +136,7 @@ item/lose/ak47/1/100
 condition/zsk_sid_letter_given/true
 item/receive/lettertoroman/1
 condition/zsk_has_supply_bag/activate
+journal/{13}
 
 ./zsk_give_sid_supply
 item/lose/zsklegionnairebag/1
@@ -135,10 +146,14 @@ condition/zsk_sid_quest/7
 ./zsk_talk_artyom
 topic/discover/artyom
 condition/zsk_know_artyom/true
+journal/{15}
 
 ./zsk_sid_talked_serum
 topic/discover/serum
+journal/{14}
 
+./zsk_know_visitation
+journal/{16}
 
 
 

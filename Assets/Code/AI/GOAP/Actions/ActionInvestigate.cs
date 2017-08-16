@@ -36,7 +36,7 @@ public class ActionInvestigate: GoapAction
 	{
 		CsDebug.Inst.CharLog(ParentCharacter, "Stop executing Investigate " + ParentCharacter.name);
 		_executionStopped = true;
-		ParentCharacter.MyAI.WorkingMemory.RemoveFact(FactType.Disturbance);
+
 		ParentCharacter.Destination = ParentCharacter.transform.position;
 		ParentCharacter.MyEventHandler.OnOneSecondTimer -= UpdateAction;
 
@@ -44,6 +44,11 @@ public class ActionInvestigate: GoapAction
 
 	public override bool AbortAction (float priority)
 	{
+		if(priority >= 1f)
+		{
+			ParentCharacter.MyAI.WorkingMemory.RemoveFact(FactType.Disturbance);
+		}
+
 		StopAction();
 		return true;
 	}
@@ -130,7 +135,7 @@ public class ActionInvestigate: GoapAction
 			bool isPlayerPartyMember = GameManager.Inst.PlayerControl.Party.Members.Contains(ParentCharacter.GetComponent<HumanCharacter>());
 
 
-			Debug.Log("Investigating... is in area? " + isInArea + ", disturbance threat " + ParentCharacter.MyAI.BlackBoard.HighestDisturbanceThreat);
+			//Debug.Log("Investigating... is in area? " + isInArea + ", disturbance threat " + ParentCharacter.MyAI.BlackBoard.HighestDisturbanceThreat);
 			/** threats
 			 * 0 - look at direction
 			 * 1 - weapon holstered, walk to check
@@ -236,6 +241,7 @@ public class ActionInvestigate: GoapAction
 
 		if(CheckActionCompletion())
 		{
+			ParentCharacter.MyAI.WorkingMemory.RemoveFact(FactType.Disturbance);
 			StopAction();
 			ParentCharacter.MyEventHandler.TriggerOnActionCompletion();
 		}

@@ -229,7 +229,7 @@ public class QuestDebugPanel : PanelBase
 
 
 
-			y += 30;
+			y += 45;
 		}
 
 	}

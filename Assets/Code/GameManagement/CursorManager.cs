@@ -211,7 +211,7 @@ public class CursorManager
 			{
 				Character aimedCharacter = aimedObject.GetComponent<Character>();
 				if(aimedCharacter != null && aimedCharacter.MyStatus.Health > 0 && !aimedCharacter.MyAI.IsCharacterEnemy((Character)GameManager.Inst.PlayerControl.SelectedPC)
-					&& aimedCharacter.MyAI.ControlType != AIControlType.Player)
+					&& aimedCharacter.MyAI.ControlType != AIControlType.Player && !aimedCharacter.IsHidden)
 				{
 					SetCursorState(CursorState.Talk);
 				}
@@ -226,7 +226,7 @@ public class CursorManager
 					name = aimedCharacter.Title + " " + name;
 				}
 
-				if(!string.IsNullOrEmpty(name))
+				if(!string.IsNullOrEmpty(name) && !aimedCharacter.IsHidden)
 				{
 					ShowToolTip(name);
 				}

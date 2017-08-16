@@ -234,7 +234,7 @@ public class PlayerControl
 		if(_aimedObject != null && SelectedPC.UpperBodyState != HumanUpperBodyStates.Aim)
 		{
 			Character c = _aimedObject.GetComponent<Character>();
-			if(c != null)
+			if(c != null && !c.IsHidden && c.MyAI.ControlType != AIControlType.Player)
 			{
 				if(c.MyStatus.Health <= 0)
 				{

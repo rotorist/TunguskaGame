@@ -1,0 +1,186 @@
+fileFormatVersion: 2
+guid: 263573aa72a98404c8bfe538f28032fb
+labels:
+- apocalyptic
+- industrial
+- train
+- trains
+- post-apocalyptic
+- abandoned
+- vehicle
+- collection
+- pack
+- old
+- wagon
+- rails
+timeCreated: 1445958221
+licenseType: Store
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: door084
+    100002: door085
+    100004: door086
+    100006: door087
+    100008: door088
+    100010: door089
+    100012: door090
+    100014: door091
+    100016: door092
+    100018: door093
+    100020: door094
+    100022: door095
+    100024: door096
+    100026: door097
+    100028: door098
+    100030: door099
+    100032: door100
+    100034: door101
+    100036: //RootNode
+    100038: train_carriage004
+    100040: train_2
+    400000: door084
+    400002: door085
+    400004: door086
+    400006: door087
+    400008: door088
+    400010: door089
+    400012: door090
+    400014: door091
+    400016: door092
+    400018: door093
+    400020: door094
+    400022: door095
+    400024: door096
+    400026: door097
+    400028: door098
+    400030: door099
+    400032: door100
+    400034: door101
+    400036: //RootNode
+    400038: train_carriage004
+    400040: train_2
+    2300000: door084
+    2300002: door085
+    2300004: door086
+    2300006: door087
+    2300008: door088
+    2300010: door089
+    2300012: door090
+    2300014: door091
+    2300016: door092
+    2300018: door093
+    2300020: door094
+    2300022: door095
+    2300024: door096
+    2300026: door097
+    2300028: door098
+    2300030: door099
+    2300032: door100
+    2300034: door101
+    2300036: train_carriage004
+    2300038: train_2
+    3300000: door084
+    3300002: door085
+    3300004: door086
+    3300006: door087
+    3300008: door088
+    3300010: door089
+    3300012: door090
+    3300014: door091
+    3300016: door092
+    3300018: door093
+    3300020: door094
+    3300022: door095
+    3300024: door096
+    3300026: door097
+    3300028: door098
+    3300030: door099
+    3300032: door100
+    3300034: door101
+    3300036: train_carriage004
+    3300038: train_2
+    4300000: door084
+    4300002: door085
+    4300004: door101
+    4300006: door086
+    4300008: door087
+    4300010: door088
+    4300012: door089
+    4300014: door090
+    4300016: door091
+    4300018: door092
+    4300020: door093
+    4300022: door094
+    4300024: door095
+    4300026: door096
+    4300028: door097
+    4300030: door098
+    4300032: door099
+    4300034: door100
+    4300036: train_carriage004
+    4300038: train_2
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

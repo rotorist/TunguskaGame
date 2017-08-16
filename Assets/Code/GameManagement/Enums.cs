@@ -338,4 +338,5 @@ public enum NPCJobs
 	Commander,
 	Guard,
 	Patrol,
+	Explore,
 }

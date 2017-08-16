@@ -1,0 +1,185 @@
+fileFormatVersion: 2
+guid: 4a633faa57b2d6843a6f6fb17b208f4e
+labels:
+- apocalyptic
+- industrial
+- train
+- trains
+- post-apocalyptic
+- abandoned
+- vehicle
+- collection
+- pack
+- old
+- wagon
+- rails
+timeCreated: 1445957883
+licenseType: Store
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: door066
+    100002: door067
+    100004: door068
+    100006: door069
+    100008: door070
+    100010: door071
+    100012: door072
+    100014: door073
+    100016: door074
+    100018: door075
+    100020: door076
+    100022: door077
+    100024: door078
+    100026: door079
+    100028: door080
+    100030: door081
+    100032: door082
+    100034: door083
+    100036: Line367
+    100038: Line368
+    100040: train_1
+    100042: //RootNode
+    400000: door066
+    400002: door067
+    400004: door068
+    400006: door069
+    400008: door070
+    400010: door071
+    400012: door072
+    400014: door073
+    400016: door074
+    400018: door075
+    400020: door076
+    400022: door077
+    400024: door078
+    400026: door079
+    400028: door080
+    400030: door081
+    400032: door082
+    400034: door083
+    400036: Line367
+    400038: Line368
+    400040: train_1
+    400042: //RootNode
+    2300000: door066
+    2300002: door067
+    2300004: door068
+    2300006: door069
+    2300008: door070
+    2300010: door071
+    2300012: door072
+    2300014: door073
+    2300016: door074
+    2300018: door075
+    2300020: door076
+    2300022: door077
+    2300024: door078
+    2300026: door079
+    2300028: door080
+    2300030: door081
+    2300032: door082
+    2300034: door083
+    2300036: train_1
+    3300000: door066
+    3300002: door067
+    3300004: door068
+    3300006: door069
+    3300008: door070
+    3300010: door071
+    3300012: door072
+    3300014: door073
+    3300016: door074
+    3300018: door075
+    3300020: door076
+    3300022: door077
+    3300024: door078
+    3300026: door079
+    3300028: door080
+    3300030: door081
+    3300032: door082
+    3300034: door083
+    3300036: train_1
+    4300000: door077
+    4300002: door078
+    4300004: door079
+    4300006: door080
+    4300008: door081
+    4300010: door067
+    4300012: door082
+    4300014: door069
+    4300016: door070
+    4300018: door071
+    4300020: door072
+    4300022: train_1
+    4300024: door073
+    4300026: door074
+    4300028: door066
+    4300030: door083
+    4300032: door068
+    4300034: door075
+    4300036: door076
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -510,6 +510,10 @@ public class HumanAnimStateGoForward : HumanAnimStateBase
 					{
 						this.ParentCharacter.CurrentDoor.Open(this.ParentCharacter.transform);
 					}
+					else
+					{
+						this.ParentCharacter.MyNavAgent.SetDestination(this.ParentCharacter.transform.position + this.ParentCharacter.transform.forward * -0.5f);
+					}
 					_stuckTimer = 0;
 				}
 			}

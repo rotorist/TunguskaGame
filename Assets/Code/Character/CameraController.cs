@@ -223,8 +223,8 @@ public class CameraController : MonoBehaviour
 		else if(!isCameraLocked)
 		{
 			//Debug.Log("INSIDE " + transform.position);
-
-			if(GameManager.Inst.PlayerControl.AimedObjectType != AimedObjectType.None)
+			float playerSpeed = GameManager.Inst.PlayerControl.SelectedPC.MyCC.velocity.magnitude;
+			if(GameManager.Inst.PlayerControl.AimedObjectType != AimedObjectType.None && playerSpeed < 0.1f)
 			{
 				panLerpSpeed = 0.5f;
 				rotationLerpSpeed = 0.5f;

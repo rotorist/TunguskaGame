@@ -60,6 +60,8 @@ public class UIStateNormal : UIStateBase
 		UIEventHandler.OnOpenJournalPanel += OnOpenJournalPanel;
 		UIEventHandler.OnOpenQuestDebugPanel -= OnOpenQuestDebugPanel;
 		UIEventHandler.OnOpenQuestDebugPanel += OnOpenQuestDebugPanel;
+		UIEventHandler.OnOpenMapPanel -= OnOpenMapPanel;
+		UIEventHandler.OnOpenMapPanel += OnOpenMapPanel;
 	}
 
 	public override void EndState ()
@@ -74,6 +76,7 @@ public class UIStateNormal : UIStateBase
 		UIEventHandler.OnOpenConfirmPanel -= OnOpenConfirmPanel;
 		UIEventHandler.OnOpenJournalPanel -= OnOpenJournalPanel;
 		UIEventHandler.OnOpenQuestDebugPanel -= OnOpenQuestDebugPanel;
+		UIEventHandler.OnOpenMapPanel -= OnOpenMapPanel;
 	}
 
 
@@ -130,6 +133,12 @@ public class UIStateNormal : UIStateBase
 	{
 		EndState();
 		SM.State = new UIStateQuestDebug(SM);
+	}
+
+	public void OnOpenMapPanel()
+	{
+		EndState();
+		SM.State = new UIStateMap(SM);
 	}
 
 }
@@ -463,6 +472,41 @@ public class UIStateQuestDebug : UIStateBase
 	{
 		UIEventHandler.OnCloseWindow -= OnCloseWindow;
 
+	}
+
+	public void OnCloseWindow()
+	{
+		EndState();
+		SM.State = new UIStateNormal(SM);
+	}
+}
+
+public class UIStateMap : UIStateBase
+{
+	public UIStateMap(UIStateMachine sm)
+	{
+		SM = sm;
+		BeginState();
+	}
+
+	public override void BeginState ()
+	{
+		//setup panels
+		SM.UIManager.HideAllPanels();
+		SM.UIManager.HUDPanel.Show();
+		SM.UIManager.MapPanel.Show();
+
+		//subscribe events
+		UIEventHandler.OnCloseWindow -= OnCloseWindow;
+		UIEventHandler.OnCloseWindow += OnCloseWindow;
+		UIEventHandler.OnOpenMapPanel -= OnCloseWindow;
+		UIEventHandler.OnOpenMapPanel += OnCloseWindow;
+	}
+
+	public override void EndState ()
+	{
+		UIEventHandler.OnCloseWindow -= OnCloseWindow;
+		UIEventHandler.OnOpenMapPanel -= OnCloseWindow;
 	}
 
 	public void OnCloseWindow()

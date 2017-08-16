@@ -43,6 +43,30 @@ public class FactionData
 		}
 	}
 
+	public void ReduceRelationshipByID(Faction id, float value)
+	{
+		if(Relationships.ContainsKey(id))
+		{
+			Relationships[id] -= value;
+			if(Relationships[id] < 0)
+			{
+				Relationships[id] = 0;
+			}
+		}
+	}
+
+	public void IncreaseRelationshipByID(Faction id, float value)
+	{
+		if(Relationships.ContainsKey(id))
+		{
+			Relationships[id] += value;
+			if(Relationships[id] > 1)
+			{
+				Relationships[id] = 1;
+			}
+		}
+	}
+
 	public void PrepareSave()
 	{
 		_serRelationships = new List<KeyValuePair<Faction, float>>();

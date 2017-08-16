@@ -69,6 +69,20 @@ public class BlackBoard
 		set { _combatRange = value; }
 	}
 
+	private Vector3 _defensePoint;
+	public Vector3 DefensePoint
+	{
+		get { return _defensePoint; }
+		set { _defensePoint = value; }
+	}
+
+	private float _defenseRadius;
+	public float DefenseRadius
+	{
+		get { return _defenseRadius; }
+		set { _defenseRadius = value; }
+	}
+
 
 	private Weapon _focusedWeapon;
 	public Weapon FocusedWeapon

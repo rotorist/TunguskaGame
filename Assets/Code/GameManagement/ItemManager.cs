@@ -413,10 +413,10 @@ public class ItemManager
 		item1.Durability = 120;
 		item1.Attributes.Add(new ItemAttribute("_Muzzle Velocity", 110f));
 		item1.Attributes.Add(new ItemAttribute("Impact", 10f));
-		item1.Attributes.Add(new ItemAttribute("Accuracy", 0.7f));
+		item1.Attributes.Add(new ItemAttribute("Accuracy", 0.7f));//0.7f
 		item1.Attributes.Add(new ItemAttribute("Range", 20f));
 		item1.Attributes.Add(new ItemAttribute("Magazine Size", 30));
-		item1.Attributes.Add(new ItemAttribute("Recoil", 0.35f));
+		item1.Attributes.Add(new ItemAttribute("Recoil", 0.35f));//0.35f
 		item1.Attributes.Add(new ItemAttribute("Rate of Fire", 10f));
 		item1.Attributes.Add(new ItemAttribute("Handling", 0.6f));
 		item1.Attributes.Add(new ItemAttribute("_Encumbrance", 0.13f));

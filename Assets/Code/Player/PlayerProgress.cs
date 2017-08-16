@@ -59,12 +59,29 @@ public class PlayerProgress
 
 	public void AddJournalEntry(string entry)
 	{
+		//need to search through all days and make sure there is no duplicates
+		foreach(List<string> day in JournalEntries)
+		{
+			foreach(string e in day)
+			{
+				if(string.Compare(e, entry) == 0)
+				{
+					return;
+				}
+			}
+		}
+
 		if(JournalEntries.Count <= 0)
 		{
 			List<string> newDay = new List<string>();
 			JournalEntries.Add(newDay);
 		}
 		JournalEntries[JournalEntries.Count - 1].Add(entry);
+		if(GameManager.Inst.UIManager != null)
+		{
+			GameManager.Inst.UIManager.SetConsoleText("Journal entry added.");
+			GameManager.Inst.SoundManager.UI.PlayOneShot(GameManager.Inst.SoundManager.GetClip("PencilWrite"), 0.2f);
+		}
 	}
 
 	public bool IsTopicDiscovered(string topicID)
@@ -77,6 +94,7 @@ public class PlayerProgress
 		if(!DiscoveredTopics.Contains(topicID))
 		{
 			DiscoveredTopics.Add(topicID);
+			GameManager.Inst.UIManager.SetConsoleText("New topic: " + topicID);
 		}
 	}
 

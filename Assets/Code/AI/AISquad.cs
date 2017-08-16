@@ -25,6 +25,8 @@ public class AISquad
 
 			if(Household != null)
 			{
+				newMember.MyAI.BlackBoard.DefensePoint = Household.DefensePoint.position;
+				newMember.MyAI.BlackBoard.DefenseRadius = Household.DefenseRadius;
 				newMember.MyAI.BlackBoard.PatrolLoc = Household.transform.position;
 				newMember.MyAI.BlackBoard.PatrolRange = Household.PatrolRange;
 				newMember.MyAI.BlackBoard.CombatRange = Household.CombatRange;

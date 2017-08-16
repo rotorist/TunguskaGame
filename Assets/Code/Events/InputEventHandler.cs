@@ -256,6 +256,11 @@ public class InputEventHandler
 				OnPopupMouseWheel(wheelInput);
 			}
 		}
+
+		if(Input.GetKeyDown(KeyCode.Tab))
+		{
+			UIEventHandler.Instance.TriggerMap();
+		}
 	}
 
 	public void HandleNormalModeInput()
@@ -760,6 +765,11 @@ public class InputEventHandler
 			if(Input.GetKeyDown(KeyCode.J))
 			{
 				UIEventHandler.Instance.TriggerJournal();
+			}
+
+			if(Input.GetKeyDown(KeyCode.Tab))
+			{
+				UIEventHandler.Instance.TriggerMap();
 			}
 
 			if(Input.GetKeyDown(KeyCode.BackQuote))

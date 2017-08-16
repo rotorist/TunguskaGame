@@ -535,7 +535,7 @@ public class HumanCharacter : Character
 		if(command == CharacterCommands.AnimationActionDone)
 		{
 			Weapon currWeapon = MyAI.WeaponSystem.GetCurrentWeapon();
-			if(currWeapon != null && currWeapon.IsTwoHanded)
+			if(currWeapon != null && currWeapon.IsTwoHanded && GetCurrentAnimWeapon() != WeaponAnimType.Pistol)
 			{
 				MyLeftHandIK.SmoothEnable(10);
 			}
@@ -1562,6 +1562,10 @@ public class HumanCharacter : Character
 		}
 
 		DeathReason = damage.Type;
+		if(attacker.CharacterType == CharacterType.Human)
+		{
+			Killer = attacker;
+		}
 		//GameManager.Inst.UIManager.BarkPanel.AddFloater(this, Mathf.FloorToInt(damage).ToString(), true);
 		
 
@@ -1650,6 +1654,10 @@ public class HumanCharacter : Character
 
 			MyStatus.Health -= finalDamage;
 			DeathReason = damage.Type;
+			if(attacker.CharacterType == CharacterType.Human)
+			{
+				Killer = attacker;
+			}
 
 			if(MyAI.ControlType == AIControlType.Player)
 			{
@@ -2278,6 +2286,7 @@ public class HumanCharacter : Character
 	public void OnDeath()
 	{
 		PlayVocal(VocalType.Death);
+		GameManager.Inst.NPCManager.OnHumanDeath(Killer, (Character)this);
 		MyAI.OnDeath();
 		Stealth.OnDeath();
 		float posture = UnityEngine.Random.Range(0.1f, 200)/200f;
@@ -2318,6 +2327,7 @@ public class HumanCharacter : Character
 	public void OnStrangledDeath()
 	{
 		MyStatus.Health = 0;
+		GameManager.Inst.NPCManager.OnHumanDeath(Killer, (Character)this);
 		MyAI.OnDeath();
 		Stealth.OnDeath();
 

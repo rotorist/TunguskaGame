@@ -5,6 +5,8 @@ using UnityEngine.AI;
 
 public class Household : MonoBehaviour
 {
+	public Transform DefensePoint;
+	public float DefenseRadius;
 	public Vector3 PatrolRange;
 	public Vector3 CombatRange;
 	public List<GuardLoc> GuardLocs;

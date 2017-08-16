@@ -211,6 +211,8 @@ public class WorkingMemory
 			}
 		}
 
+		//Debug.Log("found existing facts of type " + type + " " + facts.Count);
+
 		return facts;
 	}
 

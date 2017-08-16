@@ -174,8 +174,18 @@ public class Gun : Weapon
 		_foreGripPos = this.ForeGrip.localPosition;
 		_isEquipped = true;
 
+		float _npcRecoilReduction = 1;
+		if(Attacker.MyAI.ControlType == AIControlType.NPC)
+		{
+			_npcRecoilReduction = 0f;
+			Barrel.Accuracy = 1;
+		}
+		else
+		{
+			Barrel.Accuracy = (float)weaponItem.GetAttributeByName("Accuracy").Value;
+		}
 
-		Barrel.Accuracy = (float)weaponItem.GetAttributeByName("Accuracy").Value;
+
 		Barrel.Impact = (float)weaponItem.GetAttributeByName("Impact").Value;
 		Barrel.MuzzleVelocity = (float)weaponItem.GetAttributeByName("_Muzzle Velocity").Value;
 		Barrel.Range = (float)weaponItem.GetAttributeByName("Range").Value;
@@ -183,7 +193,7 @@ public class Gun : Weapon
 
 		Magazine.MaxCapacity = (int)weaponItem.GetAttributeByName("Magazine Size").Value;
 
-		Receiver.Recoil = (float)weaponItem.GetAttributeByName("Recoil").Value;
+		Receiver.Recoil = (float)weaponItem.GetAttributeByName("Recoil").Value * _npcRecoilReduction;
 
 		_reloadToUnjam = (bool)weaponItem.GetAttributeByName("_ReloadToUnjam").Value;
 

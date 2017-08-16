@@ -29,6 +29,7 @@ public class UIEventHandler
 		OnOpenConfirmPanel = null;
 		OnOpenJournalPanel = null;
 		OnOpenQuestDebugPanel = null;
+		OnOpenMapPanel = null;
 	}
 
 	#endregion
@@ -54,6 +55,7 @@ public class UIEventHandler
 	public static event GeneralUIEventDelegate OnOpenConfirmPanel;
 	public static event GeneralUIEventDelegate OnOpenJournalPanel;
 	public static event GeneralUIEventDelegate OnOpenQuestDebugPanel;
+	public static event GeneralUIEventDelegate OnOpenMapPanel;
 
 
 	public void TriggerOpenWindow()
@@ -161,6 +163,14 @@ public class UIEventHandler
 		if(OnOpenQuestDebugPanel != null)
 		{
 			OnOpenQuestDebugPanel();
+		}
+	}
+
+	public void TriggerMap()
+	{
+		if(OnOpenMapPanel != null)
+		{
+			OnOpenMapPanel();
 		}
 	}
 }

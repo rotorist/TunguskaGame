@@ -78,7 +78,10 @@ public class ActionPatrolArea : GoapAction
 	{
 		if(ParentCharacter.MyAI.BlackBoard.TargetEnemy != null || ParentCharacter.MyAI.BlackBoard.InvisibleEnemy != null)
 		{
-			return false;
+			if(ParentCharacter.MyAI.BlackBoard.TargetEnemyThreat > 0.1f)
+			{
+				return false;
+			}
 		}
 
 		return true;

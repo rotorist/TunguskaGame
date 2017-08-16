@@ -329,7 +329,7 @@ public class AIWeapon
 		float climb = _parentCharacter.AimTarget.localPosition.y;
 		bool aimReady = _parentCharacter.MyAI.ControlType == AIControlType.Player ? true : (aimAngle < aimAngleThreshold);
 		//Debug.Log("Trigger pull aim ready? " + aimReady + " " + _parentCharacter.name);
-		float maxClimb = 0.2f;
+		float maxClimb = 0.1f;
 		if(_parentCharacter.MyAI.ControlType == AIControlType.Player)
 		{
 			maxClimb = 0.5f;

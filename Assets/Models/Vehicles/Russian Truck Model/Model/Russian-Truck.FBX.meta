@@ -1,0 +1,153 @@
+fileFormatVersion: 2
+guid: cd529e68ceac301488fc400afd8b05ff
+timeCreated: 1464821687
+licenseType: Store
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: Object001
+    100002: rim-back
+    100004: rim-back2
+    100006: rim-front
+    100008: //RootNode
+    100010: zil-windows
+    100012: zl-black
+    100014: zl-body
+    100016: zl-bolts
+    100018: zl-chrome
+    100020: zl-greblo
+    100022: zl-gume
+    100024: zl-lights
+    100026: zl-metals1
+    100028: zl-plate-back
+    100030: zl-plates
+    100032: zl-wood
+    400000: Object001
+    400002: rim-back
+    400004: rim-back2
+    400006: rim-front
+    400008: //RootNode
+    400010: zil-windows
+    400012: zl-black
+    400014: zl-body
+    400016: zl-bolts
+    400018: zl-chrome
+    400020: zl-greblo
+    400022: zl-gume
+    400024: zl-lights
+    400026: zl-metals1
+    400028: zl-plate-back
+    400030: zl-plates
+    400032: zl-wood
+    2300000: Object001
+    2300002: rim-back
+    2300004: rim-back2
+    2300006: rim-front
+    2300008: zil-windows
+    2300010: zl-black
+    2300012: zl-body
+    2300014: zl-bolts
+    2300016: zl-chrome
+    2300018: zl-greblo
+    2300020: zl-gume
+    2300022: zl-lights
+    2300024: zl-metals1
+    2300026: zl-plate-back
+    2300028: zl-plates
+    2300030: zl-wood
+    3300000: Object001
+    3300002: rim-back
+    3300004: rim-back2
+    3300006: rim-front
+    3300008: zil-windows
+    3300010: zl-black
+    3300012: zl-body
+    3300014: zl-bolts
+    3300016: zl-chrome
+    3300018: zl-greblo
+    3300020: zl-gume
+    3300022: zl-lights
+    3300024: zl-metals1
+    3300026: zl-plate-back
+    3300028: zl-plates
+    3300030: zl-wood
+    4300000: zl-body
+    4300002: zil-windows
+    4300004: zl-bolts
+    4300006: zl-black
+    4300008: zl-gume
+    4300010: zl-wood
+    4300012: zl-chrome
+    4300014: zl-metals1
+    4300016: zl-lights
+    4300018: zl-plates
+    4300020: zl-plate-back
+    4300022: zl-greblo
+    4300024: rim-front
+    4300026: rim-back
+    4300028: rim-back2
+    4300030: Object001
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

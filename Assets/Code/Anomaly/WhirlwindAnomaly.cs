@@ -24,7 +24,7 @@ public class WhirlwindAnomaly : MonoBehaviour
 			Vector3 dist = _target.transform.position - transform.position;
 			float y = dist.y;
 
-			Debug.Log(dist.magnitude);
+
 			if(y < 0.5f && dist.magnitude < KillRadius)
 			{
 				if(_spinTimer <= 0)

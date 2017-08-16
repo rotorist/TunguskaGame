@@ -136,6 +136,8 @@ public class AISensor
 
 			_parentCharacter.MyAI.BlackBoard.InvisibleEnemy = attacker;
 			_parentCharacter.MyAI.BlackBoard.LastKnownEnemyPosition = attacker.transform.position;
+
+			_parentCharacter.MyAI.CallForHelp(attacker);
 		}
 
 		//check if there is currently invisible enemy; if not add it
@@ -172,6 +174,7 @@ public class AISensor
 
 		if(fact == null)
 		{
+			//Debug.Log("adding new disturbance fact");
 			//confidence drop rate depends on the threat level
 			float dropRate = 0.1f - 0.05f * threat;
 			fact = _workingMemory.AddFact(FactType.Disturbance, source, location, 1, dropRate);
@@ -181,7 +184,7 @@ public class AISensor
 		}
 		else
 		{
-			Debug.Log("Found existing disturbance memory " + _parentCharacter.name);
+			//Debug.Log("Found existing disturbance memory " + _parentCharacter.name);
 			fact.Confidence = 1;
 			fact.LastKnownPos = location;
 			fact.ThreatLevel += threat;
@@ -197,7 +200,7 @@ public class AISensor
 			&& _parentCharacter.MyAI.BlackBoard.TargetEnemy == null
 			&& _parentCharacter.MyAI.BlackBoard.HighestPersonalThreat <= 0)
 		{
-			Debug.Log("Received higher disturbance, raising important event, I am " + _parentCharacter.name);
+			//Debug.Log("Received higher disturbance " + fact.ThreatLevel + ", raising important event, I am " + _parentCharacter.name);
 			_parentCharacter.MyAI.BlackBoard.HighestDisturbanceThreat = fact.ThreatLevel;
 			//if threat greater than 1 then use thrower's location
 			if(fact.ThreatLevel < 1)
@@ -218,7 +221,7 @@ public class AISensor
 			}
 
 			_parentCharacter.MyAI.BlackBoard.HightestDisturbanceSource = source;
-			_parentCharacter.MyAI.OnImportantEvent(1);
+			_parentCharacter.MyAI.OnImportantEvent(fact.ThreatLevel);
 		}
 	}
 
@@ -245,7 +248,7 @@ public class AISensor
 
 		foreach(Character c in GameManager.Inst.NPCManager.AllCharacters)
 		{
-			if(c == _parentCharacter || !_parentCharacter.MyAI.IsCharacterEnemy(c))
+			if(c == _parentCharacter || _parentCharacter.MyAI.GetCharacterRelationship(c) >= 4)
 			{
 				continue;
 			}
@@ -354,14 +357,40 @@ public class AISensor
 				continue;
 			}
 
-
-			if(_parentCharacter.MyAI.IsCharacterEnemy(c))
+			int relationship = _parentCharacter.MyAI.GetCharacterRelationship(c);
+			if(relationship < 3 || c == _parentCharacter.Killer)
 			{
 				
-				_parentCharacter.MyAI.BlackBoard.GuardLevel = 3;
+
 
 				//add/update enemy fact
 				WorkingMemoryFact fact = _workingMemory.FindExistingFact(FactType.KnownEnemy, c);
+
+				Vector3 position = c.transform.position;
+
+				//check if the neutral is within patrol range
+				float dist = Vector3.Distance(_parentCharacter.MyAI.BlackBoard.DefensePoint, c.transform.position);
+				float highThreat = 1;
+				_parentCharacter.MyAI.BlackBoard.GuardLevel = 3;
+				//Debug.Log("AI Sensor update enemy relationship " + relationship + " is inside " + isInsideHousehold);
+				if(relationship > 1 && c != _parentCharacter.Killer)
+				{
+					if(dist > _parentCharacter.MyAI.BlackBoard.DefenseRadius * 1.5f)
+					{
+						highThreat = 0f;
+						_parentCharacter.MyAI.BlackBoard.GuardLevel = 1;
+					}
+					else if(dist > _parentCharacter.MyAI.BlackBoard.DefenseRadius)
+					{
+						highThreat = 0.5f;
+						_parentCharacter.MyAI.BlackBoard.GuardLevel = 1;
+					}
+					else
+					{
+						highThreat = 1;
+						_parentCharacter.MyAI.BlackBoard.GuardLevel = 3;
+					}
+				}
 
 				if(fact == null)
 				{
@@ -369,7 +398,7 @@ public class AISensor
 					//didn't find it in working memory, create a new fact
 					fact = _workingMemory.AddFact(FactType.KnownEnemy, c, c.transform.position, confidence, 0.03f);
 					//Debug.LogError("adding known enemy fact " + c.Faction + " " + _parentCharacter.Faction + " " + c.name + " I am " + _parentCharacter.name);
-					fact.ThreatLevel = 1f;
+					fact.ThreatLevel = highThreat;
 					fact.ThreatDropRate = 0.03f;
 
 				}
@@ -378,7 +407,7 @@ public class AISensor
 					//found it in working memory, refresh confidence level
 					fact.Confidence = confidence;
 					fact.LastKnownPos = c.transform.position;
-					fact.ThreatLevel = 1f;
+					fact.ThreatLevel = highThreat;
 					//Debug.Log("refreshing enemy fact");
 				}
 
@@ -461,7 +490,7 @@ public class AISensor
 		//go through all characters and find enemies within hearing range
 		foreach(Character c in GameManager.Inst.NPCManager.AllCharacters)
 		{
-			if(c == _parentCharacter || !_parentCharacter.MyAI.IsCharacterEnemy(c) || c.MyStatus.Health <= 0)
+			if(c == _parentCharacter || _parentCharacter.MyAI.GetCharacterRelationship(c) > 2 || c.MyStatus.Health <= 0)
 			{
 				continue;
 			}
@@ -510,6 +539,7 @@ public class AISensor
 
 		}
 
+		//Debug.Log("updating HighestDisturbance threat to " + tempThreat);
 		_parentCharacter.MyAI.BlackBoard.HighestDisturbanceThreat = tempThreat;
 
 		//if higher than old threat then trigger an important event; don't do this when there's active enemy target or personal threat
@@ -521,7 +551,7 @@ public class AISensor
 			_parentCharacter.MyAI.BlackBoard.HighestDisturbanceLoc = tempLoc;
 			_parentCharacter.MyAI.BlackBoard.HightestDisturbanceSource = tempSource;
 			//Debug.Log("Found higher disturbance, raising important event " + _parentCharacter.name);
-			_parentCharacter.MyAI.OnImportantEvent(0.7f);
+			_parentCharacter.MyAI.OnImportantEvent(tempThreat);
 		}
 	}
 

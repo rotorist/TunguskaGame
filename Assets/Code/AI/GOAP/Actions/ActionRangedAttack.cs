@@ -42,6 +42,8 @@ public class ActionRangedAttack : GoapAction
 		((HumanCharacter)ParentCharacter).CurrentStance = HumanStances.Walk;
 		_maneuverState = ManeuverState.MoveTowards;
 
+
+
 		ParentCharacter.MyEventHandler.OnActionUpdateTimer -= UpdateAction;
 		ParentCharacter.MyEventHandler.OnActionUpdateTimer += UpdateAction;
 

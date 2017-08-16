@@ -198,7 +198,7 @@ public class AITargeting
 					bool willCallForHelp = false;
 
 					if(_parentCharacter.MyAI.BlackBoard.TargetEnemy == null && _parentCharacter.MyAI.BlackBoard.InvisibleEnemy == null 
-						&& _parentCharacter.MyAI.ControlType != AIControlType.Player)
+						&& selected.ThreatLevel > 0.1f && _parentCharacter.MyAI.ControlType != AIControlType.Player)
 					{
 						//_parentCharacter.MyAI.Bark("Got intruder!");
 						_parentCharacter.PlayVocal(VocalType.Surprise);
@@ -271,7 +271,10 @@ public class AITargeting
 				}
 				_parentCharacter.MyAI.BlackBoard.TargetEnemyThreat = currentTargetFact.ThreatLevel;
 				_parentCharacter.MyAI.BlackBoard.LastKnownEnemyPosition = _parentCharacter.MyAI.BlackBoard.TargetEnemy.transform.position;
-				_parentCharacter.MyAI.BlackBoard.GuardLevel = 3;
+				if(currentTargetFact.ThreatLevel > 0.1f)
+				{
+					_parentCharacter.MyAI.BlackBoard.GuardLevel = 3;
+				}
 				//_parentCharacter.MyAI.BlackBoard.IsTargetEnemyHittable = currentTargetFact.IsHittable;
 
 				return;
@@ -290,8 +293,10 @@ public class AITargeting
 				{
 					currentTargetFact.ThreatLevel = 0;
 				}
-
-				_parentCharacter.MyAI.BlackBoard.GuardLevel = 2;
+				if(currentTargetFact.ThreatLevel > 0.1f)
+				{
+					_parentCharacter.MyAI.BlackBoard.GuardLevel = 2;
+				}
 				_parentCharacter.MyAI.BlackBoard.TargetEnemyThreat = currentTargetFact.ThreatLevel;
 			}
 			else
@@ -320,11 +325,11 @@ public class AITargeting
 		Vector3 colliderOffset = collider.center;
 		if(colliderDir == 2)
 		{
-			return target.transform.position + colliderOffset * 0.8f + relativeVelocity / 3;
+			return target.transform.position + colliderOffset * 0.8f + relativeVelocity / 4;
 		}
 		else
 		{
-			return target.transform.position + Vector3.up * colliderHeight * 0.8f + relativeVelocity / 3;
+			return target.transform.position + Vector3.up * colliderHeight * 0.8f + relativeVelocity / 4;
 		}
 	}
 

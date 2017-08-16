@@ -124,6 +124,57 @@ public class AI : MonoBehaviour
 		return false;
 	}
 
+	public int GetCharacterRelationship(Character c)
+	{
+		if(_parentCharacter.Faction == c.Faction)
+		{
+			if(_parentCharacter.Faction != Faction.Loner)
+			{
+				return 4;
+			}
+			else
+			{
+				if(_parentCharacter.SquadID == c.SquadID)
+				{
+					return 4;
+				}
+				else
+				{
+					return (Convert.ToInt32(c.SquadID) + Convert.ToInt32(_parentCharacter.SquadID)) > 30 ? 1 : 2; //loner relationships are random
+				}
+			}
+		}
+		else
+		{
+			FactionData myFaction = GameManager.Inst.NPCManager.GetFactionData(_parentCharacter.Faction);
+			FactionData otherFaction = GameManager.Inst.NPCManager.GetFactionData(c.Faction);
+
+			if(myFaction == null || otherFaction == null)
+			{
+				return 1;
+			}
+
+			float relationship =  myFaction.GetRelationshipByID(c.Faction);
+			if(relationship <= 0.25)
+			{
+				return 1;
+			}
+			else if(relationship <= 0.5)
+			{
+				return 2;
+			}
+			else if(relationship <= 0.75)
+			{
+				return 3;
+			}
+			else
+			{
+				return 4;
+			}
+
+		}
+	}
+
 	public bool IsCharacterEnemy(Character c)
 	{
 		if(_parentCharacter.Faction == c.Faction)
@@ -154,7 +205,7 @@ public class AI : MonoBehaviour
 				return true;
 			}
 
-			return myFaction.GetRelationshipByID(c.Faction) < 0.33f;
+			return myFaction.GetRelationshipByID(c.Faction) <= 0.25f;
 
 		}
 
@@ -195,6 +246,7 @@ public class AI : MonoBehaviour
 
 	public void CallForHelp(Character target)
 	{
+		//Debug.LogError(_parentCharacter.name + " is calling for help");
 		if(Squad == null)
 		{
 			return;
@@ -215,9 +267,14 @@ public class AI : MonoBehaviour
 			}
 			else
 			{
-				c.MyAI.BlackBoard.TargetEnemy = target;
-				c.MyAI.BlackBoard.TargetEnemyThreat = 1;
-				c.MyAI.BlackBoard.GuardLevel = 2;
+				if(c.MyAI.BlackBoard.TargetEnemy == null || c.MyAI.BlackBoard.TargetEnemy == target)
+				{
+					c.MyAI.BlackBoard.TargetEnemy = target;
+					c.MyAI.BlackBoard.TargetEnemyThreat = 1;
+					c.MyAI.BlackBoard.GuardLevel = 2;
+				}
+
+
 			}
 		}
 	}
@@ -348,10 +405,10 @@ public class AI : MonoBehaviour
 			List<WorkingMemoryFact> knownEnemies = WorkingMemory.FindExistingFactOfType(FactType.KnownEnemy);
 			foreach(WorkingMemoryFact fact in knownEnemies)
 			{
-				if(fact.Confidence >= 1)
+				if(fact.Confidence >= 1 && fact.ThreatLevel > 0.1f)
 				{
 					//if enemy is in sight, return true even if not in area
-					//CsDebug.Inst.CharLog(_parentCharacter, "Evaluating IsThreatInSightInArea, enemy in sight " + ((Character)fact.Target).name);
+					CsDebug.Inst.CharLog(_parentCharacter, "Evaluating IsThreatInSightInArea, enemy in sight " + ((Character)fact.Target).name);
 					SetCurrentWorldState(state, true);
 					return true;
 				}
@@ -363,7 +420,7 @@ public class AI : MonoBehaviour
 			List<WorkingMemoryFact> knownNeutrals = WorkingMemory.FindExistingFactOfType(FactType.KnownNeutral);
 			foreach(WorkingMemoryFact fact in knownNeutrals)
 			{
-				if(fact.Confidence >= 1)
+				if(fact.Confidence >= 1  && fact.ThreatLevel > 0.1f)
 				{
 					Vector3 position = ((Character)fact.Target).transform.position;
 
@@ -379,7 +436,7 @@ public class AI : MonoBehaviour
 				}
 			}
 
-			//CsDebug.Inst.CharLog(_parentCharacter, "Evaluation IsThereThreatInArea, false");
+			CsDebug.Inst.CharLog(_parentCharacter, "Evaluation IsThereThreatInArea, false");
 			SetCurrentWorldState(state, false);
 			return false;
 		}
@@ -397,6 +454,12 @@ public class AI : MonoBehaviour
 
 
 			Character target = BlackBoard.TargetEnemy;
+
+			if(BlackBoard.TargetEnemyThreat < 0.1f)
+			{
+				SetCurrentWorldState(state, false);
+				return false;
+			}
 
 			if(target != null && target.MyStatus.Health <= 0)
 			{
@@ -483,7 +546,7 @@ public class AI : MonoBehaviour
 			foreach(WorkingMemoryFact fact in knownEnemies)
 			{
 				//Debug.Log("Is Threat In Sight fact confidence " + fact.Confidence);
-				if(fact.Confidence >= 1)
+				if(fact.Confidence >= 1 && fact.ThreatLevel > 0.1f)
 				{
 					SetCurrentWorldState(state, true);
 					return true;
@@ -607,7 +670,7 @@ public class AI : MonoBehaviour
 	//AI Events
 	public void OnImportantEvent(float priority) //priority ranges from 0 to 1. 1 is highest priority
 	{
-		Debug.Log("On important event");
+		Debug.Log("On important event " + priority);
 		StartCoroutine(WaitAndCheckImportantEvent(0.1f, priority));
 
 	}

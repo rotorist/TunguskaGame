@@ -12,6 +12,7 @@ public class NPCManager
 	private float _spawnTimer;
 
 	private int _counter;
+	private int _randomSquadIndex;
 
 	public List<HumanCharacter> HumansInScene
 	{
@@ -406,6 +407,16 @@ public class NPCManager
 		return character;
 	}
 
+	public AISquad SpawnHumanExplorerSquad(Faction faction)
+	{
+		AISquad squad = new AISquad();
+		squad.ID = faction.ToString() + _randomSquadIndex.ToString();
+		_randomSquadIndex ++;
+		squad.Faction = faction;
+		squad.Household = null;
+		_allSquads.Add(squad.ID, squad);
+	}
+
 	public FactionData GetFactionData(Faction id)
 	{
 		if(_allFactions.ContainsKey(id))
@@ -419,6 +430,20 @@ public class NPCManager
 	public void HideCharacterPublic(Character character)
 	{
 		HideCharacter(character);
+	}
+
+	public void OnHumanDeath(Character killer, Character victim)
+	{
+		if(killer == null || victim == null || killer.Faction == victim.Faction)
+		{
+			return;
+		}
+
+		FactionData killerFaction = GetFactionData(killer.Faction);
+		FactionData victimFaction = GetFactionData(victim.Faction);
+
+		victimFaction.ReduceRelationshipByID(killer.Faction, 0.25f);
+		killerFaction.ReduceRelationshipByID(victim.Faction, 0.25f);
 	}
 
 
@@ -719,5 +744,12 @@ public class NPCManager
 		squad10.Household = _allHouseHolds["HouseHoldRoadBlock"];
 		squad10.Household.CurrentSquad = squad10;
 		_allSquads.Add(squad10.ID, squad10);
+
+		AISquad squad11 = new AISquad();
+		squad11.ID = "zsk_train_legionnaires";
+		squad11.Faction = Faction.Legionnaires;
+		squad11.Household = _allHouseHolds["HouseHoldTrainStation"];
+		squad11.Household.CurrentSquad = squad11;
+		_allSquads.Add(squad11.ID, squad11);
 	}
 }

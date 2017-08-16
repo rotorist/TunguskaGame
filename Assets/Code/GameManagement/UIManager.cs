@@ -16,6 +16,7 @@ public class UIManager
 	public RestingPanel RestingPanel;
 	public ConfirmPanel ConfirmPanel;
 	public QuestDebugPanel QuestDebugPanel;
+	public MapPanel MapPanel;
 
 	public bool IsInHUDRegion;
 
@@ -61,6 +62,10 @@ public class UIManager
 		QuestDebugPanel = UICamera.transform.Find("QuestDebugPanel").GetComponent<QuestDebugPanel>();
 		QuestDebugPanel.Initialize();
 
+		MapPanel = UICamera.transform.Find("MapPanel").GetComponent<MapPanel>();
+		MapPanel.Initialize();
+
+		_panels.Add(MapPanel);
 		_panels.Add(QuestDebugPanel);
 		_panels.Add(DialoguePanel);
 		_panels.Add(RestingPanel);
@@ -68,6 +73,7 @@ public class UIManager
 		_panels.Add(WindowPanel);
 		_panels.Add(HUDPanel);
 		_panels.Add(BarkPanel);
+
 
 
 
