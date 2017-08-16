@@ -26,11 +26,11 @@ public class Household : MonoBehaviour
 	public void Initialize()
 	{
 		
-		RefillSquadMembers();
+		RefillHouseHoldSquadMembers();
 		AssignSquadJobs();
 	}
 
-	private void RefillSquadMembers()
+	private void RefillHouseHoldSquadMembers()
 	{
 		if(CurrentSquad == null || MaxOccupants <= 0)
 		{
@@ -71,6 +71,7 @@ public class Household : MonoBehaviour
 					HumanCharacter commander = GameManager.Inst.NPCManager.SpawnRandomHumanCharacter(modelID, CurrentSquad, CommanderIdleDest.transform.position);
 					commander.IsCommander = true;
 					CurrentSquad.AddMember(commander);
+					CurrentSquad.Commander = commander;
 				}
 				int numberToSpawn = MaxOccupants - CurrentSquad.Members.Count;
 				for(int i = 0; i < numberToSpawn; i++)
@@ -123,7 +124,7 @@ public class Household : MonoBehaviour
 				int i = 0;
 				while(GuardLocs.Count > guardsCount && i < CurrentSquad.Members.Count)
 				{
-					if(CurrentSquad.Members[i].MyJobs.Contains(NPCJobs.None))
+					if(CurrentSquad.Members[i].MyJobs.Contains(NPCJobs.None) && !CurrentSquad.Members[i].IsCommander)
 					{
 						int guardLocIndex = GetVacantGuardLocID();
 						if(guardLocIndex < 0)
@@ -159,7 +160,7 @@ public class Household : MonoBehaviour
 				int i = 0;
 				while(GuardLocs.Count > patrolsCount && i < CurrentSquad.Members.Count)
 				{
-					if(CurrentSquad.Members[i].MyJobs.Contains(NPCJobs.None))
+					if(CurrentSquad.Members[i].MyJobs.Contains(NPCJobs.None) && !CurrentSquad.Members[i].IsCommander)
 					{
 
 						//assign a new guard
@@ -178,6 +179,31 @@ public class Household : MonoBehaviour
 
 					i++;
 
+				}
+			}
+		}
+	}
+
+	private void SendHumanExplorer()
+	{
+		//create a squad
+		AISquad squad = GameManager.Inst.NPCManager.SpawnHumanExplorerSquad(CurrentSquad.Faction);
+
+		//decide a max participant number
+		int participants = UnityEngine.Random.Range(2, 5);
+
+		//loop through all members and pick ones who don't have job
+		foreach(Character c in CurrentSquad.Members)
+		{
+			if(c.MyJobs.Contains(NPCJobs.None))
+			{
+				squad.Members.Add(c);
+				c.MyJobs.Clear();
+				c.MyJobs.Add(NPCJobs.Explore);
+				if(squad.Commander == null)
+				{
+					c.IsCommander = true;
+					squad.Commander = c;
 				}
 			}
 		}

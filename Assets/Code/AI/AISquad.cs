@@ -8,6 +8,7 @@ public class AISquad
 	public List<Character> Members;
 	public Household Household;
 	public Faction Faction;
+	public Character Commander;
 
 	public AISquad()
 	{

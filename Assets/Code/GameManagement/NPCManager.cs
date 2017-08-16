@@ -60,6 +60,7 @@ public class NPCManager
 		DynamicGoalFollow.Priority = 5;
 		DynamicGoalPatrol = GameManager.Inst.DBManager.DBHandlerAI.GetGoalByID(2);
 		DynamicGoalPatrol.Priority = 5;
+		//DynamicGoalGoTo = 
 
 
 		_allFactions = GameManager.Inst.DBManager.DBHandlerCharacter.LoadFactionData();
@@ -415,6 +416,8 @@ public class NPCManager
 		squad.Faction = faction;
 		squad.Household = null;
 		_allSquads.Add(squad.ID, squad);
+
+		return squad;
 	}
 
 	public FactionData GetFactionData(Faction id)
