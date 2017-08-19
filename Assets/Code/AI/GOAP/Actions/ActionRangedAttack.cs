@@ -190,7 +190,7 @@ public class ActionRangedAttack : GoapAction
 			if(_maneuverState == ManeuverState.MoveTowards)
 			{
 				
-				if(dist < gunRange)
+				if(dist < gunRange * 1.3f)
 				{
 					//Debug.Log("going into shuffle state, from " + _maneuverState);
 					_maneuverState = ManeuverState.Shuffle;

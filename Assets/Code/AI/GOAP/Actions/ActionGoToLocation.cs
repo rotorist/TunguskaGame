@@ -90,11 +90,32 @@ public class ActionGoToLocation: GoapAction
 		{
 			ParentCharacter.SendCommand(CharacterCommands.Aim);
 		}
+
+		//if is exploring, check if near next node, if so find next node if not at destination
+		if(ParentCharacter.MyJobs.Contains(NPCJobs.Explore) && ParentCharacter.IsCommander)
+		{
+			NavNode nextNode = ParentCharacter.MyAI.Squad.NextNavNode;
+			//Debug.Log("GOTO next node is " + nextNode.name + " dist " + Vector3.Distance(ParentCharacter.transform.position, nextNode.transform.position));
+			if(nextNode != null)
+			{
+				if(AI.IsPositionInArea(ParentCharacter.transform.position, nextNode.transform.position, ParentCharacter.MyAI.BlackBoard.PatrolRange))
+				{
+					ParentCharacter.MyAI.Squad.NextNavNode = AI.FindNextNavNode(nextNode, ParentCharacter.MyAI.Squad.DestNavNode);
+					if(ParentCharacter.MyAI.Squad.NextNavNode != null)
+					{
+						
+						ParentCharacter.MyAI.BlackBoard.PatrolLoc = ParentCharacter.MyAI.Squad.NextNavNode.transform.position;
+					}
+				}
+			}
+		}
 			
-		//ParentCharacter.CurrentStance = HumanStances.Run;
+		ParentCharacter.CurrentStance = HumanStances.Walk;
 		ParentCharacter.MyAI.TargetingSystem.SetTargetingMode(AITargetingModes.LookAheadAround, Vector3.zero);
 		ParentCharacter.Destination = ParentCharacter.MyAI.BlackBoard.PatrolLoc;
 		ParentCharacter.SendCommand(CharacterCommands.GoToPosition);
+
+
 
 
 		if(CheckActionCompletion())

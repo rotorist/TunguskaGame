@@ -21,6 +21,7 @@ public abstract class Character : MonoBehaviour
 	public string SquadID;
 	public Faction Faction;
 	public bool IsCommander;
+	public bool IsEssential;//cannot die and will not go on expedition
 
 	public CharacterReference MyReference;
 	public CharacterEventHandler MyEventHandler;

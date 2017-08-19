@@ -38,7 +38,7 @@ public class TimerEventHandler
 	public static event TimerEventDelegate OnHalfSecondTimer;
 	public static event TimerEventDelegate OnOneSecondTimer;
 	public static event TimerEventDelegate OnFiveSecondTimer;
-
+	public static event TimerEventDelegate OnOneDayTimer;
 
 	public void TriggerOneSecondTimer()
 	{
@@ -53,6 +53,14 @@ public class TimerEventHandler
 		if(OnHalfSecondTimer != null)
 		{
 			OnHalfSecondTimer();
+		}
+	}
+
+	public void TriggerOneDayTimer()
+	{
+		if(OnOneDayTimer != null)
+		{
+			OnOneDayTimer();
 		}
 	}
 }

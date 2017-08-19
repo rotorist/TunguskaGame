@@ -62,6 +62,9 @@ public class StoryEventScript
 			case "topic":
 				ExecuteTopicScript(tokens);
 				break;
+			case "expedition":
+				ExecuteExpeditionScript(tokens);
+				break;
 			}
 		}
 
@@ -332,6 +335,27 @@ public class StoryEventScript
 		else if(tokens[1] == "forget")
 		{
 			GameManager.Inst.PlayerProgress.RemoveDiscoveredTopics(tokens[2]);
+		}
+	}
+
+	private void ExecuteExpeditionScript(string [] tokens)
+	{
+		if(tokens[1].Length > 0)
+		{
+			string navNodeName = tokens[1];
+			NavNode node = GameManager.Inst.NPCManager.GetNavNodeByName(navNodeName);
+			if(node == null)
+			{
+				//return;
+			}
+			if(tokens[2] == "enable")
+			{
+				node.IsOpenToExpedition = true;
+			}
+			else if(tokens[2] == "disable")
+			{
+				node.IsOpenToExpedition = false;
+			}
 		}
 	}
 }

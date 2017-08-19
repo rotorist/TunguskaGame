@@ -7,6 +7,8 @@ public class AISquad
 	public string ID;
 	public List<Character> Members;
 	public Household Household;
+	public NavNode DestNavNode;
+	public NavNode NextNavNode;
 	public Faction Faction;
 	public Character Commander;
 
@@ -15,6 +17,93 @@ public class AISquad
 		Members = new List<Character>();
 
 		//Household = GameObject.Find("Household1").GetComponent<Household>();
+	}
+
+	public void UpdateSquadPerSecond()
+	{
+		if(Members.Count > 0 && Members[0].MyJobs.Contains(NPCJobs.Explore))
+		{
+			//elect new commander
+			Character commander = null;
+			foreach(Character c in Members)
+			{
+				if(c.IsCommander)
+				{
+					commander = c;
+				}
+			}
+			if(commander == null)
+			{
+				Debug.Log("electing new commander");
+				AssignExpCommanderRole(Members[0], this);
+				commander = Members[0];
+			}
+			foreach(Character c in Members)
+			{
+				if(!c.IsCommander)
+				{
+					AssignExpFollowerRole(c, this);
+				}
+			}
+
+
+
+			//if household no longer belongs to my faction then make everyone go back to the household
+			if(Household.CurrentSquad == null || Household.CurrentSquad.Faction != Faction)
+			{
+				foreach(Character member in Members)
+				{
+					DestNavNode = GameManager.Inst.NPCManager.GetNavNodeByHousehold(Household);
+					NextNavNode = AI.FindNextNavNode(NextNavNode, DestNavNode);
+					AssignExpCommanderRole(Commander, this);
+				}
+			}
+
+
+			if(AI.IsPositionInArea(Commander.transform.position, DestNavNode.transform.position, Commander.MyAI.BlackBoard.PatrolRange))
+			{
+				if(DestNavNode.Type == NavNodeType.MutantHunt)
+				{
+					//done, go back to household if it exists
+
+				}
+				else if(DestNavNode.Type == NavNodeType.Base)
+				{
+					if(DestNavNode.Household == Household && DestNavNode.Household.CurrentSquad != null && DestNavNode.Household.CurrentSquad.Faction == Faction)
+					{
+						//merge the squad into current squad (gone home)
+					}
+					else
+					{
+						Debug.Log("Check if base is empty!");
+						if(DestNavNode.Household.CurrentSquad == null || DestNavNode.Household.CurrentSquad.Members.Count <= 0)
+						{
+							Debug.Log("Taking over base!");
+							//we can take this household over
+							GameManager.Inst.NPCManager.DeleteSquad(DestNavNode.Household.CurrentSquad.ID);
+							List<Character> membersCopy = new List<Character>(Members);
+							Members.Clear();
+							DestNavNode.Household.CurrentSquad = this;
+
+							//tell household to remove me from explorer squads
+							Household.RemoveExplorerSquad(this);
+
+							foreach(Character c in membersCopy)
+							{
+								c.MyJobs.Clear();
+								c.MyJobs.Add(NPCJobs.None);
+								AddMember(c);
+							}
+
+							Household = DestNavNode.Household;
+							Household.AssignSquadJobs();
+							DestNavNode = null;
+							NextNavNode = null;
+						}
+					}
+				}
+			}
+		}
 	}
 
 	public void AddMember(Character newMember)
@@ -39,6 +128,7 @@ public class AISquad
 
 	public void RemoveMember(Character member)
 	{
+
 		if(Members.Contains(member))
 		{
 			Members.Remove(member);
@@ -50,8 +140,34 @@ public class AISquad
 			//raise the squad death event
 			StoryEventHandler.Instance.EnqueueStoryEvent(StoryEventType.OnSquadDeath, this, new object[]{ID});
 		}
+
+
 	}
 
+	public void AssignExpCommanderRole(Character c, AISquad squad)
+	{
+		c.IsCommander = true;
+		squad.Commander = c;
+		c.MyAI.BlackBoard.PatrolLoc = squad.NextNavNode.transform.position;
+		c.MyAI.BlackBoard.PatrolRange = new Vector3(10, 5, 10);
+		c.MyAI.BlackBoard.CombatRange = new Vector3(25, 5, 25);
+		c.MyAI.BlackBoard.DefensePoint = c.transform.position;
+		c.MyAI.BlackBoard.DefenseRadius = 10;
+
+		c.MyAI.SetDynamicyGoal(GameManager.Inst.NPCManager.DynamicGoalExplore, 5);
+	}
+
+	public void AssignExpFollowerRole(Character c, AISquad squad)
+	{
+		c.MyAI.BlackBoard.FollowTarget = squad.Commander;
+		c.MyAI.BlackBoard.PatrolLoc = c.transform.position;
+		c.MyAI.BlackBoard.PatrolRange = new Vector3(10, 5, 10);
+		c.MyAI.BlackBoard.CombatRange = new Vector3(25, 5, 25);
+		c.MyAI.BlackBoard.DefensePoint = c.transform.position;
+		c.MyAI.BlackBoard.DefenseRadius = 10;
+
+		c.MyAI.SetDynamicyGoal(GameManager.Inst.NPCManager.DynamicGoalFollow, 5);
+	}
 
 	public void IssueSquadCommand()
 	{

@@ -11,6 +11,7 @@ public class WorldManager
 	public TerrainHandler CurrentTerrain;
 	public Environment CurrentEnvironment;
 	public int CurrentDay;
+	public float CurrentTime;
 
 	private int _ambientPlayCounter;
 	private int _nextAmbientTime;
@@ -28,7 +29,7 @@ public class WorldManager
 		CurrentTerrain = GameObject.Find("Terrain").GetComponent<TerrainHandler>();
 		CurrentTerrain.Initialize();
 
-
+		CurrentTime = 240;
 
 		Environment dayWild = new Environment("DayWilderness");
 		dayWild.IsInterior = false;
@@ -101,6 +102,20 @@ public class WorldManager
 		else
 		{
 			_ambientPlayCounter ++;
+		}
+
+		//update time
+		CurrentTime ++;
+		//convert to hour:minute
+		int timeInt = Mathf.FloorToInt(CurrentTime);
+		int hour = timeInt / 60;
+		int minute = timeInt % 60;
+		GameManager.Inst.UIManager.HUDPanel.Clock.text = "Day " + (CurrentDay+1) + "   " + (hour < 10 ? "0" : "") + hour.ToString() + " : " + (minute < 10 ? "0" : "") + minute.ToString();
+		if(CurrentTime > 1440)
+		{
+			CurrentTime = 0;
+			CurrentDay ++;
+			TimerEventHandler.Instance.TriggerOneDayTimer();
 		}
 
 	}

@@ -114,7 +114,7 @@ public class MutantAnimStateIdle : MutantAnimStateBase
 		switch(state)
 		{
 		case MutantBodyStates.Move:
-			Debug.Log("switching to move mutant state");
+			//Debug.Log("switching to move mutant state");
 			this.ParentCharacter.CurrentAnimState = new MutantAnimStateMove(this);
 			break;
 		}

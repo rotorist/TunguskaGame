@@ -919,6 +919,95 @@ public class AI : MonoBehaviour
 		}
 	}
 
+	public static NavNode FindNextNavNode(NavNode start, NavNode destination)
+	{
+		if(start == null || destination == null || start == destination)
+		{
+			return null;
+		}
+
+		Debug.Log("AI Pathfinding start " + start.name + " destination " + destination.name);
+
+		List<NavNode> closedSet = new List<NavNode>();
+		List<NavNode> openSet = new List<NavNode>();
+		openSet.Add(start);
+
+		LinkedList<NavNode> result = new LinkedList<NavNode>();
+		LinkedListNode<NavNode> currentResultNode;
+
+		Dictionary<NavNode,float> gScores = new Dictionary<NavNode, float>();
+		Dictionary<NavNode,float> fScores = new Dictionary<NavNode, float>();
+
+		List<NavNode> allNodes = GameManager.Inst.NPCManager.GetAllNavNodes();
+		foreach(NavNode n in allNodes)
+		{
+			gScores.Add(n, Mathf.Infinity);
+			fScores.Add(n, Mathf.Infinity);
+		}
+
+		gScores[start] = 0;
+		fScores[start] = Vector3.Distance(start.transform.position, destination.transform.position);
+
+		while(openSet.Count > 0)
+		{
+			NavNode bestNode = openSet[0];
+			foreach(NavNode node in openSet)
+			{
+				if(fScores[node] < fScores[bestNode])
+				{
+					bestNode = node;
+				}
+			}
+
+			if(bestNode == destination)
+			{
+				result.AddFirst(bestNode);
+				break;
+			}
+
+			openSet.Remove(bestNode);
+			closedSet.Add(bestNode);
+
+			foreach(NavNode neighbor in bestNode.Neighbors)
+			{
+				if(closedSet.Contains(neighbor))
+				{
+					continue;
+				}
+
+				if(!openSet.Contains(neighbor))
+				{
+					openSet.Add(neighbor);
+				}
+
+				float tentativeGScore = gScores[bestNode] + Vector3.Distance(bestNode.transform.position, neighbor.transform.position);
+				//Debug.Log("best node " + bestNode.name + " tentative g " + tentativeGScore + " neighbor g " + gScores[neighbor] + " " + neighbor.name);
+				if(tentativeGScore >= gScores[neighbor])
+				{
+					continue;
+				}
+
+				if(!result.Contains(bestNode))
+				{
+					result.AddFirst(bestNode);
+				}
+				gScores[neighbor] = tentativeGScore;
+				fScores[neighbor] = gScores[neighbor] + Vector3.Distance(neighbor.transform.position, destination.transform.position);
+
+			}
+		}
+
+		/*
+		currentResultNode = result.First;
+		while(currentResultNode.Next != null)
+		{
+			Debug.Log("pathfinding result " + currentResultNode.Value.name);
+			currentResultNode = currentResultNode.Next;
+		}
+		*/
+
+		return result.Last.Previous.Value;
+	}
 
 
 

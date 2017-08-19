@@ -22,6 +22,8 @@ condition/zsk_sid_quest/1
 condition/zsk_barn_cleared/activate
 topic/discover/zsk_farm_clear
 journal/{2}
+expedition/NavNodeGasStationWoods/enable
+expedition/VillageWoods/enable
 
 ./zsk_barn_clear_done
 if/param/0/is/zsk_barn_legionnaires
@@ -31,12 +33,14 @@ message/Barn has been cleared!
 ./zsk_barn_quest_done1
 condition/zsk_sid_quest/2
 topic/forget/zsk_blockade
+expedition/NavNodeBarn/enable
 
 ./zsk_barn_quest_done2
 condition/zsk_sid_quest/2
 item/receive/huntingshotgun/1/0.8
 item/receive/ammo12shot/10
 topic/forget/zsk_blockade
+expedition/NavNodeBarn/enable
 
 ./zsk_learn_priest
 topic/discover/priest
@@ -73,6 +77,7 @@ journal/{8}
 ./zsk_church_clear_done
 if/param/0/is/zsk_church_ghouls
 condition/zsk_church_cleared/true
+expedition/NavNodeChurch/enable
 message/Church has been cleared!
 
 ./zsk_sewer_clear_done

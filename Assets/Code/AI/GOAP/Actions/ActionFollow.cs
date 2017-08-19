@@ -5,6 +5,8 @@ using System.Collections.Generic;
 public class ActionFollow: GoapAction 
 {
 	private float _distThreshold;
+	private float _distThresholdFar;
+	private Vector3 _followTargetPadding;
 
 	public ActionFollow(string name, string description, float cost)
 	{
@@ -25,7 +27,8 @@ public class ActionFollow: GoapAction
 		CsDebug.Inst.CharLog(ParentCharacter, "Start executing Following " + ParentCharacter.name);
 		_executionStopped = false;
 
-		_distThreshold = UnityEngine.Random.Range(300, 500)/100f;
+		_distThreshold = UnityEngine.Random.Range(1f, 2f);
+		_distThresholdFar = UnityEngine.Random.Range(4f, 5f);
 
 		UpdateAction();
 
@@ -95,12 +98,14 @@ public class ActionFollow: GoapAction
 		float dist = Vector3.Distance(ParentCharacter.transform.position, ParentCharacter.MyAI.BlackBoard.FollowTarget.transform.position);
 
 		//if distance between me and follow target is
-		if(dist > _distThreshold)
+		if(dist > _distThreshold && dist < _distThresholdFar)
 		{
 			//set destination to follow target
 
-
-			ParentCharacter.CurrentStance = ParentCharacter.MyAI.BlackBoard.FollowTarget.CurrentStance;
+			if(ParentCharacter.CurrentStance != HumanStances.Run)
+			{
+				ParentCharacter.CurrentStance = ParentCharacter.MyAI.BlackBoard.FollowTarget.CurrentStance;
+			}
 			if(ParentCharacter.CurrentStance == HumanStances.Crouch || ParentCharacter.CurrentStance == HumanStances.CrouchRun)
 			{
 				ParentCharacter.SendCommand(CharacterCommands.Crouch);
@@ -111,14 +116,24 @@ public class ActionFollow: GoapAction
 			}
 			ParentCharacter.SendCommand(CharacterCommands.GoToPosition);
 		}
-		else 
+		else if(dist > _distThresholdFar)
+		{
+			ParentCharacter.CurrentStance = HumanStances.Run;
+			ParentCharacter.SendCommand(CharacterCommands.GoToPosition);
+		}
+		else
 		{
 			if(ParentCharacter.MyAI.BlackBoard.FollowTarget.GetCharacterVelocity().magnitude <= 0)
 			{
 				ParentCharacter.SendCommand(CharacterCommands.Idle);
-				_distThreshold = UnityEngine.Random.Range(300, 500)/100f;
+				//_distThreshold = UnityEngine.Random.Range(2f, 3f);
 			}
+
+			ParentCharacter.CurrentStance = HumanStances.Walk;
 		}
+
+		Transform followTarget = ParentCharacter.MyAI.BlackBoard.FollowTarget.transform;
+		_followTargetPadding = followTarget.forward * UnityEngine.Random.Range(1f, 3f) + followTarget.right * UnityEngine.Random.Range(-2, 2);
 
 		if(ParentCharacter.MyAI.BlackBoard.FollowTarget.MyReference.CurrentWeapon != null && ParentCharacter.MyReference.CurrentWeapon == null)
 		{
@@ -144,7 +159,8 @@ public class ActionFollow: GoapAction
 		float dist = Vector3.Distance(ParentCharacter.transform.position, ParentCharacter.MyAI.BlackBoard.FollowTarget.transform.position);
 		if(dist > _distThreshold)
 		{
-			ParentCharacter.Destination = ParentCharacter.MyAI.BlackBoard.FollowTarget.transform.position;
+			Transform followTarget = ParentCharacter.MyAI.BlackBoard.FollowTarget.transform;
+			ParentCharacter.Destination = followTarget.position + _followTargetPadding;
 			ParentCharacter.MyAI.BlackBoard.NavTarget = ParentCharacter.Destination.Value;
 		}
 		else if( dist < _distThreshold / 2 && ParentCharacter.GetCharacterVelocity().magnitude > 0)

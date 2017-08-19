@@ -18,16 +18,129 @@ public class Household : MonoBehaviour
 
 	public AISquad CurrentSquad;
 
-	public void UpdateHouseHold()
+
+	private List<AISquad> _explorerSquads;
+	private bool _isRefilledToday;
+	private int _expeditionTime1;
+	private int _expeditionTime2;
+
+
+	public void UpdateHouseHoldPerSecond()
 	{
-		
+		if(CurrentSquad == null || GameManager.Inst.NPCManager.GetFactionData(CurrentSquad.Faction).CharacterType != CharacterType.Human)
+		{
+			//don't update household for mutants
+			return;
+		}
+
+		//check if any explorer squad is dead then delete it and send another one
+		//if destination is base and reached dest and there is no more members in the bases's current squad, take the base over
+
+		List<AISquad> explorerSquadCopy = new List<AISquad>(_explorerSquads);
+		foreach(AISquad squad in explorerSquadCopy)
+		{
+			if(squad.Members.Count <= 0)
+			{
+				_explorerSquads.Remove(squad);
+				GameManager.Inst.NPCManager.DeleteSquad(squad.ID);
+				continue;
+			}
+
+
+
+
+
+
+		}
+
+		//refill
+		int totalMembers = GetAllMembersCount();
+		if(!_isRefilledToday && totalMembers < MaxOccupants && Vector3.Distance(GameManager.Inst.PlayerControl.SelectedPC.transform.position, transform.position) > 70)
+		{
+			RefillHouseHoldSquadMembers();
+			_isRefilledToday = true;
+		}
+
+		//send expedition
+		float memberRatio = totalMembers * 1.0f / (MaxOccupants * 1f);
+		if(GameManager.Inst.WorldManager.CurrentTime >= _expeditionTime1 && _explorerSquads.Count < 2)
+		{
+			if(memberRatio > 0.5f)
+			{
+				
+				//got enough people, will send
+				int maxParticipants = Mathf.FloorToInt(totalMembers * 0.25f);
+				if(maxParticipants < 2)
+				{
+					maxParticipants = 2;
+				}
+				int participants = UnityEngine.Random.Range(2, maxParticipants);
+				SendHumanExplorer(GameManager.Inst.NPCManager.GetRandomHuntNavNode(), participants);
+			}
+		}
+
+		if(GameManager.Inst.WorldManager.CurrentTime >= _expeditionTime2 && _explorerSquads.Count < 2)
+		{
+			if(memberRatio > 0.5f)
+			{
+				//got enough people, will send
+				int maxParticipants = Mathf.FloorToInt(totalMembers * 0.3f);
+				if(maxParticipants < 2)
+				{
+					maxParticipants = 2;
+				}
+				int participants = UnityEngine.Random.Range(2, maxParticipants);
+				SendHumanExplorer(GameManager.Inst.NPCManager.GetRandomBaseNavNode(), participants);
+			}
+		}
+
 	}
+
+
 
 	public void Initialize()
 	{
+		_explorerSquads = new List<AISquad>();
 		
 		RefillHouseHoldSquadMembers();
 		AssignSquadJobs();
+		TimerEventHandler.OnOneDayTimer -= OnOneDayTimer;
+		TimerEventHandler.OnOneDayTimer += OnOneDayTimer;
+	}
+
+	public int GetAllMembersCount()
+	{
+		int count = 0;
+		if(CurrentSquad != null)
+		{
+			count += CurrentSquad.Members.Count;
+		}
+		foreach(AISquad squad in _explorerSquads)
+		{
+			count += squad.Members.Count;
+		}
+
+		return count;
+	}
+
+	public void OnOneDayTimer()
+	{
+		if(CurrentSquad == null || CurrentSquad.Members.Count <= 0)
+		{
+			return;
+		}
+		//schedule the expeditions for the day
+		_expeditionTime1 = 100;//UnityEngine.Random.Range(1, 1440);
+		_expeditionTime2 = 200;//UnityEngine.Random.Range(1, 1440);
+		_isRefilledToday = false;
+	}
+
+	public void RemoveExplorerSquad(AISquad squad)
+	{
+		if(_explorerSquads.Contains(squad))
+		{
+			_explorerSquads.Remove(squad);
+		}
 	}
 
 	private void RefillHouseHoldSquadMembers()
@@ -62,7 +175,8 @@ public class Household : MonoBehaviour
 		}
 		else
 		{
-			if(CurrentSquad.Members.Count < MaxOccupants)
+			int currentMembersCount = GetAllMembersCount();
+			if(currentMembersCount < MaxOccupants)
 			{
 				//first create a commander if there isn't one
 				if(!CurrentSquad.IsThereCommander() && CommanderIdleDest != null)
@@ -73,7 +187,7 @@ public class Household : MonoBehaviour
 					CurrentSquad.AddMember(commander);
 					CurrentSquad.Commander = commander;
 				}
-				int numberToSpawn = MaxOccupants - CurrentSquad.Members.Count;
+				int numberToSpawn = MaxOccupants - currentMembersCount;
 				for(int i = 0; i < numberToSpawn; i++)
 				{
 					Vector3 spawnLoc = FindSpawnLocation();
@@ -89,13 +203,13 @@ public class Household : MonoBehaviour
 
 
 
-	private void AssignSquadJobs()
+	public void AssignSquadJobs()
 	{
-		if(CurrentSquad == null || MaxOccupants <= 0)
+		if(CurrentSquad == null || MaxOccupants <= 0 || CurrentSquad.Members.Count <= 0)
 		{
 			return;
 		}
-
+		Debug.Log("Starting Assign Squad Job");
 		if(GameManager.Inst.NPCManager.GetFactionData(CurrentSquad.Faction).CharacterType != CharacterType.Human)
 		{
 			foreach(Character mutant in CurrentSquad.Members)
@@ -116,6 +230,9 @@ public class Household : MonoBehaviour
 				member.MyAI.BlackBoard.PatrolRange = PatrolRange;
 				member.MyAI.BlackBoard.CombatRange = CombatRange;
 				member.MyAI.BlackBoard.HasPatrolInfo = true;
+				member.MyJobs.Clear();
+				member.MyJobs.Add(NPCJobs.None);
+				member.MyAI.SetDynamicyGoal(GameManager.Inst.NPCManager.DynamicGoalChill, 5);
 			}
 
 			if(GuardLocs.Count > 0)
@@ -184,30 +301,81 @@ public class Household : MonoBehaviour
 		}
 	}
 
-	private void SendHumanExplorer()
+
+
+	private void SendHumanExplorer(NavNode destNavNode, int squadSize)
 	{
+		
+		NavNode currentNode = GameManager.Inst.NPCManager.GetNavNodeByHousehold(this);
+		if(currentNode == null || destNavNode == null)
+		{
+			Debug.LogError("No current node or no destNavNode");
+			return;
+		}
+
+		NavNode nextNavNode = AI.FindNextNavNode(currentNode, destNavNode);
+		Debug.Log("GOTO setting new destinatoin " + nextNavNode.name + " currentNode " + currentNode.name);
+		if(nextNavNode == null || destNavNode == nextNavNode)
+		{
+			Debug.LogError("can't find next nav node");
+			return;
+		}
+
 		//create a squad
 		AISquad squad = GameManager.Inst.NPCManager.SpawnHumanExplorerSquad(CurrentSquad.Faction);
+		squad.NextNavNode = nextNavNode;
+		squad.DestNavNode = destNavNode;
+
+		_explorerSquads.Add(squad);
 
 		//decide a max participant number
-		int participants = UnityEngine.Random.Range(2, 5);
+		int participants = squadSize;
 
 		//loop through all members and pick ones who don't have job
 		foreach(Character c in CurrentSquad.Members)
 		{
-			if(c.MyJobs.Contains(NPCJobs.None))
+			if(participants <= 0)
+			{
+				break;
+			}
+
+			if(c.MyJobs.Contains(NPCJobs.None) && !c.IsEssential)
 			{
 				squad.Members.Add(c);
+				participants --;
 				c.MyJobs.Clear();
 				c.MyJobs.Add(NPCJobs.Explore);
+				c.MyAI.Squad = squad;
 				if(squad.Commander == null)
 				{
-					c.IsCommander = true;
-					squad.Commander = c;
+					Debug.Log("Assigned commander to " + c.name);
+					//assign commander job
+					squad.AssignExpCommanderRole(c, squad);
+				}
+				else
+				{
+					Debug.Log("Assigned follower to " + c.name);
+					squad.AssignExpFollowerRole(c, squad);
 				}
 			}
 		}
+
+		Debug.LogError("Sending expedition - squad " + squad.ID + " to " + destNavNode.name + " commander " + squad.Commander.name);
+
+		//remove squad member from current squad
+		foreach(Character c in squad.Members)
+		{
+			if(CurrentSquad.Members.Contains(c))
+			{
+				CurrentSquad.RemoveMember(c);
+			}
+
+			c.MyAI.Squad = squad;
+			c.SquadID = squad.ID;
+		}
 	}
+
+
 
 	private string GetRandomCharacterModelID(Faction faction)
 	{

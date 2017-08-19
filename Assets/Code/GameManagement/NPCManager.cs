@@ -8,6 +8,12 @@ public class NPCManager
 	public GoapGoal DynamicGoalGuard;
 	public GoapGoal DynamicGoalFollow;
 	public GoapGoal DynamicGoalPatrol;
+	public GoapGoal DynamicGoalExplore;
+	public GoapGoal DynamicGoalChill;
+
+	public List<NavNode> _allNavNodes;
+	public List<NavNode> _navNodeBases;
+	public List<NavNode> _navNodeMutants;
 
 	private float _spawnTimer;
 
@@ -44,6 +50,7 @@ public class NPCManager
 	private Dictionary<string, AISquad> _allSquads;
 	private int _characterIndex;
 	private int _houseHoldIndex;
+	private int _squadIndex;
 
 	public void Initialize()
 	{
@@ -53,6 +60,9 @@ public class NPCManager
 		_allFactions = new Dictionary<Faction, FactionData>();
 		_deadBodies = new Dictionary<Character, int>();
 		_fadeTimers = new Dictionary<Character, float>();
+		_allNavNodes = new List<NavNode>();
+		_navNodeBases = new List<NavNode>();
+		_navNodeMutants = new List<NavNode>();
 
 		DynamicGoalGuard = GameManager.Inst.DBManager.DBHandlerAI.GetGoalByID(6);
 		DynamicGoalGuard.Priority = 5;
@@ -60,7 +70,26 @@ public class NPCManager
 		DynamicGoalFollow.Priority = 5;
 		DynamicGoalPatrol = GameManager.Inst.DBManager.DBHandlerAI.GetGoalByID(2);
 		DynamicGoalPatrol.Priority = 5;
-		//DynamicGoalGoTo = 
+		DynamicGoalExplore = GameManager.Inst.DBManager.DBHandlerAI.GetGoalByID(12);
+		DynamicGoalExplore.Priority = 5;
+		DynamicGoalChill = GameManager.Inst.DBManager.DBHandlerAI.GetGoalByID(10);
+		DynamicGoalChill.Priority = 5;
+
+		GameObject [] navNodes = GameObject.FindGameObjectsWithTag("NavNode");
+		foreach(GameObject o in navNodes)
+		{
+			NavNode node = o.GetComponent<NavNode>();
+			_allNavNodes.Add(node);
+			if(node.Type == NavNodeType.Base)
+			{
+				_navNodeBases.Add(node);
+			}
+			else if(node.Type == NavNodeType.MutantHunt)
+			{
+				_navNodeMutants.Add(node);
+			}
+		}
+
 
 
 		_allFactions = GameManager.Inst.DBManager.DBHandlerCharacter.LoadFactionData();
@@ -199,12 +228,22 @@ public class NPCManager
 		if(_houseHoldIndex < _allHouseHolds.Count)
 		{
 			string key = _allHouseHolds.Keys.ElementAt(_houseHoldIndex);
-			_allHouseHolds[key].UpdateHouseHold();
+			_allHouseHolds[key].UpdateHouseHoldPerSecond();
 			_houseHoldIndex ++;
 		}
 		else
 		{
 			_houseHoldIndex = 0;
+		}
+
+
+
+		string keySquad = _allSquads.Keys.ElementAt(_squadIndex);
+		_allSquads[keySquad].UpdateSquadPerSecond();
+		_squadIndex ++;
+		if(_squadIndex >= _allSquads.Count)
+		{
+			_squadIndex = 0;
 		}
 
 	}
@@ -317,6 +356,65 @@ public class NPCManager
 		return enemies;
 	}
 
+	public NavNode GetNavNodeByName(string name)
+	{
+		foreach(NavNode node in _allNavNodes)
+		{	
+			if(name == node.name)
+			{
+				return node;
+
+			}
+		}
+
+		return null;
+	}
+
+	public NavNode GetRandomBaseNavNode()
+	{
+		List<NavNode> candidates = new List<NavNode>();
+		foreach(NavNode node in _navNodeBases)
+		{
+			if(node.IsOpenToExpedition)
+			{
+				candidates.Add(node);
+			}
+		}
+
+		if(candidates.Count > 0)
+		{
+			int rand = UnityEngine.Random.Range(0, candidates.Count);
+			return candidates[rand];
+		}
+		else
+		{
+			return null;
+		}
+	}
+
+	public NavNode GetRandomHuntNavNode()
+	{
+		List<NavNode> candidates = new List<NavNode>();
+		foreach(NavNode node in _navNodeMutants)
+		{
+			if(node.IsOpenToExpedition)
+			{
+				candidates.Add(node);
+			}
+		}
+
+		if(candidates.Count > 0)
+		{
+			int rand = UnityEngine.Random.Range(0, candidates.Count);
+			return candidates[rand];
+		}
+		else
+		{
+			return null;
+		}
+	}
+
+
 	public HumanCharacter SpawnRandomHumanCharacter(string name, AISquad squad, Vector3 loc)
 	{
 		HumanCharacter character = GameObject.Instantiate(Resources.Load("HumanCharacter") as GameObject).GetComponent<HumanCharacter>();
@@ -418,6 +516,32 @@ public class NPCManager
 		_allSquads.Add(squad.ID, squad);
 
 		return squad;
+	}
+
+	public void DeleteSquad(string squadID)
+	{
+		if(_allSquads.ContainsKey(squadID))
+		{
+			_allSquads.Remove(squadID);
+		}
+	}
+
+	public List<NavNode> GetAllNavNodes()
+	{
+		return _allNavNodes;
+	}
+
+	public NavNode GetNavNodeByHousehold(Household h)
+	{
+		foreach(NavNode node in _allNavNodes)
+		{
+			if(node.Type == NavNodeType.Base && node.Household == h)
+			{
+				return node;
+			}
+		}
+
+		return null;
 	}
 
 	public FactionData GetFactionData(Faction id)
