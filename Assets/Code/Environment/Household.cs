@@ -21,6 +21,8 @@ public class Household : MonoBehaviour
 
 	private List<AISquad> _explorerSquads;
 	private bool _isRefilledToday;
+	private bool _expedition1SentToday;
+	private bool _expedition2SentToday;
 	private int _expeditionTime1;
 	private int _expeditionTime2;
 
@@ -62,35 +64,41 @@ public class Household : MonoBehaviour
 		}
 
 		//send expedition
-		float memberRatio = totalMembers * 1.0f / (MaxOccupants * 1f);
-		if(GameManager.Inst.WorldManager.CurrentTime >= _expeditionTime1 && _explorerSquads.Count < 2)
+		//only send expedition of max member >= 10
+		if(MaxOccupants >= 10)
 		{
-			if(memberRatio > 0.5f)
+			float memberRatio = totalMembers * 1.0f / (MaxOccupants * 1f);
+			if(GameManager.Inst.WorldManager.CurrentTime >= _expeditionTime1 && _explorerSquads.Count < 2 && !_expedition1SentToday)
 			{
-				
-				//got enough people, will send
-				int maxParticipants = Mathf.FloorToInt(totalMembers * 0.25f);
-				if(maxParticipants < 2)
+				if(memberRatio > 0.5f)
 				{
-					maxParticipants = 2;
+					
+					//got enough people, will send
+					int maxParticipants = Mathf.FloorToInt(totalMembers * 0.25f);
+					if(maxParticipants < 2)
+					{
+						maxParticipants = 2;
+					}
+					int participants = UnityEngine.Random.Range(2, maxParticipants);
+					SendHumanExplorer(GameManager.Inst.NPCManager.GetRandomHuntNavNode(), participants);
+					_expedition1SentToday = true;
 				}
-				int participants = UnityEngine.Random.Range(2, maxParticipants);
-				SendHumanExplorer(GameManager.Inst.NPCManager.GetRandomHuntNavNode(), participants);
 			}
-		}
 
-		if(GameManager.Inst.WorldManager.CurrentTime >= _expeditionTime2 && _explorerSquads.Count < 2)
-		{
-			if(memberRatio > 0.5f)
+			if(GameManager.Inst.WorldManager.CurrentTime >= _expeditionTime2 && _explorerSquads.Count < 2 && !_expedition2SentToday)
 			{
-				//got enough people, will send
-				int maxParticipants = Mathf.FloorToInt(totalMembers * 0.3f);
-				if(maxParticipants < 2)
+				if(memberRatio > 0.5f)
 				{
-					maxParticipants = 2;
+					//got enough people, will send
+					int maxParticipants = Mathf.FloorToInt(totalMembers * 0.3f);
+					if(maxParticipants < 2)
+					{
+						maxParticipants = 2;
+					}
+					int participants = UnityEngine.Random.Range(2, maxParticipants);
+					SendHumanExplorer(GameManager.Inst.NPCManager.GetRandomBaseNavNode(CurrentSquad.Faction), participants);
+					_expedition2SentToday = true;
 				}
-				int participants = UnityEngine.Random.Range(2, maxParticipants);
-				SendHumanExplorer(GameManager.Inst.NPCManager.GetRandomBaseNavNode(), participants);
 			}
 		}
 
@@ -133,6 +141,8 @@ public class Household : MonoBehaviour
 		_expeditionTime1 = 100;//UnityEngine.Random.Range(1, 1440);
 		_expeditionTime2 = 200;//UnityEngine.Random.Range(1, 1440);
 		_isRefilledToday = false;
+		_expedition1SentToday = false;
+		_expedition2SentToday = false;
 	}
 
 	public void RemoveExplorerSquad(AISquad squad)
@@ -314,15 +324,17 @@ public class Household : MonoBehaviour
 		}
 
 		NavNode nextNavNode = AI.FindNextNavNode(currentNode, destNavNode);
-		Debug.Log("GOTO setting new destinatoin " + nextNavNode.name + " currentNode " + currentNode.name);
-		if(nextNavNode == null || destNavNode == nextNavNode)
+
+		if(nextNavNode == null)
 		{
 			Debug.LogError("can't find next nav node");
 			return;
 		}
 
+		Debug.Log("GOTO setting new destinatoin " + nextNavNode.name + " currentNode " + currentNode.name);
+
 		//create a squad
-		AISquad squad = GameManager.Inst.NPCManager.SpawnHumanExplorerSquad(CurrentSquad.Faction);
+		AISquad squad = GameManager.Inst.NPCManager.SpawnHumanExplorerSquad(CurrentSquad.Faction, this);
 		squad.NextNavNode = nextNavNode;
 		squad.DestNavNode = destNavNode;
 

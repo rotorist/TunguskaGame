@@ -997,15 +997,15 @@ public class AI : MonoBehaviour
 			}
 		}
 
-		/*
+
 		currentResultNode = result.First;
-		while(currentResultNode.Next != null)
+		while(currentResultNode != null)
 		{
 			Debug.Log("pathfinding result " + currentResultNode.Value.name);
 			currentResultNode = currentResultNode.Next;
 		}
-		*/
 
+		Debug.Log("Going to return pathfinding result " + result.Last.Previous.Value);
 		return result.Last.Previous.Value;
 	}
 

@@ -363,20 +363,20 @@ public class NPCManager
 			if(name == node.name)
 			{
 				return node;
-
 			}
 		}
-
+		Debug.Log("Found no nav node for " + name);
 		return null;
 	}
 
-	public NavNode GetRandomBaseNavNode()
+	public NavNode GetRandomBaseNavNode(Faction myFaction)
 	{
 		List<NavNode> candidates = new List<NavNode>();
 		foreach(NavNode node in _navNodeBases)
 		{
 			if(node.IsOpenToExpedition)
 			{
+				if(node.Household.CurrentSquad == null || node.Household.CurrentSquad.Faction != myFaction)
 				candidates.Add(node);
 			}
 		}
@@ -506,13 +506,13 @@ public class NPCManager
 		return character;
 	}
 
-	public AISquad SpawnHumanExplorerSquad(Faction faction)
+	public AISquad SpawnHumanExplorerSquad(Faction faction, Household household)
 	{
 		AISquad squad = new AISquad();
 		squad.ID = faction.ToString() + _randomSquadIndex.ToString();
 		_randomSquadIndex ++;
 		squad.Faction = faction;
-		squad.Household = null;
+		squad.Household = household;
 		_allSquads.Add(squad.ID, squad);
 
 		return squad;

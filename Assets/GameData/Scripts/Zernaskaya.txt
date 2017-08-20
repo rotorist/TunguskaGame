@@ -23,7 +23,7 @@ condition/zsk_barn_cleared/activate
 topic/discover/zsk_farm_clear
 journal/{2}
 expedition/NavNodeGasStationWoods/enable
-expedition/VillageWoods/enable
+expedition/NavNodeVillageWoods/enable
 
 ./zsk_barn_clear_done
 if/param/0/is/zsk_barn_legionnaires
