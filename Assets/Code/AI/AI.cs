@@ -923,6 +923,7 @@ public class AI : MonoBehaviour
 	{
 		if(start == null || destination == null || start == destination)
 		{
+			Debug.Log("start is null " + (start == null) + " dest is null " + (destination == null) + " start=dest " + (start == destination));
 			return null;
 		}
 

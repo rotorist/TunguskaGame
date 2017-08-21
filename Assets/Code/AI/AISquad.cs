@@ -65,6 +65,10 @@ public class AISquad
 				if(DestNavNode.Type == NavNodeType.MutantHunt)
 				{
 					//done, go back to household if it exists
+					Debug.Log(ID + " has reached dest for mutanthunt, " + DestNavNode.name);
+					DestNavNode = GameManager.Inst.NPCManager.GetNavNodeByHousehold(Household);
+					NextNavNode = AI.FindNextNavNode(NextNavNode, DestNavNode);
+					AssignExpCommanderRole(Commander, this);
 
 				}
 				else if(DestNavNode.Type == NavNodeType.Base)
@@ -72,6 +76,7 @@ public class AISquad
 					if(DestNavNode.Household == Household && DestNavNode.Household.CurrentSquad != null && DestNavNode.Household.CurrentSquad.Faction == Faction)
 					{
 						//merge the squad into current squad (gone home)
+						MergeSquad(this, DestNavNode.Household.CurrentSquad);
 					}
 					else
 					{
@@ -103,6 +108,9 @@ public class AISquad
 					}
 				}
 			}
+
+			//if commander is far away from player then do non-AI update
+
 		}
 	}
 
@@ -167,6 +175,22 @@ public class AISquad
 		c.MyAI.BlackBoard.DefenseRadius = 10;
 
 		c.MyAI.SetDynamicyGoal(GameManager.Inst.NPCManager.DynamicGoalFollow, 5);
+	}
+
+	public void MergeSquad(AISquad source, AISquad target)
+	{
+		foreach(Character member in source.Members)
+		{
+			member.MyJobs.Clear();
+			member.MyJobs.Add(NPCJobs.None);
+			member.IsCommander = false;
+			member.MyAI.SetDynamicyGoal(GameManager.Inst.NPCManager.DynamicGoalChill, 5);
+			target.Members.Add(member);
+			member.MyAI.Squad = target;
+			member.SquadID = target.ID;
+		}
+
+		GameManager.Inst.NPCManager.DeleteSquad(ID);
 	}
 
 	public void IssueSquadCommand()
@@ -400,4 +424,13 @@ public class AISquad
 			member.MyAI.WorkingMemory.AddFact(fact);
 		}
 	}
+
+
+
+	private void NonAIUpdate()
+	{
+		//if far away from next nav node then move everyone a little closer to next nav node
+
+	}
+
 }

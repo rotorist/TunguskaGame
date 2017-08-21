@@ -239,7 +239,10 @@ public class NPCManager
 
 
 		string keySquad = _allSquads.Keys.ElementAt(_squadIndex);
-		_allSquads[keySquad].UpdateSquadPerSecond();
+		if(_allSquads.ContainsKey(keySquad))
+		{
+			_allSquads[keySquad].UpdateSquadPerSecond();
+		}
 		_squadIndex ++;
 		if(_squadIndex >= _allSquads.Count)
 		{
@@ -658,10 +661,20 @@ public class NPCManager
 			return;
 		}
 
-		if(_characterIndex < _allCharacters.Count && _allCharacters[_characterIndex] != null)
+		if(_characterIndex < _allCharacters.Count && _allCharacters[_characterIndex] != null && _allCharacters[_characterIndex].MyAI.ControlType != AIControlType.Player)
 		{
 			RaycastHit buildingHit;
 			bool isVisible = true;
+
+			Vector3 playerLineOfSight = GameManager.Inst.PlayerControl.SelectedPC.LookTarget.transform.position - GameManager.Inst.PlayerControl.SelectedPC.transform.position;
+			playerLineOfSight = new Vector3(playerLineOfSight.x, 0, playerLineOfSight.z);
+			float playerAngle = Vector3.Angle(playerLineOfSight, _allCharacters[_characterIndex].transform.position - GameManager.Inst.PlayerControl.SelectedPC.transform.position);
+			if(playerAngle > 60)
+			{
+				//isVisible = false;
+			}
+
+
 			if(Physics.Raycast(_allCharacters[_characterIndex].transform.position, Vector3.down, out buildingHit, 200, (1 << 9 | 1 << 8 | 1 << 10)))
 			{
 				BuildingComponent component = buildingHit.collider.GetComponent<BuildingComponent>();

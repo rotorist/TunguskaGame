@@ -13,6 +13,8 @@ public class PlayerControl
 	public PlayerTimedAction TimedAction;
 	public FloorType CurrentFloorType;
 	public AimedObjectType AimedObjectType;
+	public Projector ViewConeProjector;
+	public GameObject ViewConeHolder;
 
 	public bool IsHoldToAim;
 
@@ -52,6 +54,9 @@ public class PlayerControl
 
 	public void Initialize()
 	{
+		ViewConeProjector = GameObject.Find("ViewConeProjector").GetComponent<Projector>();
+		ViewConeHolder = GameObject.Find("ViewConeHolder");
+
 		Party = new PlayerParty(this);
 		Party.Initialize();
 
@@ -367,6 +372,11 @@ public class PlayerControl
 			}
 		}
 
+		//update view cone
+		ViewConeHolder.transform.position = new Vector3(SelectedPC.transform.position.x, SelectedPC.transform.position.y + 40, SelectedPC.transform.position.z);
+		Vector3 lookDir = SelectedPC.LookTarget.position - SelectedPC.transform.position;
+		lookDir = new Vector3(lookDir.x, 0, lookDir.z);
+		ViewConeHolder.transform.rotation = Quaternion.LookRotation(lookDir);
 
 		Party.PerFrameUpdate();
 		Survival.PerFrameUpdate();

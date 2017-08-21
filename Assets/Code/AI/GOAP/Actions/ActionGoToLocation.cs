@@ -100,10 +100,10 @@ public class ActionGoToLocation: GoapAction
 			{
 				if(AI.IsPositionInArea(ParentCharacter.transform.position, nextNode.transform.position, ParentCharacter.MyAI.BlackBoard.PatrolRange))
 				{
-					ParentCharacter.MyAI.Squad.NextNavNode = AI.FindNextNavNode(nextNode, ParentCharacter.MyAI.Squad.DestNavNode);
-					if(ParentCharacter.MyAI.Squad.NextNavNode != null)
+					NavNode next = AI.FindNextNavNode(nextNode, ParentCharacter.MyAI.Squad.DestNavNode);
+					if(next != null)
 					{
-						
+						ParentCharacter.MyAI.Squad.NextNavNode = next;
 						ParentCharacter.MyAI.BlackBoard.PatrolLoc = ParentCharacter.MyAI.Squad.NextNavNode.transform.position;
 					}
 				}
