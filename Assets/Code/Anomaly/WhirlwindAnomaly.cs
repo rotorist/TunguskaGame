@@ -90,7 +90,7 @@ public class WhirlwindAnomaly : MonoBehaviour
 		{
 			Damage damage = new Damage();
 			damage.Type = DamageType.Explosive;
-			damage.BlastDamage = 30;
+			damage.BlastDamage = 10;
 			damage.IsCritical = true;
 			character.SendDamage(damage, (transform.position - other.transform.position).normalized, null, null);
 
@@ -113,7 +113,7 @@ public class WhirlwindAnomaly : MonoBehaviour
 
 	void OnTriggerExit(Collider other)
 	{
-		if(other.gameObject == _target.gameObject)
+		if(_target != null && other.gameObject == _target.gameObject)
 		{
 			_target = null;
 		}

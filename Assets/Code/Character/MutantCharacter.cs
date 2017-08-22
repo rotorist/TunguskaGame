@@ -100,6 +100,8 @@ public class MutantCharacter : Character
 		{
 			CurrentAction = "NONE";
 		}
+
+		UpdateFading();
 	}
 
 	public override void Initialize()
@@ -883,5 +885,48 @@ public class MutantCharacter : Character
 		float controlValue = destBodyAngle;
 		this.MyAnimator.SetFloat("DestBodyAngle", controlValue);
 		//Debug.Log(destBodyAngle.ToString() + " " + controlValue);
+	}
+
+	private void UpdateFading()
+	{
+		float playerDist = Vector3.Distance(transform.position, GameManager.Inst.PlayerControl.SelectedPC.transform.position);
+		if(playerDist < GameManager.Inst.AIUpdateRadius && MyAI.ControlType != AIControlType.Player)
+		{
+			Vector3 playerLineOfSight = GameManager.Inst.PlayerControl.SelectedPC.LookTarget.transform.position - GameManager.Inst.PlayerControl.SelectedPC.transform.position;
+			playerLineOfSight = new Vector3(playerLineOfSight.x, 0, playerLineOfSight.z);
+			float playerAngle = Vector3.Angle(playerLineOfSight, transform.position - GameManager.Inst.PlayerControl.SelectedPC.transform.position);
+			if(playerAngle > 80 && playerDist > 1.5f)
+			{
+				IsOutOfSight = true;
+			}
+			else
+			{
+				IsOutOfSight = false;
+			}
+
+			if(!IsHidden && (IsInHiddenBuilding || IsOutOfSight))
+			{
+				//start fading
+				Renderer [] childRenderers = GetComponentsInChildren<Renderer>();
+				foreach(Renderer r in childRenderers)
+				{
+					r.enabled = false;
+				}
+
+				IsHidden = true;
+			}
+			else if(IsHidden && !IsInHiddenBuilding && !IsOutOfSight)
+			{
+				//start unfading
+				Renderer [] childRenderers = GetComponentsInChildren<Renderer>();
+				foreach(Renderer r in childRenderers)
+				{
+					r.enabled = true;
+
+				}
+
+				IsHidden = false;
+			}
+		}
 	}
 }

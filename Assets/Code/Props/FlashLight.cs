@@ -10,18 +10,25 @@ public class FlashLight : MonoBehaviour
 
 	public void Toggle(bool isOn)
 	{
-		LightCone.enabled = isOn;
+		//LightCone.enabled = false;
 		Light.enabled = isOn;
 		IsOn = isOn;
-
+		if(LightCone != null)
+		{
+			GameObject.Destroy(LightCone.gameObject);
+		}
 	}
 
 	public void TogglePlayerLight(bool isOn)
 	{
-		LightCone.enabled = isOn;
+		//LightCone.enabled = false;
 		Light.enabled = isOn;
 		SecondaryLight.enabled = isOn;
 		IsOn = isOn;
+		if(LightCone != null)
+		{
+			GameObject.Destroy(LightCone.gameObject);
+		}
 	}
 
 }

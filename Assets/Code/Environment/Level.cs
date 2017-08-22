@@ -10,6 +10,7 @@ public class Level
 	public List<ChestData> ChestDatas;
 	public List<TraderData> Traders;//string is Character.CharacterID
 
+	public List<CharacterSaveData> Characters;
 
 
 }

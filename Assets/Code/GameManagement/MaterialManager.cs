@@ -111,7 +111,7 @@ public class MaterialManager
 		//Debug.Log("altered renderes count " + _alteredRenderers.Count + ", fading count " + _fadingMaterials.Count + " unfading count " + _unfadingMaterials.Count);
 	}
 
-	public void StartFadingMaterial(Renderer renderer, bool isInstant)
+	public void StartFadingMaterial(Renderer renderer, bool isInstant, bool isBuilding)
 	{
 		if(!_alteredRenderers.Contains(renderer))
 		{
@@ -126,9 +126,13 @@ public class MaterialManager
 			dupe.transform.position = renderer.gameObject.transform.position;
 			dupe.transform.localScale = renderer.transform.localScale;
 			_dupeObjects.Add(renderer, dupe);
-			dupe.GetComponent<Collider>().enabled = false;
-			dupe.GetComponent<BuildingComponent>().enabled = false;
-			dupe.GetComponent<Renderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.ShadowsOnly;
+			if(isBuilding)
+			{
+				dupe.GetComponent<Collider>().enabled = false;
+				dupe.GetComponent<BuildingComponent>().enabled = false;
+				dupe.GetComponent<Renderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.ShadowsOnly;
+			}
+
 		}
 
 		bool needToChangeRender = true;
@@ -186,7 +190,7 @@ public class MaterialManager
 
 	}
 
-	public void StartUnfadingMaterial(Renderer renderer, bool isInstant)
+	public void StartUnfadingMaterial(Renderer renderer, bool isInstant, bool isBuilding)
 	{
 		if(!_alteredRenderers.Contains(renderer))
 		{

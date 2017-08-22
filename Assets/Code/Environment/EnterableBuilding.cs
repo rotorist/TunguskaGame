@@ -146,7 +146,7 @@ public class EnterableBuilding : MonoBehaviour
 			//renderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.ShadowsOnly;
 			component.gameObject.layer = LayerMask.NameToLayer("IgnorePlayerRaycast");
 			component.IsHidden = true;
-			GameManager.Inst.MaterialManager.StartFadingMaterial(renderer, isInstant);
+			GameManager.Inst.MaterialManager.StartFadingMaterial(renderer, isInstant, true);
 		}
 
 		Transform [] objects1 = component.transform.GetComponentsInChildren<Transform>();
@@ -188,7 +188,7 @@ public class EnterableBuilding : MonoBehaviour
 			//renderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
 			component.gameObject.layer = LayerMask.NameToLayer("BuildingComponent");
 
-			GameManager.Inst.MaterialManager.StartUnfadingMaterial(renderer, isInstant);
+			GameManager.Inst.MaterialManager.StartUnfadingMaterial(renderer, isInstant, true);
 		}
 
 		Transform [] objects1 = component.transform.GetComponentsInChildren<Transform>();

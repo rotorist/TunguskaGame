@@ -666,13 +666,7 @@ public class NPCManager
 			RaycastHit buildingHit;
 			bool isVisible = true;
 
-			Vector3 playerLineOfSight = GameManager.Inst.PlayerControl.SelectedPC.LookTarget.transform.position - GameManager.Inst.PlayerControl.SelectedPC.transform.position;
-			playerLineOfSight = new Vector3(playerLineOfSight.x, 0, playerLineOfSight.z);
-			float playerAngle = Vector3.Angle(playerLineOfSight, _allCharacters[_characterIndex].transform.position - GameManager.Inst.PlayerControl.SelectedPC.transform.position);
-			if(playerAngle > 60)
-			{
-				//isVisible = false;
-			}
+
 
 
 			if(Physics.Raycast(_allCharacters[_characterIndex].transform.position, Vector3.down, out buildingHit, 200, (1 << 9 | 1 << 8 | 1 << 10)))
@@ -685,6 +679,11 @@ public class NPCManager
 					{
 						//hide NPC as well
 						isVisible = false;
+						_allCharacters[_characterIndex].IsInHiddenBuilding = true;
+					}
+					else
+					{
+						_allCharacters[_characterIndex].IsInHiddenBuilding = false;
 					}
 
 				}
@@ -742,7 +741,7 @@ public class NPCManager
 			}
 			*/
 
-
+			/*
 			if(isVisible && _allCharacters[_characterIndex].IsHidden)
 			{
 				//unfade character
@@ -754,7 +753,7 @@ public class NPCManager
 				Debug.Log("Hiding character " + _allCharacters[_characterIndex].name);
 				HideCharacter(_allCharacters[_characterIndex]);
 			}
-
+			*/
 
 		}
 

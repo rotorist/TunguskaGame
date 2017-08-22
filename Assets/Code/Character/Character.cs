@@ -58,6 +58,8 @@ public abstract class Character : MonoBehaviour
 	public AudioSource CharacterAudio;
 
 	public bool IsHidden;
+	public bool IsInHiddenBuilding;
+	public bool IsOutOfSight;
 
 	public delegate void DelayCallBack(object parameter);
 
