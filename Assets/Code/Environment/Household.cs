@@ -18,6 +18,11 @@ public class Household : MonoBehaviour
 
 	public AISquad CurrentSquad;
 
+	public bool IsRefilledToday { get { return _isRefilledToday; } }
+	public bool Expedition1SentToday { get { return _expedition1SentToday; } }
+	public bool Expedition2SentToday { get { return _expedition2SentToday; } }
+	public int ExpeditionTime1 { get { return _expeditionTime1; } }
+	public int ExpeditionTime2 { get { return _expeditionTime2; } }
 
 	private List<AISquad> _explorerSquads;
 	private bool _isRefilledToday;
@@ -125,6 +130,11 @@ public class Household : MonoBehaviour
 		}
 
 		return count;
+	}
+
+	public List<AISquad> GetExplorerSquads()
+	{
+		return _explorerSquads;
 	}
 
 	public void OnOneDayTimer()

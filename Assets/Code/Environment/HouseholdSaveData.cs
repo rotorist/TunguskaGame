@@ -7,7 +7,6 @@ public class HouseholdSaveData
 {
 	public string HouseholdName;
 	public string CurrentSquadID;
-	public List<string> ExplorerSquadIDs;
 
 	public bool IsRefilledToday;
 	public bool Expedition1SentToday;

@@ -15,6 +15,7 @@ public class WorldManager
 
 	private int _ambientPlayCounter;
 	private int _nextAmbientTime;
+	private int _doorIDIndex;
 
 	public void Initialize()
 	{
@@ -76,6 +77,18 @@ public class WorldManager
 
 		_nextAmbientTime = UnityEngine.Random.Range(3, 6);
 		_ambientPlayCounter = 0;
+
+		//assign ID to all doors
+		GameObject [] doors = GameObject.FindGameObjectsWithTag("Door");
+		foreach(GameObject o in doors)
+		{
+			Door door = o.GetComponent<Door>();
+			if(door != null)
+			{
+				door.ID = CurrentLevelName + "Door" + _doorIDIndex;
+				_doorIDIndex ++;
+			}
+		}
 	}
 
 	public void PerSecondUpdate()

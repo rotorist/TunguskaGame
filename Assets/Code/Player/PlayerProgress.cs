@@ -9,7 +9,7 @@ public class PlayerProgress
 	public string PlayerLastName;
 	public List<string> DiscoveredTopics;//contains topic ID, not topic title
 	public List<List<string>> JournalEntries; //journal entries apprended directly to it. Each day at the end of the day, a new day entry is added
-	public float [] Relationships;
+	//public float [] Relationships;
 
 	public PlayerProgress()
 	{
@@ -21,8 +21,8 @@ public class PlayerProgress
 		JournalEntries = new List<List<string>>();
 		AddJournalEntry(GameManager.Inst.DBManager.DBHandlerStoryEvent.LoadJournalEntry(1));
 
-		Relationships = new float[GameManager.Inst.DBManager.DBHandlerCharacter.GetNumberOfFactions()];
-		Relationships[0] = 1;
+		//Relationships = new float[GameManager.Inst.DBManager.DBHandlerCharacter.GetNumberOfFactions()];
+		//Relationships[0] = 1;
 
 		/*
 		//manually populate entries for journal for testing

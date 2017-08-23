@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 
+[System.Serializable]
 public class StoryConditionItem : StoryCondition
 {
 	public string ItemID;

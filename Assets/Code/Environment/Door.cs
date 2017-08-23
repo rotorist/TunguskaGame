@@ -6,6 +6,7 @@ using UnityEngine.AI;
 [RequireComponent(typeof(AudioSource))]
 public class Door : MonoBehaviour 
 {
+	public string ID;
 	public DoorType Type;
 	public bool IsMetal;
 	public bool IsOpen;
@@ -200,4 +201,12 @@ public class Door : MonoBehaviour
 			}
 		}
 	}
+}
+
+[System.Serializable]
+public class DoorSaveData
+{
+	public string ID;
+	public bool IsLocked;
+	public bool IsOpen;
 }

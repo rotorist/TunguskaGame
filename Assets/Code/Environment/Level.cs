@@ -11,6 +11,7 @@ public class Level
 	public List<TraderData> Traders;//string is Character.CharacterID
 
 	public List<CharacterSaveData> Characters;
-
+	public List<HouseholdSaveData> Households;
+	public List<DoorSaveData> Doors;
 
 }

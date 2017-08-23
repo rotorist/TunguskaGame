@@ -24,6 +24,12 @@ public class SaveGameManager
 		CurrentSave.PlayerInventory = GameManager.Inst.PlayerControl.SelectedPC.Inventory;
 		//save player boosts
 		CurrentSave.PlayerBoosts = GameManager.Inst.PlayerControl.Survival.GetStatBoosts();
+		CurrentSave.PlayerFirstName = GameManager.Inst.PlayerProgress.PlayerFirstName;
+		CurrentSave.PlayerLastName = GameManager.Inst.PlayerProgress.PlayerLastName;
+		CurrentSave.DiscoveredTopics = new List<string>(GameManager.Inst.PlayerProgress.DiscoveredTopics);
+		CurrentSave.JournalEntries = new List<List<string>>(GameManager.Inst.PlayerProgress.JournalEntries);
+
+
 
 
 		//create new level data after removing existing one
@@ -54,6 +60,30 @@ public class SaveGameManager
 		}
 
 		currentLevel.PickupItemDatas = pickupDataList;
+
+
+		//save characters in this level
+		currentLevel.Characters = new List<CharacterSaveData>();
+		GameObject [] characters = GameObject.FindGameObjectsWithTag("NPC");
+		foreach(GameObject o in characters)
+		{
+			Character character = o.GetComponent<Character>();
+			CharacterSaveData saveData = new CharacterSaveData();
+			saveData.GoapID = character.GoapID;
+			saveData.CharacterID = character.CharacterID;
+			saveData.Name = character.Name;
+			saveData.Title = character.Title;
+			saveData.CharacterType = character.CharacterType;
+			saveData.SquadID = character.SquadID;
+			saveData.Faction = character.Faction;
+			saveData.IsCommander = character.IsCommander;
+			saveData.IsEssential = character.IsEssential;
+			saveData.StatusData = character.MyStatus.Data;
+			saveData.Inventory = character.Inventory;
+			saveData.MyJobs = new List<NPCJobs>(character.MyJobs);
+
+			currentLevel.Characters.Add(saveData);
+		}
 
 
 		//save traders for current level
@@ -95,6 +125,46 @@ public class SaveGameManager
 		}
 
 		currentLevel.ChestDatas = chestDataList;
+
+		//save households
+		currentLevel.Households = new List<HouseholdSaveData>();
+		Household [] households = (Household[])GameObject.FindObjectsOfType<Household>();
+		foreach(Household household in households)
+		{
+			HouseholdSaveData saveData = new HouseholdSaveData();
+			saveData.HouseholdName = household.name;
+			if(household.CurrentSquad != null)
+			{
+				saveData.CurrentSquadID = household.CurrentSquad.ID;
+			}
+			else
+			{
+				saveData.CurrentSquadID = "";
+			}
+
+			saveData.IsRefilledToday = household.IsRefilledToday;
+			saveData.Expedition1SentToday = household.Expedition1SentToday;
+			saveData.Expedition2SentToday = household.Expedition2SentToday;
+			saveData.ExpeditionTime1 = household.ExpeditionTime1;
+			saveData.ExpeditionTime2 = household.ExpeditionTime2;
+
+			currentLevel.Households.Add(saveData);
+		}
+
+		//save doors
+		currentLevel.Doors = new List<DoorSaveData>();
+		GameObject [] doors = GameObject.FindGameObjectsWithTag("Door");
+		foreach(GameObject o in doors)
+		{
+			Door door = o.GetComponent<Door>();
+			DoorSaveData saveData = new DoorSaveData();
+			saveData.ID = door.ID;
+			saveData.IsLocked = door.IsLocked;
+			saveData.IsOpen = door.IsOpen;
+
+			currentLevel.Doors.Add(saveData);
+		}
+
 
 		GameManager.Inst.WorldManager.AllLevels.Add(currentLevel);
 		CurrentSave.Levels = GameManager.Inst.WorldManager.AllLevels;
