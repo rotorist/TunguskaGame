@@ -91,8 +91,10 @@ public class NPCManager
 		}
 
 
-
-		_allFactions = GameManager.Inst.DBManager.DBHandlerCharacter.LoadFactionData();
+		if(_allFactions == null)
+		{
+			_allFactions = GameManager.Inst.DBManager.DBHandlerCharacter.LoadFactionData();
+		}
 		/*
 		FactionData newFaction1 = new FactionData();
 		newFaction1.Name = "Player";
@@ -154,10 +156,11 @@ public class NPCManager
 			_allHouseHolds.Add(h.name, h);
 		}
 
-		_allSquads = new Dictionary<string, AISquad>();
+		if(_allSquads == null)
+		{
+			_allSquads = new Dictionary<string, AISquad>();
+		}
 		LoadAISquads();
-
-
 
 		//initialize preset characters
 		GameObject [] characters = GameObject.FindGameObjectsWithTag("NPC");
@@ -428,7 +431,7 @@ public class NPCManager
 
 		character.Initialize();
 		character.MyNavAgent.enabled = false;
-
+		character.CharacterType = CharacterType.Human;
 
 		character.SquadID = squad.ID;
 		character.Faction = squad.Faction;
@@ -460,7 +463,7 @@ public class NPCManager
 		character.CharacterID = name;
 
 		character.Initialize();
-
+		character.CharacterType = CharacterType.Mutant;
 		character.MyNavAgent.enabled = false;
 		character.Faction = Faction.Mutants;
 		character.SquadID = squad.ID;
@@ -489,7 +492,7 @@ public class NPCManager
 		character.CharacterID = name;
 
 		character.Initialize();
-
+		character.CharacterType = CharacterType.Animal;
 		character.MyNavAgent.enabled = false;
 		character.Faction = Faction.Mutants;
 		character.SquadID = squad.ID;
@@ -819,76 +822,109 @@ public class NPCManager
 		squad1.Faction = Faction.Bootleggers;
 		squad1.Household = _allHouseHolds["HouseHoldSidorovich"];
 		squad1.Household.CurrentSquad = squad1;
-		_allSquads.Add(squad1.ID, squad1);
+		if(!_allSquads.ContainsKey(squad1.ID))
+		{
+			_allSquads.Add(squad1.ID, squad1);
+		}
 
 		AISquad squad2 = new AISquad();
 		squad2.ID = "zsk_hans";
 		squad2.Faction = Faction.Bootleggers;
 		squad2.Household = _allHouseHolds["HouseHoldHans"];
 		squad2.Household.CurrentSquad = squad2;
-		_allSquads.Add(squad2.ID, squad2);
+		if(!_allSquads.ContainsKey(squad2.ID))
+		{
+			_allSquads.Add(squad2.ID, squad2);
+		}
 
 		AISquad squad3 = new AISquad();
 		squad3.ID = "zsk_village_bootleggers";
 		squad3.Faction = Faction.Bootleggers;
 		squad3.Household = _allHouseHolds["HouseHoldVillageBootleggers"];
 		squad3.Household.CurrentSquad = squad3;
-		_allSquads.Add(squad3.ID, squad3);
+		if(!_allSquads.ContainsKey(squad3.ID))
+		{
+			_allSquads.Add(squad3.ID, squad3);
+		}
 
 		AISquad squad4 = new AISquad();
 		squad4.ID = "zsk_barn_legionnaires";
 		squad4.Faction = Faction.Legionnaires;
 		squad4.Household = _allHouseHolds["HouseHoldBarn"];
 		squad4.Household.CurrentSquad = squad4;
-		_allSquads.Add(squad4.ID, squad4);
+		if(!_allSquads.ContainsKey(squad4.ID))
+		{
+			_allSquads.Add(squad4.ID, squad4);
+		}
 
 		AISquad squad5 = new AISquad();
 		squad5.ID = "zsk_church_ghouls";
 		squad5.Faction = Faction.Mutants;
 		squad5.Household = _allHouseHolds["HouseHoldChurch"];
 		squad5.Household.CurrentSquad = squad5;
-		_allSquads.Add(squad5.ID, squad5);
+		if(!_allSquads.ContainsKey(squad5.ID))
+		{
+			_allSquads.Add(squad5.ID, squad5);
+		}
 
 		AISquad squad6 = new AISquad();
 		squad6.ID = "zsk_sewer_ghouls";
 		squad6.Faction = Faction.Scythes;
 		squad6.Household = _allHouseHolds["HouseHoldSewer"];
 		squad6.Household.CurrentSquad = squad6;
-		_allSquads.Add(squad6.ID, squad6);
+		if(!_allSquads.ContainsKey(squad6.ID))
+		{
+			_allSquads.Add(squad6.ID, squad6);
+		}
 
 		AISquad squad7 = new AISquad();
 		squad7.ID = "zsk_priest";
 		squad7.Faction = Faction.Civilian;
 		squad7.Household = _allHouseHolds["HouseHoldPriest"];
 		squad7.Household.CurrentSquad = squad7;
-		_allSquads.Add(squad7.ID, squad7);
+		if(!_allSquads.ContainsKey(squad7.ID))
+		{
+			_allSquads.Add(squad7.ID, squad7);
+		}
 
 		AISquad squad8 = new AISquad();
 		squad8.ID = "zsk_artyom";
 		squad8.Faction = Faction.Civilian;
 		squad8.Household = _allHouseHolds["HouseHoldArtyom"];
 		squad8.Household.CurrentSquad = squad8;
-		_allSquads.Add(squad8.ID, squad8);
+		if(!_allSquads.ContainsKey(squad8.ID))
+		{
+			_allSquads.Add(squad8.ID, squad8);
+		}
 
 		AISquad squad9 = new AISquad();
 		squad9.ID = "wolves";
 		squad9.Faction = Faction.Animals;
 		squad9.Household = _allHouseHolds["HouseHoldWolf"];
 		squad9.Household.CurrentSquad = squad9;
-		_allSquads.Add(squad9.ID, squad9);
+		if(!_allSquads.ContainsKey(squad9.ID))
+		{
+			_allSquads.Add(squad9.ID, squad9);
+		}
 
 		AISquad squad10 = new AISquad();
 		squad10.ID = "zsk_army";
 		squad10.Faction = Faction.Military;
 		squad10.Household = _allHouseHolds["HouseHoldRoadBlock"];
 		squad10.Household.CurrentSquad = squad10;
-		_allSquads.Add(squad10.ID, squad10);
+		if(!_allSquads.ContainsKey(squad10.ID))
+		{
+			_allSquads.Add(squad10.ID, squad10);
+		}
 
 		AISquad squad11 = new AISquad();
 		squad11.ID = "zsk_train_legionnaires";
 		squad11.Faction = Faction.Legionnaires;
 		squad11.Household = _allHouseHolds["HouseHoldTrainStation"];
 		squad11.Household.CurrentSquad = squad11;
-		_allSquads.Add(squad11.ID, squad11);
+		if(!_allSquads.ContainsKey(squad11.ID))
+		{
+			_allSquads.Add(squad11.ID, squad11);
+		}
 	}
 }

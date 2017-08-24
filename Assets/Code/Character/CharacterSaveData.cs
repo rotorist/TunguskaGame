@@ -9,6 +9,9 @@ public class CharacterSaveData
 	public string CharacterID;
 	public string Name;
 	public string Title;
+	public string GOName;
+
+	public SerVector3 Pos;
 
 	public CharacterType CharacterType;
 	public string SquadID;
@@ -18,6 +21,6 @@ public class CharacterSaveData
 	public CharacterStatusData StatusData;
 
 	public CharacterInventory Inventory;
-	public List<NPCJobs> MyJobs;
+
 
 }

@@ -67,12 +67,20 @@ public class SaveGameManager
 		GameObject [] characters = GameObject.FindGameObjectsWithTag("NPC");
 		foreach(GameObject o in characters)
 		{
+			//only save character who are not exploring
 			Character character = o.GetComponent<Character>();
+
+			if(character.CharacterType != CharacterType.Human || character.MyJobs.Contains(NPCJobs.Explore))
+			{
+				continue;
+			}
+
 			CharacterSaveData saveData = new CharacterSaveData();
 			saveData.GoapID = character.GoapID;
 			saveData.CharacterID = character.CharacterID;
 			saveData.Name = character.Name;
 			saveData.Title = character.Title;
+			saveData.GOName = character.name;
 			saveData.CharacterType = character.CharacterType;
 			saveData.SquadID = character.SquadID;
 			saveData.Faction = character.Faction;
@@ -80,7 +88,7 @@ public class SaveGameManager
 			saveData.IsEssential = character.IsEssential;
 			saveData.StatusData = character.MyStatus.Data;
 			saveData.Inventory = character.Inventory;
-			saveData.MyJobs = new List<NPCJobs>(character.MyJobs);
+			saveData.Pos = new SerVector3(character.transform.position);
 
 			currentLevel.Characters.Add(saveData);
 		}
@@ -257,6 +265,12 @@ public class SaveGameManager
 
 		GameManager.Inst.WorldManager.ChangeEnvironment(CurrentSave.CurrentEnvironmentName);
 
+		//load player basics
+		GameManager.Inst.PlayerProgress.PlayerFirstName = CurrentSave.PlayerFirstName;
+		GameManager.Inst.PlayerProgress.PlayerLastName = CurrentSave.PlayerLastName;
+		//load progress
+		GameManager.Inst.PlayerProgress.DiscoveredTopics = new List<string>(CurrentSave.DiscoveredTopics);
+		GameManager.Inst.PlayerProgress.JournalEntries = new List<List<string>>(CurrentSave.JournalEntries);
 		//load player status
 		GameManager.Inst.PlayerControl.SelectedPC.MyStatus.Data = CurrentSave.PlayerStatus;
 		//load player boosts
@@ -316,6 +330,57 @@ public class SaveGameManager
 			}
 		}
 
+		//load factions
+
+
+		//load household 
+
+
+
+		//load squads
+
+
+		//load characters
+		//first remove all existing characters
+		GameObject [] npcs = GameObject.FindGameObjectsWithTag("NPC");
+		foreach(GameObject npc in npcs)
+		{
+			GameObject.Destroy(npc.gameObject);
+		}
+		//add new characters from save
+		//then reinitialize NPCManager
+		foreach(CharacterSaveData characterData in currentLevel.Characters)
+		{
+			if(characterData.CharacterType == CharacterType.Human)
+			{
+				HumanCharacter character = GameObject.Instantiate(Resources.Load("HumanCharacter") as GameObject).GetComponent<HumanCharacter>();
+
+				character.CharacterID = characterData.CharacterID;
+
+				character.Initialize();
+				character.MyNavAgent.enabled = false;
+				character.CharacterType = characterData.CharacterType;
+				character.SquadID = characterData.SquadID;
+				character.Faction = characterData.Faction;
+				GameManager.Inst.ItemManager.LoadNPCInventory(characterData.Inventory, character.Faction);
+				character.MyAI.WeaponSystem.LoadWeaponsFromInventory(false);
+
+				character.MyStatus.Data = characterData.StatusData;
+				character.transform.position = characterData.Pos.ConvertToVector3();
+
+				character.MyNavAgent.enabled = true;
+
+				character.Name = characterData.Name;
+				character.Title = characterData.Title;
+				character.gameObject.name = characterData.GOName;
+			}
+
+		}
+
+		GameManager.Inst.NPCManager.Initialize();
+
+
+
 		//load traders
 		foreach(HumanCharacter character in GameManager.Inst.NPCManager.HumansInScene)
 		{
@@ -335,6 +400,8 @@ public class SaveGameManager
 
 			}
 		}
+
+
 
 
 
