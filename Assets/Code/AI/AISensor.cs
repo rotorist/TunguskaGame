@@ -244,10 +244,9 @@ public class AISensor
 		float range = 60;
 		GameObject myEyes = _parentCharacter.MyReference.Eyes;
 
-
-
 		foreach(Character c in GameManager.Inst.NPCManager.AllCharacters)
 		{
+			
 			if(c == _parentCharacter || _parentCharacter.MyAI.GetCharacterRelationship(c) >= 4)
 			{
 				continue;
@@ -283,6 +282,7 @@ public class AISensor
 			//add 8 to range for player
 			if(c.MyAI.ControlType == AIControlType.Player)
 			{
+				//Debug.Log("Update working memory checking player");
 				range += 8; //make a buffer zone to notify player with flashing vignette when enemy is too near
 			}
 
@@ -372,7 +372,7 @@ public class AISensor
 				float dist = Vector3.Distance(_parentCharacter.MyAI.BlackBoard.DefensePoint, c.transform.position);
 				float highThreat = 1;
 				_parentCharacter.MyAI.BlackBoard.GuardLevel = 3;
-				//Debug.Log("AI Sensor update enemy relationship " + relationship + " is inside " + isInsideHousehold);
+				//Debug.Log("AI Sensor update enemy relationship " + relationship);
 				if(relationship > 1 && c != _parentCharacter.Killer)
 				{
 					if(dist > _parentCharacter.MyAI.BlackBoard.DefenseRadius * 1.5f)

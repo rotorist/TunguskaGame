@@ -40,6 +40,11 @@ public class NPCManager
 		get { return _allFactions; }
 	}
 
+	public Dictionary<string, AISquad> AllSquads
+	{
+		get { return _allSquads; }
+	}
+
 	private List<HumanCharacter> _humansInScene;
 	private List<MutantCharacter> _mutantsInScene;
 	private List<Character> _allCharacters;
@@ -57,7 +62,6 @@ public class NPCManager
 		_allCharacters = new List<Character>();
 		_humansInScene = new List<HumanCharacter>();
 		_mutantsInScene = new List<MutantCharacter>();
-		_allFactions = new Dictionary<Faction, FactionData>();
 		_deadBodies = new Dictionary<Character, int>();
 		_fadeTimers = new Dictionary<Character, float>();
 		_allNavNodes = new List<NavNode>();
@@ -159,11 +163,15 @@ public class NPCManager
 		if(_allSquads == null)
 		{
 			_allSquads = new Dictionary<string, AISquad>();
+			LoadAISquads();
 		}
-		LoadAISquads();
+
+
+
 
 		//initialize preset characters
 		GameObject [] characters = GameObject.FindGameObjectsWithTag("NPC");
+		Debug.LogError("Number of NPC in scene " + characters.Length + " number of squads " + _allSquads.Count);
 		foreach(GameObject o in characters)
 		{
 			Character c = o.GetComponent<Character>();
@@ -172,23 +180,30 @@ public class NPCManager
 				c.Initialize();
 				if(!string.IsNullOrEmpty(c.SquadID))
 				{
-					Debug.Log(c.SquadID);
+					
 					_allSquads[c.SquadID].AddMember(c);
+					Debug.Log(c.SquadID + " now has members " + _allSquads[c.SquadID].Members.Count);
 				}
 			}
 
 			//load preset inventory
-			if(c.PresetInventory != null)
+			if(c.PresetInventory != null && c.PresetInventory.IsEnabled)
 			{
 				GameManager.Inst.ItemManager.LoadNPCInventory(c.Inventory, c.PresetInventory);
-				c.MyAI.WeaponSystem.LoadWeaponsFromInventory(false);
+
 			}
+
+			c.MyAI.WeaponSystem.LoadWeaponsFromInventory(false);
+
 		}
 
 		foreach(Household h in _allHouseHolds.Values)
 		{
+			Debug.LogError("initializing household " + h.name);
 			h.Initialize();
 		}
+
+		Debug.LogError("Number of NPC in NPC Manager " + _allCharacters.Count);
 	}
 
 	public void PerSecondUpdate()
@@ -362,6 +377,8 @@ public class NPCManager
 		return enemies;
 	}
 
+
+
 	public NavNode GetNavNodeByName(string name)
 	{
 		foreach(NavNode node in _allNavNodes)
@@ -374,6 +391,7 @@ public class NPCManager
 		Debug.Log("Found no nav node for " + name);
 		return null;
 	}
+
 
 	public NavNode GetRandomBaseNavNode(Faction myFaction)
 	{
@@ -465,10 +483,10 @@ public class NPCManager
 		character.Initialize();
 		character.CharacterType = CharacterType.Mutant;
 		character.MyNavAgent.enabled = false;
-		character.Faction = Faction.Mutants;
+		character.Faction = squad.Faction;
 		character.SquadID = squad.ID;
 
-		GameManager.Inst.ItemManager.LoadNPCInventory(character.Inventory, Faction.Mutants);
+		GameManager.Inst.ItemManager.LoadNPCInventory(character.Inventory, squad.Faction);
 		character.MyAI.WeaponSystem.LoadWeaponsFromInventory(false);
 
 		character.MyStatus = GetMutantStatus(character);
@@ -494,10 +512,10 @@ public class NPCManager
 		character.Initialize();
 		character.CharacterType = CharacterType.Animal;
 		character.MyNavAgent.enabled = false;
-		character.Faction = Faction.Mutants;
+		character.Faction = squad.Faction;
 		character.SquadID = squad.ID;
 
-		GameManager.Inst.ItemManager.LoadNPCInventory(character.Inventory, Faction.Mutants);
+		GameManager.Inst.ItemManager.LoadNPCInventory(character.Inventory, squad.Faction);
 		character.MyAI.WeaponSystem.LoadWeaponsFromInventory(false);
 
 		character.transform.position = loc;

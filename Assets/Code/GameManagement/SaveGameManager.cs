@@ -21,7 +21,16 @@ public class SaveGameManager
 		//save player status
 		CurrentSave.PlayerStatus = GameManager.Inst.PlayerControl.SelectedPC.MyStatus.Data;
 		//save player inventory
-		CurrentSave.PlayerInventory = GameManager.Inst.PlayerControl.SelectedPC.Inventory;
+		CurrentSave.PlayerInventory = new CharacterInventorySaveData();
+		CurrentSave.PlayerInventory.ArmorSlot = GameManager.Inst.PlayerControl.SelectedPC.Inventory.ArmorSlot;
+		CurrentSave.PlayerInventory.HeadSlot = GameManager.Inst.PlayerControl.SelectedPC.Inventory.HeadSlot;
+		CurrentSave.PlayerInventory.RifleSlot = GameManager.Inst.PlayerControl.SelectedPC.Inventory.RifleSlot;
+		CurrentSave.PlayerInventory.SideArmSlot = GameManager.Inst.PlayerControl.SelectedPC.Inventory.SideArmSlot;
+		CurrentSave.PlayerInventory.ThrowSlot = GameManager.Inst.PlayerControl.SelectedPC.Inventory.ThrowSlot;
+		CurrentSave.PlayerInventory.ToolSlot = GameManager.Inst.PlayerControl.SelectedPC.Inventory.ToolSlot;
+		CurrentSave.PlayerInventory.BackpackCols = GameManager.Inst.PlayerControl.SelectedPC.Inventory.BackpackCols;
+		CurrentSave.PlayerInventory.BackpackRows = GameManager.Inst.PlayerControl.SelectedPC.Inventory.BackpackRows;
+		CurrentSave.PlayerInventory.Backpack = new List<GridItemData>(GameManager.Inst.PlayerControl.SelectedPC.Inventory.Backpack);
 		//save player boosts
 		CurrentSave.PlayerBoosts = GameManager.Inst.PlayerControl.Survival.GetStatBoosts();
 		CurrentSave.PlayerFirstName = GameManager.Inst.PlayerProgress.PlayerFirstName;
@@ -29,7 +38,33 @@ public class SaveGameManager
 		CurrentSave.DiscoveredTopics = new List<string>(GameManager.Inst.PlayerProgress.DiscoveredTopics);
 		CurrentSave.JournalEntries = new List<List<string>>(GameManager.Inst.PlayerProgress.JournalEntries);
 
+		//save story conditions
+		CurrentSave.ItemConditions = new List<StoryConditionItem>();
+		CurrentSave.TriggerConditions = new List<StoryConditionTrigger>();
+		foreach(KeyValuePair<string, StoryCondition> storyCondition in GameManager.Inst.QuestManager.StoryConditions)
+		{
+			if(storyCondition.Value.Type == StoryConditionType.Item)
+			{
+				CurrentSave.ItemConditions.Add((StoryConditionItem)storyCondition.Value);
+			}
+			else if(storyCondition.Value.Type == StoryConditionType.Trigger)
+			{
+				CurrentSave.TriggerConditions.Add((StoryConditionTrigger)storyCondition.Value);
+			}
+		}
 
+		//save story event handler
+		LinkedList<StoryEventListener> [] storyListenerLists = StoryEventHandler.Instance.AllListenerLists;
+		CurrentSave.StoryListenerLists = new List<StoryEventListener>[storyListenerLists.Length];
+		for(int i=0; i<storyListenerLists.Length; i++)
+		{
+			List<StoryEventListener> list = StoryEventHandler.Instance.ConvertLinkedListenerToList(storyListenerLists[i]);
+			CurrentSave.StoryListenerLists[i] = list;
+		}
+
+		CurrentSave.StoryEventList = StoryEventHandler.Instance.ConvertQueueStoryEventToList(StoryEventHandler.Instance.StoryEventQueue);
+		CurrentSave.CurrentStoryEvent = StoryEventHandler.Instance.CurrentStoryEvent;
+		CurrentSave.IsCurrentEventDone = StoryEventHandler.Instance.IsCurrentEventDone;
 
 
 		//create new level data after removing existing one
@@ -38,8 +73,12 @@ public class SaveGameManager
 			GameManager.Inst.WorldManager.AllLevels.Remove(GameManager.Inst.WorldManager.CurrentLevel);
 		}
 
+		CurrentSave.CurrentDay = GameManager.Inst.WorldManager.CurrentDay;
+		CurrentSave.CurrentTime = GameManager.Inst.WorldManager.CurrentTime;
+
 		Level currentLevel = new Level();
 		currentLevel.Name = GameManager.Inst.WorldManager.CurrentLevel.Name;
+
 
 		//save pickup items in the scene
 		//first remove all pickup items from list from current level
@@ -67,10 +106,10 @@ public class SaveGameManager
 		GameObject [] characters = GameObject.FindGameObjectsWithTag("NPC");
 		foreach(GameObject o in characters)
 		{
-			//only save character who are not exploring
+			//only save character who have household
 			Character character = o.GetComponent<Character>();
 
-			if(character.CharacterType != CharacterType.Human || character.MyJobs.Contains(NPCJobs.Explore))
+			if(character.MyAI.Squad == null || character.MyAI.Squad.Household == null || character.MyAI.Squad.Household.CurrentSquad.Faction != character.Faction)
 			{
 				continue;
 			}
@@ -82,13 +121,23 @@ public class SaveGameManager
 			saveData.Title = character.Title;
 			saveData.GOName = character.name;
 			saveData.CharacterType = character.CharacterType;
-			saveData.SquadID = character.SquadID;
+			saveData.SquadID = character.MyAI.Squad.Household.CurrentSquad.ID;
 			saveData.Faction = character.Faction;
 			saveData.IsCommander = character.IsCommander;
 			saveData.IsEssential = character.IsEssential;
 			saveData.StatusData = character.MyStatus.Data;
-			saveData.Inventory = character.Inventory;
 			saveData.Pos = new SerVector3(character.transform.position);
+
+			saveData.Inventory = new CharacterInventorySaveData();
+			saveData.Inventory.ArmorSlot = character.Inventory.HeadSlot;
+			saveData.Inventory.HeadSlot = character.Inventory.HeadSlot;
+			saveData.Inventory.RifleSlot = character.Inventory.RifleSlot;
+			saveData.Inventory.SideArmSlot = character.Inventory.SideArmSlot;
+			saveData.Inventory.ThrowSlot = character.Inventory.ThrowSlot;
+			saveData.Inventory.ToolSlot = character.Inventory.ToolSlot;
+			saveData.Inventory.BackpackCols = character.Inventory.BackpackCols;
+			saveData.Inventory.BackpackRows = character.Inventory.BackpackRows;
+			saveData.Inventory.Backpack = new List<GridItemData>(character.Inventory.Backpack);
 
 			currentLevel.Characters.Add(saveData);
 		}
@@ -144,6 +193,7 @@ public class SaveGameManager
 			if(household.CurrentSquad != null)
 			{
 				saveData.CurrentSquadID = household.CurrentSquad.ID;
+				saveData.OwningFaction = household.CurrentSquad.Faction;
 			}
 			else
 			{
@@ -182,6 +232,7 @@ public class SaveGameManager
 		CurrentSave.Factions = new List<KeyValuePair<Faction, FactionData>>();
 		foreach(KeyValuePair<Faction, FactionData> factionData in GameManager.Inst.NPCManager.AllFactions)
 		{
+			factionData.Value.PrepareSave();
 			CurrentSave.Factions.Add(factionData);
 		}
 
@@ -263,6 +314,9 @@ public class SaveGameManager
 			}
 		}
 
+		GameManager.Inst.WorldManager.CurrentDay = CurrentSave.CurrentDay;
+		GameManager.Inst.WorldManager.CurrentTime = CurrentSave.CurrentTime;
+
 		GameManager.Inst.WorldManager.ChangeEnvironment(CurrentSave.CurrentEnvironmentName);
 
 		//load player basics
@@ -276,10 +330,51 @@ public class SaveGameManager
 		//load player boosts
 		GameManager.Inst.PlayerControl.Survival.SetStatBoosts(CurrentSave.PlayerBoosts);
 		//load player inventory
-		GameManager.Inst.PlayerControl.SelectedPC.Inventory = CurrentSave.PlayerInventory;
+		GameManager.Inst.PlayerControl.SelectedPC.Inventory.ArmorSlot = CurrentSave.PlayerInventory.ArmorSlot;
+		GameManager.Inst.PlayerControl.SelectedPC.Inventory.HeadSlot = CurrentSave.PlayerInventory.HeadSlot;
+		GameManager.Inst.PlayerControl.SelectedPC.Inventory.RifleSlot = CurrentSave.PlayerInventory.RifleSlot;
+		GameManager.Inst.PlayerControl.SelectedPC.Inventory.SideArmSlot = CurrentSave.PlayerInventory.SideArmSlot;
+		GameManager.Inst.PlayerControl.SelectedPC.Inventory.ThrowSlot = CurrentSave.PlayerInventory.ThrowSlot;
+		GameManager.Inst.PlayerControl.SelectedPC.Inventory.ToolSlot = CurrentSave.PlayerInventory.ToolSlot;
+		GameManager.Inst.PlayerControl.SelectedPC.Inventory.BackpackCols = CurrentSave.PlayerInventory.BackpackCols;
+		GameManager.Inst.PlayerControl.SelectedPC.Inventory.BackpackRows = CurrentSave.PlayerInventory.BackpackRows;
+		GameManager.Inst.PlayerControl.SelectedPC.Inventory.Backpack = new List<GridItemData>(CurrentSave.PlayerInventory.Backpack);
 		GameManager.Inst.PlayerControl.SelectedPC.Inventory.PostLoad();
+
+		GameManager.Inst.PlayerControl.SelectedPC.ArmorSystem.SwitchToArmor(GameManager.Inst.PlayerControl.SelectedPC.Inventory.ArmorSlot);
+		GameManager.Inst.PlayerControl.SelectedPC.ArmorSystem.SwitchToHelmet(GameManager.Inst.PlayerControl.SelectedPC.Inventory.HeadSlot);
+		GameManager.Inst.PlayerControl.SelectedPC.MyAI.WeaponSystem.LoadWeaponsFromInventory(false);
+
 		//place player in last saved location
 		GameManager.Inst.PlayerControl.SelectedPC.transform.position = new Vector3(CurrentSave.PlayerLocation[0], CurrentSave.PlayerLocation[1], CurrentSave.PlayerLocation[2]);
+
+		//load story conditions
+		GameManager.Inst.QuestManager.StoryConditions = new Dictionary<string, StoryCondition>();
+		foreach(StoryConditionItem condition in CurrentSave.ItemConditions)
+		{
+			GameManager.Inst.QuestManager.StoryConditions.Add(condition.ID, condition);
+		}
+		foreach(StoryConditionTrigger condition in CurrentSave.TriggerConditions)
+		{
+			GameManager.Inst.QuestManager.StoryConditions.Add(condition.ID, condition);
+		}
+
+		//load story event handler
+		LinkedList<StoryEventListener> [] storyListenerLists = StoryEventHandler.Instance.AllListenerLists;
+
+		for(int i=0; i<storyListenerLists.Length; i++)
+		{
+			storyListenerLists[i].Clear();
+			for(int j=0; j<CurrentSave.StoryListenerLists[i].Count; j++)
+			{
+				storyListenerLists[i].AddLast(CurrentSave.StoryListenerLists[i][j]);
+
+			}
+		}
+
+		StoryEventHandler.Instance.StoryEventQueue = StoryEventHandler.Instance.ConvertListStoryEventToQueue(CurrentSave.StoryEventList);
+		StoryEventHandler.Instance.CurrentStoryEvent = CurrentSave.CurrentStoryEvent;
+		StoryEventHandler.Instance.IsCurrentEventDone = CurrentSave.IsCurrentEventDone;
 
 
 		//load pickup items
@@ -330,14 +425,63 @@ public class SaveGameManager
 			}
 		}
 
-		//load factions
+		//load doors
+		GameObject [] doors = GameObject.FindGameObjectsWithTag("Door");
+		foreach(GameObject o in doors)
+		{
+			Door door = o.GetComponent<Door>();
+			foreach(DoorSaveData doorData in currentLevel.Doors)
+			{
+				if(door.ID == doorData.ID)
+				{
+					door.IsLocked = doorData.IsLocked;
+					door.IsOpen = doorData.IsOpen;
+				}
+			}
+		}
 
+		//load factions
+		GameManager.Inst.NPCManager.AllFactions.Clear();
+		foreach(KeyValuePair<Faction, FactionData> factionData in CurrentSave.Factions)
+		{
+			GameManager.Inst.NPCManager.AllFactions.Add(factionData.Key, factionData.Value);
+			factionData.Value.PostLoad();
+		}
+			
 
 		//load household 
+		GameManager.Inst.NPCManager.AllSquads.Clear();
+		Household [] households = (Household[])GameObject.FindObjectsOfType<Household>();
+		foreach(Household household in households)
+		{
+			foreach(HouseholdSaveData saveData in currentLevel.Households)
+			{
+				if(household.name == saveData.HouseholdName)
+				{
+					if(saveData.CurrentSquadID != "")
+					{
+						//create a new squad
+						AISquad squad = new AISquad();
+						squad.ID = saveData.CurrentSquadID;
+						squad.Faction = saveData.OwningFaction;
+						squad.Household = household;
+						squad.Household.CurrentSquad = squad;
+						if(!GameManager.Inst.NPCManager.AllSquads.ContainsKey(squad.ID))
+						{
+							GameManager.Inst.NPCManager.AllSquads.Add(squad.ID, squad);
+						}
+
+					}
+					household.IsMemberAlreadyAdded = true;
+					household.SetScheduleData(saveData.IsRefilledToday, saveData.Expedition1SentToday, saveData.Expedition2SentToday,
+						saveData.ExpeditionTime1, saveData.ExpeditionTime2);
+					
+				}
+			}
+		}
 
 
 
-		//load squads
 
 
 		//load characters
@@ -345,10 +489,15 @@ public class SaveGameManager
 		GameObject [] npcs = GameObject.FindGameObjectsWithTag("NPC");
 		foreach(GameObject npc in npcs)
 		{
+			npc.tag = "Untagged";
 			GameObject.Destroy(npc.gameObject);
 		}
 		//add new characters from save
 		//then reinitialize NPCManager
+
+		npcs = GameObject.FindGameObjectsWithTag("NPC");
+		Debug.Log("Number of loading NPC before loading " + npcs.Length);
+
 		foreach(CharacterSaveData characterData in currentLevel.Characters)
 		{
 			if(characterData.CharacterType == CharacterType.Human)
@@ -356,14 +505,78 @@ public class SaveGameManager
 				HumanCharacter character = GameObject.Instantiate(Resources.Load("HumanCharacter") as GameObject).GetComponent<HumanCharacter>();
 
 				character.CharacterID = characterData.CharacterID;
+				character.GoapID = characterData.GoapID;
 
 				character.Initialize();
 				character.MyNavAgent.enabled = false;
 				character.CharacterType = characterData.CharacterType;
 				character.SquadID = characterData.SquadID;
 				character.Faction = characterData.Faction;
-				GameManager.Inst.ItemManager.LoadNPCInventory(characterData.Inventory, character.Faction);
-				character.MyAI.WeaponSystem.LoadWeaponsFromInventory(false);
+				character.IsCommander = characterData.IsCommander;
+				character.IsEssential = characterData.IsEssential;
+
+
+				character.MyStatus.Data = characterData.StatusData;
+				character.transform.position = characterData.Pos.ConvertToVector3();
+
+				character.MyNavAgent.enabled = true;
+
+				character.Name = characterData.Name;
+				character.Title = characterData.Title;
+				character.gameObject.name = characterData.GOName;
+
+				character.Inventory = new CharacterInventory();
+				character.Inventory.ArmorSlot = characterData.Inventory.ArmorSlot;
+				character.Inventory.HeadSlot = characterData.Inventory.HeadSlot;
+				character.Inventory.RifleSlot = characterData.Inventory.RifleSlot;
+				character.Inventory.SideArmSlot = characterData.Inventory.SideArmSlot;
+				character.Inventory.ThrowSlot = characterData.Inventory.ThrowSlot;
+				character.Inventory.ToolSlot = characterData.Inventory.ToolSlot;
+				character.Inventory.BackpackCols = characterData.Inventory.BackpackCols;
+				character.Inventory.BackpackRows = characterData.Inventory.BackpackRows;
+				character.Inventory.Backpack = new List<GridItemData>(characterData.Inventory.Backpack);
+				character.Inventory.PostLoad();
+
+
+			}
+			else if(characterData.CharacterType == CharacterType.Mutant)
+			{
+				MutantCharacter character = GameObject.Instantiate(Resources.Load("MutantCharacter") as GameObject).GetComponent<MutantCharacter>();
+				character.CharacterID = characterData.CharacterID;
+				character.GoapID = characterData.GoapID;
+
+				character.Initialize();
+				character.MyNavAgent.enabled = false;
+				character.CharacterType = characterData.CharacterType;
+				character.SquadID = characterData.SquadID;
+				character.Faction = characterData.Faction;
+				GameManager.Inst.ItemManager.LoadNPCInventory(character.Inventory, character.Faction);
+				character.Inventory.PostLoad();
+
+				character.MyStatus.Data = characterData.StatusData;
+				character.transform.position = characterData.Pos.ConvertToVector3();
+
+				character.MyNavAgent.enabled = true;
+
+				character.Name = characterData.Name;
+				character.Title = characterData.Title;
+				character.gameObject.name = characterData.GOName;
+
+
+			}
+			else if(characterData.CharacterType == CharacterType.Animal)
+			{
+				MutantCharacter character = GameObject.Instantiate(Resources.Load("MutantAnimal") as GameObject).GetComponent<MutantCharacter>();
+				character.CharacterID = characterData.CharacterID;
+				character.GoapID = characterData.GoapID;
+
+				character.Initialize();
+				character.MyNavAgent.enabled = false;
+				character.CharacterType = characterData.CharacterType;
+				character.SquadID = characterData.SquadID;
+				character.Faction = characterData.Faction;
+				GameManager.Inst.ItemManager.LoadNPCInventory(character.Inventory, character.Faction);
+				character.Inventory.PostLoad();
 
 				character.MyStatus.Data = characterData.StatusData;
 				character.transform.position = characterData.Pos.ConvertToVector3();
@@ -377,9 +590,11 @@ public class SaveGameManager
 
 		}
 
+
 		GameManager.Inst.NPCManager.Initialize();
 
-
+		//add player to NPC manager
+		GameManager.Inst.NPCManager.AddHumanCharacter(GameManager.Inst.PlayerControl.SelectedPC);
 
 		//load traders
 		foreach(HumanCharacter character in GameManager.Inst.NPCManager.HumansInScene)

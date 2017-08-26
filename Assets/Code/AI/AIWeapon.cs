@@ -80,7 +80,6 @@ public class AIWeapon
 		//load weapons based on character inventory
 		if(_parentCharacter.Inventory.RifleSlot != null && _parentCharacter.MyAI.BlackBoard.EquippedWeapon != _parentCharacter.Inventory.RifleSlot)
 		{
-
 			GameObject obj = GameObject.Instantiate(Resources.Load(_parentCharacter.Inventory.RifleSlot.PrefabName) as GameObject);
 			Weapon newWeapon = obj.GetComponent<Weapon>();
 			if(newWeapon.HolsterLocation == WeaponHolster.Back)

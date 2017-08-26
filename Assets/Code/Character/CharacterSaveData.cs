@@ -20,7 +20,7 @@ public class CharacterSaveData
 	public bool IsEssential;
 	public CharacterStatusData StatusData;
 
-	public CharacterInventory Inventory;
+	public CharacterInventorySaveData Inventory;
 
 
 }

@@ -205,7 +205,10 @@ public class HumanCharacter : Character
 
 		this.Stealth = new CharacterStealth(this);
 
-		this.Inventory = new CharacterInventory();
+		if(this.Inventory == null)
+		{
+			this.Inventory = new CharacterInventory();
+		}
 		this.PresetInventory = transform.GetComponent<PresetInventory>();
 
 		this.MyJobs = new List<NPCJobs>();
@@ -2469,6 +2472,11 @@ public class HumanCharacter : Character
 
 		this.MyAI.WeaponSystem.LoadWeaponsFromInventory(false);
 
+		if(IsHidden)
+		{
+			HideCharacter();
+		}
+
 		if(_weaponToSwitch != null)
 		{
 			MyEventHandler.TriggerOnSelectWeapon(_weaponToSwitch.ID);
@@ -2772,6 +2780,25 @@ public class HumanCharacter : Character
 	}
 
 
+	private void HideCharacter()
+	{
+		Renderer [] childRenderers = GetComponentsInChildren<Renderer>();
+		foreach(Renderer r in childRenderers)
+		{
+			r.enabled = false;
+		}
+	}
+
+	private void ShowCharacter()
+	{
+		Renderer [] childRenderers = GetComponentsInChildren<Renderer>();
+		foreach(Renderer r in childRenderers)
+		{
+			r.enabled = true;
+
+		}
+	}
+
 	private void UpdateFading()
 	{
 		float playerDist = Vector3.Distance(transform.position, GameManager.Inst.PlayerControl.SelectedPC.transform.position);
@@ -2791,24 +2818,13 @@ public class HumanCharacter : Character
 
 			if(!IsHidden && (IsInHiddenBuilding || IsOutOfSight))
 			{
-				//start fading
-				Renderer [] childRenderers = GetComponentsInChildren<Renderer>();
-				foreach(Renderer r in childRenderers)
-				{
-					r.enabled = false;
-				}
+				HideCharacter();
 
 				IsHidden = true;
 			}
 			else if(IsHidden && !IsInHiddenBuilding && !IsOutOfSight)
 			{
-				//start unfading
-				Renderer [] childRenderers = GetComponentsInChildren<Renderer>();
-				foreach(Renderer r in childRenderers)
-				{
-					r.enabled = true;
-
-				}
+				ShowCharacter();
 
 				IsHidden = false;
 			}

@@ -30,6 +30,7 @@ public class DBHandlerStoryEvent
 			condItem.ItemID = condItemID;
 			condItem.IsActive = condItemReader.GetBoolean(2);
 			condItem.IsForDurability = condItemReader.GetBoolean(3);
+			condItem.Type = StoryConditionType.Item;
 			conditions.Add(condID, condItem);
 		}
 
@@ -41,6 +42,7 @@ public class DBHandlerStoryEvent
 			condTrigger.ID = condID;
 			condTrigger.SetValue(initValue);
 			condTrigger.IsActive = condTriggerReader.GetBoolean(2);
+			condTrigger.Type = StoryConditionType.Trigger;
 			conditions.Add(condID, condTrigger);
 		}
 

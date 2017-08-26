@@ -7,7 +7,7 @@ public class SaveGame
 {
 	public float [] PlayerLocation;
 	public CharacterStatusData PlayerStatus;
-	public CharacterInventory PlayerInventory;
+	public CharacterInventorySaveData PlayerInventory;
 	public List<PlayerStatBoost> PlayerBoosts;//to be inserted into player survival
 	//below is for playerprogress
 	public string PlayerFirstName;
@@ -15,12 +15,17 @@ public class SaveGame
 	public List<string> DiscoveredTopics;
 	public List<List<string>> JournalEntries;
 
+	//story event handler
+	public List<StoryEventListener> [] StoryListenerLists;
+	public List<StoryEvent> StoryEventList;
+	public StoryEvent CurrentStoryEvent;
+	public bool IsCurrentEventDone;
 
 
 	public string LevelToLoad;
 	public string CurrentEnvironmentName;
 	public int CurrentDay;
-	public int CurrentTime;
+	public float CurrentTime;
 	public List<Level> Levels;//from world manager
 
 	public List<StoryConditionItem> ItemConditions;

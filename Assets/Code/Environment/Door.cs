@@ -38,6 +38,8 @@ public class Door : MonoBehaviour
 		}
 		*/
 
+
+
 		if(!IsOpen)
 		{
 			if(Type == DoorType.Rotating)
@@ -57,6 +59,10 @@ public class Door : MonoBehaviour
 		{
 			if(Type == DoorType.Rotating)
 			{
+				if(_rotateTarget == null)
+				{
+					_rotateTarget = OpenTarget1;
+				}
 				DoorPanel.transform.localRotation = Quaternion.Slerp(DoorPanel.transform.localRotation, _rotateTarget.localRotation, Time.deltaTime * OperationSpeed);
 			}
 			else if(Type == DoorType.Sliding)

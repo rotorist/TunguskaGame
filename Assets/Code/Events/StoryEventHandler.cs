@@ -4,6 +4,7 @@ using UnityEngine;
 
 public delegate bool StoryEventDelegate(StoryEvent storyEvent);
 
+[System.Serializable]
 public class StoryEventListener
 {
 	public StoryEventListenerType Type;
@@ -13,6 +14,7 @@ public class StoryEventListener
 
 }
 
+[System.Serializable]
 public class StoryEvent
 {
 	public StoryEventType Type;
@@ -44,6 +46,23 @@ public class StoryEventHandler
 
 
 	public Queue<StoryEvent> StoryEventQueue;
+
+	public LinkedList<StoryEventListener> [] AllListenerLists
+	{
+		get { return _allListenerLists; }
+	}
+
+	public StoryEvent CurrentStoryEvent
+	{
+		get { return _currentStoryEvent; }
+		set { _currentStoryEvent = value; }
+	}
+
+	public bool IsCurrentEventDone
+	{
+		get { return _isCurrentEventDone; }
+		set { _isCurrentEventDone = value; }
+	}
 
 
 
@@ -196,6 +215,59 @@ public class StoryEventHandler
 		listener.Type = StoryEventListenerType.Delegate;
 		listener.OnStoryEvent = callBack;
 		AddListenerToList(listener, eventType);
+	}
+
+	public List<StoryEventListener> ConvertLinkedListenerToList(LinkedList<StoryEventListener> linkedList)
+	{
+		List<StoryEventListener> result = new List<StoryEventListener>();
+		if(linkedList != null && linkedList.Count > 0)
+		{
+			LinkedListNode<StoryEventListener> currentNode = linkedList.First;
+			while(currentNode != null)
+			{
+				result.Add(currentNode.Value);
+				currentNode = currentNode.Next;
+			}
+
+		}
+		return result;
+	}
+
+	public LinkedList<StoryEventListener> ConvertListListenerToLinked(List<StoryEventListener> list)
+	{
+		LinkedList<StoryEventListener> result = new LinkedList<StoryEventListener>();
+		for(int i=0; i<list.Count; i++)
+		{
+			result.AddLast(list[i]);
+		}
+
+		return result;
+	}
+
+	public List<StoryEvent> ConvertQueueStoryEventToList(Queue<StoryEvent> queue)
+	{
+		List<StoryEvent> result = new List<StoryEvent>();
+		if(queue != null && queue.Count > 0)
+		{
+			Queue<StoryEvent> queueCopy = new Queue<StoryEvent>(queue);
+			while(queueCopy.Count > 0)
+			{
+				result.Add(queueCopy.Dequeue());
+			}
+		}
+
+		return result;
+	}
+
+	public Queue<StoryEvent> ConvertListStoryEventToQueue(List<StoryEvent> list)
+	{
+		Queue<StoryEvent> result = new Queue<StoryEvent>();
+		for(int i=0; i<list.Count; i++)
+		{
+			result.Enqueue(list[i]);
+		}
+
+		return result;
 	}
 
 

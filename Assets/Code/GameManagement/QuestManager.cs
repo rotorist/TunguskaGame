@@ -14,7 +14,10 @@ public class QuestManager
 	public void Initialize()
 	{
 		Scripts = GameManager.Inst.DBManager.DBHandlerStoryEvent.LoadScripts();
-		StoryConditions = GameManager.Inst.DBManager.DBHandlerStoryEvent.LoadStoryConditions();
+		if(StoryConditions == null)
+		{
+			StoryConditions = GameManager.Inst.DBManager.DBHandlerStoryEvent.LoadStoryConditions();
+		}
 
 		//CurrentQuest = new WaveDefenseQuest();
 		//CurrentQuest.StartQuest();
@@ -92,7 +95,7 @@ public class QuestManager
 		}
 
 		//run initial testing scsripts
-		SetSidQuestStage(5);
+		//SetSidQuestStage(5);
 	}
 
 	public void PerSecondUpdate()

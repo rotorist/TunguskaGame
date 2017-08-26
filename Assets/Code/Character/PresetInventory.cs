@@ -10,4 +10,5 @@ public class PresetInventory : MonoBehaviour
 	public string SideSlotData;
 	public string [] BackpackData;
 
+	public bool IsEnabled;
 }

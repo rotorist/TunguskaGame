@@ -83,6 +83,7 @@ public class FactionData
 		Relationships.Clear();
 		foreach(KeyValuePair<Faction, float> relationship in _serRelationships)
 		{
+			//Debug.Log("Setting relationship for " + FactionID + " with " + relationship.Key + " to " + relationship.Value);
 			Relationships.Add(relationship.Key, relationship.Value);
 		}
 	}

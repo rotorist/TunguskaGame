@@ -296,7 +296,6 @@ public class PlayerControl
 		{
 			Character hoverTarget = null;
 			float minDist = 9999;
-
 			foreach(Character c in GameManager.Inst.NPCManager.AllCharacters)
 			{
 				if(!SelectedPC.MyAI.IsCharacterFriendly(c) && c != SelectedPC && c.IsAlive)
