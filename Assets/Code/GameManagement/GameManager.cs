@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
 	#region Singleton
 	
 	public static GameManager Inst;
-	public static string SaveName;
+	//public static string SaveName;
 
 	#endregion
 
@@ -86,9 +86,10 @@ public class GameManager : MonoBehaviour
 		TimerEventHandler.Instance.OnUnloadScene();
 		UIEventHandler.Instance.OnUnloadScene();
 
+		SaveNameReference saveNameRef = GameObject.FindObjectOfType<SaveNameReference>();
+		saveNameRef.SaveName = "TestSave";
 		string levelName = SaveGameManager.LoadLevelName("TestSave");
-		SaveName = "TestSave";
-		SceneManager.LoadScene("Zernaskaya");
+		SceneManager.LoadScene(levelName);
 	}
 
 
@@ -245,10 +246,11 @@ public class GameManager : MonoBehaviour
 
 		//if save name is empty then it's a new game
 		//if save name is not empty then load save game
-		if(!string.IsNullOrEmpty(SaveName))
+		SaveNameReference saveNameRef = GameObject.FindObjectOfType<SaveNameReference>();
+		if(!string.IsNullOrEmpty(saveNameRef.SaveName))
 		{
-			Debug.Log("Loading save " + SaveName);
-			SaveGameManager.Load(SaveName);
+			Debug.Log("Loading save " + saveNameRef.SaveName);
+			SaveGameManager.Load(saveNameRef.SaveName);
 		}
 
 
