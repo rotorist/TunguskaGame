@@ -202,7 +202,8 @@ public class PlayerSurvival
 
 		if(isNearCampfire)
 		{
-			AddStatBoost(PlayerBoostType.MaxStamina, 20, 50);
+			GameManager.Inst.UIManager.SetConsoleText("You rested near a campfire. Stat boosts!");
+			AddStatBoost(PlayerBoostType.MaxStamina, 60, 50);
 		}
 
 		myStatus.Stamina = myStatus.MaxStamina;

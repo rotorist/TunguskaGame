@@ -247,6 +247,11 @@ public class GameManager : MonoBehaviour
 		//if save name is empty then it's a new game
 		//if save name is not empty then load save game
 		SaveNameReference saveNameRef = GameObject.FindObjectOfType<SaveNameReference>();
+		if(saveNameRef == null)
+		{
+			saveNameRef = (GameObject.Instantiate(Resources.Load("SaveNameReference")) as GameObject).GetComponent<SaveNameReference>();
+			//saveNameRef.SaveName = "TestSave";
+		}
 		if(!string.IsNullOrEmpty(saveNameRef.SaveName))
 		{
 			Debug.Log("Loading save " + saveNameRef.SaveName);

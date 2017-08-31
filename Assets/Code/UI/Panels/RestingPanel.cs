@@ -36,6 +36,10 @@ public class RestingPanel : PanelBase
 		{
 			_isFading = false;
 			//advance time
+			GameManager.Inst.WorldManager.AdvanceTime(_hours, 0);
+
+			//save game
+			GameManager.Inst.SaveGameManager.Save("TestSave", "");
 
 			//increase stats
 			GameManager.Inst.PlayerControl.Survival.CompleteResting();
@@ -113,6 +117,7 @@ public class RestingPanel : PanelBase
 
 	public void OnRestButtonPress()
 	{
+
 		float calories = GameManager.Inst.PlayerControl.Survival.GetEatenCalories();
 		if(calories <= 0)
 		{

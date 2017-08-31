@@ -79,7 +79,7 @@ public class GridItem : MonoBehaviour
 					if(GameManager.Inst.UIManager.WindowPanel.BodySlotPanel.IsActive)
 					{
 						//check if enemies are around
-						if(GameManager.Inst.NPCManager.GetNearbyEnemyCount() > 0)
+						if(GameManager.Inst.NPCManager.GetNearbyEnemyCount(40) > 0)
 						{
 							GameManager.Inst.UIManager.SetConsoleText("Cannot rest when enemies are around.");
 						}

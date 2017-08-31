@@ -354,13 +354,13 @@ public class NPCManager
 		return i;
 	}
 
-	public int GetNearbyEnemyCount()
+	public int GetNearbyEnemyCount(float distance)
 	{
 		int enemies = 0;
 		Vector3 playerPos = GameManager.Inst.PlayerControl.SelectedPC.transform.position;
 		foreach(MutantCharacter m in _mutantsInScene)
 		{
-			if(m.MyStatus.Health > 0 && Vector3.Distance(playerPos, m.transform.position) < 50)
+			if(m.MyStatus.Health > 0 && Vector3.Distance(playerPos, m.transform.position) < distance)
 			{
 				enemies ++;
 			}
@@ -368,7 +368,7 @@ public class NPCManager
 
 		foreach(HumanCharacter h in _humansInScene)
 		{
-			if(h.MyStatus.Health > 0 && h.MyAI.IsCharacterEnemy(GameManager.Inst.PlayerControl.SelectedPC) && Vector3.Distance(playerPos, h.transform.position) < 50)
+			if(h.MyStatus.Health > 0 && h.MyAI.IsCharacterEnemy(GameManager.Inst.PlayerControl.SelectedPC) && Vector3.Distance(playerPos, h.transform.position) < distance)
 			{
 				enemies ++;
 			}

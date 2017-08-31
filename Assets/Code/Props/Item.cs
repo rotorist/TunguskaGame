@@ -125,4 +125,5 @@ public enum ItemType
 	Key,
 	Misc,
 	SupplyPack,
+	Ingredient,
 }

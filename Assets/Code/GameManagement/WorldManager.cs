@@ -139,5 +139,14 @@ public class WorldManager
 		CurrentEnvironment = AllEnvironments[name];
 	}
 
+	public void AdvanceTime(int hours, int minutes)
+	{
+		CurrentTime += (hours * 60 + minutes);
+		if(CurrentTime >= 1440)
+		{
+			CurrentDay ++;
+			CurrentTime -= 1440;
+		}
+	}
 
 }
