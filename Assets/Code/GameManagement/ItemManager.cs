@@ -5,12 +5,10 @@ using System;
 
 public class ItemManager
 {
-	
 
 
 	public void Initialize()
 	{
-		
 
 		/*
 		backpack.AddGridItem(item1, 0, 0, GridItemOrient.Landscape);
@@ -96,11 +94,11 @@ public class ItemManager
 
 
 
-		inventory1.Backpack.Add(new GridItemData(LoadItem("44magnum"), 2, 3, GridItemOrient.Portrait, 1));
+		inventory1.Backpack.Add(new GridItemData(LoadItem("makarov"), 2, 3, GridItemOrient.Landscape, 1));
 		inventory1.Backpack.Add(new GridItemData(LoadItem("pipegrenade"), 0, 7, GridItemOrient.Landscape, 1));
 		//inventory1.Backpack.Add(new GridItemData(LoadItem("kevlarhelmet"), 0, 6, GridItemOrient.Landscape, 1));
-		inventory1.Backpack.Add(new GridItemData(LoadItem("ammo762_39"), 0, 9, GridItemOrient.Landscape, 80));
-		inventory1.Backpack.Add(new GridItemData(LoadItem("ammo762_54r"), 2, 9, GridItemOrient.Landscape, 40));
+		inventory1.Backpack.Add(new GridItemData(LoadItem("ammo762_39"), 0, 9, GridItemOrient.Portrait, 80));
+		inventory1.Backpack.Add(new GridItemData(LoadItem("ammo9_18"), 2, 9, GridItemOrient.Portrait, 40));
 		inventory1.Backpack.Add(new GridItemData(LoadItem("ammo12shot"), 4, 9, GridItemOrient.Landscape, 20));
 		inventory1.Backpack.Add(new GridItemData(LoadItem("ammo44magnum"), 1, 8, GridItemOrient.Landscape, 32));
 		inventory1.Backpack.Add(new GridItemData(LoadItem("huntingshotgun"), 0, 0, GridItemOrient.Landscape, 1));
@@ -390,12 +388,23 @@ public class ItemManager
 	{
 		Item item = LoadItem(itemID);
 
-
 		return item.Name;
 	}
 
 	public Item LoadItem(string itemID)
 	{
+
+		Item item = GameManager.Inst.DBManager.DBHandlerItem.LoadItemByID(itemID);
+		if(item == null)
+		{
+			return null;
+		}
+
+
+		return item;
+
+
+		/*
 		Item item1 = new Item();
 		item1.Name = "AK 47";
 		item1.Description = "Standard service rifle of the army, high damage and low accuracy.";
@@ -544,7 +553,7 @@ public class ItemManager
 
 		Item item7 = new Item();
 		item7.Name = "PASGT Ballistic Helmet";
-		item7.Description = "Layered with aramid and polyethylene. Offers basic protection against shrapnel and handgun bullets.";
+		item7.Description = "Layered with aramid and polyethylene. Offers moderate protection against shrapnel, handgun and rifle bullets";
 		item7.PrefabName = "PASGTHelmet";
 		item7.SpriteName = "pasgthelmet";
 		item7.Weight = 1.2f;
@@ -584,7 +593,7 @@ public class ItemManager
 
 		Item item9 = new Item();
 		item9.Name = "12 Gauge Buckshot";
-		item9.Description = "Ammo for shotguns.";
+		item9.Description = "Buckshot ammo for shotguns.";
 		item9.PrefabName = "Ammo12Shot";
 		item9.SpriteName = "ammo12shot";
 		item9.Weight = 0.05f;
@@ -604,7 +613,7 @@ public class ItemManager
 
 		Item item10 = new Item();
 		item10.Name = "Pump Action Hunting Shotgun";
-		item10.Description = "Shotgun used for hunting doves.";
+		item10.Description = "Shotgun for recreational duck hunting.";
 		item10.PrefabName = "HuntingShotgun";
 		item10.SpriteName = "huntingshotgun";
 		item10.Weight = 5.6f;
@@ -707,7 +716,7 @@ public class ItemManager
 
 		Item item14 = new Item();
 		item14.Name = "Geiger Counter";
-		item14.Description = "Invented by Hans Geiger. An instrument used to detect radiation.";
+		item14.Description = "Invented by Hans Geiger. An instrument used to detect radiation level.";
 		item14.PrefabName = "GeigerCounter";
 		item14.SpriteName = "geigercounter";
 		item14.Weight = 1.5f;
@@ -768,7 +777,7 @@ public class ItemManager
 		item17.SpriteName = "mutantheart";
 		item17.Weight = 10.05f;
 		item17.ID = "mutantheart";
-		item17.Type = ItemType.Medicine;
+		item17.Type = ItemType.Ingredient;
 		item17.GridCols = 1;
 		item17.GridRows = 1;
 		item17.MaxStackSize = 1;
@@ -812,7 +821,7 @@ public class ItemManager
 
 		Item item20 = new Item();
 		item20.Name = "Bread";
-		item20.Description = "Cold, hard wheat bread. Can stay fresh for a long time.";
+		item20.Description = "Cold, stale rye bread. Can stay edible for a long time.";
 		item20.PrefabName = "Bread1";
 		item20.SpriteName = "bread1";
 		item20.Weight = 0.3f;
@@ -1078,8 +1087,9 @@ public class ItemManager
 		}
 
 		return null;
+		*/
 	}
-
+	
 
 	private Item ParsePresetItem(string data, out int count)
 	{
@@ -1108,5 +1118,6 @@ public class ItemManager
 		}
 
 		return item;
+
 	}
 }

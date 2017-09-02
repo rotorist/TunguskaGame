@@ -18,6 +18,7 @@ public class Gun : Weapon
 	public ParticleSystem BrassEject;
 	public GameObject MagazineObject;
 	public LineRenderer Laser;
+	public string GunshotSoundName;
 
 	public GunFireModes CurrentFireMode;
 	public bool IsJammed {get {return _isJammed;}}
@@ -95,7 +96,7 @@ public class Gun : Weapon
 								AudioSource audio = GetComponent<AudioSource>();
 								if(audio != null)
 								{
-									audio.PlayOneShot(GameManager.Inst.SoundManager.GetClip(WeaponItem.ID + "_pump"), 0.15f);
+									audio.PlayOneShot(GameManager.Inst.SoundManager.GetClip(GunshotSoundName + "_pump"), 0.15f);
 								}
 
 								//emit brass
@@ -192,8 +193,9 @@ public class Gun : Weapon
 		Barrel.Handling = (float)weaponItem.GetAttributeByName("Handling").Value;
 
 		Magazine.MaxCapacity = (int)weaponItem.GetAttributeByName("Magazine Size").Value;
-
 		Receiver.Recoil = (float)weaponItem.GetAttributeByName("Recoil").Value * _npcRecoilReduction;
+
+		GunshotSoundName = weaponItem.GetAttributeByName("_GunshotSound").Value.ToString();
 
 		_reloadToUnjam = (bool)weaponItem.GetAttributeByName("_ReloadToUnjam").Value;
 
@@ -223,6 +225,7 @@ public class Gun : Weapon
 	public override void Refresh ()
 	{
 		Magazine.AmmoLeft = (int)WeaponItem.GetAttributeByName("_LoadedAmmos").Value;
+
 		Magazine.LoadedAmmoID = (string)WeaponItem.GetAttributeByName("_LoadedAmmoID").Value;
 
 		Item ammo = GameManager.Inst.ItemManager.LoadItem(Magazine.LoadedAmmoID);
@@ -320,7 +323,7 @@ public class Gun : Weapon
 			AudioSource audio = GetComponent<AudioSource>();
 			if(audio != null)
 			{
-				string clipName = WeaponItem.ID + "_shot" + UnityEngine.Random.Range(1, 5).ToString();
+				string clipName = GunshotSoundName + "_shot" + UnityEngine.Random.Range(1, 5).ToString();
 				AudioClip clip = GameManager.Inst.SoundManager.GetClip(clipName);
 				audio.PlayOneShot(clip, 0.13f);
 

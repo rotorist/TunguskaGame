@@ -66,6 +66,7 @@ public class Item
 		{
 			if(AttributeIndex.ContainsKey(name))
 			{
+				
 				return Attributes[AttributeIndex[name]];
 			}
 			else

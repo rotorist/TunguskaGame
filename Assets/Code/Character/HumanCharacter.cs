@@ -532,6 +532,12 @@ public class HumanCharacter : Character
 			if(currWeapon != null && currWeapon.IsTwoHanded)
 			{
 				MyLeftHandIK.InstantDisable();
+
+			}
+
+			if(currWeapon != null && currWeapon.IsRanged)
+			{
+				MyAnimator.SetTrigger("CancelReload");
 			}
 
 			CurrentAnimState = new HumanAnimStateAction(this);
@@ -1096,7 +1102,7 @@ public class HumanCharacter : Character
 							AudioSource audio = gun.GetComponent<AudioSource>();
 							if(audio != null)
 							{
-								audio.PlayOneShot(GameManager.Inst.SoundManager.GetClip(gun.WeaponItem.ID + "_reload"), 0.1f);
+								audio.PlayOneShot(GameManager.Inst.SoundManager.GetClip(gun.GunshotSoundName + "_reload"), 0.1f);
 							}
 						}
 
@@ -2807,7 +2813,7 @@ public class HumanCharacter : Character
 			Vector3 playerLineOfSight = GameManager.Inst.PlayerControl.SelectedPC.LookTarget.transform.position - GameManager.Inst.PlayerControl.SelectedPC.transform.position;
 			playerLineOfSight = new Vector3(playerLineOfSight.x, 0, playerLineOfSight.z);
 			float playerAngle = Vector3.Angle(playerLineOfSight, transform.position - GameManager.Inst.PlayerControl.SelectedPC.transform.position);
-			if(playerAngle > 80 && playerDist > 1.5f)
+			if(playerAngle > 80 && playerDist > 1.5f && MyStatus.Health > 0)
 			{
 				IsOutOfSight = true;
 			}

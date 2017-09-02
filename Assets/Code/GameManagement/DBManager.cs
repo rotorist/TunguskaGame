@@ -10,6 +10,7 @@ public class DBManager
 	public DBHandlerDialogue DBHandlerDialogue;
 	public DBHandlerStoryEvent DBHandlerStoryEvent;
 	public DBHandlerCharacter DBHandlerCharacter;
+	public DBHandlerItem DBHandlerItem;
 
 	private IDbConnection _mainDBConn;
 	private IDbConnection _aiDBConn;
@@ -20,6 +21,9 @@ public class DBManager
 		DBHandlerDialogue = new DBHandlerDialogue();
 		DBHandlerStoryEvent = new DBHandlerStoryEvent();
 		DBHandlerCharacter = new DBHandlerCharacter();
+		DBHandlerItem = new DBHandlerItem();
+
+
 
 		//open main db
 		string conn = "URI=file:" + Application.dataPath + "/GameData/Database/Main.s3db"; //Path to database.
@@ -45,6 +49,8 @@ public class DBManager
 
 
 		DBHandlerDialogue.LoadNPCDialogue(null);
+
+		//DBHandlerItem.LoadItemByID("ak47");
 	}
 
 	public IDataReader RunAIQuery(string query)

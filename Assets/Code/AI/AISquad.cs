@@ -262,10 +262,10 @@ public class AISquad
 			GoapAction currentAction = member.MyAI.GetCurrentAction();
 			if(currentAction != null && currentAction.Name == "ActionInvestigate")
 			{
-				Debug.Log("member  " + member + " is doing investigation");
+				//Debug.Log("member  " + member + " is doing investigation");
 				if(Vector3.Distance(member.MyAI.BlackBoard.HighestDisturbanceLoc, location) < 5)
 				{
-					Debug.Log("member " + member.name + " is investigating loc " + location);
+					//Debug.Log("member " + member.name + " is investigating loc " + location);
 					return true;
 				}
 			}
@@ -273,7 +273,7 @@ public class AISquad
 			{
 				if(Vector3.Distance(member.MyAI.BlackBoard.TargetCorpse.LastKnownPos, location) < 5)
 				{
-					Debug.Log("member " + member.name + " is checking corpse at loc " + location);
+					//Debug.Log("member " + member.name + " is checking corpse at loc " + location);
 					return true;
 				}
 			}
