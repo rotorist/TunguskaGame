@@ -1,0 +1,174 @@
+fileFormatVersion: 2
+guid: 07a5223935fa50a43a5d401b568548ec
+timeCreated: 1467381730
+licenseType: Store
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: 1P_SawedShotgun
+    100002: Base-HumanLDigit11
+    100004: Base-HumanLDigit12
+    100006: Base-HumanLDigit13
+    100008: Base-HumanLDigit21
+    100010: Base-HumanLDigit22
+    100012: Base-HumanLDigit23
+    100014: Base-HumanLDigit31
+    100016: Base-HumanLDigit32
+    100018: Base-HumanLDigit33
+    100020: Base-HumanLDigit41
+    100022: Base-HumanLDigit42
+    100024: Base-HumanLDigit43
+    100026: Base-HumanLDigit51
+    100028: Base-HumanLDigit52
+    100030: Base-HumanLDigit53
+    100032: Base-HumanLForearm1
+    100034: Base-HumanLForearm2
+    100036: Base-HumanLForearm3
+    100038: Base-HumanLForearm4
+    100040: Base-HumanLPalm
+    100042: Base-HumanLUpperarm
+    100044: Base-HumanRDigit11
+    100046: Base-HumanRDigit12
+    100048: Base-HumanRDigit13
+    100050: Base-HumanRDigit21
+    100052: Base-HumanRDigit22
+    100054: Base-HumanRDigit23
+    100056: Base-HumanRDigit31
+    100058: Base-HumanRDigit32
+    100060: Base-HumanRDigit33
+    100062: Base-HumanRDigit41
+    100064: Base-HumanRDigit42
+    100066: Base-HumanRDigit43
+    100068: Base-HumanRDigit51
+    100070: Base-HumanRDigit52
+    100072: Base-HumanRDigit53
+    100074: Base-HumanRForearm1
+    100076: Base-HumanRForearm2
+    100078: Base-HumanRForearm3
+    100080: Base-HumanRForearm4
+    100082: Base-HumanRPalm
+    100084: Base-HumanRUpperarm
+    100086: Base-HumanRUpperarm001
+    100088: Dummy_bullet001
+    100090: Dummy_bullet002
+    100092: Dummy_nobe_gun001
+    100094: Dummy_tube_gun
+    100096: Dummy_Weapon
+    100098: //RootNode
+    400000: 1P_SawedShotgun
+    400002: Base-HumanLDigit11
+    400004: Base-HumanLDigit12
+    400006: Base-HumanLDigit13
+    400008: Base-HumanLDigit21
+    400010: Base-HumanLDigit22
+    400012: Base-HumanLDigit23
+    400014: Base-HumanLDigit31
+    400016: Base-HumanLDigit32
+    400018: Base-HumanLDigit33
+    400020: Base-HumanLDigit41
+    400022: Base-HumanLDigit42
+    400024: Base-HumanLDigit43
+    400026: Base-HumanLDigit51
+    400028: Base-HumanLDigit52
+    400030: Base-HumanLDigit53
+    400032: Base-HumanLForearm1
+    400034: Base-HumanLForearm2
+    400036: Base-HumanLForearm3
+    400038: Base-HumanLForearm4
+    400040: Base-HumanLPalm
+    400042: Base-HumanLUpperarm
+    400044: Base-HumanRDigit11
+    400046: Base-HumanRDigit12
+    400048: Base-HumanRDigit13
+    400050: Base-HumanRDigit21
+    400052: Base-HumanRDigit22
+    400054: Base-HumanRDigit23
+    400056: Base-HumanRDigit31
+    400058: Base-HumanRDigit32
+    400060: Base-HumanRDigit33
+    400062: Base-HumanRDigit41
+    400064: Base-HumanRDigit42
+    400066: Base-HumanRDigit43
+    400068: Base-HumanRDigit51
+    400070: Base-HumanRDigit52
+    400072: Base-HumanRDigit53
+    400074: Base-HumanRForearm1
+    400076: Base-HumanRForearm2
+    400078: Base-HumanRForearm3
+    400080: Base-HumanRForearm4
+    400082: Base-HumanRPalm
+    400084: Base-HumanRUpperarm
+    400086: Base-HumanRUpperarm001
+    400088: Dummy_bullet001
+    400090: Dummy_bullet002
+    400092: Dummy_nobe_gun001
+    400094: Dummy_tube_gun
+    400096: Dummy_Weapon
+    400098: //RootNode
+    4300000: 1P_SawedShotgun
+    9500000: //RootNode
+    13700000: 1P_SawedShotgun
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

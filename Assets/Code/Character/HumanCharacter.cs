@@ -1079,7 +1079,7 @@ public class HumanCharacter : Character
 				if(magazine != null && magazine.AmmoLeft < magazine.MaxCapacity)
 				{
 					GridItemData ammo = this.Inventory.FindItemInBackpack(magazine.LoadedAmmoID);
-					//if(ammo != null || MyAI.ControlType == AIControlType.NPC)
+					if(ammo != null || (this.MyReference.CurrentWeapon.GetComponent<Gun>().IsReloadToUnjam && magazine.AmmoLeft > 0))
 					{
 						if(GetCurrentAnimWeapon() == WeaponAnimType.Longgun || GetCurrentAnimWeapon() == WeaponAnimType.Pistol)
 						{
@@ -1953,7 +1953,7 @@ public class HumanCharacter : Character
 				else
 				{
 					//if it's a shotgun then only load one
-					if(GameManager.Inst.PlayerControl.Party.Members.Contains(this))
+					if(MyAI.ControlType == AIControlType.Player)
 					{
 						quantity = this.Inventory.RemoveItemsFromBackpack(gun.Magazine.LoadedAmmoID, 1);
 					}
@@ -2728,6 +2728,12 @@ public class HumanCharacter : Character
 		_thrownObjectInHand.transform.parent = this.MyReference.RightHandWeaponMount.transform;
 		_thrownObjectInHand.transform.localPosition = _thrownObjectInHand.InHandPosition;
 		_thrownObjectInHand.transform.localEulerAngles = _thrownObjectInHand.InHandRotation;
+
+		HandGrenade grenadeComponent = _thrownObjectInHand.GetComponent<HandGrenade>();
+		if(grenadeComponent != null)
+		{
+			grenadeComponent.SetExplosive(throwItem);
+		}
 
 		//this.MyAimIK.solver.transform = _thrownObjectInHand.transform.Find("AimTransform");
 		//AimTransform = this.MyAimIK.solver.transform;

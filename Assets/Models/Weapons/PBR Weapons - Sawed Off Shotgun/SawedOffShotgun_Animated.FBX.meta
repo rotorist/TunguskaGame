@@ -1,0 +1,1851 @@
+fileFormatVersion: 2
+guid: 4c27ca74d03ad1a4abc6c1a133252c80
+timeCreated: 1467381730
+licenseType: Store
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: 1P_SawedShotgun
+    100002: Base-HumanLDigit11
+    100004: Base-HumanLDigit12
+    100006: Base-HumanLDigit13
+    100008: Base-HumanLDigit21
+    100010: Base-HumanLDigit22
+    100012: Base-HumanLDigit23
+    100014: Base-HumanLDigit31
+    100016: Base-HumanLDigit32
+    100018: Base-HumanLDigit33
+    100020: Base-HumanLDigit41
+    100022: Base-HumanLDigit42
+    100024: Base-HumanLDigit43
+    100026: Base-HumanLDigit51
+    100028: Base-HumanLDigit52
+    100030: Base-HumanLDigit53
+    100032: Base-HumanLForearm1
+    100034: Base-HumanLForearm2
+    100036: Base-HumanLForearm3
+    100038: Base-HumanLForearm4
+    100040: Base-HumanLPalm
+    100042: Base-HumanLUpperarm
+    100044: Base-HumanRDigit11
+    100046: Base-HumanRDigit12
+    100048: Base-HumanRDigit13
+    100050: Base-HumanRDigit21
+    100052: Base-HumanRDigit22
+    100054: Base-HumanRDigit23
+    100056: Base-HumanRDigit31
+    100058: Base-HumanRDigit32
+    100060: Base-HumanRDigit33
+    100062: Base-HumanRDigit41
+    100064: Base-HumanRDigit42
+    100066: Base-HumanRDigit43
+    100068: Base-HumanRDigit51
+    100070: Base-HumanRDigit52
+    100072: Base-HumanRDigit53
+    100074: Base-HumanRForearm1
+    100076: Base-HumanRForearm2
+    100078: Base-HumanRForearm3
+    100080: Base-HumanRForearm4
+    100082: Base-HumanRPalm
+    100084: Base-HumanRUpperarm
+    100086: Base-HumanRUpperarm001
+    100088: Dummy_bullet001
+    100090: Dummy_bullet002
+    100092: Dummy_nobe_gun001
+    100094: Dummy_tube_gun
+    100096: Dummy_Weapon
+    100098: //RootNode
+    400000: 1P_SawedShotgun
+    400002: Base-HumanLDigit11
+    400004: Base-HumanLDigit12
+    400006: Base-HumanLDigit13
+    400008: Base-HumanLDigit21
+    400010: Base-HumanLDigit22
+    400012: Base-HumanLDigit23
+    400014: Base-HumanLDigit31
+    400016: Base-HumanLDigit32
+    400018: Base-HumanLDigit33
+    400020: Base-HumanLDigit41
+    400022: Base-HumanLDigit42
+    400024: Base-HumanLDigit43
+    400026: Base-HumanLDigit51
+    400028: Base-HumanLDigit52
+    400030: Base-HumanLDigit53
+    400032: Base-HumanLForearm1
+    400034: Base-HumanLForearm2
+    400036: Base-HumanLForearm3
+    400038: Base-HumanLForearm4
+    400040: Base-HumanLPalm
+    400042: Base-HumanLUpperarm
+    400044: Base-HumanRDigit11
+    400046: Base-HumanRDigit12
+    400048: Base-HumanRDigit13
+    400050: Base-HumanRDigit21
+    400052: Base-HumanRDigit22
+    400054: Base-HumanRDigit23
+    400056: Base-HumanRDigit31
+    400058: Base-HumanRDigit32
+    400060: Base-HumanRDigit33
+    400062: Base-HumanRDigit41
+    400064: Base-HumanRDigit42
+    400066: Base-HumanRDigit43
+    400068: Base-HumanRDigit51
+    400070: Base-HumanRDigit52
+    400072: Base-HumanRDigit53
+    400074: Base-HumanRForearm1
+    400076: Base-HumanRForearm2
+    400078: Base-HumanRForearm3
+    400080: Base-HumanRForearm4
+    400082: Base-HumanRPalm
+    400084: Base-HumanRUpperarm
+    400086: Base-HumanRUpperarm001
+    400088: Dummy_bullet001
+    400090: Dummy_bullet002
+    400092: Dummy_nobe_gun001
+    400094: Dummy_tube_gun
+    400096: Dummy_Weapon
+    400098: //RootNode
+    4300000: 1P_SawedShotgun
+    7400000: WeaponFire
+    7400002: WeaponEquip
+    7400004: WeaponPutDown
+    7400006: WeaponReload
+    7400008: WeaponTaunt
+    7400010: WeaponSprintIn
+    7400012: WeaponSprintIn
+    7400014: WeaponSprintOut
+    7400016: WeaponZoomIn
+    7400018: WeaponZoomFire
+    7400020: WeaponZoomIdle
+    7400022: WeaponZoomOut
+    7400024: WeaponIdle
+    9500000: //RootNode
+    13700000: 1P_SawedShotgun
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: WeaponFire
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 18
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: 1P_SawedShotgun
+        weight: 1
+      - path: Base-HumanRUpperarm001
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit11
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit11/Base-HumanLDigit12
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit11/Base-HumanLDigit12/Base-HumanLDigit13
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit21
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit21/Base-HumanLDigit22
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit21/Base-HumanLDigit22/Base-HumanLDigit23
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit31
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit31/Base-HumanLDigit32
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit31/Base-HumanLDigit32/Base-HumanLDigit33
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit41
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit41/Base-HumanLDigit42
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit41/Base-HumanLDigit42/Base-HumanLDigit43
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit51
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit51/Base-HumanLDigit52
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit51/Base-HumanLDigit52/Base-HumanLDigit53
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit11
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit11/Base-HumanRDigit12
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit11/Base-HumanRDigit12/Base-HumanRDigit13
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit21
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit21/Base-HumanRDigit22
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit21/Base-HumanRDigit22/Base-HumanRDigit23
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit31
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit31/Base-HumanRDigit32
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit31/Base-HumanRDigit32/Base-HumanRDigit33
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit41
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit41/Base-HumanRDigit42
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit41/Base-HumanRDigit42/Base-HumanRDigit43
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit51
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit51/Base-HumanRDigit52
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit51/Base-HumanRDigit52/Base-HumanRDigit53
+        weight: 1
+      - path: Base-HumanRUpperarm001/Dummy_Weapon
+        weight: 1
+      - path: Base-HumanRUpperarm001/Dummy_Weapon/Dummy_bullet001
+        weight: 1
+      - path: Base-HumanRUpperarm001/Dummy_Weapon/Dummy_bullet002
+        weight: 1
+      - path: Base-HumanRUpperarm001/Dummy_Weapon/Dummy_nobe_gun001
+        weight: 1
+      - path: Base-HumanRUpperarm001/Dummy_Weapon/Dummy_tube_gun
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: WeaponEquip
+      takeName: Take 001
+      firstFrame: 19
+      lastFrame: 34
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: 1P_SawedShotgun
+        weight: 1
+      - path: Base-HumanRUpperarm001
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit11
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit11/Base-HumanLDigit12
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit11/Base-HumanLDigit12/Base-HumanLDigit13
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit21
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit21/Base-HumanLDigit22
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit21/Base-HumanLDigit22/Base-HumanLDigit23
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit31
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit31/Base-HumanLDigit32
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit31/Base-HumanLDigit32/Base-HumanLDigit33
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit41
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit41/Base-HumanLDigit42
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit41/Base-HumanLDigit42/Base-HumanLDigit43
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit51
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit51/Base-HumanLDigit52
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit51/Base-HumanLDigit52/Base-HumanLDigit53
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit11
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit11/Base-HumanRDigit12
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit11/Base-HumanRDigit12/Base-HumanRDigit13
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit21
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit21/Base-HumanRDigit22
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit21/Base-HumanRDigit22/Base-HumanRDigit23
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit31
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit31/Base-HumanRDigit32
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit31/Base-HumanRDigit32/Base-HumanRDigit33
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit41
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit41/Base-HumanRDigit42
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit41/Base-HumanRDigit42/Base-HumanRDigit43
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit51
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit51/Base-HumanRDigit52
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit51/Base-HumanRDigit52/Base-HumanRDigit53
+        weight: 1
+      - path: Base-HumanRUpperarm001/Dummy_Weapon
+        weight: 1
+      - path: Base-HumanRUpperarm001/Dummy_Weapon/Dummy_bullet001
+        weight: 1
+      - path: Base-HumanRUpperarm001/Dummy_Weapon/Dummy_bullet002
+        weight: 1
+      - path: Base-HumanRUpperarm001/Dummy_Weapon/Dummy_nobe_gun001
+        weight: 1
+      - path: Base-HumanRUpperarm001/Dummy_Weapon/Dummy_tube_gun
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: WeaponPutDown
+      takeName: Take 001
+      firstFrame: 35
+      lastFrame: 50
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: 1P_SawedShotgun
+        weight: 1
+      - path: Base-HumanRUpperarm001
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit11
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit11/Base-HumanLDigit12
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit11/Base-HumanLDigit12/Base-HumanLDigit13
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit21
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit21/Base-HumanLDigit22
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit21/Base-HumanLDigit22/Base-HumanLDigit23
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit31
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit31/Base-HumanLDigit32
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit31/Base-HumanLDigit32/Base-HumanLDigit33
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit41
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit41/Base-HumanLDigit42
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit41/Base-HumanLDigit42/Base-HumanLDigit43
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit51
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit51/Base-HumanLDigit52
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit51/Base-HumanLDigit52/Base-HumanLDigit53
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit11
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit11/Base-HumanRDigit12
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit11/Base-HumanRDigit12/Base-HumanRDigit13
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit21
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit21/Base-HumanRDigit22
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit21/Base-HumanRDigit22/Base-HumanRDigit23
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit31
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit31/Base-HumanRDigit32
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit31/Base-HumanRDigit32/Base-HumanRDigit33
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit41
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit41/Base-HumanRDigit42
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit41/Base-HumanRDigit42/Base-HumanRDigit43
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit51
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit51/Base-HumanRDigit52
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit51/Base-HumanRDigit52/Base-HumanRDigit53
+        weight: 1
+      - path: Base-HumanRUpperarm001/Dummy_Weapon
+        weight: 1
+      - path: Base-HumanRUpperarm001/Dummy_Weapon/Dummy_bullet001
+        weight: 1
+      - path: Base-HumanRUpperarm001/Dummy_Weapon/Dummy_bullet002
+        weight: 1
+      - path: Base-HumanRUpperarm001/Dummy_Weapon/Dummy_nobe_gun001
+        weight: 1
+      - path: Base-HumanRUpperarm001/Dummy_Weapon/Dummy_tube_gun
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: WeaponReload
+      takeName: Take 001
+      firstFrame: 51
+      lastFrame: 125
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: 1P_SawedShotgun
+        weight: 1
+      - path: Base-HumanRUpperarm001
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit11
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit11/Base-HumanLDigit12
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit11/Base-HumanLDigit12/Base-HumanLDigit13
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit21
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit21/Base-HumanLDigit22
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit21/Base-HumanLDigit22/Base-HumanLDigit23
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit31
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit31/Base-HumanLDigit32
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit31/Base-HumanLDigit32/Base-HumanLDigit33
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit41
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit41/Base-HumanLDigit42
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit41/Base-HumanLDigit42/Base-HumanLDigit43
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit51
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit51/Base-HumanLDigit52
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit51/Base-HumanLDigit52/Base-HumanLDigit53
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit11
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit11/Base-HumanRDigit12
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit11/Base-HumanRDigit12/Base-HumanRDigit13
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit21
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit21/Base-HumanRDigit22
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit21/Base-HumanRDigit22/Base-HumanRDigit23
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit31
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit31/Base-HumanRDigit32
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit31/Base-HumanRDigit32/Base-HumanRDigit33
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit41
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit41/Base-HumanRDigit42
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit41/Base-HumanRDigit42/Base-HumanRDigit43
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit51
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit51/Base-HumanRDigit52
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit51/Base-HumanRDigit52/Base-HumanRDigit53
+        weight: 1
+      - path: Base-HumanRUpperarm001/Dummy_Weapon
+        weight: 1
+      - path: Base-HumanRUpperarm001/Dummy_Weapon/Dummy_bullet001
+        weight: 1
+      - path: Base-HumanRUpperarm001/Dummy_Weapon/Dummy_bullet002
+        weight: 1
+      - path: Base-HumanRUpperarm001/Dummy_Weapon/Dummy_nobe_gun001
+        weight: 1
+      - path: Base-HumanRUpperarm001/Dummy_Weapon/Dummy_tube_gun
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: WeaponTaunt
+      takeName: Take 001
+      firstFrame: 126
+      lastFrame: 155
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: 1P_SawedShotgun
+        weight: 1
+      - path: Base-HumanRUpperarm001
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit11
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit11/Base-HumanLDigit12
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit11/Base-HumanLDigit12/Base-HumanLDigit13
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit21
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit21/Base-HumanLDigit22
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit21/Base-HumanLDigit22/Base-HumanLDigit23
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit31
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit31/Base-HumanLDigit32
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit31/Base-HumanLDigit32/Base-HumanLDigit33
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit41
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit41/Base-HumanLDigit42
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit41/Base-HumanLDigit42/Base-HumanLDigit43
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit51
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit51/Base-HumanLDigit52
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit51/Base-HumanLDigit52/Base-HumanLDigit53
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit11
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit11/Base-HumanRDigit12
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit11/Base-HumanRDigit12/Base-HumanRDigit13
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit21
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit21/Base-HumanRDigit22
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit21/Base-HumanRDigit22/Base-HumanRDigit23
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit31
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit31/Base-HumanRDigit32
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit31/Base-HumanRDigit32/Base-HumanRDigit33
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit41
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit41/Base-HumanRDigit42
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit41/Base-HumanRDigit42/Base-HumanRDigit43
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit51
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit51/Base-HumanRDigit52
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit51/Base-HumanRDigit52/Base-HumanRDigit53
+        weight: 1
+      - path: Base-HumanRUpperarm001/Dummy_Weapon
+        weight: 1
+      - path: Base-HumanRUpperarm001/Dummy_Weapon/Dummy_bullet001
+        weight: 1
+      - path: Base-HumanRUpperarm001/Dummy_Weapon/Dummy_bullet002
+        weight: 1
+      - path: Base-HumanRUpperarm001/Dummy_Weapon/Dummy_nobe_gun001
+        weight: 1
+      - path: Base-HumanRUpperarm001/Dummy_Weapon/Dummy_tube_gun
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: WeaponSprintIn
+      takeName: Take 001
+      firstFrame: 156
+      lastFrame: 165
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: 1P_SawedShotgun
+        weight: 1
+      - path: Base-HumanRUpperarm001
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit11
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit11/Base-HumanLDigit12
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit11/Base-HumanLDigit12/Base-HumanLDigit13
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit21
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit21/Base-HumanLDigit22
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit21/Base-HumanLDigit22/Base-HumanLDigit23
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit31
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit31/Base-HumanLDigit32
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit31/Base-HumanLDigit32/Base-HumanLDigit33
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit41
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit41/Base-HumanLDigit42
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit41/Base-HumanLDigit42/Base-HumanLDigit43
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit51
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit51/Base-HumanLDigit52
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit51/Base-HumanLDigit52/Base-HumanLDigit53
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit11
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit11/Base-HumanRDigit12
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit11/Base-HumanRDigit12/Base-HumanRDigit13
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit21
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit21/Base-HumanRDigit22
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit21/Base-HumanRDigit22/Base-HumanRDigit23
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit31
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit31/Base-HumanRDigit32
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit31/Base-HumanRDigit32/Base-HumanRDigit33
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit41
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit41/Base-HumanRDigit42
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit41/Base-HumanRDigit42/Base-HumanRDigit43
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit51
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit51/Base-HumanRDigit52
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit51/Base-HumanRDigit52/Base-HumanRDigit53
+        weight: 1
+      - path: Base-HumanRUpperarm001/Dummy_Weapon
+        weight: 1
+      - path: Base-HumanRUpperarm001/Dummy_Weapon/Dummy_bullet001
+        weight: 1
+      - path: Base-HumanRUpperarm001/Dummy_Weapon/Dummy_bullet002
+        weight: 1
+      - path: Base-HumanRUpperarm001/Dummy_Weapon/Dummy_nobe_gun001
+        weight: 1
+      - path: Base-HumanRUpperarm001/Dummy_Weapon/Dummy_tube_gun
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: WeaponSprintIn
+      takeName: Take 001
+      firstFrame: 166
+      lastFrame: 184
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: 1P_SawedShotgun
+        weight: 1
+      - path: Base-HumanRUpperarm001
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit11
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit11/Base-HumanLDigit12
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit11/Base-HumanLDigit12/Base-HumanLDigit13
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit21
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit21/Base-HumanLDigit22
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit21/Base-HumanLDigit22/Base-HumanLDigit23
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit31
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit31/Base-HumanLDigit32
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit31/Base-HumanLDigit32/Base-HumanLDigit33
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit41
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit41/Base-HumanLDigit42
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit41/Base-HumanLDigit42/Base-HumanLDigit43
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit51
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit51/Base-HumanLDigit52
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit51/Base-HumanLDigit52/Base-HumanLDigit53
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit11
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit11/Base-HumanRDigit12
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit11/Base-HumanRDigit12/Base-HumanRDigit13
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit21
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit21/Base-HumanRDigit22
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit21/Base-HumanRDigit22/Base-HumanRDigit23
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit31
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit31/Base-HumanRDigit32
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit31/Base-HumanRDigit32/Base-HumanRDigit33
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit41
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit41/Base-HumanRDigit42
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit41/Base-HumanRDigit42/Base-HumanRDigit43
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit51
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit51/Base-HumanRDigit52
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit51/Base-HumanRDigit52/Base-HumanRDigit53
+        weight: 1
+      - path: Base-HumanRUpperarm001/Dummy_Weapon
+        weight: 1
+      - path: Base-HumanRUpperarm001/Dummy_Weapon/Dummy_bullet001
+        weight: 1
+      - path: Base-HumanRUpperarm001/Dummy_Weapon/Dummy_bullet002
+        weight: 1
+      - path: Base-HumanRUpperarm001/Dummy_Weapon/Dummy_nobe_gun001
+        weight: 1
+      - path: Base-HumanRUpperarm001/Dummy_Weapon/Dummy_tube_gun
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: WeaponSprintOut
+      takeName: Take 001
+      firstFrame: 185
+      lastFrame: 189
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: 1P_SawedShotgun
+        weight: 1
+      - path: Base-HumanRUpperarm001
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit11
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit11/Base-HumanLDigit12
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit11/Base-HumanLDigit12/Base-HumanLDigit13
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit21
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit21/Base-HumanLDigit22
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit21/Base-HumanLDigit22/Base-HumanLDigit23
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit31
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit31/Base-HumanLDigit32
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit31/Base-HumanLDigit32/Base-HumanLDigit33
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit41
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit41/Base-HumanLDigit42
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit41/Base-HumanLDigit42/Base-HumanLDigit43
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit51
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit51/Base-HumanLDigit52
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit51/Base-HumanLDigit52/Base-HumanLDigit53
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit11
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit11/Base-HumanRDigit12
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit11/Base-HumanRDigit12/Base-HumanRDigit13
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit21
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit21/Base-HumanRDigit22
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit21/Base-HumanRDigit22/Base-HumanRDigit23
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit31
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit31/Base-HumanRDigit32
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit31/Base-HumanRDigit32/Base-HumanRDigit33
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit41
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit41/Base-HumanRDigit42
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit41/Base-HumanRDigit42/Base-HumanRDigit43
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit51
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit51/Base-HumanRDigit52
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit51/Base-HumanRDigit52/Base-HumanRDigit53
+        weight: 1
+      - path: Base-HumanRUpperarm001/Dummy_Weapon
+        weight: 1
+      - path: Base-HumanRUpperarm001/Dummy_Weapon/Dummy_bullet001
+        weight: 1
+      - path: Base-HumanRUpperarm001/Dummy_Weapon/Dummy_bullet002
+        weight: 1
+      - path: Base-HumanRUpperarm001/Dummy_Weapon/Dummy_nobe_gun001
+        weight: 1
+      - path: Base-HumanRUpperarm001/Dummy_Weapon/Dummy_tube_gun
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: WeaponZoomIn
+      takeName: Take 001
+      firstFrame: 190
+      lastFrame: 199
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: 1P_SawedShotgun
+        weight: 1
+      - path: Base-HumanRUpperarm001
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit11
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit11/Base-HumanLDigit12
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit11/Base-HumanLDigit12/Base-HumanLDigit13
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit21
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit21/Base-HumanLDigit22
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit21/Base-HumanLDigit22/Base-HumanLDigit23
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit31
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit31/Base-HumanLDigit32
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit31/Base-HumanLDigit32/Base-HumanLDigit33
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit41
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit41/Base-HumanLDigit42
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit41/Base-HumanLDigit42/Base-HumanLDigit43
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit51
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit51/Base-HumanLDigit52
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit51/Base-HumanLDigit52/Base-HumanLDigit53
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit11
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit11/Base-HumanRDigit12
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit11/Base-HumanRDigit12/Base-HumanRDigit13
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit21
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit21/Base-HumanRDigit22
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit21/Base-HumanRDigit22/Base-HumanRDigit23
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit31
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit31/Base-HumanRDigit32
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit31/Base-HumanRDigit32/Base-HumanRDigit33
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit41
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit41/Base-HumanRDigit42
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit41/Base-HumanRDigit42/Base-HumanRDigit43
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit51
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit51/Base-HumanRDigit52
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit51/Base-HumanRDigit52/Base-HumanRDigit53
+        weight: 1
+      - path: Base-HumanRUpperarm001/Dummy_Weapon
+        weight: 1
+      - path: Base-HumanRUpperarm001/Dummy_Weapon/Dummy_bullet001
+        weight: 1
+      - path: Base-HumanRUpperarm001/Dummy_Weapon/Dummy_bullet002
+        weight: 1
+      - path: Base-HumanRUpperarm001/Dummy_Weapon/Dummy_nobe_gun001
+        weight: 1
+      - path: Base-HumanRUpperarm001/Dummy_Weapon/Dummy_tube_gun
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: WeaponZoomFire
+      takeName: Take 001
+      firstFrame: 200
+      lastFrame: 205
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: 1P_SawedShotgun
+        weight: 1
+      - path: Base-HumanRUpperarm001
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit11
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit11/Base-HumanLDigit12
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit11/Base-HumanLDigit12/Base-HumanLDigit13
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit21
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit21/Base-HumanLDigit22
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit21/Base-HumanLDigit22/Base-HumanLDigit23
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit31
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit31/Base-HumanLDigit32
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit31/Base-HumanLDigit32/Base-HumanLDigit33
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit41
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit41/Base-HumanLDigit42
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit41/Base-HumanLDigit42/Base-HumanLDigit43
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit51
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit51/Base-HumanLDigit52
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit51/Base-HumanLDigit52/Base-HumanLDigit53
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit11
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit11/Base-HumanRDigit12
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit11/Base-HumanRDigit12/Base-HumanRDigit13
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit21
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit21/Base-HumanRDigit22
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit21/Base-HumanRDigit22/Base-HumanRDigit23
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit31
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit31/Base-HumanRDigit32
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit31/Base-HumanRDigit32/Base-HumanRDigit33
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit41
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit41/Base-HumanRDigit42
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit41/Base-HumanRDigit42/Base-HumanRDigit43
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit51
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit51/Base-HumanRDigit52
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit51/Base-HumanRDigit52/Base-HumanRDigit53
+        weight: 1
+      - path: Base-HumanRUpperarm001/Dummy_Weapon
+        weight: 1
+      - path: Base-HumanRUpperarm001/Dummy_Weapon/Dummy_bullet001
+        weight: 1
+      - path: Base-HumanRUpperarm001/Dummy_Weapon/Dummy_bullet002
+        weight: 1
+      - path: Base-HumanRUpperarm001/Dummy_Weapon/Dummy_nobe_gun001
+        weight: 1
+      - path: Base-HumanRUpperarm001/Dummy_Weapon/Dummy_tube_gun
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: WeaponZoomIdle
+      takeName: Take 001
+      firstFrame: 206
+      lastFrame: 208
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: 1P_SawedShotgun
+        weight: 1
+      - path: Base-HumanRUpperarm001
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit11
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit11/Base-HumanLDigit12
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit11/Base-HumanLDigit12/Base-HumanLDigit13
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit21
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit21/Base-HumanLDigit22
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit21/Base-HumanLDigit22/Base-HumanLDigit23
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit31
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit31/Base-HumanLDigit32
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit31/Base-HumanLDigit32/Base-HumanLDigit33
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit41
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit41/Base-HumanLDigit42
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit41/Base-HumanLDigit42/Base-HumanLDigit43
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit51
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit51/Base-HumanLDigit52
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit51/Base-HumanLDigit52/Base-HumanLDigit53
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit11
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit11/Base-HumanRDigit12
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit11/Base-HumanRDigit12/Base-HumanRDigit13
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit21
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit21/Base-HumanRDigit22
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit21/Base-HumanRDigit22/Base-HumanRDigit23
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit31
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit31/Base-HumanRDigit32
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit31/Base-HumanRDigit32/Base-HumanRDigit33
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit41
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit41/Base-HumanRDigit42
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit41/Base-HumanRDigit42/Base-HumanRDigit43
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit51
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit51/Base-HumanRDigit52
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit51/Base-HumanRDigit52/Base-HumanRDigit53
+        weight: 1
+      - path: Base-HumanRUpperarm001/Dummy_Weapon
+        weight: 1
+      - path: Base-HumanRUpperarm001/Dummy_Weapon/Dummy_bullet001
+        weight: 1
+      - path: Base-HumanRUpperarm001/Dummy_Weapon/Dummy_bullet002
+        weight: 1
+      - path: Base-HumanRUpperarm001/Dummy_Weapon/Dummy_nobe_gun001
+        weight: 1
+      - path: Base-HumanRUpperarm001/Dummy_Weapon/Dummy_tube_gun
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: WeaponZoomOut
+      takeName: Take 001
+      firstFrame: 209
+      lastFrame: 216
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: 1P_SawedShotgun
+        weight: 1
+      - path: Base-HumanRUpperarm001
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit11
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit11/Base-HumanLDigit12
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit11/Base-HumanLDigit12/Base-HumanLDigit13
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit21
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit21/Base-HumanLDigit22
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit21/Base-HumanLDigit22/Base-HumanLDigit23
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit31
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit31/Base-HumanLDigit32
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit31/Base-HumanLDigit32/Base-HumanLDigit33
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit41
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit41/Base-HumanLDigit42
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit41/Base-HumanLDigit42/Base-HumanLDigit43
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit51
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit51/Base-HumanLDigit52
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit51/Base-HumanLDigit52/Base-HumanLDigit53
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit11
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit11/Base-HumanRDigit12
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit11/Base-HumanRDigit12/Base-HumanRDigit13
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit21
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit21/Base-HumanRDigit22
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit21/Base-HumanRDigit22/Base-HumanRDigit23
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit31
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit31/Base-HumanRDigit32
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit31/Base-HumanRDigit32/Base-HumanRDigit33
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit41
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit41/Base-HumanRDigit42
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit41/Base-HumanRDigit42/Base-HumanRDigit43
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit51
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit51/Base-HumanRDigit52
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit51/Base-HumanRDigit52/Base-HumanRDigit53
+        weight: 1
+      - path: Base-HumanRUpperarm001/Dummy_Weapon
+        weight: 1
+      - path: Base-HumanRUpperarm001/Dummy_Weapon/Dummy_bullet001
+        weight: 1
+      - path: Base-HumanRUpperarm001/Dummy_Weapon/Dummy_bullet002
+        weight: 1
+      - path: Base-HumanRUpperarm001/Dummy_Weapon/Dummy_nobe_gun001
+        weight: 1
+      - path: Base-HumanRUpperarm001/Dummy_Weapon/Dummy_tube_gun
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: WeaponIdle
+      takeName: Take 001
+      firstFrame: 217
+      lastFrame: 303
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: 1P_SawedShotgun
+        weight: 1
+      - path: Base-HumanRUpperarm001
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit11
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit11/Base-HumanLDigit12
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit11/Base-HumanLDigit12/Base-HumanLDigit13
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit21
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit21/Base-HumanLDigit22
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit21/Base-HumanLDigit22/Base-HumanLDigit23
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit31
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit31/Base-HumanLDigit32
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit31/Base-HumanLDigit32/Base-HumanLDigit33
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit41
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit41/Base-HumanLDigit42
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit41/Base-HumanLDigit42/Base-HumanLDigit43
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit51
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit51/Base-HumanLDigit52
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanLUpperarm/Base-HumanLForearm1/Base-HumanLForearm2/Base-HumanLForearm3/Base-HumanLForearm4/Base-HumanLPalm/Base-HumanLDigit51/Base-HumanLDigit52/Base-HumanLDigit53
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit11
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit11/Base-HumanRDigit12
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit11/Base-HumanRDigit12/Base-HumanRDigit13
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit21
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit21/Base-HumanRDigit22
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit21/Base-HumanRDigit22/Base-HumanRDigit23
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit31
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit31/Base-HumanRDigit32
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit31/Base-HumanRDigit32/Base-HumanRDigit33
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit41
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit41/Base-HumanRDigit42
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit41/Base-HumanRDigit42/Base-HumanRDigit43
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit51
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit51/Base-HumanRDigit52
+        weight: 1
+      - path: Base-HumanRUpperarm001/Base-HumanRUpperarm/Base-HumanRForearm1/Base-HumanRForearm2/Base-HumanRForearm3/Base-HumanRForearm4/Base-HumanRPalm/Base-HumanRDigit51/Base-HumanRDigit52/Base-HumanRDigit53
+        weight: 1
+      - path: Base-HumanRUpperarm001/Dummy_Weapon
+        weight: 1
+      - path: Base-HumanRUpperarm001/Dummy_Weapon/Dummy_bullet001
+        weight: 1
+      - path: Base-HumanRUpperarm001/Dummy_Weapon/Dummy_bullet002
+        weight: 1
+      - path: Base-HumanRUpperarm001/Dummy_Weapon/Dummy_nobe_gun001
+        weight: 1
+      - path: Base-HumanRUpperarm001/Dummy_Weapon/Dummy_tube_gun
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

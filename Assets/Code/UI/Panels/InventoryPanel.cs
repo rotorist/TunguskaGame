@@ -641,8 +641,16 @@ public class InventoryPanel : PanelBase
 					item.transform.localEulerAngles = new Vector3(0, 0, 90);
 				}
 
-				item.Sprite.width = slot.Background.height;
-				item.Sprite.height = Mathf.FloorToInt(item.Sprite.width * ((item.ColumnSize * 1f) / item.RowSize));
+				if(((float)item.ColumnSize) / ((float)item.RowSize) < 0.4f)
+				{
+					item.Sprite.width = slot.Background.height;
+					item.Sprite.height = Mathf.FloorToInt(item.Sprite.width * ((item.ColumnSize * 1f) / item.RowSize));
+				}
+				else
+				{
+					item.Sprite.width = slot.Background.width;
+					item.Sprite.height = Mathf.FloorToInt(item.Sprite.width * ((item.ColumnSize * 1f) / item.RowSize));
+				}
 			}
 			else if(item.Item.Type == ItemType.Armor)
 			{

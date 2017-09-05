@@ -95,13 +95,14 @@ public class ItemManager
 
 
 		inventory1.Backpack.Add(new GridItemData(LoadItem("makarov"), 2, 3, GridItemOrient.Landscape, 1));
-		inventory1.Backpack.Add(new GridItemData(LoadItem("pipegrenade"), 0, 7, GridItemOrient.Landscape, 1));
+		inventory1.Backpack.Add(new GridItemData(LoadItem("rgd5grenade"), 0, 7, GridItemOrient.Landscape, 1));
 		//inventory1.Backpack.Add(new GridItemData(LoadItem("kevlarhelmet"), 0, 6, GridItemOrient.Landscape, 1));
 		inventory1.Backpack.Add(new GridItemData(LoadItem("ammo762_39"), 0, 9, GridItemOrient.Portrait, 80));
 		inventory1.Backpack.Add(new GridItemData(LoadItem("ammo9_18"), 2, 9, GridItemOrient.Portrait, 40));
 		inventory1.Backpack.Add(new GridItemData(LoadItem("ammo12shot"), 4, 9, GridItemOrient.Landscape, 20));
 		inventory1.Backpack.Add(new GridItemData(LoadItem("ammo44magnum"), 1, 8, GridItemOrient.Landscape, 32));
-		inventory1.Backpack.Add(new GridItemData(LoadItem("huntingshotgun"), 0, 0, GridItemOrient.Landscape, 1));
+		inventory1.Backpack.Add(new GridItemData(LoadItem("skorpion"), 0, 0, GridItemOrient.Landscape, 1));
+		inventory1.Backpack.Add(new GridItemData(LoadItem("doublebarrelshotgun"), 5, 3, GridItemOrient.Landscape, 1));
 		//inventory1.Backpack.Add(new GridItemData(LoadItem("svd"), 0, 3, GridItemOrient.Landscape, 1));
 		inventory1.Backpack.Add(new GridItemData(LoadItem("sleepingbag"), 1, 6, GridItemOrient.Landscape,1));
 		//inventory1.Backpack.Add(new GridItemData(LoadItem("mutantheart"), 8, 8, GridItemOrient.Landscape, 1));
@@ -112,7 +113,7 @@ public class ItemManager
 		inventory1.Backpack.Add(new GridItemData(LoadItem("gasoline"), 5, 6, GridItemOrient.Landscape, 1));
 
 		inventory1.RifleSlot = LoadItem("ak47");
-		inventory1.ThrowSlot = LoadItem("pipegrenade");
+		inventory1.ThrowSlot = LoadItem("f1grenade");
 		inventory1.ArmorSlot = LoadItem("flakjacket");
 		inventory1.SideArmSlot = LoadItem("machete");
 		inventory1.HeadSlot = LoadItem("kevlarhelmet");

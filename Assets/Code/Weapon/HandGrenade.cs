@@ -20,6 +20,7 @@ public class HandGrenade : ThrownObject
 			GetComponent<TrailRenderer>().time = 1.5f;
 		}
 	}
+		
 
 	void OnCollisionEnter(Collision collision)
 	{
@@ -41,5 +42,12 @@ public class HandGrenade : ThrownObject
 				audio.PlayOneShot(GameManager.Inst.SoundManager.GetClip("grenade_impact" + dropSound.ToString()), volume);
 			}
 		}
+	}
+
+	public void SetExplosive(Item myItem)
+	{
+		FuseTimer = (float)myItem.GetAttributeByName("Fuse Timer").Value;
+		Explosive.BlastDamage = (float)myItem.GetAttributeByName("Damage").Value;
+		Explosive.Range = (float)myItem.GetAttributeByName("Effective Radius").Value;
 	}
 }

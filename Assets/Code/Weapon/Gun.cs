@@ -22,7 +22,7 @@ public class Gun : Weapon
 
 	public GunFireModes CurrentFireMode;
 	public bool IsJammed {get {return _isJammed;}}
-
+	public bool IsReloadToUnjam {get {return _reloadToUnjam;}}
 
 	private float _coolDownTimer;
 	private bool _isCooledDown;
