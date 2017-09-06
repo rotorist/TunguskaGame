@@ -160,6 +160,14 @@ journal/{14}
 ./zsk_know_visitation
 journal/{16}
 
+./zsk_sid_give_locker_key
+item/receive/zsklockerkey/1
+condition/zsk_locker_key_given/true
+
+./zsk_sid_replace_locker_key
+item/receive/zsklockerkey/1
+item/lose/rubles/500
+
 
 
 

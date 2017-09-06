@@ -8,7 +8,7 @@ public class Door : MonoBehaviour
 {
 	public string ID;
 	public DoorType Type;
-	public bool IsMetal;
+	public ContainerSoundType SoundType;
 	public bool IsOpen;
 	public bool IsLocked;
 	public string KeyItemID;
@@ -117,7 +117,7 @@ public class Door : MonoBehaviour
 			else
 			{
 				//play locked door sound
-				if(!IsMetal)
+				if(SoundType == ContainerSoundType.Wood)
 				{
 					AudioClip clip = GameManager.Inst.SoundManager.GetClip("WoodDoorLocked");
 					DoorSound.PlayOneShot(clip, 0.6f);
@@ -141,7 +141,7 @@ public class Door : MonoBehaviour
 			}
 			else if(Type == DoorType.Rotating)
 			{
-				if(!IsMetal)
+				if(SoundType == ContainerSoundType.Wood)
 				{
 					AudioClip clip = GameManager.Inst.SoundManager.GetClip("WoodDoorOpen");
 					DoorSound.PlayOneShot(clip, 0.8f);
@@ -190,7 +190,7 @@ public class Door : MonoBehaviour
 			}
 			else if(Type == DoorType.Rotating)
 			{
-				if(!IsMetal)
+				if(SoundType == ContainerSoundType.Wood)
 				{
 					AudioClip clip = GameManager.Inst.SoundManager.GetClip("WoodDoorClose");
 					DoorSound.PlayOneShot(clip, 0.8f);

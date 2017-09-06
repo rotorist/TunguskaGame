@@ -340,3 +340,10 @@ public enum NPCJobs
 	Patrol,
 	Explore,
 }
+
+public enum ContainerSoundType
+{
+	Wood,
+	Metal,
+	Body,
+}

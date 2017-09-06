@@ -177,6 +177,7 @@ public class SaveGameManager
 			data.ColSize = chest.ColSize;
 			data.RowSize = chest.RowSize;
 			data.Items = chest.Items;
+			data.IsLocked = chest.IsLocked;
 
 			chestDataList.Add(data);
 		}
@@ -420,6 +421,7 @@ public class SaveGameManager
 				if(chest.ChestID == chestData.ChestID)
 				{
 					chest.Items = chestData.Items;
+					chest.IsLocked = chestData.IsLocked;
 					chest.PostLoad();
 				}
 			}

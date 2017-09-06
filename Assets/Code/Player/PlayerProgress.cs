@@ -17,6 +17,7 @@ public class PlayerProgress
 		PlayerLastName = "Kravshenko";
 		DiscoveredTopics = new List<string>();
 		DiscoveredTopics.Add("your_story");
+		DiscoveredTopics.Add("zsk_locker");
 
 		JournalEntries = new List<List<string>>();
 		AddJournalEntry(GameManager.Inst.DBManager.DBHandlerStoryEvent.LoadJournalEntry(1));

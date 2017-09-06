@@ -535,9 +535,9 @@ public class HumanCharacter : Character
 
 			}
 
-			if(currWeapon != null && currWeapon.IsRanged)
+			if(ActionState == HumanActionStates.Reload)
 			{
-				MyAnimator.SetTrigger("CancelReload");
+				SendCommand(CharacterCommands.CancelReload);
 			}
 
 			CurrentAnimState = new HumanAnimStateAction(this);
@@ -1079,7 +1079,7 @@ public class HumanCharacter : Character
 				if(magazine != null && magazine.AmmoLeft < magazine.MaxCapacity)
 				{
 					GridItemData ammo = this.Inventory.FindItemInBackpack(magazine.LoadedAmmoID);
-					if(ammo != null || (this.MyReference.CurrentWeapon.GetComponent<Gun>().IsReloadToUnjam && magazine.AmmoLeft > 0))
+					if(MyAI.ControlType != AIControlType.Player || ammo != null || (this.MyReference.CurrentWeapon.GetComponent<Gun>().IsReloadToUnjam && magazine.AmmoLeft > 0))
 					{
 						if(GetCurrentAnimWeapon() == WeaponAnimType.Longgun || GetCurrentAnimWeapon() == WeaponAnimType.Pistol)
 						{
@@ -1251,11 +1251,24 @@ public class HumanCharacter : Character
 
 			ActionState = HumanActionStates.Throw;
 
-			_thrownObjectInHand = ((GameObject)GameObject.Instantiate(Resources.Load("PipeGrenade"))).GetComponent<ThrownObject>();
+			string grenadeName = "rgd5grenade";
+			if(UnityEngine.Random.value > 0.75f)
+			{
+				grenadeName = "f1grenade";
+			}
+
+			Item grenadeItem = GameManager.Inst.ItemManager.LoadItem(grenadeName);
+			_thrownObjectInHand = ((GameObject)GameObject.Instantiate(Resources.Load(grenadeName))).GetComponent<ThrownObject>();
 			Explosive explosive = _thrownObjectInHand.GetComponent<Explosive>();
 			if(explosive != null)
 			{
 				explosive.Attacker = this;
+
+			}
+			HandGrenade grenade = _thrownObjectInHand.GetComponent<HandGrenade>();
+			if(grenade != null)
+			{
+				grenade.SetExplosive(grenadeItem);
 			}
 
 			_thrownObjectInHand.GetComponent<Rigidbody>().isKinematic = true;
@@ -1366,7 +1379,28 @@ public class HumanCharacter : Character
 				Chest chest = useTarget.GetComponent<Chest>();
 				if(chest != null)
 				{
+					//check if it's locked
+					if(chest.IsLocked && chest.KeyID.Length > 0)
+					{
+						//here check if player has key
+						int keyCount = GameManager.Inst.PlayerControl.SelectedPC.Inventory.CountItemsInBackpack(chest.KeyID);
+						if(keyCount <= 0 && chest.AudioSource != null)
+						{
+							//play locked door sound
+							if(chest.SoundType == ContainerSoundType.Wood)
+							{
+								AudioClip clip = GameManager.Inst.SoundManager.GetClip("WoodDoorLocked");
+								chest.AudioSource.PlayOneShot(clip, 0.6f);
+							}
+							else if(chest.SoundType == ContainerSoundType.Metal)
+							{
+								AudioClip clip = GameManager.Inst.SoundManager.GetClip("MetalDoorLocked");
+								chest.AudioSource.PlayOneShot(clip, 0.6f);
+							}
 
+							return;
+						}
+					}
 					//open UI 
 					UIEventHandler.Instance.TriggerLootChest();
 				}
@@ -1471,13 +1505,10 @@ public class HumanCharacter : Character
 	{
 		
 		
-		if(MyAI.ControlType == AIControlType.Player && GameManager.Inst.GodMode)
-		{
-			return true;
-		}
+
 
 		OnInjury(hitNormal, damage.IsCritical);
-		if(attacker != null)
+		if(attacker != null && MyAI.ControlType != AIControlType.Player)
 		{
 			MyAI.Sensor.OnTakingDamage(attacker);
 		}
@@ -1566,7 +1597,14 @@ public class HumanCharacter : Character
 			MyStatus.AddBleeding(damage.Bleeding);
 		}
 
-		MyStatus.Health -= finalDamage;
+		if(MyAI.ControlType == AIControlType.Player && GameManager.Inst.GodMode)
+		{
+			
+		}
+		else
+		{
+			MyStatus.Health -= finalDamage;
+		}
 
 		if(MyAI.ControlType == AIControlType.Player)
 		{
@@ -1629,7 +1667,11 @@ public class HumanCharacter : Character
 		else
 		{
 			OnInjury(hitNormal, UnityEngine.Random.value <= knockBackChance);
-			MyAI.Sensor.OnTakingDamage(attacker);
+			if(MyAI.ControlType != AIControlType.Player)
+			{
+				MyAI.Sensor.OnTakingDamage(attacker);
+			}
+
 			float finalDamage = damage.SharpDamage + damage.BluntDamage;
 
 			if(damage.IsCritical)
@@ -2633,7 +2675,7 @@ public class HumanCharacter : Character
 			}
 			float speed = MyCC.velocity.magnitude;
 			string type = "run";
-			float volume = MyCC.velocity.magnitude / 5 * 0.2f;
+			float volume = MyCC.velocity.magnitude / 5 * 0.3f;
 			if(speed < 2.5f)
 			{
 				type = "walk";
@@ -2646,7 +2688,7 @@ public class HumanCharacter : Character
 		else
 		{
 			int choice = UnityEngine.Random.Range(1, 7);
-			this.CharacterAudio.PlayOneShot(GameManager.Inst.SoundManager.GetClip("run_dirt" + choice), 0.2f);
+			this.CharacterAudio.PlayOneShot(GameManager.Inst.SoundManager.GetClip("run_dirt" + choice), 0.3f);
 		}
 	}
 
@@ -2816,7 +2858,11 @@ public class HumanCharacter : Character
 		float playerDist = Vector3.Distance(transform.position, GameManager.Inst.PlayerControl.SelectedPC.transform.position);
 		if(playerDist < GameManager.Inst.AIUpdateRadius && MyAI.ControlType != AIControlType.Player)
 		{
-			Vector3 playerLineOfSight = GameManager.Inst.PlayerControl.SelectedPC.LookTarget.transform.position - GameManager.Inst.PlayerControl.SelectedPC.transform.position;
+			Vector3 playerLineOfSight = GameManager.Inst.PlayerControl.SelectedPC.MyReference.Flashlight.transform.forward;//GameManager.Inst.PlayerControl.SelectedPC.LookTarget.transform.position - GameManager.Inst.PlayerControl.SelectedPC.transform.position;
+			if(GameManager.Inst.PlayerControl.SelectedPC.MyCC.velocity.magnitude > 0.1f)
+			{
+				playerLineOfSight = GameManager.Inst.PlayerControl.SelectedPC.transform.forward;
+			}
 			playerLineOfSight = new Vector3(playerLineOfSight.x, 0, playerLineOfSight.z);
 			float playerAngle = Vector3.Angle(playerLineOfSight, transform.position - GameManager.Inst.PlayerControl.SelectedPC.transform.position);
 			if(playerAngle > 80 && playerDist > 1.5f && MyStatus.Health > 0)

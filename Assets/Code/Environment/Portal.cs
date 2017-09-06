@@ -9,7 +9,7 @@ public class Portal : MonoBehaviour
 	public bool IsInterior;
 	public string Environment;
 	public AudioSource DoorSound;
-	public bool IsMetal;
+	public ContainerSoundType SoundType;
 	public bool IsLocked;
 	public string KeyItemID;
 
@@ -35,7 +35,7 @@ public class Portal : MonoBehaviour
 			else
 			{
 				//play locked door sound
-				if(!IsMetal)
+				if(SoundType == ContainerSoundType.Wood)
 				{
 					AudioClip clip = GameManager.Inst.SoundManager.GetClip("WoodDoorLocked");
 					DoorSound.PlayOneShot(clip, 0.6f);

@@ -252,14 +252,12 @@ public class UIStateLootChest : UIStateBase
 		UIEventHandler.OnCloseWindow -= OnCloseWindow;
 		UIEventHandler.OnCloseWindow += OnCloseWindow;
 
-		GameManager.Inst.SoundManager.UI.PlayOneShot(GameManager.Inst.SoundManager.GetClip("OpenContainer"), 0.5f);
 	}
 
 	public override void EndState ()
 	{
 		UIEventHandler.OnCloseWindow -= OnCloseWindow;
 
-		GameManager.Inst.SoundManager.UI.PlayOneShot(GameManager.Inst.SoundManager.GetClip("CloseContainer"), 0.25f);
 	}
 
 	public void OnCloseWindow()

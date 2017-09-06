@@ -164,6 +164,11 @@ public class AISensor
 
 	public void OnReceiveDisturbance(float threat, object source, Vector3 location, Character sourceChar)
 	{
+		if(_parentCharacter.MyAI.ControlType == AIControlType.Player)
+		{
+			return;
+		}
+
 		if(_parentCharacter.MyAI.IsCharacterInParty(sourceChar) && threat < 1)
 		{
 			return;

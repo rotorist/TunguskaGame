@@ -68,6 +68,7 @@ public class Explosive : MonoBehaviour
 		List<HumanCharacter> humans = GameManager.Inst.NPCManager.HumansInScene;
 		foreach(HumanCharacter human in humans)
 		{
+
 			if(Vector3.Distance(transform.position, human.transform.position) <= 30)
 			{
 				human.MyAI.Sensor.OnReceiveDisturbance(0.85f, this, transform.position, Attacker);

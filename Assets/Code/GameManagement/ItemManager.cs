@@ -46,7 +46,7 @@ public class ItemManager
 	{
 		List<GridItemData> items = new List<GridItemData>();
 
-
+		/*
 		Item item3 = LoadItem("flakjacket");
 
 		Item item7 = LoadItem("pasgthelmet");
@@ -58,7 +58,7 @@ public class ItemManager
 		items.Add(new GridItemData(item3, 0, 0, GridItemOrient.Portrait, 1));
 		items.Add(new GridItemData(item7, 0, 3, GridItemOrient.Landscape, 1));
 		items.Add(new GridItemData(item8, 4, 0, GridItemOrient.Portrait, 50));
-
+		*/
 
 		return items;
 	}
@@ -107,7 +107,7 @@ public class ItemManager
 		inventory1.Backpack.Add(new GridItemData(LoadItem("sleepingbag"), 1, 6, GridItemOrient.Landscape,1));
 		//inventory1.Backpack.Add(new GridItemData(LoadItem("mutantheart"), 8, 8, GridItemOrient.Landscape, 1));
 		inventory1.Backpack.Add(new GridItemData(LoadItem("bandages"), 6, 9, GridItemOrient.Landscape, 5));
-		inventory1.Backpack.Add(new GridItemData(LoadItem("rubles"), 8, 9, GridItemOrient.Landscape, 110));
+		inventory1.Backpack.Add(new GridItemData(LoadItem("rubles"), 8, 9, GridItemOrient.Landscape, 610));
 		inventory1.Backpack.Add(new GridItemData(LoadItem("bread1"), 8, 7, GridItemOrient.Landscape, 1));
 		inventory1.Backpack.Add(new GridItemData(LoadItem("sausage"), 9, 8, GridItemOrient.Landscape, 1));
 		inventory1.Backpack.Add(new GridItemData(LoadItem("gasoline"), 5, 6, GridItemOrient.Landscape, 1));
@@ -170,7 +170,7 @@ public class ItemManager
 
 			if(rand4 > 0f)
 			{
-				inventory.ThrowSlot = LoadItem("pipegrenade");
+				inventory.ThrowSlot = LoadItem("rgd5grenade");
 			}
 		}
 		else if(faction == Faction.Military)
@@ -209,7 +209,7 @@ public class ItemManager
 
 			if(rand4 > 0.4f)
 			{
-				inventory.ThrowSlot = LoadItem("pipegrenade");
+				inventory.ThrowSlot = LoadItem("rgd5grenade");
 			}
 		}
 		else if(faction == Faction.Mutants)

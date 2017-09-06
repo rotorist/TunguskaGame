@@ -9,6 +9,7 @@ public class ChestData
 	public List<GridItemData> Items;
 	public int ColSize;
 	public int RowSize;
+	public bool IsLocked;
 }
 
 public class Chest : MonoBehaviour 
@@ -17,6 +18,10 @@ public class Chest : MonoBehaviour
 	public List<GridItemData> Items;
 	public int ColSize;
 	public int RowSize;
+	public ContainerSoundType SoundType;
+	public bool IsLocked;
+	public string KeyID;
+	public AudioSource AudioSource;
 
 	public string [] PresetItemIDs;
 	public int [] PresetItemQuantity;

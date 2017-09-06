@@ -384,6 +384,67 @@
             <event name="zsk_sid_talked_serum" />
         </response>
     </node>
+    <topic id="zsk_locker">
+        <title>Locker</title>
+        <next_node id="35" />
+    </topic>
+    <node id="35">
+        <response>
+            <text>What about them?</text>
+        </response>
+        <option>
+            <condition name="zsk_locker_key_given" story="zsk_locker_key_given" compare="0" op="0" />
+            <title>Need Locker</title>
+            <text>May I have a locker to store my stuff?</text>
+            <next_node id="36" />
+        </option>
+        <option>
+            <logic type="And">
+                <condition name="zsk_has_sid_locker_key" story="zsk_has_sid_locker_key" compare="0" op="0" />
+                <condition name="zsk_locker_key_given" story="zsk_locker_key_given" compare="1" op="0" />
+            </logic>
+            <title>Replace Key</title>
+            <text>I have lost the locker key. Can you replace it for me?</text>
+            <next_node id="37" />
+        </option>
+    </node>
+    <node id="36">
+        <response>
+            <text>Sure. Here's the key to one of the lockers on your left. If you lose the key, just come to me and I'll replace it for you. Enjoy! </text>
+            <event name="zsk_sid_give_locker_key" />
+        </response>
+    </node>
+    <node id="37">
+        <response>
+            <text>Sure. It'll cost 500 rubles.</text>
+        </response>
+        <option>
+            <title>Alright</title>
+            <text>Alright, let's do it.</text>
+            <next_node id="39" />
+        </option>
+        <option>
+            <title>Nevermind</title>
+            <text>Nevermind. I'll think about it.</text>
+            <next_node id="38" />
+        </option>
+    </node>
+    <node id="39">
+        <response>
+            <condition name="has_money" story="has_money" compare="500" op="1" />
+            <text>Done. Here you go. It'll be 500 rubles.</text>
+            <event name="zsk_sid_replace_locker_key" />
+        </response>
+        <response>
+            <condition name="has_money" story="has_money" compare="500" op="-2" />
+            <text>No. Replacing locker key costs 500 rubles and you don't have that on you.</text>
+        </response>
+    </node>
+    <node id="38">
+        <response>
+            <text>Suit yourself.</text>
+        </response>
+    </node>
     <node id="1">
         <response>
             <text>Hey there, what can I do you for?</text>

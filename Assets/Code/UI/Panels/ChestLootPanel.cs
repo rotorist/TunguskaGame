@@ -8,6 +8,8 @@ public class ChestLootPanel : PanelBase
 	
 	public InventoryGrid ChestGrid;
 
+	private Chest _currentChest;
+
 	public override void Initialize ()
 	{
 		ChestGrid.Initialize(this);
@@ -25,6 +27,35 @@ public class ChestLootPanel : PanelBase
 		NGUITools.SetActive(this.gameObject, true);
 		this.IsActive = true;
 
+		GameObject target = GameManager.Inst.PlayerControl.SelectedPC.MyAI.BlackBoard.UseTarget;
+
+		if(target == null)
+		{
+			return;
+		}
+
+		Chest chest = target.GetComponent<Chest>();
+
+		if(chest == null)
+		{
+			return;
+		}
+
+		_currentChest = chest;
+
+		if(_currentChest.SoundType == ContainerSoundType.Wood)
+		{
+			GameManager.Inst.SoundManager.UI.PlayOneShot(GameManager.Inst.SoundManager.GetClip("OpenContainerWood"), 0.5f);
+		}
+		else if(_currentChest.SoundType == ContainerSoundType.Metal)
+		{
+			GameManager.Inst.SoundManager.UI.PlayOneShot(GameManager.Inst.SoundManager.GetClip("MetalDoorOpen"), 0.2f);
+		}
+		else if(_currentChest.SoundType == ContainerSoundType.Body)
+		{
+			GameManager.Inst.SoundManager.UI.PlayOneShot(GameManager.Inst.SoundManager.GetClip("OpenLootBody"), 0.15f);
+		}
+
 		RebuildLoot();
 
 
@@ -37,7 +68,25 @@ public class ChestLootPanel : PanelBase
 
 		SaveInventoryData();
 
+		if(_currentChest != null)
+		{
+			if(_currentChest.SoundType == ContainerSoundType.Wood)
+			{
+				GameManager.Inst.SoundManager.UI.PlayOneShot(GameManager.Inst.SoundManager.GetClip("CloseContainerWood"), 0.5f);
+			}
+			else if(_currentChest.SoundType == ContainerSoundType.Metal)
+			{
+				GameManager.Inst.SoundManager.UI.PlayOneShot(GameManager.Inst.SoundManager.GetClip("MetalDoorClose"), 0.2f);
+			}
+			else if(_currentChest.SoundType == ContainerSoundType.Body)
+			{
+				GameManager.Inst.SoundManager.UI.PlayOneShot(GameManager.Inst.SoundManager.GetClip("CloseLootBody"), 0.15f);
+			}
+		}
+
 		GameManager.Inst.PlayerControl.SelectedPC.MyAI.BlackBoard.UseTarget = null;
+
+		_currentChest = null;
 	}
 
 	public override bool HasInventoryGrids (out List<InventoryGrid> grids)
@@ -62,20 +111,12 @@ public class ChestLootPanel : PanelBase
 
 	public void RebuildLoot()
 	{
-		GameObject target = GameManager.Inst.PlayerControl.SelectedPC.MyAI.BlackBoard.UseTarget;
+		
 
-		if(target == null)
+		if(_currentChest == null)
 		{
 			return;
 		}
-
-		Chest chest = target.GetComponent<Chest>();
-
-		if(chest == null)
-		{
-			return;
-		}
-
 
 		//first remove all existing griditems in the backpack
 		List<GridItem> chestGridCopy = new List<GridItem>(ChestGrid.Items);
@@ -86,7 +127,7 @@ public class ChestLootPanel : PanelBase
 		}
 
 		//fill inventory grid with loot from backpack
-		List<GridItemData> chestItems = chest.Items;
+		List<GridItemData> chestItems = _currentChest.Items;
 		//now, time to arrange them
 		ChestGrid.ArrangeGridItems(chestItems);
 
@@ -97,20 +138,14 @@ public class ChestLootPanel : PanelBase
 	{
 		GameObject target = GameManager.Inst.PlayerControl.SelectedPC.MyAI.BlackBoard.UseTarget;
 		//Debug.Log("target is null? " + target == null);
-		if(target == null)
-		{
-			return;
-		}
-
-		Chest chest = target.GetComponent<Chest>();
-
-		if(chest == null)
+		if(_currentChest == null)
 		{
 			return;
 		}
 
 
-		List<GridItemData> datas = chest.Items;
+
+		List<GridItemData> datas = _currentChest.Items;
 		datas.Clear();
 
 		foreach(GridItem item in ChestGrid.Items)

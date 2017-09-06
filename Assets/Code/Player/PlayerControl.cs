@@ -373,7 +373,11 @@ public class PlayerControl
 
 		//update view cone
 		ViewConeHolder.transform.position = new Vector3(SelectedPC.transform.position.x, SelectedPC.transform.position.y + 40, SelectedPC.transform.position.z);
-		Vector3 lookDir = SelectedPC.LookTarget.position - SelectedPC.transform.position;
+		Vector3 lookDir = SelectedPC.MyReference.Flashlight.transform.forward;//SelectedPC.LookTarget.position - SelectedPC.transform.position;
+		if(SelectedPC.MyCC.velocity.magnitude > 0.1f)
+		{
+			lookDir = SelectedPC.transform.forward;
+		}
 		lookDir = new Vector3(lookDir.x, 0, lookDir.z);
 		ViewConeHolder.transform.rotation = Quaternion.LookRotation(lookDir);
 
