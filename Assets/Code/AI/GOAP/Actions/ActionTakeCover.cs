@@ -144,8 +144,8 @@ public class ActionTakeCover : GoapAction
 
 
 			ParentCharacter.MyAI.BlackBoard.NavTarget = ParentCharacter.MyAI.BlackBoard.SelectedCoverLoc;
-			GameObject.Find("Marker1").transform.position = ParentCharacter.MyAI.BlackBoard.SelectedCoverLoc;
-			GameObject.Find("Marker2").transform.position = ParentCharacter.MyAI.BlackBoard.SelectedCover.transform.position;
+			//GameObject.Find("Marker1").transform.position = ParentCharacter.MyAI.BlackBoard.SelectedCoverLoc;
+			GameObject.Find("Sphere").transform.position = ParentCharacter.MyAI.BlackBoard.SelectedCover.transform.position;
 			ParentCharacter.Destination = ParentCharacter.MyAI.BlackBoard.NavTarget;
 			ParentCharacter.SendCommand(CharacterCommands.GoToPosition);
 

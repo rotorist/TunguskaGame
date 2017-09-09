@@ -765,8 +765,8 @@ public class HumanCharacter : Character
 		if(command == CharacterCommands.Crouch)
 		{
 			CapsuleCollider collider = GetComponent<CapsuleCollider>();
-			collider.height = 1.5f;
-			collider.center = new Vector3(0, 0.5f, 0);
+			collider.height = 1.35f;
+			collider.center = new Vector3(0, 0.3f, 0);
 
 		}
 

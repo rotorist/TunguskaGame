@@ -944,5 +944,15 @@ public class NPCManager
 		{
 			_allSquads.Add(squad11.ID, squad11);
 		}
+
+		AISquad squad12 = new AISquad();
+		squad12.ID = "zsk_cheslav";
+		squad12.Faction = Faction.Civilian;
+		squad12.Household = _allHouseHolds["HouseHoldCheslav"];
+		squad12.Household.CurrentSquad = squad12;
+		if(!_allSquads.ContainsKey(squad12.ID))
+		{
+			_allSquads.Add(squad12.ID, squad12);
+		}
 	}
 }

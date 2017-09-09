@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE dialogue[<!ATTLIST node id ID #IMPLIED>]>
+<dialogue>
+    <intro>
+        <text></text>
+        <next_node id="1" />
+    </intro>
+    <node id="1">
+        <response>
+            <text>I'm busy. Go talk to our boss Sergei.</text>
+        </response>
+    </node>
+</dialogue>

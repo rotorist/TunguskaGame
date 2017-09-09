@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE dialogue[<!ATTLIST node id ID #IMPLIED>]>
+<dialogue>
+    <intro>
+        <text>You are not sure whether this man is happy or depressed. He seems to hide his feelings under the hat. But when he does look up, you see hatred in his eyes.</text>
+        <next_node id="5" />
+    </intro>
+    <topic id="your_story">
+        <title>Your Story</title>
+        <next_node id="1" />
+    </topic>
+    <node id="1">
+        <response>
+            <text>Me? I have had about enough of the Zone. If I hadn't lost everything to that scumbag Sidorovich, I'd already be home with my wife and kids by now, living a comfortable life. </text>
+        </response>
+        <option>
+            <title>Sidorovich</title>
+            <text>What did he do?</text>
+            <next_node id="2" />
+        </option>
+    </node>
+    <node id="2">
+        <response>
+            <text>This whole area, called Zernaskaya, used to be a prosperous hub for all mutant hunters. They lived here, traded serums and ingredients, prepared for the next adventures into the heart of the Zone. All under our hospitality. We are the Legionnaires, not sure if you have heard. We were known for providing warm beds, hot meals, like a feel of being at home, to all the hunters. Sidorovich was the doctor in our clinic. We paid him well, but this man was nothing but a dirty cut-throat. </text>
+        </response>
+        <option>
+            <title>Cut-throat</title>
+            <text>Did he kill your clients?</text>
+            <next_node id="3" />
+        </option>
+    </node>
+    <node id="3">
+        <response>
+            <text>Worse than that. One day he figured out that alcohol was a hot commodity because it was always needed for producing serums. So he secretly distilled alcohol using our food supply, and made a bunch of money. A wicked man with a lot of money, what do you think he would do?</text>
+        </response>
+        <option>
+            <title>Continue</title>
+            <text>Go on.</text>
+            <next_node id="4" />
+        </option>
+    </node>
+    <node id="4">
+        <response>
+            <text>So Sidorovich raised an army of his own. And he staged a mutiny, killed our leader Boris, took all our money, and kicked us out of Zernaskaya. It took us a lot of sweat, blood and lives to reclaim the train station and the potato farm.</text>
+        </response>
+    </node>
+    <node id="5">
+        <response>
+            <text>Yes?</text>
+        </response>
+        <option>
+            <title>Potato Farm</title>
+            <text>Sidorovich from Zernaskaya village sent me here. He wants the potato farm back.</text>
+            <next_node id="6" />
+        </option>
+    </node>
+    <node id="6">
+        <response>
+            <text>You? You don't look like one of the bootleggers. Why are you working for him? I suggest that you stay out of this mess. You might not know the whole story between us.</text>
+        </response>
+    </node>
+</dialogue>

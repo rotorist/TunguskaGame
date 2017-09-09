@@ -110,7 +110,7 @@ public class ItemManager
 		inventory1.Backpack.Add(new GridItemData(LoadItem("rubles"), 8, 9, GridItemOrient.Landscape, 610));
 		inventory1.Backpack.Add(new GridItemData(LoadItem("bread1"), 8, 7, GridItemOrient.Landscape, 1));
 		inventory1.Backpack.Add(new GridItemData(LoadItem("sausage"), 9, 8, GridItemOrient.Landscape, 1));
-		inventory1.Backpack.Add(new GridItemData(LoadItem("gasoline"), 5, 6, GridItemOrient.Landscape, 1));
+		inventory1.Backpack.Add(new GridItemData(LoadItem("gasoline"), 5, 6, GridItemOrient.Landscape, 5));
 
 		inventory1.RifleSlot = LoadItem("ak47");
 		inventory1.ThrowSlot = LoadItem("f1grenade");
@@ -372,7 +372,7 @@ public class ItemManager
 		if(Physics.Raycast(item.position, Vector3.down, out buildingHit, 200, (1 << 9 | 1 << 8 | 1 << 10)))
 		{
 			BuildingComponent component = buildingHit.collider.GetComponent<BuildingComponent>();
-			if(component != null)
+			if(component != null && component.Level > 0)
 			{
 				return component.transform;
 			}

@@ -77,7 +77,7 @@ public class ActionTakeAttackCover : GoapAction
 		if(_isCoverFound)
 		{
 			Cover selectedCover = ParentCharacter.MyAI.BlackBoard.SelectedCover;
-
+			Debug.Log("found cover " + selectedCover.name);
 			Vector3 coverDir = ParentCharacter.MyAI.BlackBoard.AvgPersonalThreatDir;
 			//if there's no threat dir, use target enemy dir
 			if(coverDir == Vector3.zero && ParentCharacter.MyAI.BlackBoard.TargetEnemy != null)
@@ -192,8 +192,8 @@ public class ActionTakeAttackCover : GoapAction
 			ParentCharacter.SendCommand(CharacterCommands.StopAim);
 			ParentCharacter.GetComponent<HumanCharacter>().CurrentStance = HumanStances.Sprint;
 			ParentCharacter.MyAI.BlackBoard.NavTarget = ParentCharacter.MyAI.BlackBoard.SelectedCoverLoc;
-			GameObject.Find("Marker1").transform.position = ParentCharacter.MyAI.BlackBoard.SelectedCoverLoc;
-			GameObject.Find("Marker2").transform.position = ParentCharacter.MyAI.BlackBoard.SelectedCover.transform.position;
+			//GameObject.Find("Marker1").transform.position = ParentCharacter.MyAI.BlackBoard.SelectedCoverLoc;
+			GameObject.Find("Sphere").transform.position = ParentCharacter.MyAI.BlackBoard.SelectedCover.transform.position;
 			ParentCharacter.Destination = ParentCharacter.MyAI.BlackBoard.NavTarget;
 			ParentCharacter.SendCommand(CharacterCommands.GoToPosition);
 
