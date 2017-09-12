@@ -193,7 +193,7 @@ public class ActionTakeAttackCover : GoapAction
 			ParentCharacter.GetComponent<HumanCharacter>().CurrentStance = HumanStances.Sprint;
 			ParentCharacter.MyAI.BlackBoard.NavTarget = ParentCharacter.MyAI.BlackBoard.SelectedCoverLoc;
 			//GameObject.Find("Marker1").transform.position = ParentCharacter.MyAI.BlackBoard.SelectedCoverLoc;
-			GameObject.Find("Sphere").transform.position = ParentCharacter.MyAI.BlackBoard.SelectedCover.transform.position;
+			//GameObject.Find("Sphere").transform.position = ParentCharacter.MyAI.BlackBoard.SelectedCover.transform.position;
 			ParentCharacter.Destination = ParentCharacter.MyAI.BlackBoard.NavTarget;
 			ParentCharacter.SendCommand(CharacterCommands.GoToPosition);
 

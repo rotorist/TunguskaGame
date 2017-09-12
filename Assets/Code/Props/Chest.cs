@@ -10,6 +10,7 @@ public class ChestData
 	public int ColSize;
 	public int RowSize;
 	public bool IsLocked;
+	public string KeyID;
 }
 
 public class Chest : MonoBehaviour 

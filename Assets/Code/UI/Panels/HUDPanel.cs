@@ -26,6 +26,7 @@ public class HUDPanel : PanelBase
 	public UILabel MagAmmo;
 	public UILabel TotalAmmo;
 	public UILabel Clock;
+	public UISprite DeathLabel;
 
 
 	public UISprite [] IndicatorSprites;
@@ -82,6 +83,7 @@ public class HUDPanel : PanelBase
 		FlipSwitch2.alpha = 0;
 
 		NGUITools.SetActive(HelpText.gameObject, false);
+		NGUITools.SetActive(DeathLabel.gameObject, false);
 
 		OnUpdateTotalAmmo();
 
@@ -151,12 +153,12 @@ public class HUDPanel : PanelBase
 
 		if(UIButton.current.name == "LongButtonSave")
 		{
-			GameManager.Inst.SaveGameManager.Save("TestSave", "");
+			//GameManager.Inst.SaveGameManager.Save("TestSave", "");
 		}
 
 		if(UIButton.current.name == "LongButtonLoad")
 		{
-			GameManager.Inst.LoadGame();
+			//GameManager.Inst.LoadGame();
 		}
 	}
 		
@@ -190,6 +192,10 @@ public class HUDPanel : PanelBase
 
 	}
 
+	public void OnDeath()
+	{
+		NGUITools.SetActive(DeathLabel.gameObject, true);
+	}
 
 
 	public void OnUpdateTotalAmmo()

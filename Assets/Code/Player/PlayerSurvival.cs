@@ -292,11 +292,13 @@ public class PlayerSurvival
 		{
 			GameManager.Inst.CameraController.SetNoise(0.15f);
 		}
-			
+
+
 
 		//find out which radiation sound to play
 		Item detector = GameManager.Inst.PlayerControl.SelectedPC.Inventory.ToolSlot;
-		if(detector != null && detector.GetAttributeByName("Measurement").Value == "Radiation")
+		//Debug.Log("playing geigerocunter sound " + detector.GetAttributeByName("Measurement").Value);
+		if(detector != null && detector.GetAttributeByName("Measurement").Value.ToString() == "Radiation")
 		{
 			float percent = Mathf.Clamp01(_radiationLevel / 30f);
 			int quantized = 0;
@@ -328,6 +330,7 @@ public class PlayerSurvival
 			//see if detector sound is already playing at current level
 			string currentClip = GameManager.Inst.SoundManager.GetDetectorCurrentClip();
 			string newClip = "GeigerCounter" + quantized.ToString();
+
 			if(!newClip.Equals(currentClip))
 			{
 				GameManager.Inst.SoundManager.PlayDetectorSound(newClip);

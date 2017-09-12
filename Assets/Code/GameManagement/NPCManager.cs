@@ -171,7 +171,7 @@ public class NPCManager
 
 		//initialize preset characters
 		GameObject [] characters = GameObject.FindGameObjectsWithTag("NPC");
-		Debug.LogError("Number of NPC in scene " + characters.Length + " number of squads " + _allSquads.Count);
+		//Debug.LogError("Number of NPC in scene " + characters.Length + " number of squads " + _allSquads.Count);
 		foreach(GameObject o in characters)
 		{
 			Character c = o.GetComponent<Character>();
@@ -182,7 +182,7 @@ public class NPCManager
 				{
 					
 					_allSquads[c.SquadID].AddMember(c);
-					Debug.Log(c.SquadID + " now has members " + _allSquads[c.SquadID].Members.Count);
+					//Debug.Log(c.SquadID + " now has members " + _allSquads[c.SquadID].Members.Count);
 				}
 			}
 
@@ -199,11 +199,11 @@ public class NPCManager
 
 		foreach(Household h in _allHouseHolds.Values)
 		{
-			Debug.LogError("initializing household " + h.name);
+			//Debug.LogError("initializing household " + h.name);
 			h.Initialize();
 		}
 
-		Debug.LogError("Number of NPC in NPC Manager " + _allCharacters.Count);
+		//Debug.LogError("Number of NPC in NPC Manager " + _allCharacters.Count);
 	}
 
 	public void PerSecondUpdate()
@@ -453,7 +453,7 @@ public class NPCManager
 
 		character.SquadID = squad.ID;
 		character.Faction = squad.Faction;
-		GameManager.Inst.ItemManager.LoadNPCInventory(character.Inventory, squad.Faction);
+		GameManager.Inst.ItemManager.LoadNPCInventory(character.Inventory, squad.Faction, squad.Tier);
 		character.MyAI.WeaponSystem.LoadWeaponsFromInventory(false);
 
 		character.MyStatus.MaxHealth = 100;
@@ -486,7 +486,7 @@ public class NPCManager
 		character.Faction = squad.Faction;
 		character.SquadID = squad.ID;
 
-		GameManager.Inst.ItemManager.LoadNPCInventory(character.Inventory, squad.Faction);
+		GameManager.Inst.ItemManager.LoadNPCInventory(character.Inventory, squad.Faction, 0);
 		character.MyAI.WeaponSystem.LoadWeaponsFromInventory(false);
 
 		character.MyStatus = GetMutantStatus(character);
@@ -515,7 +515,7 @@ public class NPCManager
 		character.Faction = squad.Faction;
 		character.SquadID = squad.ID;
 
-		GameManager.Inst.ItemManager.LoadNPCInventory(character.Inventory, squad.Faction);
+		GameManager.Inst.ItemManager.LoadNPCInventory(character.Inventory, squad.Faction, 0);
 		character.MyAI.WeaponSystem.LoadWeaponsFromInventory(false);
 
 		character.transform.position = loc;
@@ -534,6 +534,14 @@ public class NPCManager
 	{
 		AISquad squad = new AISquad();
 		squad.ID = faction.ToString() + _randomSquadIndex.ToString();
+		if(household != null && household.CurrentSquad != null)
+		{
+			squad.Tier = household.CurrentSquad.Tier;
+		}
+		else
+		{
+			squad.Tier = 1;
+		}
 		_randomSquadIndex ++;
 		squad.Faction = faction;
 		squad.Household = household;
@@ -837,6 +845,7 @@ public class NPCManager
 	{
 		AISquad squad1 = new AISquad();
 		squad1.ID = "zsk_sidorovich";
+		squad1.Tier = 1;
 		squad1.Faction = Faction.Bootleggers;
 		squad1.Household = _allHouseHolds["HouseHoldSidorovich"];
 		squad1.Household.CurrentSquad = squad1;
@@ -847,6 +856,7 @@ public class NPCManager
 
 		AISquad squad2 = new AISquad();
 		squad2.ID = "zsk_hans";
+		squad2.Tier = 1;
 		squad2.Faction = Faction.Bootleggers;
 		squad2.Household = _allHouseHolds["HouseHoldHans"];
 		squad2.Household.CurrentSquad = squad2;
@@ -857,6 +867,7 @@ public class NPCManager
 
 		AISquad squad3 = new AISquad();
 		squad3.ID = "zsk_village_bootleggers";
+		squad3.Tier = 1;
 		squad3.Faction = Faction.Bootleggers;
 		squad3.Household = _allHouseHolds["HouseHoldVillageBootleggers"];
 		squad3.Household.CurrentSquad = squad3;
@@ -867,6 +878,7 @@ public class NPCManager
 
 		AISquad squad4 = new AISquad();
 		squad4.ID = "zsk_barn_legionnaires";
+		squad4.Tier = 1;
 		squad4.Faction = Faction.Legionnaires;
 		squad4.Household = _allHouseHolds["HouseHoldBarn"];
 		squad4.Household.CurrentSquad = squad4;
@@ -877,6 +889,7 @@ public class NPCManager
 
 		AISquad squad5 = new AISquad();
 		squad5.ID = "zsk_church_ghouls";
+		squad5.Tier = 1;
 		squad5.Faction = Faction.Mutants;
 		squad5.Household = _allHouseHolds["HouseHoldChurch"];
 		squad5.Household.CurrentSquad = squad5;
@@ -887,6 +900,7 @@ public class NPCManager
 
 		AISquad squad6 = new AISquad();
 		squad6.ID = "zsk_sewer_ghouls";
+		squad6.Tier = 1;
 		squad6.Faction = Faction.Scythes;
 		squad6.Household = _allHouseHolds["HouseHoldSewer"];
 		squad6.Household.CurrentSquad = squad6;
@@ -897,6 +911,7 @@ public class NPCManager
 
 		AISquad squad7 = new AISquad();
 		squad7.ID = "zsk_priest";
+		squad7.Tier = 1;
 		squad7.Faction = Faction.Civilian;
 		squad7.Household = _allHouseHolds["HouseHoldPriest"];
 		squad7.Household.CurrentSquad = squad7;
@@ -907,6 +922,7 @@ public class NPCManager
 
 		AISquad squad8 = new AISquad();
 		squad8.ID = "zsk_artyom";
+		squad8.Tier = 1;
 		squad8.Faction = Faction.Civilian;
 		squad8.Household = _allHouseHolds["HouseHoldArtyom"];
 		squad8.Household.CurrentSquad = squad8;
@@ -916,7 +932,8 @@ public class NPCManager
 		}
 
 		AISquad squad9 = new AISquad();
-		squad9.ID = "wolves";
+		squad9.ID = "zsk_wolves";
+		squad9.Tier = 1;
 		squad9.Faction = Faction.Animals;
 		squad9.Household = _allHouseHolds["HouseHoldWolf"];
 		squad9.Household.CurrentSquad = squad9;
@@ -927,6 +944,7 @@ public class NPCManager
 
 		AISquad squad10 = new AISquad();
 		squad10.ID = "zsk_army";
+		squad10.Tier = 2;
 		squad10.Faction = Faction.Military;
 		squad10.Household = _allHouseHolds["HouseHoldRoadBlock"];
 		squad10.Household.CurrentSquad = squad10;
@@ -937,6 +955,7 @@ public class NPCManager
 
 		AISquad squad11 = new AISquad();
 		squad11.ID = "zsk_train_legionnaires";
+		squad11.Tier = 2;
 		squad11.Faction = Faction.Legionnaires;
 		squad11.Household = _allHouseHolds["HouseHoldTrainStation"];
 		squad11.Household.CurrentSquad = squad11;
@@ -947,12 +966,35 @@ public class NPCManager
 
 		AISquad squad12 = new AISquad();
 		squad12.ID = "zsk_cheslav";
+		squad12.Tier = 1;
 		squad12.Faction = Faction.Civilian;
 		squad12.Household = _allHouseHolds["HouseHoldCheslav"];
 		squad12.Household.CurrentSquad = squad12;
 		if(!_allSquads.ContainsKey(squad12.ID))
 		{
 			_allSquads.Add(squad12.ID, squad12);
+		}
+
+		AISquad squad13 = new AISquad();
+		squad13.ID = "zsk_woods_ghouls";
+		squad13.Tier = 1;
+		squad13.Faction = Faction.Mutants;
+		squad13.Household = _allHouseHolds["HouseHoldWoodsMutant"];
+		squad13.Household.CurrentSquad = squad13;
+		if(!_allSquads.ContainsKey(squad13.ID))
+		{
+			_allSquads.Add(squad13.ID, squad13);
+		}
+
+		AISquad squad14 = new AISquad();
+		squad14.ID = "zsk_wolves2";
+		squad14.Tier = 1;
+		squad14.Faction = Faction.Animals;
+		squad14.Household = _allHouseHolds["HouseHoldWolf2"];
+		squad14.Household.CurrentSquad = squad14;
+		if(!_allSquads.ContainsKey(squad14.ID))
+		{
+			_allSquads.Add(squad14.ID, squad14);
 		}
 	}
 }

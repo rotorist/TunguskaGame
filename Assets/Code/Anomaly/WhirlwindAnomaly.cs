@@ -145,14 +145,18 @@ public class WhirlwindAnomaly : MonoBehaviour
 		if(_target.MyAI.ControlType == AIControlType.Player)
 		{
 			GameManager.Inst.CameraShaker.TriggerScreenShake(0.2f, 0.8f);
+			GameManager.Inst.PlayerControl.SelectedPC.IsHidden = true;
 		}
-		if(_target.GetComponent<HumanCharacter>() != null)
+		else
 		{
-			GameManager.Inst.NPCManager.RemoveHumanCharacter((HumanCharacter)_target);
-		}
-		else if(_target.GetComponent<MutantCharacter>() != null)
-		{
-			GameManager.Inst.NPCManager.RemoveMutantCharacter((MutantCharacter)_target);
+			if(_target.GetComponent<HumanCharacter>() != null)
+			{
+				GameManager.Inst.NPCManager.RemoveHumanCharacter((HumanCharacter)_target);
+			}
+			else if(_target.GetComponent<MutantCharacter>() != null)
+			{
+				GameManager.Inst.NPCManager.RemoveMutantCharacter((MutantCharacter)_target);
+			}
 		}
 		_target = null;
 

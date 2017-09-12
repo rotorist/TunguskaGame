@@ -11,6 +11,7 @@ public class AISquad
 	public NavNode NextNavNode;
 	public Faction Faction;
 	public Character Commander;
+	public int Tier;
 
 	public AISquad()
 	{

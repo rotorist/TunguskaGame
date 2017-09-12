@@ -243,12 +243,12 @@ public class Household : MonoBehaviour
 
 	public void AssignSquadJobs()
 	{
-		Debug.Log("is squad null? " + (CurrentSquad == null) + " members " + CurrentSquad.Members.Count + " squad is " + CurrentSquad.ID);
+		//Debug.Log("is squad null? " + (CurrentSquad == null) + " members " + CurrentSquad.Members.Count + " squad is " + CurrentSquad.ID);
 		if(CurrentSquad == null || MaxOccupants <= 0 || CurrentSquad.Members.Count <= 0)
 		{
 			return;
 		}
-		Debug.Log("Starting Assign Squad Job to " + CurrentSquad.Faction + " character type " + GameManager.Inst.NPCManager.GetFactionData(CurrentSquad.Faction).CharacterType);
+		//Debug.Log("Starting Assign Squad Job to " + CurrentSquad.Faction + " character type " + GameManager.Inst.NPCManager.GetFactionData(CurrentSquad.Faction).CharacterType);
 		if(GameManager.Inst.NPCManager.GetFactionData(CurrentSquad.Faction).CharacterType != CharacterType.Human)
 		{
 			foreach(Character mutant in CurrentSquad.Members)
@@ -262,7 +262,7 @@ public class Household : MonoBehaviour
 		}
 		else
 		{
-			Debug.Log("Starting Assign Squad Job for humans. guard locs count " + GuardLocs.Count);
+			//Debug.Log("Starting Assign Squad Job for humans. guard locs count " + GuardLocs.Count);
 			//first set patrol range for everyone 
 			foreach(Character member in CurrentSquad.Members)
 			{
@@ -278,7 +278,7 @@ public class Household : MonoBehaviour
 			if(GuardLocs.Count > 0)
 			{
 				int guardsCount = CurrentSquad.GetNumberOfGuards();
-				Debug.LogError("Current guard count " + guardsCount);
+				//Debug.LogError("Current guard count " + guardsCount);
 				int i = 0;
 				while(GuardLocs.Count > guardsCount && i < CurrentSquad.Members.Count)
 				{
@@ -316,7 +316,7 @@ public class Household : MonoBehaviour
 			{
 				int patrolsCount = CurrentSquad.GetNumberOfPatrols();
 				int i = 0;
-				Debug.LogError("Current patrols count " + CurrentSquad.GetNumberOfPatrols());
+				//Debug.LogError("Current patrols count " + CurrentSquad.GetNumberOfPatrols());
 				while(GuardLocs.Count > patrolsCount && i < CurrentSquad.Members.Count)
 				{
 					if(CurrentSquad.Members[i].MyJobs.Contains(NPCJobs.None) && !CurrentSquad.Members[i].IsCommander)
@@ -363,7 +363,7 @@ public class Household : MonoBehaviour
 			return;
 		}
 
-		Debug.Log("GOTO setting new destinatoin " + nextNavNode.name + " currentNode " + currentNode.name);
+		//Debug.Log("GOTO setting new destinatoin " + nextNavNode.name + " currentNode " + currentNode.name);
 
 		//create a squad
 		AISquad squad = GameManager.Inst.NPCManager.SpawnHumanExplorerSquad(CurrentSquad.Faction, this);
@@ -392,19 +392,19 @@ public class Household : MonoBehaviour
 				c.MyAI.Squad = squad;
 				if(squad.Commander == null)
 				{
-					Debug.Log("Assigned commander to " + c.name);
+					//Debug.Log("Assigned commander to " + c.name);
 					//assign commander job
 					squad.AssignExpCommanderRole(c, squad);
 				}
 				else
 				{
-					Debug.Log("Assigned follower to " + c.name);
+					//Debug.Log("Assigned follower to " + c.name);
 					squad.AssignExpFollowerRole(c, squad);
 				}
 			}
 		}
 
-		Debug.LogError("Sending expedition - squad " + squad.ID + " to " + destNavNode.name + " commander " + squad.Commander.name);
+		//Debug.LogError("Sending expedition - squad " + squad.ID + " to " + destNavNode.name + " commander " + squad.Commander.name);
 
 		//remove squad member from current squad
 		foreach(Character c in squad.Members)

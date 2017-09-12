@@ -7,6 +7,7 @@ public class TraderData
 {
 	public string CharacterID;
 	public int Cash;
+	public int Tier;
 	public List<GridItemData> TraderInventory;
 	public float SupplyRenewTimer;
 }
@@ -14,6 +15,7 @@ public class TraderData
 public class Trader : MonoBehaviour 
 {
 	public int Cash;
+	public int Tier;
 	public ItemType [] SupplyTypes;
 	public ItemType [] DemandTypes;
 	public List<GridItemData> TraderInventory;
@@ -45,9 +47,9 @@ public class Trader : MonoBehaviour
 		}
 
 		float finalPrice = item.BasePrice;
-		foreach(ItemType type in SupplyTypes)
+		foreach(GridItemData saleItem in TraderInventory)
 		{
-			if(item.Type == type)
+			if(item.ID == saleItem.Item.ID)
 			{
 				finalPrice = item.BasePrice * 1.5f;
 			}
@@ -64,11 +66,11 @@ public class Trader : MonoBehaviour
 		}
 
 		float finalPrice = item.BasePrice;
-		foreach(ItemType type in SupplyTypes)
+		foreach(GridItemData saleItem in TraderInventory)
 		{
-			if(item.Type == type)
+			if(item.ID == saleItem.Item.ID)
 			{
-				finalPrice = item.BasePrice * 0.2f;
+				finalPrice = item.BasePrice * 0.1f;
 			}
 		}
 
@@ -76,17 +78,22 @@ public class Trader : MonoBehaviour
 		{
 			if(item.Type == type)
 			{
-				finalPrice = item.BasePrice * 2;
+				finalPrice = item.BasePrice * 0.5f;
 			}
+		}
+
+		if(item.MaxDurability > 1f)
+		{
+			finalPrice *= (item.Durability / item.MaxDurability);
 		}
 
 		return finalPrice;
 	}
 
 
-	private void GenerateSupply()
+	public void GenerateSupply()
 	{
-		TraderInventory = GameManager.Inst.ItemManager.GetTraderInventory(SupplyTypes, 1);
+		TraderInventory = GameManager.Inst.ItemManager.GetTraderInventory(SupplyTypes, Tier);
 	}
 
 }

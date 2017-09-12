@@ -15,6 +15,8 @@ public class TradingPanel : PanelBase
 	public UILabel SellPriceLabel;
 	public UILabel PlayerMoney;
 	public UILabel TraderMoney;
+	public UILabel PlayerName;
+	public UILabel TraderName;
 
 	public int BuyPrice;
 	public int SellPrice;
@@ -50,6 +52,9 @@ public class TradingPanel : PanelBase
 
 		NGUITools.SetActive(this.gameObject, true);
 		this.IsActive = true;
+
+		PlayerName.text = GameManager.Inst.PlayerProgress.PlayerFirstName;
+		TraderName.text = target.GetComponent<Character>().Name;
 
 		//first remove all existing griditems in the inventory
 		List<GridItem> buyCopy = new List<GridItem>(BuyGrid.Items);

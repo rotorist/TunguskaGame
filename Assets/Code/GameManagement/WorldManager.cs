@@ -50,10 +50,10 @@ public class WorldManager
 
 		Environment cellar = new Environment("Cellar");
 		cellar.IsInterior = true;
-		cellar.AmbientSoundSet = new string[]{"dripping", "horror"};
-		cellar.AmbientChoices = new int[]    {6,         	2};
-		cellar.PrimarySoundSet = new string[]{"dripping", "horror"};
-		cellar.PrimaryChoices = new int[]    {6,         	2};
+		cellar.AmbientSoundSet = new string[]{"dripping", "horror", "drone"};
+		cellar.AmbientChoices = new int[]    {6,         	2,		6};
+		cellar.PrimarySoundSet = new string[]{"dripping"};
+		cellar.PrimaryChoices = new int[]    {6,         };
 		cellar.AmbientLightColor = new Color(0.1f, 0.1f, 0.1f);
 		cellar.AmbientIntensity = 0.1f;
 		cellar.SunMoonColor = new Color(0, 0, 0, 0);
@@ -131,6 +131,15 @@ public class WorldManager
 			TimerEventHandler.Instance.TriggerOneDayTimer();
 		}
 
+		//renew trader items each day at 6am
+		if(CurrentTime == 60 * 6)
+		{
+			Trader [] allTraders = GameObject.FindObjectsOfType<Trader>();
+			foreach(Trader trader in allTraders)
+			{
+				trader.GenerateSupply();
+			}
+		}
 	}
 
 	public void ChangeEnvironment(string name)

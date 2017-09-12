@@ -6,6 +6,7 @@ public class SaveNameReference : MonoBehaviour
 {
 
 	public string SaveName;
+	public bool IsNewGame;
 
 	void Awake()
 	{

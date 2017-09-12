@@ -154,6 +154,7 @@ public class SaveGameManager
 				TraderData traderData = new TraderData();
 				traderData.CharacterID = character.CharacterID;
 				traderData.Cash = trader.Cash;
+				traderData.Tier = trader.Tier;
 				traderData.TraderInventory = trader.TraderInventory;
 				traderData.SupplyRenewTimer = trader.SupplyRenewTimer;
 				traders.Add(traderData);
@@ -178,6 +179,7 @@ public class SaveGameManager
 			data.RowSize = chest.RowSize;
 			data.Items = chest.Items;
 			data.IsLocked = chest.IsLocked;
+			data.KeyID = chest.KeyID;
 
 			chestDataList.Add(data);
 		}
@@ -194,11 +196,13 @@ public class SaveGameManager
 			if(household.CurrentSquad != null)
 			{
 				saveData.CurrentSquadID = household.CurrentSquad.ID;
+				saveData.CurrentSquadTier = household.CurrentSquad.Tier;
 				saveData.OwningFaction = household.CurrentSquad.Faction;
 			}
 			else
 			{
 				saveData.CurrentSquadID = "";
+				saveData.CurrentSquadTier = 1;
 			}
 
 			saveData.IsRefilledToday = household.IsRefilledToday;
@@ -422,6 +426,7 @@ public class SaveGameManager
 				{
 					chest.Items = chestData.Items;
 					chest.IsLocked = chestData.IsLocked;
+					chest.KeyID = chestData.KeyID;
 					chest.PostLoad();
 				}
 			}
@@ -465,6 +470,7 @@ public class SaveGameManager
 						//create a new squad
 						AISquad squad = new AISquad();
 						squad.ID = saveData.CurrentSquadID;
+						squad.Tier = saveData.CurrentSquadTier;
 						squad.Faction = saveData.OwningFaction;
 						squad.Household = household;
 						squad.Household.CurrentSquad = squad;
@@ -552,7 +558,7 @@ public class SaveGameManager
 				character.CharacterType = characterData.CharacterType;
 				character.SquadID = characterData.SquadID;
 				character.Faction = characterData.Faction;
-				GameManager.Inst.ItemManager.LoadNPCInventory(character.Inventory, character.Faction);
+				GameManager.Inst.ItemManager.LoadNPCInventory(character.Inventory, character.Faction, 0);
 				character.Inventory.PostLoad();
 
 				character.MyStatus.Data = characterData.StatusData;
@@ -577,7 +583,7 @@ public class SaveGameManager
 				character.CharacterType = characterData.CharacterType;
 				character.SquadID = characterData.SquadID;
 				character.Faction = characterData.Faction;
-				GameManager.Inst.ItemManager.LoadNPCInventory(character.Inventory, character.Faction);
+				GameManager.Inst.ItemManager.LoadNPCInventory(character.Inventory, character.Faction, 0);
 				character.Inventory.PostLoad();
 
 				character.MyStatus.Data = characterData.StatusData;
@@ -609,6 +615,7 @@ public class SaveGameManager
 					if(traderData.CharacterID == character.CharacterID)
 					{
 						trader.Cash = traderData.Cash;
+						trader.Tier = traderData.Tier;
 						trader.TraderInventory = traderData.TraderInventory;
 						trader.SupplyRenewTimer = traderData.SupplyRenewTimer;
 						trader.PostLoad();

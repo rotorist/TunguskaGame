@@ -37,7 +37,7 @@ public class ActionIdleActivity : GoapAction
 
 	public override bool ExecuteAction()
 	{
-		Debug.Log("Start executing idle activity" + ParentCharacter.name);
+		//Debug.Log("Start executing idle activity" + ParentCharacter.name);
 		_executionStopped = false;
 
 		_currentIdleDest = null;
@@ -73,7 +73,7 @@ public class ActionIdleActivity : GoapAction
 
 	public override void StopAction()
 	{
-		Debug.Log("Stopping idle activity " + ParentCharacter.name);
+		//Debug.Log("Stopping idle activity " + ParentCharacter.name);
 		ParentCharacter.SendCommand(CharacterCommands.Idle);
 		ParentCharacter.MyEventHandler.OnOneSecondTimer -= UpdateAction;
 

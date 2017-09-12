@@ -138,7 +138,10 @@ public class PlayerControl
 
 	public void PerFrameUpdate()
 	{
-		
+		if(SelectedPC == null)
+		{
+			return;
+		}
 
 		//set time scale for game pausing
 		if(IsGamePaused)

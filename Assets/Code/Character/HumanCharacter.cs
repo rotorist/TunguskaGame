@@ -252,7 +252,7 @@ public class HumanCharacter : Character
 
 	public override void LoadCharacterModel(string prefabName)
 	{
-		Debug.Log("loading char " + prefabName);
+		//Debug.Log("loading char " + prefabName);
 		if(this.Model != null)
 		{
 			GameObject.Destroy(this.Model);
@@ -264,7 +264,6 @@ public class HumanCharacter : Character
 		o.transform.localEulerAngles = Vector3.zero;
 
 		this.MyAnimator = o.transform.GetComponent<Animator>();
-		Debug.Log("MyAnimator " + this.MyAnimator.name);
 		this.MyReference = o.transform.GetComponent<CharacterReference>();
 		this.MyAnimEventHandler = o.transform.GetComponent<AnimationEventHandler>();
 
@@ -2373,7 +2372,13 @@ public class HumanCharacter : Character
 		collider.isTrigger = true;
 		*/
 
-
+		if(MyAI.ControlType == AIControlType.Player)
+		{
+			UIEventHandler.Instance.TriggerCloseWindow();
+			GameManager.Inst.UIManager.HUDPanel.OnDeath();
+			GameManager.Inst.CameraController.IsLocked = true;
+			GameManager.Inst.UIManager.FadingPanel.FadeOutAndInCallBack(6, 1, 6, GameManager.Inst.LoadGame);
+		}
 
 		Unhook();
 	}

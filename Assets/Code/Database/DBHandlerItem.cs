@@ -10,6 +10,76 @@ using System;
 
 public class DBHandlerItem
 {
+	public List<Item> GetAllWeaponsByTier(int tier)
+	{
+		IDataReader itemReader = GameManager.Inst.DBManager.RunQuery(
+			"SELECT * from base_items WHERE tier='" + tier +"' AND (type='PrimaryWeapon' OR type='SideArm' OR type='Thrown')" );
+
+		List<Item> result = new List<Item>();
+		while(itemReader.Read())
+		{
+			result.Add(ParseItem(itemReader));
+		}
+
+		return result;
+	}
+
+	public List<Item> GetAllGunsByTier(int tier)
+	{
+		IDataReader itemReader = GameManager.Inst.DBManager.RunQuery(
+			"SELECT * from base_items WHERE tier='" + tier +"' AND (type='PrimaryWeapon' OR type='SideArm')" );
+
+		List<Item> result = new List<Item>();
+		while(itemReader.Read())
+		{
+			result.Add(ParseItem(itemReader));
+		}
+
+		return result;
+	}
+
+	public List<Item> GetAllGrenadesByTier(int tier)
+	{
+		IDataReader itemReader = GameManager.Inst.DBManager.RunQuery(
+			"SELECT * from base_items WHERE tier='" + tier +"' AND (type='Thrown')" );
+
+		List<Item> result = new List<Item>();
+		while(itemReader.Read())
+		{
+			result.Add(ParseItem(itemReader));
+		}
+
+		return result;
+	}
+
+	public List<Item> GetAllArmorsByTier(int tier)
+	{
+		IDataReader itemReader = GameManager.Inst.DBManager.RunQuery(
+			"SELECT * from base_items WHERE tier='" + tier +"' AND (type='Armor' OR type='Helmet')" );
+
+		List<Item> result = new List<Item>();
+		while(itemReader.Read())
+		{
+			result.Add(ParseItem(itemReader));
+		}
+
+		return result;
+	}
+
+	public List<Item> GetAllItemsByType(ItemType type)
+	{
+		IDataReader itemReader = GameManager.Inst.DBManager.RunQuery(
+			"SELECT * from base_items WHERE type='" + type.ToString() + "'" );
+
+		List<Item> result = new List<Item>();
+		while(itemReader.Read())
+		{
+			result.Add(ParseItem(itemReader));
+		}
+
+		return result;
+	}
+
 	public Item LoadItemByID(string id)
 	{
 		IDataReader itemReader = GameManager.Inst.DBManager.RunQuery(
@@ -17,36 +87,42 @@ public class DBHandlerItem
 
 		while(itemReader.Read())
 		{
-			Item item = new Item();
-			item.ID = itemReader.GetString(0);
-			item.Name = itemReader.GetString(1);
-			item.Description = itemReader.GetString(2);
-			item.PrefabName = itemReader.GetString(3);
-			item.SpriteName = itemReader.GetString(4);
-			item.Weight = itemReader.GetFloat(5);
-			item.Type = (ItemType)Enum.Parse(typeof(ItemType), itemReader.GetString(6));
-			item.GridCols = itemReader.GetInt32(7);
-			item.GridRows = itemReader.GetInt32(8);
-			item.MaxStackSize = itemReader.GetInt32(9);
-			item.Tier = itemReader.GetInt32(10);
-			item.BasePrice = itemReader.GetFloat(11);
-			item.MaxDurability = itemReader.GetFloat(12);
-			item.Durability = itemReader.GetFloat(13);
-			item.UseLimit = itemReader.GetInt32(14);
-			item.IsUsable = itemReader.GetBoolean(15);
-			if(!itemReader.IsDBNull(16))
-			{
-				item.Attributes = ParseAttributes(itemReader.GetString(16));
-			}
+			
 
-			item.BuildIndex();
-
-			return item;
+			return ParseItem(itemReader);
 		}
 
 		return null;
 	}
 
+	private Item ParseItem(IDataReader itemReader)
+	{
+		Item item = new Item();
+		item.ID = itemReader.GetString(0);
+		item.Name = itemReader.GetString(1);
+		item.Description = itemReader.GetString(2);
+		item.PrefabName = itemReader.GetString(3);
+		item.SpriteName = itemReader.GetString(4);
+		item.Weight = itemReader.GetFloat(5);
+		item.Type = (ItemType)Enum.Parse(typeof(ItemType), itemReader.GetString(6));
+		item.GridCols = itemReader.GetInt32(7);
+		item.GridRows = itemReader.GetInt32(8);
+		item.MaxStackSize = itemReader.GetInt32(9);
+		item.Tier = itemReader.GetInt32(10);
+		item.BasePrice = itemReader.GetFloat(11);
+		item.MaxDurability = itemReader.GetFloat(12);
+		item.Durability = itemReader.GetFloat(13);
+		item.UseLimit = itemReader.GetInt32(14);
+		item.IsUsable = itemReader.GetBoolean(15);
+		if(!itemReader.IsDBNull(16))
+		{
+			item.Attributes = ParseAttributes(itemReader.GetString(16));
+		}
+
+		item.BuildIndex();
+
+		return item;
+	}
 
 
 	private List<ItemAttribute> ParseAttributes(string blob)

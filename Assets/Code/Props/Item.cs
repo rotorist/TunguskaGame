@@ -127,4 +127,5 @@ public enum ItemType
 	Misc,
 	SupplyPack,
 	Ingredient,
+	Solvent,
 }

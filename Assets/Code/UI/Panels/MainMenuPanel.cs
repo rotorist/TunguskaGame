@@ -49,6 +49,7 @@ public class MainMenuPanel : MonoBehaviour
 	{
 		SaveNameReference saveNameRef = GameObject.FindObjectOfType<SaveNameReference>();
 		saveNameRef.SaveName = "";
+		saveNameRef.IsNewGame = true;
 
 		SceneManager.LoadScene("Zernaskaya");
 	}

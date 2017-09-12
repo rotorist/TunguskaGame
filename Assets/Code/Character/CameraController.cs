@@ -17,6 +17,7 @@ public class CameraController : MonoBehaviour
 	public AnimationCurve CameraAngleCurve;
 	public AnimationCurve PanDistCurve;
 	public AnimationCurve VignetteCurve;
+	public bool IsLocked;
 	#endregion
 
 	#region Private Fields
@@ -50,7 +51,7 @@ public class CameraController : MonoBehaviour
 	void Update()
 	{
 		HumanCharacter pc = GameManager.Inst.PlayerControl.SelectedPC;
-		if(pc == null)
+		if(pc == null || IsLocked)
 		{
 			return;
 		}
