@@ -33,6 +33,7 @@ public class HUDPanel : PanelBase
 
 	public UILabel WaveIndicator;
 	public UILabel HelpText;
+	public UILabel FPSText;
 
 	private bool _isShowingRadiation;
 	private UISprite _weaponSprite;
@@ -105,6 +106,9 @@ public class HUDPanel : PanelBase
 		UpdateAperture();
 		UpdateGeigerCounter();
 		UpdateBoostIndicators();
+
+		//update FPS
+		FPSText.text = (1f / Time.smoothDeltaTime).ToString();
 	}
 
 	public void SetConsoleText(string text)

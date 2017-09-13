@@ -81,7 +81,11 @@ public class GridItem : MonoBehaviour
 						//check if enemies are around
 						if(GameManager.Inst.NPCManager.GetNearbyEnemyCount(40) > 0)
 						{
-							GameManager.Inst.UIManager.SetConsoleText("Cannot rest when enemies are around.");
+							GameManager.Inst.UIManager.SetConsoleText("Cannot rest when enemies are around!");
+						}
+						else if(GameManager.Inst.PlayerControl.SelectedPC.MyStatus.BleedingSpeed > 0)
+						{
+							GameManager.Inst.UIManager.SetConsoleText("Cannot rest while bleeding!");
 						}
 						else
 						{

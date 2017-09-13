@@ -76,6 +76,7 @@ public class GameManager : MonoBehaviour
 	void FixedUpdate()
 	{
 		MaterialManager.FixedUpdate();
+		EventManager.ManagerFixedUpdate();
 	}
 
 
@@ -262,6 +263,7 @@ public class GameManager : MonoBehaviour
 			//setup new game
 			UIEventHandler.Instance.TriggerJournal();
 			GameManager.Inst.SaveGameManager.Save("TestSave", "");
+			saveNameRef.IsNewGame = false;
 		}
 
 

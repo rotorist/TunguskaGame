@@ -24,6 +24,11 @@ public class EventManager
 		InputEventHandler.Instance.PerFrameUpdate();
 		StoryEventHandler.Instance.PerFrameUpdate();
 	}
+
+	public void ManagerFixedUpdate()
+	{
+		InputEventHandler.Instance.FixedUpdate();
+	}
 	#endregion
 	
 	

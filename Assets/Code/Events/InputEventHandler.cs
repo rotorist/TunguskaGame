@@ -196,6 +196,11 @@ public class InputEventHandler
 		}
 	}
 
+	public void FixedUpdate()
+	{
+		HandleNormalModeFixedTimeInput();
+	}
+
 
 	public void TriggerIssueTaskComplete()
 	{
@@ -263,17 +268,8 @@ public class InputEventHandler
 		}
 	}
 
-	public void HandleNormalModeInput()
+	public void HandleNormalModeFixedTimeInput()
 	{
-		#region Testing
-
-			
-
-		#endregion
-
-
-		#region Camera Controls
-
 		float wheelInput = Input.GetAxis("Mouse ScrollWheel") * 0.5f;
 		if(wheelInput > 0)
 		{
@@ -309,6 +305,21 @@ public class InputEventHandler
 				}
 			}
 		}
+	}
+
+
+	public void HandleNormalModeInput()
+	{
+		#region Testing
+
+			
+
+		#endregion
+
+
+		#region Camera Controls
+
+
 
 		if(Input.GetKey(KeyCode.LeftControl))
 		{

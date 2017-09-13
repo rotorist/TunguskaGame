@@ -126,7 +126,6 @@ public class PlayerSurvival
 				
 				if(!_isBandageInUse)
 				{
-					
 					_bandageRate = functionValue * quantity;
 					_isBandageInUse = true;
 
@@ -255,7 +254,7 @@ public class PlayerSurvival
 			_isBandageInUse = false;
 		}
 
-
+		//Debug.Log(GameManager.Inst.PlayerControl.SelectedPC.MyStatus.BleedingSpeed);
 	}
 
 	private void UpdateRadiation()
