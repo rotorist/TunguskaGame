@@ -136,25 +136,25 @@ public class StoryEventScript
 		{
 			if(!door.IsOpen)
 			{
-				door.Open(GameManager.Inst.PlayerControl.SelectedPC.transform);
+				door.Open(door.OpenTarget1, door.IsMachine);
 			}
 		}
 		else if(tokens[2] == "close")
 		{
 			if(door.IsOpen)
 			{
-				door.Close();
+				door.Close(door.IsMachine);
 			}
 		}
 		else if(tokens[2] == "toggle")
 		{
 			if(door.IsOpen)
 			{
-				door.Close();
+				door.Close(door.IsMachine);
 			}
 			else
 			{
-				door.Open(GameManager.Inst.PlayerControl.SelectedPC.transform);
+				door.Open(door.OpenTarget1, door.IsMachine);
 			}
 		}
 		else if(tokens[2] == "lock")

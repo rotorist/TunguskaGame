@@ -27,6 +27,16 @@ public class Trader : MonoBehaviour
 
 	public void Initialize()
 	{
+		if(SupplyTypes == null)
+		{
+			SupplyTypes = new ItemType[0];
+		}
+
+		if(DemandTypes == null)
+		{
+			DemandTypes = new ItemType[0];
+		}
+
 		TraderInventory = new List<GridItemData>();
 		GenerateSupply();
 	}

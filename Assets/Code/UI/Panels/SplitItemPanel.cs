@@ -85,7 +85,7 @@ public class SplitItemPanel : PanelBase
 
 	public void OnSliderValueChange()
 	{
-		_quanity = Mathf.RoundToInt(QuantitySlider.value * Target.GetQuantity());
+		_quanity = Mathf.RoundToInt(Mathf.Lerp(1f, (float)Target.GetQuantity(), QuantitySlider.value));
 		QuantityLabel.text = _quanity.ToString();
 	}
 

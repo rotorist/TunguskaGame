@@ -11,6 +11,7 @@ public class Door : MonoBehaviour
 	public ContainerSoundType SoundType;
 	public bool IsOpen;
 	public bool IsLocked;
+	public bool IsMachine;
 	public string KeyItemID;
 	public Transform DoorPanel;
 	public Transform ClosedTarget;
@@ -97,9 +98,14 @@ public class Door : MonoBehaviour
 		}
 	}
 
-	public void Open(Transform opener)
+	public void Open(Transform opener, bool machineOpen)
 	{
 		if(IsOpen)
+		{
+			return;
+		}
+
+		if(IsMachine && !machineOpen)
 		{
 			return;
 		}
@@ -174,12 +180,17 @@ public class Door : MonoBehaviour
 		}
 	}
 
-	public void Close()
+	public void Close(bool machineClose)
 	{
 		if(!IsOpen)
 		{
 			return;
 		}
+		if(IsMachine && !machineClose)
+		{
+			return;
+		}
+
 
 		IsOpen = false;
 		if(DoorSound != null)

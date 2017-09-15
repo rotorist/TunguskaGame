@@ -111,6 +111,10 @@ public class ItemManager
 		inventory1.Backpack.Add(new GridItemData(LoadItem("bread1"), 8, 7, GridItemOrient.Landscape, 1));
 		inventory1.Backpack.Add(new GridItemData(LoadItem("sausage"), 9, 8, GridItemOrient.Landscape, 1));
 		//inventory1.Backpack.Add(new GridItemData(LoadItem("gasoline"), 5, 6, GridItemOrient.Landscape, 5));
+		inventory1.Backpack.Add(new GridItemData(LoadItem("mutantblood"), 0, 0, GridItemOrient.Landscape, 20));
+		inventory1.Backpack.Add(new GridItemData(LoadItem("mutantheart"), 1, 0, GridItemOrient.Landscape, 20));
+		inventory1.Backpack.Add(new GridItemData(LoadItem("alcohol"), 2, 0, GridItemOrient.Landscape, 20));
+		inventory1.Backpack.Add(new GridItemData(LoadItem("recipe_hr1"), 3, 0, GridItemOrient.Landscape, 1));
 
 		inventory1.RifleSlot = LoadItem("doublebarrelshotgun");
 		//inventory1.ThrowSlot = LoadItem("f1grenade");

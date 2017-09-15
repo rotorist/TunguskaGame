@@ -246,7 +246,7 @@ public class InventoryPanel : PanelBase
 
 
 		attributeNames = attributeNames + "Weight";
-		attributeValues = attributeValues + item.Item.Weight.ToString();
+		attributeValues = attributeValues + (item.Item.Weight * item.GetQuantity()).ToString();
 
 		ItemAttributeNames.text = attributeNames;
 		ItemAttributeValues.text = attributeValues;
@@ -393,6 +393,7 @@ public class InventoryPanel : PanelBase
 			}
 			else if(FocusedGrid != null)
 			{
+				
 				PlaceItem(item);	
 
 				if(_selectedItemLastList != null)
@@ -1031,9 +1032,31 @@ public class InventoryPanel : PanelBase
 
 		foreach(InventoryGrid grid in grids)
 		{
+			//check if item is allowed in this grid
+			bool isItemAllowed = false;
+			if(grid.AllowedItemTypes.Count > 0)
+			{
+				bool typeMatchFound = false;
+				foreach(ItemType type in grid.AllowedItemTypes)
+				{
+					if(SelectedItem.Item.Type == type)
+					{
+						typeMatchFound = true;
+					}
+				}
+				if(typeMatchFound)
+				{
+					isItemAllowed = true;
+				}
+			}
+			else
+			{
+				isItemAllowed = true;
+			}
+
 			if(centerPos.x >= grid.Grid.transform.localPosition.x && centerPos.x <= grid.Grid.transform.localPosition.x + grid.Columns * grid.BlockSize &&
 				centerPos.y >= grid.Grid.transform.localPosition.y && centerPos.y <= grid.Grid.transform.localPosition.y + grid.Rows * grid.BlockSize
-				&& grid.IsPlayerOwned == isPlayerOwned)
+				&& grid.IsPlayerOwned == isPlayerOwned && isItemAllowed)
 			{
 				FocusedGrid = grid;
 			}
@@ -1120,7 +1143,8 @@ public class InventoryPanel : PanelBase
 		foreach(TempSlot slot in tempSlots)
 		{
 			if(centerPos.x >= slot.transform.localPosition.x - slot.Background.width/2 && centerPos.x <= slot.transform.localPosition.x + slot.Background.width/2 &&
-				centerPos.y >= slot.transform.localPosition.y - slot.Background.height/2 && centerPos.y <= slot.transform.localPosition.y + slot.Background.height/2)
+				centerPos.y >= slot.transform.localPosition.y - slot.Background.height/2 && centerPos.y <= slot.transform.localPosition.y + slot.Background.height/2 &&
+				!slot.TakeOnly)
 			{
 				tempSlot = slot;
 				return true;

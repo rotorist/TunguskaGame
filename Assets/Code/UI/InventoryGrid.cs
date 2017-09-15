@@ -10,6 +10,7 @@ public class InventoryGrid : MonoBehaviour
 	public int GridWidth;
 	public bool IsPlayerOwned;
 	public UISprite Grid;
+	public List<ItemType> AllowedItemTypes;
 
 	public PanelBase ParentPanel;
 

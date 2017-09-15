@@ -314,6 +314,7 @@ public enum AimedObjectType
 	Chest,
 	Interactive,
 	LightSwitch,
+	SerumLab,
 }
 
 public enum LogicOperator

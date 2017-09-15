@@ -508,7 +508,7 @@ public class HumanAnimStateGoForward : HumanAnimStateBase
 				{
 					if(this.ParentCharacter.CurrentDoor != null)
 					{
-						this.ParentCharacter.CurrentDoor.Open(this.ParentCharacter.transform);
+						this.ParentCharacter.CurrentDoor.Open(this.ParentCharacter.transform, false);
 					}
 					else
 					{

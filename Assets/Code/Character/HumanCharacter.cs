@@ -2102,11 +2102,11 @@ public class HumanCharacter : Character
 			{
 				if(door.IsOpen)
 				{
-					door.Close();
+					door.Close(false);
 				}
 				else
 				{
-					door.Open(transform);
+					door.Open(transform, false);
 				}
 
 
@@ -2134,6 +2134,10 @@ public class HumanCharacter : Character
 			{
 				lightSwitch.Toggle();
 			}
+		}
+		else if(useTarget.tag == "SerumLab")
+		{
+			UIEventHandler.Instance.TriggerSerumCraft();
 		}
 	}
 

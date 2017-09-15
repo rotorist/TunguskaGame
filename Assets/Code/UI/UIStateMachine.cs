@@ -62,6 +62,8 @@ public class UIStateNormal : UIStateBase
 		UIEventHandler.OnOpenQuestDebugPanel += OnOpenQuestDebugPanel;
 		UIEventHandler.OnOpenMapPanel -= OnOpenMapPanel;
 		UIEventHandler.OnOpenMapPanel += OnOpenMapPanel;
+		UIEventHandler.OnOpenSerumCraftPanel -= OnOpenSerumCraftPanel;
+		UIEventHandler.OnOpenSerumCraftPanel += OnOpenSerumCraftPanel;
 	}
 
 	public override void EndState ()
@@ -77,6 +79,7 @@ public class UIStateNormal : UIStateBase
 		UIEventHandler.OnOpenJournalPanel -= OnOpenJournalPanel;
 		UIEventHandler.OnOpenQuestDebugPanel -= OnOpenQuestDebugPanel;
 		UIEventHandler.OnOpenMapPanel -= OnOpenMapPanel;
+		UIEventHandler.OnOpenSerumCraftPanel -= OnOpenSerumCraftPanel;
 	}
 
 
@@ -139,6 +142,12 @@ public class UIStateNormal : UIStateBase
 	{
 		EndState();
 		SM.State = new UIStateMap(SM);
+	}
+
+	public void OnOpenSerumCraftPanel()
+	{
+		EndState();
+		SM.State = new UIStateSerumCraft(SM);
 	}
 
 }
@@ -505,6 +514,45 @@ public class UIStateMap : UIStateBase
 	{
 		UIEventHandler.OnCloseWindow -= OnCloseWindow;
 		UIEventHandler.OnOpenMapPanel -= OnCloseWindow;
+	}
+
+	public void OnCloseWindow()
+	{
+		EndState();
+		SM.State = new UIStateNormal(SM);
+	}
+}
+
+
+public class UIStateSerumCraft : UIStateBase
+{
+	public UIStateSerumCraft(UIStateMachine sm)
+	{
+		SM = sm;
+		BeginState();
+	}
+
+	public override void BeginState ()
+	{
+		//setup panels
+		SM.UIManager.HideAllPanels();
+		SM.UIManager.HUDPanel.Show();
+		SM.UIManager.WindowPanel.Show();
+		SM.UIManager.WindowPanel.InventoryPanel.Show();
+		SM.UIManager.WindowPanel.SerumCraftPanel.Show();
+
+		SM.UIManager.WindowPanel.SetBackground(false);
+
+		//subscribe events
+		UIEventHandler.OnCloseWindow -= OnCloseWindow;
+		UIEventHandler.OnCloseWindow += OnCloseWindow;
+
+	}
+
+	public override void EndState ()
+	{
+		UIEventHandler.OnCloseWindow -= OnCloseWindow;
+
 	}
 
 	public void OnCloseWindow()

@@ -157,12 +157,12 @@ public class HUDPanel : PanelBase
 
 		if(UIButton.current.name == "LongButtonSave")
 		{
-			//GameManager.Inst.SaveGameManager.Save("TestSave", "");
+			GameManager.Inst.SaveGameManager.Save("TestSave", "");
 		}
 
 		if(UIButton.current.name == "LongButtonLoad")
 		{
-			//GameManager.Inst.LoadGame();
+			GameManager.Inst.LoadGame();
 		}
 	}
 		

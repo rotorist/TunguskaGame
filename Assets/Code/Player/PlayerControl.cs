@@ -286,6 +286,10 @@ public class PlayerControl
 			{
 				AimedObjectType = AimedObjectType.LightSwitch;
 			}
+			else if(_aimedObject.tag == "SerumLab")
+			{
+				AimedObjectType = AimedObjectType.SerumLab;
+			}
 			else
 			{
 				AimedObjectType = AimedObjectType.None;
@@ -563,7 +567,8 @@ public class PlayerControl
 
 
 			}
-			else if(AimedObjectType == AimedObjectType.Door || AimedObjectType == AimedObjectType.Interactive || AimedObjectType == AimedObjectType.LightSwitch)
+			else if(AimedObjectType == AimedObjectType.Door || AimedObjectType == AimedObjectType.Interactive 
+				|| AimedObjectType == AimedObjectType.LightSwitch || AimedObjectType == AimedObjectType.SerumLab)
 			{
 				SelectedPC.MyAI.BlackBoard.UseTarget = _aimedObject;
 				SelectedPC.MyAI.BlackBoard.PendingCommand = CharacterCommands.Use;

@@ -14,6 +14,7 @@ public class WindowPanel : PanelBase
 	public TradingPanel TradingPanel;
 	public JournalPanel JournalPanel;
 	public NotePaperPanel NotePaperPanel;
+	public SerumCraftPanel SerumCraftPanel;
 
 	public UIPanel SelectedItemPanel;
 
@@ -38,6 +39,7 @@ public class WindowPanel : PanelBase
 		TraderItemPanel.Initialize();
 		JournalPanel.Initialize();
 		NotePaperPanel.Initialize();
+		SerumCraftPanel.Initialize();
 
 
 		_panels.Add(BodySlotPanel);
@@ -49,6 +51,7 @@ public class WindowPanel : PanelBase
 		_panels.Add(TraderItemPanel);
 		_panels.Add(JournalPanel);
 		_panels.Add(NotePaperPanel);
+		_panels.Add(SerumCraftPanel);
 
 		Hide();
 

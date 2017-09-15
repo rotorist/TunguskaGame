@@ -126,6 +126,7 @@ public class SaveGameManager
 			saveData.IsCommander = character.IsCommander;
 			saveData.IsEssential = character.IsEssential;
 			saveData.StatusData = character.MyStatus.Data;
+			saveData.Jobs = character.MyJobs;
 			saveData.Pos = new SerVector3(character.transform.position);
 
 			saveData.Inventory = new CharacterInventorySaveData();
@@ -533,6 +534,12 @@ public class SaveGameManager
 				character.Title = characterData.Title;
 				character.gameObject.name = characterData.GOName;
 
+				//attach job components
+				if(characterData.Jobs.Contains(NPCJobs.Trader))
+				{
+					character.gameObject.AddComponent<Trader>();
+				}
+
 				character.Inventory = new CharacterInventory();
 				character.Inventory.ArmorSlot = characterData.Inventory.ArmorSlot;
 				character.Inventory.HeadSlot = characterData.Inventory.HeadSlot;
@@ -610,6 +617,7 @@ public class SaveGameManager
 			Trader trader = character.GetComponent<Trader>();
 			if(trader != null)
 			{
+				Debug.Log("loading trader, on character " + character.CharacterID);
 				foreach(TraderData traderData in currentLevel.Traders)
 				{
 					if(traderData.CharacterID == character.CharacterID)

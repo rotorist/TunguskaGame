@@ -199,7 +199,13 @@ public class CursorManager
 			}
 			else if(aimedObject != null && aimedObject.GetComponent<PickupItem>() != null)
 			{
-				ShowToolTip(aimedObject.GetComponent<PickupItem>().Item.Name);
+				PickupItem pickup = aimedObject.GetComponent<PickupItem>();
+				string quantity = "";
+				if(pickup.Quantity > 1)
+				{
+					quantity = "(" + pickup.Quantity + ")";
+				}
+				ShowToolTip(pickup.Item.Name + quantity);
 				SetCursorState(CursorState.Hand);
 			}
 			else if(aimedObject != null && aimedObject.GetComponent<StoryObject>() != null)
@@ -230,6 +236,11 @@ public class CursorManager
 				{
 					ShowToolTip(name);
 				}
+			}
+			else if(aimedObject != null && aimedObject.tag == "SerumLab")
+			{
+				ShowToolTip("Serum Lab");
+				SetCursorState(CursorState.Hand);
 			}
 			else if(aimedObject != null)
 			{

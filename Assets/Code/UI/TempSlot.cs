@@ -9,6 +9,7 @@ public class TempSlot : MonoBehaviour
 	public UISprite Background;
 	public List<GridItem> Items;
 	public Character Owner;
+	public bool TakeOnly;
 
 	public PanelBase ParentPanel;
 
@@ -19,6 +20,7 @@ public class TempSlot : MonoBehaviour
 
 	public GridItem LoadGridItem(string itemID, GridItemOrient orientation)
 	{
+		Debug.Log(itemID);
 		GameObject o = GameObject.Instantiate(Resources.Load("ItemSprite_" + itemID)) as GameObject;
 		UISprite sprite = o.GetComponent<UISprite>();
 		GridItem item = o.GetComponent<GridItem>();

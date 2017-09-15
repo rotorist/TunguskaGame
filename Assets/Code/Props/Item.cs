@@ -128,4 +128,5 @@ public enum ItemType
 	SupplyPack,
 	Ingredient,
 	Solvent,
+	Serum,
 }
