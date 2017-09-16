@@ -557,7 +557,15 @@ public class UIStateSerumCraft : UIStateBase
 
 	public void OnCloseWindow()
 	{
-		EndState();
-		SM.State = new UIStateNormal(SM);
+		if(SM.UIManager.WindowPanel.SerumCraftPanel.IsIngredientGridEmpty() && 
+			SM.UIManager.WindowPanel.SerumCraftPanel.IsProductSlotEmpty())
+		{
+			EndState();
+			SM.State = new UIStateNormal(SM);
+		}
+		else
+		{
+			SM.UIManager.SetConsoleText("There are still items in the serum lab.");
+		}
 	}
 }

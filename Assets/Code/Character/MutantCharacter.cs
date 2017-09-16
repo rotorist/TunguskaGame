@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using RootMotion.FinalIK;
 
 public class MutantCharacter : Character
@@ -887,15 +888,63 @@ public class MutantCharacter : Character
 		//Debug.Log(destBodyAngle.ToString() + " " + controlValue);
 	}
 
+
+	private void HideCharacter(bool isInstant)
+	{
+		Renderer [] childRenderers = GetComponentsInChildren<Renderer>();
+		List<Renderer> fadingRenders = new List<Renderer>();
+		foreach(Renderer renderer in MyReference.FadingRenderers)
+		{
+			fadingRenders.Add(renderer);
+		}
+		foreach(Renderer r in childRenderers)
+		{
+			if(fadingRenders.Contains(r))
+			{
+				GameManager.Inst.MaterialManager.StartFadingMaterial(r, isInstant, false, 2);
+			}
+			else
+			{
+				r.enabled = false;
+			}
+		}
+	}
+
+	private void ShowCharacter()
+	{
+		Renderer [] childRenderers = GetComponentsInChildren<Renderer>();
+		List<Renderer> fadingRenders = new List<Renderer>();
+		foreach(Renderer renderer in MyReference.FadingRenderers)
+		{
+			fadingRenders.Add(renderer);
+		}
+		foreach(Renderer r in childRenderers)
+		{
+			if(fadingRenders.Contains(r))
+			{
+				GameManager.Inst.MaterialManager.StartUnfadingMaterial(r, false, false, 4);
+				r.enabled = true;
+			}
+			else
+			{
+				r.enabled = true;
+			}
+		}
+	}
+
 	private void UpdateFading()
 	{
 		float playerDist = Vector3.Distance(transform.position, GameManager.Inst.PlayerControl.SelectedPC.transform.position);
-		if(playerDist < GameManager.Inst.AIUpdateRadius && MyAI.ControlType != AIControlType.Player)
+		if(playerDist < 70 && MyAI.ControlType != AIControlType.Player)
 		{
-			Vector3 playerLineOfSight = GameManager.Inst.PlayerControl.SelectedPC.LookTarget.transform.position - GameManager.Inst.PlayerControl.SelectedPC.transform.position;
+			Vector3 playerLineOfSight = GameManager.Inst.PlayerControl.SelectedPC.MyReference.Flashlight.transform.forward;//GameManager.Inst.PlayerControl.SelectedPC.LookTarget.transform.position - GameManager.Inst.PlayerControl.SelectedPC.transform.position;
+			if(GameManager.Inst.PlayerControl.SelectedPC.MyCC.velocity.magnitude > 0.1f)
+			{
+				playerLineOfSight = GameManager.Inst.PlayerControl.SelectedPC.transform.forward;
+			}
 			playerLineOfSight = new Vector3(playerLineOfSight.x, 0, playerLineOfSight.z);
 			float playerAngle = Vector3.Angle(playerLineOfSight, transform.position - GameManager.Inst.PlayerControl.SelectedPC.transform.position);
-			if(playerAngle > 80 && playerDist > 1.5f)
+			if(playerAngle > 80 && playerDist > 1.5f && MyStatus.Health > 0)
 			{
 				IsOutOfSight = true;
 			}
@@ -904,26 +953,24 @@ public class MutantCharacter : Character
 				IsOutOfSight = false;
 			}
 
-			if(!IsHidden && (IsInHiddenBuilding || IsOutOfSight))
+			if(!IsHidden)
 			{
-				//start fading
-				Renderer [] childRenderers = GetComponentsInChildren<Renderer>();
-				foreach(Renderer r in childRenderers)
+				if(IsInHiddenBuilding)
 				{
-					r.enabled = false;
+					HideCharacter(true);
+					IsHidden = true;
+				}
+				else if(IsOutOfSight)
+				{
+					HideCharacter(false);
+					IsHidden = true;
 				}
 
-				IsHidden = true;
 			}
 			else if(IsHidden && !IsInHiddenBuilding && !IsOutOfSight)
 			{
-				//start unfading
-				Renderer [] childRenderers = GetComponentsInChildren<Renderer>();
-				foreach(Renderer r in childRenderers)
-				{
-					r.enabled = true;
 
-				}
+				ShowCharacter();
 
 				IsHidden = false;
 			}

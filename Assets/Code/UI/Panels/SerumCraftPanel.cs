@@ -125,9 +125,24 @@ public class SerumCraftPanel : PanelBase
 			item.SetQuantity(1);
 			GameManager.Inst.UIManager.WindowPanel.InventoryPanel.AddItemToTempSlot(item, ProductSlot);
 		}
-		else
+
+		//remove all items from ingredients
+		List<GridItem> ingredientsCopy = new List<GridItem>(IngredientGrid.Items);
+		foreach(GridItem item in ingredientsCopy)
 		{
-			
+			GameManager.Inst.UIManager.WindowPanel.InventoryPanel.DestroyItem(item);
 		}
+		IngredientGrid.Items.Clear();
+
+	}
+
+	public bool IsIngredientGridEmpty()
+	{
+		return IngredientGrid.Items.Count <= 0;
+	}
+
+	public bool IsProductSlotEmpty()
+	{
+		return ProductSlot.Items.Count <= 0;
 	}
 }

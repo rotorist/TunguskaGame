@@ -2531,7 +2531,7 @@ public class HumanCharacter : Character
 
 		if(IsHidden)
 		{
-			HideCharacter();
+			HideCharacter(false);
 		}
 
 		if(_weaponToSwitch != null)
@@ -2843,29 +2843,53 @@ public class HumanCharacter : Character
 	}
 
 
-	private void HideCharacter()
+	private void HideCharacter(bool isInstant)
 	{
 		Renderer [] childRenderers = GetComponentsInChildren<Renderer>();
+		List<Renderer> fadingRenders = new List<Renderer>();
+		foreach(Renderer renderer in MyReference.FadingRenderers)
+		{
+			fadingRenders.Add(renderer);
+		}
 		foreach(Renderer r in childRenderers)
 		{
-			r.enabled = false;
+			if(fadingRenders.Contains(r))
+			{
+				GameManager.Inst.MaterialManager.StartFadingMaterial(r, isInstant, false, 2);
+			}
+			else
+			{
+				r.enabled = false;
+			}
 		}
 	}
 
 	private void ShowCharacter()
 	{
 		Renderer [] childRenderers = GetComponentsInChildren<Renderer>();
+		List<Renderer> fadingRenders = new List<Renderer>();
+		foreach(Renderer renderer in MyReference.FadingRenderers)
+		{
+			fadingRenders.Add(renderer);
+		}
 		foreach(Renderer r in childRenderers)
 		{
-			r.enabled = true;
-
+			if(fadingRenders.Contains(r))
+			{
+				GameManager.Inst.MaterialManager.StartUnfadingMaterial(r, false, false, 4);
+				r.enabled = true;
+			}
+			else
+			{
+				r.enabled = true;
+			}
 		}
 	}
 
 	private void UpdateFading()
 	{
 		float playerDist = Vector3.Distance(transform.position, GameManager.Inst.PlayerControl.SelectedPC.transform.position);
-		if(playerDist < GameManager.Inst.AIUpdateRadius && MyAI.ControlType != AIControlType.Player)
+		if(playerDist < 70 && MyAI.ControlType != AIControlType.Player)
 		{
 			Vector3 playerLineOfSight = GameManager.Inst.PlayerControl.SelectedPC.MyReference.Flashlight.transform.forward;//GameManager.Inst.PlayerControl.SelectedPC.LookTarget.transform.position - GameManager.Inst.PlayerControl.SelectedPC.transform.position;
 			if(GameManager.Inst.PlayerControl.SelectedPC.MyCC.velocity.magnitude > 0.1f)
@@ -2883,14 +2907,23 @@ public class HumanCharacter : Character
 				IsOutOfSight = false;
 			}
 
-			if(!IsHidden && (IsInHiddenBuilding || IsOutOfSight))
+			if(!IsHidden)
 			{
-				HideCharacter();
+				if(IsInHiddenBuilding)
+				{
+					HideCharacter(true);
+					IsHidden = true;
+				}
+				else if(IsOutOfSight)
+				{
+					HideCharacter(false);
+					IsHidden = true;
+				}
 
-				IsHidden = true;
 			}
 			else if(IsHidden && !IsInHiddenBuilding && !IsOutOfSight)
 			{
+				
 				ShowCharacter();
 
 				IsHidden = false;

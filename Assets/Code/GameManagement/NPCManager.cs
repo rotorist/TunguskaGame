@@ -709,10 +709,12 @@ public class NPCManager
 						//hide NPC as well
 						isVisible = false;
 						_allCharacters[_characterIndex].IsInHiddenBuilding = true;
+
 					}
 					else
 					{
 						_allCharacters[_characterIndex].IsInHiddenBuilding = false;
+
 					}
 
 				}
