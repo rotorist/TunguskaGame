@@ -116,7 +116,7 @@ public class PlayerSurvival
 			GameManager.Inst.UIManager.SetConsoleText("Cannot use so many at once!");
 		}
 
-		if(item.Type == ItemType.Medicine)
+		if(item.Type == ItemType.Medicine || item.Type == ItemType.Serum)
 		{
 			
 			string function = item.GetAttributeByName("_Function").Value.ToString();
@@ -153,6 +153,21 @@ public class PlayerSurvival
 				{
 					player.MyStatus.Health = player.MyStatus.MaxHealth;
 				}
+			}
+
+			//negative effects
+			ItemAttribute radiation = item.GetAttributeByName("Radiation");
+			if(radiation != null)
+			{
+				float amount = (float)radiation.Value;
+				GameManager.Inst.PlayerControl.SelectedPC.MyStatus.Radiation += amount;
+			}
+
+			ItemAttribute infection = item.GetAttributeByName("Infection");
+			if(infection != null)
+			{
+				float amount = (float)infection.Value;
+				GameManager.Inst.PlayerControl.SelectedPC.MyStatus.Infection += amount;
 			}
 		}
 		else if(item.Type == ItemType.Food)
@@ -280,10 +295,10 @@ public class PlayerSurvival
 
 		GameManager.Inst.PlayerControl.SelectedPC.MyStatus.Radiation += _totalRadiation * Time.deltaTime;
 
-		//reduce health if over 100 rad
-		if(GameManager.Inst.PlayerControl.SelectedPC.MyStatus.Radiation >= 100)
+		//reduce health if over 30 rad
+		if(GameManager.Inst.PlayerControl.SelectedPC.MyStatus.Radiation >= 30)
 		{
-			float healthReduction = 10 * (GameManager.Inst.PlayerControl.SelectedPC.MyStatus.Radiation - 100) / 200;
+			float healthReduction = 10 * (GameManager.Inst.PlayerControl.SelectedPC.MyStatus.Radiation - 30) / 100;
 			GameManager.Inst.PlayerControl.SelectedPC.MyStatus.Health -= healthReduction * Time.deltaTime;
 			GameManager.Inst.CameraController.SetNoise(0.3f + healthReduction * 0.05f);
 		}

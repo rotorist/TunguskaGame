@@ -33,7 +33,7 @@ public class NotePaperPanel : PanelBase
 
 		GameManager.Inst.SoundManager.UI.PlayOneShot(GameManager.Inst.SoundManager.GetClip("OpenSplitMenu"), 0.5f);
 
-		StoryEventHandler.Instance.EnqueueStoryEvent(StoryEventType.OnPlayerReadNote, null, new object[]{"zsk_ivan"});
+		StoryEventHandler.Instance.EnqueueStoryEvent(StoryEventType.OnPlayerReadNote, null, new object[]{NoteID});
 	}
 
 	public override void Hide ()

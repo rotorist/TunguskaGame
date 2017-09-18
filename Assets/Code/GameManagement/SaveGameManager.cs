@@ -224,6 +224,10 @@ public class SaveGameManager
 			DoorSaveData saveData = new DoorSaveData();
 			saveData.ID = door.ID;
 			saveData.IsLocked = door.IsLocked;
+			if(door.name == "SidorovichDoor")
+			{
+				Debug.Log(door.ID + " is locked? " + saveData.IsLocked);
+			}
 			saveData.IsOpen = door.IsOpen;
 
 			currentLevel.Doors.Add(saveData);

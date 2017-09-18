@@ -116,6 +116,8 @@ public class UIManager
 
 	public bool IsCursorInHUDRegion()
 	{
+		return false;
+		/*
 		Vector3 cursorLoc = Input.mousePosition; 
 		Vector3 worldPos = UICamera.ScreenToWorldPoint(cursorLoc);
 		Vector3 localPos = HUDPanel.transform.worldToLocalMatrix.MultiplyPoint3x4(worldPos);
@@ -129,6 +131,7 @@ public class UIManager
 
 		IsInHUDRegion = false;
 		return false;
+		*/
 	}
 
 	public int GetScreenHeight()

@@ -77,7 +77,7 @@ public class WorldManager
 
 		_nextAmbientTime = UnityEngine.Random.Range(3, 6);
 		_ambientPlayCounter = 0;
-
+		/*
 		//assign ID to all doors
 		GameObject [] doors = GameObject.FindGameObjectsWithTag("Door");
 		foreach(GameObject o in doors)
@@ -89,6 +89,7 @@ public class WorldManager
 				_doorIDIndex ++;
 			}
 		}
+		*/
 	}
 
 	public void PerSecondUpdate()
@@ -123,7 +124,7 @@ public class WorldManager
 		int timeInt = Mathf.FloorToInt(CurrentTime);
 		int hour = timeInt / 60;
 		int minute = timeInt % 60;
-		GameManager.Inst.UIManager.HUDPanel.Clock.text = "Day " + (CurrentDay+1) + "   " + (hour < 10 ? "0" : "") + hour.ToString() + " : " + (minute < 10 ? "0" : "") + minute.ToString();
+		GameManager.Inst.UIManager.HUDPanel.Clock.text = "DAY " + (CurrentDay+1) + "   " + (hour < 10 ? "0" : "") + hour.ToString() + " : " + (minute < 10 ? "0" : "") + minute.ToString();
 		if(CurrentTime > 1440)
 		{
 			CurrentTime = 0;

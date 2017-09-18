@@ -12,9 +12,9 @@ public class HUDPanel : PanelBase
 	public Transform CenterHUDAnchor;
 	public UILabel Console;
 	public UISprite Aperture;
-	public NeedleMeter EnergyMeter;
+	public BarMeter EnergyMeter;
 	public NeedleMeter StaminaMeter;
-	public LightMeter HealthMeter;
+	public BarMeter HealthMeter;
 	public NeedleMeter RadioInfectMeter;
 	public NeedleMeter GeigerCounter;
 	public UISprite RadiationSymbol;
@@ -27,7 +27,7 @@ public class HUDPanel : PanelBase
 	public UILabel TotalAmmo;
 	public UILabel Clock;
 	public UISprite DeathLabel;
-
+	public Compass Compass;
 
 	public UISprite [] IndicatorSprites;
 
@@ -82,6 +82,7 @@ public class HUDPanel : PanelBase
 		InfectionSymbol.alpha = 0;
 		FlipSwitch1.alpha = 1;
 		FlipSwitch2.alpha = 0;
+		Compass.Initialize();
 
 		NGUITools.SetActive(HelpText.gameObject, false);
 		NGUITools.SetActive(DeathLabel.gameObject, false);
@@ -89,7 +90,7 @@ public class HUDPanel : PanelBase
 		OnUpdateTotalAmmo();
 
 		_boostIndicators = new Dictionary<PlayerBoostType, UISprite>();
-		_boostIndicators.Add(PlayerBoostType.MaxStamina, IndicatorSprites[0]);
+		//_boostIndicators.Add(PlayerBoostType.MaxStamina, IndicatorSprites[0]);
 
 		CharacterEventHandler characterEvent = GameManager.Inst.PlayerControl.SelectedPC.MyEventHandler;
 		characterEvent.OnSelectWeapon -= OnPullOut;
@@ -106,6 +107,7 @@ public class HUDPanel : PanelBase
 		UpdateAperture();
 		UpdateGeigerCounter();
 		UpdateBoostIndicators();
+		Compass.PerFrameUpdate();
 
 		//update FPS
 		FPSText.text = (1f / Time.smoothDeltaTime).ToString();
@@ -514,13 +516,28 @@ public class HUDPanel : PanelBase
 		//health
 		HealthMeter.SetValue(Mathf.Clamp01(player.MyStatus.Health/player.MyStatus.MaxHealth));
 
-		if(player.MyStatus.BleedingDuration > 0)
+		if(HealthMeter.GetValue() <= 0.4f)
 		{
-			HealthMeter.StartFlashingLastLight(0.1f + 0.4f * (5 - player.MyStatus.BleedingSpeed)/5);
+			if(!HealthMeter.IsFlashing())
+			{
+				HealthMeter.StartFlashing(3);
+			}
 		}
 		else
 		{
-			HealthMeter.StopFlashingLastLight();
+			if(HealthMeter.IsFlashing())
+			{
+				HealthMeter.StopFlash();
+			}
+		}
+
+		if(player.MyStatus.BleedingDuration > 0)
+		{
+			//HealthMeter.StartFlashingLastLight(0.1f + 0.4f * (5 - player.MyStatus.BleedingSpeed)/5);
+		}
+		else
+		{
+			//HealthMeter.StopFlashingLastLight();
 		}
 
 		//stamina
@@ -534,8 +551,15 @@ public class HUDPanel : PanelBase
 		//radiation
 		if(RadiationSymbol.alpha > 0)
 		{
-			float targetRadiation = Mathf.Clamp01(player.MyStatus.Radiation / 300);
+			float targetRadiation = Mathf.Clamp01(player.MyStatus.Radiation / 100);
 			RadioInfectMeter.SetValue(Mathf.Lerp(RadioInfectMeter.GetValue(), targetRadiation, Time.deltaTime * 5));
+		}
+
+		//infection
+		else if(InfectionSymbol.alpha > 0)
+		{
+			float targetInfection = Mathf.Clamp01(player.MyStatus.Infection / 100);
+			RadioInfectMeter.SetValue(Mathf.Lerp(RadioInfectMeter.GetValue(), targetInfection, Time.deltaTime * 5));
 		}
 	}
 
@@ -579,6 +603,7 @@ public class HUDPanel : PanelBase
 		}
 	}
 
+
 	private UISprite LoadItemSprite(string itemID)
 	{
 		OnPutAway();
@@ -602,7 +627,7 @@ public class HUDPanel : PanelBase
 			sprite.width = Mathf.FloorToInt(item.Sprite.height * ((item.ColumnSize * 1f) / item.RowSize));
 		}
 
-		sprite.depth = (int)InventoryItemDepth.Normal;
+		sprite.depth = 15;
 
 		Destroy(o.GetComponent<GridItem>());
 		Destroy(o.GetComponent<BoxCollider>());
