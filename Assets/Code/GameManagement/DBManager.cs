@@ -11,6 +11,7 @@ public class DBManager
 	public DBHandlerStoryEvent DBHandlerStoryEvent;
 	public DBHandlerCharacter DBHandlerCharacter;
 	public DBHandlerItem DBHandlerItem;
+	public DBHandlerEnvironment DBHandlerEnvironment;
 
 	private IDbConnection _mainDBConn;
 	private IDbConnection _aiDBConn;
@@ -22,7 +23,7 @@ public class DBManager
 		DBHandlerStoryEvent = new DBHandlerStoryEvent();
 		DBHandlerCharacter = new DBHandlerCharacter();
 		DBHandlerItem = new DBHandlerItem();
-
+		DBHandlerEnvironment = new DBHandlerEnvironment();
 
 
 		//open main db

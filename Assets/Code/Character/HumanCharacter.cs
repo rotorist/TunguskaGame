@@ -2898,7 +2898,7 @@ public class HumanCharacter : Character
 			}
 			playerLineOfSight = new Vector3(playerLineOfSight.x, 0, playerLineOfSight.z);
 			float playerAngle = Vector3.Angle(playerLineOfSight, transform.position - GameManager.Inst.PlayerControl.SelectedPC.transform.position);
-			if(playerAngle > 80 && playerDist > 1.5f && MyStatus.Health > 0)
+			if(playerAngle > 80 && playerDist > 3f && MyStatus.Health > 0)
 			{
 				IsOutOfSight = true;
 			}

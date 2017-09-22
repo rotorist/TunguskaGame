@@ -113,8 +113,8 @@ public class FadingPanel : PanelBase
 	{
 		Background.MakePixelPerfect();
 		Background.alpha = 1;
-		Background.height = GameManager.Inst.UIManager.GetScreenHeight() + 100;
-		Background.width = GameManager.Inst.UIManager.GetScreenWidth() + 200;
+		Background.height = GameManager.Inst.UIManager.GetScreenHeight() + 500;
+		Background.width = GameManager.Inst.UIManager.GetScreenWidth() + 500;
 
 		NGUITools.SetActive(this.gameObject, true);
 		this.IsActive = true;

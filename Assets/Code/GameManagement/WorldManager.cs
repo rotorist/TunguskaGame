@@ -12,6 +12,7 @@ public class WorldManager
 	public Environment CurrentEnvironment;
 	public int CurrentDay;
 	public float CurrentTime;
+	public WeatherType CurrentWeather;
 
 	private int _ambientPlayCounter;
 	private int _nextAmbientTime;
@@ -30,14 +31,12 @@ public class WorldManager
 		CurrentTerrain = GameObject.Find("Terrain").GetComponent<TerrainHandler>();
 		CurrentTerrain.Initialize();
 
-		CurrentTime = 240;
+		CurrentTime = 60 * 22;
 
-		Environment dayWild = new Environment("DayWilderness");
+
+		Environment dayWild = new Environment("Wilderness");
 		dayWild.IsInterior = false;
-		dayWild.AmbientSoundSet = new string[]{"animal", "chirp", "horror", "gun", "growl", "drone"};
-		dayWild.AmbientChoices = new int[]    {4,         8,       2,        8,    7,        6      };
-		dayWild.PrimarySoundSet = new string[]{"wind", "blown_leaf", "crow"};
-		dayWild.PrimaryChoices = new int[]    {4,       5,            4    };
+
 		dayWild.AmbientLightColor = new Color(0.424f, 0.430f, 0.444f);
 		dayWild.AmbientIntensity = 0.7f;
 		dayWild.SunMoonColor = new Color(1, 0.984f, 0.918f, 1f);
@@ -45,15 +44,11 @@ public class WorldManager
 		dayWild.ShadowIntensity = 1;
 		AllEnvironments.Add(dayWild.Name, dayWild);
 
-		CurrentEnvironment = dayWild;
-		CurrentEnvironment.LoadEnvironment();
+		
 
 		Environment cellar = new Environment("Cellar");
 		cellar.IsInterior = true;
-		cellar.AmbientSoundSet = new string[]{"dripping", "horror", "drone"};
-		cellar.AmbientChoices = new int[]    {6,         	2,		6};
-		cellar.PrimarySoundSet = new string[]{"dripping"};
-		cellar.PrimaryChoices = new int[]    {6,         };
+
 		cellar.AmbientLightColor = new Color(0.1f, 0.1f, 0.1f);
 		cellar.AmbientIntensity = 0.1f;
 		cellar.SunMoonColor = new Color(0, 0, 0, 0);
@@ -61,18 +56,19 @@ public class WorldManager
 		cellar.ShadowIntensity = 1;
 		AllEnvironments.Add(cellar.Name, cellar);
 
-		Environment buildingInterior = new Environment("BuildingInterior");
+		Environment buildingInterior = new Environment("BuildingInteriorWood");
 		buildingInterior.IsInterior = true;
-		buildingInterior.AmbientSoundSet = new string[]{"wood_creak", "interior_horror"};
-		buildingInterior.AmbientChoices = new int[]    {4,         	1};
-		buildingInterior.PrimarySoundSet = new string[]{"wood_creak", "interior_horror"};
-		buildingInterior.PrimaryChoices = new int[]    {4,         	1};
+
 		buildingInterior.AmbientLightColor = new Color(0.3f, 0.3f, 0.3f);
 		buildingInterior.AmbientIntensity = 0.3f;
 		buildingInterior.SunMoonColor = new Color(0, 0, 0, 0);
 		buildingInterior.SunMoonIntensity = 0;
 		buildingInterior.ShadowIntensity = 1;
 		AllEnvironments.Add(buildingInterior.Name, buildingInterior);
+
+
+		CurrentEnvironment = dayWild;
+		CurrentEnvironment.LoadEnvironment();
 
 
 		_nextAmbientTime = UnityEngine.Random.Range(3, 6);
@@ -159,4 +155,12 @@ public class WorldManager
 		}
 	}
 
+}
+
+public enum WeatherType
+{
+	Clear,
+	Overcast,
+	Rain,
+	Storm,
 }

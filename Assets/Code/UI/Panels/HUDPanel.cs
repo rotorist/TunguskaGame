@@ -39,7 +39,7 @@ public class HUDPanel : PanelBase
 	private UISprite _weaponSprite;
 	private string _magAmmoSymbol;
 	private bool _isShowingGeiger;
-	public Dictionary<PlayerBoostType, UISprite> _boostIndicators;
+	private Dictionary<PlayerBoostType, UISprite> _boostIndicators;
 
 	public struct HUDPartyMember
 	{
@@ -90,13 +90,18 @@ public class HUDPanel : PanelBase
 		OnUpdateTotalAmmo();
 
 		_boostIndicators = new Dictionary<PlayerBoostType, UISprite>();
-		//_boostIndicators.Add(PlayerBoostType.MaxStamina, IndicatorSprites[0]);
+		_boostIndicators.Add(PlayerBoostType.MaxStamina, IndicatorSprites[2]);
 
 		CharacterEventHandler characterEvent = GameManager.Inst.PlayerControl.SelectedPC.MyEventHandler;
 		characterEvent.OnSelectWeapon -= OnPullOut;
 		characterEvent.OnSelectWeapon += OnPullOut;
 		characterEvent.OnPutAwayWeapon -= OnPutAway;
 		characterEvent.OnPutAwayWeapon += OnPutAway;
+
+
+
+
+
 
 	}
 
@@ -111,6 +116,25 @@ public class HUDPanel : PanelBase
 
 		//update FPS
 		FPSText.text = (1f / Time.smoothDeltaTime).ToString();
+
+		if(Time.time < 5)
+		{
+			//set scaling
+			Vector3 targetLocLeft = new Vector3(Screen.width / 2 * -1, Screen.height / 2 * -1, 0); 
+			Vector3 worldPosLeft = GameManager.Inst.UIManager.UICamera.ScreenToWorldPoint(targetLocLeft);
+			Vector3 localPosLeft = transform.worldToLocalMatrix.MultiplyPoint3x4(worldPosLeft);
+			LeftHUDAnchor.localPosition = new Vector3(localPosLeft.x / 2, localPosLeft.y / 2, 0);
+
+			Vector3 targetLocRight = new Vector3(Screen.width, Screen.height / 2 * -1, 0); 
+			Vector3 worldPosRight = GameManager.Inst.UIManager.UICamera.ScreenToWorldPoint(targetLocRight);
+			Vector3 localPosRight = transform.worldToLocalMatrix.MultiplyPoint3x4(worldPosRight);
+			RightHUDAnchor.localPosition = new Vector3(localPosRight.x, localPosRight.y / 2, 0);
+			CenterHUDAnchor.localPosition = new Vector3(0, localPosRight.y / 2, 0);
+
+			float heightRatio = (1f * Screen.height / Screen.width - 1) * 2 + 1;
+			float scale = Mathf.Lerp(1f, 0.6f, heightRatio);
+			GameManager.Inst.UIManager.UICamera.transform.localScale = new Vector3(scale, scale, scale);
+		}
 	}
 
 	public void SetConsoleText(string text)
@@ -585,11 +609,11 @@ public class HUDPanel : PanelBase
 
 	private void UpdateBoostIndicators()
 	{
-		foreach(KeyValuePair<PlayerBoostType, UISprite> indicator in _boostIndicators)
+		foreach(UISprite indicator in IndicatorSprites)
 		{
-			indicator.Value.alpha = 0;
+			NGUITools.SetActive(indicator.gameObject, false);
 		}
-
+			
 		List<PlayerStatBoost> boosts = GameManager.Inst.PlayerControl.Survival.GetStatBoosts();
 		foreach(PlayerStatBoost boost in boosts)
 		{
@@ -597,9 +621,22 @@ public class HUDPanel : PanelBase
 			{
 				if(!boost.IsEnded)
 				{
-					_boostIndicators[boost.Type].alpha = 1;
+					NGUITools.SetActive(_boostIndicators[boost.Type].gameObject, true);
 				}
 			}
+		}
+
+		HumanCharacter player = GameManager.Inst.PlayerControl.SelectedPC;
+		//check if bleeding
+		if(player.MyStatus.BleedingSpeed > 0)
+		{
+			NGUITools.SetActive(IndicatorSprites[0].gameObject, true);
+		}
+
+		//check if there's food
+		if(GameManager.Inst.PlayerControl.Survival.GetEatenCalories() > 0)
+		{
+			NGUITools.SetActive(IndicatorSprites[1].gameObject, true);
 		}
 	}
 
