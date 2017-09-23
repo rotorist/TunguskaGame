@@ -122,7 +122,7 @@ public class PlayerControl
 		_playerLight.range = 5;
 		if(RenderSettings.ambientIntensity <0.4f)
 		{
-			_playerLight.intensity = 0.6f;
+			_playerLight.intensity = 0.1f;
 		}
 		else
 		{
@@ -1133,7 +1133,7 @@ public class PlayerControl
 			{
 				if(RenderSettings.ambientIntensity <0.4f)
 				{
-					_playerLight.intensity = 1.2f;
+					_playerLight.intensity = 0.6f;
 				}
 				else
 				{
@@ -1155,7 +1155,7 @@ public class PlayerControl
 			{
 				if(RenderSettings.ambientIntensity <0.4f)
 				{
-					_playerLight.intensity = 0.6f;
+					_playerLight.intensity = 0.1f;
 				}
 				else
 				{

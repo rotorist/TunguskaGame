@@ -13,6 +13,9 @@ public class WorldManager
 	public int CurrentDay;
 	public float CurrentTime;
 	public WeatherType CurrentWeather;
+	public float DayNightTransition;
+	public float NightDayTransition;
+	public bool IsDayTime;
 
 	private int _ambientPlayCounter;
 	private int _nextAmbientTime;
@@ -31,7 +34,10 @@ public class WorldManager
 		CurrentTerrain = GameObject.Find("Terrain").GetComponent<TerrainHandler>();
 		CurrentTerrain.Initialize();
 
-		CurrentTime = 60 * 22;
+		CurrentTime = 60 * 17f;
+		IsDayTime = true;
+		NightDayTransition = 60 * 6 + UnityEngine.Random.Range(-1f, 1f) * 30;
+		DayNightTransition = 60 * 20 + UnityEngine.Random.Range(-1f, 1f) * 30;
 
 
 		Environment dayWild = new Environment("Wilderness");
@@ -115,7 +121,7 @@ public class WorldManager
 		}
 
 		//update time
-		CurrentTime ++;
+		CurrentTime += 1;
 		//convert to hour:minute
 		int timeInt = Mathf.FloorToInt(CurrentTime);
 		int hour = timeInt / 60;
@@ -126,6 +132,9 @@ public class WorldManager
 			CurrentTime = 0;
 			CurrentDay ++;
 			TimerEventHandler.Instance.TriggerOneDayTimer();
+			//set new day night transitions
+			NightDayTransition = 60 * 6 + UnityEngine.Random.Range(-1f, 1f) * 30;
+			DayNightTransition = 60 * 21 + UnityEngine.Random.Range(-1f, 1f) * 30;
 		}
 
 		//renew trader items each day at 6am
@@ -135,6 +144,29 @@ public class WorldManager
 			foreach(Trader trader in allTraders)
 			{
 				trader.GenerateSupply();
+			}
+		}
+
+		//update environment  every 5 seconds
+		if(CurrentTime % 5 == 0)
+		{
+			CurrentEnvironment.UpdateLighting();
+			if(CurrentTime > DayNightTransition && IsDayTime)
+			{
+				IsDayTime = false;
+				if(CurrentEnvironment.Name == "Wilderness")
+				{
+					CurrentEnvironment.LoadEnvironment();
+				}
+			}
+
+			if(CurrentTime > NightDayTransition && CurrentTime < DayNightTransition && !IsDayTime)
+			{
+				IsDayTime = true;
+				if(CurrentEnvironment.Name == "Wilderness")
+				{
+					CurrentEnvironment.LoadEnvironment();
+				}
 			}
 		}
 	}

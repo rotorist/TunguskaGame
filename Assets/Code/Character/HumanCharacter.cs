@@ -135,6 +135,15 @@ public class HumanCharacter : Character
 
 		UpdateFading();
 
+		if(MyReference.Flashlight != null)
+		{
+			if(UpperBodyState == HumanUpperBodyStates.Aim || UpperBodyState == HumanUpperBodyStates.HalfAim)
+			{
+				MyReference.Flashlight.transform.LookAt(AimTarget);
+			}
+
+		}
+
 	}
 
 	
@@ -811,10 +820,7 @@ public class HumanCharacter : Character
 					MyAnimator.SetBool("IsAiming", true);
 					if(MyAI.ControlType != AIControlType.Player)
 						Debug.LogError("Animation parameter IsAiming has been set");
-					if(MyReference.Flashlight != null)
-					{
-						MyReference.Flashlight.transform.localEulerAngles = new Vector3(0, 0, 0);
-					}
+					
 				}
 					
 				/*

@@ -81,6 +81,7 @@ public class WindowPanel : PanelBase
 		this.IsActive = true;
 
 		InputEventHandler.Instance.State = UserInputState.WindowsOpen;
+		GameManager.Inst.CursorManager.SetCursorState(CursorState.Default);
 
 		UIEventHandler.Instance.TriggerOpenWindow();
 	}

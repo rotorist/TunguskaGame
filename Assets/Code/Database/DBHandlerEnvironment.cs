@@ -12,8 +12,17 @@ public class DBHandlerEnvironment
 {
 	public void LoadPrimaryEnvironmentSounds(string location, string time, string weather, out List<string> soundSet, out List<int> choices)
 	{
-		IDataReader soundsReader = GameManager.Inst.DBManager.RunQuery(
-			"SELECT primary_set from environment_sounds WHERE location='" + location + "'" );
+		IDataReader soundsReader;
+		if(location == "Wilderness")
+		{
+			soundsReader = GameManager.Inst.DBManager.RunQuery(
+				"SELECT primary_set from environment_sounds WHERE location='" + location + "' AND time='" + time + "'" );
+		}
+		else
+		{
+			soundsReader = GameManager.Inst.DBManager.RunQuery(
+				"SELECT primary_set from environment_sounds WHERE location='" + location + "'" );
+		}
 
 		List<string> resultSounds = new List<string>();
 		List<int> resultChoices = new List<int>();
@@ -39,9 +48,18 @@ public class DBHandlerEnvironment
 
 	public void LoadSecondaryEnvironmentSounds(string location, string time, string weather, out List<string> soundSet, out List<int> choices)
 	{
-		IDataReader soundsReader = GameManager.Inst.DBManager.RunQuery(
-			"SELECT secondary_set from environment_sounds WHERE location='" + location + "'" );
-
+		IDataReader soundsReader;
+		if(location == "Wilderness")
+		{
+			soundsReader = GameManager.Inst.DBManager.RunQuery(
+				"SELECT secondary_set from environment_sounds WHERE location='" + location + "' AND time='" + time + "'" );
+		}
+		else
+		{
+			soundsReader = GameManager.Inst.DBManager.RunQuery(
+				"SELECT secondary_set from environment_sounds WHERE location='" + location + "'" );
+		}
+		
 		List<string> resultSounds = new List<string>();
 		List<int> resultChoices = new List<int>();
 

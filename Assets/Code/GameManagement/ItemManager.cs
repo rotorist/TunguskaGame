@@ -346,6 +346,9 @@ public class ItemManager
 			//add primary and secondary weapons
 			if(inventory.RifleSlot != null)
 			{
+				int magSize = inventory.RifleSlot.GetAttributeByName("Magazine Size");
+				inventory.RifleSlot.SetAttribute("_LoadedAmmos", UnityEngine.Random.Range(0, magSize + 1));
+				inventory.RifleSlot.Durability = UnityEngine.Random(inventory.RifleSlot.MaxDurability * 0.33f, inventory.RifleSlot.MaxDurability * 0.9f);
 				items.Add(new GridItemData(inventory.RifleSlot, 0, 0, GridItemOrient.Landscape, 1));
 				Item ammo = LoadItem(inventory.RifleSlot.GetAttributeByName("_LoadedAmmoID").Value.ToString());
 				if(UnityEngine.Random.value > 0.75f)
@@ -356,6 +359,9 @@ public class ItemManager
 
 			if(inventory.SideArmSlot != null)
 			{
+				//int magSize = inventory.SideArmSlot.GetAttributeByName("Magazine Size");
+				//inventory.RifleSlot.SetAttribute("_LoadedAmmos", UnityEngine.Random.Range(0, magSize + 1));
+				//inventory.RifleSlot.Durability = UnityEngine.Random(inventory.RifleSlot.MaxDurability * 0.33f, inventory.RifleSlot.MaxDurability * 0.9f);
 				items.Add(new GridItemData(inventory.SideArmSlot, 0, 0, GridItemOrient.Landscape, 1));
 				Item ammo = LoadItem(inventory.SideArmSlot.GetAttributeByName("_LoadedAmmoID").Value.ToString());
 				if(UnityEngine.Random.value > 0.75f)

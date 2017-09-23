@@ -131,8 +131,7 @@ public class CursorManager
 			*/
 		}
 
-		if(InputEventHandler.Instance.State == UserInputState.PopupOpen || InputEventHandler.Instance.State == UserInputState.Dialogue 
-			|| InputEventHandler.Instance.State == UserInputState.WindowsOpen)
+		if(InputEventHandler.Instance.State == UserInputState.PopupOpen || InputEventHandler.Instance.State == UserInputState.Dialogue)
 		{
 			SetCursorState(CursorState.Default);
 			HideToolTip();

@@ -251,8 +251,13 @@ public class AITargeting
 	{
 		//if(_parentCharacter.name != "HumanCharacter")
 		//	Debug.Log("AITargeting Update full second " + _parentCharacter.name);
-		
-		ResetLookAroundAngle();
+
+		_parentCharacter.SendCommand(CharacterCommands.SetAlert);
+
+		if(UnityEngine.Random.value > 0.6f)
+		{
+			ResetLookAroundAngle();
+		}
 
 		//check current target. If it's still in sight (confidence 1) increase threat level
 		//if no longer in sight, move it to invisible enemy

@@ -108,7 +108,7 @@ public class CharacterStealth
 		float ambient = RenderSettings.ambientIntensity;
 
 		//set minimum visibility according to ambient level
-		_baseVisibility = 5 + (1 - (1-ambient)/0.4f) * 25;
+		_baseVisibility = 5 + (1 - (1-ambient)/0.8f) * 25;
 
 
 
@@ -117,7 +117,7 @@ public class CharacterStealth
 		{
 			if(!Physics.Raycast(litPos, sunDir))
 			{
-				_baseVisibility = _baseVisibility + 10 + (1 - (1-sunMoon.intensity)/0.75f) * 10;
+				_baseVisibility = _baseVisibility + 10 + (1 - (1-sunMoon.intensity)/0.85f) * 10;
 			}
 		}
 
