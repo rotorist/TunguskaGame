@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 public class HUDPanel : PanelBase 
 {
@@ -10,7 +11,8 @@ public class HUDPanel : PanelBase
 	public Transform LeftHUDAnchor;
 	public Transform RightHUDAnchor;
 	public Transform CenterHUDAnchor;
-	public UILabel Console;
+	public Transform ConsoleAnchor;
+	public List<UILabel> ConsoleEntries;
 	public UISprite Aperture;
 	public BarMeter EnergyMeter;
 	public NeedleMeter StaminaMeter;
@@ -40,6 +42,7 @@ public class HUDPanel : PanelBase
 	private string _magAmmoSymbol;
 	private bool _isShowingGeiger;
 	private Dictionary<PlayerBoostType, UISprite> _boostIndicators;
+	private Stack<string> _messages;
 
 	public struct HUDPartyMember
 	{
@@ -99,7 +102,7 @@ public class HUDPanel : PanelBase
 		characterEvent.OnPutAwayWeapon += OnPutAway;
 
 
-
+		_messages = new Stack<string>();
 
 
 
@@ -139,7 +142,58 @@ public class HUDPanel : PanelBase
 
 	public void SetConsoleText(string text)
 	{
-		Console.text = text;
+		//clear all console texts
+		foreach(UILabel label in ConsoleEntries)
+		{
+			GameObject.Destroy(label.gameObject);
+		}
+
+		ConsoleEntries.Clear();
+
+		_messages.Push(text);
+
+		Stack<string> copy = new Stack<string>(_messages.Reverse());
+
+		float currentY = 0;
+		int i = 0;
+		float totalHeight = 0;
+		float topEntryHeight = 0;
+		while(copy.Count > 0 && i < 10)
+		{
+			string entry = copy.Pop();
+			UILabel entryLabel = (GameObject.Instantiate(Resources.Load("ConsoleEntry")) as GameObject).GetComponent<UILabel>();
+			entryLabel.transform.parent = ConsoleAnchor.transform;
+			entryLabel.text = entry;
+			entryLabel.MakePixelPerfect();
+			ConsoleEntries.Add(entryLabel);
+
+			float height = entryLabel.height;
+
+			entryLabel.transform.localPosition = new Vector3(0, currentY, 0);
+			totalHeight += height;
+			currentY = currentY + height + 8;
+			Debug.Log("adding entry " + entry + " currentY " + currentY);
+
+
+
+			if(i == 0)
+			{
+				topEntryHeight = height;
+			}
+
+			if(totalHeight <= 200)
+			{
+				ConsoleAnchor.localPosition = new Vector3(-125f, 100 - totalHeight, 0);
+			}
+			else
+			{
+				ConsoleAnchor.localPosition = new Vector3(-125f, -100, 0);
+			}
+
+			totalHeight += 8;
+
+			i++;
+		}
 	}
 
 	public void OnButtonPress()

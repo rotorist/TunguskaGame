@@ -346,9 +346,9 @@ public class ItemManager
 			//add primary and secondary weapons
 			if(inventory.RifleSlot != null)
 			{
-				int magSize = inventory.RifleSlot.GetAttributeByName("Magazine Size");
+				int magSize = (int)inventory.RifleSlot.GetAttributeByName("Magazine Size").Value;
 				inventory.RifleSlot.SetAttribute("_LoadedAmmos", UnityEngine.Random.Range(0, magSize + 1));
-				inventory.RifleSlot.Durability = UnityEngine.Random(inventory.RifleSlot.MaxDurability * 0.33f, inventory.RifleSlot.MaxDurability * 0.9f);
+				inventory.RifleSlot.Durability = UnityEngine.Random.Range(inventory.RifleSlot.MaxDurability * 0.33f, inventory.RifleSlot.MaxDurability * 0.9f);
 				items.Add(new GridItemData(inventory.RifleSlot, 0, 0, GridItemOrient.Landscape, 1));
 				Item ammo = LoadItem(inventory.RifleSlot.GetAttributeByName("_LoadedAmmoID").Value.ToString());
 				if(UnityEngine.Random.value > 0.75f)
@@ -359,9 +359,13 @@ public class ItemManager
 
 			if(inventory.SideArmSlot != null)
 			{
-				//int magSize = inventory.SideArmSlot.GetAttributeByName("Magazine Size");
-				//inventory.RifleSlot.SetAttribute("_LoadedAmmos", UnityEngine.Random.Range(0, magSize + 1));
-				//inventory.RifleSlot.Durability = UnityEngine.Random(inventory.RifleSlot.MaxDurability * 0.33f, inventory.RifleSlot.MaxDurability * 0.9f);
+				bool isRanged = (bool)inventory.SideArmSlot.GetAttributeByName("_IsRanged").Value;
+				if(isRanged)
+				{
+					int magSize = (int)inventory.SideArmSlot.GetAttributeByName("Magazine Size").Value;
+					inventory.SideArmSlot.SetAttribute("_LoadedAmmos", UnityEngine.Random.Range(0, magSize + 1));
+				}
+				inventory.SideArmSlot.Durability = UnityEngine.Random.Range(inventory.SideArmSlot.MaxDurability * 0.33f, inventory.SideArmSlot.MaxDurability * 0.9f);
 				items.Add(new GridItemData(inventory.SideArmSlot, 0, 0, GridItemOrient.Landscape, 1));
 				Item ammo = LoadItem(inventory.SideArmSlot.GetAttributeByName("_LoadedAmmoID").Value.ToString());
 				if(UnityEngine.Random.value > 0.75f)
