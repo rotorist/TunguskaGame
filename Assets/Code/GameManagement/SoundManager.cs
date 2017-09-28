@@ -18,6 +18,7 @@ public class SoundManager
 	private float _earRingDuration;
 	private float _earRingYPos;
 	private float _normalYPos;
+	private AudioClip _nextMusicClip;
 
 	public void PerFrameUpdate()
 	{
@@ -39,6 +40,16 @@ public class SoundManager
 
 			//Listener.localPosition = GameManager.Inst.CameraController.transform.position;
 			//Listener.LookAt(GameManager.Inst.PlayerControl.SelectedPC.transform);
+
+		}
+
+		if(!Music.isPlaying)
+		{
+			if(_nextMusicClip != null)
+			{
+				Music.clip = _nextMusicClip;
+				Music.Play();
+			}
 
 		}
 	}
@@ -91,6 +102,29 @@ public class SoundManager
 		_earRingDuration = 4 * intensity;
 		_earRingTimer = 0;
 		UI.PlayOneShot(GetClip("ear_ring"), 0.1f * intensity);
+	}
+
+	public void SetMusic(string envName, bool isDayTime)
+	{
+		if(envName == "Wilderness")
+		{
+			if(isDayTime)
+			{
+				AudioClip clip = Resources.Load("DayBreak") as AudioClip;
+
+				_nextMusicClip = clip;
+			}
+			else
+			{
+				AudioClip clip = Resources.Load("TheHorrorNight") as AudioClip;
+				_nextMusicClip = clip;
+			}
+		}
+		else
+		{
+			Music.Stop();
+			_nextMusicClip = null;
+		}
 	}
 
 	public void Initialize()

@@ -376,19 +376,26 @@ public class AISensor
 				//check if the neutral is within patrol range
 				float dist = Vector3.Distance(_parentCharacter.MyAI.BlackBoard.DefensePoint, c.transform.position);
 				float highThreat = 1;
-				_parentCharacter.MyAI.BlackBoard.GuardLevel = 3;
+				int originalGuardLevel = _parentCharacter.MyAI.BlackBoard.GuardLevel;
 				//Debug.Log("AI Sensor update enemy relationship " + relationship);
 				if(relationship > 1 && c != _parentCharacter.Killer)
 				{
 					if(dist > _parentCharacter.MyAI.BlackBoard.DefenseRadius * 1.5f)
 					{
 						highThreat = 0f;
-						_parentCharacter.MyAI.BlackBoard.GuardLevel = 1;
+						_parentCharacter.MyAI.BlackBoard.GuardLevel = originalGuardLevel;
 					}
 					else if(dist > _parentCharacter.MyAI.BlackBoard.DefenseRadius)
 					{
 						highThreat = 0.5f;
-						_parentCharacter.MyAI.BlackBoard.GuardLevel = 1;
+						if(originalGuardLevel >= 2)
+						{
+							_parentCharacter.MyAI.BlackBoard.GuardLevel = originalGuardLevel;
+						}
+						else
+						{
+							_parentCharacter.MyAI.BlackBoard.GuardLevel = 2;
+						}
 					}
 					else
 					{

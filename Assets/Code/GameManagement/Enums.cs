@@ -294,6 +294,7 @@ public enum FloorType
 	softwood,
 	sand,
 }
+	
 
 public enum BlendMode
 {

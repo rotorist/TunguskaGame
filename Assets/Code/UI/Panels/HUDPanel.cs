@@ -37,12 +37,18 @@ public class HUDPanel : PanelBase
 	public UILabel HelpText;
 	public UILabel FPSText;
 
+	public UISprite BloodLevel1;
+	public UISprite BloodLevel2;
+	public UISprite BloodLevel3;
+
+
 	private bool _isShowingRadiation;
 	private UISprite _weaponSprite;
 	private string _magAmmoSymbol;
 	private bool _isShowingGeiger;
 	private Dictionary<PlayerBoostType, UISprite> _boostIndicators;
 	private Stack<string> _messages;
+	private int _bloodLevel;
 
 	public struct HUDPartyMember
 	{
@@ -104,6 +110,7 @@ public class HUDPanel : PanelBase
 
 		_messages = new Stack<string>();
 
+		_bloodLevel = 0;
 
 
 	}
@@ -116,6 +123,7 @@ public class HUDPanel : PanelBase
 		UpdateGeigerCounter();
 		UpdateBoostIndicators();
 		Compass.PerFrameUpdate();
+		UpdateBloodSpatter();
 
 		//update FPS
 		FPSText.text = (1f / Time.smoothDeltaTime).ToString();
@@ -134,9 +142,21 @@ public class HUDPanel : PanelBase
 			RightHUDAnchor.localPosition = new Vector3(localPosRight.x, localPosRight.y / 2, 0);
 			CenterHUDAnchor.localPosition = new Vector3(0, localPosRight.y / 2, 0);
 
+
+
 			float heightRatio = (1f * Screen.height / Screen.width - 1) * 2 + 1;
 			float scale = Mathf.Lerp(1f, 0.6f, heightRatio);
 			GameManager.Inst.UIManager.UICamera.transform.localScale = new Vector3(scale, scale, scale);
+
+			int screenWidth = Mathf.CeilToInt(localPosRight.x - localPosLeft.x / 2);
+			int screenHeight = Mathf.CeilToInt(screenWidth * (Screen.height * 1f / Screen.width));
+
+			BloodLevel1.width = screenWidth;
+			BloodLevel1.height = screenHeight;
+			BloodLevel2.width = screenWidth;
+			BloodLevel2.height = screenHeight;
+			BloodLevel3.width = screenWidth;
+			BloodLevel3.height = screenHeight;
 		}
 	}
 
@@ -172,7 +192,7 @@ public class HUDPanel : PanelBase
 			entryLabel.transform.localPosition = new Vector3(0, currentY, 0);
 			totalHeight += height;
 			currentY = currentY + height + 8;
-			Debug.Log("adding entry " + entry + " currentY " + currentY);
+			//Debug.Log("adding entry " + entry + " currentY " + currentY);
 
 
 
@@ -194,6 +214,41 @@ public class HUDPanel : PanelBase
 
 			i++;
 		}
+	}
+
+	public void SetBloodLevel(int level)
+	{
+		if(level == 1)
+		{
+			if(_bloodLevel <= 1)
+			{
+				BloodLevel1.alpha = 1f;
+				BloodLevel2.alpha = 0;
+				BloodLevel3.alpha = 0;
+			}
+
+		}
+		else if(level == 2)
+		{
+			if(_bloodLevel <= 2)
+			{
+				BloodLevel2.alpha = 1f;
+				BloodLevel1.alpha = 0;
+				BloodLevel3.alpha = 0;
+			}
+
+		}
+		else if(level == 3)
+		{
+			if(_bloodLevel <= 3)
+			{
+				BloodLevel3.alpha = 1f;
+				BloodLevel1.alpha = 0;
+				BloodLevel2.alpha = 0;
+			}
+		}
+
+		_bloodLevel = level;	
 	}
 
 	public void OnButtonPress()
@@ -559,6 +614,42 @@ public class HUDPanel : PanelBase
 	}
 	*/
 
+	private void UpdateBloodSpatter()
+	{
+		if(_bloodLevel == 1)
+		{
+			BloodLevel1.alpha -= Time.deltaTime * 2;
+			if(BloodLevel1.alpha <= 0)
+			{
+				BloodLevel1.alpha = 0;
+				_bloodLevel = 0;
+			}
+		}
+		else if(_bloodLevel == 2)
+		{
+			BloodLevel2.alpha -= Time.deltaTime * 1;
+			if(BloodLevel2.alpha <= 0)
+			{
+				BloodLevel2.alpha = 0;
+				_bloodLevel = 0;
+			}
+		}
+		else if(_bloodLevel == 3)
+		{
+			BloodLevel3.alpha -= Time.deltaTime * 0.5f;
+			if(BloodLevel3.alpha <= 0)
+			{
+				BloodLevel3.alpha = 0;
+				_bloodLevel = 0;
+			}
+		}
+		else
+		{
+			BloodLevel1.alpha = 0;
+			BloodLevel2.alpha = 0;
+			BloodLevel3.alpha = 0;
+		}
+	}
 
 	private void UpdateAperture()
 	{

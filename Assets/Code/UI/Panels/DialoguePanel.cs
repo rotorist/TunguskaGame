@@ -10,7 +10,7 @@ public class DialoguePanel : PanelBase
 	public UIScrollView TopicScroll;
 	public UIScrollView DialogueOptionScroll;
 	public Transform DialogueEntryAnchor;
-	public UISprite TopicDivider;
+	public Transform TopicAnchor;
 
 
 	public struct DialogueEntry
@@ -21,6 +21,7 @@ public class DialoguePanel : PanelBase
 
 	public struct TopicEntry
 	{
+		public TopicType Type;
 		public UILabel Text;
 	}
 
@@ -40,7 +41,8 @@ public class DialoguePanel : PanelBase
 	private List<TopicEntry> _topics;
 	private List<DialogueOptionEntry> _options;
 
-
+	private Vector3 _dialogueAnchorTarget;
+	private float _totalHeight;
 
 	public override void Initialize ()
 	{
@@ -50,11 +52,18 @@ public class DialoguePanel : PanelBase
 
 	public override void PerFrameUpdate ()
 	{
-		if(DialogueEntryAnchor.localPosition.magnitude > 0)
+		if(_totalHeight > 400)
 		{
-			DialogueEntryAnchor.localPosition = Vector3.Lerp(DialogueEntryAnchor.localPosition, Vector3.zero, Time.unscaledDeltaTime * 9);
+			DialogueEntryAnchor.localPosition = Vector3.Lerp(DialogueEntryAnchor.localPosition, _dialogueAnchorTarget, Time.unscaledDeltaTime * 8);
+		}
+		else
+		{
+			DialogueEntryAnchor.localPosition = _dialogueAnchorTarget;
+			DialogueScroll.ResetPosition();
 		}
 
+		TopicAnchor.localPosition = new Vector3(-85, 0, 0);
+		TopicScroll.ResetPosition();
 	}
 
 	public override void Show ()
@@ -83,7 +92,7 @@ public class DialoguePanel : PanelBase
 		DialogueHandle handle = GameManager.Inst.DBManager.DBHandlerDialogue.LoadNPCDialogue(npc);
 		if(handle == null)
 		{
-			
+
 			return;
 		}
 
@@ -131,7 +140,7 @@ public class DialoguePanel : PanelBase
 		UIButton selectedButton = UIButton.current;
 
 		Topic selectedTopic = selectedButton.GetComponent<TopicReference>().Topic;
-		Debug.Log("clicked " + selectedButton.GetComponent<TopicReference>().Topic.Type);
+		//Debug.Log("clicked " + selectedButton.GetComponent<TopicReference>().Topic.Type);
 
 		string playerName = GameManager.Inst.PlayerProgress.PlayerFirstName;
 
@@ -259,6 +268,15 @@ public class DialoguePanel : PanelBase
 		GameObject o = GameObject.Instantiate(Resources.Load("IntroBox")) as GameObject;
 		_intro = o.GetComponent<UILabel>();
 		_intro.text = text;
+
+		DialogueEntry introEntry = new DialogueEntry();
+		introEntry.Text = _intro;
+
+		GameObject introName = GameObject.Instantiate(Resources.Load("NameBox")) as GameObject;
+		introEntry.SpeakerName = introName.GetComponent<UILabel>();
+		introEntry.SpeakerName.text = "";
+
+		_entries.Push(introEntry);
 	}
 
 	public void RefreshDialogue(string newNodeID, bool showResponse)
@@ -266,10 +284,12 @@ public class DialoguePanel : PanelBase
 		//if loading a new node, first create a dialogue entry for it and push into 
 		//the stack. 
 
+
+
 		if(newNodeID != "")
 		{
 			//create dialogue entry
-			Debug.Log("new node ID " + newNodeID);
+			//Debug.Log("new node ID " + newNodeID);
 			DialogueNode node = GameManager.Inst.DBManager.DBHandlerDialogue.GetDialogueNode(newNodeID);
 
 			if(showResponse)
@@ -350,15 +370,17 @@ public class DialoguePanel : PanelBase
 			button.onClick.Add(new EventDelegate(this, "OnSelectTopic"));
 			BoxCollider2D collider = o.GetComponent<BoxCollider2D>();
 			collider.size = new Vector2(collider.size.x, 27);
+			entry.Type = topic.Type;
 
 			_topics.Add(entry);
 		}
 
 		//now make a copy of the stack, and start popping entries out of it, and arrange them under the dialog panel
 		Stack<DialogueEntry> copy = new Stack<DialogueEntry>(_entries.Reverse());
-
 		float currentY = -260;
+		_totalHeight = 0;
 		int i = 0;
+
 		while(copy.Count > 0)
 		{
 			DialogueEntry entry = copy.Pop();
@@ -369,15 +391,27 @@ public class DialoguePanel : PanelBase
 
 			float height = Mathf.Max(entry.SpeakerName.height * 1f, entry.Text.height * 1f);
 
+
 			entry.SpeakerName.transform.localPosition = new Vector3(-150, currentY + height, 0);
 			entry.Text.transform.localPosition = new Vector3(22, currentY + height, 0);
 
-			currentY = currentY + height + 15;
 
-			if(i == 0)
-			{
-				DialogueEntryAnchor.localPosition = new Vector3(0, -1 * (height + 15), 0);
+				
+			currentY = currentY + height + 15;
+			_totalHeight += (height + 15);
+
+
+			if(_totalHeight < 400)
+			{	
+				DialogueEntryAnchor.localPosition = new Vector3(-210, 0 - _totalHeight, 0);
+				_dialogueAnchorTarget = new Vector3(-210, 175 - _totalHeight, 0);
 			}
+			else
+			{
+				DialogueEntryAnchor.localPosition = new Vector3(-210, -220, 0);
+				_dialogueAnchorTarget = new Vector3(-210, -175, 0);
+			}
+
 
 			i++;
 		}
@@ -385,33 +419,45 @@ public class DialoguePanel : PanelBase
 
 		NGUITools.AddWidgetCollider(DialogueScroll.gameObject);
 
-
+		/*
 		if(_intro != null)
 		{
 			_intro.transform.parent = DialogueEntryAnchor.transform;
 			_intro.MakePixelPerfect();
 			_intro.transform.localPosition = new Vector3(-150, currentY + _intro.height, 0);
 		}
+		*/
 
 		//arrange topic entries
-		currentY = 85;
+		currentY = 200;
+		TopicScroll.ResetPosition();
 		foreach(TopicEntry entry in _topics)
 		{
-			entry.Text.transform.parent = TopicScroll.transform;
+			entry.Text.transform.parent = TopicAnchor.transform;
 			entry.Text.MakePixelPerfect();
-			entry.Text.transform.localPosition = new Vector3(-122, currentY, 0);
+
+
+			entry.Text.transform.localPosition = new Vector3(0, currentY, 0);
 
 			currentY = currentY - entry.Text.height;
 
+
+
 			if(entry.Text.text == "Goodbye")
 			{
-				currentY = currentY - 4;
-				TopicDivider.transform.localPosition = new Vector3(8, currentY, 0);
-				currentY = currentY - 8;
+				currentY = currentY - 15;
+			}
+
+			if(entry.Type != TopicType.Info)
+			{
+				entry.Text.color = new Color(0.5f, 0.5f, 0.8f);
 			}
 
 
 		}
+
+		//now re-add collider to fix collider size
+		//NGUITools.AddWidgetCollider(TopicScroll.gameObject, false);
 
 		float currentX = -128;
 		foreach(DialogueOptionEntry entry in _options)
@@ -424,11 +470,10 @@ public class DialoguePanel : PanelBase
 			BoxCollider2D collider = entry.Text.GetComponent<BoxCollider2D>();
 			collider.size = new Vector2(collider.size.x, 27);
 
-			currentX = currentX + entry.Text.width;
+			currentX = currentX + entry.Text.width + 20;
 		}
 
-		//now re-add collider to fix collider size
-		NGUITools.AddWidgetCollider(TopicScroll.gameObject);
+
 
 	}
 
@@ -480,7 +525,7 @@ public class DialoguePanel : PanelBase
 
 	private bool EvaluateTopicConditions(Stack<ConditionToken> conditions)
 	{
-		
+
 		bool finalResult = false;
 
 		if(conditions.Count <= 0)
@@ -496,7 +541,7 @@ public class DialoguePanel : PanelBase
 			ConditionToken token = conditions.Pop();
 			if(token.IsOperator)
 			{
-				Debug.Log("operator : " + ((DialogueConditionOperator)token).Op);
+				//Debug.Log("operator : " + ((DialogueConditionOperator)token).Op);
 				//pop two values from values and calculate
 				DialogueConditionOperator op = (DialogueConditionOperator)token;
 				bool value1, value2;
@@ -507,7 +552,7 @@ public class DialoguePanel : PanelBase
 				}
 				catch (Exception e)
 				{
-					Debug.Log("pop failed");
+					//Debug.Log("pop failed");
 					return false;
 				}
 
@@ -523,7 +568,7 @@ public class DialoguePanel : PanelBase
 			}
 			else
 			{
-				Debug.Log("condition : " + ((DialogueCondition)token).ID);
+				//Debug.Log("condition : " + ((DialogueCondition)token).ID);
 				//evaluate and then push into values
 				bool result = EvaluateCondition((DialogueCondition)token);
 				values.Push(result);
@@ -533,7 +578,7 @@ public class DialoguePanel : PanelBase
 
 		if(values.Count != 1)
 		{
-			Debug.Log("there are not 1 value left in values");
+			//Debug.Log("there are not 1 value left in values");
 			return false;
 		}
 		else

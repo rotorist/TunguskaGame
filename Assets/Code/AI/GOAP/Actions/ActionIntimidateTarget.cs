@@ -26,6 +26,9 @@ public class ActionIntimidateTarget : GoapAction
 		ParentCharacter.MyAI.BlackBoard.IsNavTargetSet = true;
 		((HumanCharacter)ParentCharacter).CurrentStance = HumanStances.Run;
 
+		ParentCharacter.MyAI.BlackBoard.GuardLevel = 2;
+
+
 		ParentCharacter.MyEventHandler.OnActionUpdateTimer -= UpdateAction;
 		ParentCharacter.MyEventHandler.OnActionUpdateTimer += UpdateAction;
 

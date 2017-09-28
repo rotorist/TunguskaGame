@@ -342,8 +342,12 @@ public class AITargeting
 	{
 
 		Mode = mode;
-		_lookAroundDir = direction;
-		ResetLookAroundAngle();
+		if(_lookAroundDir != direction)
+		{
+			_lookAroundDir = direction;
+
+			ResetLookAroundAngle();
+		}
 	}
 
 

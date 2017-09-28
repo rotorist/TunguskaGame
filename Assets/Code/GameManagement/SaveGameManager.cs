@@ -75,6 +75,10 @@ public class SaveGameManager
 
 		CurrentSave.CurrentDay = GameManager.Inst.WorldManager.CurrentDay;
 		CurrentSave.CurrentTime = GameManager.Inst.WorldManager.CurrentTime;
+		CurrentSave.CurrentWeather = GameManager.Inst.WorldManager.CurrentWeather;
+		CurrentSave.IsDayTime = GameManager.Inst.WorldManager.IsDayTime;
+		CurrentSave.DayNightTransition = GameManager.Inst.WorldManager.DayNightTransition;
+		CurrentSave.NightDayTransition = GameManager.Inst.WorldManager.NightDayTransition;
 
 		Level currentLevel = new Level();
 		currentLevel.Name = GameManager.Inst.WorldManager.CurrentLevel.Name;
@@ -128,6 +132,7 @@ public class SaveGameManager
 			saveData.StatusData = character.MyStatus.Data;
 			saveData.Jobs = character.MyJobs;
 			saveData.Pos = new SerVector3(character.transform.position);
+			saveData.Angles = new SerVector3(character.transform.localEulerAngles);
 
 			saveData.Inventory = new CharacterInventorySaveData();
 			saveData.Inventory.ArmorSlot = character.Inventory.HeadSlot;
@@ -326,6 +331,10 @@ public class SaveGameManager
 
 		GameManager.Inst.WorldManager.CurrentDay = CurrentSave.CurrentDay;
 		GameManager.Inst.WorldManager.CurrentTime = CurrentSave.CurrentTime;
+		GameManager.Inst.WorldManager.CurrentWeather = CurrentSave.CurrentWeather;
+		GameManager.Inst.WorldManager.IsDayTime = CurrentSave.IsDayTime;
+		GameManager.Inst.WorldManager.DayNightTransition = CurrentSave.DayNightTransition;
+		GameManager.Inst.WorldManager.NightDayTransition = CurrentSave.NightDayTransition;
 
 		GameManager.Inst.WorldManager.ChangeEnvironment(CurrentSave.CurrentEnvironmentName);
 
@@ -531,6 +540,7 @@ public class SaveGameManager
 
 				character.MyStatus.Data = characterData.StatusData;
 				character.transform.position = characterData.Pos.ConvertToVector3();
+				character.transform.localEulerAngles = characterData.Angles.ConvertToVector3();
 
 				character.MyNavAgent.enabled = true;
 

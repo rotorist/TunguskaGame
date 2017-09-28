@@ -62,6 +62,8 @@ public class ActionIdleActivity : GoapAction
 			}
 		}
 
+		ParentCharacter.MyAI.BlackBoard.GuardLevel = 1;
+
 		UpdateAction();
 
 		ParentCharacter.MyEventHandler.OnOneSecondTimer -= UpdateAction;
@@ -326,7 +328,7 @@ public class ActionIdleActivity : GoapAction
 						SmallAction = SmallActionType.Guitar;
 
 						//start playing clip
-						AudioClip clip = GameManager.Inst.SoundManager.GetClip("guitar1");
+						AudioClip clip = GameManager.Inst.SoundManager.GetClip("guitar2");
 						_nextActionTime = Mathf.CeilToInt(clip.length) + 2;
 						ParentCharacter.CharacterAudio.PlayOneShot(clip, 0.5f);
 					}

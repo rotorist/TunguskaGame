@@ -34,13 +34,14 @@ public class WorldManager
 		CurrentTerrain = GameObject.Find("Terrain").GetComponent<TerrainHandler>();
 		CurrentTerrain.Initialize();
 
-		CurrentTime = 60 * 17f;
-		IsDayTime = true;
+		CurrentTime = 60 * 5f;
+		IsDayTime = false;
 		NightDayTransition = 60 * 6 + UnityEngine.Random.Range(-1f, 1f) * 30;
 		DayNightTransition = 60 * 20 + UnityEngine.Random.Range(-1f, 1f) * 30;
 
 
 		Environment dayWild = new Environment("Wilderness");
+		GameManager.Inst.SoundManager.SetMusic(dayWild.Name, IsDayTime);
 		dayWild.IsInterior = false;
 
 		dayWild.AmbientLightColor = new Color(0.424f, 0.430f, 0.444f);
@@ -153,6 +154,11 @@ public class WorldManager
 			CurrentEnvironment.UpdateLighting();
 			if(CurrentTime > DayNightTransition && IsDayTime)
 			{
+				if(IsDayTime)
+				{
+					//set music
+					GameManager.Inst.SoundManager.SetMusic(CurrentEnvironment.Name, false);
+				}
 				IsDayTime = false;
 				if(CurrentEnvironment.Name == "Wilderness")
 				{
@@ -162,6 +168,11 @@ public class WorldManager
 
 			if(CurrentTime > NightDayTransition && CurrentTime < DayNightTransition && !IsDayTime)
 			{
+				if(!IsDayTime)
+				{
+					//set music
+					GameManager.Inst.SoundManager.SetMusic(CurrentEnvironment.Name, true);
+				}
 				IsDayTime = true;
 				if(CurrentEnvironment.Name == "Wilderness")
 				{

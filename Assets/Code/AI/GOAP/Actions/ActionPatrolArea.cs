@@ -28,6 +28,8 @@ public class ActionPatrolArea : GoapAction
 		//ParentCharacter.MyAI.BlackBoard.NavTarget = new Vector3(40, 0, -27);
 		//ParentCharacter.MyAI.BlackBoard.IsNavTargetSet = true;
 
+		ParentCharacter.MyAI.BlackBoard.GuardLevel = 2;
+
 		UpdateAction();
 		ParentCharacter.MyEventHandler.OnActionUpdateTimer -= UpdateAction;
 		ParentCharacter.MyEventHandler.OnActionUpdateTimer += UpdateAction;

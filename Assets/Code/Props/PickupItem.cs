@@ -70,7 +70,7 @@ public class PickupItem : MonoBehaviour
 						//do a raycast check. Only shines if raycast from flashlight hits the item
 						RaycastHit hit;
 						bool isHit = Physics.Raycast(character.MyReference.Flashlight.transform.position, distance * -1, out hit, distance.magnitude * 2);
-						Debug.Log(isHit + " " + hit.collider.name);
+						//Debug.Log(isHit + " " + hit.collider.name);
 						if(hit.collider.gameObject == this.gameObject)
 						{
 							

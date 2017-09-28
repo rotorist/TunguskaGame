@@ -21,6 +21,7 @@ public class StoryObject : MonoBehaviour
 	public string OnEvent;
 	public string OffEvent;
 	public MachineAudioSource OnSound;
+	public string UISound;
 	public string RequireItemID;
 	public int RequireItemQuantity;
 	public bool IsConsumingItem;
@@ -47,17 +48,27 @@ public class StoryObject : MonoBehaviour
 
 	public void Interact()
 	{
+		if(_isNoMoreUse)
+		{
+			GameManager.Inst.UIManager.SetConsoleText(NoMoreUseMessage);
+			return;
+		}
+
+		//if there is UI sound, play
+		if(!string.IsNullOrEmpty(UISound))
+		{
+			AudioClip clip = GameManager.Inst.SoundManager.GetClip(UISound);
+			GameManager.Inst.SoundManager.UI.PlayOneShot(clip, 0.1f);
+		}
+
 		if(!IsReady)
 		{
 			GameManager.Inst.UIManager.SetConsoleText(NotReadyMessage);
 			return;
 		}
 
-		if(_isNoMoreUse)
-		{
-			GameManager.Inst.UIManager.SetConsoleText(NoMoreUseMessage);
-			return;
-		}
+
+
 
 
 		//check if player has required items
@@ -83,6 +94,7 @@ public class StoryObject : MonoBehaviour
 		{
 			InteractConfirmed();
 		}
+
 
 
 	}

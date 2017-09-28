@@ -12,6 +12,7 @@ public class CharacterSaveData
 	public string GOName;
 
 	public SerVector3 Pos;
+	public SerVector3 Angles;
 
 	public CharacterType CharacterType;
 	public string SquadID;

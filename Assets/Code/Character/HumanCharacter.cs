@@ -1468,7 +1468,7 @@ public class HumanCharacter : Character
 				}
 				if(MyReference.Flashlight != null)
 				{
-					if(ambient <= 0.3f)
+					if(ambient <= 0.3f && MyNavAgent != null && MyNavAgent.velocity.magnitude > 0.5f)
 					{
 						MyReference.Flashlight.Toggle(true);
 					}
@@ -1614,6 +1614,19 @@ public class HumanCharacter : Character
 		if(MyAI.ControlType == AIControlType.Player)
 		{
 			GameManager.Inst.CameraShaker.TriggerScreenShake(0.1f, 0.06f);
+			float damageRatio = finalDamage / MyStatus.Health;
+			if(damageRatio < 0.3f)
+			{
+				GameManager.Inst.UIManager.HUDPanel.SetBloodLevel(1);
+			}
+			else if(damageRatio < 0.7f)
+			{
+				GameManager.Inst.UIManager.HUDPanel.SetBloodLevel(2);
+			}
+			else
+			{
+				GameManager.Inst.UIManager.HUDPanel.SetBloodLevel(3);
+			}
 		}
 
 		DeathReason = damage.Type;
@@ -1721,6 +1734,19 @@ public class HumanCharacter : Character
 			if(MyAI.ControlType == AIControlType.Player)
 			{
 				GameManager.Inst.CameraShaker.TriggerScreenShake(0.1f, 0.1f);
+				float damageRatio = finalDamage / MyStatus.Health;
+				if(damageRatio < 0.3f)
+				{
+					GameManager.Inst.UIManager.HUDPanel.SetBloodLevel(1);
+				}
+				else if(damageRatio < 0.7f)
+				{
+					GameManager.Inst.UIManager.HUDPanel.SetBloodLevel(2);
+				}
+				else
+				{
+					GameManager.Inst.UIManager.HUDPanel.SetBloodLevel(3);
+				}
 			}
 
 			if(finalDamage <= 0)

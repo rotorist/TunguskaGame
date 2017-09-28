@@ -18,8 +18,8 @@ public class DBHandlerDialogue
 	{
 		List<Topic> topics = new List<Topic>();
 
-		topics.Add(new Topic("1", "This place", TopicType.Info));
-		topics.Add(new Topic("2", "Life in the Zone", TopicType.Info));
+		//topics.Add(new Topic("1", "This place", TopicType.Info));
+		//topics.Add(new Topic("2", "Life in the Zone", TopicType.Info));
 
 		return topics;
 	}

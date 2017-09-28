@@ -92,8 +92,8 @@ public class Environment
 			{
 				timePercent = (time - 60 * 5) / (60 * 3);
 				SunMoonColor = Color.Lerp(new Color(1, 1, 1), new Color(1, 0.884f, 0.818f), timePercent);
-				SunMoonIntensity = Mathf.Lerp(0.17f, 0.5f, timePercent); 
-				AmbientLightColor = Color.Lerp(new Color(0.1f, 0.15f, 0.26f), new Color(0.44f, 0.45f, 0.47f), timePercent);
+				SunMoonIntensity = Mathf.Lerp(0.19f, 0.5f, timePercent); 
+				AmbientLightColor = Color.Lerp(new Color(0.2f, 0.25f, 0.36f), new Color(0.44f, 0.45f, 0.47f), timePercent);
 				AmbientIntensity = Mathf.Lerp(0.2f, 0.5f, timePercent);
 			}
 			else if(time >= 60 * 8 && time < 60 * 13)
@@ -116,15 +116,15 @@ public class Environment
 			{
 				timePercent = (time - 60 * 18) / (60 * 3);
 				SunMoonColor = Color.Lerp(new Color(0.88f, 0.71f, 0.34f), new Color(1, 1, 1), timePercent);
-				SunMoonIntensity = Mathf.Lerp(0.5f, 0.17f, timePercent);
-				AmbientLightColor = Color.Lerp(new Color(0.44f, 0.45f, 0.47f), new Color(0.1f, 0.15f, 0.26f), timePercent);
+				SunMoonIntensity = Mathf.Lerp(0.5f, 0.19f, timePercent);
+				AmbientLightColor = Color.Lerp(new Color(0.44f, 0.45f, 0.47f), new Color(0.2f, 0.25f, 0.36f), timePercent);
 				AmbientIntensity = Mathf.Lerp(0.5f, 0.2f, timePercent);
 			}
 			else
 			{
 				SunMoonColor = new Color(1, 1, 1);
-				SunMoonIntensity = 0.17f;
-				AmbientLightColor = new Color(0.1f, 0.15f, 0.26f);
+				SunMoonIntensity = 0.19f;
+				AmbientLightColor = new Color(0.2f, 0.25f, 0.36f);
 				AmbientIntensity = 0.2f;
 			}
 

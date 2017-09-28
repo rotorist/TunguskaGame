@@ -26,6 +26,10 @@ public class SaveGame
 	public string CurrentEnvironmentName;
 	public int CurrentDay;
 	public float CurrentTime;
+	public WeatherType CurrentWeather;
+	public float DayNightTransition;
+	public float NightDayTransition;
+	public bool IsDayTime;
 	public List<Level> Levels;//from world manager
 
 	public List<StoryConditionItem> ItemConditions;

@@ -95,7 +95,6 @@ public class PlayerProgress
 		if(!DiscoveredTopics.Contains(topicID))
 		{
 			DiscoveredTopics.Add(topicID);
-			GameManager.Inst.UIManager.SetConsoleText("New topic: " + topicID);
 		}
 	}
 

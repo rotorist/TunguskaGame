@@ -614,6 +614,9 @@ public class AI : MonoBehaviour
 
 		else if(state.Name == "IsNearDefendPosition")
 		{
+			SetCurrentWorldState(state, false);
+			return false;
+
 			if(!BlackBoard.HasPatrolInfo)
 			{
 				SetCurrentWorldState(state, false);
@@ -625,6 +628,8 @@ public class AI : MonoBehaviour
 				SetCurrentWorldState(state, false);
 				return false;
 			}
+
+
 
 			SetCurrentWorldState(state, true);
 			return true;
@@ -705,7 +710,7 @@ public class AI : MonoBehaviour
 
 	public void OnCurrentActionComplete()
 	{
-		
+		/*	
 		//if no known enemies then lower guard level
 		if(BlackBoard.NumberOfKnownEnemies <= 0)
 		{
@@ -716,7 +721,7 @@ public class AI : MonoBehaviour
 			}
 
 		}
-
+		*/
 
 		StartCoroutine(WaitAndExecuteNextAction(0.1f));
 

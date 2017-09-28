@@ -74,6 +74,7 @@ public class Portal : MonoBehaviour
 		character.Destination = character.transform.position;
 		GameManager.Inst.CameraController.ResetCamera();
 		GameManager.Inst.WorldManager.ChangeEnvironment(OtherPortal.Environment);
+		GameManager.Inst.SoundManager.SetMusic(OtherPortal.Environment, GameManager.Inst.WorldManager.IsDayTime);
 		Time.timeScale = 1;
 	}
 }

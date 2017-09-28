@@ -278,7 +278,7 @@ public class Household : MonoBehaviour
 			if(GuardLocs.Count > 0)
 			{
 				int guardsCount = CurrentSquad.GetNumberOfGuards();
-				//Debug.LogError("Current guard count " + guardsCount);
+
 				int i = 0;
 				while(GuardLocs.Count > guardsCount && i < CurrentSquad.Members.Count)
 				{
@@ -302,6 +302,7 @@ public class Household : MonoBehaviour
 							CurrentSquad.Members[i].MyAI.BlackBoard.HasPatrolInfo = true;
 							CurrentSquad.Members[i].MyAI.BlackBoard.PatrolNodeIndex = -1;
 							CurrentSquad.Members[i].MyAI.SetDynamicyGoal(GameManager.Inst.NPCManager.DynamicGoalGuard, 5);
+							CurrentSquad.Members[i].MyAI.TargetingSystem.SetTargetingMode(AITargetingModes.LookAround, GuardLocs[guardLocIndex].transform.forward);
 							GuardLocs[guardLocIndex].Guard = CurrentSquad.Members[i];
 							guardsCount++;
 						}

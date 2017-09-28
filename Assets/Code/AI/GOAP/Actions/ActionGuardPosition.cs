@@ -24,7 +24,7 @@ public class ActionGuardPosition: GoapAction
 		CsDebug.Inst.CharLog(ParentCharacter, "Start executing Guard" + ParentCharacter.name);
 		_executionStopped = false;
 
-	
+		ParentCharacter.MyAI.BlackBoard.GuardLevel = 2;
 
 		UpdateAction();
 
@@ -127,6 +127,7 @@ public class ActionGuardPosition: GoapAction
 		else
 		{
 			//look around
+			//Debug.Log(ParentCharacter.Name + " is guarding in place");
 			ParentCharacter.MyAI.BlackBoard.GuardLevel = 2;
 			ParentCharacter.MyAI.TargetingSystem.SetTargetingMode(AITargetingModes.LookAround, ParentCharacter.MyAI.BlackBoard.GuardDirection);
 			if(ParentCharacter.MyAI.BlackBoard.TargetEnemy == null)
