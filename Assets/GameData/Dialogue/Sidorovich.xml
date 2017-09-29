@@ -2,7 +2,7 @@
 <!DOCTYPE dialogue[<!ATTLIST node id ID #IMPLIED>]>
 <dialogue>
     <intro>
-        <text></text>
+        <text>This bald, middle-aged man looks at you with the warmest smile you've ever seen.</text>
         <next_node id="1" />
     </intro>
     <topic id="zsk_blockade">

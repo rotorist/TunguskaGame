@@ -49,6 +49,7 @@ public class HUDPanel : PanelBase
 	private Dictionary<PlayerBoostType, UISprite> _boostIndicators;
 	private Stack<string> _messages;
 	private int _bloodLevel;
+	private float _updateScalingTimer;
 
 	public struct HUDPartyMember
 	{
@@ -112,6 +113,8 @@ public class HUDPanel : PanelBase
 
 		_bloodLevel = 0;
 
+		_updateScalingTimer = 3;
+
 
 	}
 
@@ -128,36 +131,42 @@ public class HUDPanel : PanelBase
 		//update FPS
 		FPSText.text = (1f / Time.smoothDeltaTime).ToString();
 
-		if(Time.time < 5)
+		if(_updateScalingTimer > 0)
 		{
-			//set scaling
-			Vector3 targetLocLeft = new Vector3(Screen.width / 2 * -1, Screen.height / 2 * -1, 0); 
-			Vector3 worldPosLeft = GameManager.Inst.UIManager.UICamera.ScreenToWorldPoint(targetLocLeft);
-			Vector3 localPosLeft = transform.worldToLocalMatrix.MultiplyPoint3x4(worldPosLeft);
-			LeftHUDAnchor.localPosition = new Vector3(localPosLeft.x / 2, localPosLeft.y / 2, 0);
-
-			Vector3 targetLocRight = new Vector3(Screen.width, Screen.height / 2 * -1, 0); 
-			Vector3 worldPosRight = GameManager.Inst.UIManager.UICamera.ScreenToWorldPoint(targetLocRight);
-			Vector3 localPosRight = transform.worldToLocalMatrix.MultiplyPoint3x4(worldPosRight);
-			RightHUDAnchor.localPosition = new Vector3(localPosRight.x, localPosRight.y / 2, 0);
-			CenterHUDAnchor.localPosition = new Vector3(0, localPosRight.y / 2, 0);
-
-
-
-			float heightRatio = (1f * Screen.height / Screen.width - 1) * 2 + 1;
-			float scale = Mathf.Lerp(1f, 0.6f, heightRatio);
-			GameManager.Inst.UIManager.UICamera.transform.localScale = new Vector3(scale, scale, scale);
-
-			int screenWidth = Mathf.CeilToInt(localPosRight.x - localPosLeft.x / 2);
-			int screenHeight = Mathf.CeilToInt(screenWidth * (Screen.height * 1f / Screen.width));
-
-			BloodLevel1.width = screenWidth;
-			BloodLevel1.height = screenHeight;
-			BloodLevel2.width = screenWidth;
-			BloodLevel2.height = screenHeight;
-			BloodLevel3.width = screenWidth;
-			BloodLevel3.height = screenHeight;
+			UpdateScaling();
+			_updateScalingTimer -= Time.deltaTime;
 		}
+	}
+
+	public void UpdateScaling()
+	{
+		//set scaling
+		Vector3 targetLocLeft = new Vector3(Screen.width / 2 * -1, Screen.height / 2 * -1, 0); 
+		Vector3 worldPosLeft = GameManager.Inst.UIManager.UICamera.ScreenToWorldPoint(targetLocLeft);
+		Vector3 localPosLeft = transform.worldToLocalMatrix.MultiplyPoint3x4(worldPosLeft);
+		LeftHUDAnchor.localPosition = new Vector3(localPosLeft.x / 2, localPosLeft.y / 2, 0);
+
+		Vector3 targetLocRight = new Vector3(Screen.width, Screen.height / 2 * -1, 0); 
+		Vector3 worldPosRight = GameManager.Inst.UIManager.UICamera.ScreenToWorldPoint(targetLocRight);
+		Vector3 localPosRight = transform.worldToLocalMatrix.MultiplyPoint3x4(worldPosRight);
+		RightHUDAnchor.localPosition = new Vector3(localPosRight.x, localPosRight.y / 2, 0);
+		CenterHUDAnchor.localPosition = new Vector3(0, localPosRight.y / 2, 0);
+
+
+
+		float heightRatio = (1f * Screen.height / Screen.width - 1) * 2 + 1;
+		float scale = Mathf.Lerp(1f, 0.6f, heightRatio);
+		GameManager.Inst.UIManager.UICamera.transform.localScale = new Vector3(scale, scale, scale);
+
+		int screenWidth = Mathf.CeilToInt(localPosRight.x - localPosLeft.x / 2);
+		int screenHeight = Mathf.CeilToInt(screenWidth * (Screen.height * 1f / Screen.width));
+
+		BloodLevel1.width = screenWidth;
+		BloodLevel1.height = screenHeight;
+		BloodLevel2.width = screenWidth;
+		BloodLevel2.height = screenHeight;
+		BloodLevel3.width = screenWidth;
+		BloodLevel3.height = screenHeight;
 	}
 
 	public void SetConsoleText(string text)

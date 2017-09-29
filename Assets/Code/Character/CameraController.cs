@@ -330,6 +330,8 @@ public class CameraController : MonoBehaviour
 		Vector3 cameraPos = pc.position - cameraFacing * 10;
 		Vector3 targetPosition = cameraPos + pc.transform.forward * 10;
 		transform.position = targetPosition;
+
+
 	}
 
 	public void SetCameraMode(CameraModeEnum mode)

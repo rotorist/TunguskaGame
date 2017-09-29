@@ -257,6 +257,7 @@ public class GameManager : MonoBehaviour
 		{
 			Debug.Log("Loading save " + saveNameRef.SaveName);
 			SaveGameManager.Load(saveNameRef.SaveName);
+
 		}
 		if(saveNameRef.IsNewGame)
 		{

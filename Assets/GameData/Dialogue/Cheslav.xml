@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE dialogue[<!ATTLIST node id ID #IMPLIED>]>
+<dialogue>
+    <intro>
+        <text></text>
+        <next_node id="1" />
+    </intro>
+    <node id="1">
+        <response>
+            <text>Can you turn the radio off for me? Please! I'm begging you!</text>
+        </response>
+        <option>
+            <title>Music</title>
+            <text>Why? The music sounds good.</text>
+            <next_node id="2" />
+        </option>
+    </node>
+    <node id="2">
+        <response>
+            <text>I have been listening to the same music for four days! Look, they are torturing me!</text>
+        </response>
+        <option>
+            <title>Torture</title>
+            <text>Why are they torturing you?</text>
+            <next_node id="3" />
+        </option>
+    </node>
+    <node id="3">
+        <response>
+            <text>Because they wanted my armor set. Last week I found this ceramic plate armor and a helmet from Station 11 with my partner. We couldn't agree on who gets to wear it, so I hid them behind the gas station behind his back. But that son of a bitch sold me to the Legionnaires! So here I am, locked up, tortured and forced to eat dog food sandwich.</text>
+        </response>
+    </node>
+</dialogue>
