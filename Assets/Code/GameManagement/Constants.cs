@@ -8,7 +8,7 @@ public class Constants : MonoBehaviour
 	public AnimationCurve GunDamageVsDurability;
 	public AnimationCurve GunJamVsDurability;
 	public AnimationCurve GunAccuVsDurability;
-
+	public AnimationCurve ArmFatigueRecoil;
 
 	public float DurabilityDrainRate; //reduced from durability each time weapon is used
 }

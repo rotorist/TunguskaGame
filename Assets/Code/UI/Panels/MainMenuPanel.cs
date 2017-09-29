@@ -27,7 +27,7 @@ public class MainMenuPanel : MonoBehaviour
 			ContinueButton.isEnabled = false;
 		}
 
-		OptionsButton.isEnabled = true;
+		//OptionsButton.isEnabled = true;
 	}
 	
 	// Update is called once per frame

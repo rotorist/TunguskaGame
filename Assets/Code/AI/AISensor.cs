@@ -294,7 +294,7 @@ public class AISensor
 
 			//check if within range and fov
 			float distance = Vector3.Distance(c.transform.position, _parentCharacter.transform.position);
-			if(distance <= 5 && _parentCharacter.MyAI.BlackBoard.GuardLevel >= 2)
+			if(distance <= 3 && _parentCharacter.MyAI.BlackBoard.GuardLevel > 2)
 			{
 				fov = 360;
 			}

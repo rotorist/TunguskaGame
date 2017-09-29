@@ -409,7 +409,8 @@ public class Gun : Weapon
 			//now add low energy penalty for player
 			if(Attacker.MyAI.ControlType == AIControlType.Player)
 			{
-				scatterValue = scatterValue * (1 + (1 - Attacker.MyStatus.Energy / Attacker.MyStatus.MaxEnergy) * 2);
+				scatterValue = scatterValue * (1 + (Attacker.MyStatus.ArmFatigue / Attacker.MyStatus.MaxArmFatigue) * 2);
+				//scatterValue = scatterValue * (1 + (1 - Attacker.MyStatus.Energy / Attacker.MyStatus.MaxEnergy) * 2);
 			}
 
 			Vector3 scatter = new Vector3(UnityEngine.Random.Range(-1 * scatterValue, scatterValue), UnityEngine.Random.Range(-1 * scatterValue, scatterValue), 1);

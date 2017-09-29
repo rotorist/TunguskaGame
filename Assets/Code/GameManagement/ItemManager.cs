@@ -116,10 +116,11 @@ public class ItemManager
 		inventory1.Backpack.Add(new GridItemData(LoadItem("alcohol"), 2, 0, GridItemOrient.Landscape, 15));
 		inventory1.Backpack.Add(new GridItemData(LoadItem("recipe_hr1"), 3, 0, GridItemOrient.Landscape, 1));
 
-		inventory1.RifleSlot = LoadItem("doublebarrelshotgun");
+		//inventory1.RifleSlot = LoadItem("doublebarrelshotgun");
+		inventory1.RifleSlot = LoadItem("ak47");
 		//inventory1.ThrowSlot = LoadItem("f1grenade");
 		//inventory1.ArmorSlot = LoadItem("flakjacket");
-		inventory1.SideArmSlot = LoadItem("machete");
+		inventory1.SideArmSlot = LoadItem("44magnum");
 		//inventory1.HeadSlot = LoadItem("kevlarhelmet");
 		inventory1.ToolSlot = LoadItem("geigercounter");
 

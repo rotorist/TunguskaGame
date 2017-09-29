@@ -151,8 +151,9 @@ public class CursorManager
 			AimCursor aimCursor = ActiveCursor.GetComponent<AimCursor>();
 			if(aimCursor != null)
 			{
-				float climb = GameManager.Inst.PlayerControl.SelectedPC.AimTarget.localPosition.y;
-				float amount = Mathf.Clamp(climb, 0, 1);
+				//float climb = GameManager.Inst.PlayerControl.SelectedPC.AimTarget.localPosition.y;
+				float armFatigue = GameManager.Inst.PlayerControl.SelectedPC.MyStatus.ArmFatigue / GameManager.Inst.PlayerControl.SelectedPC.MyStatus.MaxArmFatigue;
+				float amount = GameManager.Inst.Constants.ArmFatigueRecoil.Evaluate(Mathf.Clamp(armFatigue, 0, 1));
 				float baseAmount = 5;
 				if(GameManager.Inst.PlayerControl.SelectedPC.IsHipAiming || GameManager.Inst.PlayerControl.SelectedPC.UpperBodyState != HumanUpperBodyStates.Aim)
 				{

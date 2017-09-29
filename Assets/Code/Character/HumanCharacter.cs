@@ -1824,7 +1824,7 @@ public class HumanCharacter : Character
 	public void OnSuccessfulShot()
 	{
 		MyAnimator.SetTrigger("Shoot");
-		StartCoroutine(WaitAndMuzzleClimb(0.05f));
+		StartCoroutine(WaitAndMuzzleClimb(0.02f));
 		this.MyStatus.ArmFatigue += 1f;
 		if(this.MyStatus.ArmFatigue > this.MyStatus.MaxArmFatigue)
 		{
@@ -1833,7 +1833,7 @@ public class HumanCharacter : Character
 
 		if(MyAI.ControlType == AIControlType.Player)
 		{
-			GameManager.Inst.CameraShaker.TriggerScreenShake(0.08f, 0.02f);
+			GameManager.Inst.CameraShaker.TriggerScreenShake(0.08f, 0.025f);
 		}
 	}
 
@@ -2993,7 +2993,8 @@ public class HumanCharacter : Character
 			*/
 			if(AimTarget.localPosition.y < 0.1f)
 			{
-				float climb = Mathf.Clamp(recoil * (this.MyStatus.ArmFatigue / this.MyStatus.MaxArmFatigue), 0, 5);
+				float armFatigueRate = this.MyStatus.ArmFatigue / this.MyStatus.MaxArmFatigue;
+				float climb = Mathf.Clamp(recoil * (GameManager.Inst.Constants.ArmFatigueRecoil.Evaluate(armFatigueRate)), 0, 5);
 				AimTarget.localPosition += new Vector3(0, climb, 0);
 			}
 			else
