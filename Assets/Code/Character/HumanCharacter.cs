@@ -1510,9 +1510,16 @@ public class HumanCharacter : Character
 	{
 		
 		
+		if(MyAI.ControlType == AIControlType.Player)
+		{
+			//player do'nt stumble
+			OnInjury(hitNormal, false);
+		}
+		else
+		{
+			OnInjury(hitNormal, damage.IsCritical);
+		}
 
-
-		OnInjury(hitNormal, damage.IsCritical);
 		if(attacker != null && MyAI.ControlType != AIControlType.Player)
 		{
 			MyAI.Sensor.OnTakingDamage(attacker);

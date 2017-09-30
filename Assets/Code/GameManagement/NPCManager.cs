@@ -998,5 +998,16 @@ public class NPCManager
 		{
 			_allSquads.Add(squad14.ID, squad14);
 		}
+
+		AISquad squad15 = new AISquad();
+		squad15.ID = "zsk_wolves2";
+		squad15.Tier = 1;
+		squad15.Faction = Faction.Animals;
+		squad15.Household = _allHouseHolds["HouseHoldWolf3"];
+		squad15.Household.CurrentSquad = squad15;
+		if(!_allSquads.ContainsKey(squad15.ID))
+		{
+			_allSquads.Add(squad15.ID, squad15);
+		}
 	}
 }

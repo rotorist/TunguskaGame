@@ -118,6 +118,7 @@ topic/discover/serum
 journal/{12}
 
 ./zsk_priest_give_recipe
+item/receive/recipe_hr1/1
 topic/forget/priest_supply
 
 
