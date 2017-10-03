@@ -501,14 +501,14 @@ public class MutantCharacter : Character
 		return false;
 	}
 
-	public override bool SendMeleeDamage (Damage damage, Vector3 hitNormal, Character attacker, float knockBackChance)
+	public override MeleeBlockType SendMeleeDamage (Damage damage, Vector3 hitNormal, Character attacker, float knockBackChance)
 	{
 		MyEventHandler.TriggerOnTakingHit();
 		float attackerAngle = Vector3.Angle(transform.forward, transform.position - attacker.transform.position);
-		if(ActionState == HumanActionStates.None && attackerAngle > 135 && UnityEngine.Random.value < 0.5f)
+		if(ActionState == HumanActionStates.None && attackerAngle > 135 && UnityEngine.Random.value < 0.4f)
 		{
 			MyAnimator.SetTrigger("BlockSuccess");
-			return true;
+			return MeleeBlockType.SoftArmor;
 		}
 		else
 		{
@@ -565,7 +565,7 @@ public class MutantCharacter : Character
 		}
 
 
-		return false;
+		return MeleeBlockType.NoBlock;
 	}
 
 

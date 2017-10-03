@@ -250,6 +250,10 @@ public class CharacterStatus : MonoBehaviour
 		{
 			Energy = MaxEnergy;
 		}
+		else if(energy < 0)
+		{
+			Energy = 0;
+		}
 		else
 		{
 			Energy = energy;

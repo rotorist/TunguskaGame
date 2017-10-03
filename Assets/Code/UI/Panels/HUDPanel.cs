@@ -11,6 +11,8 @@ public class HUDPanel : PanelBase
 	public Transform LeftHUDAnchor;
 	public Transform RightHUDAnchor;
 	public Transform CenterHUDAnchor;
+	public Transform TopHUDAnchor;
+
 	public Transform ConsoleAnchor;
 	public List<UILabel> ConsoleEntries;
 	public UISprite Aperture;
@@ -30,6 +32,8 @@ public class HUDPanel : PanelBase
 	public UILabel Clock;
 	public UISprite DeathLabel;
 	public Compass Compass;
+	public UISprite TargetNameBackground;
+	public UILabel TargetName;
 
 	public UISprite [] IndicatorSprites;
 
@@ -50,6 +54,7 @@ public class HUDPanel : PanelBase
 	private Stack<string> _messages;
 	private int _bloodLevel;
 	private float _updateScalingTimer;
+	private bool _isTargetNameFading;
 
 	public struct HUDPartyMember
 	{
@@ -136,6 +141,12 @@ public class HUDPanel : PanelBase
 			UpdateScaling();
 			_updateScalingTimer -= Time.deltaTime;
 		}
+
+		if(_isTargetNameFading && TargetNameBackground.alpha > 0)
+		{
+			TargetName.alpha -= Time.deltaTime * 0.5f;
+			TargetNameBackground.alpha -= Time.deltaTime * 0.5f;
+		}
 	}
 
 	public void UpdateScaling()
@@ -151,7 +162,7 @@ public class HUDPanel : PanelBase
 		Vector3 localPosRight = transform.worldToLocalMatrix.MultiplyPoint3x4(worldPosRight);
 		RightHUDAnchor.localPosition = new Vector3(localPosRight.x, localPosRight.y / 2, 0);
 		CenterHUDAnchor.localPosition = new Vector3(0, localPosRight.y / 2, 0);
-
+		TopHUDAnchor.localPosition = new Vector3(0, localPosRight.y / 2 * -1, 0);
 
 
 		float heightRatio = (1f * Screen.height / Screen.width - 1) * 2 + 1;
@@ -167,6 +178,32 @@ public class HUDPanel : PanelBase
 		BloodLevel2.height = screenHeight;
 		BloodLevel3.width = screenWidth;
 		BloodLevel3.height = screenHeight;
+	}
+
+	public void ShowTargetName(string text)
+	{
+		TargetNameBackground.alpha = 1;
+		TargetName.alpha = 1;
+		TargetName.text = text;
+		TargetNameBackground.width = TargetName.width + 40;
+		if(TargetNameBackground.width < 100)
+		{
+			TargetNameBackground.width = 100;
+		}
+
+		_isTargetNameFading = false;
+	}
+
+	public void HideTargetName()
+	{
+		TargetNameBackground.alpha = 0;
+		TargetName.alpha = 0;
+		_isTargetNameFading = false;
+	}
+
+	public void FadeTargetName()
+	{
+		_isTargetNameFading = true;
 	}
 
 	public void SetConsoleText(string text)

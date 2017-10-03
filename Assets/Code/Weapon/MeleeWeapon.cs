@@ -90,11 +90,20 @@ public class MeleeWeapon : Weapon
 
 
 
-			bool isBlocked = hitCharacter.SendMeleeDamage(damage, fakeNormal, Attacker, 1f);
+			MeleeBlockType blockType = hitCharacter.SendMeleeDamage(damage, fakeNormal, Attacker, 1f);
 
-			if(isBlocked)
+			if(blockType != MeleeBlockType.NoBlock)
 			{
-				GameObject impact = GameManager.Inst.FXManager.LoadFX("WFX_BImpact Metal", 0, FXType.BulletImpact);
+				GameObject impact;
+				if(blockType == MeleeBlockType.Metal)
+				{
+					impact = GameManager.Inst.FXManager.LoadFX("WFX_BImpact Metal", 0, FXType.BulletImpact);
+				}
+				else
+				{
+					impact = GameManager.Inst.FXManager.LoadFX("BulletImpactWood", 0, FXType.BulletImpact);
+				}
+
 				impact.transform.position = transform.position;
 				impact.transform.rotation = Quaternion.LookRotation(normal);
 
@@ -109,7 +118,14 @@ public class MeleeWeapon : Weapon
 				{
 					int choice = UnityEngine.Random.Range(1, 8);
 					float volume = UnityEngine.Random.Range(0.1f, 0.2f);
-					audio.PlayOneShot(GameManager.Inst.SoundManager.GetClip("melee_block" + choice.ToString()), volume);
+					if(blockType == MeleeBlockType.Metal)
+					{
+						audio.PlayOneShot(GameManager.Inst.SoundManager.GetClip("melee_block" + choice.ToString()), volume);
+					}
+					else
+					{
+						audio.PlayOneShot(GameManager.Inst.SoundManager.GetClip("body_hit" + choice.ToString()), volume);
+					}
 				}
 
 			}

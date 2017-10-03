@@ -188,6 +188,11 @@ public class WorldManager
 		CurrentEnvironment = AllEnvironments[name];
 	}
 
+	public void ChangeEnvironment()
+	{
+		ChangeEnvironment(CurrentEnvironment.Name);
+	}
+
 	public void AdvanceTime(int hours, int minutes)
 	{
 		CurrentTime += (hours * 60 + minutes);

@@ -1650,11 +1650,11 @@ public class HumanCharacter : Character
 		return false;
 	}
 
-	public override bool SendMeleeDamage (Damage damage, Vector3 hitNormal, Character attacker, float knockBackChance)
+	public override MeleeBlockType SendMeleeDamage (Damage damage, Vector3 hitNormal, Character attacker, float knockBackChance)
 	{
 		if(MyAI.ControlType == AIControlType.Player && GameManager.Inst.GodMode)
 		{
-			return true;
+			return MeleeBlockType.SoftArmor;
 		}
 
 		float attackerAngle = Vector3.Angle(transform.forward, transform.position - attacker.transform.position);
@@ -1687,7 +1687,7 @@ public class HumanCharacter : Character
 				IsBodyLocked = true;
 			}
 
-			return true;
+			return MeleeBlockType.Metal;
 		}
 		else
 		{
@@ -1759,13 +1759,13 @@ public class HumanCharacter : Character
 			if(finalDamage <= 0)
 			{
 				Debug.Log("no damage");
-				return true;
+				return MeleeBlockType.SoftArmor;
 			}
 		}
 
 
 
-		return false;
+		return MeleeBlockType.NoBlock;
 	}
 
 

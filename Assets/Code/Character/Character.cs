@@ -73,7 +73,7 @@ public abstract class Character : MonoBehaviour
 	public abstract void SendDelayCallBack(float delay, DelayCallBack callback, object parameter);
 	public abstract void SendCommand(CharacterCommands command);
 	public abstract bool SendDamage(Damage damage, Vector3 hitNormal, Character attacker, Weapon attackerWeapon);
-	public abstract bool SendMeleeDamage (Damage damage, Vector3 hitNormal, Character attacker, float knockBackChance);
+	public abstract MeleeBlockType SendMeleeDamage (Damage damage, Vector3 hitNormal, Character attacker, float knockBackChance);
 	public abstract void Unhook();
 	public abstract void PlayVocal(VocalType vocalType);
 	public abstract Vector3 GetCharacterVelocity();

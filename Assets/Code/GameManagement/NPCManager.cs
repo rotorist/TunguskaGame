@@ -368,7 +368,7 @@ public class NPCManager
 
 		foreach(HumanCharacter h in _humansInScene)
 		{
-			if(h.MyStatus.Health > 0 && h.MyAI.IsCharacterEnemy(GameManager.Inst.PlayerControl.SelectedPC) && Vector3.Distance(playerPos, h.transform.position) < distance)
+			if(h.MyStatus.Health > 0 && h.MyAI.IsCharacterEnemy(GameManager.Inst.PlayerControl.SelectedPC) < 1 && Vector3.Distance(playerPos, h.transform.position) < distance)
 			{
 				enemies ++;
 			}

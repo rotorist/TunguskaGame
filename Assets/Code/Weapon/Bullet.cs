@@ -82,6 +82,8 @@ public class Bullet : MonoBehaviour
 	void OnCollisionEnter(Collision collision) 
 	{
 		Character hitCharacter = collision.collider.GetComponent<Character>();
+		DeathCollider deathCollider = collision.collider.GetComponent<DeathCollider>();
+
 		if(hitCharacter == ParentWeapon.Attacker)
 		{
 			return;
@@ -148,7 +150,13 @@ public class Bullet : MonoBehaviour
 
 			string clipName = "";
 			string holeName = "";
-			if(material == null)
+
+			if(deathCollider != null)
+			{
+				impact = GameManager.Inst.FXManager.LoadFX("BulletImpactSand", 0, FXType.BulletImpact);
+				clipName = "bullet_sand";
+			}
+			else if(material == null)
 			{
 				impact = GameManager.Inst.FXManager.LoadFX("BulletImpactConcrete", 0, FXType.BulletImpact);
 				clipName = "bullet_default";

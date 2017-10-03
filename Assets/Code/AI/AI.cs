@@ -175,23 +175,31 @@ public class AI : MonoBehaviour
 		}
 	}
 
-	public bool IsCharacterEnemy(Character c)
+	public int IsCharacterEnemy(Character c) //0=enemy, 1=negative neutral, 2=positive neutral, 3=friendly
 	{
 		if(_parentCharacter.Faction == c.Faction)
 		{
 			if(_parentCharacter.Faction != Faction.Loner)
 			{
-				return false;
+				return 3;
 			}
 			else
 			{
 				if(_parentCharacter.SquadID == c.SquadID)
 				{
-					return false;
+					return 3;
 				}
 				else
 				{
-					return (Convert.ToInt32(c.SquadID) + Convert.ToInt32(_parentCharacter.SquadID)) > 30; //loner relationships are random
+					int rand = (Convert.ToInt32(c.SquadID) + Convert.ToInt32(_parentCharacter.SquadID)); //loner relationships are random
+					if(rand > 30)
+					{
+						return 0;
+					}
+					else
+					{
+						return 2;
+					}
 				}
 			}
 		}
@@ -202,15 +210,31 @@ public class AI : MonoBehaviour
 
 			if(myFaction == null || otherFaction == null)
 			{
-				return true;
+				return 0;
 			}
 
-			return myFaction.GetRelationshipByID(c.Faction) <= 0.25f;
+			float relationship = myFaction.GetRelationshipByID(c.Faction);
+			if(relationship <= 0.25f)
+			{
+				return 0;
+			}
+			else if(relationship <= 0.5f)
+			{
+				return 1;
+			}
+			else if(relationship <= 0.75f)
+			{
+				return 2;
+			}
+			else if(relationship > 0.75f)
+			{
+				return 3;
+			}
 
 		}
 
 
-		return false;
+		return 0;
 	}
 
 

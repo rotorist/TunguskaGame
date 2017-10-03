@@ -42,10 +42,12 @@ public class RestingPanel : PanelBase
 			GameManager.Inst.SaveGameManager.Save("TestSave", "");
 
 			//increase stats
-			GameManager.Inst.PlayerControl.Survival.CompleteResting();
+			GameManager.Inst.PlayerControl.Survival.CompleteResting(_hours);
 
 			//close window
 			Hide();
+
+			GameManager.Inst.WorldManager.ChangeEnvironment();
 		}
 
 	}
@@ -121,16 +123,19 @@ public class RestingPanel : PanelBase
 		float calories = GameManager.Inst.PlayerControl.Survival.GetEatenCalories();
 		if(calories <= 0)
 		{
-			GameManager.Inst.UIManager.SetConsoleText("Too hungry to rest. Need to eat something.");
-			return;
+			GameManager.Inst.UIManager.SetConsoleText("I still feel hungry. Resting like this won't help me feel better.");
+
 		}
 		else
 		{
-			//start resting
-			GameManager.Inst.UIManager.FadingPanel.FadeOutAndIn(1, 1, 1);
-			_isFading = true;
-			_timer = 0;
+			GameManager.Inst.UIManager.SetConsoleText("With food in the stomache, resting will heal my wound.");
 		}
+
+		//start resting
+		GameManager.Inst.UIManager.FadingPanel.FadeOutAndIn(1, 1, 1);
+		_isFading = true;
+		_timer = 0;
+
 	}
 
 	public void OnMouseWheelInput(float movement)

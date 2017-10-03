@@ -279,6 +279,7 @@ public class SaveGameManager
 		bf.Serialize(file, CurrentSave);
 
 		Debug.Log(saveGameName + " has been saved");
+		GameManager.Inst.UIManager.SetConsoleText("Game saved.");
 	}
 
 	public string LoadLevelName(string saveGameName)

@@ -32,16 +32,9 @@ public class SplitItemPanel : PanelBase
 
 		QuantitySlider.numberOfSteps = Target.GetQuantity();
 
-		if(Target.Item.IsUsable)
-		{
-			QuantitySlider.value = 1f / Target.GetQuantity();
-		}
-		else
-		{
-			QuantitySlider.value = (Target.GetQuantity() * 1f) / Target.GetQuantity();
-		}
-
-		_quanity = Mathf.RoundToInt(QuantitySlider.value * Target.GetQuantity());
+		_quanity = Target.GetQuantity();
+		QuantitySlider.value = 1;
+		QuantityLabel.text = _quanity.ToString();
 
 		if(Target.Item.IsUsable && Target.IsPlayerOwned)
 		{

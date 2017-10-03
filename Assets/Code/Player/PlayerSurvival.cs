@@ -190,8 +190,13 @@ public class PlayerSurvival
 		return true;
 	}
 
-	public void CompleteResting()
+	public void CompleteResting(int hours)
 	{
+		CharacterStatus myStatus = GameManager.Inst.PlayerControl.SelectedPC.MyStatus;
+
+
+
+
 		//check if player is near campfire
 		bool isNearCampfire = false;
 		Vector3 playerPos = GameManager.Inst.PlayerControl.SelectedPC.transform.position;
@@ -204,15 +209,46 @@ public class PlayerSurvival
 			}
 		}
 
-		CharacterStatus myStatus = GameManager.Inst.PlayerControl.SelectedPC.MyStatus;
-		float energy = _eatenCalories;
-		myStatus.SetEnergy(myStatus.Energy + energy * (isNearCampfire ? 2 : 1));
-		_eatenCalories = 0;
 
+		if(_eatenCalories <= 0)
+		{
+			float consumption = 50 * hours;
+			if(!isNearCampfire)
+			{
+				consumption = 75 * hours;
+			}
+			myStatus.SetEnergy(myStatus.Energy - consumption);
+			GameManager.Inst.UIManager.SetConsoleText("Sleeping with empty stomach consumed " + consumption + " calories of energy");
+
+			return;
+		}
+			
+
+		myStatus = GameManager.Inst.PlayerControl.SelectedPC.MyStatus;
+		bool isHealthRestored = false;
 		if(myStatus.Health / myStatus.MaxHealth < 0.8f)
 		{
 			myStatus.Health = myStatus.MaxHealth * 0.8f;
+			isHealthRestored = true;
 		}
+
+		float energy = _eatenCalories;
+		if(isNearCampfire)
+		{
+			energy = energy * 2;
+		}
+		myStatus.SetEnergy(myStatus.Energy + energy);
+		_eatenCalories = 0;
+
+		if(isHealthRestored)
+		{
+			GameManager.Inst.UIManager.SetConsoleText("A good rest restored " + energy + " energy and restored health up to 80%.");
+		}
+		else
+		{
+			GameManager.Inst.UIManager.SetConsoleText("A good rest restored " + energy + " energy.");
+		}
+
 
 		if(isNearCampfire)
 		{

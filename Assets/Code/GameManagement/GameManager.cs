@@ -263,6 +263,7 @@ public class GameManager : MonoBehaviour
 		{
 			//setup new game
 			UIEventHandler.Instance.TriggerJournal();
+			NGUITools.SetActive(UIManager.HUDPanel.HelpText.gameObject, true);
 			GameManager.Inst.SaveGameManager.Save("TestSave", "");
 			saveNameRef.IsNewGame = false;
 		}

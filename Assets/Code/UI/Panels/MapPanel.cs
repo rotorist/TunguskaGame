@@ -6,12 +6,17 @@ using UnityStandardAssets.ImageEffects;
 public class MapPanel : PanelBase
 {
 	public UIButton Close;
+	public UISprite PencilCircle;
+	public UISprite Map;
 
+	private float _mapWorldRatio;
 
 	public override void Initialize ()
 	{
+		_mapWorldRatio = GetMapWorldRatio();
 
 		Hide();
+
 	}
 
 	public override void PerFrameUpdate ()
@@ -28,6 +33,7 @@ public class MapPanel : PanelBase
 		NGUITools.SetActive(this.gameObject, true);
 		this.IsActive = true;
 
+		RearrangePencilCircle();
 
 		InputEventHandler.Instance.State = UserInputState.PopupOpen;
 
@@ -70,5 +76,21 @@ public class MapPanel : PanelBase
 		Hide();
 	}
 		
+	private void RearrangePencilCircle()
+	{
+		Transform centerRef = GameObject.Find("CenterReference").transform;
+		Vector3 worldDisplacement = GameManager.Inst.PlayerControl.SelectedPC.transform.position - centerRef.position;
+		worldDisplacement = new Vector2(worldDisplacement.x, worldDisplacement.z);
+		PencilCircle.transform.localPosition = worldDisplacement * _mapWorldRatio;
+
+	}
+
+	private float GetMapWorldRatio()
+	{
+		Transform centerRef = GameObject.Find("CenterReference").transform;
+		Transform northRef = GameObject.Find("NorthReference").transform;
+
+		return Vector3.Distance(Vector3.zero, PencilCircle.transform.localPosition) / Vector3.Distance(centerRef.position, northRef.position);
+	}
 
 }

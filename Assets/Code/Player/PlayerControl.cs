@@ -248,7 +248,7 @@ public class PlayerControl
 				{
 					AimedObjectType = AimedObjectType.Body;
 				}
-				else if(c.MyAI.IsCharacterEnemy(SelectedPC))
+				else if(c.MyAI.IsCharacterEnemy(SelectedPC) <= 0)
 				{
 					
 				}

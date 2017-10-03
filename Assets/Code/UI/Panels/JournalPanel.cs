@@ -119,6 +119,11 @@ public class JournalPanel : PanelBase
 		}
 	}
 
+	public void OnCloseButtonClick()
+	{
+		Hide();
+	}
+
 
 	private void LoadJournal()
 	{

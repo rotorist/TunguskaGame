@@ -380,7 +380,7 @@ public class AISensor
 				//Debug.Log("AI Sensor update enemy relationship " + relationship);
 				if(relationship > 1 && c != _parentCharacter.Killer)
 				{
-					if(dist > _parentCharacter.MyAI.BlackBoard.DefenseRadius * 1.5f)
+					if(dist > _parentCharacter.MyAI.BlackBoard.DefenseRadius * 2f)
 					{
 						highThreat = 0f;
 						_parentCharacter.MyAI.BlackBoard.GuardLevel = originalGuardLevel;

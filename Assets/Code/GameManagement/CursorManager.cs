@@ -87,6 +87,8 @@ public class CursorManager
 		_isShowingToolTip = true;
 	}
 
+
+
 	public void HideToolTip()
 	{
 		if(ToolTip != null)
@@ -100,6 +102,7 @@ public class CursorManager
 	public void OnResetCursor()
 	{
 		HideToolTip();
+		GameManager.Inst.UIManager.HUDPanel.HideTargetName();
 		SetCursorState(CursorState.Default);
 	}
 
@@ -135,6 +138,7 @@ public class CursorManager
 		{
 			SetCursorState(CursorState.Default);
 			HideToolTip();
+			GameManager.Inst.UIManager.HUDPanel.HideTargetName();
 		}
 
 		//Debug.Log(Input.mousePosition);
@@ -206,18 +210,20 @@ public class CursorManager
 				{
 					quantity = "(" + pickup.Quantity + ")";
 				}
-				ShowToolTip(pickup.Item.Name + quantity);
+				//ShowToolTip(pickup.Item.Name + quantity);
+				GameManager.Inst.UIManager.HUDPanel.ShowTargetName(pickup.Item.Name + quantity);
 				SetCursorState(CursorState.Hand);
 			}
 			else if(aimedObject != null && aimedObject.GetComponent<StoryObject>() != null)
 			{
-				ShowToolTip(aimedObject.GetComponent<StoryObject>().Name);
+				//ShowToolTip(aimedObject.GetComponent<StoryObject>().Name);
+				GameManager.Inst.UIManager.HUDPanel.ShowTargetName(aimedObject.GetComponent<StoryObject>().Name);
 				SetCursorState(CursorState.Hand);
 			}
 			else if(aimedObject != null && aimedObject.GetComponent<Character>() != null)
 			{
 				Character aimedCharacter = aimedObject.GetComponent<Character>();
-				if(aimedCharacter != null && aimedCharacter.MyStatus.Health > 0 && !aimedCharacter.MyAI.IsCharacterEnemy((Character)GameManager.Inst.PlayerControl.SelectedPC)
+				if(aimedCharacter != null && aimedCharacter.MyStatus.Health > 0 && aimedCharacter.MyAI.IsCharacterEnemy((Character)GameManager.Inst.PlayerControl.SelectedPC) >= 2
 					&& aimedCharacter.MyAI.ControlType != AIControlType.Player && !aimedCharacter.IsHidden)
 				{
 					SetCursorState(CursorState.Talk);
@@ -235,12 +241,14 @@ public class CursorManager
 
 				if(!string.IsNullOrEmpty(name) && !aimedCharacter.IsHidden)
 				{
-					ShowToolTip(name);
+					//ShowToolTip(name);
+					GameManager.Inst.UIManager.HUDPanel.ShowTargetName(name);
 				}
 			}
 			else if(aimedObject != null && aimedObject.tag == "SerumLab")
 			{
-				ShowToolTip("Serum Lab");
+				//ShowToolTip("Serum Lab");
+				GameManager.Inst.UIManager.HUDPanel.ShowTargetName("Serum Lab");
 				SetCursorState(CursorState.Hand);
 			}
 			else if(aimedObject != null)
@@ -278,13 +286,14 @@ public class CursorManager
 				}
 
 				HideToolTip();
-
+				GameManager.Inst.UIManager.HUDPanel.FadeTargetName();
 			}
 			else
 			{
 				//Debug.Log("setting cursor to default");
 				SetCursorState(CursorState.Default);
 				HideToolTip();
+				GameManager.Inst.UIManager.HUDPanel.FadeTargetName();
 			}
 		}
 		else
@@ -292,6 +301,7 @@ public class CursorManager
 			//Debug.Log("setting cursor to default");
 			SetCursorState(CursorState.Default);
 			HideToolTip();
+			GameManager.Inst.UIManager.HUDPanel.HideTargetName();
 		}
 
 

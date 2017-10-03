@@ -214,7 +214,7 @@ public class InputEventHandler
 	{
 		if(OnGamePause != null)
 		{
-			OnGamePause();
+			//OnGamePause();
 		}
 	}
 
@@ -222,7 +222,7 @@ public class InputEventHandler
 	{
 		if(OnGameUnpause != null)
 		{
-			OnGameUnpause();
+			//OnGameUnpause();
 		}
 	}
 
@@ -248,6 +248,14 @@ public class InputEventHandler
 		{
 
 			UIEventHandler.Instance.TriggerCloseWindow();
+		}
+
+		if(Input.GetKeyDown(KeyCode.J))
+		{
+			if(GameManager.Inst.UIManager.WindowPanel.JournalPanel.IsActive)
+			{
+				UIEventHandler.Instance.TriggerCloseWindow();
+			}
 		}
 	}
 
@@ -415,7 +423,7 @@ public class InputEventHandler
 		{
 			if(OnGameTogglePause != null)
 			{
-				OnGameTogglePause();
+				//OnGameTogglePause();
 			}
 		}
 
@@ -775,7 +783,9 @@ public class InputEventHandler
 
 			if(Input.GetKeyDown(KeyCode.J))
 			{
+
 				UIEventHandler.Instance.TriggerJournal();
+
 			}
 
 			if(Input.GetKeyDown(KeyCode.Tab))

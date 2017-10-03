@@ -349,3 +349,10 @@ public enum ContainerSoundType
 	Metal,
 	Body,
 }
+
+public enum MeleeBlockType
+{
+	NoBlock,
+	Metal,
+	SoftArmor,
+}

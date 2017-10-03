@@ -71,7 +71,7 @@ public class ActionIntimidateTarget : GoapAction
 		}
 
 		float dist = Vector3.Distance(ParentCharacter.MyAI.BlackBoard.DefensePoint, ParentCharacter.MyAI.BlackBoard.TargetEnemy.transform.position);
-		if(dist > ParentCharacter.MyAI.BlackBoard.DefenseRadius * 1.5f)
+		if(dist > ParentCharacter.MyAI.BlackBoard.DefenseRadius * 2f)
 		{
 			return true;
 		}
@@ -137,7 +137,7 @@ public class ActionIntimidateTarget : GoapAction
 			Vector3.Distance(ParentCharacter.transform.position, ParentCharacter.MyAI.BlackBoard.TargetEnemy.transform.position) > 8 &&
 			ParentCharacter.MyAI.BlackBoard.TargetEnemyThreat >= 0.33f && 
 			!ParentCharacter.MyJobs.Contains(NPCJobs.Guard) &&
-			Vector3.Distance(ParentCharacter.MyAI.BlackBoard.DefensePoint, ParentCharacter.MyAI.BlackBoard.TargetEnemy.transform.position) < ParentCharacter.MyAI.BlackBoard.DefenseRadius * 1.5f)
+			Vector3.Distance(ParentCharacter.MyAI.BlackBoard.DefensePoint, ParentCharacter.MyAI.BlackBoard.TargetEnemy.transform.position) < ParentCharacter.MyAI.BlackBoard.DefenseRadius * 2f)
 		{
 			ParentCharacter.Destination = ParentCharacter.MyAI.BlackBoard.TargetEnemy.transform.position;
 			ParentCharacter.SendCommand(CharacterCommands.StopAim);
