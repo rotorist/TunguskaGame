@@ -35,6 +35,11 @@ public class PlayerTimedAction
 				_isInAction = false;
 			}
 		}
+		else
+		{
+			_timedActionTimer = 0;
+
+		}
 	}
 
 
@@ -121,7 +126,7 @@ public class PlayerTimedAction
 
 	public void CancelAimThenShoot()
 	{
-		_cancelRequested = true;
+		//_cancelRequested = true;
 	}
 
 	#endregion

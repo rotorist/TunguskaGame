@@ -120,7 +120,7 @@ public class ItemManager
 		//inventory1.RifleSlot = LoadItem("ak47");
 		//inventory1.ThrowSlot = LoadItem("f1grenade");
 		//inventory1.ArmorSlot = LoadItem("flakjacket");
-		//inventory1.SideArmSlot = LoadItem("machete");
+		inventory1.SideArmSlot = LoadItem("machete");
 		//inventory1.HeadSlot = LoadItem("kevlarhelmet");
 		inventory1.ToolSlot = LoadItem("geigercounter");
 
@@ -395,10 +395,10 @@ public class ItemManager
 			if(character.Faction == Faction.Mutants)
 			{
 				//add mutant part depending on cause of death
-				float dropRate = 0.2f;
+				float dropRate = 0.5f;
 				if(character.DeathReason == DamageType.Melee)
 				{
-					dropRate = 0.4f;
+					dropRate = 0.85f;
 				}
 
 				string [] dropItems = new string[]{"mutantheart", "mutantbrain", "mutantblood"};
@@ -406,16 +406,18 @@ public class ItemManager
 				if(UnityEngine.Random.value < dropRate)
 				{
 					Item dropItem = LoadItem(dropItems[UnityEngine.Random.Range(0, dropItems.Length)]);
-					int dropQuantity = UnityEngine.Random.Range(1, dropItem.MaxStackSize + 1);
+					float rarity = (float)dropItem.GetAttributeByName("_Rarity").Value;
+					int maxDrop = Mathf.CeilToInt(dropItem.MaxStackSize * GameManager.Inst.Constants.RarityDropRate.Evaluate(rarity));
+					int dropQuantity = UnityEngine.Random.Range(1, maxDrop + 1);
 					items.Add(new GridItemData(dropItem, 0, 0, GridItemOrient.Landscape, dropQuantity));
 				}
 			}
 			else if(character.Faction == Faction.Scythes)
 			{
-				float dropRate = 0.1f;
+				float dropRate = 0.4f;
 				if(character.DeathReason == DamageType.Melee)
 				{
-					dropRate = 0.3f;
+					dropRate = 0.85f;
 				}
 
 				string [] dropItems = new string[]{"scytheblood"};
@@ -423,7 +425,9 @@ public class ItemManager
 				if(UnityEngine.Random.value < dropRate)
 				{
 					Item dropItem = LoadItem(dropItems[UnityEngine.Random.Range(0, dropItems.Length)]);
-					int dropQuantity = UnityEngine.Random.Range(1, dropItem.MaxStackSize + 1);
+					float rarity = (float)dropItem.GetAttributeByName("_Rarity").Value;
+					int maxDrop = Mathf.CeilToInt(dropItem.MaxStackSize * GameManager.Inst.Constants.RarityDropRate.Evaluate(rarity));
+					int dropQuantity = UnityEngine.Random.Range(1, maxDrop + 1);
 					items.Add(new GridItemData(dropItem, 0, 0, GridItemOrient.Landscape, dropQuantity));
 				}
 			}

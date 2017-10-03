@@ -127,13 +127,13 @@ public class CameraController : MonoBehaviour
 			weapon = currentWeapon.GetComponent<Weapon>();
 		}
 
-		if(weapon != null)
+		//if(weapon != null)
 		{
-			if(weapon.IsScoped && pc.UpperBodyState == HumanUpperBodyStates.Aim)
+			//if(weapon.IsScoped && pc.UpperBodyState == HumanUpperBodyStates.Aim)
 			{
-				lookAheadPos = _cameraPos + cameraPanDir * panDist * 2f;
+				//lookAheadPos = _cameraPos + cameraPanDir * panDist * 2f;
 			}
-			else
+			//else
 			{
 				/*
 				if(mousePos.y > 0)
@@ -145,12 +145,13 @@ public class CameraController : MonoBehaviour
 					lookAheadPos = _cameraPos + cameraPanDir * panDistX * 0.1f;
 				}
 				*/
+
 				lookAheadPos = _cameraPos + cameraPanDir * panDist * 0.5f;
 			}
 		}
-		else
+		//else
 		{
-			lookAheadPos = _cameraPos + cameraPanDir * panDist;
+			//lookAheadPos = _cameraPos + cameraPanDir * panDist;
 		}
 
 
@@ -173,23 +174,23 @@ public class CameraController : MonoBehaviour
 			{
 				if( _maxFov >= HighFov)
 				{
-					if(weapon != null)
+					//if(weapon != null)
 					{
 						//if using sniper, then don't change camera angle
-						if(!weapon.IsScoped || pc.UpperBodyState != HumanUpperBodyStates.Aim)
+						//if(!weapon.IsScoped || pc.UpperBodyState != HumanUpperBodyStates.Aim)
 						{
 							_cameraAngle1 = CameraBaseAngle - CameraAngleCurve.Evaluate(mouseAngle / 180) * 15 * PanDistCurve.Evaluate(Mathf.Abs(mousePos.y / (Screen.height/2)));//PanDistCurve.Evaluate(panDist / MaxPanDist);
 						}
-						else
+						//else
 						{
-							_cameraAngle1 = CameraBaseAngle;
+							//_cameraAngle1 = CameraBaseAngle;
 						}
 
 						cameraFov *= 0.85f;
 					}
-					else
+					//else
 					{
-						_cameraAngle1 = CameraBaseAngle;
+						//_cameraAngle1 = CameraBaseAngle;
 					}
 						
 				}
@@ -319,7 +320,13 @@ public class CameraController : MonoBehaviour
 			GameObject marker = GameObject.Find("BoundaryMarker_" + i.ToString());
 			_boundaryPoints[i] = new Vector2(marker.transform.position.x, marker.transform.position.z);
 		}
-
+			
+		//disable image effects for low quality
+		if(QualitySettings.GetQualityLevel() < 1)
+		{
+			MainCamera.GetComponent<Bloom>().enabled = false;
+			MainCamera.GetComponent<ScreenSpaceAmbientObscurance>().enabled = false;
+		}
 	}
 
 	public void ResetCamera()

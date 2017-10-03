@@ -248,11 +248,7 @@ public class PlayerControl
 				{
 					AimedObjectType = AimedObjectType.Body;
 				}
-				else if(c.MyAI.IsCharacterEnemy(SelectedPC) <= 0)
-				{
-					
-				}
-				else
+				else if(c.MyAI.IsCharacterEnemy(SelectedPC) > 1)
 				{
 					AimedObjectType = AimedObjectType.Friendly;
 				}
@@ -269,10 +265,6 @@ public class PlayerControl
 			else if(_aimedObject.GetComponent<Chest>() != null)
 			{
 				AimedObjectType = AimedObjectType.Chest;
-			}
-			else if(_aimedObject.tag == "Interactive")
-			{
-				AimedObjectType = AimedObjectType.Interactive;
 			}
 			else if(_aimedObject.tag == "Door" || _aimedObject.tag == "Portal")
 			{
@@ -981,7 +973,7 @@ public class PlayerControl
 			}
 			else if(currentWeapon == WeaponAnimType.Melee)
 			{
-				Debug.Log("attempting to strike melee");
+				//Debug.Log("attempting to strike melee");
 				if(SelectedPC.GetMeleeStrikeStage() == 0 && SelectedPC.ActionState != HumanActionStates.Twitch)
 				{
 					SelectedPC.SendCommand(CharacterCommands.LeftAttack);
@@ -993,9 +985,10 @@ public class PlayerControl
 			{
 				if(SelectedPC.UpperBodyState != HumanUpperBodyStates.Aim)
 				{
-					if(AimedObjectType == AimedObjectType.None || AimedObjectType == AimedObjectType.Enemy)
+					//if(AimedObjectType == AimedObjectType.Enemy)
 					{
-						TimedAction.StartTimedAction(TimedAction.StartAimThenShoot, TimedAction.EndAimThenShoot, TimedAction.CancelAimThenShoot, 0.5f);
+						
+						TimedAction.StartTimedAction(TimedAction.StartAimThenShoot, TimedAction.EndAimThenShoot, TimedAction.CancelAimThenShoot, 0.3f);
 					}
 				} 
 				else
