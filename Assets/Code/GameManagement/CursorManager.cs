@@ -179,6 +179,7 @@ public class CursorManager
 
 		GameObject aimedObject = GameManager.Inst.PlayerControl.GetAimedObject();
 
+
 		if(GameManager.Inst.PlayerControl.SelectedPC.MyAI.ControlType == AIControlType.Player)
 		{
 			
@@ -187,10 +188,7 @@ public class CursorManager
 				|| GameManager.Inst.PlayerControl.SelectedPC.UpperBodyState == HumanUpperBodyStates.HalfAim) 
 				&& !GameManager.Inst.UIManager.IsCursorInHUDRegion())
 			{
-				//Debug.Log("setting cursor to aim");
 				SetCursorState(CursorState.Aim);
-
-
 
 				/*
 				//now check if aimed object is enemy
@@ -202,91 +200,94 @@ public class CursorManager
 				}
 				*/
 			}
-			else if(aimedObject != null && aimedObject.GetComponent<PickupItem>() != null)
+			else if(aimedObject != null && Vector3.Distance(GameManager.Inst.PlayerControl.SelectedPC.transform.position, aimedObject.transform.position) < 10)
 			{
-				PickupItem pickup = aimedObject.GetComponent<PickupItem>();
-				string quantity = "";
-				if(pickup.Quantity > 1)
+				if(aimedObject.GetComponent<PickupItem>() != null)
 				{
-					quantity = "(" + pickup.Quantity + ")";
-				}
-				//ShowToolTip(pickup.Item.Name + quantity);
-				GameManager.Inst.UIManager.HUDPanel.ShowTargetName(pickup.Item.Name + quantity);
-				SetCursorState(CursorState.Hand);
-			}
-			else if(aimedObject != null && aimedObject.GetComponent<StoryObject>() != null)
-			{
-				//ShowToolTip(aimedObject.GetComponent<StoryObject>().Name);
-				GameManager.Inst.UIManager.HUDPanel.ShowTargetName(aimedObject.GetComponent<StoryObject>().Name);
-				SetCursorState(CursorState.Hand);
-			}
-			else if(aimedObject != null && aimedObject.GetComponent<Character>() != null)
-			{
-				Character aimedCharacter = aimedObject.GetComponent<Character>();
-				if(aimedCharacter != null && aimedCharacter.MyStatus.Health > 0 && aimedCharacter.MyAI.IsCharacterEnemy((Character)GameManager.Inst.PlayerControl.SelectedPC) >= 2
-					&& aimedCharacter.MyAI.ControlType != AIControlType.Player && !aimedCharacter.IsHidden)
-				{
-					SetCursorState(CursorState.Talk);
-				}
-				else
-				{
-					SetCursorState(CursorState.Default);
-				}
-
-				string name = aimedCharacter.Name;
-				if(!string.IsNullOrEmpty(aimedCharacter.Title))
-				{
-					name = aimedCharacter.Title + " " + name;
-				}
-
-				if(!string.IsNullOrEmpty(name) && !aimedCharacter.IsHidden)
-				{
-					//ShowToolTip(name);
-					GameManager.Inst.UIManager.HUDPanel.ShowTargetName(name);
-				}
-			}
-			else if(aimedObject != null && aimedObject.tag == "SerumLab")
-			{
-				//ShowToolTip("Serum Lab");
-				GameManager.Inst.UIManager.HUDPanel.ShowTargetName("Serum Lab");
-				SetCursorState(CursorState.Hand);
-			}
-			else if(aimedObject != null)
-			{
-				DeathCollider deathCollider = aimedObject.GetComponent<DeathCollider>();
-				if(deathCollider != null)
-				{
-					Character aimedCharacter = deathCollider.ParentCharacter;
-					if(aimedCharacter != null && aimedCharacter.MyStatus.Health <= 0)
+					PickupItem pickup = aimedObject.GetComponent<PickupItem>();
+					string quantity = "";
+					if(pickup.Quantity > 1)
 					{
-						SetCursorState(CursorState.Hand);
+						quantity = "(" + pickup.Quantity + ")";
+					}
+					//ShowToolTip(pickup.Item.Name + quantity);
+					GameManager.Inst.UIManager.HUDPanel.ShowTargetName(pickup.Item.Name + quantity);
+					SetCursorState(CursorState.Hand);
+				}
+				else if(aimedObject.GetComponent<StoryObject>() != null)
+				{
+					//ShowToolTip(aimedObject.GetComponent<StoryObject>().Name);
+					GameManager.Inst.UIManager.HUDPanel.ShowTargetName(aimedObject.GetComponent<StoryObject>().Name);
+					SetCursorState(CursorState.Hand);
+				}
+				else if(aimedObject.GetComponent<Character>() != null)
+				{
+					Character aimedCharacter = aimedObject.GetComponent<Character>();
+					if(aimedCharacter != null && aimedCharacter.MyStatus.Health > 0 && aimedCharacter.MyAI.IsCharacterEnemy((Character)GameManager.Inst.PlayerControl.SelectedPC) >= 2
+						&& aimedCharacter.MyAI.ControlType != AIControlType.Player && !aimedCharacter.IsHidden)
+					{
+						SetCursorState(CursorState.Talk);
 					}
 					else
 					{
 						SetCursorState(CursorState.Default);
 					}
-				}
-				else if(aimedObject.tag == "Chest" && aimedObject.GetComponent<Chest>() != null)
-				{
-					SetCursorState(CursorState.Hand);
-				}
-				else if(aimedObject.tag == "Door" || aimedObject.tag == "LightSwitch")
-				{
-					SetCursorState(CursorState.Hand);
-				}
-				else if(aimedObject.tag == "Portal")
-				{
 
-					SetCursorState(CursorState.Portal);
+					string name = aimedCharacter.Name;
+					if(!string.IsNullOrEmpty(aimedCharacter.Title))
+					{
+						name = aimedCharacter.Title + " " + name;
+					}
+
+					if(!string.IsNullOrEmpty(name) && !aimedCharacter.IsHidden)
+					{
+						//ShowToolTip(name);
+						GameManager.Inst.UIManager.HUDPanel.ShowTargetName(name);
+					}
+				}
+				else if(aimedObject.tag == "SerumLab")
+				{
+					//ShowToolTip("Serum Lab");
+					GameManager.Inst.UIManager.HUDPanel.ShowTargetName("Serum Lab");
+					SetCursorState(CursorState.Hand);
 				}
 				else
 				{
-					//Debug.Log("setting cursor to default");
-					SetCursorState(CursorState.Default);
-				}
+					DeathCollider deathCollider = aimedObject.GetComponent<DeathCollider>();
+					if(deathCollider != null)
+					{
+						Character aimedCharacter = deathCollider.ParentCharacter;
+						if(aimedCharacter != null && aimedCharacter.MyStatus.Health <= 0)
+						{
+							SetCursorState(CursorState.Hand);
+						}
+						else
+						{
+							SetCursorState(CursorState.Default);
+						}
+					}
+					else if(aimedObject.tag == "Chest" && aimedObject.GetComponent<Chest>() != null)
+					{
+						SetCursorState(CursorState.Hand);
+					}
+					else if(aimedObject.tag == "Door" || aimedObject.tag == "LightSwitch")
+					{
+						SetCursorState(CursorState.Hand);
+					}
+					else if(aimedObject.tag == "Portal")
+					{
 
-				HideToolTip();
-				GameManager.Inst.UIManager.HUDPanel.FadeTargetName();
+						SetCursorState(CursorState.Portal);
+					}
+					else
+					{
+						//Debug.Log("setting cursor to default");
+						SetCursorState(CursorState.Default);
+					}
+
+					HideToolTip();
+					GameManager.Inst.UIManager.HUDPanel.FadeTargetName();
+				}
 			}
 			else
 			{

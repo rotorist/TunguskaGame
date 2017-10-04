@@ -17,6 +17,7 @@ public class PlayerControl
 	public GameObject ViewConeHolder;
 
 	public bool IsHoldToAim;
+	public float AimLerpAngle;
 
 	public HumanCharacter SelectedPC
 	{
@@ -1333,7 +1334,7 @@ public class PlayerControl
 
 				Quaternion rotation = Quaternion.LookRotation(aimDir);
 				c.AimTargetRoot.transform.rotation = Quaternion.Lerp(c.AimTargetRoot.transform.rotation, rotation, Time.deltaTime * 6);
-
+				AimLerpAngle = Vector3.Angle(c.AimTargetRoot.transform.forward, aimDir);
 			}
 			else
 			{
@@ -1343,6 +1344,7 @@ public class PlayerControl
 				Vector3 aimDir = aimPoint - c.AimTargetRoot.position;//c.transform.position;
 				Quaternion rotation = Quaternion.LookRotation(aimDir);
 				c.AimTargetRoot.transform.rotation = Quaternion.Lerp(c.AimTargetRoot.transform.rotation, rotation, Time.deltaTime * 6);
+
 			}
 
 			Vector3 lookPosition;

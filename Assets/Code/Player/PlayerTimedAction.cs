@@ -121,11 +121,13 @@ public class PlayerTimedAction
 		if(_cancelRequested)
 		{
 			GameManager.Inst.PlayerControl.SelectedPC.MyAI.WeaponSystem.StopFiringRangedWeapon();
+
 		}
 	}
 
 	public void CancelAimThenShoot()
 	{
+		GameManager.Inst.PlayerControl.SelectedPC.SendCommand(CharacterCommands.StopAim);
 		//_cancelRequested = true;
 	}
 

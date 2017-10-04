@@ -204,6 +204,12 @@ public class AIWeapon
 
 		//calculate turn/moving scatter
 		float scatterRestore = 3; //TODO: later the restore speed will be based on player skill
+		float aimLerpAngle = 0;
+		if(_parentCharacter.MyAI.ControlType == AIControlType.Player)
+		{
+			aimLerpAngle = GameManager.Inst.PlayerControl.AimLerpAngle;
+		}
+
 		if(((HumanCharacter)_parentCharacter).CurrentAnimState.IsRotatingBody())
 		{
 			//increase scatter
@@ -213,6 +219,10 @@ public class AIWeapon
 		{
 			//increase scatter based on velocity
 			_turnMoveScatter = Mathf.Lerp(_turnMoveScatter, Mathf.Clamp01(_parentCharacter.GetCharacterVelocity().magnitude / 6), Time.deltaTime * 6);
+		}
+		else if(aimLerpAngle > 10)
+		{
+			_turnMoveScatter = Mathf.Clamp01((aimLerpAngle - 10) / 50) * 2;
 		}
 		else
 		{

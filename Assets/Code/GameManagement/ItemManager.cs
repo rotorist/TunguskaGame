@@ -431,6 +431,25 @@ public class ItemManager
 					items.Add(new GridItemData(dropItem, 0, 0, GridItemOrient.Landscape, dropQuantity));
 				}
 			}
+			else if(character.Faction == Faction.Animals)
+			{
+				float dropRate = 0.3f;
+				if(character.DeathReason == DamageType.Melee)
+				{
+					dropRate = 0.55f;
+				}
+
+				string [] dropItems = new string[]{"wolfgallstones"};
+
+				if(UnityEngine.Random.value < dropRate)
+				{
+					Item dropItem = LoadItem(dropItems[UnityEngine.Random.Range(0, dropItems.Length)]);
+					float rarity = (float)dropItem.GetAttributeByName("_Rarity").Value;
+					int maxDrop = Mathf.CeilToInt(dropItem.MaxStackSize * GameManager.Inst.Constants.RarityDropRate.Evaluate(rarity));
+					int dropQuantity = UnityEngine.Random.Range(1, maxDrop + 1);
+					items.Add(new GridItemData(dropItem, 0, 0, GridItemOrient.Landscape, dropQuantity));
+				}
+			}
 		}
 
 
