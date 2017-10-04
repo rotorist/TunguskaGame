@@ -312,6 +312,29 @@ public class HumanCharacter : Character
 		if(this.MyAI != null)
 		{
 			this.MyAI.BlackBoard.EquippedWeapon = null;
+
+
+		}
+
+		//load flashlight
+		if(this.MyReference.FlashlightMount != null)
+		{
+			GameObject flo;
+			if(this.MyReference.VocalSet == VocalSet.player)
+			{
+
+				flo = GameObject.Instantiate(Resources.Load("FlashLightPlayer")) as GameObject;
+			}
+			else
+			{
+				flo = GameObject.Instantiate(Resources.Load("FlashLight")) as GameObject;
+				this.MyReference.FlashlightMount.transform.localEulerAngles = new Vector3(18, 0, 0);
+			}
+
+			MyReference.Flashlight = flo.GetComponent<FlashLight>();
+			flo.transform.parent = this.MyReference.FlashlightMount.transform;
+			flo.transform.localPosition = Vector3.zero;
+			flo.transform.localEulerAngles = Vector3.zero;
 		}
 
 
@@ -599,9 +622,9 @@ public class HumanCharacter : Character
 				MyAimIK.solver.SmoothDisable(6);
 				MyHeadIK.SmoothEnable(6);
 				MyAnimator.SetBool("IsAiming", false);
-				if(MyReference.Flashlight != null)
+				if(MyReference.FlashlightMount != null)
 				{
-					MyReference.Flashlight.transform.localEulerAngles = new Vector3(27, 0, 0);
+					MyReference.FlashlightMount.transform.localEulerAngles = new Vector3(18, 0, 0);
 				}
 
 				if(GetCurrentAnimWeapon() == WeaponAnimType.Pistol || GetCurrentAnimWeapon() == WeaponAnimType.Grenade)
@@ -851,7 +874,7 @@ public class HumanCharacter : Character
 					//	Debug.LogError("Animation parameter IsAiming has been set");
 					if(MyReference.Flashlight != null)
 					{
-						MyReference.Flashlight.transform.localEulerAngles = new Vector3(0, 0, 0);
+						MyReference.FlashlightMount.transform.localEulerAngles = new Vector3(0, 0, 0);
 					}
 				}
 				else

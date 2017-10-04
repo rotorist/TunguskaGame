@@ -5,7 +5,7 @@ public class FlashLight : MonoBehaviour
 {
 	public MeshRenderer LightCone;
 	public Light Light;
-	public Light SecondaryLight;
+	//public Light SecondaryLight;
 	public bool IsOn;
 
 	public void Toggle(bool isOn)
@@ -23,7 +23,7 @@ public class FlashLight : MonoBehaviour
 	{
 		//LightCone.enabled = false;
 		Light.enabled = isOn;
-		SecondaryLight.enabled = isOn;
+		//SecondaryLight.enabled = isOn;
 		IsOn = isOn;
 		if(LightCone != null)
 		{

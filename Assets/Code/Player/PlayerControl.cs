@@ -1135,15 +1135,15 @@ public class PlayerControl
 				}
 				_playerLight.range = 5;
 				_playerLight.transform.localPosition = _playerLightOnPos.localPosition;
-				SelectedPC.MyReference.Flashlight.Light.spotAngle = 40;
-				SelectedPC.MyReference.Flashlight.SecondaryLight.spotAngle = 90;
+				SelectedPC.MyReference.Flashlight.Light.spotAngle = 75;
+				//SelectedPC.MyReference.Flashlight.SecondaryLight.spotAngle = 90;
 				SelectedPC.MyReference.Flashlight.Light.range = 25;
 				SelectedPC.MyReference.Flashlight.Light.intensity = 1.5f;
 				SelectedPC.MyReference.Flashlight.Light.shadows = LightShadows.Soft;
 				SelectedPC.MyReference.Flashlight.Light.shadowNearPlane = 0;
-				SelectedPC.MyReference.Flashlight.SecondaryLight.range = 15;
-				SelectedPC.MyReference.Flashlight.SecondaryLight.intensity = 1.5f;
-				SelectedPC.MyReference.Flashlight.SecondaryLight.shadowNearPlane = 0;
+				//SelectedPC.MyReference.Flashlight.SecondaryLight.range = 15;
+				//SelectedPC.MyReference.Flashlight.SecondaryLight.intensity = 1.5f;
+				//SelectedPC.MyReference.Flashlight.SecondaryLight.shadowNearPlane = 0;
 			}
 			else
 			{

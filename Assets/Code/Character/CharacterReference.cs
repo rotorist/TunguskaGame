@@ -22,6 +22,7 @@ public class CharacterReference : MonoBehaviour
 	public GameObject Eyes;
 	public Character ParentCharacter;
 	public FlashLight Flashlight;
+	public GameObject FlashlightMount;
 	public Weapon FixedMeleeLeft;
 	public Weapon FixedMeleeRight;
 	public BoxCollider DeathCollider;
