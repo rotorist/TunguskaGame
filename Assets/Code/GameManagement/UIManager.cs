@@ -17,6 +17,7 @@ public class UIManager
 	public ConfirmPanel ConfirmPanel;
 	public QuestDebugPanel QuestDebugPanel;
 	public MapPanel MapPanel;
+	public IntroPanel IntroPanel;
 
 	public bool IsInHUDRegion;
 
@@ -65,6 +66,10 @@ public class UIManager
 		MapPanel = UICamera.transform.Find("MapPanel").GetComponent<MapPanel>();
 		MapPanel.Initialize();
 
+		IntroPanel = UICamera.transform.Find("IntroPanel").GetComponent<IntroPanel>();
+		IntroPanel.Initialize();
+
+		_panels.Add(IntroPanel);
 		_panels.Add(MapPanel);
 		_panels.Add(QuestDebugPanel);
 		_panels.Add(DialoguePanel);
@@ -110,6 +115,11 @@ public class UIManager
 		if(QuestDebugPanel.IsActive)
 		{
 			QuestDebugPanel.PerFrameUpdate();
+		}
+
+		if(IntroPanel.IsActive)
+		{
+			IntroPanel.PerFrameUpdate();
 		}
 	}
 

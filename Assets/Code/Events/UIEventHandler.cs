@@ -31,6 +31,8 @@ public class UIEventHandler
 		OnOpenQuestDebugPanel = null;
 		OnOpenMapPanel = null;
 		OnOpenSerumCraftPanel = null;
+		OnStartIntroPanel = null;
+		OnEndIntroPanel = null;
 	}
 
 	#endregion
@@ -58,7 +60,8 @@ public class UIEventHandler
 	public static event GeneralUIEventDelegate OnOpenQuestDebugPanel;
 	public static event GeneralUIEventDelegate OnOpenMapPanel;
 	public static event GeneralUIEventDelegate OnOpenSerumCraftPanel;
-
+	public static event GeneralUIEventDelegate OnStartIntroPanel;
+	public static event GeneralUIEventDelegate OnEndIntroPanel;
 
 	public void TriggerOpenWindow()
 	{
@@ -181,6 +184,22 @@ public class UIEventHandler
 		if(OnOpenSerumCraftPanel != null)
 		{
 			OnOpenSerumCraftPanel();
+		}
+	}
+
+	public void TriggerStartIntro()
+	{
+		if(OnStartIntroPanel != null)
+		{
+			OnStartIntroPanel();
+		}
+	}
+
+	public void TriggerEndIntro()
+	{
+		if(OnEndIntroPanel != null)
+		{
+			OnEndIntroPanel();
 		}
 	}
 }

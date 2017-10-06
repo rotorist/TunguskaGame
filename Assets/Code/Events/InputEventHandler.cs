@@ -194,6 +194,10 @@ public class InputEventHandler
 		{
 
 		}
+		else if(State == UserInputState.Intro)
+		{
+			HandleIntroModeInput();
+		}
 	}
 
 	public void FixedUpdate()
@@ -234,7 +238,10 @@ public class InputEventHandler
 		}
 	}
 
+	public void HandleIntroModeInput()
+	{
 
+	}
 
 	public void HandleWindowModeInput()
 	{
@@ -788,6 +795,12 @@ public class InputEventHandler
 
 			}
 
+			if(Input.GetKeyDown(KeyCode.T))
+			{
+				UIEventHandler.Instance.TriggerJournal();
+				GameManager.Inst.UIManager.WindowPanel.TaskListPanel.Show();
+			}
+
 			if(Input.GetKeyDown(KeyCode.Tab))
 			{
 				UIEventHandler.Instance.TriggerMap();
@@ -828,4 +841,5 @@ public enum UserInputState
 	PopupOpen,
 	Dialogue,
 	Resting,
+	Intro,
 }

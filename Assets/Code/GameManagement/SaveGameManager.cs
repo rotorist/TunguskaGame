@@ -37,6 +37,8 @@ public class SaveGameManager
 		CurrentSave.PlayerLastName = GameManager.Inst.PlayerProgress.PlayerLastName;
 		CurrentSave.DiscoveredTopics = new List<string>(GameManager.Inst.PlayerProgress.DiscoveredTopics);
 		CurrentSave.JournalEntries = new List<List<string>>(GameManager.Inst.PlayerProgress.JournalEntries);
+		CurrentSave.IncompleteTasks = new List<int>(GameManager.Inst.PlayerProgress.IncompleteTasks);
+		CurrentSave.CompletedTasks = new List<int>(GameManager.Inst.PlayerProgress.CompletedTasks);
 
 		//save story conditions
 		CurrentSave.ItemConditions = new List<StoryConditionItem>();
@@ -345,6 +347,8 @@ public class SaveGameManager
 		//load progress
 		GameManager.Inst.PlayerProgress.DiscoveredTopics = new List<string>(CurrentSave.DiscoveredTopics);
 		GameManager.Inst.PlayerProgress.JournalEntries = new List<List<string>>(CurrentSave.JournalEntries);
+		GameManager.Inst.PlayerProgress.IncompleteTasks = new List<int>(CurrentSave.IncompleteTasks);
+		GameManager.Inst.PlayerProgress.CompletedTasks = new List<int>(CurrentSave.CompletedTasks);
 		//load player status
 		GameManager.Inst.PlayerControl.SelectedPC.MyStatus.Data = CurrentSave.PlayerStatus;
 		//load player boosts

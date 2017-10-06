@@ -7,9 +7,12 @@ hook/zsk_read_ivan_note/OnPlayerReadNote
 ./zsk_roadblockgate_toggle
 door/Level1RoadBlockGate/toggle
 
-./zsk_know_blockade
-topic/discover/zsk_blockade
+
+./zsk_talk_razor
 journal/{4}
+topic/discover/boris
+task/complete/1
+task/add/5
 
 ./zsk_irrigator_on
 object/FarmIrrigatorHandle/on
@@ -24,6 +27,8 @@ topic/discover/zsk_farm_clear
 journal/{2}
 expedition/NavNodeGasStationWoods/enable
 expedition/NavNodeVillageWoods/enable
+task/complete/5
+task/add/2
 
 ./zsk_barn_clear_done
 if/param/0/is/zsk_barn_legionnaires
@@ -32,15 +37,16 @@ message/Barn has been cleared!
 
 ./zsk_barn_quest_done1
 condition/zsk_sid_quest/2
-topic/forget/zsk_blockade
 expedition/NavNodeBarn/enable
+task/complete/2
+
 
 ./zsk_barn_quest_done2
 condition/zsk_sid_quest/2
 item/receive/huntingshotgun/1/0.8
 item/receive/ammo12shot/10
-topic/forget/zsk_blockade
 expedition/NavNodeBarn/enable
+task/complete/2
 
 ./zsk_learn_priest
 topic/discover/priest
@@ -72,6 +78,7 @@ condition/zsk_sid_quest/3
 condition/zsk_church_cleared/activate
 condition/zsk_sewer_cleared/activate
 journal/{8}
+task/add/3
 
 
 ./zsk_church_clear_done
@@ -88,6 +95,7 @@ message/Sewer has been cleared!
 ./zsk_sid_church_quest_done
 condition/zsk_sid_quest/4
 topic/forget/zsk_church_clear
+task/complete/3
 
 ./zsk_read_ivan_note
 if/param/0/is/zsk_ivan
@@ -132,17 +140,20 @@ item/receive/44magnum/1/0.3
 item/receive/44magnum/1/0.1
 item/receive/ak47/1/0.9
 journal/{10}
+task/add/6
 
 ./zsk_sid_gas_station_done
 topic/forget/zsk_mad_mechanic
 condition/zsk_sid_quest/6
 item/lose/ak47/1/100
+task/complete/6
 
 ./zsk_sid_letter_given
 condition/zsk_sid_letter_given/true
 item/receive/lettertoroman/1
 condition/zsk_has_supply_bag/activate
 journal/{13}
+task/add/7
 
 ./zsk_give_sid_supply
 item/lose/zsklegionnairebag/1

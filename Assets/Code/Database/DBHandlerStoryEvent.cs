@@ -168,4 +168,20 @@ public class DBHandlerStoryEvent
 
 		return "";
 	}
+
+
+
+	public string LoadTask(int id)
+	{
+
+		IDataReader taskDataReader = GameManager.Inst.DBManager.RunQuery(
+			"SELECT text FROM task_data WHERE id = " + id);
+
+		while(taskDataReader.Read())
+		{
+			return taskDataReader.GetString(0);
+		}
+
+		return "";
+	}
 }

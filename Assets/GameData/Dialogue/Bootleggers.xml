@@ -11,9 +11,15 @@
             <text>{topic_priest}</text>
         </response>
     </topic>
+    <topic id="boris">
+        <title>Boris</title>
+        <response>
+            <text>{topic_zsk_boris}</text>
+        </response>
+    </topic>
     <node id="1">
         <response>
-            <text>Hi!</text>
+            <text>Hey.</text>
         </response>
     </node>
 </dialogue>

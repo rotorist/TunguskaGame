@@ -13,6 +13,7 @@ public class WindowPanel : PanelBase
 	public TraderItemPanel TraderItemPanel;
 	public TradingPanel TradingPanel;
 	public JournalPanel JournalPanel;
+	public TaskListPanel TaskListPanel;
 	public NotePaperPanel NotePaperPanel;
 	public SerumCraftPanel SerumCraftPanel;
 
@@ -38,6 +39,7 @@ public class WindowPanel : PanelBase
 		TradingPanel.Initialize();
 		TraderItemPanel.Initialize();
 		JournalPanel.Initialize();
+		TaskListPanel.Initialize();
 		NotePaperPanel.Initialize();
 		SerumCraftPanel.Initialize();
 
@@ -50,6 +52,7 @@ public class WindowPanel : PanelBase
 		_panels.Add(TradingPanel);
 		_panels.Add(TraderItemPanel);
 		_panels.Add(JournalPanel);
+		_panels.Add(TaskListPanel);
 		_panels.Add(NotePaperPanel);
 		_panels.Add(SerumCraftPanel);
 

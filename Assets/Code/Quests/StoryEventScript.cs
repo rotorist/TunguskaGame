@@ -62,6 +62,9 @@ public class StoryEventScript
 			case "topic":
 				ExecuteTopicScript(tokens);
 				break;
+			case "task":
+				ExecuteTaskScript(tokens);
+				break;
 			case "expedition":
 				ExecuteExpeditionScript(tokens);
 				break;
@@ -335,6 +338,19 @@ public class StoryEventScript
 		else if(tokens[1] == "forget")
 		{
 			GameManager.Inst.PlayerProgress.RemoveDiscoveredTopics(tokens[2]);
+		}
+	}
+
+	private void ExecuteTaskScript(string [] tokens)
+	{
+		int id = Convert.ToInt32(tokens[2]);
+		if(tokens[1] == "complete")
+		{
+			GameManager.Inst.PlayerProgress.ResolveTask(id);
+		}
+		if(tokens[1] == "add")
+		{
+			GameManager.Inst.PlayerProgress.AddNewTask(id);
 		}
 	}
 

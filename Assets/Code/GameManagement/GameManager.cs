@@ -58,14 +58,17 @@ public class GameManager : MonoBehaviour
 
 	void Update()
 	{
-		
-		EventManager.ManagerPerFrameUpdate();
-		PlayerControl.PerFrameUpdate();
-		AIScheduler.UpdatePerFrame();
-		CursorManager.PerFrameUpdate();
+		if(InputEventHandler.Instance.State != UserInputState.Intro)
+		{
+			EventManager.ManagerPerFrameUpdate();
+			PlayerControl.PerFrameUpdate();
+			AIScheduler.UpdatePerFrame();
+			CursorManager.PerFrameUpdate();
+			SoundManager.PerFrameUpdate();
+			NPCManager.PerFrameUpdate();
+		}
+
 		UIManager.PerFrameUpdate();
-		SoundManager.PerFrameUpdate();
-		NPCManager.PerFrameUpdate();
 	}
 
 	void LateUpdate()
@@ -262,13 +265,13 @@ public class GameManager : MonoBehaviour
 		if(saveNameRef.IsNewGame)
 		{
 			//setup new game
-			UIEventHandler.Instance.TriggerJournal();
-			NGUITools.SetActive(UIManager.HUDPanel.HelpText.gameObject, true);
+			UIEventHandler.Instance.TriggerStartIntro();
+
 			GameManager.Inst.SaveGameManager.Save("TestSave", "");
 			saveNameRef.IsNewGame = false;
 		}
 
-
+		UIEventHandler.Instance.TriggerStartIntro();
 
 		StartCoroutine(DoPerSecond());
 		StartCoroutine(DoPerHalfSecond());
@@ -285,15 +288,21 @@ public class GameManager : MonoBehaviour
 
 	private void PerSecondUpdate()
 	{
-		TimerEventHandler.Instance.TriggerOneSecondTimer();
-		NPCManager.PerSecondUpdate();
-		QuestManager.PerSecondUpdate();
-		WorldManager.PerSecondUpdate();
+		if(InputEventHandler.Instance.State != UserInputState.Intro)
+		{
+			TimerEventHandler.Instance.TriggerOneSecondTimer();
+			NPCManager.PerSecondUpdate();
+			QuestManager.PerSecondUpdate();
+			WorldManager.PerSecondUpdate();
+		}
 	}
 
 	private void PerHalfSecondUpdate()
 	{
-		TimerEventHandler.Instance.TriggerHalfSecondTimer();
+		if(InputEventHandler.Instance.State != UserInputState.Intro)
+		{
+			TimerEventHandler.Instance.TriggerHalfSecondTimer();
+		}
 	}
 
 

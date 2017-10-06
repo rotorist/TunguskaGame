@@ -124,6 +124,12 @@ public class JournalPanel : PanelBase
 		Hide();
 	}
 
+	public void OnTasksButtonClick()
+	{
+		GameManager.Inst.UIManager.WindowPanel.TaskListPanel.Show();
+
+	}
+
 
 	private void LoadJournal()
 	{

@@ -9,11 +9,13 @@ public class PlayerProgress
 	public string PlayerLastName;
 	public List<string> DiscoveredTopics;//contains topic ID, not topic title
 	public List<List<string>> JournalEntries; //journal entries apprended directly to it. Each day at the end of the day, a new day entry is added
+	public List<int> IncompleteTasks;
+	public List<int> CompletedTasks;
 	//public float [] Relationships;
 
 	public PlayerProgress()
 	{
-		PlayerFirstName = "Borov";
+		PlayerFirstName = "Brody";
 		PlayerLastName = "Kravshenko";
 		DiscoveredTopics = new List<string>();
 		DiscoveredTopics.Add("your_story");
@@ -21,6 +23,13 @@ public class PlayerProgress
 
 		JournalEntries = new List<List<string>>();
 		AddJournalEntry(GameManager.Inst.DBManager.DBHandlerStoryEvent.LoadJournalEntry(1));
+
+		IncompleteTasks = new List<int>();
+		IncompleteTasks.Add(0);
+		IncompleteTasks.Add(1);
+
+		CompletedTasks = new List<int>();
+		CompletedTasks.Add(4);
 
 		//Relationships = new float[GameManager.Inst.DBManager.DBHandlerCharacter.GetNumberOfFactions()];
 		//Relationships[0] = 1;
@@ -104,5 +113,32 @@ public class PlayerProgress
 		{
 			DiscoveredTopics.Remove(topicID);
 		}
+	}
+
+	public void AddNewTask(int id)
+	{
+		if(IncompleteTasks.Contains(id) || CompletedTasks.Contains(id))
+		{
+			return;
+		}
+
+		IncompleteTasks.Add(id);
+
+		GameManager.Inst.UIManager.SetConsoleText("New task added to the list.");
+		GameManager.Inst.SoundManager.UI.PlayOneShot(GameManager.Inst.SoundManager.GetClip("Checkmark"), 0.2f);
+	}
+
+	public void ResolveTask(int id)
+	{
+		if(!IncompleteTasks.Contains(id) || CompletedTasks.Contains(id))
+		{
+			return;
+		}
+
+		IncompleteTasks.Remove(id);
+		CompletedTasks.Add(id);
+
+		GameManager.Inst.UIManager.SetConsoleText("Task completed!");
+		GameManager.Inst.SoundManager.UI.PlayOneShot(GameManager.Inst.SoundManager.GetClip("PencilWrite"), 0.2f);
 	}
 }

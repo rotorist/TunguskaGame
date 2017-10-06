@@ -10,11 +10,22 @@
             <text>What do you want?</text>
         </response>
         <option>
+            <title>Boris</title>
+            <text>I'm looking for my brother, Boris Kravshenko, do you remember him?</text>
+            <next_node id="4" />
+        </option>
+        <option>
             <condition name="zsk_village_gate_open" story="zsk_village_gate_open" compare="0" op="0" />
-            <title>Gate</title>
+            <title>Locked Gate</title>
             <text>Could you open the gate for me?</text>
             <next_node id="1" />
         </option>
+    </node>
+    <node id="4">
+        <response>
+            <text>You must be talking about some rookie who worked here. I deal with a dozen and one rookies a day, so I can't remember any body. Go talk to Dr. Sidorovich. By the way, If you don't see him around here, he's probably already dead.</text>
+            <event name="zsk_talk_razor" />
+        </response>
     </node>
     <node id="1">
         <response>
@@ -24,7 +35,6 @@
         <response>
             <condition name="zsk_village_gate_open" story="zsk_village_gate_open" compare="0" op="0" />
             <text>You can't go through yet. Go talk to Dr. Sidorovich, he's in the two storey house over there.</text>
-            <event name="zsk_know_blockade" />
         </response>
         <option>
             <title>Why</title>

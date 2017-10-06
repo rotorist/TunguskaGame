@@ -5,21 +5,21 @@
         <text>This bald, middle-aged man looks at you with the warmest smile you've ever seen.</text>
         <next_node id="1" />
     </intro>
-    <topic id="zsk_blockade">
-        <title>Blockade</title>
+    <topic id="boris">
+        <title>Boris</title>
         <next_node id="2" />
     </topic>
     <node id="2">
         <response>
             <condition name="zsk_sid_quest" story="zsk_sid_quest" compare="1" op="0" />
-            <text>Blockade has been lifted for you, good luck!</text>
+            <text>Finish the jobs I gave you and then we can talk about him. The gate is unlocked for you. Good luck!</text>
         </response>
         <response>
             <logic type="And">
                 <condition name="zsk_village_gate_open" story="zsk_village_gate_open" compare="0" op="0" />
                 <condition name="zsk_sid_quest" story="zsk_sid_quest" compare="0" op="0" />
             </logic>
-            <text>Well yes, we have decided to temporarily close the gate for new comers. But that's only because we need help. </text>
+            <text>Well yes, I do remember Boris. He worked for me for a few weeks. I remember him because he was an exceptional worker. If you are looking for him, I can help you. But I need some help too. So maybe we can make a deal.</text>
         </response>
         <option>
             <logic type="And">
@@ -33,7 +33,7 @@
     </node>
     <node id="3">
         <response>
-            <text>Let's make a deal. I got three jobs that needs to be done, and nobody around here has the balls to do any of them. I can't send Razor because he's the chief of my guards; and let's just be direct - these jobs can get you killed, and I can't afford to lose Razor. But if you get these jobs done for me - and I don't care how you do it - not only will I let you through my gate, but I'll also guide you deeper into the zone. What do you think?</text>
+            <text>I like you already! I got three jobs that needs to be done, and nobody around here has the balls to do any of them. I can't send Razor because he's the chief of my guards; and let's just be clear - these jobs can get you killed, and I can't afford to lose Razor. But if you get these jobs done for me, I'll tell you where to find Boris. What do you think?</text>
         </response>
         <option>
             <title>Yes</title>
@@ -312,7 +312,7 @@
     <node id="27">
         <response>
             <condition name="zsk_has_sid_ak" story="zsk_has_sid_ak" compare="100" op="0" />
-            <text>Let me take a look. Ha! No gun smiths in the Zone could do a better job than this. You know what this is? Business, opportunity, money! Well, as a man of his words, I will point you to the right direction. </text>
+            <text>Let me take a look. Ha! No gun smiths in the Zone could do a better job than this. You know what this is? Business, opportunity, money! Well, as a man of his words, I will point you to the right direction to find Boris. </text>
             <event name="zsk_sid_gas_station_done" />
         </response>
         <option>
@@ -323,7 +323,7 @@
     </node>
     <node id="28">
         <response>
-            <text>Roman Dotsenko, hardened ghoul hunter, one of my best business partners. Last time we talked, he was looking for a good recruit to join his band of hunters. Here's a recommendation letter. </text>
+            <text>Roman Dotsenko, hardened ghoul hunter, one of my best business partners. He was always looking for good recruits to join his band of hunters. So I sent Boris to him. Boris was a good lad, he's probably very rich by now! Here, bring this letter to Roman and he will help you. </text>
             <event name="zsk_sid_letter_given" />
         </response>
         <option>
@@ -335,10 +335,10 @@
     </node>
     <node id="29">
         <response>
-            <text>Roman Dotsenko has a base of operation near Station 11. To get there, follow the road to the east until you reach Zernaskaya train station. Then follow the south-bound railroad. I have marked it on your map. Go find him and bring him the letter.</text>
+            <text>Roman has a base of operation near Station 11. To get there, follow the road to the east until you reach Zernaskaya train station. Then follow the south-bound railroad. I have marked it on your map. Go find him and bring him the letter.</text>
         </response>
         <option>
-            <title>Continue</title>
+            <title>Train Station</title>
             <text>Please go on.</text>
             <next_node id="30" />
         </option>

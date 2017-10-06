@@ -14,6 +14,8 @@ public class SaveGame
 	public string PlayerLastName;
 	public List<string> DiscoveredTopics;
 	public List<List<string>> JournalEntries;
+	public List<int> IncompleteTasks;
+	public List<int> CompletedTasks;
 
 	//story event handler
 	public List<StoryEventListener> [] StoryListenerLists;
