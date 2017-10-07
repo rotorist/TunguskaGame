@@ -101,27 +101,33 @@ public class ItemManager
 		//inventory1.Backpack.Add(new GridItemData(LoadItem("ammo9_18"), 0, 6, GridItemOrient.Portrait, 40));
 		inventory1.Backpack.Add(new GridItemData(LoadItem("ammo12shot"), 4, 9, GridItemOrient.Landscape, 20));
 		//inventory1.Backpack.Add(new GridItemData(LoadItem("ammo44magnum"), 1, 8, GridItemOrient.Landscape, 32));
-		//inventory1.Backpack.Add(new GridItemData(LoadItem("skorpion"), 0, 3, GridItemOrient.Landscape, 1));
-		//inventory1.Backpack.Add(new GridItemData(LoadItem("doublebarrelshotgun"), 5, 3, GridItemOrient.Landscape, 1));
+
 		//inventory1.Backpack.Add(new GridItemData(LoadItem("svd"), 0, 3, GridItemOrient.Landscape, 1));
 		inventory1.Backpack.Add(new GridItemData(LoadItem("sleepingbag"), 0, 8, GridItemOrient.Landscape,1));
-		//inventory1.Backpack.Add(new GridItemData(LoadItem("mutantheart"), 8, 8, GridItemOrient.Landscape, 1));
 		inventory1.Backpack.Add(new GridItemData(LoadItem("bandages"), 6, 9, GridItemOrient.Landscape, 5));
 		inventory1.Backpack.Add(new GridItemData(LoadItem("rubles"), 8, 9, GridItemOrient.Landscape, 200));
 		inventory1.Backpack.Add(new GridItemData(LoadItem("bread1"), 8, 7, GridItemOrient.Landscape, 1));
 		inventory1.Backpack.Add(new GridItemData(LoadItem("sausage"), 9, 8, GridItemOrient.Landscape, 1));
+		inventory1.Backpack.Add(new GridItemData(LoadItem("borisphoto"), 4, 8, GridItemOrient.Landscape, 1));
 		//inventory1.Backpack.Add(new GridItemData(LoadItem("gasoline"), 5, 6, GridItemOrient.Landscape, 5));
 		//inventory1.Backpack.Add(new GridItemData(LoadItem("mutantblood"), 0, 0, GridItemOrient.Landscape, 10));
 		//inventory1.Backpack.Add(new GridItemData(LoadItem("mutantheart"), 1, 0, GridItemOrient.Landscape, 6));
 		//inventory1.Backpack.Add(new GridItemData(LoadItem("alcohol"), 2, 0, GridItemOrient.Landscape, 15));
 		//inventory1.Backpack.Add(new GridItemData(LoadItem("recipe_hr1"), 3, 0, GridItemOrient.Landscape, 1));
+		inventory1.Backpack.Add(new GridItemData(LoadItem("skorpion"), 0, 3, GridItemOrient.Landscape, 1));
+		inventory1.Backpack.Add(new GridItemData(LoadItem("huntingshotgun"), 0, 0, GridItemOrient.Landscape, 1));
+		inventory1.Backpack.Add(new GridItemData(LoadItem("ammo9_18"), 5, 8, GridItemOrient.Portrait, 40));
+		inventory1.Backpack.Add(new GridItemData(LoadItem("ammo762_39"), 7, 8, GridItemOrient.Portrait, 60));
+		inventory1.Backpack.Add(new GridItemData(LoadItem("f1grenade"), 0, 5, GridItemOrient.Landscape, 1));
+		inventory1.Backpack.Add(new GridItemData(LoadItem("f1grenade"), 1, 5, GridItemOrient.Landscape, 1));
+		inventory1.Backpack.Add(new GridItemData(LoadItem("f1grenade"), 2, 5, GridItemOrient.Landscape, 1));
 
-		inventory1.RifleSlot = LoadItem("doublebarrelshotgun");
-		//inventory1.RifleSlot = LoadItem("ak47");
-		//inventory1.ThrowSlot = LoadItem("f1grenade");
-		//inventory1.ArmorSlot = LoadItem("flakjacket");
-		inventory1.SideArmSlot = LoadItem("machete");
-		//inventory1.HeadSlot = LoadItem("kevlarhelmet");
+		//inventory1.RifleSlot = LoadItem("doublebarrelshotgun");
+		inventory1.RifleSlot = LoadItem("ak47");
+		inventory1.ThrowSlot = LoadItem("f1grenade");
+		inventory1.ArmorSlot = LoadItem("lightarmor");
+		inventory1.SideArmSlot = LoadItem("makarov");
+		inventory1.HeadSlot = LoadItem("kevlarhelmet");
 		inventory1.ToolSlot = LoadItem("geigercounter");
 
 	}

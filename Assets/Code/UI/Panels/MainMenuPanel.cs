@@ -56,6 +56,6 @@ public class MainMenuPanel : MonoBehaviour
 
 	public void OnExitGame()
 	{
-
+		Application.Quit();
 	}
 }

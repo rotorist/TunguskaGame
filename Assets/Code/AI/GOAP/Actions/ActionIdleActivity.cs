@@ -330,7 +330,7 @@ public class ActionIdleActivity : GoapAction
 						//start playing clip
 						AudioClip clip = GameManager.Inst.SoundManager.GetClip("guitar2");
 						_nextActionTime = Mathf.CeilToInt(clip.length) + 2;
-						ParentCharacter.CharacterAudio.PlayOneShot(clip, 0.5f);
+						ParentCharacter.CharacterAudio.PlayOneShot(clip, 0.3f);
 					}
 					else 
 					{

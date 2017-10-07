@@ -271,7 +271,7 @@ public class GameManager : MonoBehaviour
 			saveNameRef.IsNewGame = false;
 		}
 
-		UIEventHandler.Instance.TriggerStartIntro();
+		//UIEventHandler.Instance.TriggerStartIntro();
 
 		StartCoroutine(DoPerSecond());
 		StartCoroutine(DoPerHalfSecond());

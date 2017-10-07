@@ -281,6 +281,15 @@ public class InputEventHandler
 		{
 			UIEventHandler.Instance.TriggerMap();
 		}
+
+		if(Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.Escape))
+		{
+			if(GameManager.Inst.UIManager.WindowPanel.TaskListPanel.IsActive)
+			{
+				GameManager.Inst.UIManager.WindowPanel.TaskListPanel.Hide();
+				UIEventHandler.Instance.TriggerCloseWindow();
+			}
+		}
 	}
 
 	public void HandleNormalModeFixedTimeInput()
@@ -795,7 +804,7 @@ public class InputEventHandler
 
 			}
 
-			if(Input.GetKeyDown(KeyCode.T))
+			if(Input.GetKeyDown(KeyCode.Q))
 			{
 				UIEventHandler.Instance.TriggerJournal();
 				GameManager.Inst.UIManager.WindowPanel.TaskListPanel.Show();

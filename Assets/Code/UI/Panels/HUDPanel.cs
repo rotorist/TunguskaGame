@@ -341,6 +341,11 @@ public class HUDPanel : PanelBase
 			GameManager.Inst.SaveGameManager.Save("TestSave", "");
 		}
 
+		if(UIButton.current.name == "LongButtonQuit")
+		{
+			Application.Quit();
+		}
+
 		if(UIButton.current.name == "LongButtonLoad")
 		{
 			GameManager.Inst.LoadGame();

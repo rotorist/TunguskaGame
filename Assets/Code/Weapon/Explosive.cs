@@ -28,10 +28,11 @@ public class Explosive : MonoBehaviour
 				Character c = hit.collider.GetComponent<Character>();
 				if(c != null && c.MyStatus.Health > 0)
 				{
+					Debug.Log(c.name);
 					//now do a raycast check
 					RaycastHit checkHit;
 					float colliderHeight = c.GetComponent<CapsuleCollider>().height;
-					Vector3 rayTarget = c.transform.position + Vector3.up * colliderHeight * 0.5f;
+					Vector3 rayTarget = c.transform.position + Vector3.up * colliderHeight * 0.65f;
 					Ray ray = new Ray(transform.position, rayTarget - transform.position);
 					if(Physics.Raycast(ray, out checkHit))
 					{
