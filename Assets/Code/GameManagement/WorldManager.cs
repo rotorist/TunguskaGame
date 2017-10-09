@@ -34,8 +34,8 @@ public class WorldManager
 		CurrentTerrain = GameObject.Find("Terrain").GetComponent<TerrainHandler>();
 		CurrentTerrain.Initialize();
 
-		CurrentTime = 60 * 5f;
-		IsDayTime = false;
+		CurrentTime = 60 * 17f;
+		IsDayTime = true;
 		NightDayTransition = 60 * 6 + UnityEngine.Random.Range(-1f, 1f) * 30;
 		DayNightTransition = 60 * 20 + UnityEngine.Random.Range(-1f, 1f) * 30;
 

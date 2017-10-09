@@ -178,6 +178,12 @@ public class Door : MonoBehaviour
 			NavMeshObstacle obstacle = DoorPanel.GetComponent<NavMeshObstacle>();
 			obstacle.carving = true;
 		}
+
+		BuildingEntrance entrance = GetComponent<BuildingEntrance>();
+		if(entrance != null)
+		{
+			entrance.IsActive = true;
+		}
 	}
 
 	public void Close(bool machineClose)
@@ -216,6 +222,12 @@ public class Door : MonoBehaviour
 				NavMeshObstacle obstacle = DoorPanel.GetComponent<NavMeshObstacle>();
 				obstacle.carving = false;
 			}
+		}
+
+		BuildingEntrance entrance = GetComponent<BuildingEntrance>();
+		if(entrance != null)
+		{
+			entrance.IsActive = false;
 		}
 	}
 }

@@ -315,7 +315,7 @@ public class MutantCharacter : Character
 
 		if(command == CharacterCommands.AnimationActionDone)
 		{
-			Debug.Log("Action Done");
+			//Debug.Log("Action Done");
 			IsBodyLocked = false;
 		}
 

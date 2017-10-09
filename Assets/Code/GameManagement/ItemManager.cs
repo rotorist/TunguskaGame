@@ -114,21 +114,34 @@ public class ItemManager
 		//inventory1.Backpack.Add(new GridItemData(LoadItem("mutantheart"), 1, 0, GridItemOrient.Landscape, 6));
 		//inventory1.Backpack.Add(new GridItemData(LoadItem("alcohol"), 2, 0, GridItemOrient.Landscape, 15));
 		//inventory1.Backpack.Add(new GridItemData(LoadItem("recipe_hr1"), 3, 0, GridItemOrient.Landscape, 1));
-		inventory1.Backpack.Add(new GridItemData(LoadItem("skorpion"), 0, 3, GridItemOrient.Landscape, 1));
-		inventory1.Backpack.Add(new GridItemData(LoadItem("huntingshotgun"), 0, 0, GridItemOrient.Landscape, 1));
-		inventory1.Backpack.Add(new GridItemData(LoadItem("ammo9_18"), 5, 8, GridItemOrient.Portrait, 40));
-		inventory1.Backpack.Add(new GridItemData(LoadItem("ammo762_39"), 7, 8, GridItemOrient.Portrait, 60));
-		inventory1.Backpack.Add(new GridItemData(LoadItem("f1grenade"), 0, 5, GridItemOrient.Landscape, 1));
-		inventory1.Backpack.Add(new GridItemData(LoadItem("f1grenade"), 1, 5, GridItemOrient.Landscape, 1));
-		inventory1.Backpack.Add(new GridItemData(LoadItem("f1grenade"), 2, 5, GridItemOrient.Landscape, 1));
 
-		//inventory1.RifleSlot = LoadItem("doublebarrelshotgun");
-		inventory1.RifleSlot = LoadItem("ak47");
-		inventory1.ThrowSlot = LoadItem("f1grenade");
-		inventory1.ArmorSlot = LoadItem("lightarmor");
-		inventory1.SideArmSlot = LoadItem("makarov");
-		inventory1.HeadSlot = LoadItem("kevlarhelmet");
-		inventory1.ToolSlot = LoadItem("geigercounter");
+		if(GameManager.Inst.GodMode)
+		{
+			inventory1.Backpack.Add(new GridItemData(LoadItem("skorpion"), 0, 3, GridItemOrient.Landscape, 1));
+			inventory1.Backpack.Add(new GridItemData(LoadItem("huntingshotgun"), 0, 0, GridItemOrient.Landscape, 1));
+			inventory1.Backpack.Add(new GridItemData(LoadItem("ammo9_18"), 5, 8, GridItemOrient.Portrait, 40));
+			inventory1.Backpack.Add(new GridItemData(LoadItem("ammo762_39"), 7, 8, GridItemOrient.Portrait, 60));
+			inventory1.Backpack.Add(new GridItemData(LoadItem("f1grenade"), 0, 5, GridItemOrient.Landscape, 1));
+			inventory1.Backpack.Add(new GridItemData(LoadItem("f1grenade"), 1, 5, GridItemOrient.Landscape, 1));
+			inventory1.Backpack.Add(new GridItemData(LoadItem("f1grenade"), 2, 5, GridItemOrient.Landscape, 1));
+			inventory1.Backpack.Add(new GridItemData(LoadItem("serum_hr1"), 3, 5, GridItemOrient.Landscape, 1));
+			inventory1.Backpack.Add(new GridItemData(LoadItem("serum_hr1"), 4, 5, GridItemOrient.Landscape, 1));
+		}
+
+		if(GameManager.Inst.GodMode)
+		{
+			inventory1.RifleSlot = LoadItem("ak47");
+			inventory1.ThrowSlot = LoadItem("f1grenade");
+			inventory1.ArmorSlot = LoadItem("lightarmor");
+			inventory1.SideArmSlot = LoadItem("makarov");
+			inventory1.HeadSlot = LoadItem("kevlarhelmet");
+		}
+		else
+		{
+			inventory1.RifleSlot = LoadItem("doublebarrelshotgun");
+			inventory1.ToolSlot = LoadItem("geigercounter");
+		}
+
 
 	}
 		

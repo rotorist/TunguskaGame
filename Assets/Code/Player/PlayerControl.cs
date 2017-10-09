@@ -15,9 +15,16 @@ public class PlayerControl
 	public AimedObjectType AimedObjectType;
 	public Projector ViewConeProjector;
 	public GameObject ViewConeHolder;
+	public BuildingEntrance CurrentEntrance;
 
 	public bool IsHoldToAim;
 	public float AimLerpAngle;
+
+	public bool IsUpPressed;
+	public bool IsDownPressed;
+	public bool IsLeftPressed;
+	public bool IsRightPressed;
+	public Vector2 MoveKeyDirection;
 
 	public HumanCharacter SelectedPC
 	{
@@ -32,8 +39,8 @@ public class PlayerControl
 	
 	#region Private Fields
 	private bool _isMoveKeyDown;
-	private PlayerMoveDirEnum _moveDirection;
-	private PlayerMoveDirEnum _moveDirection2;
+	//private PlayerMoveDirEnum _moveDirection;
+	//private PlayerMoveDirEnum _moveDirection2;
 	private int _numberOfRocks;
 	private GameObject _aimedObject;
 	private Vector3 _tempGuardDest;
@@ -83,6 +90,7 @@ public class PlayerControl
 		InputEventHandler.OnMMBDown += this.OnMMBDown;
 		InputEventHandler.OnKick += this.OnKick;
 
+		/*
 		InputEventHandler.OnPlayerMoveLeft += this.OnPlayerMoveLeft;
 		InputEventHandler.OnPlayerMoveRight += this.OnPlayerMoveRight;
 		InputEventHandler.OnPlayerMoveUp += this.OnPlayerMoveUp;
@@ -91,6 +99,7 @@ public class PlayerControl
 		InputEventHandler.OnPlayerStopMoveRight += this.OnPlayerStopMoveRight;
 		InputEventHandler.OnPlayerStopMoveUp += this.OnPlayerStopMoveUp;
 		InputEventHandler.OnPlayerStopMoveDown += this.OnPlayerStopMoveDown;
+		*/
 
 		InputEventHandler.OnPlayerStartSprint += this.OnPlayerStartSprint;
 		InputEventHandler.OnPlayerStopSprint += this.OnPlayerStopSprint;
@@ -115,8 +124,8 @@ public class PlayerControl
 
 		InputEventHandler.OnClearTask += OnClearTask;
 
-		_moveDirection = PlayerMoveDirEnum.Stop;
-		_moveDirection2 = PlayerMoveDirEnum.Stop;
+		//_moveDirection = PlayerMoveDirEnum.Stop;
+		//_moveDirection2 = PlayerMoveDirEnum.Stop;
 
 		SelectedPC.CurrentStance = HumanStances.Run;
 		_playerLight = GameObject.Find("PlayerLight").GetComponent<Light>();
@@ -159,6 +168,15 @@ public class PlayerControl
 		{
 			//downward raycast to detect ceiling and notify building to hide building components
 			RaycastHit buildingHit;
+			if(CurrentEntrance != null && CurrentEntrance.IsActive)
+			{
+				BuildingComponent component = CurrentEntrance.ParentComponent;
+				if((component != null && component.Level < component.Building.TopLevel))
+				{
+					component.Building.NotifyHidingComponent(component, SelectedPC.transform.position.y);
+				}
+
+			}
 			if(Physics.Raycast(SelectedPC.transform.position + new Vector3(0, 0.01f, 0), Vector3.down, out buildingHit, 200, (1 << 9 | 1 << 8 | 1 << 10)))
 			{
 				//Debug.Log(buildingHit.collider.name);
@@ -323,8 +341,11 @@ public class PlayerControl
 			}
 		}
 
+
+
 		if(!IsGamePaused && SelectedPC.MyAI.ControlType == AIControlType.Player)
 		{
+			UpdatePlayerDirectionKeys();
 			UpdatePlayerMovement();
 			SelectedPC.Stealth.UpdatePerSchedulerFrame();
 			SelectedPC.Stealth.UpdatePerFrame();
@@ -380,6 +401,9 @@ public class PlayerControl
 		}
 		lookDir = new Vector3(lookDir.x, 0, lookDir.z);
 		ViewConeHolder.transform.rotation = Quaternion.LookRotation(lookDir);
+
+
+
 
 		Party.PerFrameUpdate();
 		Survival.PerFrameUpdate();
@@ -569,7 +593,8 @@ public class PlayerControl
 
 			}
 
-			if(_moveDirection == PlayerMoveDirEnum.Stop && _moveDirection2 == PlayerMoveDirEnum.Stop)
+			if(MoveKeyDirection == Vector2.zero)
+			//if(_moveDirection == PlayerMoveDirEnum.Stop && _moveDirection2 == PlayerMoveDirEnum.Stop)
 			{
 				c.Destination = _aimedObject.transform.position;
 				SelectedPC.GetComponent<HumanCharacter>().SendCommand(CharacterCommands.GoToPosition);
@@ -717,6 +742,10 @@ public class PlayerControl
 
 	}
 
+
+
+
+	/*
 	public void OnPlayerMoveLeft()
 	{
 		if(GameManager.Inst.CameraController.GetCameraMode() == CameraModeEnum.Leader)
@@ -842,6 +871,7 @@ public class PlayerControl
 			
 		}
 	}
+	*/
 
 	public void OnPlayerStartSprint()
 	{
@@ -1138,7 +1168,7 @@ public class PlayerControl
 				SelectedPC.MyReference.Flashlight.Light.spotAngle = 75;
 				//SelectedPC.MyReference.Flashlight.SecondaryLight.spotAngle = 90;
 				SelectedPC.MyReference.Flashlight.Light.range = 25;
-				SelectedPC.MyReference.Flashlight.Light.intensity = 1.5f;
+				SelectedPC.MyReference.Flashlight.Light.intensity = 2f;
 				SelectedPC.MyReference.Flashlight.Light.shadows = LightShadows.Soft;
 				SelectedPC.MyReference.Flashlight.Light.shadowNearPlane = 0;
 				//SelectedPC.MyReference.Flashlight.SecondaryLight.range = 15;
@@ -1164,12 +1194,36 @@ public class PlayerControl
 	#endregion
 	
 	#region Private Methods
+
+	private void UpdatePlayerDirectionKeys()
+	{
+		MoveKeyDirection = Vector3.zero;
+		if(IsUpPressed)
+		{
+			MoveKeyDirection += new Vector2(0, 1);
+		}
+		if(IsDownPressed)
+		{
+			MoveKeyDirection += new Vector2(0, -1);
+		}
+		if(IsLeftPressed)
+		{
+			MoveKeyDirection += new Vector2(-1, 0);
+		}
+		if(IsRightPressed)
+		{
+			MoveKeyDirection += new Vector2(1, 0);
+		}
+
+
+	}
 	
 	private void UpdatePlayerMovement()
 	{
 		HumanCharacter c = SelectedPC.GetComponent<HumanCharacter>();
 
-		if(_moveDirection != PlayerMoveDirEnum.Stop || _moveDirection2 != PlayerMoveDirEnum.Stop)
+		//if(_moveDirection != PlayerMoveDirEnum.Stop || _moveDirection2 != PlayerMoveDirEnum.Stop)
+		if(MoveKeyDirection != Vector2.zero)
 		{
 			float straightDist = Vector3.Distance(SelectedPC.Destination.Value, SelectedPC.transform.position);
 			//Debug.Log("straight dist " + straightDist + " remaining dest " + SelectedPC.MyNavAgent.remainingDistance);
@@ -1185,57 +1239,65 @@ public class PlayerControl
 
 
 
-		if((_moveDirection == PlayerMoveDirEnum.Left && _moveDirection2 == PlayerMoveDirEnum.Stop) ||
-			(_moveDirection == PlayerMoveDirEnum.Stop && _moveDirection2 == PlayerMoveDirEnum.Left))
+		//if((_moveDirection == PlayerMoveDirEnum.Left && _moveDirection2 == PlayerMoveDirEnum.Stop) ||
+		//	(_moveDirection == PlayerMoveDirEnum.Stop && _moveDirection2 == PlayerMoveDirEnum.Left))
+		if(MoveKeyDirection == Vector2.left)
 		{
 			Vector3 roughDest = SelectedPC.transform.position + Camera.main.transform.right * -1 * 0.5f;
 			MakeStep(roughDest);
 		}
-		else if((_moveDirection == PlayerMoveDirEnum.Left && _moveDirection2 == PlayerMoveDirEnum.Up) ||
-			(_moveDirection == PlayerMoveDirEnum.Up && _moveDirection2 == PlayerMoveDirEnum.Left))
+		else if(MoveKeyDirection == new Vector2(-1, 1))
+			//if((_moveDirection == PlayerMoveDirEnum.Left && _moveDirection2 == PlayerMoveDirEnum.Up) ||
+			//(_moveDirection == PlayerMoveDirEnum.Up && _moveDirection2 == PlayerMoveDirEnum.Left))
 		{
 			Vector3 cameraForwardFlat = new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z);
 			Vector3 roughDest = SelectedPC.transform.position + (Camera.main.transform.right * -1 + cameraForwardFlat.normalized).normalized * 0.5f;
 			MakeStep(roughDest);
 		}
-		else if((_moveDirection == PlayerMoveDirEnum.Left && _moveDirection2 == PlayerMoveDirEnum.Down) ||
-			(_moveDirection == PlayerMoveDirEnum.Down && _moveDirection2 == PlayerMoveDirEnum.Left))
+		else if(MoveKeyDirection == new Vector2(-1,-1))
+			//if((_moveDirection == PlayerMoveDirEnum.Left && _moveDirection2 == PlayerMoveDirEnum.Down) ||
+			//(_moveDirection == PlayerMoveDirEnum.Down && _moveDirection2 == PlayerMoveDirEnum.Left))
 		{
 			Vector3 cameraForwardFlat = new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z);
 			Vector3 roughDest = SelectedPC.transform.position + (Camera.main.transform.right * -1 + cameraForwardFlat.normalized * -1).normalized * 0.5f;
 			MakeStep(roughDest);
 		}
-		else if((_moveDirection == PlayerMoveDirEnum.Right && _moveDirection2 == PlayerMoveDirEnum.Stop) ||
-			(_moveDirection == PlayerMoveDirEnum.Stop && _moveDirection2 == PlayerMoveDirEnum.Right))
+		else if(MoveKeyDirection == Vector2.right) 
+			//if((_moveDirection == PlayerMoveDirEnum.Right && _moveDirection2 == PlayerMoveDirEnum.Stop) ||
+			//(_moveDirection == PlayerMoveDirEnum.Stop && _moveDirection2 == PlayerMoveDirEnum.Right))
 		{
 			Vector3 roughDest = SelectedPC.transform.position + Camera.main.transform.right * 0.5f;
 			//SelectedPC.Destination = SelectedPC.transform.position + SelectedPC.transform.right * 0.1f;
 			MakeStep(roughDest);
 		}
-		else if((_moveDirection == PlayerMoveDirEnum.Right && _moveDirection2 == PlayerMoveDirEnum.Up) ||
-			(_moveDirection == PlayerMoveDirEnum.Up && _moveDirection2 == PlayerMoveDirEnum.Right))
+		else if(MoveKeyDirection == new Vector2(1, 1)) 
+			//if((_moveDirection == PlayerMoveDirEnum.Right && _moveDirection2 == PlayerMoveDirEnum.Up) ||
+			//(_moveDirection == PlayerMoveDirEnum.Up && _moveDirection2 == PlayerMoveDirEnum.Right))
 		{
 			Vector3 cameraForwardFlat = new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z);
 			Vector3 roughDest = SelectedPC.transform.position + (Camera.main.transform.right + cameraForwardFlat.normalized).normalized * 0.5f;
 			MakeStep(roughDest);
 		}
-		else if((_moveDirection == PlayerMoveDirEnum.Right && _moveDirection2 == PlayerMoveDirEnum.Down) ||
-			(_moveDirection == PlayerMoveDirEnum.Down && _moveDirection2 == PlayerMoveDirEnum.Right))
+		else if(MoveKeyDirection == new Vector2(1, -1))
+			//if((_moveDirection == PlayerMoveDirEnum.Right && _moveDirection2 == PlayerMoveDirEnum.Down) ||
+			//(_moveDirection == PlayerMoveDirEnum.Down && _moveDirection2 == PlayerMoveDirEnum.Right))
 		{
 			Vector3 cameraForwardFlat = new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z);
 			Vector3 roughDest = SelectedPC.transform.position + (Camera.main.transform.right + cameraForwardFlat.normalized * -1).normalized * 0.5f;
 			MakeStep(roughDest);
 		}
-		else if((_moveDirection == PlayerMoveDirEnum.Up && _moveDirection2 == PlayerMoveDirEnum.Stop) ||
-			(_moveDirection == PlayerMoveDirEnum.Stop && _moveDirection2 == PlayerMoveDirEnum.Up))
+		else if(MoveKeyDirection == Vector2.up) 
+			//if((_moveDirection == PlayerMoveDirEnum.Up && _moveDirection2 == PlayerMoveDirEnum.Stop) ||
+			//(_moveDirection == PlayerMoveDirEnum.Stop && _moveDirection2 == PlayerMoveDirEnum.Up))
 		{
 			Vector3 cameraForwardFlat = new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z);
 			Vector3 roughDest = SelectedPC.transform.position + cameraForwardFlat * 0.5f;
 			//SelectedPC.Destination = SelectedPC.transform.position + SelectedPC.transform.forward * 0.1f;
 			MakeStep(roughDest);
 		}
-		else if((_moveDirection == PlayerMoveDirEnum.Down && _moveDirection2 == PlayerMoveDirEnum.Stop) ||
-			(_moveDirection == PlayerMoveDirEnum.Stop && _moveDirection2 == PlayerMoveDirEnum.Down))
+		else if(MoveKeyDirection == Vector2.down) 
+			//if((_moveDirection == PlayerMoveDirEnum.Down && _moveDirection2 == PlayerMoveDirEnum.Stop) ||
+			//(_moveDirection == PlayerMoveDirEnum.Stop && _moveDirection2 == PlayerMoveDirEnum.Down))
 		{
 			Vector3 cameraForwardFlat = new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z);
 			Vector3 roughDest = SelectedPC.transform.position + cameraForwardFlat * -1 * 0.5f;
@@ -1245,8 +1307,8 @@ public class PlayerControl
 
 
 
-
-		if(_moveDirection == PlayerMoveDirEnum.Stop && _moveDirection2 == PlayerMoveDirEnum.Stop)
+		if(MoveKeyDirection == Vector2.zero)
+		//if(_moveDirection == PlayerMoveDirEnum.Stop && _moveDirection2 == PlayerMoveDirEnum.Stop)
 		{
 			if(_isMoveKeyDown)
 			{

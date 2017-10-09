@@ -30,6 +30,7 @@ expedition/NavNodeVillageWoods/enable
 task/complete/5
 task/add/2
 
+
 ./zsk_barn_clear_done
 if/param/0/is/zsk_barn_legionnaires
 condition/zsk_barn_cleared/true
@@ -181,6 +182,10 @@ item/receive/zsklockerkey/1
 item/lose/rubles/500
 
 
+./zsk_sid_heal
+charstat/player/health/restore
+charstat/player/radiation/restore
+item/lose/rubles/250
 
 
 

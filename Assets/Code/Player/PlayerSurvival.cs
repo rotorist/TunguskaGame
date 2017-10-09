@@ -226,10 +226,21 @@ public class PlayerSurvival
 
 		myStatus = GameManager.Inst.PlayerControl.SelectedPC.MyStatus;
 		bool isHealthRestored = false;
-		if(myStatus.Health / myStatus.MaxHealth < 0.8f)
+		if(!isNearCampfire)
 		{
-			myStatus.Health = myStatus.MaxHealth * 0.8f;
-			isHealthRestored = true;
+			if(myStatus.Health / myStatus.MaxHealth < 0.8f)
+			{
+				myStatus.Health = myStatus.MaxHealth * 0.8f;
+				isHealthRestored = true;
+			}
+		}
+		else
+		{
+			if(myStatus.Health / myStatus.MaxHealth < 0.9f)
+			{
+				myStatus.Health = myStatus.MaxHealth * 0.9f;
+				isHealthRestored = true;
+			}
 		}
 
 		float energy = _eatenCalories;

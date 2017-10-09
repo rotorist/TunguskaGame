@@ -265,7 +265,7 @@ public class AI : MonoBehaviour
 
 	public void Bark(string text)
 	{
-		GameManager.Inst.UIManager.BarkPanel.AddBark(_parentCharacter, text);
+		//GameManager.Inst.UIManager.BarkPanel.AddBark(_parentCharacter, text);
 	}
 
 	public void CallForHelp(Character target)
@@ -281,6 +281,11 @@ public class AI : MonoBehaviour
 		foreach(Character c in Squad.Members)
 		{
 			if(c == _parentCharacter)
+			{
+				continue;
+			}
+
+			if(Vector3.Distance(c.transform.position, transform.position) > 20)
 			{
 				continue;
 			}
@@ -699,7 +704,7 @@ public class AI : MonoBehaviour
 	//AI Events
 	public void OnImportantEvent(float priority) //priority ranges from 0 to 1. 1 is highest priority
 	{
-		Debug.Log("On important event " + priority);
+		//Debug.Log("On important event " + priority);
 		StartCoroutine(WaitAndCheckImportantEvent(0.1f, priority));
 
 	}

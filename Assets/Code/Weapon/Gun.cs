@@ -377,11 +377,15 @@ public class Gun : Weapon
 		_sparks.Emit(1);
 		//_bulletTrail.Bullets.Emit(1);
 
-
+		float criticalChance = 0.16f;
+		bool alreadyDoneCritical = false;
 
 		for(int i=0; i< _projectilesPerShot; i++)
 		{
-
+			if(alreadyDoneCritical)
+			{
+				criticalChance = 0f;
+			}
 			float scatterValue = 0;
 			float muzzleVelocity = Barrel.MuzzleVelocity;
 			if(_projectilesPerShot > 1)
@@ -423,7 +427,8 @@ public class Gun : Weapon
 			bullet.transform.position = _bulletOrigin.transform.position;
 			Vector3 bulletTarget = _bulletOrigin.transform.TransformPoint(_bulletOrigin.transform.localPosition + scatter);
 			bullet.transform.LookAt(bulletTarget);
-			bullet.Fire(bullet.transform.forward * muzzleVelocity + Attacker.GetCharacterVelocity(), this, Barrel.Range, 0.7f, Barrel.Impact, 0.3f);//TODO: critial hit chance will be covered in skills
+			bullet.Fire(bullet.transform.forward * muzzleVelocity + Attacker.GetCharacterVelocity(), this, Barrel.Range, 0.7f, Barrel.Impact, criticalChance);//TODO: critial hit chance will be covered in skills
+			alreadyDoneCritical = true;
 		}
 
 		StartCoroutine(LightsOut(_light));

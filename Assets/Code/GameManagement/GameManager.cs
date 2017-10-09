@@ -106,6 +106,12 @@ public class GameManager : MonoBehaviour
 
 		Inst = this;
 
+		SaveNameReference saveNameRef = GameObject.FindObjectOfType<SaveNameReference>();
+		if(saveNameRef.IsGodMode)
+		{
+			GodMode = true;
+		}
+
 		Constants = GetComponent<Constants>();
 	
 
@@ -250,7 +256,7 @@ public class GameManager : MonoBehaviour
 
 		//if save name is empty then it's a new game
 		//if save name is not empty then load save game
-		SaveNameReference saveNameRef = GameObject.FindObjectOfType<SaveNameReference>();
+
 		if(saveNameRef == null)
 		{
 			saveNameRef = (GameObject.Instantiate(Resources.Load("SaveNameReference")) as GameObject).GetComponent<SaveNameReference>();
@@ -269,6 +275,8 @@ public class GameManager : MonoBehaviour
 
 			GameManager.Inst.SaveGameManager.Save("TestSave", "");
 			saveNameRef.IsNewGame = false;
+
+
 		}
 
 		//UIEventHandler.Instance.TriggerStartIntro();

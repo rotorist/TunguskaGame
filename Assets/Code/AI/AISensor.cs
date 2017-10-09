@@ -119,7 +119,20 @@ public class AISensor
 			fact.ThreatLevel = PersonalThreatCritical;
 		}
 
-
+		if(attacker != null && attacker.MyAI.ControlType == AIControlType.Player)
+		{
+			if(_parentCharacter.MyAI.IsCharacterEnemy(attacker) > 0)
+			{
+				//reduce relationship
+				float reduction = 0.25f;
+				if(_parentCharacter.MyAI.BlackBoard.TargetEnemy != null)
+				{
+					reduction = 0.07f;
+				}
+				GameManager.Inst.NPCManager.GetFactionData(Faction.Player).ReduceRelationshipByID(_parentCharacter.Faction, reduction);
+				GameManager.Inst.NPCManager.GetFactionData(_parentCharacter.Faction).ReduceRelationshipByID(Faction.Player, reduction);
+			}
+		}
 
 		//check if there's already a known enemy matching the shooter
 		WorkingMemoryFact enemyFact = _workingMemory.FindExistingFact(FactType.KnownEnemy, attacker);
@@ -639,16 +652,17 @@ public class AISensor
 	}
 
 	private void DetectExplosive()
-	{
+	{	
 		//check if there's live explosive near me
 		GameObject [] explosives = GameObject.FindGameObjectsWithTag("Explosive");
 		foreach(GameObject e in explosives)
 		{
+			
 			Explosive explosive = e.GetComponent<Explosive>();
 			if(explosive != null && explosive.IsEnabled)
 			{
 				Vector3 dist = e.transform.position - _parentCharacter.transform.position;
-				if(dist.magnitude <= 10)// && UnityEngine.Random.Range(0, 100) > 60)
+				if(dist.magnitude <= 7)// && UnityEngine.Random.Range(0, 100) > 60)
 				{
 					WorkingMemoryFact fact = _workingMemory.FindExistingFact(FactType.PersonalThreat, e);
 					if(fact == null)

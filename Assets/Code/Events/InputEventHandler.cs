@@ -439,7 +439,7 @@ public class InputEventHandler
 		{
 			if(OnGameTogglePause != null)
 			{
-				//OnGameTogglePause();
+				OnGameTogglePause();
 			}
 		}
 
@@ -620,73 +620,99 @@ public class InputEventHandler
 		if(GameManager.Inst.PlayerControl.SelectedPC.MyAI.ControlType == AIControlType.Player)
 		{
 			
-			if(Input.GetKeyDown(KeyCode.A))
-			{
-				if(OnPlayerMoveLeft != null)
-				{
-					OnPlayerMoveLeft();
-				}
-			}
-			
-			if(Input.GetKeyDown(KeyCode.D))
-			{
-				if(OnPlayerMoveRight != null)
-				{
-					OnPlayerMoveRight();
-				}
-			}
-			
+
 			if(Input.GetKeyDown(KeyCode.W))
 			{
-				if(OnPlayerMoveUp != null)
+				if(Input.GetKey(KeyCode.S))
 				{
-					OnPlayerMoveUp();
+					GameManager.Inst.PlayerControl.IsDownPressed = false;
+				}
+				GameManager.Inst.PlayerControl.IsUpPressed = true;
+			}
+			if(Input.GetKeyUp(KeyCode.W))
+			{
+				if(Input.GetKey(KeyCode.S))
+				{
+					GameManager.Inst.PlayerControl.IsDownPressed = true;
 				}
 			}
-			
+
+			if(!Input.GetKey(KeyCode.W))
+			{
+				GameManager.Inst.PlayerControl.IsUpPressed = false;
+			}
+
+
+
 			if(Input.GetKeyDown(KeyCode.S))
 			{
-				if(OnPlayerMoveDown != null)
+				if(Input.GetKey(KeyCode.W))
 				{
-					OnPlayerMoveDown();
+					GameManager.Inst.PlayerControl.IsUpPressed = false;
+				}
+				GameManager.Inst.PlayerControl.IsDownPressed = true;
+			}
+			if(Input.GetKeyUp(KeyCode.S))
+			{
+				if(Input.GetKey(KeyCode.W))
+				{
+					GameManager.Inst.PlayerControl.IsUpPressed = true;
 				}
 			}
 
+			if(!Input.GetKey(KeyCode.S))
+			{
+				GameManager.Inst.PlayerControl.IsDownPressed = false;
+			}
 
-			//
 
+
+
+
+			if(Input.GetKeyDown(KeyCode.A))
+			{
+				if(Input.GetKey(KeyCode.D))
+				{
+					GameManager.Inst.PlayerControl.IsRightPressed = false;
+				}
+				GameManager.Inst.PlayerControl.IsLeftPressed = true;
+			}
+			if(Input.GetKeyUp(KeyCode.A))
+			{
+				if(Input.GetKey(KeyCode.D))
+				{
+					GameManager.Inst.PlayerControl.IsRightPressed = true;
+				}
+			}
 
 			if(!Input.GetKey(KeyCode.A))
 			{
-				if(OnPlayerStopMoveLeft != null)
+				GameManager.Inst.PlayerControl.IsLeftPressed = false;
+			}
+
+
+
+			if(Input.GetKeyDown(KeyCode.D))
+			{
+				if(Input.GetKey(KeyCode.A))
 				{
-					OnPlayerStopMoveLeft();
+					GameManager.Inst.PlayerControl.IsLeftPressed = false;
+				}
+				GameManager.Inst.PlayerControl.IsRightPressed = true;
+			}
+			if(Input.GetKeyUp(KeyCode.D))
+			{
+				if(Input.GetKey(KeyCode.A))
+				{
+					GameManager.Inst.PlayerControl.IsLeftPressed = true;
 				}
 			}
-			
+
 			if(!Input.GetKey(KeyCode.D))
 			{
-				if(OnPlayerStopMoveRight != null)
-				{
-					OnPlayerStopMoveRight();
-				}
+				GameManager.Inst.PlayerControl.IsRightPressed = false;
 			}
-			
-			if(!Input.GetKey(KeyCode.W))
-			{
-				if(OnPlayerStopMoveUp != null)
-				{
-					OnPlayerStopMoveUp();
-				}
-			}
-			
-			if(!Input.GetKey(KeyCode.S))
-			{
-				if(OnPlayerStopMoveDown != null)
-				{
-					OnPlayerStopMoveDown();
-				}
-			}
+
 
 			if(Input.GetKeyDown(KeyCode.LeftShift))
 			{

@@ -81,7 +81,7 @@ public class IntroPanel : PanelBase
 			EndSlideShow();
 		}
 
-		if((Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space)) && _currentSlide < 6)
+		if((Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Mouse0)) && _currentSlide < 6)
 		{
 			
 			_currentSlide ++;

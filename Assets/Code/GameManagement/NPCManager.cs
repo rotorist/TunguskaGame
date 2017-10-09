@@ -626,10 +626,21 @@ public class NPCManager
 		}
 		else
 		{
-			status.MaxHealth = UnityEngine.Random.Range(80f, 150f);
+			status.MaxHealth = UnityEngine.Random.Range(180f, 350f);
 			status.Health = status.MaxHealth;
 
-			status.MutantMovementBlend = UnityEngine.Random.Range(-1, 3);
+			float rand = UnityEngine.Random.value;
+
+			if(rand > 0.4f)
+			{
+				status.MutantMovementBlend = 2;
+			}
+			else
+			{
+				status.MutantMovementBlend = UnityEngine.Random.Range(-1, 3);
+			}
+
+
 			if(status.MutantMovementBlend == 0)
 			{
 				status.WalkSpeed = 0.8f;
@@ -661,7 +672,7 @@ public class NPCManager
 			else if(status.MutantMovementBlend == -1)
 			{
 				status.WalkSpeed = 1f;
-				status.RunSpeed = 0.8f;
+				status.RunSpeed = 1.2f;
 				status.SprintSpeed = 5.2f;
 				status.WalkSpeedModifier = 1;
 				status.RunSpeedModifier = 1f;

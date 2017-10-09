@@ -54,6 +54,16 @@ public class MainMenuPanel : MonoBehaviour
 		SceneManager.LoadScene("Zernaskaya");
 	}
 
+	public void OnNewGameGod()
+	{
+		SaveNameReference saveNameRef = GameObject.FindObjectOfType<SaveNameReference>();
+		saveNameRef.IsGodMode = true;
+		saveNameRef.SaveName = "";
+		saveNameRef.IsNewGame = true;
+
+		SceneManager.LoadScene("Zernaskaya");
+	}
+
 	public void OnExitGame()
 	{
 		Application.Quit();

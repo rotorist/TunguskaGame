@@ -12,7 +12,7 @@ public class Explosive : MonoBehaviour
 
 	public void TriggerExplosion()
 	{
-
+		GetComponent<CapsuleCollider>().enabled = false;
 		GameObject explosion = GameObject.Instantiate(Resources.Load("WFX_Explosion StarSmoke")) as GameObject;
 		explosion.transform.position = transform.position;
 
@@ -28,7 +28,7 @@ public class Explosive : MonoBehaviour
 				Character c = hit.collider.GetComponent<Character>();
 				if(c != null && c.MyStatus.Health > 0)
 				{
-					Debug.Log(c.name);
+					
 					//now do a raycast check
 					RaycastHit checkHit;
 					float colliderHeight = c.GetComponent<CapsuleCollider>().height;
@@ -38,6 +38,7 @@ public class Explosive : MonoBehaviour
 					{
 						if(checkHit.collider.gameObject == c.gameObject)
 						{
+							
 							//now apply damage
 							float dist = Vector3.Distance(c.transform.position, transform.position);
 							dist = Mathf.Clamp(dist / Range, 0, 1);

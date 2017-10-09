@@ -68,6 +68,9 @@ public class StoryEventScript
 			case "expedition":
 				ExecuteExpeditionScript(tokens);
 				break;
+			case "charstat":
+				ExecuteCharStatScript(tokens);
+				break;
 			}
 		}
 
@@ -374,4 +377,33 @@ public class StoryEventScript
 			}
 		}
 	}
+
+	private void ExecuteCharStatScript(string [] tokens)
+	{
+		Character target = null;
+		if(tokens[1] == "player")
+		{
+			target = GameManager.Inst.PlayerControl.SelectedPC;
+		}
+
+		if(target != null)
+		{
+			if(tokens[2] == "health")
+			{
+				if(tokens[3] == "restore")
+				{
+					target.MyStatus.Health = target.MyStatus.MaxHealth;
+				}
+			}
+			else if(tokens[2] == "radiation")
+			{
+				if(tokens[3] == "restore")
+				{
+					target.MyStatus.Radiation = 0;
+				}
+			}
+		}
+	}
+
+
 }

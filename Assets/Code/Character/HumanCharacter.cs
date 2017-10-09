@@ -324,13 +324,14 @@ public class HumanCharacter : Character
 			{
 
 				flo = GameObject.Instantiate(Resources.Load("FlashLightPlayer")) as GameObject;
+
 			}
 			else
 			{
 				flo = GameObject.Instantiate(Resources.Load("FlashLight")) as GameObject;
-				this.MyReference.FlashlightMount.transform.localEulerAngles = new Vector3(18, 0, 0);
-			}
 
+			}
+			this.MyReference.FlashlightMount.transform.localEulerAngles = new Vector3(18, 0, 0);
 			MyReference.Flashlight = flo.GetComponent<FlashLight>();
 			flo.transform.parent = this.MyReference.FlashlightMount.transform;
 			flo.transform.localPosition = Vector3.zero;
@@ -625,6 +626,7 @@ public class HumanCharacter : Character
 				if(MyReference.FlashlightMount != null)
 				{
 					MyReference.FlashlightMount.transform.localEulerAngles = new Vector3(18, 0, 0);
+					MyReference.Flashlight.transform.localEulerAngles = Vector3.zero;
 				}
 
 				if(GetCurrentAnimWeapon() == WeaponAnimType.Pistol || GetCurrentAnimWeapon() == WeaponAnimType.Grenade)
@@ -817,8 +819,6 @@ public class HumanCharacter : Character
 			if((ActionState == HumanActionStates.None || ActionState == HumanActionStates.Twitch) && GetCurrentAnimWeapon() != WeaponAnimType.Unarmed 
 				&& (UpperBodyState != HumanUpperBodyStates.Aim || !MyAnimator.GetBool("IsAiming")))
 			{
-				if(MyAI.ControlType != AIControlType.Player)
-					Debug.Log(command);
 
 				if(GetCurrentAnimWeapon() == WeaponAnimType.Grenade || GetCurrentAnimWeapon() == WeaponAnimType.Tool)
 				{
@@ -874,7 +874,7 @@ public class HumanCharacter : Character
 					//	Debug.LogError("Animation parameter IsAiming has been set");
 					if(MyReference.Flashlight != null)
 					{
-						MyReference.FlashlightMount.transform.localEulerAngles = new Vector3(0, 0, 0);
+						MyReference.FlashlightMount.transform.localEulerAngles = new Vector3(18, 0, 0);
 					}
 				}
 				else
@@ -1045,7 +1045,7 @@ public class HumanCharacter : Character
 		{
 			if(ActionState == HumanActionStates.None)
 			{
-				Debug.Log("Unarm " + this.name);
+				//Debug.Log("Unarm " + this.name);
 				MyLeftHandIK.SmoothDisable();
 				UpperBodyState = HumanUpperBodyStates.Idle;
 				MyAimIK.solver.SmoothDisable();
@@ -1233,6 +1233,8 @@ public class HumanCharacter : Character
 				_isLowThrow = false;
 			}
 
+			_thrownObjectInHand.GetComponent<Rigidbody>().isKinematic = false;
+			_thrownObjectInHand.GetComponent<Rigidbody>().useGravity = false;
 			_throwTarget = this.AimPoint;
 			Vector3 lookDir = this.AimPoint - transform.position;
 			lookDir = new Vector3(lookDir.x, 0, lookDir.z);
@@ -1888,10 +1890,10 @@ public class HumanCharacter : Character
 		_thrownObjectInHand.transform.parent = null;
 		Vector3 distance = _throwTarget - transform.position;
 
-		float magnitude = Mathf.Clamp(distance.magnitude, 6, 15);
+		float magnitude = Mathf.Clamp(distance.magnitude, 9, 17);
 		if(MyStatus.IsResting)
 		{
-			magnitude = 5;
+			magnitude = 7;
 		}
 		Vector3 direction = distance.normalized;
 
@@ -1906,15 +1908,15 @@ public class HumanCharacter : Character
 
 
 
-		_thrownObjectInHand.transform.position = this.MyReference.RightHandWeaponMount.transform.position + direction * 1f;
-
+		//_thrownObjectInHand.transform.position = this.MyReference.RightHandWeaponMount.transform.position;// + direction * 1f;
+		//Time.timeScale = 0;
 		Vector3 throwForce = (direction * 2 + Vector3.up).normalized * (magnitude * 0.8f);
 		if(_isLowThrow)
 		{
 			throwForce = direction.normalized * (magnitude * 0.8f);
 		}
 
-		_thrownObjectInHand.GetComponent<Rigidbody>().isKinematic = false;
+		_thrownObjectInHand.GetComponent<Rigidbody>().useGravity = true;
 		_thrownObjectInHand.GetComponent<Rigidbody>().AddForce(throwForce, ForceMode.Impulse);
 		_thrownObjectInHand.GetComponent<Rigidbody>().AddTorque((transform.right + transform.up) * 6, ForceMode.Impulse);
 		_thrownObjectInHand.IsThrown = true;

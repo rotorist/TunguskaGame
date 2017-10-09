@@ -7,6 +7,7 @@ public class SaveNameReference : MonoBehaviour
 
 	public string SaveName;
 	public bool IsNewGame;
+	public bool IsGodMode;
 
 	void Awake()
 	{

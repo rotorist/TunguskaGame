@@ -473,11 +473,55 @@
             <text>Where can I find Mr. Dotsenko?</text>
             <next_node id="29" />
         </option>
+        <option>
+            <title>Treatment</title>
+            <text>Can you help me? I'm not feeling well.</text>
+            <next_node id="40" />
+        </option>
     </node>
     <node id="32">
         <response>
             <text>Excellent! As promised, here's some cash for your work.</text>
             <event name="zsk_give_sid_supply" />
+        </response>
+    </node>
+    <node id="40">
+        <response>
+            <text>Well of course! I'm a doctor! I can patch up your holes and get rid of your radiation. It will be 250 rubles.</text>
+        </response>
+        <option>
+            <condition name="has_money" story="has_money" compare="250" op="-2" />
+            <title>No Money</title>
+            <text>Nevermind, I don't have enough money.</text>
+            <next_node id="43" />
+        </option>
+        <option>
+            <condition name="has_money" story="has_money" compare="250" op="1" />
+            <title>Yes</title>
+            <text>Sure, here's the money.</text>
+            <next_node id="41" />
+        </option>
+        <option>
+            <condition name="has_money" story="has_money" compare="250" op="1" />
+            <title>No</title>
+            <text>Sorry, I changed my mind.</text>
+            <next_node id="42" />
+        </option>
+    </node>
+    <node id="43">
+        <response>
+            <text>Come back when you do! It's your body, don't let it wait!</text>
+        </response>
+    </node>
+    <node id="41">
+        <response>
+            <text>Good. Now lower your breeches and I'll make you feel a lot better.</text>
+            <event name="zsk_sid_heal" />
+        </response>
+    </node>
+    <node id="42">
+        <response>
+            <text>Break a leg! Hahaha I'm sorry.</text>
         </response>
     </node>
 </dialogue>
