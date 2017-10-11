@@ -343,7 +343,7 @@ public class HumanAnimStateGoForward : HumanAnimStateBase
 		}
 		else if(this.ParentCharacter.MyAI.BlackBoard.PendingCommand == CharacterCommands.Pickup)
 		{
-			Vector3 targetDist = this.ParentCharacter.MyAI.BlackBoard.PickupTarget.transform.position - this.ParentCharacter.transform.position;
+			Vector3 targetDist = this.ParentCharacter.MyAI.BlackBoard.PickupTarget.transform.position - (this.ParentCharacter.transform.position + new Vector3(0, 0.6f, 0));
 			if(targetDist.magnitude <= 1.5f)
 			{
 				UpdateState(HumanBodyStates.StandIdle);

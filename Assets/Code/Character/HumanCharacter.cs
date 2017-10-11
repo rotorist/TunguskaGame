@@ -2430,6 +2430,7 @@ public class HumanCharacter : Character
 		}
 		MyReference.LiveCollider.enabled = false;
 		MyReference.DeathCollider.enabled = true;
+		MyReference.DeathCollider.gameObject.layer = 18;
 
 		_isDeathTriggered = true;
 		/*

@@ -102,7 +102,7 @@ public class HumanAnimStateSneakForward : HumanAnimStateBase
 	
 	private void Initialize()
 	{
-		Debug.Log("initializing sneak forward " + "Dest " + this.ParentCharacter.Destination);
+		//Debug.Log("initializing sneak forward " + "Dest " + this.ParentCharacter.Destination);
 		this.ParentCharacter.CurrentAnimStateName = "Sneak Forward";
 		this.ParentCharacter.CurrentStance = HumanStances.Crouch;
 		this.ParentCharacter.MyAnimator.SetFloat("VSpeed", 0);
@@ -255,8 +255,8 @@ public class HumanAnimStateSneakForward : HumanAnimStateBase
 		}
 		else if(this.ParentCharacter.MyAI.BlackBoard.PendingCommand == CharacterCommands.Pickup)
 		{
-			Vector3 targetDist = this.ParentCharacter.MyAI.BlackBoard.PickupTarget.transform.position - this.ParentCharacter.transform.position;
-			if(targetDist.magnitude <= 1)
+			Vector3 targetDist = this.ParentCharacter.MyAI.BlackBoard.PickupTarget.transform.position - (this.ParentCharacter.transform.position + new Vector3(0, 0.6f, 0));
+			if(targetDist.magnitude <= 1.5f)
 			{
 				UpdateState(HumanBodyStates.CrouchIdle);
 				this.ParentCharacter.MyAI.BlackBoard.PendingCommand = CharacterCommands.Idle;

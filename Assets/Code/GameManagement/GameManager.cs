@@ -107,7 +107,7 @@ public class GameManager : MonoBehaviour
 		Inst = this;
 
 		SaveNameReference saveNameRef = GameObject.FindObjectOfType<SaveNameReference>();
-		if(saveNameRef.IsGodMode)
+		if(saveNameRef != null && saveNameRef.IsGodMode)
 		{
 			GodMode = true;
 		}

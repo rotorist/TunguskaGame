@@ -716,6 +716,7 @@ public class MutantCharacter : Character
 		MyNavAgent.enabled = false;
 		MyReference.LiveCollider.enabled = false;
 		MyReference.DeathCollider.enabled = true;
+		MyReference.DeathCollider.gameObject.layer = 18;
 
 		/*
 		CapsuleCollider collider = GetComponent<CapsuleCollider>();

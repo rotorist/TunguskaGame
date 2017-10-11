@@ -265,7 +265,7 @@ public class AISensor
 		foreach(Character c in GameManager.Inst.NPCManager.AllCharacters)
 		{
 			
-			if(c == _parentCharacter || _parentCharacter.MyAI.GetCharacterRelationship(c) >= 4)
+			if(c == _parentCharacter || _parentCharacter.MyAI.IsCharacterEnemy(c) >= 3)
 			{
 				continue;
 			}
@@ -315,10 +315,19 @@ public class AISensor
 
 			if(distance <= range && Vector3.Angle(myEyes.transform.forward, (c.transform.position - _parentCharacter.transform.position)) <= fov / 2)
 			{
-				//Debug.Log("sensor range/fov check passed");		
+				//Debug.Log(_parentCharacter.name + " sensor range/fov check passed for " + c.name);		
 				//now do a raycast check if this character is behind walls. 
 				RaycastHit hit;
-				float colliderHeight = c.GetComponent<CapsuleCollider>().height;
+				float colliderHeight = 0; 
+				CapsuleCollider collider = c.GetComponent<CapsuleCollider>();
+				if(collider.direction == 2)
+				{
+					colliderHeight = collider.center.y;
+				}
+				else if(collider.direction == 1)
+				{
+					colliderHeight = collider.height;
+				}
 				Vector3 rayTarget = c.transform.position + Vector3.up * colliderHeight * 0.7f;
 				Ray ray = new Ray(myEyes.transform.position, rayTarget - myEyes.transform.position);
 				//Debug.DrawRay(myEyes.transform.position, rayTarget - myEyes.transform.position, Color.red, 0.9f);
@@ -375,8 +384,8 @@ public class AISensor
 				continue;
 			}
 
-			int relationship = _parentCharacter.MyAI.GetCharacterRelationship(c);
-			if(relationship < 3 || c == _parentCharacter.Killer)
+			int relationship = _parentCharacter.MyAI.IsCharacterEnemy(c);
+			if(relationship < 2 || c == _parentCharacter.Killer)
 			{
 				
 
@@ -515,7 +524,7 @@ public class AISensor
 		//go through all characters and find enemies within hearing range
 		foreach(Character c in GameManager.Inst.NPCManager.AllCharacters)
 		{
-			if(c == _parentCharacter || _parentCharacter.MyAI.GetCharacterRelationship(c) > 2 || c.MyStatus.Health <= 0)
+			if(c == _parentCharacter || _parentCharacter.MyAI.IsCharacterEnemy(c) >= 2 || c.MyStatus.Health <= 0)
 			{
 				continue;
 			}

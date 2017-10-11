@@ -123,7 +123,7 @@ public class AI : MonoBehaviour
 
 		return false;
 	}
-
+	/*
 	public int GetCharacterRelationship(Character c)
 	{
 		if(_parentCharacter.Faction == c.Faction)
@@ -174,7 +174,7 @@ public class AI : MonoBehaviour
 
 		}
 	}
-
+	*/
 	public int IsCharacterEnemy(Character c) //0=enemy, 1=negative neutral, 2=positive neutral, 3=friendly
 	{
 		if(_parentCharacter.Faction == c.Faction)

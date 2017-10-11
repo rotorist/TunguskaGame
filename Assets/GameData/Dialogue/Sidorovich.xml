@@ -177,7 +177,7 @@
     </node>
     <node id="15">
         <response>
-            <text>They are humans at the first stage of mutation after contracting the Tungus Complex. They aren't too dangerous individually, but if many of them gang up on you in a tight space, it's certain death. I need you to clear the Ghouls so we can use the underground sewer to transport goods out. Before you go, see if you can find Hans somewhere in the village. I heard he needed some help.</text>
+            <text>They are humans at the first stage of mutation after contracting the Tungus Complex. They aren't too dangerous individually, but if many of them gang up on you in a tight space, it's certain death. I need you to clear the Ghouls so we can use the underground sewer to transport goods out. By the way, talk to Hans before you leave. He lives in that L-shaped house. I heard he needed some help. </text>
             <event name="zsk_sid_church_begin" />
         </response>
     </node>

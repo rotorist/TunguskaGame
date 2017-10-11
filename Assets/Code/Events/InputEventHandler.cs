@@ -282,7 +282,7 @@ public class InputEventHandler
 			UIEventHandler.Instance.TriggerMap();
 		}
 
-		if(Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.Escape))
+		if(Input.GetKeyDown(KeyCode.T) || Input.GetKeyDown(KeyCode.Escape))
 		{
 			if(GameManager.Inst.UIManager.WindowPanel.TaskListPanel.IsActive)
 			{
@@ -301,14 +301,14 @@ public class InputEventHandler
 			{
 				if(OnCameraZoomIn != null)
 				{
-					OnCameraZoomIn(wheelInput);
+					OnCameraZoomIn(-1);
 				}
 			}
 			else
 			{
 				if(OnCameraRotateLeft != null)
 				{
-					OnCameraRotateLeft(wheelInput);
+					OnCameraRotateLeft(-1);
 				}
 			}
 		}
@@ -358,7 +358,7 @@ public class InputEventHandler
 		{
 			if(OnCameraRotateLeft != null)
 			{
-				//OnCameraRotateLeft();
+				OnCameraRotateLeft(4);
 			}
 		}
 
@@ -366,7 +366,7 @@ public class InputEventHandler
 		{
 			if(OnCameraRotateRight != null)
 			{
-				//OnCameraRotateRight();
+				OnCameraRotateRight(4);
 			}
 		}
 
@@ -830,7 +830,7 @@ public class InputEventHandler
 
 			}
 
-			if(Input.GetKeyDown(KeyCode.Q))
+			if(Input.GetKeyDown(KeyCode.T))
 			{
 				UIEventHandler.Instance.TriggerJournal();
 				GameManager.Inst.UIManager.WindowPanel.TaskListPanel.Show();

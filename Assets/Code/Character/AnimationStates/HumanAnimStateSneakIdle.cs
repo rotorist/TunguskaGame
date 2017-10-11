@@ -164,7 +164,7 @@ public class HumanAnimStateSneakIdle : HumanAnimStateBase
 	
 	private void Initialize()
 	{
-		Debug.Log("Initializing sneak idle");
+		//Debug.Log("Initializing sneak idle");
 		this.ParentCharacter.CurrentAnimStateName = "Sneak Idle";
 		this.ParentCharacter.CurrentStance = HumanStances.Crouch;
 		_vSpeed = this.ParentCharacter.MyAnimator.GetFloat("VSpeed");

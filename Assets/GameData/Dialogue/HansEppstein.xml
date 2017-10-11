@@ -59,7 +59,10 @@
             <text>Good day! What brings you here?</text>
         </response>
         <option>
-            <condition name="zsk_hans_quest" story="zsk_hans_quest" compare="0" op="0" />
+            <logic type="And">
+                <condition name="zsk_sid_quest" story="zsk_sid_quest" compare="3" op="1" />
+                <condition name="zsk_hans_quest" story="zsk_hans_quest" compare="0" op="0" />
+            </logic>
             <title>Help</title>
             <text>Sidorovich said you needed some help.</text>
             <next_node id="2" />

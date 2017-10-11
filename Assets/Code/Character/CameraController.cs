@@ -46,7 +46,40 @@ public class CameraController : MonoBehaviour
 	private Vector2 [] _boundaryPoints;
 
 	private Transform _cameraTester;
+
+	float _rotationLerpSpeed;
+	float _panLerpSpeed;
+
+	float _cameraHeight = 18;
+	float _cameraDistFromPlayer = 25;
+	float _mouseAngle;
+	Vector3 _cameraPanDir;
 	#endregion
+
+	void FixedUpdate()
+	{
+		Vector3 mousePos = Input.mousePosition;
+		mousePos.x -= Screen.width/2;
+		mousePos.y -= Screen.height/2;
+
+		//if(disposition > 0)
+		//Debug.Log(disposition);
+
+		float mouseAngleTarget = Mathf.Clamp(Vector2.Angle(mousePos, new Vector2(0, 1)), 10, 180);
+		_mouseAngle = mouseAngleTarget;
+
+		Vector3 cameraPanDirTarget = mousePos.normalized;//aimDir.normalized;
+
+		cameraPanDirTarget = new Vector3(cameraPanDirTarget.x, 0, cameraPanDirTarget.y);
+		cameraPanDirTarget = transform.TransformDirection(cameraPanDirTarget).normalized * 0.75f;
+
+		_cameraPanDir = Vector3.Lerp(_cameraPanDir, cameraPanDirTarget, Time.fixedDeltaTime * 3);
+
+
+		_panLerpSpeed = 1.5f;
+		_rotationLerpSpeed = 1;
+
+	}
 
 	void Update()
 	{
@@ -72,8 +105,7 @@ public class CameraController : MonoBehaviour
 
 		Vector3 cameraFacing = Camera.main.transform.forward;
 
-		float cameraHeight = 18;
-		float cameraDistFromPlayer = 25;
+
 		bool isCameraLocked = false;
 
 
@@ -83,37 +115,26 @@ public class CameraController : MonoBehaviour
 			cameraFov = _maxFov + 10;
 		}
 
-		_cameraPos = pc.transform.position - cameraFacing * cameraDistFromPlayer;
-		_cameraPos = new Vector3(_cameraPos.x, pc.transform.position.y + cameraHeight, _cameraPos.z);
+		_cameraPos = pc.transform.position - cameraFacing * _cameraDistFromPlayer;
+		_cameraPos = new Vector3(_cameraPos.x, pc.transform.position.y + _cameraHeight, _cameraPos.z);
 		if(CameraBaseAngle == 60)
 		{
 			_cameraPos = _cameraPos + new Vector3(cameraFacing.x, 0, cameraFacing.z) * 5;
 		}
-
-		/*
-		Vector3 targetEuler = new Vector3(0, _currentRotation * 45, 0);
-		Quaternion rotation = Quaternion.Euler(targetEuler);
-		transform.rotation = Quaternion.Lerp(transform.rotation, rotation, Time.deltaTime * 5);
-		*/
+			
 
 		Vector3 mousePos = Input.mousePosition;
 		mousePos.x -= Screen.width/2;
 		mousePos.y -= Screen.height/2;
-		float mouseAngle = Vector2.Angle(mousePos, new Vector2(0, 1));
-		//float mouseAngle2 = Vector2.Angle(mousePos, new Vector2(1, 0));
+
 
 
 		Vector3 aimDir = pc.AimPoint - pc.transform.position;
-		Vector3 cameraPanDir = mousePos.normalized;//aimDir.normalized;
-
-		cameraPanDir = new Vector3(cameraPanDir.x, 0, cameraPanDir.y);
-		cameraPanDir = transform.TransformDirection(cameraPanDir).normalized * 0.75f;
-
-		//panning distance is 0 when aimDir magnitude is less than 2
-		//when greater than 2, slowly increase the distance up to say 7
 
 
-		float maxMousePos = Screen.height * 0.5f * Mathf.Abs(mouseAngle - 90)/90 + Screen.width * 0.5f * (1 - Mathf.Abs(90 - mouseAngle)/90);
+
+
+		float maxMousePos = Screen.height * 0.5f * Mathf.Abs(_mouseAngle - 90)/90 + Screen.width * 0.5f * (1 - Mathf.Abs(90 - _mouseAngle)/90);
 
 		float panDist = MaxPanDist * PanDistCurve.Evaluate((mousePos.magnitude) / (maxMousePos)); //Mathf.Clamp((mousePos.magnitude) / (maxMousePos) * (MaxPanDist), 0, MaxPanDist);
 		float panDistX = MaxPanDist * PanDistCurve.Evaluate(Mathf.Abs(mousePos.x) / (maxMousePos));
@@ -127,71 +148,24 @@ public class CameraController : MonoBehaviour
 			weapon = currentWeapon.GetComponent<Weapon>();
 		}
 
-		//if(weapon != null)
-		{
-			//if(weapon.IsScoped && pc.UpperBodyState == HumanUpperBodyStates.Aim)
-			{
-				//lookAheadPos = _cameraPos + cameraPanDir * panDist * 2f;
-			}
-			//else
-			{
-				/*
-				if(mousePos.y > 0)
-				{
-					lookAheadPos = _cameraPos + cameraPanDir * panDist;
-				}
-				else
-				{
-					lookAheadPos = _cameraPos + cameraPanDir * panDistX * 0.1f;
-				}
-				*/
-
-				lookAheadPos = _cameraPos + cameraPanDir * panDist * 0.5f;
-			}
-		}
-		//else
-		{
-			//lookAheadPos = _cameraPos + cameraPanDir * panDist;
-		}
+		lookAheadPos = _cameraPos + _cameraPanDir * panDist * 0.5f;
 
 
 
-		float rotationLerpSpeed = 3;
-		float panLerpSpeed = 2;
+
+
 
 		if(_cameraMode == CameraModeEnum.Leader)
 		{
-			/*
-			if(pc.UpperBodyState != HumanUpperBodyStates.Aim && pc.UpperBodyState != HumanUpperBodyStates.HalfAim)
-			{
-				transform.position = Vector3.Lerp(transform.position, _cameraPos, 8 * Time.unscaledDeltaTime);
 
-				_cameraAngle = 45;
-
-			}
-			else */
 			if(InputEventHandler.Instance.State == UserInputState.Normal)
 			{
 				if( _maxFov >= HighFov)
 				{
-					//if(weapon != null)
-					{
-						//if using sniper, then don't change camera angle
-						//if(!weapon.IsScoped || pc.UpperBodyState != HumanUpperBodyStates.Aim)
-						{
-							_cameraAngle1 = CameraBaseAngle - CameraAngleCurve.Evaluate(mouseAngle / 180) * 15 * PanDistCurve.Evaluate(Mathf.Abs(mousePos.y / (Screen.height/2)));//PanDistCurve.Evaluate(panDist / MaxPanDist);
-						}
-						//else
-						{
-							//_cameraAngle1 = CameraBaseAngle;
-						}
 
-						cameraFov *= 0.85f;
-					}
-					//else
-					{
-						//_cameraAngle1 = CameraBaseAngle;
-					}
+					_cameraAngle1 = CameraBaseAngle - CameraAngleCurve.Evaluate(_mouseAngle / 180) * 15 * PanDistCurve.Evaluate(Mathf.Abs(mousePos.y / (Screen.height/2)));//PanDistCurve.Evaluate(panDist / MaxPanDist);
+
+					cameraFov *= 0.85f;
 						
 				}
 				else
@@ -210,7 +184,7 @@ public class CameraController : MonoBehaviour
 		else
 		{
 			//_cameraAngle = 60;
-			rotationLerpSpeed = 9;
+			_rotationLerpSpeed = 9;
 
 			transform.position = Vector3.Lerp(transform.position, _cameraPos, 4 * Time.unscaledDeltaTime);
 
@@ -218,7 +192,7 @@ public class CameraController : MonoBehaviour
 
 		if(IsCameraCentered)
 		{
-			Vector3 newAngle = Vector3.Lerp(MainCamera.transform.localEulerAngles, new Vector3(CameraBaseAngle, 0, 0), rotationLerpSpeed * Time.unscaledDeltaTime);
+			Vector3 newAngle = Vector3.Lerp(MainCamera.transform.localEulerAngles, new Vector3(CameraBaseAngle, 0, 0), _rotationLerpSpeed * Time.unscaledDeltaTime);
 			MainCamera.transform.localEulerAngles = newAngle;
 			transform.position = Vector3.Lerp(transform.position, _cameraPos, 4 * Time.unscaledDeltaTime);
 		}
@@ -226,16 +200,18 @@ public class CameraController : MonoBehaviour
 		{
 			//Debug.Log("INSIDE " + transform.position);
 			float playerSpeed = GameManager.Inst.PlayerControl.SelectedPC.MyCC.velocity.magnitude;
-			if(GameManager.Inst.PlayerControl.AimedObjectType != AimedObjectType.None && playerSpeed < 0.1f)
+			if(GameManager.Inst.PlayerControl.AimedObjectType != AimedObjectType.None && playerSpeed < 0.1f
+				&& Vector3.Distance(GameManager.Inst.PlayerControl.SelectedPC.transform.position, GameManager.Inst.PlayerControl.GetAimedObject().transform.position) < 10)
 			{
-				panLerpSpeed = 0.5f;
-				rotationLerpSpeed = 0.5f;
+				_panLerpSpeed = 0.4f;
+				_rotationLerpSpeed = 0.4f;
 			}
 
-			Vector3 newPos = Vector3.Lerp(transform.position, lookAheadPos, panLerpSpeed * Time.unscaledDeltaTime);
-			Vector3 newAngle = Vector3.Lerp(MainCamera.transform.localEulerAngles, new Vector3(_cameraAngle1, 0, 0), rotationLerpSpeed * Time.unscaledDeltaTime);
+			Vector3 newPos = Vector3.Lerp(transform.position, lookAheadPos, _panLerpSpeed * Time.unscaledDeltaTime);
+			Vector3 newAngle = Vector3.Lerp(MainCamera.transform.localEulerAngles, new Vector3(_cameraAngle1, 0, 0), _rotationLerpSpeed * Time.unscaledDeltaTime);
 			_cameraTester.position = lookAheadPos;
 			_cameraTester.localEulerAngles = new Vector3(_cameraAngle1, transform.localEulerAngles.y, 0);
+
 			//test if the camera tester is outside boundary, if so, assign main character to prev pos and angle
 			Vector3 restrictedPos;
 			float overDistance;
@@ -256,30 +232,11 @@ public class CameraController : MonoBehaviour
 			}*/
 				
 
-				MainCamera.fieldOfView = Mathf.Lerp(MainCamera.fieldOfView, cameraFov, rotationLerpSpeed * Time.unscaledDeltaTime);
+			MainCamera.fieldOfView = Mathf.Lerp(MainCamera.fieldOfView, cameraFov, _rotationLerpSpeed * Time.unscaledDeltaTime);
 
 		}
 		
 
-		/*
-		if(_cameraMode == CameraModeEnum.Party)
-		{
-			Transform pc = GameManager.Inst.PlayerControl.SelectedPC.transform;
-			transform.position = new Vector3(transform.position.x, 50, transform.position.z);
-
-
-			if(_isRotatingLeft)
-			{
-				transform.RotateAround(pc.position, Vector3.up, RotateSpeed * Time.unscaledDeltaTime);
-			}
-
-			if(_isRotatingRight)
-			{
-				transform.RotateAround(pc.position, Vector3.up, -1 * RotateSpeed * Time.unscaledDeltaTime);
-			}
-
-		}
-		*/
 	}
 
 
@@ -363,13 +320,26 @@ public class CameraController : MonoBehaviour
 
 	public void RotateLeft(float amount)
 	{
-		_rotation += 0.05f * 10 * 1f;
-
+		if(amount < 0)
+		{
+			_rotation += 0.05f * 10 * 1f;
+		}
+		else
+		{
+			_rotation += amount;
+		}
 	}
 
 	public void RotateRight(float amount)
 	{
-		_rotation += -0.05f * 10 * 1f;
+		if(amount < 0)
+		{
+			_rotation += -0.05f * 10 * 1f;
+		}
+		else
+		{
+			_rotation += amount * -1;
+		}
 	}
 
 	public void StartRotateLeft()
