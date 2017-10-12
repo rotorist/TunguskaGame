@@ -2110,9 +2110,12 @@ public class HumanCharacter : Character
 					GameObject.Destroy(MyAI.BlackBoard.PickupTarget.gameObject);
 				}
 				*/
+			pickup.Item.Durability = pickup.Durability * pickup.Item.MaxDurability;
+
 			if(this.Inventory.FitItemInBackpack(pickup.Item, out colPos, out rowPos, out orientation))
 			{
 				Debug.Log("Found backpack fit " + colPos + ", " + rowPos + " orientation " + orientation);
+
 
 				GridItemData itemData = new GridItemData(pickup.Item, colPos, rowPos, orientation, pickup.Quantity);
 				this.Inventory.Backpack.Add(itemData);

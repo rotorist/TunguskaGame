@@ -98,6 +98,7 @@ public class SaveGameManager
 			PickupItemData data = new PickupItemData();
 			data.ItemID = pickup.Item.ID;
 			data.Quantity = pickup.Quantity;
+			data.Durability = pickup.Durability;
 			data.Pos = new SerVector3(pickup.transform.position);
 			data.EulerAngles = new SerVector3(pickup.transform.localEulerAngles);
 
@@ -428,6 +429,8 @@ public class SaveGameManager
 				}
 				pickup.GetComponent<PickupItem>().Item = item;
 				pickup.GetComponent<PickupItem>().Quantity = pickupItemData.Quantity;
+				pickup.GetComponent<PickupItem>().Durability = pickupItemData.Durability;
+
 			}
 		}
 

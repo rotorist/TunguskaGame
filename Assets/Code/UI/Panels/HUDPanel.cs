@@ -180,7 +180,7 @@ public class HUDPanel : PanelBase
 		BloodLevel3.height = screenHeight;
 	}
 
-	public void ShowTargetName(string text)
+	public void ShowTargetName(string text, int relationship)
 	{
 		TargetNameBackground.alpha = 1;
 		TargetName.alpha = 1;
@@ -189,6 +189,19 @@ public class HUDPanel : PanelBase
 		if(TargetNameBackground.width < 100)
 		{
 			TargetNameBackground.width = 100;
+		}
+
+		if(relationship <= 0)
+		{
+			TargetName.color = new Color(0.8f, 0.3f, 0.1f);
+		}
+		else if(relationship <= 2)
+		{
+			TargetName.color = new Color(0.8f, 0.8f, 0.8f);
+		}
+		else if(relationship <= 3)
+		{
+			TargetName.color = new Color(0.38f, 0.698f, 0.23f);
 		}
 
 		_isTargetNameFading = false;

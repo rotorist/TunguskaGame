@@ -6,8 +6,10 @@ public class PickupItemData
 {
 	public string ItemID;
 	public int Quantity;
+	public float Durability;
 	public SerVector3 Pos;
 	public SerVector3 EulerAngles;
+
 }
 
 public class PickupItem : MonoBehaviour 
@@ -15,6 +17,7 @@ public class PickupItem : MonoBehaviour
 	public Item Item;
 	public string ItemID;
 	public int Quantity;
+	public float Durability = 1;
 
 
 	private ItemSparkle _sparkle;

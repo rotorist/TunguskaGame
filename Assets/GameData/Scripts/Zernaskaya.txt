@@ -13,6 +13,8 @@ journal/{4}
 topic/discover/boris
 task/complete/1
 task/add/5
+condition/zsk_talked_to_razor/true
+
 
 ./zsk_irrigator_on
 object/FarmIrrigatorHandle/on

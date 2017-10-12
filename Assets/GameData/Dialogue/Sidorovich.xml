@@ -5,88 +5,6 @@
         <text>This bald, middle-aged man looks at you with the warmest smile you've ever seen.</text>
         <next_node id="1" />
     </intro>
-    <topic id="boris">
-        <title>Boris</title>
-        <next_node id="2" />
-    </topic>
-    <node id="2">
-        <response>
-            <condition name="zsk_sid_quest" story="zsk_sid_quest" compare="1" op="0" />
-            <text>Finish the jobs I gave you and then we can talk about him. The gate is unlocked for you. Good luck!</text>
-        </response>
-        <response>
-            <logic type="And">
-                <condition name="zsk_village_gate_open" story="zsk_village_gate_open" compare="0" op="0" />
-                <condition name="zsk_sid_quest" story="zsk_sid_quest" compare="0" op="0" />
-            </logic>
-            <text>Well yes, I do remember Boris. He worked for me for a few weeks. I remember him because he was an exceptional worker. If you are looking for him, I can help you. But I need some help too. So maybe we can make a deal.</text>
-        </response>
-        <option>
-            <logic type="And">
-                <condition name="zsk_village_gate_open" story="zsk_village_gate_open" compare="0" op="0" />
-                <condition name="zsk_sid_quest" story="zsk_sid_quest" compare="0" op="0" />
-            </logic>
-            <title>Help</title>
-            <text>What can I do to help?</text>
-            <next_node id="3" />
-        </option>
-    </node>
-    <node id="3">
-        <response>
-            <text>I like you already! I got three jobs that needs to be done, and nobody around here has the balls to do any of them. I can't send Razor because he's the chief of my guards; and let's just be clear - these jobs can get you killed, and I can't afford to lose Razor. But if you get these jobs done for me, I'll tell you where to find Boris. What do you think?</text>
-        </response>
-        <option>
-            <title>Yes</title>
-            <text>Alright, let's hear it.</text>
-            <next_node id="4" />
-        </option>
-        <option>
-            <title>Not yet</title>
-            <text>I'll think about it.</text>
-            <next_node id="5" />
-        </option>
-    </node>
-    <node id="4">
-        <response>
-            <text>Good! Here's the first job: right outside the village, up north, there is a barn which we have been using to grow potatoes. We hate eating potatoes but we use them to produce alcohol.</text>
-        </response>
-        <option>
-            <title>Continue</title>
-            <text>Go on.</text>
-            <next_node id="6" />
-        </option>
-    </node>
-    <node id="6">
-        <response>
-            <text>You see, the alcohol is our main trade - the eggheads among the mutant hunters pay a lot of dough for it, and that's how we've been surviving. But recently a bunch of assholes who call themselves "Legionaires" raided our farm and took it for themselves, along with all the distillers. And that puts us in some deep shit. </text>
-        </response>
-        <option>
-            <title>Continue</title>
-            <text>I see. So you need me to take it back for you, right?</text>
-            <next_node id="7" />
-        </option>
-    </node>
-    <node id="7">
-        <response>
-            <text>Exactly. Get rid of the Legionaires; and if you can, check on the potatoes for us, they probably haven't been watered for a long time. The farm is directly north from the village, on the other side of the hill. I'll go head and tell Razor to let you through the gate. Now grab your gun and get to it!</text>
-            <event name="zsk_village_exit_unlock" />
-        </response>
-        <option>
-            <title>Guns</title>
-            <text>Do you have some guns for me?</text>
-            <next_node id="8" />
-        </option>
-    </node>
-    <node id="8">
-        <response>
-            <text>No, I don't. What the hell are you doing in the zone without a shooter?</text>
-        </response>
-    </node>
-    <node id="5">
-        <response>
-            <text>Alright, take your time.</text>
-        </response>
-    </node>
     <topic id="your_story">
         <title>Story</title>
         <next_node id="9" />
@@ -179,6 +97,11 @@
         <response>
             <text>They are humans at the first stage of mutation after contracting the Tungus Complex. They aren't too dangerous individually, but if many of them gang up on you in a tight space, it's certain death. I need you to clear the Ghouls so we can use the underground sewer to transport goods out. By the way, talk to Hans before you leave. He lives in that L-shaped house. I heard he needed some help. </text>
             <event name="zsk_sid_church_begin" />
+        </response>
+    </node>
+    <node id="5">
+        <response>
+            <text>Alright, take your time.</text>
         </response>
     </node>
     <topic id="zsk_ivan_igor">
@@ -478,6 +401,20 @@
             <text>Can you help me? I'm not feeling well.</text>
             <next_node id="40" />
         </option>
+        <option>
+            <logic type="And">
+                <condition name="zsk_sid_quest" story="zsk_sid_quest" compare="1" op="-2" />
+                <condition name="zsk_talked_to_razor" story="zsk_talked_to_razor" compare="1" op="0" />
+            </logic>
+            <title>Boris</title>
+            <text>Do you remember my brother Boris?</text>
+            <next_node id="2" />
+        </option>
+        <option>
+            <title>Locked Gate</title>
+            <text>Could you open the gate for me?</text>
+            <next_node id="44" />
+        </option>
     </node>
     <node id="32">
         <response>
@@ -522,6 +459,84 @@
     <node id="42">
         <response>
             <text>Break a leg! Hahaha I'm sorry.</text>
+        </response>
+    </node>
+    <node id="2">
+        <response>
+            <condition name="zsk_sid_quest" story="zsk_sid_quest" compare="1" op="0" />
+            <text>Finish the jobs I gave you and then we can talk about him. The gate is unlocked for you. Good luck!</text>
+        </response>
+        <response>
+            <logic type="And">
+                <condition name="zsk_village_gate_open" story="zsk_village_gate_open" compare="0" op="0" />
+                <condition name="zsk_sid_quest" story="zsk_sid_quest" compare="0" op="0" />
+            </logic>
+            <text>Well yes, I do remember Boris. He worked for me for a few weeks. I remember him because he was an exceptional worker. If you are looking for him, I can help you. But I need some help too. So maybe we can make a deal.</text>
+        </response>
+        <option>
+            <logic type="And">
+                <condition name="zsk_village_gate_open" story="zsk_village_gate_open" compare="0" op="0" />
+                <condition name="zsk_sid_quest" story="zsk_sid_quest" compare="0" op="0" />
+            </logic>
+            <title>Help</title>
+            <text>What can I do to help?</text>
+            <next_node id="3" />
+        </option>
+    </node>
+    <node id="3">
+        <response>
+            <text>I like you already! I got three jobs that needs to be done, and nobody around here has the balls to do any of them. I can't send Razor because he's the chief of my guards; and let's just be clear - these jobs can get you killed, and I can't afford to lose Razor. But if you get these jobs done for me, I'll tell you where to find Boris. What do you think?</text>
+        </response>
+        <option>
+            <title>Yes</title>
+            <text>Alright, let's hear it.</text>
+            <next_node id="4" />
+        </option>
+        <option>
+            <title>Not yet</title>
+            <text>I'll think about it.</text>
+            <next_node id="5" />
+        </option>
+    </node>
+    <node id="4">
+        <response>
+            <text>Good! Here's the first job: right outside the village, up north, there is a barn which we have been using to grow potatoes. We hate eating potatoes but we use them to produce alcohol.</text>
+        </response>
+        <option>
+            <title>Continue</title>
+            <text>Go on.</text>
+            <next_node id="6" />
+        </option>
+    </node>
+    <node id="6">
+        <response>
+            <text>You see, the alcohol is our main trade - the eggheads among the mutant hunters pay a lot of dough for it, and that's how we've been surviving. But recently a bunch of assholes who call themselves "Legionaires" raided our farm and took it for themselves, along with all the distillers. And that puts us in some deep shit. </text>
+        </response>
+        <option>
+            <title>Continue</title>
+            <text>I see. So you need me to take it back for you, right?</text>
+            <next_node id="7" />
+        </option>
+    </node>
+    <node id="7">
+        <response>
+            <text>Exactly. Get rid of the Legionaires; and if you can, check on the potatoes for us, they probably haven't been watered for a long time. The farm is directly north from the village, on the other side of the hill. I'll go head and tell Razor to let you through the gate. Now grab your gun and get to it!</text>
+            <event name="zsk_village_exit_unlock" />
+        </response>
+        <option>
+            <title>Guns</title>
+            <text>Do you have some guns for me?</text>
+            <next_node id="8" />
+        </option>
+    </node>
+    <node id="8">
+        <response>
+            <text>No, I don't. What the hell are you doing in the zone without a shooter? If you need a weapon, there's an old machete lying around somewhere in the house.</text>
+        </response>
+    </node>
+    <node id="44">
+        <response>
+            <text>I'd be happy to do so. Have you got two thousand rubles?</text>
         </response>
     </node>
 </dialogue>

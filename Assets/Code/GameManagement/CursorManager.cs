@@ -165,6 +165,25 @@ public class CursorManager
 				}
 				amount = amount * 100 + baseAmount + 20 * GameManager.Inst.PlayerControl.SelectedPC.MyAI.WeaponSystem.GetTurnMoveScatter();
 				aimCursor.SetExpansion(amount);
+
+				Weapon currentWeapon = GameManager.Inst.PlayerControl.SelectedPC.MyReference.CurrentWeapon.GetComponent<Weapon>();
+				if(currentWeapon.IsRanged)
+				{
+					Gun gun = (Gun)currentWeapon;
+					if(gun.Barrel.Range < Vector3.Distance(GameManager.Inst.PlayerControl.SelectedPC.transform.position, GameManager.Inst.PlayerControl.SelectedPC.AimPoint))
+					{
+						SetCrosshairState(aimCursor, true);
+					}
+					else
+					{
+						SetCrosshairState(aimCursor, false);
+					}
+				}
+				else
+				{
+					SetCrosshairState(aimCursor, false);
+				}
+
 			}
 		}
 		else
@@ -200,7 +219,7 @@ public class CursorManager
 				}
 				*/
 			}
-			else if(aimedObject != null && Vector3.Distance(GameManager.Inst.PlayerControl.SelectedPC.transform.position, aimedObject.transform.position) < 10)
+			else if(aimedObject != null && Vector3.Distance(GameManager.Inst.PlayerControl.SelectedPC.transform.position, aimedObject.transform.position) < 15)
 			{
 				if(aimedObject.GetComponent<PickupItem>() != null)
 				{
@@ -211,19 +230,20 @@ public class CursorManager
 						quantity = "(" + pickup.Quantity + ")";
 					}
 					//ShowToolTip(pickup.Item.Name + quantity);
-					GameManager.Inst.UIManager.HUDPanel.ShowTargetName(pickup.Item.Name + quantity);
+					GameManager.Inst.UIManager.HUDPanel.ShowTargetName(pickup.Item.Name + quantity, 1);
 					SetCursorState(CursorState.Hand);
 				}
 				else if(aimedObject.GetComponent<StoryObject>() != null)
 				{
 					//ShowToolTip(aimedObject.GetComponent<StoryObject>().Name);
-					GameManager.Inst.UIManager.HUDPanel.ShowTargetName(aimedObject.GetComponent<StoryObject>().Name);
+					GameManager.Inst.UIManager.HUDPanel.ShowTargetName(aimedObject.GetComponent<StoryObject>().Name, 1);
 					SetCursorState(CursorState.Hand);
 				}
 				else if(aimedObject.GetComponent<Character>() != null)
 				{
 					Character aimedCharacter = aimedObject.GetComponent<Character>();
-					if(aimedCharacter != null && aimedCharacter.MyStatus.Health > 0 && aimedCharacter.MyAI.IsCharacterEnemy((Character)GameManager.Inst.PlayerControl.SelectedPC) >= 2
+					int relationship = aimedCharacter.MyAI.IsCharacterEnemy((Character)GameManager.Inst.PlayerControl.SelectedPC);
+					if(aimedCharacter != null && aimedCharacter.MyStatus.Health > 0 && relationship >= 2
 						&& aimedCharacter.MyAI.ControlType != AIControlType.Player && !aimedCharacter.IsHidden)
 					{
 						SetCursorState(CursorState.Talk);
@@ -234,6 +254,10 @@ public class CursorManager
 					}
 
 					string name = aimedCharacter.Name;
+					if(relationship < 1)
+					{
+						name = aimedCharacter.Faction.ToString();
+					}
 					if(!string.IsNullOrEmpty(aimedCharacter.Title))
 					{
 						name = aimedCharacter.Title + " " + name;
@@ -242,13 +266,13 @@ public class CursorManager
 					if(!string.IsNullOrEmpty(name) && !aimedCharacter.IsHidden)
 					{
 						//ShowToolTip(name);
-						GameManager.Inst.UIManager.HUDPanel.ShowTargetName(name);
+						GameManager.Inst.UIManager.HUDPanel.ShowTargetName(name, relationship);
 					}
 				}
 				else if(aimedObject.tag == "SerumLab")
 				{
 					//ShowToolTip("Serum Lab");
-					GameManager.Inst.UIManager.HUDPanel.ShowTargetName("Serum Lab");
+					GameManager.Inst.UIManager.HUDPanel.ShowTargetName("Serum Lab", 1);
 					SetCursorState(CursorState.Hand);
 				}
 				else
@@ -306,6 +330,24 @@ public class CursorManager
 		}
 
 
+	}
+
+	private void SetCrosshairState(AimCursor aimCursor, bool isOutOfRange)
+	{
+		if(isOutOfRange)
+		{
+			aimCursor.AimCursorBottom.color = new Color(0.5f, 0.5f, 0.5f);
+			aimCursor.AimCursorTop.color = new Color(0.5f, 0.5f, 0.5f);
+			aimCursor.AimCursorLeft.color = new Color(0.5f, 0.5f, 0.5f);
+			aimCursor.AimCursorRight.color = new Color(0.5f, 0.5f, 0.5f);
+		}
+		else
+		{
+			aimCursor.AimCursorBottom.color = new Color(1f, 1f, 1f);
+			aimCursor.AimCursorTop.color = new Color(1f, 1f, 1f);
+			aimCursor.AimCursorLeft.color = new Color(1f, 1f, 1f);
+			aimCursor.AimCursorRight.color = new Color(1f, 1f, 1f);
+		}
 	}
 
 	private void RefreshCursor()

@@ -36,6 +36,7 @@ public class ItemManager
 		{
 			PickupItem pickup = o.GetComponent<PickupItem>();
 			pickup.Item = LoadItem(pickup.ItemID);
+			pickup.Item.Durability = pickup.Item.MaxDurability * pickup.Durability;
 		}
 
 
@@ -368,7 +369,7 @@ public class ItemManager
 			{
 				int magSize = (int)inventory.RifleSlot.GetAttributeByName("Magazine Size").Value;
 				inventory.RifleSlot.SetAttribute("_LoadedAmmos", UnityEngine.Random.Range(0, magSize + 1));
-				inventory.RifleSlot.Durability = UnityEngine.Random.Range(inventory.RifleSlot.MaxDurability * 0.33f, inventory.RifleSlot.MaxDurability * 0.9f);
+				inventory.RifleSlot.Durability = UnityEngine.Random.Range(inventory.RifleSlot.MaxDurability * 0.6f, inventory.RifleSlot.MaxDurability * 0.9f);
 				items.Add(new GridItemData(inventory.RifleSlot, 0, 0, GridItemOrient.Landscape, 1));
 				Item ammo = LoadItem(inventory.RifleSlot.GetAttributeByName("_LoadedAmmoID").Value.ToString());
 				if(UnityEngine.Random.value > 0.75f)
@@ -385,7 +386,7 @@ public class ItemManager
 					int magSize = (int)inventory.SideArmSlot.GetAttributeByName("Magazine Size").Value;
 					inventory.SideArmSlot.SetAttribute("_LoadedAmmos", UnityEngine.Random.Range(0, magSize + 1));
 				}
-				inventory.SideArmSlot.Durability = UnityEngine.Random.Range(inventory.SideArmSlot.MaxDurability * 0.33f, inventory.SideArmSlot.MaxDurability * 0.9f);
+				inventory.SideArmSlot.Durability = UnityEngine.Random.Range(inventory.SideArmSlot.MaxDurability * 0.6f, inventory.SideArmSlot.MaxDurability * 0.9f);
 				items.Add(new GridItemData(inventory.SideArmSlot, 0, 0, GridItemOrient.Landscape, 1));
 				Item ammo = LoadItem(inventory.SideArmSlot.GetAttributeByName("_LoadedAmmoID").Value.ToString());
 				if(UnityEngine.Random.value > 0.75f)
