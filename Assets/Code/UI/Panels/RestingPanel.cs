@@ -64,6 +64,8 @@ public class RestingPanel : PanelBase
 		HoursSlider.numberOfSteps = 6;
 		_hours = 3;
 		_isFading = false;
+		HoursSlider.value = 0;
+		HoursLabel.text = "Hours to rest: 3";
 
 		CaloriesLabel.text = "Calories Consumed: " + GameManager.Inst.PlayerControl.Survival.GetEatenCalories();
 
@@ -108,7 +110,7 @@ public class RestingPanel : PanelBase
 	public void OnSliderValueChange()
 	{
 		_hours = 3 + Mathf.RoundToInt(HoursSlider.value * 5);
-		HoursLabel.text = "Hours To Rest: " + _hours.ToString();
+		HoursLabel.text = "Hours to rest: " + _hours.ToString();
 	}
 
 	public void OnCancelButtonPress()

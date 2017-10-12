@@ -103,7 +103,10 @@ public class HumanAnimStateGoForward : HumanAnimStateBase
 
 			
 		_vSpeed = Mathf.Lerp(_vSpeed, targetVSpeed, 8 * Time.deltaTime);
-
+		if(velocity < 0.05f)
+		{
+			_vSpeed = 0;
+		}
 		//Debug.Log("VSpeed " + _vSpeed + " target speed " + targetVSpeed);
 		this.ParentCharacter.MyAnimator.SetFloat("VSpeed", _vSpeed);
 
@@ -498,7 +501,7 @@ public class HumanAnimStateGoForward : HumanAnimStateBase
 			{
 				//Debug.Log("I'm not moving? " + ParentCharacter.MyNavAgent.velocity.magnitude + " " + ParentCharacter.MyNavAgent.remainingDistance + " / " + ParentCharacter.MyNavAgent.stoppingDistance);
 			}
-			if(this.ParentCharacter.MyNavAgent.velocity.magnitude < 0.1f)
+			if(this.ParentCharacter.MyNavAgent.velocity.magnitude < 0.5f)
 			{
 				if(_stuckTimer < 0.1f)
 				{

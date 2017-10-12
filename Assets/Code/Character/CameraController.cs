@@ -58,6 +58,11 @@ public class CameraController : MonoBehaviour
 
 	void FixedUpdate()
 	{
+		if(IsLocked)
+		{
+			return;
+		}
+
 		Vector3 mousePos = Input.mousePosition;
 		mousePos.x -= Screen.width/2;
 		mousePos.y -= Screen.height/2;
@@ -79,6 +84,9 @@ public class CameraController : MonoBehaviour
 		_panLerpSpeed = 1.5f;
 		_rotationLerpSpeed = 1;
 
+
+
+
 	}
 
 	void Update()
@@ -88,6 +96,7 @@ public class CameraController : MonoBehaviour
 		{
 			return;
 		}
+
 
 		if(_rotation < 0)
 		{
@@ -100,7 +109,6 @@ public class CameraController : MonoBehaviour
 
 		}
 		_rotation = Mathf.Lerp(_rotation, 0, 5 * Time.unscaledDeltaTime);
-
 
 
 		Vector3 cameraFacing = Camera.main.transform.forward;

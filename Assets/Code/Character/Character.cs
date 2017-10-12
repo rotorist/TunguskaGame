@@ -61,6 +61,8 @@ public abstract class Character : MonoBehaviour
 	public bool IsInHiddenBuilding;
 	public bool IsOutOfSight;
 
+	public GameObject MyNoiseMarker;
+
 	public delegate void DelayCallBack(object parameter);
 
 	public abstract bool IsAlive

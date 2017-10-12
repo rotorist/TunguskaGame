@@ -2986,6 +2986,8 @@ public class HumanCharacter : Character
 				{
 					HideCharacter(false);
 					IsHidden = true;
+
+
 				}
 
 			}
@@ -2995,8 +2997,34 @@ public class HumanCharacter : Character
 				ShowCharacter();
 
 				IsHidden = false;
+
+
 			}
 		}
+
+		float speed = GetCharacterVelocity().magnitude;
+
+		if(IsHidden && speed > 0.2f)
+		{
+			if(MyNoiseMarker == null)
+			{
+				MyNoiseMarker = GameObject.Instantiate(Resources.Load("NoiseMarker")) as GameObject;
+			}
+		}
+		else
+		{
+			if(MyNoiseMarker != null)
+			{
+				GameObject.Destroy(MyNoiseMarker);
+				MyNoiseMarker = null;
+			}
+		}
+
+		if(MyNoiseMarker != null)
+		{
+			MyNoiseMarker.transform.position = transform.position + new Vector3(0, 2f, 0);
+		}
+
 	}
 
 	#endregion

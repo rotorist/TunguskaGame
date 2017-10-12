@@ -520,7 +520,7 @@
     </node>
     <node id="7">
         <response>
-            <text>Exactly. Get rid of the Legionaires; and if you can, check on the potatoes for us, they probably haven't been watered for a long time. The farm is directly north from the village, on the other side of the hill. I'll go head and tell Razor to let you through the gate. Now grab your gun and get to it!</text>
+            <text>Exactly. Get rid of the Legionaires; and if you can, fix the irrigation for us, and I'll give you a bonus. The farm is directly north from the village, on the other side of the hill. I'll go head and tell Razor to let you through the gate. Now grab your gun and get to it!</text>
             <event name="zsk_village_exit_unlock" />
         </response>
         <option>
