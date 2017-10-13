@@ -377,7 +377,7 @@ public class Gun : Weapon
 		_sparks.Emit(1);
 		//_bulletTrail.Bullets.Emit(1);
 
-		float criticalChance = 0.16f;
+		float criticalChance = 0.26f;
 		bool alreadyDoneCritical = false;
 
 		for(int i=0; i< _projectilesPerShot; i++)

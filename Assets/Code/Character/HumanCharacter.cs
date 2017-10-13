@@ -2413,9 +2413,10 @@ public class HumanCharacter : Character
 		GameManager.Inst.NPCManager.OnHumanDeath(Killer, (Character)this);
 		MyAI.OnDeath();
 		Stealth.OnDeath();
-		float posture = UnityEngine.Random.Range(0.1f, 200)/200f;
+		float posture = UnityEngine.Random.value;
 
 		this.MyAnimator.SetFloat("DeathPosture", posture);
+		this.MyAnimator.SetFloat("Blend", UnityEngine.Random.value);
 		this.MyAnimator.SetBool("IsDead", true);
 
 		CurrentAnimState = new HumanAnimStateDeath(this);
@@ -2930,6 +2931,11 @@ public class HumanCharacter : Character
 				r.enabled = false;
 			}
 		}
+
+		if(MyReference.Flashlight != null)
+		{
+			MyReference.Flashlight.Light.intensity = 0;
+		}
 	}
 
 	private void ShowCharacter()
@@ -2951,6 +2957,11 @@ public class HumanCharacter : Character
 			{
 				r.enabled = true;
 			}
+		}
+
+		if(MyReference.Flashlight != null)
+		{
+			MyReference.Flashlight.Light.intensity = 2.4f;
 		}
 	}
 

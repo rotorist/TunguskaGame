@@ -301,7 +301,7 @@ public class InputEventHandler
 			{
 				if(OnCameraZoomIn != null)
 				{
-					OnCameraZoomIn(-1);
+					OnCameraZoomIn(wheelInput);
 				}
 			}
 			else
@@ -325,7 +325,7 @@ public class InputEventHandler
 			{
 				if(OnCameraRotateRight != null)
 				{
-					OnCameraRotateRight(wheelInput);
+					OnCameraRotateRight(-1);
 				}
 			}
 		}
@@ -358,7 +358,7 @@ public class InputEventHandler
 		{
 			if(OnCameraRotateLeft != null)
 			{
-				OnCameraRotateLeft(4);
+				OnCameraRotateLeft(5);
 			}
 		}
 
@@ -366,7 +366,7 @@ public class InputEventHandler
 		{
 			if(OnCameraRotateRight != null)
 			{
-				OnCameraRotateRight(4);
+				OnCameraRotateRight(5);
 			}
 		}
 
@@ -439,7 +439,7 @@ public class InputEventHandler
 		{
 			if(OnGameTogglePause != null)
 			{
-				OnGameTogglePause();
+				//OnGameTogglePause();
 			}
 		}
 

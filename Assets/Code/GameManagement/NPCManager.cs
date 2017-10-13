@@ -626,7 +626,7 @@ public class NPCManager
 		}
 		else
 		{
-			status.MaxHealth = UnityEngine.Random.Range(180f, 350f);
+			status.MaxHealth = UnityEngine.Random.Range(180f, 280f);
 			status.Health = status.MaxHealth;
 
 			float rand = UnityEngine.Random.value;

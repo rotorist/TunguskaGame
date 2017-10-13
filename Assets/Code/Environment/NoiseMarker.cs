@@ -5,15 +5,22 @@ using UnityEngine;
 public class NoiseMarker : MonoBehaviour 
 {
 	public Projector Projector;
-
+	private float _size;
 	
 	// Update is called once per frame
 	void Update () 
 	{
-		Projector.orthographicSize = Mathf.Lerp(Projector.orthographicSize, 1,  Time.deltaTime * 1f);
-		if(Projector.orthographicSize > 0.6f)
+		_size = Mathf.Lerp(_size, 1,  Time.deltaTime * 1.2f);
+		if(_size > 0.4f)
 		{
-			Projector.orthographicSize = 0.2f;
+			Projector.enabled = false;
+			_size = -0.1f;
+		}
+
+		if(_size > 0.1f)
+		{
+			Projector.enabled = true;
+			Projector.orthographicSize = _size;
 		}
 	}
 }
