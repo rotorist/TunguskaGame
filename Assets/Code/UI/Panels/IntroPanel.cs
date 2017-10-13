@@ -187,7 +187,7 @@ public class IntroPanel : PanelBase
 
 		if(_currentSlide < 6)
 		{
-			SlideTimeout = 5 + (1f * Caption.height / Caption.fontSize - 1) * 4f;
+			SlideTimeout = 5 + (1f * Caption.height / Caption.fontSize - 1) * 6f;
 		}
 		else
 		{

@@ -279,7 +279,7 @@ public class GameManager : MonoBehaviour
 
 		}
 
-		//UIEventHandler.Instance.TriggerStartIntro();
+		UIEventHandler.Instance.TriggerStartIntro();
 
 		StartCoroutine(DoPerSecond());
 		StartCoroutine(DoPerHalfSecond());
