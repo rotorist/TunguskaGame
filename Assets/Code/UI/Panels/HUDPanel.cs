@@ -152,6 +152,11 @@ public class HUDPanel : PanelBase
 	public void UpdateScaling()
 	{
 		//set scaling
+		float heightRatio = ((1f * Screen.height) / Screen.width - 1) * 2 + 1;
+		float scale = Mathf.Lerp(1f, 0.6f, heightRatio) * GameManager.Inst.UIManager.UIZoom;
+		Debug.Log("Setting UI scale " + scale + " UIZoom " + GameManager.Inst.UIManager.UIZoom);
+		GameManager.Inst.UIManager.UICamera.transform.localScale = new Vector3(scale, scale, scale);
+
 		Vector3 targetLocLeft = new Vector3(Screen.width / 2 * -1, Screen.height / 2 * -1, 0); 
 		Vector3 worldPosLeft = GameManager.Inst.UIManager.UICamera.ScreenToWorldPoint(targetLocLeft);
 		Vector3 localPosLeft = transform.worldToLocalMatrix.MultiplyPoint3x4(worldPosLeft);
@@ -165,9 +170,7 @@ public class HUDPanel : PanelBase
 		TopHUDAnchor.localPosition = new Vector3(0, localPosRight.y / 2 * -1, 0);
 
 
-		float heightRatio = (1f * Screen.height / Screen.width - 1) * 2 + 1;
-		float scale = Mathf.Lerp(1f, 0.6f, heightRatio);
-		GameManager.Inst.UIManager.UICamera.transform.localScale = new Vector3(scale, scale, scale);
+
 
 		int screenWidth = Mathf.CeilToInt(localPosRight.x - localPosLeft.x / 2);
 		int screenHeight = Mathf.CeilToInt(screenWidth * (Screen.height * 1f / Screen.width));

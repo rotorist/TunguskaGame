@@ -499,7 +499,7 @@ public class ItemManager
 					if(item.Type == ItemType.PrimaryWeapon || item.Type == ItemType.SideArm)
 					{
 						item.SetAttribute("_LoadedAmmos", 0);
-						item.Durability = 0.95f;
+						item.Durability = item.MaxDurability * 0.95f;
 						string ammoID = item.GetAttributeByName("_LoadedAmmoID").Value.ToString();
 						if(!String.IsNullOrEmpty(ammoID))
 						{

@@ -19,6 +19,7 @@ public class UIManager
 	public MapPanel MapPanel;
 	public IntroPanel IntroPanel;
 
+	public float UIZoom;
 	public bool IsInHUDRegion;
 
 	private List<PanelBase> _panels;
@@ -80,7 +81,7 @@ public class UIManager
 		_panels.Add(BarkPanel);
 
 
-
+		UIZoom = 1;
 
 
 		UIStateMachine = new UIStateMachine();
@@ -121,6 +122,8 @@ public class UIManager
 		{
 			IntroPanel.PerFrameUpdate();
 		}
+
+		UpdateUIZoom();
 	}
 
 
@@ -173,5 +176,24 @@ public class UIManager
 	public void SetConsoleText(string text)
 	{
 		HUDPanel.SetConsoleText(text);
+	}
+
+	private void UpdateUIZoom()
+	{
+		if(Input.GetKeyDown(KeyCode.Equals))
+		{
+			UIZoom += 0.1f;
+			HUDPanel.UpdateScaling();
+		}
+
+		if(Input.GetKeyDown(KeyCode.Minus))
+		{
+			UIZoom -= 0.1f;
+			if(UIZoom < 0.3f)
+			{
+				UIZoom = 0.3f;
+			}
+			HUDPanel.UpdateScaling();
+		}
 	}
 }

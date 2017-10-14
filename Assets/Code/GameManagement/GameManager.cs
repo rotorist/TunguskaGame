@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
 
 	void Start()
 	{
-		
+		Application.targetFrameRate = 60;
 		UnityEngine.Debug.Log("Game Manager Started");
 		AppDataPath = Application.dataPath;
 		Initialize();
@@ -279,7 +279,7 @@ public class GameManager : MonoBehaviour
 
 		}
 
-		UIEventHandler.Instance.TriggerStartIntro();
+		//UIEventHandler.Instance.TriggerStartIntro();
 
 		StartCoroutine(DoPerSecond());
 		StartCoroutine(DoPerHalfSecond());
