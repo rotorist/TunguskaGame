@@ -70,10 +70,16 @@ public class SaveGameManager
 
 
 		//create new level data after removing existing one
-		if(GameManager.Inst.WorldManager.AllLevels.Contains(GameManager.Inst.WorldManager.CurrentLevel))
+		List<Level> allLevelsCopy = new List<Level>(GameManager.Inst.WorldManager.AllLevels);
+		foreach(Level level in allLevelsCopy)
 		{
-			GameManager.Inst.WorldManager.AllLevels.Remove(GameManager.Inst.WorldManager.CurrentLevel);
+			if(level.Name == GameManager.Inst.WorldManager.CurrentLevel.Name)
+			{
+				GameManager.Inst.WorldManager.AllLevels.Remove(level);
+			}
 		}
+			
+		Debug.Log("how many levels in AllLevels? " + GameManager.Inst.WorldManager.AllLevels.Count);
 
 		CurrentSave.CurrentDay = GameManager.Inst.WorldManager.CurrentDay;
 		CurrentSave.CurrentTime = GameManager.Inst.WorldManager.CurrentTime;
@@ -232,7 +238,7 @@ public class SaveGameManager
 			DoorSaveData saveData = new DoorSaveData();
 			saveData.ID = door.ID;
 			saveData.IsLocked = door.IsLocked;
-			if(door.name == "SidorovichDoor")
+			if(door.ID == "zsk_blockadedoor")
 			{
 				Debug.Log(door.ID + " is locked? " + saveData.IsLocked);
 			}
@@ -243,7 +249,7 @@ public class SaveGameManager
 
 
 		GameManager.Inst.WorldManager.AllLevels.Add(currentLevel);
-		CurrentSave.Levels = GameManager.Inst.WorldManager.AllLevels;
+		CurrentSave.Levels = new List<Level>(GameManager.Inst.WorldManager.AllLevels);
 		CurrentSave.CurrentEnvironmentName = GameManager.Inst.WorldManager.CurrentEnvironment.Name;
 
 		//save factions
@@ -461,6 +467,10 @@ public class SaveGameManager
 			Door door = o.GetComponent<Door>();
 			foreach(DoorSaveData doorData in currentLevel.Doors)
 			{
+				if(door.ID == "zsk_blockadedoor")
+				{
+					Debug.Log("blocade door unlocked? " + doorData.ID + " - " + doorData.IsLocked);
+				}
 				if(door.ID == doorData.ID)
 				{
 					door.IsLocked = doorData.IsLocked;

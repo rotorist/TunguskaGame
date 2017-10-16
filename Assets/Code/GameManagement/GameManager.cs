@@ -45,6 +45,8 @@ public class GameManager : MonoBehaviour
 
 	public float AIUpdateRadius;
 
+	public string LevelName;
+
 	#endregion
 
 	void Start()
@@ -265,6 +267,7 @@ public class GameManager : MonoBehaviour
 		if(!string.IsNullOrEmpty(saveNameRef.SaveName))
 		{
 			Debug.Log("Loading save " + saveNameRef.SaveName);
+			UIManager.SetConsoleText("Loading last save game.");
 			SaveGameManager.Load(saveNameRef.SaveName);
 
 		}

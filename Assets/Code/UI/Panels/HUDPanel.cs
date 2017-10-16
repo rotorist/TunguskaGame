@@ -154,7 +154,7 @@ public class HUDPanel : PanelBase
 		//set scaling
 		float heightRatio = ((1f * Screen.height) / Screen.width - 1) * 2 + 1;
 		float scale = Mathf.Lerp(1f, 0.6f, heightRatio) * GameManager.Inst.UIManager.UIZoom;
-		Debug.Log("Setting UI scale " + scale + " UIZoom " + GameManager.Inst.UIManager.UIZoom);
+		//Debug.Log("Setting UI scale " + scale + " UIZoom " + GameManager.Inst.UIManager.UIZoom);
 		GameManager.Inst.UIManager.UICamera.transform.localScale = new Vector3(scale, scale, scale);
 
 		Vector3 targetLocLeft = new Vector3(Screen.width / 2 * -1, Screen.height / 2 * -1, 0); 

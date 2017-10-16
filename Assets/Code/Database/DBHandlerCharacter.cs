@@ -57,4 +57,25 @@ public class DBHandlerCharacter
 		return 1;
 	}
 
+	public List<AISquad> LoadLevelSquads(string levelName)
+	{
+		IDataReader squadReader = GameManager.Inst.DBManager.RunQuery(
+			"SELECT * FROM initial_squads WHERE level='" + levelName + "'");
+
+		List<AISquad> squads = new List<AISquad>();
+		while(squadReader.Read())
+		{
+			AISquad squad = new AISquad();
+			squad.ID = squadReader.GetString(0);
+			squad.Tier = squadReader.GetInt32(1);
+			squad.Faction = (Faction)squadReader.GetInt32(2);
+			squad.Household = GameManager.Inst.NPCManager.GetHousehold(squadReader.GetString(3));
+			squad.Household.CurrentSquad = squad;
+
+			squads.Add(squad);
+		}
+
+		return squads;
+	}
+
 }

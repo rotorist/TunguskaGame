@@ -586,6 +586,18 @@ public class NPCManager
 		return null;
 	}
 
+	public Household GetHousehold(string id)
+	{
+		if(_allHouseHolds.ContainsKey(id))
+		{
+			return _allHouseHolds[id];
+		}
+		else
+		{
+			return null;
+		}
+	}
+
 	public void HideCharacterPublic(Character character)
 	{
 		HideCharacter(character);
@@ -856,6 +868,15 @@ public class NPCManager
 
 	private void LoadAISquads()
 	{
+		List<AISquad> currentLevelSquads = GameManager.Inst.DBManager.DBHandlerCharacter.LoadLevelSquads(GameManager.Inst.WorldManager.CurrentLevelName);
+		foreach(AISquad squad in currentLevelSquads)
+		{
+			if(!_allSquads.ContainsKey(squad.ID))
+			{
+				_allSquads.Add(squad.ID, squad);
+			}
+		}
+		/*
 		AISquad squad1 = new AISquad();
 		squad1.ID = "zsk_sidorovich";
 		squad1.Tier = 1;
@@ -1011,7 +1032,7 @@ public class NPCManager
 		}
 
 		AISquad squad15 = new AISquad();
-		squad15.ID = "zsk_wolves2";
+		squad15.ID = "zsk_wolves3";
 		squad15.Tier = 1;
 		squad15.Faction = Faction.Animals;
 		squad15.Household = _allHouseHolds["HouseHoldWolf3"];
@@ -1020,5 +1041,6 @@ public class NPCManager
 		{
 			_allSquads.Add(squad15.ID, squad15);
 		}
+		*/
 	}
 }

@@ -27,7 +27,7 @@ public class WorldManager
 
 		AllLevels = new List<Level>();
 		CurrentLevel = new Level();
-		CurrentLevel.Name = "Zernaskaya";
+		CurrentLevel.Name = GameManager.Inst.LevelName;
 		AllLevels.Add(CurrentLevel);
 
 

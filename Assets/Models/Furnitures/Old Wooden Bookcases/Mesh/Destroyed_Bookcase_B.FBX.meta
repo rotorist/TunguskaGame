@@ -3,7 +3,12 @@ guid: ed3ffa3801dfd3d4abd51f40e7d1f1cd
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
+    100000: //RootNode
+    400000: //RootNode
+    2300000: //RootNode
+    3300000: //RootNode
     4300000: Destroyed_Bookcase_B
+    11100000: //RootNode
   materials:
     importMaterials: 0
     materialName: 0

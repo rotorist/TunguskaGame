@@ -167,11 +167,11 @@ public class Gun : Weapon
 
 		_onSuccessfulShot = callBack;
 
-		_sparks = MuzzleFlash.FindChild("Sparks").GetComponent<ParticleSystem>();
+		_sparks = MuzzleFlash.Find("Sparks").GetComponent<ParticleSystem>();
 		_flame = MuzzleFlash.GetComponent<ParticleSystem>();
-		_bulletOrigin = MuzzleFlash.FindChild("BulletOrigin").gameObject;
+		_bulletOrigin = MuzzleFlash.Find("BulletOrigin").gameObject;
 		//_bulletTrail.ParentWeapon = this;
-		_light = MuzzleFlash.FindChild("Light").GetComponent<Light>();
+		_light = MuzzleFlash.Find("Light").GetComponent<Light>();
 		_foreGripPos = this.ForeGrip.localPosition;
 		_isEquipped = true;
 
